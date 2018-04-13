@@ -5,7 +5,7 @@
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
-    <display-name>MyCGV</display-name>
+    <display-name>TeamProject</display-name>
     
    <!--
 		- Location of the XML file that defines the root application context.
@@ -38,5 +38,21 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-
+    
+	<filter>
+	   <filter-name>CharacterEncodingFilter</filter-name>
+	   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	   <init-param>
+	        <param-name>encoding</param-name>
+	        <param-value>UTF-8</param-value> 
+	   </init-param>
+	   <init-param>
+	        <param-name>forceEncoding</param-name>
+	        <param-value>true</param-value>
+	   </init-param>
+	</filter>
+	<filter-mapping>
+	   <filter-name>CharacterEncodingFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
