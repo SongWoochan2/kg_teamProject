@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="movieMapper">
+
+	<insert id="movieInsert" parameterType="movieDTO">
+		INSERT INTO movie
+		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade},#{movie_type},
+		#{movie_director},0,0,#{appear_actor},0,0)
+	</insert>
+	
+	<select id="getTotalA" resultType="int">
+		select count(*) from movie
+	</select>
+	<select id = "movieList" parameterType="java.util.Map" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, movie_director, movie_show_grade_name, 
+				to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from 
+				(select rownum rn, tt.* from 
+				(select * from movie order by movie_code desc) tt) 
+				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+</mapper>
