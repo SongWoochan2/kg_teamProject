@@ -5,6 +5,7 @@ public class TheaterDTO {
 	private String theater_name;
 	private String theater_photo_addr;
 	private String theater_phone;
+
 	
 	public int getTheater_code() {
 		return theater_code;
