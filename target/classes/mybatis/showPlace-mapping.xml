@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="showPlace">
+
+	<select id="getOne" parameterType="int" resultType="showPlaceVO">
+		SELECT *
+		FROM show_place
+		WHERE show_place_code = #{show_place_code}
+	</select>
+
+	<select id="getList" resultType="showPlaceVO">
+		SELECT * FROM show_place
+	</select>
+
+	<insert id="insert" parameterType="showPlaceVO">
+		INSERT INTO show_place 
+		(show_place_code, theater_code, show_place_name, seat_num, default_cost, show_place_photo_addr)
+		VALUES
+		(show_place_seq.nextval,#{theater_code},#{show_place_name},#{seat_num},#{default_cost},#{show_place_photo_addr})
+	</insert>
+
+	<update id="update" parameterType="showPlaceVO">
+		UPDATE show_place
+		SET
+		show_place_name=#{show_place_name}, seat_num=#{seat_num}, default_cost=#{default_cost}, show_place_photo_addr=#{show_place_photo_addr}
+		WHERE
+		show_place_code = #{show_place_code}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM show_place WHERE
+		show_place_code = #{show_place_code}
+	</delete>
+
+</mapper>
