@@ -40,15 +40,14 @@ public class TheaterServiceImpl implements TheaterService{
 	}
 
 	@Override
-	public void updateHit(int seq) {
-		// TODO Auto-generated method stub
+	public void updateHit(int theater_code) {
+		return;
 		
 	}
 
 	@Override
 	public int getTotalA() {
-		// TODO Auto-generated method stub
-		return 0;
+		return theaterDAO.getTotalA();
 	}
 	
 	

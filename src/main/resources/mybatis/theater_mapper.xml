@@ -23,27 +23,6 @@
 		where theater_code=#{theater_code}
 	</update>
 	
-	<!-- <update id="updateSomething" parameterType="#modelname">
-		UPDATE tablename1
-		SET
-		columnname1=#{param1}
-		WHERE
-		columnname2 = #{param2}
-	</update>
-
-	
-	
-	<select id="getSomething" parameterType="int" resultType="#package.#modelname">
-		SELECT
-		columnname1,
-		columnname2,
-		columnname3
-		FROM tablename1
-		WHERE columnname1 = #{value}
-	</select> -->
-
-
-	
 <select id="theaterList" parameterType="java.util.Map" resultType="theaterDTO">
 		<![CDATA[select *
 		from (select rownum rn, tt.* 
@@ -51,5 +30,8 @@
 		where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
+	<select id="getTotalA" resultType="int">
+		select count(*) from theater
+	</select>
 
 </mapper>

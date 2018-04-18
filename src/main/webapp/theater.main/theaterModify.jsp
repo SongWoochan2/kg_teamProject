@@ -11,10 +11,10 @@ pageEncoding="UTF-8"%>
 	window.onload = function(){
 		if(${result>0}){
 		alert("작성하신 글을 수정하였습니다.");
-		location.href = "boardList.do?pg=${pg}";
+		location.href = "theaterList.do?pg=1";
 		} else { 
 		alert("작성하신 글을 수정하지 못했습니다.");
-		location.href = "boardModifyForm.do?seq=${seq}";
+		location.href = "theaterModifyForm.do?theater_code=${theater_code}";
 		}
 	}
 </script>

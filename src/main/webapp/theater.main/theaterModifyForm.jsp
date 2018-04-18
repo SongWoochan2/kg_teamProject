@@ -22,8 +22,8 @@
 	<li>
 	<h1>극장수정</h1>
 	</li>
-	<li>
-		극장코드 : <input type="text" name="theater_code" value="${theaterDTO.theater_code }" disabled >
+	<li hidden="">
+		극장코드 : <input type="text" name="theater_code" value="${theaterDTO.theater_code }" >
 	</li>
 	<li>
 		극장제목 : <input type="text" name="theater_name" value="${theaterDTO.theater_name }" >

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import theater.bean.TheaterDTO;
 
 @Controller
@@ -92,8 +93,9 @@ public class TheaterController {
 		System.out.println("테스트1");
 		//BoardDAO boardDAO = new BoardDAO();
 		ArrayList<TheaterDTO> list = theaterService.theaterList(startNum, endNum);
-		
+		System.out.println("테스트0");
 		int totalA = theaterService.getTotalA();	// 총글수
+		System.out.println("테스트12");
 		int totalP = (totalA+4)/5;			// 총페이지수
 		//================================
 		int startPage = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
@@ -173,38 +175,44 @@ public class TheaterController {
 	
 	}
 	
-	@RequestMapping(value="/theater/theaterModify.do")
+	@RequestMapping(value="/theater.main/theaterModify.do")
 	public ModelAndView boardModify(HttpServletRequest request) {
-		System.out.println("글 수정하기");
-		try { // 데이터베이스에 한글이 깨지지 않도록 인코딩 설정
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 
-		// 1. 사용자 입력 정보 추출
-		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		String theater_name = request.getParameter("theater_name");
-		String theater_photo_addr = request.getParameter("theater_photo_addr");
-		String theater_phone = request.getParameter("theater_phone");
-		// 2. DB 연동처리
-		// 데이터의 갯수가 많기 때문에 자바빈즈 클래스에 담아서 전달
-		TheaterDTO boardDTO = new TheaterDTO();
-		boardDTO.setTheater_code(theater_code);
-		boardDTO.setTheater_name(theater_name);
-		boardDTO.setTheater_photo_addr(theater_photo_addr);
-		boardDTO.setTheater_phone(theater_phone);
-		
-		//BoardDAO boardDAO = new BoardDAO();
-		int result = theaterService.theaterModify(boardDTO);
-		// 3. 화면 네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("theater_code", theater_code);
-		modelAndView.setViewName("boardModify.jsp");
-		return modelAndView;
+		// 데이터
+		System.out.println("Modify.do");
+				HttpSession session = request.getSession();
+				try {
+					request.setCharacterEncoding("utf-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+					System.out.println("인코딩에러");
+				}
+				System.out.println("테스트0");
+				int theater_code = Integer.parseInt(request.getParameter("theater_code"));
+				
+				System.out.println(theater_code);
+				String theater_name = request.getParameter("theater_name");
+				System.out.println(theater_name);
+				String theater_photo_addr = request.getParameter("theater_photo_addr");
+				System.out.println(theater_photo_addr);
+				String theater_phone = request.getParameter("theater_phone");
+				System.out.println(theater_phone);
+				System.out.println("테스트1");
+				// 데이터 지정
+				TheaterDTO theaterDTO = new TheaterDTO();
+				theaterDTO.setTheater_code(theater_code);
+				theaterDTO.setTheater_name(theater_name);
+				theaterDTO.setTheater_photo_addr(theater_photo_addr);
+				theaterDTO.setTheater_phone(theater_phone);
+				System.out.println("테스트2");
+				//DB
+				int result = theaterService.theaterModify(theaterDTO);
+
+				ModelAndView modelAndView = new ModelAndView();
+				modelAndView.addObject("result", result);
+				
+				modelAndView.setViewName("theaterModify.jsp");
+				System.out.println("테스트3");
+				return modelAndView;
+	
 	}
-	
-	
 }
