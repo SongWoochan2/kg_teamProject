@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+		
+
+	
 	<typeAliases>
 		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
 		<typeAlias type="movie.bean.MovieDTO" alias="movieDTO"></typeAlias>
@@ -13,6 +17,7 @@
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/theater_mapper.xml" />
 		<mapper resource="mybatis/admin-mapping.xml"/>
 		<mapper resource="mybatis/movie-mapping.xml"/>
 		<mapper resource="mybatis/theater-mapping.xml"/>

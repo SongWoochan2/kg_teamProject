@@ -234,7 +234,7 @@
 					<ul class = "sub">
 						<li><a href = "../admin/movieAdmin.do?pg=1">영화등록</a></li>
 						<li><a href = "#">상영등록</a></li>
-						<li><a href = "#">극장등록</a></li>
+						<li><a href = "../theater.main/theaterList.do?pg=1">극장관리</a></li>
 						<li><a href = "#">스토어등록</a></li>
 					</ul>
 				</li>
