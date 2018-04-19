@@ -8,6 +8,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -107,14 +111,36 @@ public class ShowPlaceController {
 		int su = showPlaceService.insertShowPlace(showPlaceVO);
 		
 		String seat_code = request.getParameter("seat_code");
-		String[] seats = seat_code.split("/");
-		for(String seat : seats) {
-			String[] detail = seat.split("-");
-			SeatVO seatVO = new SeatVO();
-			seatVO.setY_index(detail[0]);
-			seatVO.setX_index(Integer.parseInt(detail[1]));
-			seatVO.setSeat_type_code(Integer.parseInt(detail[2]));
-			showPlaceService.insertSeat(seatVO);
+		
+		JSONParser parser = new JSONParser();
+		try {
+			JSONObject json = (JSONObject) parser.parse(seat_code);
+			
+			JSONArray list = (JSONArray) json.get("seat");
+			
+			for(Object tmp : list) {
+				JSONObject seat = (JSONObject) tmp;
+				SeatVO seatVO = new SeatVO();
+				seatVO.setY_index((String)seat.get("y_index"));
+				seatVO.setX_index(Integer.parseInt((String)seat.get("x_index")));
+				seatVO.setSeat_type_code(Integer.parseInt((String)seat.get("seat_type_code")));
+				
+				showPlaceService.insertSeat(seatVO);
+			}
+			/*
+			String[] seats = seat_code.split("/");
+			for(String seat : seats) {
+				String[] detail = seat.split("-");
+				SeatVO seatVO = new SeatVO();
+				seatVO.setY_index(detail[0]);
+				seatVO.setX_index(Integer.parseInt(detail[1]));
+				seatVO.setSeat_type_code(Integer.parseInt(detail[2]));
+				showPlaceService.insertSeat(seatVO);
+			}
+			*/
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -123,5 +149,86 @@ public class ShowPlaceController {
 		
 		return modelAndView;
 	}
+
+	
+	@RequestMapping(value="/admin/showPlaceModifyForm.do")
+	public String showPlaceModifyForm(HttpServletRequest request) { 
+		String forward = "showPlaceModifyForm.jsp";
+		
+		return forward;
+	}
+	
+
+	@RequestMapping(value="/admin/showPlaceModify.do", method=RequestMethod.POST)
+	synchronized public ModelAndView showPlaceModify(HttpServletRequest request, MultipartFile img) { 
+		
+		int show_place_code = Integer.parseInt( request.getParameter("sp_code") );
+		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
+		String show_place_name = request.getParameter("show_place_name");
+		int default_cost = Integer.parseInt(request.getParameter("default_cost"));
+		
+		String img_change = request.getParameter("img_change");
+		String seat_change = request.getParameter("seat_change");
+		
+		ShowPlaceVO showPlaceVO = new ShowPlaceVO();
+		showPlaceVO.setShow_place_code(show_place_code);
+		showPlaceVO.setTheater_code(theater_code);
+		showPlaceVO.setShow_place_name(show_place_name);
+		showPlaceVO.setDefault_cost(default_cost);
+		
+		////////          이미지 변경 확인후 이미지 저장및 setter입력
+		if(img_change != null && img_change.equals("y")) {
+			String filePath = "D:/Spring/cgv/MyCGV/src/main/webapp/image/showPlace";
+			String fileName = img.getOriginalFilename();
+			File file = new File(filePath, fileName);
+			
+			// 파일 storage 폴더에 저장
+			try {
+				// getInputStream() : 업로드한 파일 데이터를 읽어오는 InputStrean을 구한다.
+				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			showPlaceVO.setShow_place_photo_addr(fileName);
+		}
+		int su = showPlaceService.insertShowPlace(showPlaceVO);
+
+		////////          좌석 변경 확인후 좌석 저장
+		if(seat_change != null && seat_change.equals("y")) {
+			showPlaceService.deleteSeat(show_place_code);
+			
+			String seat_code = request.getParameter("seat_code");
+			
+			JSONParser parser = new JSONParser();
+			try {
+				JSONObject json = (JSONObject) parser.parse(seat_code);
+				
+				JSONArray list = (JSONArray) json.get("seat");
+				
+				for(Object tmp : list) {
+					JSONObject seat = (JSONObject) tmp;
+					SeatVO seatVO = new SeatVO();
+					seatVO.setY_index((String)seat.get("y_index"));
+					seatVO.setX_index(Integer.parseInt((String)seat.get("x_index")));
+					seatVO.setSeat_type_code(Integer.parseInt((String)seat.get("seat_type_code")));
+					
+					showPlaceService.insertSeat(seatVO);
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("su", su);
+		modelAndView.setViewName("showPlaceWrite.jsp");
+		
+		return modelAndView;
+	}
+	
+	
 
 }

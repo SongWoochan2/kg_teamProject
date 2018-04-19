@@ -142,25 +142,37 @@
 			
 			
 			$(imageboardWriteForm).submit(function(){
-				var seat_code = "";
-				
+	 			var seat_json = {};
+		 		var list = [];
+	 			
 				$("input[name='passage']").each(function(){
 			 		if($(this).is(":checked")){
-						seat_code = seat_code + "!" + $(this).attr("col_number") + "/";	
+				 		var seat = { 	x_index : $(this).attr("col_number")+"",
+					 					y_index : "!",
+				 						seat_type : "0" 							};
+			 			list[0] = seat;
 					}
 				});
 				
+				var i = 1;
 				$("div[name='row']").each(function(){
 					var row_number = $(this).attr("row_number");
 					$(this).find("div[name='seat']").each(function(){
 						var col_number = $(this).attr("col_number");
 						var seat_type = $(this).attr("seat_type");
-						seat_code = seat_code + row_number + "-"  + col_number + "-"  + seat_type + "/";
+						
+			 			var seat = { 	x_index : col_number,
+				 						y_index : row_number,
+				 						seat_type : seat_type	};
+			 			list[i++] = seat;
 					});
 				});
-				$("input[name='seat_code']").val(seat_code);
+				
+				seat_json={"seat": list }
+				$("input[name='seat_code']").val(JSON.stringify(seat_json));
 				
 				alert($("input[name='seat_code']").val());
+				
 				return false;
 			});
 			
@@ -256,25 +268,25 @@
 				<tr>
 					<td class="leftSide">상영관명</td>
 					<td>
-						<input type="text" name="name">
+						<input type="text" name="name" value="${showPlaceVO.show_place_name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">기본가격</td>
 					<td>
-						<input type="text" name="cost">
+						<input type="text" name="cost" value="${showPlaceVO.show_place_name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">이미지 변경</td>
 					<td>
-						<input type="checkbox" id="img_change">
+						<input type="checkbox" id="img_change" name="img_change" value="y">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">좌석 변경</td>
 					<td>
-						<input type="checkbox" id="seat_change">
+						<input type="checkbox" id="seat_change" name="seat_change" value="y">
 					</td>
 				</tr>
 				<tr id="img_tr">

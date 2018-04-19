@@ -17,5 +17,10 @@
 		VALUES
 		(show_place_seq.currval,#{seat_type_code},#{x_index},#{y_index})
 	</insert>
+	
+	<delete id="deleteSeat" parameterType="int">
+		DELETE FROM seat WHERE
+		show_place_code = #{show_place_code}
+	</delete>
 
 </mapper>

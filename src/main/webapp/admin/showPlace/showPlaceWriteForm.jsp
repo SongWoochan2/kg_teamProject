@@ -117,31 +117,42 @@
 				});
 			});
 			
-			
+
 			
 			$(imageboardWriteForm).submit(function(){
-				var seat_code = "";
-				
+	 			var seat_json = {};
+		 		var list = [];
+	 			
 				$("input[name='passage']").each(function(){
 			 		if($(this).is(":checked")){
-						seat_code = seat_code + "!" + $(this).attr("col_number") + "/";	
+				 		var seat = { 	x_index : $(this).attr("col_number")+"",
+					 					y_index : "!",
+				 						seat_type : "0" 							};
+			 			list[0] = seat;
 					}
 				});
 				
+				var i = 1;
 				$("div[name='row']").each(function(){
 					var row_number = $(this).attr("row_number");
 					$(this).find("div[name='seat']").each(function(){
 						var col_number = $(this).attr("col_number");
 						var seat_type = $(this).attr("seat_type");
-						seat_code = seat_code + row_number + "-"  + col_number + "-"  + seat_type + "/";
+						
+			 			var seat = { 	x_index : col_number,
+				 						y_index : row_number,
+				 						seat_type : seat_type	};
+			 			list[i++] = seat;
 					});
 				});
-				$("input[name='seat_code']").val(seat_code);
+				
+				seat_json={"seat": list }
+				$("input[name='seat_code']").val(JSON.stringify(seat_json));
 				
 				alert($("input[name='seat_code']").val());
+				
 				return false;
 			});
-			
 			
 		});
 	</script>

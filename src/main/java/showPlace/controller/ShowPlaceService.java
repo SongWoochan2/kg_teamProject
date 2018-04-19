@@ -20,10 +20,6 @@ public class ShowPlaceService {
 		return showPlaceDAO.insertShowPlace(showPlaceVO);
 	}
 	
-	public int insertSeat(SeatVO seatVO) {
-		return showPlaceDAO.insertSeat(seatVO);
-	}
-	
 	public int updateShowPlace(ShowPlaceVO showPlaceVO) {
 		return showPlaceDAO.updateShowPlace(showPlaceVO);
 	}
@@ -38,5 +34,18 @@ public class ShowPlaceService {
 
 	public List<ShowPlaceVO> selectList() {
 		return showPlaceDAO.selectList();
+	}
+
+	/////////   seat
+	public int insertSeat(SeatVO seatVO) {
+		return showPlaceDAO.insertSeat(seatVO);
+	}
+
+	public int deleteSeat(int show_place_code) {
+		return showPlaceDAO.deleteSeat(show_place_code);
+	}
+	
+	public int getTotal(int show_place_code) {
+		return showPlaceDAO.getTotal(show_place_code);
 	}
 }
