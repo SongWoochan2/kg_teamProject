@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import showPlace.bean.SeatVO;
 import showPlace.bean.ShowPlaceVO;
 
 @Repository
@@ -16,6 +17,10 @@ public class ShowPlaceDAO {
 	
 	public int insertShowPlace(ShowPlaceVO showPlaceVO) {
 		return sqlSession.insert("showPlace.insert", showPlaceVO);
+	}
+	
+	public int insertSeat(SeatVO seatVO) {
+		return sqlSession.insert("seatMapper.insertSeat", seatVO);
 	}
 	
 	public int updateShowPlace(ShowPlaceVO showPlaceVO) {

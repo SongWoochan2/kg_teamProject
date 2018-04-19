@@ -2,18 +2,11 @@ package showPlace.bean;
 
 public class SeatVO {
 	
-	private int seat_num;
 	private int show_place_code;
 	private int seat_type_code;
 	private int x_index;
-	private int y_index;
+	private String y_index;
 	
-	public int getSeat_num() {
-		return seat_num;
-	}
-	public void setSeat_num(int seat_num) {
-		this.seat_num = seat_num;
-	}
 	public int getShow_place_code() {
 		return show_place_code;
 	}
@@ -32,10 +25,10 @@ public class SeatVO {
 	public void setX_index(int x_index) {
 		this.x_index = x_index;
 	}
-	public int getY_index() {
+	public String getY_index() {
 		return y_index;
 	}
-	public void setY_index(int y_index) {
+	public void setY_index(String y_index) {
 		this.y_index = y_index;
 	}
 

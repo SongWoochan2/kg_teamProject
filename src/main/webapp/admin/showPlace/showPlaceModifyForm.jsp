@@ -3,7 +3,7 @@
 <html>
 	<meta charset="UTF-8">
 	<title>상영관 등록</title>
-	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			var x_index = $("#x_index");
@@ -38,6 +38,25 @@
 							}
 						});
 					});
+				}
+			});
+			
+			
+			
+			$("#img_change").change(function(){
+				if($(this).is(":checked")){
+					$("#img_tr").css("visibility", "visible");
+				} else {
+					$("#img_tr").css("visibility", "hidden");
+				}
+			});
+			$("#seat_change").change(function(){
+				if($(this).is(":checked")){
+					$("#seat_tr").css("visibility", "visible");
+					$("#seat_editor").css("visibility", "visible");
+				} else {
+					$("#seat_tr").css("visibility", "hidden");
+					$("#seat_editor").css("visibility", "hidden");
 				}
 			});
 			
@@ -228,7 +247,7 @@
 <body>
 	<div id="wrapper">
 		<h2>이미지 등록</h2>
-		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="imageboardWrite">
+		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="imageboardWrite.do?theater_code=${param.theater_code}">
 			<input type="hidden" name="seat_code">
 			<table border="1">
 				<tr>
@@ -244,11 +263,24 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" >
+					<td class="leftSide">이미지 변경</td>
+					<td>
+						<input type="checkbox" id="img_change">
+					</td>
+				</tr>
+				<tr id="img_tr">
+					<td class="leftSide">사진</td>
+					<td>
 						<input type="file" name="img">
 					</td>
 				</tr>
 				<tr>
+					<td class="leftSide">좌석 변경</td>
+					<td>
+						<input type="checkbox" id="seat_change">
+					</td>
+				</tr>
+				<tr id="seat_tr">
 					<td colspan="2">
 						<label for="x_index">가로 :</label>
 						<select name="x_index" id="x_index"></select>
@@ -258,19 +290,21 @@
 					</td>
 				</tr>
 			</table>
-			<div class="screen">스크린</div>
-			<div id="seatView"></div>
-			<fieldset id="seat_type_field">
-                <legend>좌석종류</legend>
-				<label><input type="radio" name="seat_type" value="0" checked="checked">빈좌석</label>
-				<label><input type="radio" name="seat_type" value="1">장애인석</label>
-				<label><input type="radio" name="seat_type" value="2">일반석</label>
-				<label><input type="radio" name="seat_type" value="3">우등석</label>
-				<label><input type="radio" name="seat_type" value="4">커플석</label>
-            </fieldset>
-			<fieldset id="passage_field">
-                <legend>통로</legend>
-            </fieldset>
+			<div id="seat_editor">
+				<div class="screen">스크린</div>
+				<div id="seatView"></div>
+				<fieldset id="seat_type_field">
+	                <legend>좌석종류</legend>
+					<label><input type="radio" name="seat_type" value="0" checked="checked">빈좌석</label>
+					<label><input type="radio" name="seat_type" value="1">장애인석</label>
+					<label><input type="radio" name="seat_type" value="2">일반석</label>
+					<label><input type="radio" name="seat_type" value="3">우등석</label>
+					<label><input type="radio" name="seat_type" value="4">커플석</label>
+	            </fieldset>
+				<fieldset id="passage_field">
+	                <legend>통로</legend>
+	            </fieldset>
+			</div>
 			<input type="submit" value="등록">
 			<input type="submit" value="다시 작성">
 		</form>
