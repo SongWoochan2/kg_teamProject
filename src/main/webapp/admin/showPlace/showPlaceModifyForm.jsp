@@ -42,21 +42,24 @@
 			});
 			
 			
-			
+
+			$("#img_tr").hide();
+			$("#seat_tr").hide();
+			$("#seat_editor").hide();
 			$("#img_change").change(function(){
 				if($(this).is(":checked")){
-					$("#img_tr").css("visibility", "visible");
+					$("#img_tr").show(300);
 				} else {
-					$("#img_tr").css("visibility", "hidden");
+					$("#img_tr").hide(300);
 				}
 			});
 			$("#seat_change").change(function(){
 				if($(this).is(":checked")){
-					$("#seat_tr").css("visibility", "visible");
-					$("#seat_editor").css("visibility", "visible");
+					$("#seat_tr").show(300);
+					$("#seat_editor").show(300);
 				} else {
-					$("#seat_tr").css("visibility", "hidden");
-					$("#seat_editor").css("visibility", "hidden");
+					$("#seat_tr").hide(1000);
+					$("#seat_editor").hide(300);
 				}
 			});
 			
@@ -268,16 +271,16 @@
 						<input type="checkbox" id="img_change">
 					</td>
 				</tr>
-				<tr id="img_tr">
-					<td class="leftSide">사진</td>
-					<td>
-						<input type="file" name="img">
-					</td>
-				</tr>
 				<tr>
 					<td class="leftSide">좌석 변경</td>
 					<td>
 						<input type="checkbox" id="seat_change">
+					</td>
+				</tr>
+				<tr id="img_tr">
+					<td class="leftSide">사진</td>
+					<td>
+						<input type="file" name="img">
 					</td>
 				</tr>
 				<tr id="seat_tr">
