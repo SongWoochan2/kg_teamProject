@@ -1,0 +1,41 @@
+/* 푸터영역 */
+#footer{
+	height: 100%;
+}
+#footer_text{
+	height: 100%;
+	text-align: center;
+	font-size: 5px;
+}
+#footer_img_cj1{
+	width:100%;
+	text-align: center;
+}
+#footer_img_cj2{
+	float: left;
+	align-content: center;
+}
+p{
+	align-content: center;
+	margin: 0px;
+}
+#p_top{
+	margin: 10px;
+}
+
+#test1{
+	margin-top:10px;
+	width:90%;
+	float: left;
+	font-size: 9px;
+}
+#test2{
+	width:10%;
+	float: left;
+}
+#footer_mid{
+	text-align:  center;
+}
+
+
+/* 헤더영역 */
