@@ -14,6 +14,7 @@
 		<typeAlias type="theater.bean.TheaterDTO" alias="theaterDTO"></typeAlias>
 		<typeAlias type="timetype.bean.TimetypeDTO" alias="timetypeDTO"></typeAlias>
 		<typeAlias type="showPlace.bean.ShowPlaceVO" alias="showPlaceVO"></typeAlias>
+		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
@@ -24,6 +25,7 @@
 		<mapper resource="mybatis/seat-mapping.xml"/>
 		<mapper resource="mybatis/timetype-mapping.xml"/>
 		<mapper resource="mybatis/showPlace-mapping.xml"/>
+		<mapper resource="mybatis/productboard-mapping.xml" />
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 	</mappers>
 </configuration>
