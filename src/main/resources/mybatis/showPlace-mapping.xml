@@ -9,6 +9,7 @@
 		FROM show_place
 		WHERE show_place_code = #{show_place_code}
 	</select>
+	
 
 	<select id="getList" resultType="showPlaceVO">
 		SELECT * FROM show_place
@@ -16,15 +17,25 @@
 
 	<insert id="insert" parameterType="showPlaceVO">
 		INSERT INTO show_place 
-		(show_place_code, theater_code, show_place_name, seat_num, default_cost, show_place_photo_addr)
+		(show_place_code, theater_code, show_place_name, default_cost, show_place_photo_addr)
 		VALUES
-		(show_place_seq.nextval,#{theater_code},#{show_place_name},#{seat_num},#{default_cost},#{show_place_photo_addr})
+		(show_place_seq.nextval,#{theater_code},#{show_place_name},#{default_cost},#{show_place_photo_addr})
 	</insert>
-
+	
+	<insert id="insertSeat" parameterType="showPlaceVO">
+		INSERT INTO seat 
+		(show_place_code, seat_type_code, x_index, y_index)
+		VALUES
+		(show_place_seq.currval,#{seat_type_code},#{x_index},#{y_index})
+	</insert>
+	
 	<update id="update" parameterType="showPlaceVO">
 		UPDATE show_place
-		SET
-		show_place_name=#{show_place_name}, seat_num=#{seat_num}, default_cost=#{default_cost}, show_place_photo_addr=#{show_place_photo_addr}
+		<set>
+		    <if test="show_place_name != null">show_place_name=#{show_place_name},</if>
+		    <if test="default_cost != null">default_cost=#{default_cost},</if>
+		    <if test="show_place_photo_addr != null">show_place_photo_addr=#{show_place_photo_addr}</if>
+	    </set>
 		WHERE
 		show_place_code = #{show_place_code}
 	</update>

@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: user
 Build-Jdk: 1.8.0_161
+=======
+Built-By: jmwor
+Build-Jdk: 1.8.0_151
+>>>>>>> 0829382120448d759df5c4bae2706c4cc1e97d5d
 Created-By: Maven Integration for Eclipse
 

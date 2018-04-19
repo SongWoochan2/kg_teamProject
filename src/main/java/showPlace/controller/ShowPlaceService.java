@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import showPlace.bean.SeatVO;
 import showPlace.bean.ShowPlaceVO;
 import showPlace.dao.ShowPlaceDAO;
 
@@ -17,6 +18,10 @@ public class ShowPlaceService {
 	
 	public int insertShowPlace(ShowPlaceVO showPlaceVO) {
 		return showPlaceDAO.insertShowPlace(showPlaceVO);
+	}
+	
+	public int insertSeat(SeatVO seatVO) {
+		return showPlaceDAO.insertSeat(seatVO);
 	}
 	
 	public int updateShowPlace(ShowPlaceVO showPlaceVO) {
