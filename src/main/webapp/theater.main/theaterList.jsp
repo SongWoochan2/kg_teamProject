@@ -60,7 +60,7 @@ function isLogin(theater_code) {
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage < totalP }">
-			[<a id="paging" href="boardList.do?pg=${endPage+1 }">다음</a>]
+			[<a id="paging" href="theaterList.do?pg=${endPage+1 }">다음</a>]
 		</c:if>
 		</td> 
 	</tr>

@@ -20,7 +20,7 @@ public interface TheaterService {
 	//극장글 목록 조회
 	ArrayList<TheaterDTO> theaterList(int startNum, int endNum);
 	// 조횟수 증가
-	void updateHit(int seq);
+	void updateHit(int theater_code);
 	// 전체 게시판 글 갯수 조회
 	int getTotalA();
 }

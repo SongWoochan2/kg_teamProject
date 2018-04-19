@@ -22,10 +22,7 @@ public class TheaterDAO {
 		map.put("endNum", endNum);
 		return sqlSession.selectList("mybatis.theaterMapper.theaterList", map);
 	}
-//	
-//	public int getTotalA() {
-//		return sqlSession.selectOne("mybatis.theaterMapper.getTotalA");
-//	}
+
 
 	public int theaterInsert(TheaterDTO theaterDTO) {
 		return sqlSession.insert("mybatis.theaterMapper.theaterInsert", theaterDTO);
@@ -42,10 +39,15 @@ public class TheaterDAO {
 	public int theaterModify(TheaterDTO theaterDTO) {
 		return sqlSession.update("mybatis.theaterMapper.theaterModify", theaterDTO);
 	}
-//	
-//	public void updateHit(int seq) {
-//		sqlSession.update("mybatis.theaterMapper.updateHit", seq);
-//	}
-//	
+	
+	public int updateHit(int theater_code) {
+		return sqlSession.update("mybatis.theaterMapper.theaterList", theater_code);
+	}
+	
+	
+	public int getTotalA() {
+		return sqlSession.selectOne("mybatis.theaterMapper.getTotalA");
+	}
+	
 
 }
