@@ -6,7 +6,7 @@
 
 	<insert id="movieInsert" parameterType="movieDTO">
 		INSERT INTO movie
-		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade},#{movie_type},
+		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade_name},#{movie_type},
 		#{movie_director},0,0,#{appear_actor},0,0)
 	</insert>
 	
