@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.theaterMapper">
+
+	<insert id="theaterInsert" parameterType="theaterDTO">
+	insert into theater values(theater_seq.nextval, #{theater_name}, #{theater_photo_addr}, #{theater_phone})
+	</insert>
+	
+	<delete id="theaterDelete" parameterType="int">
+		delete from theater where theater_code = #{theater_code}
+	</delete>
+
+	<select id="theaterView" parameterType="int" resultType="TheaterDTO">
+		select * from theater where theater_code=#{theater_code}
+	</select>
+	
+	
+	<update id="theaterModify" parameterType="theaterDTO">
+		update theater 
+		set theater_name=#{theater_name}, theater_photo_addr=#{theater_photo_addr}, theater_phone=#{theater_phone}
+		where theater_code=#{theater_code}
+	</update>
+	
+<select id="theaterList" parameterType="java.util.Map" resultType="theaterDTO">
+		<![CDATA[select *
+		from (select rownum rn, tt.* 
+		from (select * from theater order by theater_code desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="getTotalA" resultType="int">
+		select count(*) from theater
+	</select>
+
+</mapper>

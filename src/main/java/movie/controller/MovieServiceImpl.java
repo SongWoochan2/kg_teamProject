@@ -27,4 +27,21 @@ public class MovieServiceImpl implements MovieService{
 	public ArrayList<MovieDTO> movieList(int startNum, int endNum) {
 		return (ArrayList<MovieDTO>) movieDAO.movieList(startNum, endNum);
 	}
+
+	@Override
+	public MovieDTO movieView(int movie_code) {
+		return movieDAO.movieView(movie_code);
+	}
+
+	@Override
+	public int movieDelete(int movie_code) {
+		
+		return movieDAO.movieDelete(movie_code);
+	}
+
+	@Override
+	public int movieModify(MovieDTO movieDTO) {
+		return movieDAO.movieModify(movieDTO);
+	}
+	
 }
