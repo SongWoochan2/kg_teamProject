@@ -3,9 +3,61 @@
 <html>
 	<meta charset="UTF-8">
 	<title>상영관 등록</title>
-	<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/MyCGV/css/showPlace/seatView.css" />
+	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var seat_json = ${json};
+			var seat_list = seat_json.seat;
+			
+			var x_size = ${x_size};
+			var y_size = ${y_size};
+			var seatView = $("#seatView").empty();
+
+			for(var y = 1; y <= y_size; y++){
+				var row_number = String.fromCharCode(64 + y);
+				var seat_div = $("<div>").addClass("row_label").html(row_number);
+				var row_label = $("<div>").attr({"name":"row", "row_number":row_number}).append(seat_div);
+				seatView.append(row_label);
+			}
+			for(var i = 0; i < seat_list.length; i++){
+				var row_number = seat_list[i].y_index;
+				var col_number = seat_list[i].x_index;
+				var seat_type_code = seat_list[i].seat_type_code;
+				var seat_type = null;
+				
+				if(row_number == "!"){ continue;}
+				
+				if(seat_type_code == "0"){
+					seat_type = "empty";
+				} else if(seat_type_code == "1"){
+					seat_type = "easy";
+				} else if(seat_type_code == "2"){
+					seat_type = "basic";
+				} else if(seat_type_code == "3"){
+					seat_type = "good";
+				} else if(seat_type_code == "4"){
+					seat_type = "couple";
+				}
+				$("div[name='row'][row_number='"+row_number+"']").append(
+						$("<div>").addClass(seat_type).attr(
+								{ 	"row_number": row_number,
+									"name" : "seat", 
+									"col_number": col_number, 
+									"seat_type": seat_type_code	}
+							).val(col_number).html(col_number));
+			}
+			for(var i = 0; i <= seat_list.length; i++){
+				var row_number = seat_list[i].y_index;
+				var col_number = seat_list[i].x_index;
+				if(row_number == "!"){
+					$("div[name='row']").each(function(){
+						$(this).find("div[col_number='"+col_number+"']").css("margin-right", "20px");
+					});
+					continue;
+				}
+			}
+			
 			var x_index = $("#x_index");
 			var y_index = $("#y_index");
 			
@@ -193,76 +245,12 @@
 			background: orange;
 			width: 100px;
 		}
-		div{
-			margin: auto;	
-			align-self: center;
-			box-sizing: border-box;
-		}
-		#seatView {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin: 50px;
-		}
-		#seatView > div{
-			height: 18px;
-			font-size: 15px;
-			line-height: 18px;
-		}
-		div[name='seat']{
-			float: left;
-			width: 15px;
-			height: 15px;
-			font-size : 13px;
-			line-height: 13px;
-			border: 1px dotted gray;
-			margin: 1px;
-		}
-		div[name='seat']:hover, .row_label{
-			cursor: pointer;
-		}
-		.empty{
-			background-color: gray;
-			color: white;
-		}
-		.easy{
-			background-color: blue;
-			color: white;
-		}
-		.basic{
-			background-color: green;
-			color: white;
-		}
-		.good{
-			background-color: red;
-			color: white;
-		}
-		.couple{
-			background-color: pink;
-			color: black;
-		}
-		.screen{
-			width: 300px;
-			height: 50px;
-			line-height :50px;
-			border : 2px solid black;
-			text-align: center;
-		}
-		.row_label{
-			float: left;
-			width: 15px;
-			height: 15px;
-			font-size : 13px;
-			line-height: 13px;
-			margin: 1px;
-		}
 	</style>
 </head>
 <body>
 	<div id="wrapper">
 		<h2>이미지 등록</h2>
-		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="imageboardWrite.do?theater_code=${param.theater_code}">
+		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/MyCGV/showPlaceModify.do?theater_code=${param.theater_code}">
 			<input type="hidden" name="seat_code">
 			<table border="1">
 				<tr>

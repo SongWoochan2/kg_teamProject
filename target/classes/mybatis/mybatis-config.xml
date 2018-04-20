@@ -3,17 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-		
-
-	
 	<typeAliases>
 		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
 		<typeAlias type="movie.bean.MovieDTO" alias="movieDTO"></typeAlias>
-		<typeAlias type="seat.bean.SeatDTO" alias="seatDTO"></typeAlias>
 		<typeAlias type="theater.bean.TheaterDTO" alias="theaterDTO"></typeAlias>
 		<typeAlias type="timetype.bean.TimetypeDTO" alias="timetypeDTO"></typeAlias>
 		<typeAlias type="showPlace.bean.ShowPlaceVO" alias="showPlaceVO"></typeAlias>
+		<typeAlias type="showPlace.bean.SeatVO" alias="seatVO"></typeAlias>
 		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>

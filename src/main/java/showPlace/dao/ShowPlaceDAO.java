@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import showPlace.bean.SeatSize;
 import showPlace.bean.SeatVO;
 import showPlace.bean.ShowPlaceVO;
 
@@ -48,5 +49,12 @@ public class ShowPlaceDAO {
 		return sqlSession.selectOne("seatMapper.totalSeat", show_place_code);
 	}
 	
+	public List<SeatVO> seatList(int show_place_code) {
+		return sqlSession.selectList("seatMapper.seatList", show_place_code);
+	}
+	
+	public SeatSize seatSize(int show_place_code) {
+		return sqlSession.selectOne("seatMapper.seatSize", show_place_code);
+	}
 	
 }

@@ -3,7 +3,8 @@
 <html>
 	<meta charset="UTF-8">
 	<title>상영관 등록</title>
-	<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/MyCGV/css/showPlace/seatView.css" />
+	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			var x_index = $("#x_index");
@@ -12,6 +13,7 @@
 			for(var x = 1; x <= 50; x++){
 				var option = $("<option>").val(x).html(x);
 				x_index.append(option);
+				
 			}
 			for(var y = 1; y <= 40; y++){
 				var option = $("<option>").val(y).html(y);
@@ -170,76 +172,12 @@
 			background: orange;
 			width: 100px;
 		}
-		div{
-			margin: auto;	
-			align-self: center;
-			box-sizing: border-box;
-		}
-		#seatView {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin: 50px;
-		}
-		#seatView > div{
-			height: 18px;
-			font-size: 15px;
-			line-height: 18px;
-		}
-		div[name='seat']{
-			float: left;
-			width: 15px;
-			height: 15px;
-			font-size : 13px;
-			line-height: 13px;
-			border: 1px dotted gray;
-			margin: 1px;
-		}
-		div[name='seat']:hover, .row_label{
-			cursor: pointer;
-		}
-		.empty{
-			background-color: gray;
-			color: white;
-		}
-		.easy{
-			background-color: blue;
-			color: white;
-		}
-		.basic{
-			background-color: green;
-			color: white;
-		}
-		.good{
-			background-color: red;
-			color: white;
-		}
-		.couple{
-			background-color: pink;
-			color: black;
-		}
-		.screen{
-			width: 300px;
-			height: 50px;
-			line-height :50px;
-			border : 2px solid black;
-			text-align: center;
-		}
-		.row_label{
-			float: left;
-			width: 15px;
-			height: 15px;
-			font-size : 13px;
-			line-height: 13px;
-			margin: 1px;
-		}
 	</style>
 </head>
 <body>
 	<div id="wrapper">
 		<h2>이미지 등록</h2>
-		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="imageboardWrite.do?theater_code=${param.theater_code}">
+		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/MyCGV/showPlaceWrite.do?theater_code=${param.theater_code}">
 			<input type="hidden" name="seat_code">
 			<table border="1">
 				<tr>

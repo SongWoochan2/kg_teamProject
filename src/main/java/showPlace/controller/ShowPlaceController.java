@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import showPlace.bean.SeatSize;
 import showPlace.bean.SeatVO;
 import showPlace.bean.ShowPlaceVO;
 
@@ -30,7 +31,7 @@ public class ShowPlaceController {
 	private ShowPlaceService showPlaceService;
 	
 	
-	@RequestMapping("/admin/showPlaceList.do")
+	@RequestMapping("/showPlaceList.do")
 	public ModelAndView showPlaceList(HttpServletRequest request) {
 
 		List<ShowPlaceVO> show_place_list = showPlaceService.selectList();
@@ -39,26 +40,42 @@ public class ShowPlaceController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("show_place_list", show_place_list);
 		
-		modelAndView.setViewName("showPlaceList.jsp");
+		modelAndView.setViewName("/admin/showPlace/showPlaceList.jsp");
 		
 		return modelAndView;
 	}
 
-	@RequestMapping("/admin/showPlaceView.do")
+	@RequestMapping("/showPlaceView.do")
 	public ModelAndView showPlaceView(HttpServletRequest request) {
 		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
 		
 		ShowPlaceVO showPlaceVO = showPlaceService.selectOne(show_place_code);
+		List<SeatVO> seatList = showPlaceService.seatList(show_place_code);
+		JSONObject json = new JSONObject();
+		JSONArray list = new JSONArray();
+		for(SeatVO seatVO : seatList) {
+			JSONObject seat_json = new JSONObject();
+			seat_json.put("x_index", seatVO.getX_index());
+			seat_json.put("y_index", seatVO.getY_index());
+			seat_json.put("seat_type_code", seatVO.getSeat_type_code());
+			list.add(seat_json);
+		}
+		json.put("seat", list);
+		
+		SeatSize size = showPlaceService.seatSize(show_place_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("showPlaceVO", showPlaceVO);
+		modelAndView.addObject("json", json.toJSONString());
+		modelAndView.addObject("x_size", size.getX_size());
+		modelAndView.addObject("y_size", size.getY_size());
 		
-		modelAndView.setViewName("showPlaceView.jsp");
+		modelAndView.setViewName("/admin/showPlace/showPlaceView.jsp");
 		
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/admin/showPlaceDelete.do")
+	@RequestMapping(value="/showPlaceDelete.do")
 	public ModelAndView showPlaceDelete(HttpServletRequest request) { 
 		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
 	
@@ -67,20 +84,20 @@ public class ShowPlaceController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
 		
-		modelAndView.setViewName("showPlaceDelete.jsp");
+		modelAndView.setViewName("/admin/showPlace/showPlaceDelete.jsp");
 		
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/admin/showPlaceWriteForm.do")
+	@RequestMapping(value="/showPlaceWriteForm.do")
 	public String showPlaceWriteForm(HttpServletRequest request) { 
-		String forward = "showPlaceWriteForm.jsp";
+		String forward = "/admin/showPlace/showPlaceWriteForm.jsp";
 		
 		return forward;
 	}
 	
 
-	@RequestMapping(value="/admin/showPlaceWrite.do", method=RequestMethod.POST)
+	@RequestMapping(value="/showPlaceWrite.do", method=RequestMethod.POST)
 	synchronized public ModelAndView showPlaceWrite(HttpServletRequest request, MultipartFile img) { 
 		
 		String filePath = "D:/Spring/cgv/MyCGV/src/main/webapp/image/showPlace";
@@ -145,21 +162,21 @@ public class ShowPlaceController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
-		modelAndView.setViewName("showPlaceWrite.jsp");
+		modelAndView.setViewName("/admin/showPlace/showPlaceWrite.jsp");
 		
 		return modelAndView;
 	}
 
 	
-	@RequestMapping(value="/admin/showPlaceModifyForm.do")
+	@RequestMapping(value="/showPlaceModifyForm.do")
 	public String showPlaceModifyForm(HttpServletRequest request) { 
-		String forward = "showPlaceModifyForm.jsp";
+		String forward = "/admin/showPlace/showPlaceModifyForm.jsp";
 		
 		return forward;
 	}
 	
 
-	@RequestMapping(value="/admin/showPlaceModify.do", method=RequestMethod.POST)
+	@RequestMapping(value="/showPlaceModify.do", method=RequestMethod.POST)
 	synchronized public ModelAndView showPlaceModify(HttpServletRequest request, MultipartFile img) { 
 		
 		int show_place_code = Integer.parseInt( request.getParameter("sp_code") );
@@ -224,10 +241,14 @@ public class ShowPlaceController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
-		modelAndView.setViewName("showPlaceWrite.jsp");
+		modelAndView.setViewName("/admin/showPlace/showPlaceModify.jsp");
 		
 		return modelAndView;
 	}
+	
+	
+	
+	
 	
 	
 
