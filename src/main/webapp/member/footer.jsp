@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/footer/footer.css" />
+<link rel="stylesheet" href="../css/footer/footer.css?v=1" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div>
-		<img src="../image/footer/foot.png">
+		<img src="../image/footer/foot.png" id="footer_bottom_img">
 		</div>		
 	</div>
 </body>
