@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 		<script type="text/javascript">
 			window.onload = function(){
 				alert("삭제 성공");
-				location.href="showPlaceList.do?theater_code=${param.theater_code}";
+				location.href="/MyCGV/showPlaceList.do?theater_code=${param.theater_code}";
 			}
 		</script>
 	</c:if>

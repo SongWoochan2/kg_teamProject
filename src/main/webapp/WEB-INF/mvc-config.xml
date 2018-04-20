@@ -18,10 +18,13 @@
 	<mvc:resources location="/image/" mapping="/image/**"/>
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="movie"/>
+
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
 	<context:component-scan base-package="seat"/>
+
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>
 	<context:component-scan base-package="theater"/>
+	<context:component-scan base-package="showPlace"/>
 </beans>

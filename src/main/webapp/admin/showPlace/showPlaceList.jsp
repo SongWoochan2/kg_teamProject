@@ -50,7 +50,7 @@
 		
 		
 	</table>
-	<input type="button" value="메인으로" onclick="location.href='../adminMain/adminIndex.jsp'">
+	<input type="button" value="메인으로" onclick="location.href='/MyCGV/adminMain/adminIndex.jsp'">
 	<input type="button" value="뒤로" onclick="history.back(); return false;">
 </body>
 </html>

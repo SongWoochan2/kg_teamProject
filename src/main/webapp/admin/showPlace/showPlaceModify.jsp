@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 	<c:if test="${su > 0 }">
 		<script type="text/javascript">
 			window.onload = function(){
-				alert("등록 성공");
+				alert("수정 성공");
 				location.href="/MyCGV/showPlaceList.do?theater_code=${param.theater_code}";
 			}
 		</script>
@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
 	<c:if test="${su <= 0 }">
 		<script type="text/javascript">
 			window.onload = function(){
-				alert("등록 실패");
+				alert("수정 실패");
 				history.back();
 			}
 		</script>
