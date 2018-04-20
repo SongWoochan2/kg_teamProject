@@ -13,6 +13,8 @@
 	
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="movie"/>
+	<context:component-scan base-package="moviephoto"/>
+	<context:component-scan base-package="movietrailer"/>
 	<context:component-scan base-package="seat"/>
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>
@@ -31,5 +33,10 @@
 	</bean>
 	<bean class = "org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref = "sessionFactory"/>
+	</bean>
+	<bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000"/>
+		<property name="maxInMemorySize" value="100000000"/>
+		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 </beans>

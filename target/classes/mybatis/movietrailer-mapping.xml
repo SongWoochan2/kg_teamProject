@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="movietrailerMapper">
+	
+	<delete id = "movieTrailerDelete" parameterType="int">
+		delete from movie_trailer where movie_trailer_code = #{movie_trailer_code}
+	</delete>
+	
+	<insert id = "movieTrailerInsert" parameterType="movieTrailerDTO">
+		<![CDATA[insert into movie_trailer values(movie_trailer_seq.nextval,#{movie_code},#{movie_trailer_name},#{movie_trailer_addr}, sysdate)]]>
+	</insert>
+	
+	<select id = "movieTrailerList" parameterType="java.util.Map" resultType="movieTrailerDTO">
+		<![CDATA[select movie_trailer_code, movie_trailer_name, movie_trailer_addr,
+				to_char(upload_date, 'YYYY.MM.DD') as upload_date from 
+				(select rownum rn, tt.* from 
+				(select * from movie_trailer order by movie_trailer_code desc) tt where movie_code=#{movie_code} ) 
+				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id = "getTotal" parameterType= "int" resultType="int">
+		select count(*) from movie_trailer where movie_code = #{movie_code}
+	</select>
+</mapper>

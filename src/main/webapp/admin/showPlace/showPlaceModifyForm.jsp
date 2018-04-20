@@ -3,9 +3,61 @@
 <html>
 	<meta charset="UTF-8">
 	<title>상영관 등록</title>
-	<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/MyCGV/css/showPlace/seatView.css" />
+	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var seat_json = ${json};
+			var seat_list = seat_json.seat;
+			
+			var x_size = ${x_size};
+			var y_size = ${y_size};
+			var seatView = $("#seatView").empty();
+
+			for(var y = 1; y <= y_size; y++){
+				var row_number = String.fromCharCode(64 + y);
+				var seat_div = $("<div>").addClass("row_label").html(row_number);
+				var row_label = $("<div>").attr({"name":"row", "row_number":row_number}).append(seat_div);
+				seatView.append(row_label);
+			}
+			for(var i = 0; i < seat_list.length; i++){
+				var row_number = seat_list[i].y_index;
+				var col_number = seat_list[i].x_index;
+				var seat_type_code = seat_list[i].seat_type_code;
+				var seat_type = null;
+				
+				if(row_number == "!"){ continue;}
+				
+				if(seat_type_code == "0"){
+					seat_type = "empty";
+				} else if(seat_type_code == "1"){
+					seat_type = "easy";
+				} else if(seat_type_code == "2"){
+					seat_type = "basic";
+				} else if(seat_type_code == "3"){
+					seat_type = "good";
+				} else if(seat_type_code == "4"){
+					seat_type = "couple";
+				}
+				$("div[name='row'][row_number='"+row_number+"']").append(
+						$("<div>").addClass(seat_type).attr(
+								{ 	"row_number": row_number,
+									"name" : "seat", 
+									"col_number": col_number, 
+									"seat_type": seat_type_code	}
+							).val(col_number).html(col_number));
+			}
+			for(var i = 0; i <= seat_list.length; i++){
+				var row_number = seat_list[i].y_index;
+				var col_number = seat_list[i].x_index;
+				if(row_number == "!"){
+					$("div[name='row']").each(function(){
+						$(this).find("div[col_number='"+col_number+"']").css("margin-right", "20px");
+					});
+					continue;
+				}
+			}
+			
 			var x_index = $("#x_index");
 			var y_index = $("#y_index");
 			
@@ -42,21 +94,24 @@
 			});
 			
 			
-			
+
+			$("#img_tr").hide();
+			$("#seat_tr").hide();
+			$("#seat_editor").hide();
 			$("#img_change").change(function(){
 				if($(this).is(":checked")){
-					$("#img_tr").css("visibility", "visible");
+					$("#img_tr").show(300);
 				} else {
-					$("#img_tr").css("visibility", "hidden");
+					$("#img_tr").hide(300);
 				}
 			});
 			$("#seat_change").change(function(){
 				if($(this).is(":checked")){
-					$("#seat_tr").css("visibility", "visible");
-					$("#seat_editor").css("visibility", "visible");
+					$("#seat_tr").show(300);
+					$("#seat_editor").show(300);
 				} else {
-					$("#seat_tr").css("visibility", "hidden");
-					$("#seat_editor").css("visibility", "hidden");
+					$("#seat_tr").hide(1000);
+					$("#seat_editor").hide(300);
 				}
 			});
 			
@@ -139,25 +194,37 @@
 			
 			
 			$(imageboardWriteForm).submit(function(){
-				var seat_code = "";
-				
+	 			var seat_json = {};
+		 		var list = [];
+	 			
 				$("input[name='passage']").each(function(){
 			 		if($(this).is(":checked")){
-						seat_code = seat_code + "!" + $(this).attr("col_number") + "/";	
+				 		var seat = { 	x_index : $(this).attr("col_number")+"",
+					 					y_index : "!",
+				 						seat_type : "0" 							};
+			 			list[0] = seat;
 					}
 				});
 				
+				var i = 1;
 				$("div[name='row']").each(function(){
 					var row_number = $(this).attr("row_number");
 					$(this).find("div[name='seat']").each(function(){
 						var col_number = $(this).attr("col_number");
 						var seat_type = $(this).attr("seat_type");
-						seat_code = seat_code + row_number + "-"  + col_number + "-"  + seat_type + "/";
+						
+			 			var seat = { 	x_index : col_number,
+				 						y_index : row_number,
+				 						seat_type : seat_type	};
+			 			list[i++] = seat;
 					});
 				});
-				$("input[name='seat_code']").val(seat_code);
+				
+				seat_json={"seat": list }
+				$("input[name='seat_code']").val(JSON.stringify(seat_json));
 				
 				alert($("input[name='seat_code']").val());
+				
 				return false;
 			});
 			
@@ -178,106 +245,42 @@
 			background: orange;
 			width: 100px;
 		}
-		div{
-			margin: auto;	
-			align-self: center;
-			box-sizing: border-box;
-		}
-		#seatView {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin: 50px;
-		}
-		#seatView > div{
-			height: 18px;
-			font-size: 15px;
-			line-height: 18px;
-		}
-		div[name='seat']{
-			float: left;
-			width: 15px;
-			height: 15px;
-			font-size : 13px;
-			line-height: 13px;
-			border: 1px dotted gray;
-			margin: 1px;
-		}
-		div[name='seat']:hover, .row_label{
-			cursor: pointer;
-		}
-		.empty{
-			background-color: gray;
-			color: white;
-		}
-		.easy{
-			background-color: blue;
-			color: white;
-		}
-		.basic{
-			background-color: green;
-			color: white;
-		}
-		.good{
-			background-color: red;
-			color: white;
-		}
-		.couple{
-			background-color: pink;
-			color: black;
-		}
-		.screen{
-			width: 300px;
-			height: 50px;
-			line-height :50px;
-			border : 2px solid black;
-			text-align: center;
-		}
-		.row_label{
-			float: left;
-			width: 15px;
-			height: 15px;
-			font-size : 13px;
-			line-height: 13px;
-			margin: 1px;
-		}
 	</style>
 </head>
 <body>
 	<div id="wrapper">
 		<h2>이미지 등록</h2>
-		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="imageboardWrite.do?theater_code=${param.theater_code}">
+		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/MyCGV/showPlaceModify.do?theater_code=${param.theater_code}">
 			<input type="hidden" name="seat_code">
 			<table border="1">
 				<tr>
 					<td class="leftSide">상영관명</td>
 					<td>
-						<input type="text" name="name">
+						<input type="text" name="name" value="${showPlaceVO.show_place_name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">기본가격</td>
 					<td>
-						<input type="text" name="cost">
+						<input type="text" name="cost" value="${showPlaceVO.show_place_name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">이미지 변경</td>
 					<td>
-						<input type="checkbox" id="img_change">
+						<input type="checkbox" id="img_change" name="img_change" value="y">
+					</td>
+				</tr>
+				<tr>
+					<td class="leftSide">좌석 변경</td>
+					<td>
+						<input type="checkbox" id="seat_change" name="seat_change" value="y">
 					</td>
 				</tr>
 				<tr id="img_tr">
 					<td class="leftSide">사진</td>
 					<td>
 						<input type="file" name="img">
-					</td>
-				</tr>
-				<tr>
-					<td class="leftSide">좌석 변경</td>
-					<td>
-						<input type="checkbox" id="seat_change">
 					</td>
 				</tr>
 				<tr id="seat_tr">

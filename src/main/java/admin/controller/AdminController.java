@@ -1,5 +1,6 @@
 package admin.controller;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,29 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.bean.AdminDTO;
+import movie.bean.MoviePage;
 
 @Controller
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping(value="/adminMain/adminLoginForm.do")
+	@RequestMapping(value="/admin/adminMain/adminLoginForm.do")
 	public ModelAndView adminLoginForm(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("target", "adminLoginForm");
+		modelAndView.setViewName("adminLogin.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/admin/adminMain/adminLogout.do")
+	public ModelAndView adminLogout(HttpSession session) {
+		session.invalidate();
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("adminIndex.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/adminMain/adminLogout.do")
-	public ModelAndView adminLogout(HttpSession session) {
-		session.invalidate();
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("adminMain.do");
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="/adminMain/adminLogin.do")
+	@RequestMapping(value="/admin/adminMain/adminLogin.do")
 	public ModelAndView adminLogin(HttpServletRequest request,HttpSession session) {
 		AdminDTO adminDTO = new AdminDTO();
 		String admin_id = request.getParameter("admin_id");
@@ -46,7 +47,7 @@ public class AdminController {
 				System.out.println("result : " + result.getAdmin_id()+"/"+result.getAdmin_pwd());
 				session.setAttribute("admin_id", result.getAdmin_id());
 				session.setAttribute("admin_pwd", result.getAdmin_pwd());	
-				modelAndView.setViewName("adminMain.do");
+				modelAndView.setViewName("adminIndex.jsp");
 			
 		}else if(result == null){
 			System.out.println("로그인 실패");
@@ -56,12 +57,13 @@ public class AdminController {
 	}
 	
 	
-	@RequestMapping(value="/adminMain/adminMain.do")
+	@RequestMapping(value="/admin/adminMain/adminMain.do")
 	public ModelAndView adminMain(HttpServletRequest request) {
-		String target = request.getParameter("target");
-		System.out.println("target : " + target);
+		MoviePage moviePage = (MoviePage)request.getAttribute("moviePage");
+		String pg = request.getParameter("pg");
+		System.out.println("pg : " + pg);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("target", target);
+		modelAndView.addObject("moviePage", moviePage);
 		modelAndView.setViewName("adminIndex.jsp");
 		return modelAndView;
 	}
