@@ -20,7 +20,7 @@ public class MovieTrailerController {
 	@Autowired
 	private MovieTrailerService movieTrailerService;
 	
-	@RequestMapping(value = "/movieTrailer/movieTrailer.do")
+	@RequestMapping(value = "/admin/movieTrailer/movieTrailer.do")
 	public ModelAndView movieTrailerList(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -53,7 +53,7 @@ public class MovieTrailerController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/movieTrailer/movieTrailerInsertForm.do")
+	@RequestMapping(value = "/admin/movieTrailer/movieTrailerInsertForm.do")
 	public ModelAndView movieTrailerInsertForm(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -66,7 +66,7 @@ public class MovieTrailerController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/movieTrailer/movieTrailerInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/movieTrailer/movieTrailerInsert.do", method = RequestMethod.POST)
 	public ModelAndView movieTrailerInsert(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -89,7 +89,7 @@ public class MovieTrailerController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/movieTrailer/movieTrailerDelete.do", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/admin/movieTrailer/movieTrailerDelete.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView movieTrailerDelete(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));

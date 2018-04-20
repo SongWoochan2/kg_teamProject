@@ -29,7 +29,7 @@ public class MoviePhotoController {
 	@Autowired
 	private MoviePhotoService moviePhotoService;
 	
-	@RequestMapping(value = "/moviePhoto/moviePhoto.do")
+	@RequestMapping(value = "/admin/moviePhoto/moviePhoto.do")
 	public ModelAndView moviePhotoList(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -58,7 +58,7 @@ public class MoviePhotoController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/moviePhoto/moviePhotoInsertForm.do")
+	@RequestMapping(value = "/admin/moviePhoto/moviePhotoInsertForm.do")
 	public ModelAndView moviePhotoInsertForm(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -70,7 +70,7 @@ public class MoviePhotoController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/moviePhoto/moviePhotoInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/moviePhoto/moviePhotoInsert.do", method = RequestMethod.POST)
 	public ModelAndView moviePhotoInsert(HttpServletRequest request, HttpServletResponse response, MultipartFile movie_photo_addr) {
 		System.out.println("movie_code : " + request.getParameter("movie_code"));
 		int page = Integer.parseInt(request.getParameter("pg"));
@@ -105,7 +105,7 @@ public class MoviePhotoController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/moviePhoto/moviePhotoDelete.do", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/admin/moviePhoto/moviePhotoDelete.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView moviePhotoDelete(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_photo_code = Integer.parseInt(request.getParameter("movie_photo_code"));

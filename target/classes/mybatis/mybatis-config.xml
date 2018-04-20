@@ -6,6 +6,8 @@
 	<typeAliases>
 		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
 		<typeAlias type="movie.bean.MovieDTO" alias="movieDTO"></typeAlias>
+		<typeAlias type="moviephoto.bean.MoviePhotoDTO" alias="moviePhotoDTO"></typeAlias>
+		<typeAlias type="movietrailer.bean.MovieTrailerDTO" alias="movieTrailerDTO"></typeAlias>
 		<typeAlias type="theater.bean.TheaterDTO" alias="theaterDTO"></typeAlias>
 		<typeAlias type="timetype.bean.TimetypeDTO" alias="timetypeDTO"></typeAlias>
 		<typeAlias type="showPlace.bean.ShowPlaceVO" alias="showPlaceVO"></typeAlias>
@@ -14,9 +16,11 @@
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/theater_mapper.xml" />
 		<mapper resource="mybatis/admin-mapping.xml"/>
 		<mapper resource="mybatis/movie-mapping.xml"/>
+		<mapper resource="mybatis/moviephoto-mapping.xml"/>
+		<mapper resource="mybatis/movietrailer-mapping.xml"/>
+		<mapper resource="mybatis/theater_mapper.xml" />
 		<mapper resource="mybatis/theater-mapping.xml"/>
 		<mapper resource="mybatis/seat-mapping.xml"/>
 		<mapper resource="mybatis/timetype-mapping.xml"/>

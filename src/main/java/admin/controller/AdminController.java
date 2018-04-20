@@ -17,14 +17,14 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping(value="/adminMain/adminLoginForm.do")
+	@RequestMapping(value="/admin/adminMain/adminLoginForm.do")
 	public ModelAndView adminLoginForm(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("adminLogin.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/adminMain/adminLogout.do")
+	@RequestMapping(value="/admin/adminMain/adminLogout.do")
 	public ModelAndView adminLogout(HttpSession session) {
 		session.invalidate();
 		ModelAndView modelAndView = new ModelAndView();
@@ -32,7 +32,7 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/adminMain/adminLogin.do")
+	@RequestMapping(value="/admin/adminMain/adminLogin.do")
 	public ModelAndView adminLogin(HttpServletRequest request,HttpSession session) {
 		AdminDTO adminDTO = new AdminDTO();
 		String admin_id = request.getParameter("admin_id");
@@ -57,7 +57,7 @@ public class AdminController {
 	}
 	
 	
-	@RequestMapping(value="/adminMain/adminMain.do")
+	@RequestMapping(value="/admin/adminMain/adminMain.do")
 	public ModelAndView adminMain(HttpServletRequest request) {
 		MoviePage moviePage = (MoviePage)request.getAttribute("moviePage");
 		String pg = request.getParameter("pg");

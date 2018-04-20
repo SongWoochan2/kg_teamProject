@@ -19,7 +19,7 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
-	@RequestMapping(value="/movie/movieAdmin.do")
+	@RequestMapping(value="/admin/movie/movieAdmin.do")
 	public ModelAndView movieAdminForm(HttpServletRequest request, HttpServletResponse response) {
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		System.out.println("pg : " + pg);
@@ -53,7 +53,7 @@ public class MovieController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/movie/movieInsertForm.do")
+	@RequestMapping(value="/admin/movie/movieInsertForm.do")
 	public ModelAndView movieInsertForm(HttpServletRequest request) {
 		String page = request.getParameter("pg");
 		ModelAndView modelAndView = new ModelAndView();
@@ -64,7 +64,7 @@ public class MovieController {
 		
 	}
 	
-	@RequestMapping(value="/movie/movieInsert.do")
+	@RequestMapping(value="/admin/movie/movieInsert.do")
 	public ModelAndView movieInsert(HttpServletRequest request) {
 		MovieDTO movieDTO = new MovieDTO();
 		String page = request.getParameter("pg");
@@ -92,7 +92,7 @@ public class MovieController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/movie/movieView.do")
+	@RequestMapping(value="/admin/movie/movieView.do")
 	public ModelAndView movieView(HttpServletRequest request) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -104,7 +104,7 @@ public class MovieController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/movie/movieDelete.do")
+	@RequestMapping(value="/admin/movie/movieDelete.do")
 	public ModelAndView movieDelete(HttpServletRequest request) {
 		String page = request.getParameter("pg");
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -116,7 +116,7 @@ public class MovieController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/movie/movieModifyForm.do")
+	@RequestMapping(value="/admin/movie/movieModifyForm.do")
 	public ModelAndView movieModifyForm(HttpServletRequest request) {
 		String page = request.getParameter("pg");
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -127,7 +127,7 @@ public class MovieController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/movie/movieModify.do")
+	@RequestMapping(value="/admin/movie/movieModify.do")
 	public ModelAndView movieModify(HttpServletRequest request) {
 		String page = request.getParameter("pg");
 		MovieDTO movieDTO = new MovieDTO();

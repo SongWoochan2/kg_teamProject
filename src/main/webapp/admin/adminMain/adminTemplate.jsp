@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../css/bootstrap.css" rel = "stylesheet">
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<link href="../../css/bootstrap.css" rel = "stylesheet">
+<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
 <script>
 	$(function(){
 		function adminlogin(){
@@ -54,7 +54,7 @@
 		height: 71%;
 		padding-top: 30px;
 /*  		background-repeat : no-repeat; */
-		background-image: url('../image/admintop.png');
+		background-image: url('../../image/admintop.png');
 	}
 	div#container #logo img{
 		width: 200px;
@@ -123,7 +123,7 @@
 		text-align : center;
 		width: 100%;
 		height : 1200px;
-		background-image: url('../image/adminlogin.png');
+		background-image: url('../../image/adminlogin.png');
 	}
 	div#content th{
 		text-align: center;
@@ -220,7 +220,7 @@
 		</c:if>
 		</div>
 		<div id = "logo">
-			<a href = "../adminMain/adminMain.do"><img src = "../image/logo/cgvLogo.png"></a>
+			<a href = "../adminMain/adminMain.do"><img src = "../../image/logo/cgvLogo.png"></a>
 		</div>
 		<div id = "nevi">
 			<ul class = "menu">

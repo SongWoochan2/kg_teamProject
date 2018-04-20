@@ -9,7 +9,11 @@
 		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade_name},#{movie_type},
 		#{movie_director},0,0,#{appear_actor},0,0)
 	</insert>
-	
+	<update id="movieModify" parameterType="movieDTO">
+		update movie set movie_name=#{movie_name}, movie_content=#{movie_content}, make_nation=#{make_nation},movie_director=#{movie_director},movie_open_date=#{movie_open_date},
+		movie_recycle_time=#{movie_recycle_time},movie_show_grade_name=#{movie_show_grade_name},movie_type=#{movie_type},appear_actor=#{appear_actor}
+		 where movie_code = #{movie_code}
+	</update>
 	<select id="getTotalA" resultType="int">
 		select count(*) from movie
 	</select>
@@ -19,5 +23,11 @@
 				(select rownum rn, tt.* from 
 				(select * from movie order by movie_code desc) tt) 
 				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	<delete id="movieDelete" parameterType="movieDTO">
+		delete from movie where movie_code = #{movie_code}
+	</delete>
+	<select id = "movieView" parameterType="int" resultType="movieDTO">
+		select * from movie where movie_code = #{movie_code}
 	</select>
 </mapper>
