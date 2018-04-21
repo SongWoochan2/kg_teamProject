@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import resource.provider.ResourceProvider;
 import showPlace.bean.SeatSize;
 import showPlace.bean.SeatVO;
 import showPlace.bean.ShowPlaceVO;
@@ -29,12 +30,15 @@ public class ShowPlaceController {
 
 	@Autowired
 	private ShowPlaceService showPlaceService;
+	@Autowired
+	private ResourceProvider resourceProvider;
 	
 	
 	@RequestMapping("/showPlaceList.do")
 	public ModelAndView showPlaceList(HttpServletRequest request) {
+		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
 
-		List<ShowPlaceVO> show_place_list = showPlaceService.selectList();
+		List<ShowPlaceVO> show_place_list = showPlaceService.selectList(theater_code);
 		
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -63,10 +67,12 @@ public class ShowPlaceController {
 		json.put("seat", list);
 		
 		SeatSize size = showPlaceService.seatSize(show_place_code);
+		int seat_num = showPlaceService.getTotal(show_place_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("showPlaceVO", showPlaceVO);
 		modelAndView.addObject("json", json.toJSONString());
+		modelAndView.addObject("seat_num", seat_num);
 		modelAndView.addObject("x_size", size.getX_size());
 		modelAndView.addObject("y_size", size.getY_size());
 		
@@ -78,7 +84,8 @@ public class ShowPlaceController {
 	@RequestMapping(value="/showPlaceDelete.do")
 	public ModelAndView showPlaceDelete(HttpServletRequest request) { 
 		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
-	
+
+		showPlaceService.deleteSeat(show_place_code);
 		int su = showPlaceService.deleteShowPlace(show_place_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -100,7 +107,7 @@ public class ShowPlaceController {
 	@RequestMapping(value="/showPlaceWrite.do", method=RequestMethod.POST)
 	synchronized public ModelAndView showPlaceWrite(HttpServletRequest request, MultipartFile img) { 
 		
-		String filePath = "D:/Spring/cgv/MyCGV/src/main/webapp/image/showPlace";
+		String filePath = resourceProvider.getPath("image/showPlace");
 		String fileName = img.getOriginalFilename();
 
 		File file = new File(filePath, fileName);
@@ -138,23 +145,12 @@ public class ShowPlaceController {
 			for(Object tmp : list) {
 				JSONObject seat = (JSONObject) tmp;
 				SeatVO seatVO = new SeatVO();
+				seatVO.setShow_place_code(showPlaceVO.getShow_place_code());
 				seatVO.setY_index((String)seat.get("y_index"));
 				seatVO.setX_index(Integer.parseInt((String)seat.get("x_index")));
 				seatVO.setSeat_type_code(Integer.parseInt((String)seat.get("seat_type_code")));
-				
 				showPlaceService.insertSeat(seatVO);
 			}
-			/*
-			String[] seats = seat_code.split("/");
-			for(String seat : seats) {
-				String[] detail = seat.split("-");
-				SeatVO seatVO = new SeatVO();
-				seatVO.setY_index(detail[0]);
-				seatVO.setX_index(Integer.parseInt(detail[1]));
-				seatVO.setSeat_type_code(Integer.parseInt(detail[2]));
-				showPlaceService.insertSeat(seatVO);
-			}
-			*/
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -169,10 +165,33 @@ public class ShowPlaceController {
 
 	
 	@RequestMapping(value="/showPlaceModifyForm.do")
-	public String showPlaceModifyForm(HttpServletRequest request) { 
-		String forward = "/admin/showPlace/showPlaceModifyForm.jsp";
+	public ModelAndView showPlaceModifyForm(HttpServletRequest request) { 
+		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
 		
-		return forward;
+		ShowPlaceVO showPlaceVO = showPlaceService.selectOne(show_place_code);
+		List<SeatVO> seatList = showPlaceService.seatList(show_place_code);
+		JSONObject json = new JSONObject();
+		JSONArray list = new JSONArray();
+		for(SeatVO seatVO : seatList) {
+			JSONObject seat_json = new JSONObject();
+			seat_json.put("x_index", seatVO.getX_index());
+			seat_json.put("y_index", seatVO.getY_index());
+			seat_json.put("seat_type_code", seatVO.getSeat_type_code());
+			list.add(seat_json);
+		}
+		json.put("seat", list);
+		
+		SeatSize size = showPlaceService.seatSize(show_place_code);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("showPlaceVO", showPlaceVO);
+		modelAndView.addObject("json", json.toJSONString());
+		modelAndView.addObject("x_size", size.getX_size());
+		modelAndView.addObject("y_size", size.getY_size());
+		
+		modelAndView.setViewName("/admin/showPlace/showPlaceModifyForm.jsp");
+		
+		return modelAndView;
 	}
 	
 
@@ -195,7 +214,7 @@ public class ShowPlaceController {
 		
 		////////          이미지 변경 확인후 이미지 저장및 setter입력
 		if(img_change != null && img_change.equals("y")) {
-			String filePath = "D:/Spring/cgv/MyCGV/src/main/webapp/image/showPlace";
+			String filePath = resourceProvider.getPath("image/showPlace");
 			String fileName = img.getOriginalFilename();
 			File file = new File(filePath, fileName);
 			
@@ -210,14 +229,14 @@ public class ShowPlaceController {
 			}
 			showPlaceVO.setShow_place_photo_addr(fileName);
 		}
-		int su = showPlaceService.insertShowPlace(showPlaceVO);
+		int su = showPlaceService.updateShowPlace(showPlaceVO);
 
 		////////          좌석 변경 확인후 좌석 저장
 		if(seat_change != null && seat_change.equals("y")) {
 			showPlaceService.deleteSeat(show_place_code);
 			
 			String seat_code = request.getParameter("seat_code");
-			
+			System.out.println(seat_code);
 			JSONParser parser = new JSONParser();
 			try {
 				JSONObject json = (JSONObject) parser.parse(seat_code);
@@ -227,6 +246,7 @@ public class ShowPlaceController {
 				for(Object tmp : list) {
 					JSONObject seat = (JSONObject) tmp;
 					SeatVO seatVO = new SeatVO();
+					seatVO.setShow_place_code(show_place_code);
 					seatVO.setY_index((String)seat.get("y_index"));
 					seatVO.setX_index(Integer.parseInt((String)seat.get("x_index")));
 					seatVO.setSeat_type_code(Integer.parseInt((String)seat.get("seat_type_code")));
@@ -246,10 +266,4 @@ public class ShowPlaceController {
 		return modelAndView;
 	}
 	
-	
-	
-	
-	
-	
-
 }

@@ -33,8 +33,8 @@ public class ShowPlaceService {
 		return showPlaceDAO.selectOne(show_place_code);
 	}
 
-	public List<ShowPlaceVO> selectList() {
-		return showPlaceDAO.selectList();
+	public List<ShowPlaceVO> selectList(int theater_code) {
+		return showPlaceDAO.selectList(theater_code);
 	}
 
 	/////////   seat

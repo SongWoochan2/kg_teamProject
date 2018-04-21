@@ -1,2 +1,4 @@
 src/main/resources/spring/db.properties
 target/classes/spring/db.properties
+target/classes/spring/resource.properties
+src/main/resources/spring/resource.properties
