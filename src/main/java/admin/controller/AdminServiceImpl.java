@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import admin.bean.AdminDTO;
+import admin.bean.AdminRequestDTO;
 import admin.dao.AdminDAO;
 
 @Service
@@ -15,13 +16,21 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public AdminDTO adminLogin(AdminDTO adminDTO) {
-		System.out.println(adminDTO.getAdmin_id());
-		System.out.println(adminDTO.getAdmin_pwd());
 		return adminDAO.adminLogin(adminDTO);
 	}
 
 	@Override
 	public int adminEnroll(AdminDTO adminDTO) {
 		return adminDAO.adminEnroll(adminDTO);
+	}
+
+	@Override
+	public int adminRequest(AdminRequestDTO adminRequestDTO) {
+		return adminDAO.adminRequest(adminRequestDTO);
+	}
+
+	@Override
+	public ArrayList<AdminRequestDTO> adminRequestList(int startNum, int endNum) {
+		return (ArrayList<AdminRequestDTO>) adminDAO.adminRequestList(startNum, endNum);
 	}
 }

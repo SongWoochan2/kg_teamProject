@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,36 +21,44 @@ public class MovieController {
 	private MovieService movieService;
 	
 	@RequestMapping(value="/admin/movie/movieAdmin.do")
-	public ModelAndView movieAdminForm(HttpServletRequest request, HttpServletResponse response) {
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		System.out.println("pg : " + pg);
-		int endNum = pg * 10;
-		int startNum = endNum - 9;
-		
-		ArrayList<MovieDTO> list = movieService.movieList(startNum, endNum);
-		
-		int totalA = movieService.getTotalA();
-		int totalPage = (totalA + 9) / 10;
-		
-		int startPage = (pg-1)/3*3 + 1;
-		int endPage = startPage + 2;
-		if(totalPage < endPage) endPage = totalPage;
-		
-		
-		
-		MoviePage moviePage = new MoviePage();
-		moviePage.setEndPage(endPage);
-		moviePage.setStartPage(startPage);
-		moviePage.setTotalPage(totalPage);
-		moviePage.setPg(pg);
-
+	public ModelAndView movieAdminForm(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String admin_id = (String) session.getAttribute("admin_id");
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("list", list);
-		modelAndView.addObject("moviePage", moviePage);
-		
-		modelAndView.addObject("pg", moviePage.getPg());
-		modelAndView.addObject("target", "movieAdmin");
-		modelAndView.setViewName("movieAdmin.jsp");
+		if(admin_id != null) {
+			System.out.println("입장 성공");
+			int pg = Integer.parseInt(request.getParameter("pg"));
+			System.out.println("pg : " + pg);
+			int endNum = pg * 10;
+			int startNum = endNum - 9;
+			
+			ArrayList<MovieDTO> list = movieService.movieList(startNum, endNum);
+			
+			int totalA = movieService.getTotalA();
+			int totalPage = (totalA + 9) / 10;
+			
+			int startPage = (pg-1)/3*3 + 1;
+			int endPage = startPage + 2;
+			if(totalPage < endPage) endPage = totalPage;
+			
+			
+			
+			MoviePage moviePage = new MoviePage();
+			moviePage.setEndPage(endPage);
+			moviePage.setStartPage(startPage);
+			moviePage.setTotalPage(totalPage);
+			moviePage.setPg(pg);
+			
+			
+			modelAndView.addObject("list", list);
+			modelAndView.addObject("moviePage", moviePage);
+			
+			modelAndView.addObject("pg", moviePage.getPg());
+			modelAndView.setViewName("movieAdmin.jsp");
+			
+		}else if(admin_id == null) {
+			System.out.println("입장 실패");
+			modelAndView.setViewName("../adminMain/adminIndex.jsp");
+		}
 		return modelAndView;
 	}
 	

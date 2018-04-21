@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: woghk
-=======
-Built-By: Song
->>>>>>> 1adeb0633965458f61fa81c925e142ca1c834649
 Build-Jdk: 1.8.0_161
 Created-By: Maven Integration for Eclipse
 

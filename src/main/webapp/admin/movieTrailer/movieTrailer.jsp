@@ -99,7 +99,7 @@
 			</table>
 
 			<a href="../movieTrailer/movieTrailerInsertForm.do?pg=${moviePage.pg }&movie_code=${requestScope.movie_code}"
-				class="btn btn-primary">트레일러 등록</a>
+				class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> 트레일러 등록</a>
 		</div>
 	</div>
 </body>

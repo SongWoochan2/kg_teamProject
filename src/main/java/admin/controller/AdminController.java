@@ -1,6 +1,8 @@
 package admin.controller;
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.bean.AdminDTO;
+import admin.bean.AdminRequestDTO;
 import movie.bean.MoviePage;
 
 @Controller
@@ -65,6 +68,49 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("moviePage", moviePage);
 		modelAndView.setViewName("adminIndex.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/admin/adminMain/adminEnrollForm.do")
+	public ModelAndView adminEnrollForm(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("adminEnroll.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/admin/adminMain/adminEnrollRequest.do")
+	public ModelAndView adminEnrollRequest(HttpServletRequest request) {
+		String admin_id = request.getParameter("admin_id");
+		String admin_name = request.getParameter("admin_name");
+		String admin_pwd = request.getParameter("admin_pwd");
+		AdminRequestDTO adminRequestDTO = new AdminRequestDTO();
+		adminRequestDTO.setAdmin_id(admin_id);
+		adminRequestDTO.setAdmin_name(admin_name);
+		adminRequestDTO.setAdmin_pwd(admin_pwd);
+		
+		int result = adminService.adminRequest(adminRequestDTO);
+		if(result == 0) {
+			System.out.println("신청 실패");
+			
+		}else if(result == 1) {
+			System.out.println("신청 성공");
+		}
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.setViewName("adminIndex.jsp");
+		return modelAndView;
+	}
+	@RequestMapping(value="/admin/adminMain/adminRequestList.do")
+	public ModelAndView adminRequestList(HttpServletRequest request) {
+		int page = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = page*20;
+		int startNum = endNum-19;
+		
+		ModelAndView modelAndView = new ModelAndView();
+		ArrayList<AdminRequestDTO> list = adminService.adminRequestList(startNum, endNum);
+		modelAndView.addObject("list", list);
+		modelAndView.setViewName("adminRequestList.jsp");
 		return modelAndView;
 	}
 }

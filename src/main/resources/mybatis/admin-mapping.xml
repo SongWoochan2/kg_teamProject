@@ -8,7 +8,19 @@
 		INSERT INTO admin
 		VALUES(#{admin_id},#{admin_name},#{admin_pwd},sysdate)
 	</insert>
-
+	
+	<insert id="adminRequest" parameterType="adminRequestDTO">
+		insert into admin_Request
+		VALUES(admin_request_seq.nextval,#{admin_id},#{admin_name},#{admin_pwd},sysdate)
+	</insert>
+	
+	<select id="adminRequestList" parameterType="java.util.Map" resultType="adminRequestDTO">
+		<![CDATA[select admin_request_code, admin_id, admin_name, admin_pwd,
+				to_char(request_date, 'YYYY.MM.DD') as request_date from 
+				(select rownum rn, tt.* from 
+				(select * from admin_request order by admin_request_code desc) tt ) 
+				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
 	
 	<select id="adminLogin" parameterType="adminDTO" resultType="adminDTO">
 		select * from admin where admin_id = #{admin_id} and admin_pwd = #{admin_pwd}

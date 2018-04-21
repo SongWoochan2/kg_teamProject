@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
+		<typeAlias type="admin.bean.AdminRequestDTO" alias="adminRequestDTO"></typeAlias>
 		<typeAlias type="movie.bean.MovieDTO" alias="movieDTO"></typeAlias>
 		<typeAlias type="moviephoto.bean.MoviePhotoDTO" alias="moviePhotoDTO"></typeAlias>
 		<typeAlias type="movietrailer.bean.MovieTrailerDTO" alias="movieTrailerDTO"></typeAlias>
