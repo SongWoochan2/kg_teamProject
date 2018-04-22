@@ -19,11 +19,22 @@
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="movie"/>
 
+	<!-- 재환 -->
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
 
+	<!-- 우찬 -->
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>
 	<context:component-scan base-package="theater"/>
 	<context:component-scan base-package="showPlace"/>
+	
+	<!-- 빛나 -->
+	<context:component-scan base-package="member.controller"/>
+	
+	<!-- 진환 -->
+    <context:component-scan base-package="qna.controller"></context:component-scan>
+    <context:component-scan base-package="noticeItem.controller"></context:component-scan>
+    <context:component-scan base-package="inquiry.controller"></context:component-scan>
+    
 </beans>

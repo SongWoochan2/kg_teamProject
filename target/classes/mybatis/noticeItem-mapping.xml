@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.noticeItem">
+	<insert id="noticeItemWrite" parameterType="noticeItemDTO">
+		insert into notice_item values 
+		(seq_notice_item_code.nextval, #{admin_id}, #{notice_item_type}, #{notice_item_title}, #{notice_item_content},  sysdate)
+	</insert>
+
+	<update id="noticeItemModify" parameterType="noticeItemDTO">
+		update notice_item set admin_id=#{admin_id},
+		notice_item_type=#{notice_item_type}, notice_item_title=#{notice_item_title}, 
+		notice_item_content=#{notice_item_content}, notice_item_date=sysdate where notice_item_code=#{notice_item_code}
+	</update>
+	
+	<select id="noticeItemList" parameterType="java.util.Map" resultType="noticeItemDTO">
+		<![CDATA[
+		select notice_item_code, admin_id, notice_item_type, notice_item_title, notice_item_content, to_char(notice_item_date, 'YYYY.MM.DD') as notice_item_date 
+		from (select rownum rn, tt.* 
+		from (select * from notice_item order by notice_item_code desc) tt) 
+		where rn >= #{startNum} and rn <= #{endNum}
+		]]>
+	</select>
+	
+	<select id="noticeItemView" parameterType="int" resultType="noticeItemDTO">
+		select * from notice_item where notice_item_code=#{notice_item_code}
+	</select>
+	
+	<select id="totalA" resultType="int">
+		select count(*) from notice_item
+	</select>
+	
+	<delete id="noticeItemDelete" parameterType="int">
+		delete notice_item where notice_item_code=#{notice_item_code}
+	</delete>
+</mapper>

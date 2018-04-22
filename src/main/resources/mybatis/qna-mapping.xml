@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.qna">
+
+ 	<insert id="qnaWrite" parameterType="qnaDTO">
+		insert into qna values 
+		(seq_qna_code.nextval, #{qna_type}, #{qna_title}, #{qna_content}, sysdate)
+	</insert>
+
+	<update id="qnaModify" parameterType="qnaDTO">
+		update qna set qna_type=#{qna_type}, qna_title=#{qna_title}, qna_content=#{qna_content}, qna_date=sysdate where qna_code=#{qna_code}
+	</update>
+	
+	<select id="qnaList" parameterType="java.util.Map" resultType="qnaDTO">
+		<![CDATA[
+		select qna_code, qna_type, qna_title, qna_content, to_char(qna_date, 'YYYY.MM.DD') as qna_date 
+		from (select rownum rn, tt.* 
+		from (select * from qna order by qna_code desc) tt)
+		where rn >= #{startNum} and rn <= #{endNum}
+		]]>
+	</select>
+	
+	<select id="qnaView" parameterType="int" resultType="qnaDTO">
+		select * from qna where qna_code=#{qna_code}
+	</select>
+	
+	<select id="totalA" resultType="int">
+		select count(*) from qna
+	</select>
+	
+	<delete id="qnaDelete" parameterType="int">
+		delete qna where qna_code=#{qna_code}
+	</delete>
+</mapper>
