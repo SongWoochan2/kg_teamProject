@@ -47,13 +47,21 @@
 									"seat_type": seat_type_code	}
 							).val(col_number).html(col_number));
 			}
-			for(var i = 0; i <= seat_list.length; i++){
+			for(var x = 1; x < x_size; x++){
+				$("#passage_field").append(
+						$("<label>").html(x+"과 "+(x+1)+"사이").append( 
+								$("<input>").attr({"type":"checkbox","name":"passage", "col_number": x}) 
+						).append("<br>")
+				); 
+			}
+			for(var i = 0; i < seat_list.length; i++){
 				var row_number = seat_list[i].y_index;
 				var col_number = seat_list[i].x_index;
 				if(row_number == "!"){
 					$("div[name='row']").each(function(){
 						$(this).find("div[col_number='"+col_number+"']").css("margin-right", "20px");
 					});
+					$("input[name='passage']:eq("+(col_number-1)+")").attr("checked", true);
 					continue;
 				}
 			}
@@ -197,35 +205,34 @@
 	 			var seat_json = {};
 		 		var list = [];
 	 			
-				$("input[name='passage']").each(function(){
-			 		if($(this).is(":checked")){
-				 		var seat = { 	x_index : $(this).attr("col_number")+"",
-					 					y_index : "!",
-				 						seat_type : "0" 							};
-			 			list[0] = seat;
-					}
-				});
-				
-				var i = 1;
+				var i = 0;
 				$("div[name='row']").each(function(){
 					var row_number = $(this).attr("row_number");
 					$(this).find("div[name='seat']").each(function(){
 						var col_number = $(this).attr("col_number");
-						var seat_type = $(this).attr("seat_type");
+						var seat_type_code = $(this).attr("seat_type");
 						
 			 			var seat = { 	x_index : col_number,
 				 						y_index : row_number,
-				 						seat_type : seat_type	};
+				 						seat_type_code : seat_type_code	};
 			 			list[i++] = seat;
 					});
+				});
+				$("input[name='passage']").each(function(){
+			 		if($(this).is(":checked")){
+				 		var seat = { 	x_index : $(this).attr("col_number")+"",
+					 					y_index : "!",
+					 					seat_type_code : "0" 							};
+			 			list[i++] = seat;
+					}
 				});
 				
 				seat_json={"seat": list }
 				$("input[name='seat_code']").val(JSON.stringify(seat_json));
-				
+				/* 
 				alert($("input[name='seat_code']").val());
 				
-				return false;
+				return false; */
 			});
 			
 			
@@ -250,19 +257,19 @@
 <body>
 	<div id="wrapper">
 		<h2>이미지 등록</h2>
-		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/MyCGV/showPlaceModify.do?theater_code=${param.theater_code}">
+		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/MyCGV/showPlaceModify.do?theater_code=${param.theater_code}&sp_code=${showPlaceVO.show_place_code }">
 			<input type="hidden" name="seat_code">
 			<table border="1">
 				<tr>
 					<td class="leftSide">상영관명</td>
 					<td>
-						<input type="text" name="name" value="${showPlaceVO.show_place_name }">
+						<input type="text" name="show_place_name" value="${showPlaceVO.show_place_name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">기본가격</td>
 					<td>
-						<input type="text" name="cost" value="${showPlaceVO.show_place_name }">
+						<input type="text" name="default_cost" value="${showPlaceVO.default_cost }">
 					</td>
 				</tr>
 				<tr>

@@ -125,35 +125,34 @@
 	 			var seat_json = {};
 		 		var list = [];
 	 			
-				$("input[name='passage']").each(function(){
-			 		if($(this).is(":checked")){
-				 		var seat = { 	x_index : $(this).attr("col_number")+"",
-					 					y_index : "!",
-				 						seat_type : "0" 							};
-			 			list[0] = seat;
-					}
-				});
-				
-				var i = 1;
+				var i = 0;
 				$("div[name='row']").each(function(){
 					var row_number = $(this).attr("row_number");
 					$(this).find("div[name='seat']").each(function(){
 						var col_number = $(this).attr("col_number");
-						var seat_type = $(this).attr("seat_type");
+						var seat_type_code = $(this).attr("seat_type");
 						
 			 			var seat = { 	x_index : col_number,
 				 						y_index : row_number,
-				 						seat_type : seat_type	};
+				 						seat_type_code : seat_type_code	};
 			 			list[i++] = seat;
 					});
 				});
+
+				$("input[name='passage']").each(function(){
+			 		if($(this).is(":checked")){
+				 		var seat = { 	x_index : $(this).attr("col_number")+"",
+					 					y_index : "!",
+					 					seat_type_code : "0" 							};
+			 			list[i++] = seat;
+					}
+				});
+				
 				
 				seat_json={"seat": list }
 				$("input[name='seat_code']").val(JSON.stringify(seat_json));
 				
 				alert($("input[name='seat_code']").val());
-				
-				return false;
 			});
 			
 		});
@@ -183,13 +182,13 @@
 				<tr>
 					<td class="leftSide">상영관명</td>
 					<td>
-						<input type="text" name="name">
+						<input type="text" name="show_place_name">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">기본가격</td>
 					<td>
-						<input type="text" name="cost">
+						<input type="text" name="default_cost">
 					</td>
 				</tr>
 				<tr>
@@ -221,7 +220,7 @@
                 <legend>통로</legend>
             </fieldset>
 			<input type="submit" value="등록">
-			<input type="submit" value="다시 작성">
+			<input type="reset" value="다시 작성">
 		</form>
 	</div>
 </body>

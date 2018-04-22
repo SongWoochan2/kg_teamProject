@@ -15,7 +15,7 @@
 		INSERT INTO seat 
 		(show_place_code, seat_type_code, x_index, y_index)
 		VALUES
-		(show_place_seq.currval,#{seat_type_code},#{x_index},#{y_index})
+		(#{show_place_code},#{seat_type_code},#{x_index},#{y_index})
 	</insert>
 	
 	<delete id="deleteSeat" parameterType="int">
@@ -27,6 +27,7 @@
 		SELECT * 
 		FROM seat
 		WHERE show_place_code = #{show_place_code}
+		ORDER BY x_index ASC
 	</select>
 	
 	<select id="seatSize" parameterType="int" resultType="showPlace.bean.SeatSize">

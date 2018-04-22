@@ -13,13 +13,17 @@
 
 	<select id="getList" resultType="showPlaceVO">
 		SELECT * FROM show_place
+		WHERE theater_code = #{theater_code}
 	</select>
 
 	<insert id="insert" parameterType="showPlaceVO">
 		INSERT INTO show_place 
 		(show_place_code, theater_code, show_place_name, default_cost, show_place_photo_addr)
 		VALUES
-		(show_place_seq.nextval,#{theater_code},#{show_place_name},#{default_cost},#{show_place_photo_addr})
+		(show_place_seq.NEXTVAL,#{theater_code},#{show_place_name},#{default_cost},#{show_place_photo_addr})
+		<selectKey keyProperty="show_place_code" resultType="int" order="AFTER">
+	        SELECT show_place_seq.CURRVAL FROM DUAL
+	    </selectKey>
 	</insert>
 	
 	<insert id="insertSeat" parameterType="showPlaceVO">

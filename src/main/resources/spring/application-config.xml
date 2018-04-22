@@ -19,7 +19,8 @@
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>
 	<context:component-scan base-package="theater"/>
-	<context:property-placeholder location="classpath:spring/db.properties"/>
+	<context:property-placeholder location="classpath:spring/db.properties, 
+											classpath:spring/resource.properties"/>
 	<bean id="dataSource"
 				class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -38,5 +39,8 @@
 		<property name="maxUploadSize" value="100000000"/>
 		<property name="maxInMemorySize" value="100000000"/>
 		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	<bean id="resourceProvider" class="resource.provider.ResourceProvider">
+		<constructor-arg value = "${resource.path}"></constructor-arg>
 	</bean>
 </beans>

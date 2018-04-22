@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
 									"seat_type": seat_type_code	}
 							).val(col_number).html(col_number));
 			}
-			for(var i = 0; i <= seat_list.length; i++){
+			for(var i = 0; i < seat_list.length; i++){
 				var row_number = seat_list[i].y_index;
 				var col_number = seat_list[i].x_index;
 				if(row_number == "!"){
@@ -73,12 +73,12 @@ pageEncoding="UTF-8"%>
 			</tr>
 			<tr>
 				<td>코드 : ${showPlaceVO.show_place_code }</td>
-				<td>좌석수 : ${showPlaceVO.seat_num }</td>
+				<td>좌석수 : ${seat_num }</td>
 				<td>기본가격 : ${showPlaceVO.default_cost }</td>
 			</tr>
 			<tr>
 				<td colspan="4" height="200" valign="top">
-					<img alt="상영관 이미지" src="${showPlaceVO.show_place_photo_addr }">
+					<img alt="상영관 이미지" src="/MyCGV/image/showPlace/${showPlaceVO.show_place_photo_addr }">
 				</td>
 			</tr>
 		</table>
@@ -90,8 +90,8 @@ pageEncoding="UTF-8"%>
 	
 	<input type="button" value="뒤로" onclick="history.back(); return false;">
 	<c:if test="${admin_id != null }">
-		<input type="button" value="수정" onclick="location.href='/MyCGV/showPlaceModifyForm.do?theater_code=${param.theater_code}&sp_code=${showPlaceVO.show_place_code}'">
-		<input type="button" value="삭제" onclick="location.href='/MyCGV/showPlaceDelete.do?theater_code=${param.theater_code}&sp_code=${showPlaceVO.show_place_code}'">
+		<input type="button" value="수정" onclick="location.href='/MyCGV/showPlaceModifyForm.do?theater_code=${param.theater_code}&sp_code=${param.sp_code}'">
+		<input type="button" value="삭제" onclick="location.href='/MyCGV/showPlaceDelete.do?theater_code=${param.theater_code}&sp_code=${param.sp_code}'">
 	</c:if>
 	
 </body>

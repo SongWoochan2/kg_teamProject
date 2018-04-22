@@ -22,12 +22,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MoviePage;
 import moviephoto.bean.MoviePhotoDTO;
+import resource.provider.ResourceProvider;
 
 
 @Controller
 public class MoviePhotoController {
 	@Autowired
 	private MoviePhotoService moviePhotoService;
+	@Autowired
+	private ResourceProvider resourceProvider;
 	
 	@RequestMapping(value = "/admin/moviePhoto/moviePhoto.do")
 	public ModelAndView moviePhotoList(HttpServletRequest request, HttpServletResponse response) {
@@ -78,8 +81,8 @@ public class MoviePhotoController {
 		MoviePhotoDTO moviePhotoDTO = new MoviePhotoDTO();
 		moviePhotoDTO.setMovie_code(movie_code);
 		moviePhotoDTO.setMovie_photo_name(request.getParameter("movie_photo_name"));
-		String realFolder = "C:/Users/woghk/Desktop/자료/학원/201712_JAVA취업반/Team Project/2/TEAM/src/main/webapp/image/storage/moviephoto/";
-		
+//		String realFolder = "C:/Users/woghk/Desktop/자료/학원/201712_JAVA취업반/Team Project/2/TEAM/src/main/webapp/image/storage/moviephoto/";
+		String realFolder = resourceProvider.getPath("image/storage/moviephoto/");
 		String originalFileName = movie_photo_addr.getOriginalFilename();
 		// storage 폴더에 실제 저장되어지는 파일 이름
 		File file = new File(realFolder, originalFileName);	
