@@ -113,10 +113,10 @@ pageEncoding="UTF-8"%>
 									<tr>
 										<th>영화관 선택</th>
 										<td colspan="3">
-											<input type="radio" name="theater_sel" checked="checked" value="0">
+											<!-- <input type="radio" name="theater_sel" checked="checked" value="0">
 											<label>선택하지 않음</label>
 											<input type="radio" name="theater_sel" value="1">
-											<label>선택함</label>
+											<label>선택함</label> -->
 											
 											 <select name="inquiry_theater">
 												<option value="">극장 선택</option>

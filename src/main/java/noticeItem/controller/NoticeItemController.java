@@ -19,12 +19,12 @@ public class NoticeItemController {
 	@Autowired
 	private NoticeItemService noticeItemService;
 	
-	@RequestMapping(value="/noticeItem/noticeItemWriteForm.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemWriteForm.do")
 	public String noticeItemWriteForm() { 
 		return "noticeItemWriteForm.jsp";
 	}
 	
-	@RequestMapping(value="/noticeItem/noticeItemWrite.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemWrite.do")
 	public ModelAndView noticeItemWrite(HttpServletRequest request) throws UnsupportedEncodingException { 
 		// 데이터
 		HttpSession session = request.getSession();
@@ -62,7 +62,7 @@ public class NoticeItemController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/noticeItem/noticeItemList.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemList.do")
 	public ModelAndView noticeItemList(HttpServletRequest request) {
 
 		int pg = Integer.parseInt( request.getParameter("pg") );
@@ -87,7 +87,7 @@ public class NoticeItemController {
 	}
 	
 	
-	@RequestMapping(value="/noticeItem/noticeItemView.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemView.do")
 	public ModelAndView noticeItemView(HttpServletRequest request) {
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
@@ -102,7 +102,7 @@ public class NoticeItemController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/noticeItem/noticeItemModifyForm.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemModifyForm.do")
 	public ModelAndView noticeItemModifyForm(HttpServletRequest request) {
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		
@@ -117,7 +117,7 @@ public class NoticeItemController {
 	}
 	
 
-	@RequestMapping(value="/noticeItem/noticeItemModify.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemModify.do")
 	public ModelAndView noticeItemModify(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
 		// 데이터
 		request.setCharacterEncoding("utf-8");
@@ -150,7 +150,7 @@ public class NoticeItemController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/noticeItem/noticeItemDelete.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemDelete.do")
 	public ModelAndView noticeItemDelete(HttpServletRequest request) { 
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int su = noticeItemService.noticeItemDelete(notice_item_code);

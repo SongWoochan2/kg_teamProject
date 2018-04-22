@@ -13,7 +13,6 @@ public class InquiryDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public int inquiryWrite(InquiryDTO inquiryDTO) {
-		System.out.println("inquiry_type :"+inquiryDTO.getInquiry_type());
 		return sqlSession.insert("mybatis.inquiry.inquiryWrite", inquiryDTO);
 	}
 	
