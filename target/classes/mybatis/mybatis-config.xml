@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
+		<typeAlias type="inquiry.bean.InquiryDTO" alias="inquiryDTO"></typeAlias>
+		<typeAlias type="noticeItem.bean.NoticeItemDTO" alias="noticeItemDTO"></typeAlias>
 		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
 		<typeAlias type="movie.bean.MovieDTO" alias="movieDTO"></typeAlias>
 		<typeAlias type="moviephoto.bean.MoviePhotoDTO" alias="moviePhotoDTO"></typeAlias>
@@ -16,6 +19,9 @@
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/inquiry-mapping.xml" />
+		<mapper resource="mybatis/noticeItem-mapping.xml" />
+		<mapper resource="mybatis/qna-mapping.xml" />
 		<mapper resource="mybatis/admin-mapping.xml"/>
 		<mapper resource="mybatis/movie-mapping.xml"/>
 		<mapper resource="mybatis/moviephoto-mapping.xml"/>
