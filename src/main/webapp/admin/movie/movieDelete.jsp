@@ -16,7 +16,7 @@
 	</c:if>
 	<c:if test="${requestScope.result == 1 }">
 		<script>
-			alert("삭제 성공!");
+			alert("삭제되었습니다.");
 			location.href = "movieAdmin.do?pg="+${requestScope.pg};
 		</script>
 	</c:if>

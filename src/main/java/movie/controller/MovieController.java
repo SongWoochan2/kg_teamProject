@@ -52,7 +52,6 @@ public class MovieController {
 			modelAndView.addObject("list", list);
 			modelAndView.addObject("moviePage", moviePage);
 			
-			modelAndView.addObject("pg", moviePage.getPg());
 			modelAndView.setViewName("movieAdmin.jsp");
 			
 		}else if(admin_id == null) {
@@ -66,9 +65,8 @@ public class MovieController {
 	public ModelAndView movieInsertForm(HttpServletRequest request) {
 		String page = request.getParameter("pg");
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("target", "movieInsert");
 		modelAndView.addObject("pg", page);
-		modelAndView.setViewName("movieInsert.jsp");
+		modelAndView.setViewName("movieInsertForm.jsp");
 		return modelAndView;
 		
 	}
@@ -88,15 +86,9 @@ public class MovieController {
 		movieDTO.setAppear_actor(request.getParameter("appear_actor"));
 		int result = movieService.movieInsert(movieDTO);
 		ModelAndView modelAndView = new ModelAndView();
-		if(result == 0) {
-			System.out.println("입력 실패");		
-			modelAndView.addObject("pg", page);
-			
-		}else if(result == 1) {
-			System.out.println("입력 성공");
-			modelAndView.addObject("pg", page);
-		}
-		modelAndView.setViewName("redirect:movieAdmin.do");
+		modelAndView.addObject("result",result);
+		modelAndView.addObject("pg", page);
+		modelAndView.setViewName("movieInsert.jsp");
 		
 		return modelAndView;
 	}
@@ -132,7 +124,7 @@ public class MovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("movie_code", movie_code);
 		modelAndView.addObject("pg", page);
-		modelAndView.setViewName("movieModify.jsp");
+		modelAndView.setViewName("movieModifyForm.jsp");
 		return modelAndView;
 	}
 	
@@ -163,16 +155,10 @@ public class MovieController {
 		int result = movieService.movieModify(movieDTO);
 		ModelAndView modelAndView = new ModelAndView();
 		
-		if(result == 0) {
-			System.out.println("수정 실패");		
-			modelAndView.addObject("pg", page);
-			
-		}else if(result == 1) {
-			System.out.println("수정 성공");
-			modelAndView.addObject("pg", page);
-		}
 		
-		modelAndView.setViewName("redirect:movieAdmin.do");
+		modelAndView.addObject("result",result);
+		modelAndView.addObject("pg", page);
+		modelAndView.setViewName("movieModify.jsp");
 		return modelAndView;
 	}
 }

@@ -11,4 +11,8 @@ public interface AdminService {
 	int adminRequest(AdminRequestDTO adminRequestDTO);
 	ArrayList<AdminRequestDTO> adminRequestList(int startNum, int endNum);
 	int adminEnroll(AdminDTO adminDTO);
+	int getTotal();
+	int adminRequestDelete(int admin_request_code);
+	AdminRequestDTO adminRequestInfo(int admin_request_code);
+	AdminDTO adminIdCheck(String admin_id);
 }

@@ -27,7 +27,7 @@
 	<div>
 		<div id="left_div1" >
 			<a href="#">
-			<img id="test" alt="" src="../image/header/header_cgv.png"
+			<img alt="" src="../image/header/header_cgv.png"
 				width="30px" height="30px">CGV APP </a>| <a href="#"><img
 				alt="" src="../image/header/header_face.png" width="20px" height="20px">
 				Face
@@ -53,9 +53,9 @@
 				<li class="te">
 					<a href="#">영화</a>
 					<ul class="sub">
-						<li><a href="#">영화순위</a></li>
-						<li><a href="#">영화검색</a></li>
-						<li><a href="#">평점메인</a></li>
+						<li><a href="#">영화순위 | </a></li>
+						<li><a href="#">영화검색 | </a></li>
+						<li><a href="#">평점메인 </a></li>
 					</ul>
 				</li>
 				<li class="te">
@@ -64,9 +64,6 @@
 				<li class="te">
 					<a href="#">극장</a>
 					<ul class="sub">
-						<li>
-							<a href="#">상영시간표</a>
-						</li>
 						<li>
 							<a href="#">교통안내</a>
 						</li>

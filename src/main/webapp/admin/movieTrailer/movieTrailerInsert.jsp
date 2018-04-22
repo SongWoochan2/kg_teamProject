@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +16,7 @@
 	<c:if test="${requestScope.result == 1 }">
 		<script>
 			alert("입력되었습니다.");
-			location.href = "movieAdmin.do?pg="+${requestScope.pg};
+			location.href = "movieTrailer.do?pg=${requestScope.pg}&movie_code=${requestScope.movie_code}";
 		</script>
 	</c:if>
-
 </html>

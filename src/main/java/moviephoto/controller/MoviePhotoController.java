@@ -94,14 +94,11 @@ public class MoviePhotoController {
 		moviePhotoDTO.setMovie_photo_addr(originalFileName);
 		int result = moviePhotoService.moviePhotoInsert(moviePhotoDTO);
 		ModelAndView modelAndView = new ModelAndView();
-		if(result == 0) {
-			System.out.println("입력 실패");					
-		}else if(result == 1) {
-			System.out.println("입력 성공");
-		}
+		
+		modelAndView.addObject("result", result);
 		modelAndView.addObject("pg", page);
 		modelAndView.addObject("movie_code", movie_code);
-		modelAndView.setViewName("moviePhoto.do");
+		modelAndView.setViewName("moviePhotoInsert.jsp");
 		return modelAndView;
 	}
 	
@@ -112,14 +109,11 @@ public class MoviePhotoController {
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		int result = moviePhotoService.moviePhotoDelete(movie_photo_code);
 		ModelAndView modelAndView = new ModelAndView();
-		if(result ==0 ) {
-			System.out.println("삭제 실패");
-		}else if(result == 1) {
-			System.out.println("삭제 성공");			
-		}
+		
+		modelAndView.addObject("result", result);
 		modelAndView.addObject("pg", page);
 		modelAndView.addObject("movie_code", movie_code);
-		modelAndView.setViewName("moviePhoto.do");
+		modelAndView.setViewName("moviePhotoDelete.jsp");
 		return modelAndView;
 	}
 }

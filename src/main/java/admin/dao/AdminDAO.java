@@ -32,4 +32,16 @@ public class AdminDAO {
 		map.put("endNum", endNum);
 		return sqlSession.selectList("adminMapper.adminRequestList", map);
 	}
+	public int getTotal() {
+		return sqlSession.selectOne("adminMapper.getTotal");
+	}
+	public AdminRequestDTO adminRequestInfo(int admin_request_code) {
+		return sqlSession.selectOne("adminMapper.adminRequestInfo", admin_request_code);
+	}
+	public int adminRequestDelete(int admin_request_code) {
+		return sqlSession.delete("adminMapper.adminRequestDelete",admin_request_code);
+	}
+	public AdminDTO adminIdCheck(String admin_id) {
+		return sqlSession.selectOne("adminMapper.adminCheck", admin_id);
+	}
 }

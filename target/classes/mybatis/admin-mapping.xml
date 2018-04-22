@@ -14,6 +14,10 @@
 		VALUES(admin_request_seq.nextval,#{admin_id},#{admin_name},#{admin_pwd},sysdate)
 	</insert>
 	
+	<delete id="adminRequestDelete" parameterType="int">
+		delete from admin_request where admin_request_code = #{admin_request_code}
+	</delete>
+
 	<select id="adminRequestList" parameterType="java.util.Map" resultType="adminRequestDTO">
 		<![CDATA[select admin_request_code, admin_id, admin_name, admin_pwd,
 				to_char(request_date, 'YYYY.MM.DD') as request_date from 
@@ -22,10 +26,21 @@
 				 where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
+	<select id = "adminRequestInfo" parameterType="int" resultType="adminRequestDTO">
+		select * from admin_request where admin_request_code=#{admin_request_code}
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from admin_request 
+	</select>
+	
 	<select id="adminLogin" parameterType="adminDTO" resultType="adminDTO">
 		select * from admin where admin_id = #{admin_id} and admin_pwd = #{admin_pwd}
 	</select>
-
+	
+	<select id="adminCheck" parameterType="String" resultType="adminDTO">
+		select * from admin where admin_id=#{admin_id}
+	</select>
 <!-- 	<resultMap type="#modelname" id="YourResultSet"> -->
 <!-- 		<id property="param1" column="columnname1" /> -->
 <!-- 		<result property="param2" column="columnname2" /> -->

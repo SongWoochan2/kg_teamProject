@@ -33,4 +33,24 @@ public class AdminServiceImpl implements AdminService{
 	public ArrayList<AdminRequestDTO> adminRequestList(int startNum, int endNum) {
 		return (ArrayList<AdminRequestDTO>) adminDAO.adminRequestList(startNum, endNum);
 	}
+
+	@Override
+	public int getTotal() {
+		return adminDAO.getTotal();
+	}
+	
+	@Override
+	public int adminRequestDelete(int admin_request_code) {
+		return adminDAO.adminRequestDelete(admin_request_code);
+	}
+
+	@Override
+	public AdminRequestDTO adminRequestInfo(int admin_request_code) {
+		return adminDAO.adminRequestInfo(admin_request_code);
+	}
+
+	@Override
+	public AdminDTO adminIdCheck(String admin_id) {
+		return adminDAO.adminIdCheck(admin_id);
+	}
 }

@@ -9,10 +9,10 @@
 <script>
 	$(function(){
 		function adminlogin(){
+			alert("ㅎㅇ");
 		}
 		
 	});
-
 </script>
 <style type="text/css">
 	#contain{
@@ -215,7 +215,7 @@
 		</c:if>
 		<c:if test="${sessionScope.admin_id != null }">
 			<a>${sessionScope.admin_id} 관리자님 </a><a> | </a>
-			<a href = "../adminMain/adminLogout.do">로그아웃</a><a> | </a><a href = "#">관리자정보수정</a><a> | </a><a href = "../adminMain/adminRequestList.do">관리자등록관리</a>
+			<a href = "../adminMain/adminLogout.do">로그아웃</a><a> | </a><a href = "#">비밀번호수정</a><a> | </a><a href = "../adminMain/adminRequestList.do?pg=1">관리자등록관리</a>
 		</c:if>
 		</div>
 		<div id = "logo">
