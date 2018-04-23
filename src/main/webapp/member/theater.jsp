@@ -16,8 +16,6 @@
 	type="text/css" />
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
 <link href="../css/theater/generic.css" rel="stylesheet" type="text/css" />
-<!-- <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script> -->
 <script type="text/javascript">
 /* $(function() {
 	// 링크가 클릭된 경우
@@ -104,7 +102,7 @@ $(function(){
 </script>
 <style type="text/css">
 #test{
-	background-color: white;
+	background-color: #FFFFFB;
 }
 </style>
 </head>

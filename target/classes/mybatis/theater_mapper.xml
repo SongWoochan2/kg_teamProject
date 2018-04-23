@@ -19,7 +19,12 @@
 	
 	<update id="theaterModify" parameterType="theaterDTO">
 		update theater 
-		set theater_name=#{theater_name}, theater_photo_addr=#{theater_photo_addr}, theater_phone=#{theater_phone}
+		<set>
+			<if test="theater_name != null">theater_name=#{theater_name},</if>
+		    <if test="theater_photo_addr != null">theater_photo_addr=#{theater_photo_addr},</if>
+		    <if test="theater_phone != null">theater_phone=#{theater_phone}</if>
+		<!-- set theater_name=#{theater_name}, theater_photo_addr=#{theater_photo_addr}, theater_phone=#{theater_phone} -->
+		</set>
 		where theater_code=#{theater_code}
 	</update>
 	
