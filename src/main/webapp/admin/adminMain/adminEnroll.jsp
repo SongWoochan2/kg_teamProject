@@ -47,10 +47,13 @@
 			} else if ($("#admin_name").val() == '') {
 				alert($("#admin_pwd").val().length);
 				alert("이름을 입력하세요.");
-			} else if ($("#admin_pwd").val().length > 13 || ($("#admin_pwd").val().length < 6) {
-				alert("비밀번호는 6~12자로 입력해주세요.");
-			} else{
-// 				document.adminEnrollForm.submit();
+			} 
+// 			else if ($("#admin_pwd").val().length > 13 || ($("#admin_pwd").val().length < 6) {
+// 				alert("비밀번호는 6~12자로 입력해주세요.");
+// 			} 
+			else{
+				$("#admin_id").attr("disabled",false);
+				document.adminEnrollForm.submit();
 			}
 			
 		});
@@ -137,5 +140,6 @@
 			</form>
 		</div>
 	</div>
+	<jsp:include page="/admin/adminMain/footer_admin.jsp"/>
 </body>
 </html>

@@ -50,7 +50,8 @@
 		float: left;
 	}
 	#moviepage #middle #movieposter img{
-	
+		width: 100%;
+		height: 100%;
 	}
 	#moviepage #middle #movieinfo{
 		width: 79%;
@@ -60,7 +61,6 @@
 	#moviepage #middle #movieinfo *{
 		padding-top : 7px;
 		padding-left : 5px;
-	
 	}
 	#moviepage #middle #movieinfo #movietitle{
 		width: 100%;
@@ -84,7 +84,6 @@
 		width: 100%;
 		height: 25%;
 	}
-	
 	#moviepage #movietrailer{
 		width: 100%;
 		height: 20%;
@@ -213,6 +212,7 @@
 				<div id = "left">실관람객평점 ▶</div><div id="right">영화를 보시고 평점을 남겨주세요. <a href="#" class="btn btn-info btn-lg">평점 작성</a></div>
 			</div>
 			<div id = "review-content">
+				<!-- 반복문 구간 -->
 				<div id = "review-info">
 				</div>
 				<div id = "review-info">

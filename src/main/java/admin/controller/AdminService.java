@@ -8,6 +8,7 @@ import admin.bean.AdminRequestDTO;
 public interface AdminService {
 	//로그인
 	AdminDTO adminLogin(AdminDTO adminDTO);
+	int adminPwdModify(String admin_id, String new_admin_pwd);
 	int adminRequest(AdminRequestDTO adminRequestDTO);
 	ArrayList<AdminRequestDTO> adminRequestList(int startNum, int endNum);
 	int adminEnroll(AdminDTO adminDTO);

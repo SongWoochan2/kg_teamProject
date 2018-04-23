@@ -31,7 +31,7 @@ public class AdminController {
 	public ModelAndView adminLogout(HttpSession session) {
 		session.invalidate();
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("adminIndex.jsp");
+		modelAndView.setViewName("adminLogin.jsp");
 		return modelAndView;
 	}
 	
@@ -53,8 +53,7 @@ public class AdminController {
 				modelAndView.setViewName("adminIndex.jsp");
 			
 		}else if(result == null){
-			System.out.println("로그인 실패");
-			modelAndView.setViewName("adminLoginForm.do");
+			modelAndView.setViewName("adminLoginFail.jsp");
 		}
 		return modelAndView;
 	}
@@ -64,7 +63,7 @@ public class AdminController {
 	public ModelAndView adminMain(HttpServletRequest request) {
 		MoviePage moviePage = (MoviePage)request.getAttribute("moviePage");
 		String pg = request.getParameter("pg");
-		System.out.println("pg : " + pg);
+		System.out.println("main pg : " + pg);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("moviePage", moviePage);
 		modelAndView.setViewName("adminIndex.jsp");
@@ -95,15 +94,10 @@ public class AdminController {
 		adminRequestDTO.setAdmin_pwd(admin_pwd);
 		
 		int result = adminService.adminRequest(adminRequestDTO);
-		if(result == 0) {
-			System.out.println("신청 실패");
-			
-		}else if(result == 1) {
-			System.out.println("신청 성공");
-		}
+		
 		ModelAndView modelAndView = new ModelAndView();
-
-		modelAndView.setViewName("adminIndex.jsp");
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("adminEnrollRequest.jsp");
 		return modelAndView;
 	}
 	
@@ -194,6 +188,35 @@ public class AdminController {
 		modelAndView.addObject("result", result);
 		modelAndView.addObject("requestData", adminDTO);
 		modelAndView.setViewName("adminIdCheck.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/admin/adminMain/adminPwdChangeForm.do")
+	public ModelAndView adminPwdChangeForm(HttpServletRequest request) {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("adminPwdChangeForm.jsp");
+		return modelAndView;
+	}
+	@RequestMapping(value="/admin/adminMain/adminPwdChange.do")
+	public ModelAndView adminPwdChange(HttpServletRequest request, HttpSession session) {
+		String admin_id = (String) session.getAttribute("admin_id");
+		String admin_pwd = request.getParameter("admin_pwd");
+		String new_admin_pwd = request.getParameter("new_admin_pwd");
+		
+		AdminDTO adminDTO = new AdminDTO();
+		adminDTO.setAdmin_id(admin_id);
+		adminDTO.setAdmin_pwd(admin_pwd);
+		AdminDTO pwd_result = adminService.adminLogin(adminDTO);
+		ModelAndView modelAndView = new ModelAndView();
+		if(pwd_result != null) {
+			int change_result = adminService.adminPwdModify(admin_id, new_admin_pwd);
+			modelAndView.addObject("change_result", change_result);
+			modelAndView.setViewName("adminPwdChange.jsp");
+		}else if(pwd_result == null) {
+			modelAndView.setViewName("adminPwdCheckFail.jsp");
+		}
+		
 		return modelAndView;
 	}
 }

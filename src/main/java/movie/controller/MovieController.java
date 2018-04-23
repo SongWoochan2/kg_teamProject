@@ -55,8 +55,8 @@ public class MovieController {
 			modelAndView.setViewName("movieAdmin.jsp");
 			
 		}else if(admin_id == null) {
+			modelAndView.setViewName("../adminMain/adminLoginCheck.jsp");
 			System.out.println("입장 실패");
-			modelAndView.setViewName("../adminMain/adminIndex.jsp");
 		}
 		return modelAndView;
 	}

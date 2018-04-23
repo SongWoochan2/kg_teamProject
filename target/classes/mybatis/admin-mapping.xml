@@ -17,7 +17,11 @@
 	<delete id="adminRequestDelete" parameterType="int">
 		delete from admin_request where admin_request_code = #{admin_request_code}
 	</delete>
-
+	
+	<update id="adminPwdModify" parameterType="java.util.Map">
+		update admin set admin_pwd=#{new_admin_pwd} where admin_id=#{admin_id}
+	</update>
+	
 	<select id="adminRequestList" parameterType="java.util.Map" resultType="adminRequestDTO">
 		<![CDATA[select admin_request_code, admin_id, admin_name, admin_pwd,
 				to_char(request_date, 'YYYY.MM.DD') as request_date from 

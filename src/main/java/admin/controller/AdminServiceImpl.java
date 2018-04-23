@@ -53,4 +53,9 @@ public class AdminServiceImpl implements AdminService{
 	public AdminDTO adminIdCheck(String admin_id) {
 		return adminDAO.adminIdCheck(admin_id);
 	}
+
+	@Override
+	public int adminPwdModify(String admin_id, String new_admin_pwd) {
+		return adminDAO.adminPwdModify(admin_id, new_admin_pwd);
+	}
 }

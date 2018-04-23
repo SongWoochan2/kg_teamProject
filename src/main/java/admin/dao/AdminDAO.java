@@ -1,6 +1,5 @@
 package admin.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +13,7 @@ import admin.bean.AdminRequestDTO;
 
 @Repository
 public class AdminDAO {
+	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
@@ -43,5 +43,11 @@ public class AdminDAO {
 	}
 	public AdminDTO adminIdCheck(String admin_id) {
 		return sqlSession.selectOne("adminMapper.adminCheck", admin_id);
+	}
+	public int adminPwdModify(String admin_id, String new_admin_pwd) {
+		Map<String, String> map = new HashMap<>();
+		map.put("admin_id", admin_id);
+		map.put("new_admin_pwd", new_admin_pwd);
+		return sqlSession.update("adminMapper.adminPwdModify", map);
 	}
 }

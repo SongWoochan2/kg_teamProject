@@ -22,7 +22,7 @@
 <c:if test="${result == '0' }">
 <script type="text/javascript">
 	var id = confirm("사용가능한 아이디입니다. 사용하시겠습니까?");
-	alert(id);
+// 	alert(id);
 	location.href='adminEnrollForm.do?admin_id=${requestData.admin_id}&admin_name=${requestData.admin_name}&id_check='+id;
 </script>
 </c:if>
