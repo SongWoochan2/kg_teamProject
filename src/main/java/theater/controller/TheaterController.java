@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.bind.ParseConversionEvent;
 
@@ -30,7 +31,7 @@ public class TheaterController {
 	private ResourceProvider resourceProvider;
 	
 	@RequestMapping(value="/admin/theater/theaterInsertForm.do", method=RequestMethod.GET)
-	public ModelAndView theaterInsertForm() { 
+	public ModelAndView supertheaterInsertForm(HttpServletRequest request, HttpServletResponse response) { 
 		System.out.println("글작성");
 		// 매개변수가 반드시 2개일 필요 없음
 		// HttpServletRequest request도 안 쓰고
@@ -55,7 +56,7 @@ public class TheaterController {
 	}*/
 	
 	@RequestMapping(value="/admin/theater/theaterInsert.do", method=RequestMethod.POST)
-	public ModelAndView theaterInsert(HttpServletRequest request,  MultipartFile theater_photo_addr) {
+	public ModelAndView supertheaterInsert(HttpServletRequest request,  MultipartFile theater_photo_addr, HttpServletResponse response) {
 		System.out.println("극장 등록 처리");
 		
 //		String filePath = "J://1802JavaSW_HBN//spring//teamProject//src//main//webapp//image//theater_juso";
@@ -104,7 +105,7 @@ public class TheaterController {
 	}
 
 	@RequestMapping(value="/admin/theater/theaterList.do")
-	public ModelAndView theaterList(HttpServletRequest request) {
+	public ModelAndView supertheaterList(HttpServletRequest request, HttpServletResponse response) {
 		
 		System.out.println("글 목록 처리");
 		// 1. 사용자 입력 정보 추출
@@ -133,7 +134,7 @@ public class TheaterController {
 	}
 
 	@RequestMapping(value="/admin/theater/theaterView.do")
-	public ModelAndView theaterView(HttpServletRequest request) {
+	public ModelAndView supertheaterView(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("글 상세보기");
 		// 1. 사용자 입력 정보 추출
 		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
@@ -152,7 +153,7 @@ public class TheaterController {
 	}
 	
 	@RequestMapping(value="/admin/theater/theaterDelete.do")
-	public ModelAndView theaterDelete(HttpServletRequest request) {
+	public ModelAndView supertheaterDelete(HttpServletRequest request,HttpServletResponse response) {
 		System.out.println("글 삭제");
 		// 1. 사용자 입력 정보 추출
 		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
@@ -170,7 +171,7 @@ public class TheaterController {
 	
 	
 	@RequestMapping(value="/admin/theater/theaterModifyForm.do")
-	public ModelAndView theaterModifyForm(HttpServletRequest request) { 
+	public ModelAndView supertheaterModifyForm(HttpServletRequest request,HttpServletResponse response ) { 
 		System.out.println("수정");
 		
 		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
@@ -186,7 +187,7 @@ public class TheaterController {
 	}
 	
 	@RequestMapping(value="/admin/theater/theaterModify.do", method=RequestMethod.POST)
-	public ModelAndView theaterModify(HttpServletRequest request, MultipartFile theater_photo_addr) {
+	public ModelAndView supertheaterModify(HttpServletRequest request, MultipartFile theater_photo_addr,HttpServletResponse response) {
 		   // 데이터
 	    System.out.println("수정완료");
 	    ModelAndView modelAndView = new ModelAndView();
