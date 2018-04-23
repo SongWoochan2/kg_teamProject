@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,7 +36,7 @@ public class ShowPlaceController {
 	
 	
 	@RequestMapping("/showPlaceList.do")
-	public ModelAndView showPlaceList(HttpServletRequest request) {
+	public ModelAndView supershowPlaceList(HttpServletRequest request, HttpServletResponse response) {
 		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
 
 		List<ShowPlaceVO> show_place_list = showPlaceService.selectList(theater_code);
@@ -43,6 +44,12 @@ public class ShowPlaceController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("show_place_list", show_place_list);
+		try {
+			response.sendRedirect("/MyCGV/admin/adminLogin.jsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		modelAndView.setViewName("/admin/showPlace/showPlaceList.jsp");
 		
@@ -50,7 +57,7 @@ public class ShowPlaceController {
 	}
 
 	@RequestMapping("/showPlaceView.do")
-	public ModelAndView showPlaceView(HttpServletRequest request) {
+	public ModelAndView supershowPlaceView(HttpServletRequest request) {
 		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
 		
 		ShowPlaceVO showPlaceVO = showPlaceService.selectOne(show_place_code);
@@ -82,7 +89,7 @@ public class ShowPlaceController {
 	}
 
 	@RequestMapping(value="/showPlaceDelete.do")
-	public ModelAndView showPlaceDelete(HttpServletRequest request) { 
+	public ModelAndView supershowPlaceDelete(HttpServletRequest request) { 
 		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
 
 		showPlaceService.deleteSeat(show_place_code);
@@ -97,7 +104,7 @@ public class ShowPlaceController {
 	}
 
 	@RequestMapping(value="/showPlaceWriteForm.do")
-	public String showPlaceWriteForm(HttpServletRequest request) { 
+	public String supershowPlaceWriteForm(HttpServletRequest request) { 
 		String forward = "/admin/showPlace/showPlaceWriteForm.jsp";
 		
 		return forward;
@@ -105,7 +112,7 @@ public class ShowPlaceController {
 	
 
 	@RequestMapping(value="/showPlaceWrite.do", method=RequestMethod.POST)
-	synchronized public ModelAndView showPlaceWrite(HttpServletRequest request, MultipartFile img) { 
+	synchronized public ModelAndView supershowPlaceWrite(HttpServletRequest request, MultipartFile img) { 
 		
 		String filePath = resourceProvider.getPath("image/showPlace");
 		String fileName = img.getOriginalFilename();
@@ -165,7 +172,7 @@ public class ShowPlaceController {
 
 	
 	@RequestMapping(value="/showPlaceModifyForm.do")
-	public ModelAndView showPlaceModifyForm(HttpServletRequest request) { 
+	public ModelAndView supershowPlaceModifyForm(HttpServletRequest request) { 
 		int show_place_code = Integer.parseInt(request.getParameter("sp_code"));
 		
 		ShowPlaceVO showPlaceVO = showPlaceService.selectOne(show_place_code);
@@ -196,7 +203,7 @@ public class ShowPlaceController {
 	
 
 	@RequestMapping(value="/showPlaceModify.do", method=RequestMethod.POST)
-	synchronized public ModelAndView showPlaceModify(HttpServletRequest request, MultipartFile img) { 
+	synchronized public ModelAndView supershowPlaceModify(HttpServletRequest request, MultipartFile img) { 
 		
 		int show_place_code = Integer.parseInt( request.getParameter("sp_code") );
 		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
