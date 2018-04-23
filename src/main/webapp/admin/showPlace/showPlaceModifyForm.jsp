@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>상영관 등록</title>
 	<link rel="stylesheet" type="text/css" href="/MyCGV/css/showPlace/seatView.css" />
+<link href="../css/bootstrap.css" rel = "stylesheet">
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -244,8 +245,15 @@
 			margin: 0 auto;
 			text-align: center;
 			align-items: center;
+			background-color: white;
+			border: 3px solid black;
+		}
+		img{
+			width: 500px;
+			height: 500px;
 		}
 		table{
+			width: 100%;
 			margin: auto;
 		}
 		.leftSide {
@@ -255,6 +263,8 @@
 	</style>
 </head>
 <body>
+<jsp:include page="../adminMain/adminTemplate.jsp"/>
+<div id = "content" align="center">
 	<div id="wrapper">
 		<h2>이미지 등록</h2>
 		<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/MyCGV/showPlaceModify.do?theater_code=${param.theater_code}&sp_code=${showPlaceVO.show_place_code }">
@@ -319,5 +329,6 @@
 			<input type="submit" value="다시 작성">
 		</form>
 	</div>
+</div>
 </body>
 </html>

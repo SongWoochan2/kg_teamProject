@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
     <!-- Uncomment and your base-package here:
          <context:component-scan
@@ -38,4 +42,20 @@
     <context:component-scan base-package="noticeItem.controller"/>
     <context:component-scan base-package="inquiry.controller"/>
     
+	<!-- advice : 횡단(공통)관심사항  -->
+	<bean id="loginCheckAdvice" class="advice.log.Logging"/>
+
+	<aop:config>
+		<!-- 횡단(공통)관심사항이 설정된 advice를 등록한다. -->
+		<aop:aspect id="logAspect" ref="loginCheckAdvice">
+			<!-- 동작시킬 함수를 등록한다. -->
+			<aop:pointcut expression="execution(* super*(..))" id="logPointCut"/>
+			
+			<!-- around는 메소드의 호출자체를 가로채 
+				비즈니스 메소드 실행 전후에 처리할 로직을 삽입 -->
+			<!-- around = before + after -->
+			<aop:around method="logAround" pointcut-ref="logPointCut"/>
+				
+		</aop:aspect>
+	</aop:config>
 </beans>

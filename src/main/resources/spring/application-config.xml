@@ -29,6 +29,7 @@
 	<context:component-scan base-package="inquiry"/>
 	<context:component-scan base-package="qna"/>
 	<context:component-scan base-package="noticeItem"/>
+	<context:component-scan base-package="advice"/>
 	<context:property-placeholder location="classpath:spring/db.properties, 
 											classpath:spring/resource.properties"/>
 	<bean id="dataSource"
@@ -53,5 +54,4 @@
 	<bean id="resourceProvider" class="resource.provider.ResourceProvider">
 		<constructor-arg value = "${resource.path}"></constructor-arg>
 	</bean>
-	
 </beans>

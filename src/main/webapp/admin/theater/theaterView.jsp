@@ -14,7 +14,25 @@ pageEncoding="UTF-8"%>
 	}
 	</style>
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
-	
+
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url : "/MyCGV/showPlaceList.do",
+				type : "get",
+				dataType : "html",
+				data : { theater_code : ${theaterDTO.theater_code } },
+				timeout : 30000,
+				cache : false,
+				success : function(html){
+					$("#showPlaceList").html(html);
+				},
+				error : function(xhr, textStatus, errorThrown){
+					$("div").html("<div>" + textStatus + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
+				}
+			});
+		});
+	</script>
 </head>
 <body>
 <table border="1">
