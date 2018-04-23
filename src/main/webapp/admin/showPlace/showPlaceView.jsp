@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 	<meta charset="UTF-8">
 	<title>글보기</title>
 	<link rel="stylesheet" type="text/css" href="/MyCGV/css/showPlace/seatView.css" />
+<link href="../css/bootstrap.css" rel = "stylesheet">
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -62,8 +63,27 @@ pageEncoding="UTF-8"%>
 			}
 		});
 	</script>
+	<style type="text/css">
+		#wrapper{
+			width: 700px;
+			margin: 0 auto;
+			text-align: center;
+			align-items: center;
+			background-color: white;
+			border: 3px solid black;
+		}
+		img{
+			width: 500px;
+			height: 500px;
+		}
+		table{
+			width: 100%;
+		}
+	</style>
 </head>
 <body>
+<jsp:include page="../adminMain/adminTemplate.jsp"/>
+<div id = "content" align="center">
 	<div id="wrapper">
 		<table border="1" cellspacing="0" cellpadding="5">
 			<tr>
@@ -82,18 +102,18 @@ pageEncoding="UTF-8"%>
 				</td>
 			</tr>
 		</table>
+		<div class="screen">스크린</div>
+		<div id="seatView">
+		
+		</div>
+		
+		<input type="button" value="뒤로" onclick="history.back(); return false;">
+		<c:if test="${admin_id != null }">
+			<input type="button" value="수정" onclick="location.href='/MyCGV/showPlaceModifyForm.do?theater_code=${param.theater_code}&sp_code=${param.sp_code}'">
+			<input type="button" value="삭제" onclick="location.href='/MyCGV/showPlaceDelete.do?theater_code=${param.theater_code}&sp_code=${param.sp_code}'">
+		</c:if>	
 	</div>
-	<div class="screen">스크린</div>
-	<div id="seatView">
-	
-	</div>
-	
-	<input type="button" value="뒤로" onclick="history.back(); return false;">
-	<c:if test="${admin_id != null }">
-		<input type="button" value="수정" onclick="location.href='/MyCGV/showPlaceModifyForm.do?theater_code=${param.theater_code}&sp_code=${param.sp_code}'">
-		<input type="button" value="삭제" onclick="location.href='/MyCGV/showPlaceDelete.do?theater_code=${param.theater_code}&sp_code=${param.sp_code}'">
-	</c:if>
-	
+</div>
 </body>
 </html>
 

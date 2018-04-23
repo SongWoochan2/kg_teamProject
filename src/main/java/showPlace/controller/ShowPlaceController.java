@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import loginCheck.AdminLoginCheck;
 import resource.provider.ResourceProvider;
 import showPlace.bean.SeatSize;
 import showPlace.bean.SeatVO;
