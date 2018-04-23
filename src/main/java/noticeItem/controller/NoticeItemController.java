@@ -19,12 +19,12 @@ public class NoticeItemController {
 	@Autowired
 	private NoticeItemService noticeItemService;
 	
-	@RequestMapping(value="/noticeItem/noticeItemWriteForm.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemWriteForm.do")
 	public String noticeItemWriteForm() { 
 		return "noticeItemWriteForm.jsp";
 	}
 	
-	@RequestMapping(value="/noticeItem/noticeItemWrite.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemWrite.do")
 	public ModelAndView noticeItemWrite(HttpServletRequest request) throws UnsupportedEncodingException { 
 		// 데이터
 		HttpSession session = request.getSession();
@@ -62,7 +62,7 @@ public class NoticeItemController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/noticeItem/noticeItemList.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemList.do")
 	public ModelAndView noticeItemList(HttpServletRequest request) {
 
 		int pg = Integer.parseInt( request.getParameter("pg") );
@@ -87,7 +87,7 @@ public class NoticeItemController {
 	}
 	
 	
-	@RequestMapping(value="/noticeItem/noticeItemView.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemView.do")
 	public ModelAndView noticeItemView(HttpServletRequest request) {
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
@@ -102,7 +102,7 @@ public class NoticeItemController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/noticeItem/noticeItemModifyForm.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemModifyForm.do")
 	public ModelAndView noticeItemModifyForm(HttpServletRequest request) {
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		
@@ -117,7 +117,7 @@ public class NoticeItemController {
 	}
 	
 
-	@RequestMapping(value="/noticeItem/noticeItemModify.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemModify.do")
 	public ModelAndView noticeItemModify(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
 		// 데이터
 		request.setCharacterEncoding("utf-8");
@@ -129,6 +129,11 @@ public class NoticeItemController {
 		String admin_id="jin";														//임시 로그인
 		session.setAttribute("admin_id", admin_id);
 		admin_id = (String) session.getAttribute("admin_id");						//여기까지 삭제 할것
+
+//		System.out.println("notice_item_title : "+notice_item_title);
+//		System.out.println("notice_item_type : "+notice_item_type);
+//		System.out.println("notice_item_content : "+notice_item_content);
+//		System.out.println("notice_item_code :" +notice_item_code);
 		
 		/*String admin_id = (String) session.getAttribute("admin_Id");*/					//4-19잠시 주석
 		// 데이터 지정
@@ -150,7 +155,7 @@ public class NoticeItemController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/noticeItem/noticeItemDelete.do")
+	@RequestMapping(value="/admin/noticeItem/noticeItemDelete.do")
 	public ModelAndView noticeItemDelete(HttpServletRequest request) { 
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int su = noticeItemService.noticeItemDelete(notice_item_code);

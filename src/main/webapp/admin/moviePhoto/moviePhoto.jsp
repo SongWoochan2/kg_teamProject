@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		// 링크를 클릭한 경우
-		$("a.a").click(function() {
+		$("a.photoview").click(function() {
 			// 배경 레이어를 화면에 표시한다.
 			$("#glayLayer").fadeIn(300);
 			// 이미지 레이어를 화면에 표시한다.
@@ -88,7 +88,7 @@
 	}
 	#entity #movie_photo_name{
 		width: 100%;
-		height: 12%;
+		height: 20%;
 		font-size : 18px;
 		background-color : lightgray;
 		font-weight: bold;
@@ -98,7 +98,7 @@
 	}
 	#entity #movie_photo_addr{
 		width: 100%;
-		height: 60%;
+		height: 52%;
 	}
 	#entity #upload_date{
 		padding-top : 2px;
@@ -124,10 +124,10 @@
 			<div id='glayLayer'></div><div id='overLayer' ></div>
 			<div id = "entity" class="warning">
 				<div id = "movie_photo_code">${moviePhotoDTO.movie_photo_code}</div>
-				<div id = "movie_photo_name"><span class="glyphicon">&#xe060;</span> ${moviePhotoDTO.movie_photo_name} &nbsp;&nbsp;
-				<a href="../image/storage/moviephoto/${moviePhotoDTO.movie_photo_addr}" class="a">
+				<div id = "movie_photo_name"><span class="glyphicon">&#xe060;</span> ${moviePhotoDTO.movie_photo_name}<br>
+				<a href="../../image/storage/moviephoto/${moviePhotoDTO.movie_photo_addr}" class="photoview">
          		<span class="glyphicon glyphicon-picture"></span> 자세히보기 </a></div>
-				<div id = "movie_photo_addr"><img src = "../image/storage/moviephoto/${moviePhotoDTO.movie_photo_addr}"></div>
+				<div id = "movie_photo_addr"><img src = "../../image/storage/moviephoto/${moviePhotoDTO.movie_photo_addr}"></div>
 				<div id = "upload_date"><span class="glyphicon glyphicon-time"></span> ${moviePhotoDTO.upload_date} &nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="moviePhotoDelete.do?movie_photo_code=${moviePhotoDTO.movie_photo_code}&movie_code=${requestScope.movie_code}&pg=${moviePage.pg }" 
 				class="btn btn-info btn-lg">
@@ -157,7 +157,7 @@
 			</table>
 
 			<a href="../moviePhoto/moviePhotoInsertForm.do?pg=${moviePage.pg }&movie_code=${requestScope.movie_code}"
-				class="btn btn-primary">사진 등록</a>
+				class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> 사진 등록</a>
 		</div>
 	</div>
 </body>

@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<form name="theaterInsertForm" method="post" action="theaterInsert.do">
+<form name="theaterInsertForm" method="post" action="theaterInsert.do" >
 <div>
 <ul class="">
 	<li>

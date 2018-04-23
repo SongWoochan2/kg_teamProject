@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,31 +17,30 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import inquiry.bean.InquiryDTO;
+import resource.provider.ResourceProvider;
 
 @Controller
 public class InquiryController {
 	@Autowired
 	private InquiryService inquiryService;
+	@Autowired
+	private ResourceProvider resourceProvider;
 	
-	@RequestMapping(value="/inquiry/inquiryWriteForm.do")
+	@RequestMapping(value="/admin/inquiry/inquiryWriteForm.do")
 	public String inquiryWriteForm() { 
 		return "inquiryWriteForm.jsp";
 	}
 	
-	@RequestMapping(value="/inquiry/inquiryWrite.do")
+	@RequestMapping(value="/admin/inquiry/inquiryWrite.do")
 	public ModelAndView inquiryWrite(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
 		// 데이터
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		String inquiry_type = request.getParameter("inquiry_type");
 		String inquiry_theater = request.getParameter("inquiry_theater");
-		System.out.println("inquiry_type :"+inquiry_type);
 		String inquiry_title = request.getParameter("inquiry_title");
-		System.out.println("inquiry_title :"+inquiry_title);
 		String inquiry_content = request.getParameter("inquiry_content");
-		
-		System.out.println("inquiry_content :"+inquiry_content);
-		/*String inquiry_id = (String) session.getAttribute("inquiry_id");*/						/*주석 풀어야함*/
+		/*String inquiry_id = (String) session.getAttribute("member_id");*/					/*주석 풀어야함*/
 		String inquiry_id= "jin"; 													/*임시 아이디*/
 		
 		// 데이터 지정
@@ -52,8 +50,9 @@ public class InquiryController {
 		inquiryDTO.setInquiry_theater(inquiry_theater);
 		inquiryDTO.setInquiry_title(inquiry_title);
 		inquiryDTO.setInquiry_content(inquiry_content);
-		String realforder = "/image";
+		String realforder = resourceProvider.getPath("image/inquiry");
 		String filename = inquiry_file.getOriginalFilename();
+		System.out.println("realFolder : " + realforder + "/ filename : " + filename);
 		File file = new File(realforder,filename);
 			try {
 				FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
@@ -75,7 +74,7 @@ public class InquiryController {
 		return modelAndView;
 	}
 	
-	/*@RequestMapping(value="/inquiry/inquiryList.do")
+	/*@RequestMapping(value="/admin/inquiry/inquiryList.do")
 	public ModelAndView inquiryList(HttpServletRequest request) {
 
 		int pg = Integer.parseInt( request.getParameter("pg") );
@@ -103,7 +102,7 @@ public class InquiryController {
 	}
 	
 	
-	@RequestMapping(value="/inquiry/inquiryView.do")
+	@RequestMapping(value="/admin/inquiry/inquiryView.do")
 	public ModelAndView inquiryView(HttpServletRequest request) {
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
@@ -119,7 +118,7 @@ public class InquiryController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/inquiry/inquiryModifyForm.do")
+	@RequestMapping(value="/admin/inquiry/inquiryModifyForm.do")
 	public ModelAndView inquiryModifyForm(HttpServletRequest request) {
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		
@@ -134,7 +133,7 @@ public class InquiryController {
 	}
 	
 
-	@RequestMapping(value="/inquiry/inquiryModify.do")
+	@RequestMapping(value="/admin/inquiry/inquiryModify.do")
 	public ModelAndView inquiryModify(HttpServletRequest request) throws UnsupportedEncodingException {
 		// 데이터
 		HttpSession session = request.getSession();
@@ -164,7 +163,7 @@ public class InquiryController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/inquiry/inquiryDelete.do")
+	@RequestMapping(value="/admin/inquiry/inquiryDelete.do")
 	public ModelAndView inquiryDelete(HttpServletRequest request) { 
 		int code = Integer.parseInt(request.getParameter("code"));
 	
