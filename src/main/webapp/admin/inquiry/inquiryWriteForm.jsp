@@ -83,16 +83,16 @@ pageEncoding="UTF-8"%>
 								<tbody>
 									<tr>
 										<th>이름</th>
-										<td colspan="3"><strong>${member_name }</strong></td>
+										<td colspan="3"><strong>김진환</strong></td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><strong>${member_phone_number }</strong></td>
+										<td colspan="3"><strong>01094891081</strong></td>
 										<!-- 전화번호 받고 보내기 -->
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><strong>${member_email }</strong></td>
+										<td colspan="3"><strong>jina@naver.com</strong></td>
 										<!-- 전화번호 받고 보내기 -->
 									</tr>
 									<tr id="check_info">
@@ -111,6 +111,22 @@ pageEncoding="UTF-8"%>
 										</td>
 									</tr>
 									<tr>
+										<th>영화관 선택</th>
+										<td colspan="3">
+											<!-- <input type="radio" name="theater_sel" checked="checked" value="0">
+											<label>선택하지 않음</label>
+											<input type="radio" name="theater_sel" value="1">
+											<label>선택함</label> -->
+											
+											 <select name="inquiry_theater">
+												<option value="">극장 선택</option>
+												<option value="종로">종로</option>
+												<option value="안산">안산</option>
+												<option value="인천">인천</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
 										<th>제목<span id="star">*</span></th>
 										<td colspan="3"><input type="text" id="title"name="inquiry_title">
 										</td>
@@ -123,7 +139,7 @@ pageEncoding="UTF-8"%>
 										</td>
 									</tr>
 									<tr>
-										<th><label for="file">첨부 파일</label></th>
+										<th><label for="file">첨부파일</label></th>
 										<td colspan="3"><input type="file" id="file"name="inquiry_file" size="51">
 										</td>
 									</tr>
