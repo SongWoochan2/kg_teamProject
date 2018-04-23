@@ -6,19 +6,24 @@ pageEncoding="UTF-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<script type="text/javascript">
-		window.onload = function(){
-			alert("작성하신 글을 수정하였습니다.");
-			location.href = "noticeItemList.do?pg=1";
-		}
-	</script>
-</head>
-<body>
 	<c:if test="${su > 0 }">
-		작성한 글을 저장하였습니다.
+		<script type="text/javascript">
+			window.onload = function(){
+				alert("삭제 성공");
+				location.href="inquiryList.do?pg=1";
+			}
+		</script>
 	</c:if>
 	<c:if test="${su <= 0 }">
-		작성한 글을 저장하지 못했습니다.
+		<script type="text/javascript">
+			window.onload = function(){
+				alert("삭제 실패");
+				history.back();
+			}
+		</script>
 	</c:if>
+</head>
+<body>
+
 </body>
 </html>

@@ -155,7 +155,6 @@ public class MovieController {
 		int result = movieService.movieModify(movieDTO);
 		ModelAndView modelAndView = new ModelAndView();
 		
-		
 		modelAndView.addObject("result",result);
 		modelAndView.addObject("pg", page);
 		modelAndView.setViewName("movieModify.jsp");
