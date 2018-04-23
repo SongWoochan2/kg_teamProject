@@ -32,6 +32,11 @@
 		from member where member_id=#{member_id}
 	</select>
 
+	<select id="memberInfo" parameterType="String" resultType="memberDTO">
+		select member_id,member_name,nick_name,saving_point,member_grade,profile_img_addr
+		from member where member_id=#{member_id}
+	</select>
+		
 	<delete id="memberDelete" parameterType="String">
 		delete from member where member_id=#{member_id}
 	</delete>

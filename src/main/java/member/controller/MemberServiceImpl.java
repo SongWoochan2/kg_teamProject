@@ -32,8 +32,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	public int memberDelete(String member_id) {
-		System.out.println(member_id);
 		return memberDAO.memberDelete(member_id);
+	}
+
+	public MemberDTO memberInfo(String member_id) {
+		return memberDAO.memberInfo(member_id);
 	}
 
 
