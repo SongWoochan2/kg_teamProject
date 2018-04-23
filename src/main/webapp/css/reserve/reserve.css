@@ -1,0 +1,64 @@
+.div_top{
+	padding:2% 10% 0% 20%; /* 흘러넘침안할려면 25px로바꿔주면됨 */
+	border: 1px solid blue;
+	height: 600px;
+}
+#top_movie{
+ 	border : 1px dotted gray;
+	width: 22%;
+	height: 100%;
+	float: left;
+}
+#top_theater{
+	border : 1px dotted gray;
+	width: 22%;
+	height: 100%;
+	float: left;
+}
+#top_date{
+	border : 1px dotted gray;
+	width: 12%;
+	height: 100%;
+	float: left;
+}
+#top_time{
+	border : 1px dotted gray;
+	width: 30%; /* 여유 14%남음 */
+	height: 100%;
+	float: left;
+}
+.div_bottom{
+	padding: 0% 15% 0% 18%;
+	border: 1px solid red;
+	height: 125px;
+}
+#bottom_photo_title{
+	border : 1px dotted red;
+	width: 19%;
+	height: 100%;
+	float: left;
+}
+#bottom_pack{
+	border : 1px dotted red;
+	width: 19%;
+	height: 100%;
+	float: left;
+}
+#bottom_seat{
+	border : 1px dotted red;
+	width: 19%;
+	height: 100%;
+	float: left;
+}
+#bottom_pay{
+	border : 1px dotted red;
+	width: 19%;
+	height: 100%;
+	float: left;
+}
+#bottom_seat_choice{
+	border : 1px dotted red;
+	width: 19%;
+	height: 100%;
+	float: left;
+}

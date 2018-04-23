@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/header/header.css" />
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js?v=1"></script>
+<link rel="stylesheet" href="../../css/header/header.css" />
+<script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
 <script type="text/javascript">
 	$(function() {
 		// 모든 서브 메뉴 숨기기
@@ -27,14 +27,14 @@
 	<div>
 		<div id="left_div1" >
 			<a href="#">
-			<img alt="" src="../image/header/header_cgv.png"
+			<img alt="" src="../../image/header/header_cgv.png"
 				width="30px" height="30px">CGV APP </a>| <a href="#"><img
-				alt="" src="../image/header/header_face.png" width="20px" height="20px">
+				alt="" src="../../image/header/header_face.png" width="20px" height="20px">
 				Face
 				</a>
 				 | 
 				 <a href="#">
-				 <img alt="" src="../image/header/header_insta.png"
+				 <img alt="" src="../../image/header/header_insta.png"
 				width="20px" height="20px">
 				 Insta
 				 </a>

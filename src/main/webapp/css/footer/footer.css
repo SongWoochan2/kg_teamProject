@@ -22,13 +22,13 @@ p{
 	margin: 10px;
 }
 
-#test1{
+#footer_bottom{
 	margin-top:10px;
 	width:90%;
 	float: left;
 	font-size: 9px;
 }
-#test2{
+#footer_img{
 	width:10%;
 	float: left;
 }

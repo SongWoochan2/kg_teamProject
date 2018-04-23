@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 </style>
 </head>
 <body>
-	<jsp:include page="../member/header.jsp"></jsp:include>
+	<jsp:include page="../main/main/header.jsp"></jsp:include>
 		<div id="#mypageBody">
 			<div id="my-info-wrap">
 				<div class="profile">
@@ -102,6 +102,6 @@ pageEncoding="UTF-8"%>
 				</div>
 			</div>
 		</div>
-	<jsp:include page="../member/footer.jsp"></jsp:include>
+	<jsp:include page="../main/main/footer.jsp"></jsp:include>
 </body>
 </html>
