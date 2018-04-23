@@ -20,7 +20,6 @@ public class NoticeItemDAO {
 	}
 	
 	public int noticeItemModify(NoticeItemDTO noticeItemDTO) {
-		System.out.println(noticeItemDTO.getAdmin_id());
 		return sqlSession.update("mybatis.noticeItem.noticeItemModify", noticeItemDTO);
 	}
 	

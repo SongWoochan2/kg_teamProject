@@ -4,7 +4,6 @@ public class ShowPlaceVO {
 	private int show_place_code;
 	private int theater_code;
 	private String show_place_name;
-	private int seat_num;
 	private int default_cost;
 	private String show_place_photo_addr;
 	public int getShow_place_code() {
@@ -24,12 +23,6 @@ public class ShowPlaceVO {
 	}
 	public void setShow_place_name(String show_place_name) {
 		this.show_place_name = show_place_name;
-	}
-	public int getSeat_num() {
-		return seat_num;
-	}
-	public void setSeat_num(int seat_num) {
-		this.seat_num = seat_num;
 	}
 	public int getDefault_cost() {
 		return default_cost;

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.memberMapper">
+
+	<insert id="memberWrite" parameterType="memberDTO">
+		insert into member values
+		(#{member_id},#{member_name},null,#{member_pwd},to_date(#{member_birth},'YYYY-MM-DD'),
+		#{member_email},#{member_agency},#{member_phone},1000,sysdate,'C',#{member_gender},null)
+	</insert>
+	
+	<update id="memberModify" parameterType="memberDTO">
+		update member set 
+		member_pwd=#{member_pwd},member_birth=to_date(#{member_birth},'YYYY-MM-DD'),
+		member_email=#{member_email},member_agency=#{member_agency},member_phone=#{member_phone},
+		member_gender=#{member_gender} 
+		where member_id=#{member_id}
+	</update>
+
+	<select id="memberLogin" parameterType="java.util.Map" resultType="String">
+		select * from member where member_id=#{member_id} and member_pwd=#{member_pwd}
+	</select>
+
+	<select id="isExistMemberId" parameterType="String" resultType="String">
+		select * from member where member_id=#{member_id}
+	</select>
+
+	<select id="memberView" parameterType="String" resultType="memberDTO">
+		select member_id,member_name,to_char(member_birth,'YYYY-MM-DD') as member_birth,
+		member_email,member_agency,member_phone,member_gender
+		from member where member_id=#{member_id}
+	</select>
+
+	<delete id="memberDelete" parameterType="String">
+		delete from member where member_id=#{member_id}
+	</delete>
+	
+<!-- 	<select id="getSomething" parameterType="int" resultType="#package.#modelname">
+		SELECT
+		columnname1,
+		columnname2,
+		columnname3
+		FROM tablename1
+		WHERE columnname1 = #{value}
+	</select>
+
+	<resultMap type="#modelname" id="YourResultSet">
+		<id property="param1" column="columnname1" />
+		<result property="param2" column="columnname2" />
+		<result property="param3" column="columnname3" />
+	</resultMap>
+
+	<select id="getAll" resultMap="YourResultSet">
+		SELECT * FROM tablename1
+	</select>
+
+	<insert id="insertSomething" parameterType="#modelname">
+		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
+		VALUES(#{value1},#{value2},#{value3})
+	</insert>
+
+	<update id="updateSomething" parameterType="#modelname">
+		UPDATE tablename1
+		SET
+		columnname1=#{param1}
+		WHERE
+		columnname2 = #{param2}
+	</update>
+
+	<delete id="deleteSomething" parameterType="int">
+		DELETE FROM tablename1 WHERE
+		columnname1 = #{param1}
+	</delete> -->
+
+</mapper>

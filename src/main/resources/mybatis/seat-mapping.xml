@@ -8,14 +8,32 @@
 	<select id="totalSeat" parameterType="int" resultType="int">
 		SELECT count(*) 
 		FROM seat
-		WHERE show_place_code = #{show_place_code} and seat_type_code != 0
+		WHERE show_place_code = #{show_place_code} and seat_type_code != 0 and y_index != '!'
 	</select>
 
-	<insert id="insertSeat" parameterType="showPlaceVO">
+	<insert id="insertSeat" parameterType="seatVO">
 		INSERT INTO seat 
 		(show_place_code, seat_type_code, x_index, y_index)
 		VALUES
-		(show_place_seq.currval,#{seat_type_code},#{x_index},#{y_index})
+		(#{show_place_code},#{seat_type_code},#{x_index},#{y_index})
 	</insert>
+	
+	<delete id="deleteSeat" parameterType="int">
+		DELETE FROM seat WHERE
+		show_place_code = #{show_place_code}
+	</delete>
+	
+	<select id="seatList" parameterType="int" resultType="seatVO">
+		SELECT * 
+		FROM seat
+		WHERE show_place_code = #{show_place_code}
+		ORDER BY x_index ASC
+	</select>
+	
+	<select id="seatSize" parameterType="int" resultType="showPlace.bean.SeatSize">
+		select  max(x_size) as x_size, count(*) as y_size
+		from (select max(x_index) as x_size, y_index
+		      from seat where show_place_code = #{show_place_code} and y_index != '!' group by y_index)
+	</select>
 
 </mapper>

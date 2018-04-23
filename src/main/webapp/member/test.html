@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/theater/commons.css" />
+<link rel="stylesheet" href="../css/theater/unit.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js?v=1"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad3142c660a77d28b590ef79689d4549"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+<link href="themes/1/js-image-slider.css" rel="stylesheet"
+	type="text/css" />
+<script src="themes/1/js-image-slider.js" type="text/javascript"></script>
+<link href="../css/theater/generic.css" rel="stylesheet" type="text/css" />
+<!-- <script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script> -->
+<script type="text/javascript">
+$(function() {
+	// 링크가 클릭된 경우
+	$(".tt").click(function() {
+		var index = $(this).index();
+		alert(index + "1");
+		var image = ['../image/theater/CGVgangbyeon.jpg', '../image/theater/CGVgangnam.jpg', 
+			'../image/theater/CGVmyeongdong.jpg'];
+		// 클릭된 링크의 조상들 중에서 <div> 태그를 검색하여 CSS 배경이미지 설정
+		$(this).parents("div").css({
+			"background-image" : "url('" + image[index] + "')"
+		});
+
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+   <div id="wrapper">
+   <ul>
+   		<li class="tt" id="1">1번칸</li>
+   		<li class="tt" id="2">2번칸</li>
+   		<li class="tt" id="3">3번칸</li>
+   </ul>
+   </div>
+</body>
+</html>

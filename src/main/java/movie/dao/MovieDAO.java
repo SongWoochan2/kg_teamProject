@@ -30,4 +30,14 @@ public class MovieDAO {
 		map.put("endNum", endNum);
 		return sqlSession.selectList("movieMapper.movieList", map);
 	}
+	public MovieDTO movieView(int movie_code) {
+		return (MovieDTO) sqlSession.selectOne("movieMapper.movieView", movie_code);
+	}
+	
+	public int movieDelete(int movie_code) {
+		return sqlSession.delete("movieMapper.movieDelete", movie_code);
+	}
+	public int movieModify(MovieDTO movieDTO) {
+		return sqlSession.update("movieMapper.movieModify", movieDTO);
+	}
 }
