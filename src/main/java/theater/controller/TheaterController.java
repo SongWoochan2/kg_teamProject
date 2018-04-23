@@ -116,7 +116,7 @@ public class TheaterController {
 	}
 
 	@RequestMapping(value="/theater.main/theaterView.do")
-	public ModelAndView theaterView(HttpServletRequest request) {
+	public ModelAndView supertheaterView(HttpServletRequest request) {
 		System.out.println("글 상세보기");
 		// 1. 사용자 입력 정보 추출
 		int theater_code = Integer.parseInt(request.getParameter("theater_code"));

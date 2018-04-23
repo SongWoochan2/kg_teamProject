@@ -43,16 +43,8 @@
     <context:component-scan base-package="inquiry.controller"/>
     
 	<!-- advice : 횡단(공통)관심사항  -->
-	<bean id="loginCheckAdvice" class="advice.loginCheck.LoginCheckAdvice"/>
-<!-- 	
-	<aop:config>
-		횡단(공통)관심사항이 설정된 advice를 등록한다.
-		<aop:aspect ref="loginCheckAdvice">
-			method : 만든 함수명
-			<aop:before method="before" pointcut="execution(* super*(..))"/>
-		</aop:aspect>
-	</aop:config>
-	 -->
+	<bean id="loginCheckAdvice" class="advice.log.Logging"/>
+
 	<aop:config>
 		<!-- 횡단(공통)관심사항이 설정된 advice를 등록한다. -->
 		<aop:aspect id="logAspect" ref="loginCheckAdvice">

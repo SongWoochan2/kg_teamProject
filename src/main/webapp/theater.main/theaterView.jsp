@@ -10,7 +10,6 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			var theater_code = ${theaterDTO.theater_code }
 			$.ajax({
 				url : "/MyCGV/showPlaceList.do",
 				type : "get",
