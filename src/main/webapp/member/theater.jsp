@@ -102,8 +102,13 @@ $(function(){
 	});
 });
 </script>
+<style type="text/css">
+#test{
+	background-color: white;
+}
+</style>
 </head>
-<body>
+<body id="test">
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="div_border">
 		<img alt="" src="../image/theater/frequent_top.png">
