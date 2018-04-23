@@ -141,11 +141,19 @@ public class MemberController {
 		System.out.println("회원정보 상세보기");
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("memId");
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO = memberService.memberView(member_id);
+		String member_pwd = request.getParameter("member_pwd");
+		String confirm_name = memberService.memberLogin(member_id, member_pwd);	
+
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("memberDTO", memberDTO);
-		modelAndView.setViewName("memberModifyForm.jsp");
+		modelAndView.addObject("confirm_name", confirm_name); // 비번확인 실패시에도 사용하려고
+		if(confirm_name==null) {		
+			modelAndView.setViewName("confirmMemberPwd.jsp");
+		} else {	
+			MemberDTO memberDTO = new MemberDTO();
+			memberDTO = memberService.memberView(member_id);
+			modelAndView.addObject("memberDTO", memberDTO);
+			modelAndView.setViewName("memberModifyForm.jsp");
+		}
 		return modelAndView;
 	}
 	
@@ -218,11 +226,17 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/confirmMemberPwd.do")
-	public ModelAndView confirmMemberPwd(HttpServletRequest request) {
+	@RequestMapping(value="/member/confirmPwdModify.do")
+	public ModelAndView confirmPwdModify(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("confirmMemberPwd.jsp");
+		modelAndView.setViewName("confirmPwdModify.jsp");
 		return modelAndView;
 	}
-		
+
+	@RequestMapping(value="/member/confirmPwdDelete.do")
+	public ModelAndView confirmPwdDelete(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("confirmPwdDelete.jsp");
+		return modelAndView;
+	}
 }

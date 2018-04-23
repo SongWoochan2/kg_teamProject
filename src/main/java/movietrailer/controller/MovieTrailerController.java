@@ -77,15 +77,11 @@ public class MovieTrailerController {
 		
 		int result = movieTrailerService.movieTrailerInsert(movieTrailerDTO);
 		ModelAndView modelAndView = new ModelAndView();
-		if(result == 0) {
-			System.out.println("입력 실패");
-		}else if(result == 1) {
-			System.out.println("입력 성공");
-		}
 		
+		modelAndView.addObject("result", result);
 		modelAndView.addObject("pg", page);
 		modelAndView.addObject("movie_code", movie_code);
-		modelAndView.setViewName("movieTrailer.do");
+		modelAndView.setViewName("movieTrailerInsert.jsp");
 		return modelAndView;
 	}
 	
@@ -96,16 +92,11 @@ public class MovieTrailerController {
 		int movie_trailer_code = Integer.parseInt(request.getParameter("movie_trailer_code"));
 		int result = movieTrailerService.movieTrailerDelete(movie_trailer_code);
 		
-		if(result == 0) {
-			System.out.println("삭제 실패");
-		}else if(result == 1) {
-			System.out.println("삭제 성공");
-		}
-		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
 		modelAndView.addObject("pg", page);
 		modelAndView.addObject("movie_code", movie_code);
-		modelAndView.setViewName("movieTrailer.do");
+		modelAndView.setViewName("movieTrailerDelete.jsp");
 		return modelAndView;
 	}
 }

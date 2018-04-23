@@ -9,21 +9,21 @@
 <script>
 	$(function(){
 		function adminlogin(){
+			alert("ㅎㅇ");
 		}
 		
 	});
-
 </script>
 <style type="text/css">
 	#contain{
 		width : 1000px;
 		margin : auto;
+		border : 1px solid red;
 	}
 	.*{
 		margin : 0;
 		padding : 0;
 	}
-
 
 	div{
 	}
@@ -112,11 +112,9 @@
 		clear: both;
 	}
 	
-	
-	
-	
-	
-	
+	/*
+		
+	*/
 	
 	div#content{
 		padding-top : 50px;
@@ -209,6 +207,7 @@
 		color: #071428;
 	}
 </style>
+
 	<div id = "container">
 		<div id = "topnevi">
 		<c:if test="${sessionScope.admin_id == null }">
@@ -216,7 +215,7 @@
 		</c:if>
 		<c:if test="${sessionScope.admin_id != null }">
 			<a>${sessionScope.admin_id} 관리자님 </a><a> | </a>
-			<a href = "../adminMain/adminLogout.do">로그아웃</a><a> | </a><a href = "#">관리자정보수정</a><a> | </a><a href = "#">관리자등록관리</a>
+			<a href = "../adminMain/adminLogout.do">로그아웃</a><a> | </a><a href = "../adminMain/adminPwdChangeForm.do">비밀번호수정</a><a> | </a><a href = "../adminMain/adminRequestList.do?pg=1">관리자등록관리</a>
 		</c:if>
 		</div>
 		<div id = "logo">

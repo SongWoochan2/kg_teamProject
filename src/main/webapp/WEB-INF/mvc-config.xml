@@ -31,6 +31,7 @@
 	
 	<!-- 빛나 -->
 	<context:component-scan base-package="member.controller"/>
+	<context:component-scan base-package="mypage.controller"/>
 	
 	<!-- 진환 -->
     <context:component-scan base-package="qna.controller"/>

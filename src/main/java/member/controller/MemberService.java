@@ -15,4 +15,6 @@ public interface MemberService {
 	public int memberModify(MemberDTO memberDTO);
 	// 회원 탈퇴
 	public int memberDelete(String member_id);
+	// 마이페이지 정보 불러오기
+	public MemberDTO memberInfo(String member_id);
 }
