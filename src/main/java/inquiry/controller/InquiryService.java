@@ -13,7 +13,6 @@ public class InquiryService {
 	private InquiryDAO inquiryDAO;
 	
 	public int inquiryWrite(InquiryDTO inquiryDTO) {
-		System.out.println("inquiry_type :"+inquiryDTO.getInquiry_type());
 		return inquiryDAO.inquiryWrite(inquiryDTO);
 	}
 	

@@ -21,9 +21,9 @@
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/inquiry-mapping.xml" />
-		<mapper resource="mybatis/noticeItem-mapping.xml" />
-		<mapper resource="mybatis/qna-mapping.xml" />
+		<mapper resource="mybatis/inquiry-mapping.xml"/>
+		<mapper resource="mybatis/noticeItem-mapping.xml"/>
+		<mapper resource="mybatis/qna-mapping.xml"/>
 		<mapper resource="mybatis/admin-mapping.xml"/>
 		<mapper resource="mybatis/movie-mapping.xml"/>
 		<mapper resource="mybatis/moviephoto-mapping.xml"/>
@@ -36,5 +36,6 @@
 		<mapper resource="mybatis/productboard-mapping.xml" />
 		<mapper resource="mybatis/member-mapping.xml" />
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
+
 	</mappers>
 </configuration>

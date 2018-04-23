@@ -4,3 +4,4 @@ target/classes/spring/resource.properties
 src/main/resources/spring/resource.properties
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/org.springframework.samples.service.service/MyCGV/pom.properties
+/.metadata/

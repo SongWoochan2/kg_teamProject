@@ -19,12 +19,12 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
-	@RequestMapping(value="/qna/qnaWriteForm.do")
+	@RequestMapping(value="/admin/qna/qnaWriteForm.do")
 	public String qnaWriteForm() { 
 		return "qnaWriteForm.jsp";
 	}
 	
-	@RequestMapping(value="/qna/qnaWrite.do")
+	@RequestMapping(value="/admin/qna/qnaWrite.do")
 	public ModelAndView qnaWrite(HttpServletRequest request) throws UnsupportedEncodingException { 
 		// 데이터
 		request.setCharacterEncoding("utf-8");
@@ -50,7 +50,7 @@ public class QnaController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/qna/qnaList.do")
+	@RequestMapping(value="/admin/qna/qnaList.do")
 	public ModelAndView qnaList(HttpServletRequest request) {
 
 		int pg = Integer.parseInt( request.getParameter("pg") );
@@ -75,7 +75,7 @@ public class QnaController {
 	}
 	
 	
-	@RequestMapping(value="/qna/qnaView.do")
+	@RequestMapping(value="/admin/qna/qnaView.do")
 	public ModelAndView qnaView(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
@@ -90,7 +90,7 @@ public class QnaController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/qna/qnaModifyForm.do")
+	@RequestMapping(value="/admin/qna/qnaModifyForm.do")
 	public ModelAndView qnaModifyForm(HttpServletRequest request) {
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		
@@ -105,7 +105,7 @@ public class QnaController {
 	}
 	
 
-	@RequestMapping(value="/qna/qnaModify.do")
+	@RequestMapping(value="/admin/qna/qnaModify.do")
 	public ModelAndView qnaModify(HttpServletRequest request) throws UnsupportedEncodingException {
 		// 데이터
 		request.setCharacterEncoding("utf-8");
@@ -128,7 +128,7 @@ public class QnaController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/qna/qnaDelete.do")
+	@RequestMapping(value="/admin/qna/qnaDelete.do")
 	public ModelAndView qnaDelete(HttpServletRequest request) { 
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		int su = qnaService.qnaDelete(qna_code);
