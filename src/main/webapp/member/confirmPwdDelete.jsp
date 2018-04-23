@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 확인</title>
+<title>비밀번호 확인 - 회원탈퇴</title>
 <script type="text/javascript" src="../script/memberScript.js?v=1"></script>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">

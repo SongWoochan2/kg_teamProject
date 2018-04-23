@@ -19,6 +19,7 @@
 		<a href="./member/memberLoginForm.do">로그인</a><br>
 </c:if>
 <c:if test="${ sessionScope.memId != null }">
+		<a href="./mypage/mypageHome.do">My MoveIt</a><br>
 		<a href="./member/memberLogout.do">로그아웃</a><br>
 		<a href="./member/memberView.do">회원정보수정</a><br>
 		<a href="./member/confirmMemberPwd.do">회원탈퇴</a><br>
