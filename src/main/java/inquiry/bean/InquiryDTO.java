@@ -4,7 +4,6 @@ public class InquiryDTO {
 	private int inquiry_code;
 	private String inquiry_id;
 	private String inquiry_type;
-	private	String inquiry_theater;
 	private String inquiry_title;
 	private String inquiry_content;
 	private String inquiry_file;
@@ -28,12 +27,6 @@ public class InquiryDTO {
 	}
 	public void setInquiry_type(String inquiry_type) {
 		this.inquiry_type = inquiry_type;
-	}
-	public String getInquiry_theater() {
-		return inquiry_theater;
-	}
-	public void setInquiry_theater(String inquiry_theater) {
-		this.inquiry_theater = inquiry_theater;
 	}
 	public String getInquiry_title() {
 		return inquiry_title;
