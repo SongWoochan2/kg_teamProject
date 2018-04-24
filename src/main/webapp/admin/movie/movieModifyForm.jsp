@@ -5,6 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function maxLengthCheck(object){
+	if (object.value.length > object.maxLength){
+	object.value = object.value.slice(0, object.maxLength);
+ 	}
+}
+</script>
 <style type="text/css">
 thead {
 	background-color: lightgray;
@@ -45,11 +52,11 @@ tbody {
 									required="required"></textarea></td>
 						</tr>
 						<tr>
-							<td><input type="text" placeholder="제작국가" name="make_nation"></td>
-							<td><input type="text" placeholder="영화감독"
-								name="movie_director"></td>
-							<td><input type="number" placeholder="영화재생시간"
-								name="movie_recycle_time"></td>
+							<td><input type="text" placeholder="제작국가" maxlength="15" name="make_nation"></td>
+							<td><input type="text" placeholder="영화감독" maxlength="15"
+								name="movie_director" required="required"></td>
+							<td><input type="number" placeholder="영화재생시간" maxlength="3"
+								name="movie_recycle_time" required="required" oninput = "maxLengthCheck(this);"></td>
 						</tr>
 						<tr>
 							<td><select name="movie_show_grade_name">
@@ -78,7 +85,7 @@ tbody {
 									<option value="sport">스포츠
 									<option value="Documentary">다큐
 							</select></td>
-							<td><input type="date" name="movie_open_date"></td>
+							<td><input type="date" name="movie_open_date" required="required"></td>
 						</tr>
 						<tr>
 							<td colspan="3"><textarea class="form-control"
