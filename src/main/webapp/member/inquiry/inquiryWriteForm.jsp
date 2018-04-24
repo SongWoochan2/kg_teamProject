@@ -82,17 +82,22 @@ pageEncoding="UTF-8"%>
 							<table cellspacing="0" cellpadding="0" border="1">
 								<tbody>
 									<tr>
+										<th>임시 아이디</th>
+										<td colspan="3"><input type="text"name="inquiry_id" value="jin">
+										</td>
+									</tr>
+									<tr>
 										<th>이름</th>
-										<td colspan="3"><strong>김진환</strong></td>
+										<td colspan="3"><strong>${member_name }</strong></td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><strong>01094891081</strong></td>
+										<td colspan="3"><strong>${member_phone }</strong></td>
 										<!-- 전화번호 받고 보내기 -->
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><strong>jina@naver.com</strong></td>
+										<td colspan="3"><strong>${member_email }</strong></td>
 										<!-- 전화번호 받고 보내기 -->
 									</tr>
 									<tr id="check_info">
@@ -108,22 +113,6 @@ pageEncoding="UTF-8"%>
 											<input type="radio" name="inquiry_type" value="불만"><label>불만</label>
 											<input type="radio" name="inquiry_type" value="칭찬"><label>칭찬</label>
 											<input type="radio" name="inquiry_type" value="제안"><label>제안</label>
-										</td>
-									</tr>
-									<tr>
-										<th>영화관 선택</th>
-										<td colspan="3">
-											<!-- <input type="radio" name="theater_sel" checked="checked" value="0">
-											<label>선택하지 않음</label>
-											<input type="radio" name="theater_sel" value="1">
-											<label>선택함</label> -->
-											
-											 <select name="inquiry_theater">
-												<option value="">극장 선택</option>
-												<option value="종로">종로</option>
-												<option value="안산">안산</option>
-												<option value="인천">인천</option>
-											</select>
 										</td>
 									</tr>
 									<tr>

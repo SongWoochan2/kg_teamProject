@@ -8,17 +8,17 @@ pageEncoding="UTF-8"%>
 	<title>Insert title here</title>
 	<script type="text/javascript">
 		window.onload = function(){
-			alert("작성하신 글을 수정하였습니다.");
-			location.href = "noticeItemList.do?pg=1";
+			alert("문의에 답변 하였습니다.");
+			location.href = "inquiryList.do?pg=1";
 		}
 	</script>
 </head>
 <body>
-	<c:if test="${su > 0 }">
+	<%-- <c:if test="${su > 0 }">
 		작성한 글을 저장하였습니다.
 	</c:if>
 	<c:if test="${su <= 0 }">
 		작성한 글을 저장하지 못했습니다.
-	</c:if>
+	</c:if> --%>
 </body>
 </html>

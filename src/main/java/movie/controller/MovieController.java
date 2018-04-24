@@ -81,7 +81,9 @@ public class MovieController {
 		movieDTO.setMovie_director(request.getParameter("movie_director"));
 		movieDTO.setMovie_recycle_time(Integer.parseInt(request.getParameter("movie_recycle_time")));
 		movieDTO.setMovie_show_grade_name(request.getParameter("movie_show_grade_name"));
-		movieDTO.setMovie_type(request.getParameter("movie_type"));
+		movieDTO.setMovie_type1(request.getParameter("movie_type1"));
+		movieDTO.setMovie_type2(request.getParameter("movie_type2"));
+		movieDTO.setMovie_type3(request.getParameter("movie_type3"));
 		movieDTO.setMovie_open_date(request.getParameter("movie_open_date"));
 		movieDTO.setAppear_actor(request.getParameter("appear_actor"));
 		int result = movieService.movieInsert(movieDTO);
@@ -146,7 +148,9 @@ public class MovieController {
 		System.out.println("movie_recycle_time "+Integer.parseInt(request.getParameter("movie_recycle_time")));		
 		movieDTO.setMovie_show_grade_name(request.getParameter("movie_show_grade_name"));
 		System.out.println("movie_show_grade_name "+request.getParameter("movie_show_grade_name"));		
-		movieDTO.setMovie_type(request.getParameter("movie_type"));
+		movieDTO.setMovie_type1(request.getParameter("movie_type1"));
+		movieDTO.setMovie_type2(request.getParameter("movie_type2"));
+		movieDTO.setMovie_type3(request.getParameter("movie_type3"));
 		System.out.println("movie_type " + request.getParameter("movie_type"));
 		movieDTO.setMovie_open_date(request.getParameter("movie_open_date"));
 		System.out.println("movie_open_date "+request.getParameter("movie_open_date"));

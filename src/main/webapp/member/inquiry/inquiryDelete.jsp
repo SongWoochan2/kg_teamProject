@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 		<script type="text/javascript">
 			window.onload = function(){
 				alert("삭제 성공");
-				location.href="noticeItemList.do?pg=1";
+				location.href="inquiryList.do?pg=1";
 			}
 		</script>
 	</c:if>
