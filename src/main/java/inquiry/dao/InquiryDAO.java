@@ -1,5 +1,9 @@
 package inquiry.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,7 +20,7 @@ public class InquiryDAO {
 		return sqlSession.insert("mybatis.inquiry.inquiryWrite", inquiryDTO);
 	}
 	
-	/*public int inquiryModify(InquiryDTO inquiryDTO) {
+	public int inquiryModify(InquiryDTO inquiryDTO) {
 		return sqlSession.update("mybatis.inquiry.inquiryModify", inquiryDTO);
 	}
 	
@@ -31,9 +35,6 @@ public class InquiryDAO {
 		return sqlSession.selectOne("mybatis.inquiry.inquiryView", code);
 	}
 	
-	public int updateHit(int code) {
-		return sqlSession.update("mybatis.inquiry.inquiryList", code);
-	}
 	
 	public int getTotalA() {
 		return sqlSession.selectOne("mybatis.inquiry.totalA");
@@ -41,5 +42,5 @@ public class InquiryDAO {
 	
 	public int inquiryDelete(int seq) {
 		return sqlSession.delete("mybatis.inquiry.inquiryDelete", seq);
-	}*/
+	}
 }

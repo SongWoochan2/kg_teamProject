@@ -1,5 +1,7 @@
 package inquiry.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ public class InquiryService {
 		return inquiryDAO.inquiryWrite(inquiryDTO);
 	}
 	
-	/*public int inquiryModify(InquiryDTO inquiryDTO) {
+	public int inquiryModify(InquiryDTO inquiryDTO) {
 		return inquiryDAO.inquiryModify(inquiryDTO);
 	}
 	
@@ -24,20 +26,16 @@ public class InquiryService {
 		return inquiryDAO.inquiryList(startNum, endNum);
 	}
 	
-	public InquiryDTO inquiryView(int seq) {
-		return inquiryDAO.inquiryView(seq);
-	}
-	
-	public int updateHit(int seq) {
-		return inquiryDAO.updateHit(seq);
+	public InquiryDTO inquiryView(int inquiry_code) {
+		return inquiryDAO.inquiryView(inquiry_code);
 	}
 	
 	public int getTotalA() {
 		return inquiryDAO.getTotalA();
 	}
 	
-	public int inquiryDelete(int seq) {
-		return inquiryDAO.inquiryDelete(seq);
-	}*/
+	public int inquiryDelete(int inquiry_code) {
+		return inquiryDAO.inquiryDelete(inquiry_code);
+	}
 
 }
