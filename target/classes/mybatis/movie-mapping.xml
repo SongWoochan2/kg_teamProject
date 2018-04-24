@@ -6,12 +6,12 @@
 
 	<insert id="movieInsert" parameterType="movieDTO">
 		INSERT INTO movie
-		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade_name},#{movie_type},
+		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade_name},#{movie_type1},#{movie_type2},#{movie_type3},
 		#{movie_director},0,0,#{appear_actor},0,0)
 	</insert>
 	<update id="movieModify" parameterType="movieDTO">
 		update movie set movie_name=#{movie_name}, movie_content=#{movie_content}, make_nation=#{make_nation},movie_director=#{movie_director},movie_open_date=#{movie_open_date},
-		movie_recycle_time=#{movie_recycle_time},movie_show_grade_name=#{movie_show_grade_name},movie_type=#{movie_type},appear_actor=#{appear_actor}
+		movie_recycle_time=#{movie_recycle_time},movie_show_grade_name=#{movie_show_grade_name},movie_type1=#{movie_type1},movie_type2=#{movie_type2},movie_type3=#{movie_type3},appear_actor=#{appear_actor}
 		 where movie_code = #{movie_code}
 	</update>
 	<select id="getTotalA" resultType="int">

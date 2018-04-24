@@ -233,13 +233,13 @@
 						<input type = "checkbox" name = "movie_type" value = "전체"> 전체&emsp;
 						<input type = "checkbox" name = "movie_type" > SF&emsp;
 						<input type = "checkbox" name = "movie_type" > 스릴러&emsp;
-						<input type = "checkbox" name = "movie_type" > 공포/호러&emsp;
+						<input type = "checkbox" name = "movie_type" > 호러&emsp;
 						<input type = "checkbox" name = "movie_type" > 액션&emsp;
 						<input type = "checkbox" name = "movie_type" > 범죄&emsp;
 						<input type = "checkbox" name = "movie_type" > 느와르&emsp;
 						<input type = "checkbox" name = "movie_type" > 드라마&emsp;<br>
 						<input type = "checkbox" name = "movie_type" > 에로&emsp;
-						<input type = "checkbox" name = "movie_type" > 멜로/로맨스&emsp;
+						<input type = "checkbox" name = "movie_type" > 멜로&emsp;
 						<input type = "checkbox" name = "movie_type" > 코미디&emsp;
 						<input type = "checkbox" name = "movie_type" > 가족&emsp;
 						<input type = "checkbox" name = "movie_type" > 판타지&emsp;

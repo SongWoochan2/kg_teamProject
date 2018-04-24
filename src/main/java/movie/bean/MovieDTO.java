@@ -8,7 +8,9 @@ public class MovieDTO {
 	private String movie_open_date;
 	private int movie_recycle_time;
 	private String movie_show_grade_name;
-	private String movie_type;
+	private String movie_type1;
+	private String movie_type2;
+	private String movie_type3;
 	private String movie_director;
 	private int movie_evaluat_num;
 	private int acc_evaluat_score;
@@ -58,11 +60,24 @@ public class MovieDTO {
 	public void setMovie_show_grade_name(String movie_show_grade_name) {
 		this.movie_show_grade_name = movie_show_grade_name;
 	}
-	public String getMovie_type() {
-		return movie_type;
+	
+	public String getMovie_type1() {
+		return movie_type1;
 	}
-	public void setMovie_type(String movie_type) {
-		this.movie_type = movie_type;
+	public void setMovie_type1(String movie_type1) {
+		this.movie_type1 = movie_type1;
+	}
+	public String getMovie_type2() {
+		return movie_type2;
+	}
+	public void setMovie_type2(String movie_type2) {
+		this.movie_type2 = movie_type2;
+	}
+	public String getMovie_type3() {
+		return movie_type3;
+	}
+	public void setMovie_type3(String movie_type3) {
+		this.movie_type3 = movie_type3;
 	}
 	public String getMovie_director() {
 		return movie_director;
