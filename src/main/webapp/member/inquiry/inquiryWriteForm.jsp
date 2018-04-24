@@ -88,16 +88,16 @@ pageEncoding="UTF-8"%>
 									</tr>
 									<tr>
 										<th>이름</th>
-										<td colspan="3"><strong>김진환</strong></td>
+										<td colspan="3"><strong>${member_name }</strong></td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><strong>01094891081</strong></td>
+										<td colspan="3"><strong>${member_phone }</strong></td>
 										<!-- 전화번호 받고 보내기 -->
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><strong>jina@naver.com</strong></td>
+										<td colspan="3"><strong>${member_email }</strong></td>
 										<!-- 전화번호 받고 보내기 -->
 									</tr>
 									<tr id="check_info">

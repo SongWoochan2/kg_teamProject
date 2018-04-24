@@ -80,6 +80,9 @@
 /* 		background: linear-gradient(135deg, #b3dced 0%,#18458e 40%,#bce0ee 100%);  */
 		background: linear-gradient(to bottom, #f4ac5a 0%,#cc791c 50%,#7a450b 51%,#f4ac5a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	}
+	div#container #nevi ul.menu li#a{
+		width : 60%;
+	}
 	div#container #nevi ul.menu li .sub{
 		display: none;
 	}
@@ -238,9 +241,8 @@
 						<li><a href = "#">스토어관리</a></li>
 					</ul>
 				</li>
-				<li>
-				<li>	
-				<li>			
+				<li id = "a">
+						
 			</ul>
 		</div>
 	</div>

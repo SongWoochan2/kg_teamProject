@@ -65,16 +65,20 @@ tbody {
 									<option value="18years">청소년 이용불가
 									<option value="limitedrelease">제한 상영가
 							</select></td>
-							<td><select name="movie_type">
+							
+							<td colspan="2"><input type="date" name="movie_open_date" required="required"></td>
+						</tr>
+						<tr>
+							<td><select name="movie_type1">
 									<option value="SF">SF
 									<option value="thriller">스릴러
-									<option value="horror">공포/호러
+									<option value="horror">호러
 									<option value="action">액션
 									<option value="crime">범죄
 									<option value="noir">느와르
 									<option value="drama">드라마
 									<option value="erotic">에로
-									<option value="melo">멜로/로맨스
+									<option value="melo">멜로
 									<option value="comic">코미디
 									<option value="family">가족
 									<option value="fantasy">판타지
@@ -82,7 +86,42 @@ tbody {
 									<option value="sport">스포츠
 									<option value="Documentary">다큐
 							</select></td>
-							<td><input type="date" name="movie_open_date" required="required"></td>
+							<td><select name="movie_type2">
+									<option value="">--장르2--
+									<option value="SF">SF
+									<option value="thriller">스릴러
+									<option value="horror">호러
+									<option value="action">액션
+									<option value="crime">범죄
+									<option value="noir">느와르
+									<option value="drama">드라마
+									<option value="erotic">에로
+									<option value="melo">멜로
+									<option value="comic">코미디
+									<option value="family">가족
+									<option value="fantasy">판타지
+									<option value="war">전쟁
+									<option value="sport">스포츠
+									<option value="Documentary">다큐
+							</select></td>
+							<td><select name="movie_type3">
+									<option value="">--장르3--
+									<option value="SF">SF
+									<option value="thriller">스릴러
+									<option value="horror">호러
+									<option value="action">액션
+									<option value="crime">범죄
+									<option value="noir">느와르
+									<option value="drama">드라마
+									<option value="erotic">에로
+									<option value="melo">멜로
+									<option value="comic">코미디
+									<option value="family">가족
+									<option value="fantasy">판타지
+									<option value="war">전쟁
+									<option value="sport">스포츠
+									<option value="Documentary">다큐
+							</select></td>
 						</tr>
 						<tr>
 							<td colspan="3"><textarea class="form-control"
