@@ -12,16 +12,20 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div class="div_top">
 	<div id="top_movie">
-		영화
+		<div id="top_movie_div1">영화</div>
+		<div id="top_movie_div2">DB</div>
 	</div>
 	<div id="top_theater">
-		극장
+		<div id="top_theater_div1">극장</div>
+		<div id="top_theater_div2">DB</div>
 	</div>
 	<div id="top_date">
-		날짜
+		<div id="top_date_div1">날짜</div>
+		<div id="top_date_div2">DB</div>
 	</div>
 	<div id="top_time">
-		시간
+		<div id="top_time_div1">시간</div>
+		<div id="top_time_div2">DB</div>
 	</div>
 </div>
 
