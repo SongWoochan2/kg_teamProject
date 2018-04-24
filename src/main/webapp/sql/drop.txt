@@ -13,6 +13,10 @@
 
 -------------------------------------------------------------  (3)
 
+-- 상영현황
+drop table show_present purge;
+drop sequence show_present_seq;
+
 -- 좌석 
 drop table seat purge;
 
