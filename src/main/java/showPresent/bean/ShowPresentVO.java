@@ -7,7 +7,7 @@ public class ShowPresentVO {
 	private int show_present_code;
 	private int show_place_code;
 	private int movie_code;
-	private Date show_date;
+	private String show_date;
 	private int show_time;
 	private int show_minute;
 	
@@ -30,10 +30,10 @@ public class ShowPresentVO {
 	public void setMovie_code(int movie_code) {
 		this.movie_code = movie_code;
 	}
-	public Date getShow_date() {
+	public String getShow_date() {
 		return show_date;
 	}
-	public void setShow_date(Date show_date) {
+	public void setShow_date(String show_date) {
 		this.show_date = show_date;
 	}
 	public int getShow_time() {

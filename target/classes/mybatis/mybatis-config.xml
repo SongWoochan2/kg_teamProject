@@ -17,9 +17,10 @@
 		<typeAlias type="showPlace.bean.ShowPlaceVO" alias="showPlaceVO"></typeAlias>
 		<typeAlias type="showPlace.bean.SeatVO" alias="seatVO"></typeAlias>
 		<typeAlias type="showPresent.bean.ShowPresentVO" alias="showPresentVO"></typeAlias>
+		<typeAlias type="showPresent.bean.ShowPresentAllVO" alias="showPresentAllVO"></typeAlias>
 		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
 		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
- 		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
+ 		<!-- <typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias> -->
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
@@ -38,7 +39,7 @@
 		<mapper resource="mybatis/showPresent-mapping.xml"/>
 		<mapper resource="mybatis/productboard-mapping.xml" />
 		<mapper resource="mybatis/member-mapping.xml" />
- 		<mapper resource="mybatis/reserve-mapping.xml" />
+ 		<!-- <mapper resource="mybatis/reserve-mapping.xml" /> -->
 		
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 
