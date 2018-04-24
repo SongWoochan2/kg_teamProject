@@ -13,7 +13,9 @@
             base-package="org.springframework.samples.service"/>  -->
             
 	
-	
+	<context:component-scan base-package="inquiry"/>
+   	<context:component-scan base-package="qna"/>
+   	<context:component-scan base-package="noticeItem"/>
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="movie"/>
 	<context:component-scan base-package="moviephoto"/>
@@ -23,9 +25,11 @@
 	<context:component-scan base-package="timetype"/>
 	<context:component-scan base-package="theater"/>
 	<context:component-scan base-package="member"/>
+	<context:component-scan base-package="mypage"/>
 	<context:component-scan base-package="inquiry"/>
 	<context:component-scan base-package="qna"/>
 	<context:component-scan base-package="noticeItem"/>
+	<context:component-scan base-package="advice"/>
 	<context:property-placeholder location="classpath:spring/db.properties, 
 											classpath:spring/resource.properties"/>
 	<bean id="dataSource"
@@ -50,5 +54,4 @@
 	<bean id="resourceProvider" class="resource.provider.ResourceProvider">
 		<constructor-arg value = "${resource.path}"></constructor-arg>
 	</bean>
-	
 </beans>
