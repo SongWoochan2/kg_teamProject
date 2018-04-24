@@ -11,7 +11,7 @@
 	</select>
 	
 
-	<select id="getList" resultType="showPlaceVO">
+	<select id="getList" parameterType="int" resultType="showPlaceVO">
 		SELECT * FROM show_place
 		WHERE theater_code = #{theater_code}
 	</select>

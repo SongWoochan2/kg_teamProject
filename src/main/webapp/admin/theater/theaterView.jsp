@@ -7,10 +7,16 @@ pageEncoding="UTF-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>극장상세보기</title>
+	<style type="text/css">
+	#test{
+		width: 200px;
+		height: 200px;
+	}
+	</style>
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
+
 	<script type="text/javascript">
 		$(function(){
-			var theater_code = ${theaterDTO.theater_code }
 			$.ajax({
 				url : "/MyCGV/showPlaceList.do",
 				type : "get",
@@ -43,7 +49,7 @@ pageEncoding="UTF-8"%>
 	</tr>
 	<tr>
 		<td colspan="3" height="200">
-			<pre>극장주소 : ${theaterDTO.theater_photo_addr }</pre>
+			<img id="test" alt="" src="../../image/theater_juso/${theaterDTO.theater_photo_addr }"> 
 		</td>
 	</tr>
 </table>

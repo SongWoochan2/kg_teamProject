@@ -11,7 +11,7 @@
 </style>
 </head>
 <body>
- <img alt="" src="../image/theater/witch.png">
+ <img alt="" src="../../image/theater/witch.png">
 		<div id="map"></div>
 		<script type="text/javascript">
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -57,7 +57,7 @@
     infowindow.setPosition(iwPosition); */
 </script>
 <div>
-<img alt="" src="../image/theater/jungbo.png"><br>
+<img alt="" src="../../image/theater/jungbo.png"><br>
 		극장명 : CGV 명동점<br>
 		도로명주소 : 서울특별시 중구 명동길 14(명동)<br>
 		구주소 : 서울특별시 중구 명동2가 83-5번지 눈스퀘어 8층<br>
@@ -65,7 +65,7 @@
 		홈페이지 : www.cgv.com<br>		
 		</div><br><br>
 		
-		<img alt="" src="../image/theater/koytong.png">
+		<img alt="" src="../../image/theater/koytong.png">
 		<div>
 		<strong class="subject">버스</strong><br>
 		[광역] 9401, 9401B, 9710, M5107, M4102, M4108, M4101, 9701, 2500 <br> 

@@ -11,12 +11,12 @@
 </style>
 </head>
 <body>
- <img alt="" src="../image/theater/witch.png">
+ <img alt="" src="../../image/theater/witch.png">
 		<div id="map"></div>
 		<script type="text/javascript">
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new daum.maps.LatLng(37.535799, 127.095700), //지도의 중심좌표.
+		center: new daum.maps.LatLng(37.501670, 127.026293), //지도의 중심좌표.
 		level: 3 //지도의 레벨(확대, 축소 정도)
 	};
 	
@@ -24,7 +24,7 @@
 	
 	
 	// 마커가 표시될 위치입니다 
-	var markerPosition  = new daum.maps.LatLng(37.535799, 127.095700);
+	var markerPosition  = new daum.maps.LatLng(37.501670, 127.026293);
 
 	// 마커를 생성합니다
 	var marker = new daum.maps.Marker({
@@ -37,8 +37,8 @@
 	// 마커가 드래그 가능하도록 설정합니다 
 	marker.setDraggable(false);
 
-	var iwContent = '<div style="padding:5px;">강변CGV', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	    iwPosition = new daum.maps.LatLng(37.535799, 127.095700); //인포윈도우 표시 위치입니다
+	var iwContent = '<div style="padding:5px;">강남CGV', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	    iwPosition = new daum.maps.LatLng(37.501670, 127.026293); //인포윈도우 표시 위치입니다
 
 	// 인포윈도우를 생성합니다
 	var infowindow = new daum.maps.InfoWindow({
@@ -57,25 +57,38 @@
     infowindow.setPosition(iwPosition); */
 </script>
 <div>
-<img alt="" src="../image/theater/jungbo.png"><br>
-		극장명 : CGV 강변점<br>
-		도로명주소 : [05116] 서울특별시 광진구 광나루로56길 85<br>
-		구주소 : (구의동, 테크노마트 10층)<br>
-		전화번호 : 1544-1234<br>
+<img alt="" src="../../image/theater/jungbo.png"><br>
+		극장명 : CGV 강남점<br>
+		도로명주소 : 서울특별시 강남구 강남대로 438 (역삼동)<br>
+		구주소 : 서울특별시 강남구 역삼동814-6 스타플렉스<br>
+		전화번호 : 1544-1122<br>
 		홈페이지 : www.cgv.com<br>		
 		</div><br><br>
 		
-		<img alt="" src="../image/theater/koytong.png">
+		<img alt="" src="../../image/theater/koytong.png">
 		<div>
 		<strong class="subject">버스</strong><br>
-		[마을] 강동01, 광진01, 광진05, 광진03, 광진04 <br>
-		[공항] 6705, 여주터미널-인천공항 <br>
-		[일반] 93, 1-6, 15, 97, 1115-2, 2000-3, 1, 2000-1, 2000-2, 96 <br> 
-		[직행] 11, 100, 1113-1, 1113, 1660, 1113-10, 1650, 1112, 1117, 1113-11 <br> 
-		[지선] 3212, 3214, 2224 <br>
-		<br><br>
-		<strong class="subject">지하철</strong>
-		2호선 | 강변역 1번 출구
+		분당지역<br>
+		[좌석] 1005-1, 1005-2, 6800, 5500-2 <br>
+		[간선] 408, 462 <br>
+		[광역] 9404, 9408 <br><br>
+ 	
+ 		강북지역 <br>
+		[간선] 140, 144, 145, 471 <br><br>
+		
+		강서지역 <br>
+		[좌석] 1500, 간선버스 360 <br><br>
+		
+		강동지역 <br>
+		[간선] 402, 420, 470, 407 <br><br>
+		
+		인근경기지역 <br>
+		[좌석] 3030, 2002, 2002-1 <br>
+		[광역] 9409, 9500, 9501, 9503, 9700, 9711
+		<br><br><br>
+		<strong class="subject">지하철</strong><br>
+		2호선 | 강남역 11번 출구 <br>
+		9호선 | 신논현역 5번출구
 		</div><br><br><br>
 </body>
 </html>

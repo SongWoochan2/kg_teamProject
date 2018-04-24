@@ -33,31 +33,31 @@ ul{
 }
 
 #header_main ul.menu .te {
-		float: left;
-		width: 178px;
-		height: 35px;		
+	float: left;
+	width: 178px;
+	height: 35px;		
 }
 
 #header_main ul.menu .te .sub {
-		width: 650px;
-		height: 35px;
-		float:left;
-		text-align: center;
-		position: relative;
-		left: -230px;
+	width: 650px;
+	height: 35px;
+	float:left;
+	text-align: center;
+	position: relative;
+	left: -230px;
 }
 
 #header_main ul.menu .sub li{
-		display:inline-block;
-		width: 88px ;
-		height: 35px ;
-		float: none;
+	display:inline-block;
+	width: 88px ;
+	height: 35px ;
+	float: none;
 }
 #header_main ul.menu .sub .te li a{	
-		color:#3E3E3E;
-		float: left ;
-		width: 178px ;
-		height: 35px ;
+	color:#3E3E3E;
+	float: left ;
+	width: 178px ;
+	height: 35px ;
 }
 
 #header_main ul.menu{

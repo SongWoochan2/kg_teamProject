@@ -28,27 +28,28 @@
 	</c:if>
 </head>
 <body>
-	<table border="1" cellspacing="0" cellpadding="5">
-		<tr bgcolor="ffff00">
-			<th width="70">코드</th>
-			<th width="200">상영관명</th>
-			<th width="100">기본가격</th>
-		</tr>
-		<c:forEach var="showPlaceVO" items="${show_place_list }">
-			<tr bgcolor="ffffcc">
-				<td align="center">${showPlaceVO.show_place_code}</td>
-				<td>
-					<a id="subjectA" href="#" onclick="isLogin(${showPlaceVO.show_place_code})">
-						${showPlaceVO.show_place_name}
-					</a>
-				</td>
-				<td align="center">${showPlaceVO.default_cost }</td>
+		<table border="1" cellspacing="0" cellpadding="5">
+			<tr bgcolor="ffff00">
+				<th width="70">코드</th>
+				<th width="200">상영관명</th>
+				<th width="100">기본가격</th>
 			</tr>
-		</c:forEach>
-		
-		
-	</table>
-	<input type="button" value="상영관 추가" onclick="location.href='/MyCGV/showPlaceWriteForm.do?theater_code=${param.theater_code}'">
+			<c:forEach var="showPlaceVO" items="${show_place_list }">
+				<tr bgcolor="ffffcc">
+					<td align="center">${showPlaceVO.show_place_code}</td>
+					<td>
+						<a id="subjectA" href="#" onclick="isLogin(${showPlaceVO.show_place_code})">
+							${showPlaceVO.show_place_name}
+						</a>
+					</td>
+					<td align="center">${showPlaceVO.default_cost }</td>
+				</tr>
+			</c:forEach>
+			
+			
+		</table>
+		<input type="button" value="상영관 추가" onclick="location.href='/MyCGV/showPlaceWriteForm.do?theater_code=${param.theater_code}'">
+
 </body>
 </html>
 

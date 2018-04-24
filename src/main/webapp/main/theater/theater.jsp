@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/theater/commons.css" />
-<link rel="stylesheet" href="../css/theater/unit.css" />
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js?v=1"></script>
+<link rel="stylesheet" href="../../css/theater/commons.css" />
+<link rel="stylesheet" href="../../css/theater/unit.css" />
+<script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad3142c660a77d28b590ef79689d4549"></script>
 <script
@@ -15,9 +15,7 @@
 <link href="themes/1/js-image-slider.css" rel="stylesheet"
 	type="text/css" />
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
-<link href="../css/theater/generic.css" rel="stylesheet" type="text/css" />
-<!-- <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script> -->
+<link href="../../css/theater/generic.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 /* $(function() {
 	// 링크가 클릭된 경우
@@ -102,19 +100,24 @@ $(function(){
 	});
 });
 </script>
+<style type="text/css">
+#test{
+	background-color: #FFFFFB;
+}
+</style>
 </head>
-<body>
-	<jsp:include page="header.jsp"></jsp:include>
+<body id="test">
+	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class="div_border">
-		<img alt="" src="../image/theater/frequent_top.png">
-		<img alt="" src="../image/theater/frequent.png">
+		<img alt="" src="../../image/theater/frequent_top.png">
+		<img alt="" src="../../image/theater/frequent.png">
 		<br><br><br><br> 
-		<img alt="" src="../image/theater/theater.png">
+		<img alt="" src="../../image/theater/theater.png">
 		<div id="sliderFrame">
 			<div id="slider">
-				<a href="#" id="gangbyeon_click"> <img src="../image/theater/CGVgangbyeon.jpg" alt="#gangbyeon" /></a>
-				<a href="#" id="gangnam_click"> <img src="../image/theater/CGVgangnam.jpg" alt="#gangnam" /></a>
-				<a href="#" id="myeongdong_click"> <img src="../image/theater/CGVmyeongdong.jpg" alt="#myeongdong" /></a>
+				<a href="#" id="gangbyeon_click"> <img src="../../image/theater/CGVgangbyeon.jpg" alt="#gangbyeon" /></a>
+				<a href="#" id="gangnam_click"> <img src="../../image/theater/CGVgangnam.jpg" alt="#gangnam" /></a>
+				<a href="#" id="myeongdong_click"> <img src="../../image/theater/CGVmyeongdong.jpg" alt="#myeongdong" /></a>
 			</div>
 			<div id="gangbyeon" style="display: none;">
 				<em>CGV</em> 강변점으로 오세요! <a href="#">강변CGV</a>.
@@ -134,6 +137,6 @@ $(function(){
 		<br>
 		<div class="console" id="result"></div>
 		</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>
