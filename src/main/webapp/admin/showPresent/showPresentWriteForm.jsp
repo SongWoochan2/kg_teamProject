@@ -75,8 +75,6 @@
 				changeYear : true,  // 년도 select 박스
 				changeMonth : true,  // 월 select 박스
 				showOn : "both",  // 모두 캘린더 표시
-				buttonImageOnly : true, // 버튼에 이미지만 표시(... 생략)
-				buttonimage : '이미지경로', // 버튼 이미지
 				dateFormat : "yyyy-mm-dd", // 날짜 형식
 				dayNamesMin : ['월','화','수','목','금','토','일'], // 요일 이름
 				monthNamesShort : ['1','2','3','4','5','6','7','8','9','10','11','12'], // 월 이름
