@@ -30,4 +30,9 @@
 	<select id = "movieView" parameterType="int" resultType="movieDTO">
 		select * from movie where movie_code = #{movie_code}
 	</select>
+	
+	<select id = "searchByName" parameterType="java.lang.String" resultType="movieDTO">
+		select * from movie where movie_name like '%'|| #{movie_code} || '%'
+	</select>
+	
 </mapper>
