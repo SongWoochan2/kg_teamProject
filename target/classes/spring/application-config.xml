@@ -54,4 +54,5 @@
 	<bean id="resourceProvider" class="resource.provider.ResourceProvider">
 		<constructor-arg value = "${resource.path}"></constructor-arg>
 	</bean>
+	
 </beans>

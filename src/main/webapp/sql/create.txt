@@ -73,7 +73,9 @@ create table movie(
   movie_open_date date not null,
   movie_recycle_time number not null,
   movie_show_grade_name varchar(30) not null,
-  movie_type varchar(15) not null,
+  movie_type1 varchar(15) not null,
+  movie_type2 varchar(15),
+  movie_type3 varchar(15),
   movie_director varchar(30) not null,
   movie_evaluat_num number not null,
   acc_evaluat_score number not null,
@@ -88,6 +90,8 @@ start with 1
 increment by 1
 nocache
 nomaxvalue;
+
+
 
 
 ---------------------------------------------------------------------------------------------  insert 추가

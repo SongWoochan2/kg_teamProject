@@ -53,9 +53,9 @@
 				<li class="te">
 					<a href="#">영화</a>
 					<ul class="sub">
-						<li><a href="#">영화순위 | </a></li>
-						<li><a href="#">영화검색 | </a></li>
-						<li><a href="#">평점메인 </a></li>
+						<li><a href="../movie/movieChart.do">영화순위 | </a></li>
+						<li><a href="../movie/movieFinder.do">영화검색 | </a></li>
+						<li><a href="../movie/movieReview.do">평점메인 </a></li>
 					</ul>
 				</li>
 				<li class="te">

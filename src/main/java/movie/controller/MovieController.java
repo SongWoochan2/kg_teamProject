@@ -20,6 +20,9 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
+	
+	// 관리자 영역
+	
 	@RequestMapping(value="/admin/movie/movieAdmin.do")
 	public ModelAndView movieAdminForm(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String) session.getAttribute("admin_id");
@@ -163,6 +166,48 @@ public class MovieController {
 		modelAndView.addObject("result",result);
 		modelAndView.addObject("pg", page);
 		modelAndView.setViewName("movieModify.jsp");
+		return modelAndView;
+	}
+	
+	
+	// 메인 영역
+	
+	
+	@RequestMapping(value="/main/movie/movieDetailView.do")
+	public ModelAndView movieDetailView(HttpServletRequest request) {
+		String page = request.getParameter("pg");
+		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.addObject("pg", page);
+		modelAndView.setViewName("movieInfo.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/movie/movieFinder.do")
+	public ModelAndView movieFinder(HttpServletRequest request) {
+//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.setViewName("movieFinder.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/movie/movieChart.do")
+	public ModelAndView movieChart(HttpServletRequest request) {
+//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.setViewName("movieChart.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/movie/movieReview.do")
+	public ModelAndView movieReview(HttpServletRequest request) {
+//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.setViewName("movieReview.jsp");
 		return modelAndView;
 	}
 }
