@@ -5,7 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -107,29 +110,42 @@ public class ReserveController {
 	}
 
 	*/
-	@RequestMapping(value="/main/reserve/reserve2.do")
+	@RequestMapping(value="/main/reserve/reserve.do")
 	public ModelAndView theaterList(HttpServletRequest request) {
 		System.out.println("reserve2.do");
 		System.out.println("글 목록 처리");
 		// 1. 사용자 입력 정보 추출
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		// 2. DB 연동처리
-		int endNum = pg*5;			// 1*5 = 5
-		int startNum = endNum-4;	// 5-4 = 1
+	
+		//int day_count = Integer.parseInt(request.getParameter("day_count"));
+		int day_count = 3;
+		Date now = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, day_count);
 		
-		ArrayList<ReserveDTO> list = reserveService.reserveList(startNum, endNum);
-		int totalA = reserveService.getTotalA();	// 총글수
-		int totalP = (totalA+4)/5;			// 총페이지수
-		//================================
-		int startPage = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
-		int endPage = startPage + 2;		// endPage = startPage + 3 - 1;
-		if(totalP < endPage) endPage = totalP;
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH);
+		int day = cal.get(Calendar.DATE);
+		
+		String show_date = "" + year + month + day;
+		
+		System.out.println(show_date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		String n2 = sdf.format(now);
+		System.out.println(n2);
+	
+		
+		
+		int theater_code = 10;
+		System.out.println(theater_code);
+		ArrayList<ReserveDTO> list = reserveService.reserveList(show_date, theater_code );
+		
+		System.out.println(list);
 		// 3. 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("show_date", show_date);
 		modelAndView.addObject("list", list);
-		modelAndView.addObject("startPage", startPage);
-		modelAndView.addObject("endPage", endPage);
-		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("pg", pg);
 		modelAndView.setViewName("reserve.jsp");
 		System.out.println("끝");

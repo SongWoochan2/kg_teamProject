@@ -59,7 +59,7 @@
 					</ul>
 				</li>
 				<li class="te">
-					<a href="reserve2.do?pg=1">예매</a>
+					<a href="reserve.do?pg=1">예매</a>
 				</li>
 				<li class="te">
 					<a href="#">극장</a>
