@@ -78,8 +78,6 @@ div#content-aside a {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<jsp:include page="../member/header.jsp"></jsp:include>
 	<div id="#mypageBody">
 		<div id="my-info-wrap">
 			<div class="profile">
@@ -89,14 +87,12 @@ div#content-aside a {
 					onerror="errorImage(this, {'type':'profile'})" width="100px" height="100px">
 				</div>
 				<div class="profileInfo">
-=======
 	<jsp:include page="../main/main/header.jsp"></jsp:include>
 		<div id="#mypageBody">
 			<div id="my-info-wrap">
 				<div class="profile">
 					<div class="profileImg">
 					</div>
->>>>>>> 8e6fc534b00bb42c8d32bfa6775756759d90a89b
 					<div class="personInfo">
 						<strong>${memberDTO.member_name}님</strong>&nbsp;<em>${memberDTO.member_id}</em>
 						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
@@ -192,10 +188,7 @@ div#content-aside a {
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
 	</div>
-	<jsp:include page="../member/footer.jsp"></jsp:include>
-=======
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
 >>>>>>> 8e6fc534b00bb42c8d32bfa6775756759d90a89b
 </body>

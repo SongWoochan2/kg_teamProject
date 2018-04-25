@@ -25,21 +25,17 @@
 </head>
 <body>
 	<div>
-		<div id="left_div1" >
-			<a href="#">
-			<img alt="" src="../../image/header/header_cgv.png"
-				width="30px" height="30px">CGV APP </a>| <a href="#"><img
-				alt="" src="../../image/header/header_face.png" width="20px" height="20px">
-				Face
-				</a>
-				 | 
-				 <a href="#">
-				 <img alt="" src="../../image/header/header_insta.png"
-				width="20px" height="20px">
-				 Insta
-				 </a>
+		<div id="left_div1">
+			<a href="#"> <img alt="" src="../../image/header/header_cgv.png"
+				width="30px" height="30px">CGV APP
+			</a>| <a href="#"><img alt=""
+				src="../../image/header/header_face.png" width="20px" height="20px">
+				Face </a> | <a href="#"> <img alt=""
+				src="../../image/header/header_insta.png" width="20px" height="20px">
+				Insta
+			</a>
 		</div>
-		<div id="mid_div1">
+		<div id="mid_div1" class="layer_fixed">
 			<p>
 				<a href="http:www.naver.com"><strong>로그인 | </strong></a> <a href="#"><strong>회원가입
 						| </strong></a> <a href="http:dau"><strong>My CGV | </strong></a> <a href="#">고객센터
@@ -50,28 +46,18 @@
 		<div id="right_div2"></div>
 		<div id="header_main">
 			<ul class="menu">
-				<li class="te">
-					<a href="#">영화</a>
+				<li class="te"><a href="#">영화</a>
 					<ul class="sub">
 						<li><a href="#">영화순위 | </a></li>
 						<li><a href="#">영화검색 | </a></li>
 						<li><a href="#">평점메인 </a></li>
-					</ul>
-				</li>
-				<li class="te">
-					<a href="reserve.do?pg=1">예매</a>
-				</li>
-				<li class="te">
-					<a href="#">극장</a>
+					</ul></li>
+				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
+				<li class="te"><a href="#">극장</a>
 					<ul class="sub">
-						<li>
-							<a href="#">교통안내</a>
-						</li>
-					</ul>
-				</li>
-				<li class="te">
-					<a href="#">스토어</a>
-				</li>
+						<li><a href="#">교통안내</a></li>
+					</ul></li>
+				<li class="te"><a href="#">스토어</a></li>
 			</ul>
 		</div>
 	</div>

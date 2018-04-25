@@ -8,26 +8,25 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
 <link rel="stylesheet" href="../../css/reserve/reserve.css" />
-
+<script type="text/javascript">
+	
+</script>
 </head>
 <body>
 <jsp:include page="../main/header.jsp"></jsp:include>
-
 <div class="div_top">
 	<div id="top_movie">
-		<div id="top_movie_div1">영화</div>
+		<div id="top_movie_div1"><strong>영화</strong></div>
 		<div id="top_movie_div2">
-			<c:forEach var="reserveDTO" items="${requestScope.list }">
-				${ reserveDTO.show_present_code }
-			</c:forEach>	
+			<a id="tem_1" href="#">테스트</a>
 		</div>
 	</div>
 	<div id="top_theater">
-		<div id="top_theater_div1">극장</div>
+		<div id="top_theater_div1"><strong>극장</strong></div>
 		<div id="top_theater_div2">DB</div>
 	</div>
 	<div id="top_date">
-		<div id="top_date_div1">날짜</div>
+		<div id="top_date_div1"><strong>날짜</strong></div>
 		<div id="top_date_div2">DB
 			<div class="date" show_date="1">25일 </div>
 			<div class="date" show_date="2">26일 </div>
@@ -43,7 +42,7 @@
 		</div>
 	</div>
 	<div id="top_time">
-		<div id="top_time_div1">시간</div>
+		<div id="top_time_div1"><strong>시간</strong></div>
 		<div id="top_time_div2">DB</div>
 	</div>
 </div>
