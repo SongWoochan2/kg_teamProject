@@ -1,12 +1,16 @@
 package movie.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,9 @@ import movie.bean.MoviePage;
 public class MovieController {
 	@Autowired
 	private MovieService movieService;
+	
+	
+	// 관리자 영역
 	
 	@RequestMapping(value="/admin/movie/movieAdmin.do")
 	public ModelAndView movieAdminForm(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -165,4 +172,104 @@ public class MovieController {
 		modelAndView.setViewName("movieModify.jsp");
 		return modelAndView;
 	}
+
+	@RequestMapping(value="/searchMovies.do")
+	public void movieSearch(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("hello!!!");
+		String movie_name= request.getParameter("movie_name");
+
+		List<MovieDTO> movie_list = null;
+		
+		if(movie_name == null) {
+			movie_list = movieService.movieList(0, 100);
+		} else {			
+			movie_list = movieService.movieSearchByName(movie_name);
+		}
+		JSONArray json_list = new JSONArray();
+		for(MovieDTO tmp : movie_list) {
+			JSONObject json_movie = new JSONObject();
+			json_movie.put("movie_code", tmp.getMovie_code());
+			json_movie.put("movie_name", tmp.getMovie_name());
+			json_movie.put("movie_director", tmp.getMovie_director());
+			json_movie.put("movie_recycle_time", tmp.getMovie_recycle_time());
+			json_movie.put("movie_open_date", tmp.getMovie_open_date());
+			json_list.add(json_movie);
+		}
+		
+		JSONObject json = new JSONObject();
+		json.put("movie_list", json_list);
+		
+		try {
+			response.getWriter().println(json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+	}
+	
+	
+	
+	// 메인 영역
+	
+	
+	@RequestMapping(value="/main/movie/movieDetailView.do")
+	public ModelAndView movieDetailView(HttpServletRequest request) {
+		String page = request.getParameter("pg");
+		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.addObject("pg", page);
+		modelAndView.setViewName("movieInfo.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/movie/movieFinder.do")
+	public ModelAndView movieFinder(HttpServletRequest request) {
+//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.setViewName("movieFinder.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/movie/movieChart.do")
+	public ModelAndView movieChart(HttpServletRequest request) {
+//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.setViewName("movieChart.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/movie/movieReview.do")
+	public ModelAndView movieReview(HttpServletRequest request) {
+//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.setViewName("movieReview.jsp");
+		return modelAndView;
+	}
+
+	
+					
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

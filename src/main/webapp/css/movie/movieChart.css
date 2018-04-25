@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+	div{
+		margin : auto;
+	}
+	
+	#moviechart{
+		height: 1200px;
+		width: 1200px;
+	}
+	#moviechart #chart-title{
+		width: 100%;
+		height: 5%;
+		
+	}
+	#moviechart .chart-hr hr{
+		border: 4px double darkgray;
+	}
+	
+	#moviechart #chart-title #title-name{
+		width :70%;
+		height : 100%;
+		text-align: left;
+		float: left;
+		font-weight: bold;
+		font-size : 35px;
+	}
+	#moviechart #chart-title #chart-type{
+		padding : 20px 60px;
+		width :30%;
+		height : 100%;
+		text-align: center;
+		float: left;
+	}
+	#moviechart #chart-title #chart-type *{
+		margin: 0;
+		padding: 0;
+	}
+	#moviechart #chart-title #chart-type ul{
+		width : 100%;
+		height : 100%;
+		list-style : none;
+	}
+
+	#moviechart #chart-title #chart-type ul li{
+		float: left;
+		width : 50%;
+		height : 100%;
+		position: relative;
+		font-weight: bold;
+	}
+	#moviechart #chart-title #chart-type ul li a{
+		font-size : 18px;
+	}
+	#moviechart #chart-title #chart-type ul li #on{
+		color : red;
+		text-decoration : none;
+	}
+	#moviechart #chart-title #chart-type ul li #off{
+		color : lightgray;
+	}
+	
+	#moviechart #chart-select{
+		width: 100%;
+		height: 5%;
+		float: left;
+	}
+	#moviechart #chart-select #select1{
+		font-weight : bold;
+		padding-top : 10px;
+		height : 100%;
+		width: 70%;
+		float: left;
+	}
+	#moviechart #chart-select #select2{
+		padding-top : 10px;
+		text-align : center;
+		height : 100%;
+		width: 30%;
+		float: left;
+	}
+	#moviechart #chart-select #select2 select{
+		border-radius : 10px;
+		width: 100px;
+	}
+	#moviechart #chart-select #select2 input[type='button']{
+		background-color : white;
+		border-radius : 10px;
+		border: 3px solid #cccccc;
+	}
+	#moviechart #movierank{
+		width: 100%;
+		height: 90%;
+	}
+	#moviechart #movierank #movie_top_entity,#movie_bottom_entity, #promotion{
+		float : left;
+		width: 25%;
+		height: 43%;
+		padding: 10px 20px;
+	}
+	
+	#moviechart #movierank #promotion img{
+		padding : 30px 10px;
+		background-color : black;
+		width: 100%;
+		height: 100%;
+	}
+
+	#moviechart #movierank #movie_top_entity #movie-rank{
+		background-color : red;	
+	}
+
+	#moviechart #movierank #movie_bottom_entity #movie-rank{
+		background-color : black;	
+	}
+	#moviechart #movierank *{
+		text-align: center;
+	}
+	
+	#moviechart #movierank #movie-rank{
+		height: 8%;
+		border : 4px double white;
+		text-align: center;
+		font-weight: bold;
+		font-size: 20px;
+		color: white;
+	}
+	#moviechart #movierank #movie-poster{
+		height: 60%;
+	}
+	#moviechart #movierank #movie-poster img{
+		width: 100%;
+		height: 100%;
+	}
+	#moviechart #movierank #entity-name{
+		font-size : 18px;
+		font-weight : bold;	
+		height: 6%;
+	}
+	#moviechart #movierank #entity-name a{
+		color: darkgray;
+		text-decoration: none;
+	}
+	#moviechart #movierank #entity-reserve{
+		font-size : 14px;
+		height: 5%;
+	}
+	#moviechart #movierank #entity-reserve font{
+		font-size : 15px;
+		font-weight : bold;	
+		color : darkgray;
+	}
+	#moviechart #movierank #entity-opendate{
+		font-weight : bold;
+		font-size : 13px;
+		height: 4%;
+	}
+	#moviechart #movierank #entity-like{
+		padding-top : 5px;
+		font-weight : 200;
+		height: 17%;
+	}
+	#moviechart #movierank #entity-like a{
+		color : white;
+	}
+	#moviechart #movierank #entity-like #reserve-btn{
+		width: 40%;
+		background-color: #e02c14;
+	}
+	#moviechart #movierank #entity-like #reserve-btn:hover{
+		background-color : red;
+	}

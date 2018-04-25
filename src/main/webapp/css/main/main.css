@@ -1,0 +1,76 @@
+@charset "UTF-8";
+	div{
+		margin: auto;
+	}
+
+	#mainpage{
+		height : 1200px;
+		width: 100%;
+	}
+	#mainpage #mainback{
+		width: 100%;
+		height: 40%;
+		background-image: url('../../image/storage/test.png');
+	}
+	#mainpage #mainback #main{
+		width: 1000px;
+		height: 100%;
+	}
+	#mainpage #mainback #main iframe{
+		width: 100%;
+		height: 100%;
+	}
+	#mainpage #mainbottomback{
+		padding-top: 10px;
+		font-family: "Times New Roman", Times, serif;
+		font-size : 35px;
+		font-weight : bold;
+		text-align : center;
+		width: 100%;
+		height: 60%;
+	}
+	#mainpage #mainbottomback #mainbottom{
+		width: 1000px;
+		height: 80%;
+	}
+	#mainpage #mainbottomback #mainbottom #entity{
+		width: 33.3%;
+		height: 100%;
+		float: left;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-poster{
+		height : 75%;
+		background-color: black;
+		padding: 10px 5px;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-poster img{
+		width: 100%;
+		height: 100%;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-name{
+		height : 10%;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-name a{
+		font-size : 25px;
+		color : black;
+		text-decoration: none;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-opendate{
+		height : 5%;
+		font-size: 14px;
+		color : gray;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-like{
+		height : 10%;
+		font-size : 15px;
+		text-align: center;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-like a{
+		color : white;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-like #reserve-btn{
+		background-color: #e02c14;
+	}
+	#mainpage #mainbottomback #mainbottom #entity #entity-like #reserve-btn:hover {
+		background-color: red;
+	}

@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="answer.bean.AnswerDTO" alias="answerDTO"></typeAlias>
 		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
 		<typeAlias type="inquiry.bean.InquiryDTO" alias="inquiryDTO"></typeAlias>
 		<typeAlias type="noticeItem.bean.NoticeItemDTO" alias="noticeItemDTO"></typeAlias>
@@ -20,10 +21,11 @@
 		<typeAlias type="showPresent.bean.ShowPresentAllVO" alias="showPresentAllVO"></typeAlias>
 		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
 		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
- 		<!-- <typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias> -->
+ 		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/answer-mapping.xml"/>
 		<mapper resource="mybatis/inquiry-mapping.xml"/>
 		<mapper resource="mybatis/noticeItem-mapping.xml"/>
 		<mapper resource="mybatis/qna-mapping.xml"/>
@@ -39,7 +41,7 @@
 		<mapper resource="mybatis/showPresent-mapping.xml"/>
 		<mapper resource="mybatis/productboard-mapping.xml" />
 		<mapper resource="mybatis/member-mapping.xml" />
- 		<!-- <mapper resource="mybatis/reserve-mapping.xml" /> -->
+ 		<mapper resource="mybatis/reserve-mapping.xml" />
 		
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 

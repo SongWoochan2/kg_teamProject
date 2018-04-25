@@ -79,7 +79,6 @@ div#content-aside a {
 </head>
 <body>
 	<jsp:include page="../main/main/header.jsp"></jsp:include>
-
 	<div id="#mypageBody">
 		<div id="my-info-wrap">
 			<div class="profile">
@@ -184,7 +183,6 @@ div#content-aside a {
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
 </body>

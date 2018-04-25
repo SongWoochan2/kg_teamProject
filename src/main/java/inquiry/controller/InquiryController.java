@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,8 @@ public class InquiryController {
 	private InquiryService inquiryService;
 	@Autowired
 	private ResourceProvider resourceProvider;
+	/*@Autowired
+	private JavaMailSender mailSender;*/
 	
 	@RequestMapping(value="/member/inquiry/inquiryWriteForm.do")
 	public String inquiryWriteForm() { 
@@ -44,6 +48,8 @@ public class InquiryController {
 		String inquiry_content = request.getParameter("inquiry_content");
 		String inquiry_id = request.getParameter("inquiry_id");							//임시 아이디	
 		session.setAttribute("inquiry_id", inquiry_id);									//임시 아이디
+		String admin_id = request.getParameter("admin_id");								//임시 아이디
+		session.setAttribute("admin_id", admin_id);										//임시 아이디
 		
 		
 		// 데이터 지정
@@ -54,7 +60,6 @@ public class InquiryController {
 		inquiryDTO.setInquiry_content(inquiry_content);
 		String realforder = resourceProvider.getPath("image/inquiry");
 		String filename = inquiry_file.getOriginalFilename();
-		System.out.println("realFolder : " + realforder + "/ filename : " + filename);
 		File file = new File(realforder,filename);
 			try {
 				FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
@@ -107,7 +112,6 @@ public class InquiryController {
 	@RequestMapping(value="/member/inquiry/inquiryView.do")
 	public ModelAndView inquiryView(HttpServletRequest request) {
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
-		System.out.println("inquiry_code:"+ inquiry_code);
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
@@ -120,49 +124,6 @@ public class InquiryController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/member/inquiry/inquiryModifyForm.do")
-	public ModelAndView inquiryModifyForm(HttpServletRequest request) {
-		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
-		
-		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("inquiryDTO", inquiryDTO);
-		
-		modelAndView.setViewName("inquiryModifyForm.jsp");
-		
-		return modelAndView;
-	}
-	
-
-	@RequestMapping(value="/member/inquiry/inquiryModify.do")
-	public ModelAndView inquiryModify(HttpServletRequest request) throws UnsupportedEncodingException {
-		// 데이터
-		HttpSession session = request.getSession();
-		request.setCharacterEncoding("utf-8");
-		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
-		String inquiry_title = request.getParameter("inquiry_title");
-		String inquiry_content = request.getParameter("inquiry_content");
-		String inquiry_type = request.getParameter("inquiry_type");
-		String inquiry_id = (String) session.getAttribute("member_id");
-		String member_pwd = (String) session.getAttribute("member_pwd");
-		
-		// 데이터 지정
-		InquiryDTO inquiryDTO = new InquiryDTO();
-		inquiryDTO.setInquiry_code(inquiry_code);
-		inquiryDTO.setInquiry_title(inquiry_title);
-		inquiryDTO.setInquiry_content(inquiry_content);
-		inquiryDTO.setInquiry_type(inquiry_type);
-		//DB
-		int su = inquiryService.inquiryModify(inquiryDTO);
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("su", su);
-		
-		modelAndView.setViewName("inquiryModify.jsp");
-		
-		return modelAndView;
-	}
 
 	@RequestMapping(value="/member/inquiry/inquiryDelete.do")
 	public ModelAndView inquiryDelete(HttpServletRequest request) { 
@@ -177,6 +138,99 @@ public class InquiryController {
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/admin/adminInquiry/inquiryAnswerForm.do")
+	public ModelAndView inquiryAnswerForm(HttpServletRequest request) { 
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("inquiryDTO", inquiryDTO);
+		
+		modelAndView.setViewName("redirect:../admin/inquiryAnswerForm.jsp");
+		
+		return modelAndView;
+	}
+	
+	/*@RequestMapping(value="/admin/adminInquiry/inquiryAnswer.do")
+	public ModelAndView inquiryAnswer(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
+		
+		
+		request.setCharacterEncoding("utf-8");
+		String inquiry_type = request.getParameter("inquiry_type");
+		String inquiry_title = request.getParameter("inquiry_title");
+		String inquiry_content = request.getParameter("inquiry_content");
+		String inquiry_id = request.getParameter("inquiry_id");							
+		
+		// 데이터 지정
+		InquiryDTO inquiryDTO = new InquiryDTO();
+		inquiryDTO.setInquiry_id(inquiry_id);
+		inquiryDTO.setInquiry_type(inquiry_type);
+		inquiryDTO.setInquiry_title(inquiry_title);
+		inquiryDTO.setInquiry_content(inquiry_content);
+		String realforder = resourceProvider.getPath("image/inquiry");
+		String filename = inquiry_file.getOriginalFilename();
+		System.out.println("realFolder : " + realforder + "/ filename : " + filename);
+		File file = new File(realforder,filename);
+			try {
+				FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		inquiryDTO.setInquiry_file(filename);
+		//DB
+		int su = inquiryService.inquiryWrite(inquiryDTO);
+		
+		
+		String from_mail = "cgvproject7@gmail.com";						//보낼 메일
+		String answer_email = request.getParameter("answer_email");
+		String answer_title = request.getParameter("answer_title");
+		String answer_content = request.getParameter("answer_content");
+		ModelAndView modelAndView = new ModelAndView();
+		
+		
+		
+		 try {
+		      MimeMessage message = mailSender.createMimeMessage();
+		      MimeMessageHelper messageHelper 
+		      = new MimeMessageHelper(message, true, "UTF-8");
+		 
+		      messageHelper.setFrom(from_mail);  						// 보내는사람 생략하거나 하면 정상작동을 안함
+		      messageHelper.setTo(answer_email);   						// 받는사람 이메일
+		      messageHelper.setSubject(answer_title); 					// 메일제목은 생략이 가능하다
+		      messageHelper.setText(answer_content);  					// 메일 내용
+		     
+		      mailSender.send(message);
+		    } catch(Exception e){
+		      System.out.println(e);
+		    }
+		
+		modelAndView.setViewName("inquiryList.jsp");
+		
+		return modelAndView;
+	}*/
 
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
