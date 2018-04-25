@@ -2,6 +2,7 @@ package reserve.dao;
 
 
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +20,15 @@ public class ReserveDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<ReserveDTO> reserveList(int startNum, int endNum) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
+	public List<ReserveDTO> reserveList(String show_date, int theater_code) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(show_date != null) {
+			map.put("show_date", show_date);	
+		}
+		if(theater_code != 0) {
+			map.put("theater_code", theater_code);			
+		}
 		return sqlSession.selectList("mybatis.reserveMapper.reserveList", map);
 	}
 	

@@ -34,8 +34,8 @@
 	<context:component-scan base-package="showPlace"/>
 	
 	<!-- 빛나 -->
-	<context:component-scan base-package="member.controller"/>
-	<context:component-scan base-package="mypage.controller"/>
+	<context:component-scan base-package="member"/>
+	<context:component-scan base-package="mypage"/>
 	
 	<!-- 진환 -->
     <context:component-scan base-package="qna.controller"/>

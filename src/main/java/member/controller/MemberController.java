@@ -1,24 +1,37 @@
 package member.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
+import resource.provider.ResourceProvider;
 
 @Controller
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private ResourceProvider resourceProvider;
 	
 	@RequestMapping(value="/member/memberLoginForm.do")
 	public ModelAndView memberLoginForm(HttpServletRequest request) {
@@ -120,7 +133,7 @@ public class MemberController {
 		System.out.println("아이디 중복 확인");
 		String member_id = request.getParameter("member_id");
 		System.out.println(member_id);
-		String member_name = memberService.isExistMemberId(member_id);
+		String member_name = memberService.isExistMember(member_id, null);
 		System.out.println(member_name);
 		ModelAndView modelAndView = new ModelAndView();
 		int exist = 0;
@@ -237,6 +250,88 @@ public class MemberController {
 	public ModelAndView confirmPwdDelete(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("confirmPwdDelete.jsp");
+		return modelAndView;
+	}
+	
+	
+	// mypage -------------------------------------
+	@RequestMapping(value="/mypage/mypageHome.do")
+	public ModelAndView mypageHome(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("memId");
+		System.out.println("1");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberInfo(member_id);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.setViewName("mypageHome.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/mypage/editProfileForm.do")
+	public ModelAndView profileView(HttpServletRequest request) {
+		System.out.println("프로필 불러오기");
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("memId");
+
+		ModelAndView modelAndView = new ModelAndView();
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(member_id);
+		modelAndView.addObject("memberDTO", memberDTO);
+		System.out.println(memberDTO.getNick_name());
+		modelAndView.setViewName("editProfileForm.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/mypage/checkNickName.do", method=RequestMethod.GET)
+	public ModelAndView checkNickName(@RequestParam("nickName") String nick_name) {
+		System.out.println("닉네임 중복확인");
+		System.out.println(nick_name);
+		String member_name = memberService.isExistMember(null,nick_name);
+		System.out.println(member_name);
+		ModelAndView modelAndView = new ModelAndView();
+		JSONObject json = new JSONObject();
+		
+		String exist = "-1"; // 오류 발생
+		if(member_name == null) {
+			exist = "1"; // 사용가능 닉네임
+		} else {
+			exist = "0"; // 사용불가 닉네임
+		}
+		System.out.println(exist);
+		json.put("exist", exist);
+		modelAndView.addObject("json", json.toJSONString());
+		modelAndView.setViewName("editProfilePop.jsp");
+		return modelAndView;
+	}
+	// 파라미터 MultipartFile image1은 <input type="file" name="image1"> input 태그의 name과 일치해야 한다.
+	@RequestMapping(value="/mypage/editProfile.do", method=RequestMethod.POST)
+	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile img) {
+		String filePath = resourceProvider.getPath("image/profile");
+		String fileName = img.getOriginalFilename();
+		
+		File file = new File(filePath, fileName);
+		
+		// 파일을 storage 폴더에 복사
+		try {
+			// getInputStream() : 업로드한 파일 데이터를 읽어오는 InputStream을 구한다.
+			FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String nick_name = request.getParameter("nick_name");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setNick_name(nick_name);
+		memberDTO.setProfile_img_addr(fileName);
+
+		int result = memberService.memberModify(memberDTO);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/mypage/mypageHome.do");
 		return modelAndView;
 	}
 }

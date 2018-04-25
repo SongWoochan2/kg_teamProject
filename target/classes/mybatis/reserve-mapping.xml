@@ -3,14 +3,37 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.reserveMapper">
-
-	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
-		<![CDATA[select *
-		from (select rownum rn, tt.* 
-		from (select * from show_present order by show_present_code desc) tt)
-		where rn>=#{startNum} and rn<=#{endNum}]]>
+<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
+		SELECT movie_name FROM movie 
+			where movie_code IN ( select movie_code from show_present
+	  			<where> 
+					 	to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')
+	   				<if test="show_date != null">
+						AND to_char(show_date, 'YYYYMMDD') = '20180425'
+	    			</if>
+	    			<if test="theater_code != null">
+						AND show_place_code IN ( select show_place_code from show_place
+							where theat_code = #{theater_code})
+	    			</if>
+	  			</where>
+	  		)
 	</select>
 	
+	<!-- <select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
+		SELECT movie_name FROM movie 
+			where movie_code IN ( select movie_code from show_present
+	  			<where> 
+					to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD'),
+	   				<if test="show_date != null">
+						AND to_char(show_date, 'YYYYMMDD') = to_char(#{show_date}, 'YYYYMMDD'),
+	    			</if>
+	    			<if test="theater_code != null">
+						AND show_place IN ( select show_place from show_place
+							where theater_code = #{theater_code} )
+	    			</if>
+	  			</where>
+	  		)
+	</select> -->
 	<select id="getTotalA" resultType="int">
 		select count(*) from show_present
 	</select>

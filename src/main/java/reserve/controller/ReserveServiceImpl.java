@@ -22,8 +22,8 @@ public class ReserveServiceImpl implements ReserveService{
 	}
 
 	@Override
-	public ArrayList<ReserveDTO> reserveList(int startNum, int endNum) {
-		return (ArrayList<ReserveDTO>) reserveDAO.reserveList(startNum, endNum);
+	public ArrayList<ReserveDTO> reserveList(String show_date, int theater_code) {
+		return (ArrayList<ReserveDTO>) reserveDAO.reserveList(show_date, theater_code);
 	}
 
 	@Override

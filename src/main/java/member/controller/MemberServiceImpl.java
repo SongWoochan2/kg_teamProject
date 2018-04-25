@@ -19,8 +19,8 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.memberLogin(member_id, member_pwd);
 	}
 
-	public String isExistMemberId(String member_id) {
-		return memberDAO.isExistMemberId(member_id);
+	public String isExistMember(String member_id, String nick_name) {
+		return memberDAO.isExistMember(member_id, nick_name);
 	}
 
 	public MemberDTO memberView(String member_id) {
@@ -38,10 +38,5 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDTO memberInfo(String member_id) {
 		return memberDAO.memberInfo(member_id);
 	}
-
-
-
-
-
 
 }

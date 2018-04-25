@@ -28,7 +28,19 @@
 	</div>
 	<div id="top_date">
 		<div id="top_date_div1">날짜</div>
-		<div id="top_date_div2">DB</div>
+		<div id="top_date_div2">DB
+			<div class="date" show_date="1">25일 </div>
+			<div class="date" show_date="2">26일 </div>
+			<div class="date" show_date="3">27일 </div>
+			<div class="date" show_date="4">28일 </div>
+			<div class="date" show_date="5">29일 </div>
+			<div class="date" show_date="6">30일 </div>
+			<div class="date" show_date="7">1일 </div>
+			<div class="date" show_date="8">2일 </div>
+			<div class="date" show_date="9">3일 </div>
+			<div class="date" show_date="10">4일 </div>
+			<div class="date" show_date="20180505">5일 </div>
+		</div>
 	</div>
 	<div id="top_time">
 		<div id="top_time_div1">시간</div>

@@ -5,157 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../css/movie/movieInfo.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
 <title>Insert title here</title>
-<style type="text/css">
-	div{
-		margin : auto;
-	}
-
-	a{
-		color:black;
-	}
-	
-	#moviepage{
-		background-image : url('../../image/storage/movieInfo.png');
-		width: 1000px;
-		height: 1800px;
-	}
-	#moviepage #pagenevi{
-		padding-left : 10px;
-		width: 100%;
-		height: 1%;
-		background-color: lightgray;
-	}
-	#moviepage #head-title{
-		padding-top : 5px;
-		font-size : 35px;
-		font-weight : bold;
-		width: 100%;
-		height: 5%;
-	}
-	#moviepage #head-title hr{
-		border-width: 4px;
-		border-style: outset;
-	}
-	
-	#moviepage #middle{
-		width: 100%;	
-		height: 16%;
-	}
-	
-	#moviepage #middle #movieposter{
-		padding : 3px;
-		width: 20%;
-		height: 100%;
-		float: left;
-	}
-	#moviepage #middle #movieposter img{
-		width: 100%;
-		height: 100%;
-	}
-	#moviepage #middle #movieinfo{
-		width: 79%;
-		height: 100%;
-		float: left;
-	}
-	#moviepage #middle #movieinfo *{
-		padding-top : 7px;
-		padding-left : 5px;
-	}
-	#moviepage #middle #movieinfo #movietitle{
-		width: 100%;
-		height: 25%;
-	}
-	#moviepage #middle #movieinfo #movietitle #title-font{
-		font-size: 25px;
-		font-weight: bold;
-	}
-	#moviepage #middle #movieinfo #moviescore{
-		width: 100%;
-		height: 25%;
-	}
-	#moviepage #middle #movieinfo #spec{
-		font-size : 13px;
-		font-weight : bold;
-		width: 100%;
-		height: 25%;
-	}
-	#moviepage #middle #movieinfo #like{
-		width: 100%;
-		height: 25%;
-	}
-	#moviepage #movietrailer{
-		width: 100%;
-		height: 20%;
-	}
-	#moviepage #movietrailer #trailer-title{
-		padding-top : 10px;
-		margin : 10px 30px;
-		text-align : center;
-		width: 94%;
-		height: 18%;
-		background-color: #cccccc;
-	}
-	#moviepage #movietrailer #trailer-content{
-		width: 100%;
-	}
-	#moviepage #moviesteelcut{
-		width: 100%;
-		height: 30%;		
-	}
-	#moviepage #moviesteelcut #steelcut-title{
-		padding-top : 10px;
-		margin : 10px 30px;
-		text-align : center;
-		background-color: #cccccc;
-		width: 94%;
-		height: 12%;
-	}
-	#moviepage #moviesteelcut #steelcut-content{
-		width: 100%;
-	}
-	#moviepage #moviereview{
-		width: 100%;
-		height: 28%;
-	}
-	#moviepage #moviereview #review-title{
-		width: 100%;
-		height: 7%;
-	}
-	#moviepage #moviereview #review-title *{
-		height: 100%;
-		font-weight : bold;
-		font-size : 13px;
-		padding-top: 5px;
-	}
-	#moviepage #moviereview #review-title #left{
-		text-align : center;
-		color : white;
-		width:20%;
-		float: left;
-		background-color: darkgray;
-	}
-	#moviepage #moviereview #review-title #right{
-		text-align : right;
-		width:80%;
-		float: right;
-		background-color: lightgray;
-	}
-	#moviepage #moviereview #review-content{
-		height: 93%;
-		width: 100%;
-	}
-	#moviepage #moviereview #review-content #review-info{
-		text-align :inherit;
-		height: 50%;
-		width: 50%;
-		float: left;
-	}
-</style>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
 	<div id="moviepage">
 		<div id = "pagenevi">
 			<span class="glyphicon glyphicon-home"></span>
@@ -228,6 +84,6 @@
 			</div>
 		</div>
 	</div>
-
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
