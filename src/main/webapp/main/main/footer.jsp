@@ -18,18 +18,21 @@
 		</div>
 		<div id="footer_img_cj1">
 			<div id="footer_bottom">
-				<p><img src="../../image/footer/footer_img_cj.png" id="footer_img_cj2">
-				<p>(12345)서울특별시 강동구 둔촌동 21길59, 동호리츠빌아파트7층(둔촌동)<br></p>
-				<p>대표이사 : 문성웅 | 사업자등록번호 : 447-99-2950 | 통신판매업신고번호 : 2018-서울용산-0417<br></p>
-				<p>개인정보보호 책임자 : 김재민|  마케팅 담당 : 송우찬 | 대표이메일 : 김진환 | CGV고객센터 : 김한빛나 | 문제신고 : 김재환</p>
-			</div>
-			<div id="footer_img">
+
+					<div id="footer_text">
+						(12345)서울특별시 강동구 둔촌동 21길59, 동호리츠빌아파트7층(둔촌동)<br>
+						대표이사 : 문성웅 | 사업자등록번호 : 447-99-2950 | 통신판매업신고번호 : 2018-서울용산-0417<br>
+						개인정보보호 책임자 : 김재민|  마케팅 담당 : 송우찬 | 대표이메일 : 김진환 | CGV고객센터 : 김한빛나 | 문제신고 : 김재환</p>
+					</div>
+				<div id="footer_img">
 				<p>
 				<a href="#"><img alt="" src="../../image/footer/face.png"></a>
 				<a href="#"><img alt="" src="../../image/footer/twit.png"></a>
 				<a href="#"><img alt="" src="../../image/footer/insta.png"></a>
 				</p>
+			</div>			
 			</div>
+			
 		</div>
 		<div>
 		<img src="../../image/footer/foot.png" id="footer_bottom_img">

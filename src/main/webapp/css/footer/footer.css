@@ -1,7 +1,4 @@
 /* 푸터영역 */
-#footer{
-	height: 100%;
-}
 #footer_text{
 	text-align: center;
 	font-size: 5px;
@@ -13,6 +10,9 @@
 #footer_img_cj2{
 	float: left;
 	align-content: center;
+	height:50px;
+	margin-top: -10px;
+	margin-left: 350px;
 }
 p{
 	align-content: center;
@@ -24,19 +24,24 @@ p{
 
 #footer_bottom{
 	margin-top:10px;
-	width:90%;
+	width:100%;
 	float: left;
 	font-size: 9px;
 }
 #footer_img{
-	width:10%;
-	float: left;
+	margin-top:-40px;
+	margin-left:1400px;
+	width:250px;
 }
 #footer_mid{
 	text-align:  center;
 }
 
 #footer_bottom_img{
-	width: 100%;
+	text-align:center;
+	width: 1900px;
 }
 /* 헤더영역 */
+#footer_text{
+	text-align: center;
+}
