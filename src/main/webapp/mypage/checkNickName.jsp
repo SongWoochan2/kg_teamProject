@@ -7,29 +7,28 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<!-- /*             if (result == "") {
-                alert("오류가 발생하였습니다.");
-                
-            } else if (result == "0") {
-                
-               
-            } else {
-               
-                
-                	if(("#existNick").val()=="-1"){
-						
-					} else if(("#existNick").val()=="0"){
-						 
-					} else(("#existNick").val()=="1"){
-						
-						$("#nick_name").val();
-					}
-            } */ -->
+<!-- 
+/* old_nick_name val()이랑 같으면   */
+/*      
+		            if(data=="-1"){
+		                alert("오류가 발생하였습니다.");
+		                _this.attr('data', 0);
+		                return false;
+		            } else if(data=="0"){
+		            	alert('이미 사용중인 닉네임입니다.');
+		            	nickNameObj.focus();
+			            _this.attr('data', 0);
+		           	} else if(data=="1"){
+		           	 	alert('사용가능한 닉네임입니다.');
+		           	 	_this.attr('data', 1);
+		           	 	nickNameObj.val(newNick);
+		           	}     
+             */ -->
 <c:if test="${exist == -1}">
 <script type="text/javascript">
 $(function(){
 	alert("오류가 발생하였습니다.");
-	location.href="/MyCGV/mypage/editProfileForm.do"
+	window.close();
 });
 </script>
 </c:if>
@@ -37,7 +36,7 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	alert("이미 사용중인 닉네임입니다.");
-	history.back();
+	window.close();
 });
 </script>
 </c:if>
@@ -45,7 +44,7 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	alert("사용가능한 닉네임입니다.");
-	history.back();
+	window.close();
 });
 </script>
 </c:if>

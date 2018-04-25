@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
 
             $('#profile_image').attr('src', '');
             /* $('#user_small_image').val(''); */
-            $('#img_addr').val('');
+            $('#img_addr').attr('value', '');
             $('#delete_image').remove();
         });
 		
