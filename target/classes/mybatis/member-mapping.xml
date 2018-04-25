@@ -11,10 +11,14 @@
 	</insert>
 	
 	<update id="memberModify" parameterType="memberDTO">
-		update member set 
+		update member 
+		<set>
+		<if test="nick_name != null">nick_name=#{nick_name},</if>
+		<if test="profile_img_addr != null">profile_img_addr=#{profile_img_addr},</if>
 		member_pwd=#{member_pwd},member_birth=to_date(#{member_birth},'YYYY-MM-DD'),
 		member_email=#{member_email},member_agency=#{member_agency},member_phone=#{member_phone},
 		member_gender=#{member_gender} 
+		</set> 
 		where member_id=#{member_id}
 	</update>
 
@@ -22,13 +26,21 @@
 		select * from member where member_id=#{member_id} and member_pwd=#{member_pwd}
 	</select>
 
-	<select id="isExistMemberId" parameterType="String" resultType="String">
-		select * from member where member_id=#{member_id}
+	<select id="isExistMember" parameterType="java.util.Map" resultType="String">
+		select * from member 
+		<where> 
+			<if test="member_id != null">
+				member_id=#{member_id}
+			</if>
+			<if test="nick_name != null">
+				nick_name=#{nick_name}
+			</if>
+		</where>
 	</select>
-
+	
 	<select id="memberView" parameterType="String" resultType="memberDTO">
-		select member_id,member_name,to_char(member_birth,'YYYY-MM-DD') as member_birth,
-		member_email,member_agency,member_phone,member_gender
+		select member_id,member_name,nick_name,to_char(member_birth,'YYYY-MM-DD') as member_birth,
+		member_email,member_agency,member_phone,member_gender,profile_img_addr
 		from member where member_id=#{member_id}
 	</select>
 
@@ -40,42 +52,5 @@
 	<delete id="memberDelete" parameterType="String">
 		delete from member where member_id=#{member_id}
 	</delete>
-	
-<!-- 	<select id="getSomething" parameterType="int" resultType="#package.#modelname">
-		SELECT
-		columnname1,
-		columnname2,
-		columnname3
-		FROM tablename1
-		WHERE columnname1 = #{value}
-	</select>
-
-	<resultMap type="#modelname" id="YourResultSet">
-		<id property="param1" column="columnname1" />
-		<result property="param2" column="columnname2" />
-		<result property="param3" column="columnname3" />
-	</resultMap>
-
-	<select id="getAll" resultMap="YourResultSet">
-		SELECT * FROM tablename1
-	</select>
-
-	<insert id="insertSomething" parameterType="#modelname">
-		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
-		VALUES(#{value1},#{value2},#{value3})
-	</insert>
-
-	<update id="updateSomething" parameterType="#modelname">
-		UPDATE tablename1
-		SET
-		columnname1=#{param1}
-		WHERE
-		columnname2 = #{param2}
-	</update>
-
-	<delete id="deleteSomething" parameterType="int">
-		DELETE FROM tablename1 WHERE
-		columnname1 = #{param1}
-	</delete> -->
 
 </mapper>
