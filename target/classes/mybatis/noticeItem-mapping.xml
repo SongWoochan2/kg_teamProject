@@ -5,7 +5,7 @@
 <mapper namespace="mybatis.noticeItem">
 	<insert id="noticeItemWrite" parameterType="noticeItemDTO">
 		insert into notice_item values 
-		(seq_notice_item_code.nextval, #{admin_id}, #{notice_item_type}, #{notice_item_title}, #{notice_item_content},  sysdate)
+		(notice_item_code_seq.nextval, #{admin_id}, #{notice_item_type}, #{notice_item_title}, #{notice_item_content},  sysdate)
 	</insert>
 
 	<update id="noticeItemModify" parameterType="noticeItemDTO">

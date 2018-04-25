@@ -88,17 +88,15 @@ pageEncoding="UTF-8"%>
 									</tr>
 									<tr>
 										<th>이름</th>
-										<td colspan="3"><strong>${member_name }</strong></td>
+										<td colspan="3"><strong name="member_name">${member_name }</strong></td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><strong>${member_phone }</strong></td>
-										<!-- 전화번호 받고 보내기 -->
+										<td colspan="3"><strong name="member_phone">${member_phone }</strong></td>
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><strong>${member_email }</strong></td>
-										<!-- 전화번호 받고 보내기 -->
+										<td colspan="3"><strong name="member_email">${member_email }</strong></td>
 									</tr>
 									<tr id="check_info">
 										<td colspan="4">
@@ -117,14 +115,14 @@ pageEncoding="UTF-8"%>
 									</tr>
 									<tr>
 										<th>제목<span id="star">*</span></th>
-										<td colspan="3"><input type="text" id="title"name="inquiry_title">
+										<td colspan="3"><input type="text" id="title" placeholder="제목을 입력해주세요" name="inquiry_title">
 										</td>
 									</tr>
 									<tr>
 										<th>내용<span id="star">*</span></th>
 										<td colspan="3">
 											<textarea cols="60" rows="5" id="content" name="inquiry_content"
-											style="height: 94px;" placeholder="※주민번호 등 개인정보가 포함되지 않도록 유의하시기 바랍니다."></textarea>
+											style="height: 94px;" placeholder="내용을 입력해주세요"></textarea>
 										</td>
 									</tr>
 									<tr>
