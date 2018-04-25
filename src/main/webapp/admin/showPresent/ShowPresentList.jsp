@@ -25,11 +25,11 @@
 	<c:forEach var="presentVO" items="${list}">
 		<script type="text/javascript">
 			$(function(){
-				var box = $(".schedule_box[show_place_code='"+ ${presentVO.show_place_code} +"']");
+				var box = $(".schedule_box[show_place_code='${presentVO.show_place_code}']");
 				var present = $("<div>").addClass("show_present");
 				present.html("${presentVO.movie_name}<br>${presentVO.show_time}:${presentVO.show_minute}/${presentVO.movie_recycle_time}");
-				present.css("height", "${presentVO.movie_recycle_time * 5 / 6}px");
-				present.css("top", "${presentVO.show_time*50 + presentVO.show_minute*5/6}px");
+				present.css("height", "${presentVO.movie_recycle_time}px");
+				present.css("top", "${(presentVO.show_time-6)*60 + presentVO.show_minute}px");
 				present.attr("show_present_code", "${presentVO.show_present_code}");
 				
 				box.append(present);
@@ -43,6 +43,15 @@
 			});
 		</script>
 	</c:forEach>
+	<script type="text/javascript">
+		$(function(){
+			$(".show_add").click(function(){
+				location.href="/MyCGV/showPresentWriteForm.do?sp_code="+$(".show_add").attr("show_place_code");
+			});
+			
+		});
+	</script>
+	
 	<style type="text/css">
 		div{
 			box-sizing: border-box;

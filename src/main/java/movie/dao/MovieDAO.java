@@ -40,4 +40,9 @@ public class MovieDAO {
 	public int movieModify(MovieDTO movieDTO) {
 		return sqlSession.update("movieMapper.movieModify", movieDTO);
 	}
+	
+	public List<MovieDTO> movieSearchByName(String movie_name) {
+		return sqlSession.selectList("movieMapper.searchByName", movie_name);
+	}
+	
 }
