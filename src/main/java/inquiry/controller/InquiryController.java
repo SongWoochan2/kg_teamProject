@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class InquiryController {
 	
 	@RequestMapping(value="/member/inquiry/inquiryWriteForm.do")
 	public String inquiryWriteForm() { 
+
 		return "inquiryWriteForm.jsp";
 	}
 	

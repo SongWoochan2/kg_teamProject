@@ -91,6 +91,45 @@ increment by 1
 nocache
 nomaxvalue;
 
+insert into movie values(
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '김진환',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세이상', '액션', '', '', '성웅',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세이상', '코믹', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '빛나',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세이상', 'SF', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '재환',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '진환',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '빛나',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세이상', '판타지', '', '', '재민',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세이상', 'SF', '', '', '빛나',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 
 
 
@@ -266,9 +305,29 @@ insert into seat values( 2, 2, 4, 'D');
 
 --------------------------------------------------
 
+-- 상영현황 
+create table show_present(
+  show_present_code int,
+  show_place_code int,
+  movie_code int,
+  show_date date not null,
+  show_time int not null,
+  show_minute int not null,
+  primary key(show_present_code),
+  FOREIGN KEY (show_place_code) REFERENCES show_place(show_place_code),
+  FOREIGN KEY (movie_code) REFERENCES movie(movie_code)  
+);
 
 
+create sequence show_present_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
 
+insert into show_present values(
+  show_present_seq.nextval, 6, 1, SYSDATE , 50,70
+);
 
 
 -------------------------------------------------------------  (4)

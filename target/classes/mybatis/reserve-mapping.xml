@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.reserveMapper">
+<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
+		SELECT movie_name FROM movie 
+			where movie_code IN ( select movie_code from show_present
+	  			<where> 
+					 	to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')
+	   				<if test="show_date != null">
+						AND to_char(show_date, 'YYYYMMDD') = '20180425'
+	    			</if>
+	    			<if test="theater_code != null">
+						AND show_place_code IN ( select show_place_code from show_place
+							where theat_code = #{theater_code})
+	    			</if>
+	  			</where>
+	  		)
+	</select>
+	
+	<!-- <select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
+		SELECT movie_name FROM movie 
+			where movie_code IN ( select movie_code from show_present
+	  			<where> 
+					to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD'),
+	   				<if test="show_date != null">
+						AND to_char(show_date, 'YYYYMMDD') = to_char(#{show_date}, 'YYYYMMDD'),
+	    			</if>
+	    			<if test="theater_code != null">
+						AND show_place IN ( select show_place from show_place
+							where theater_code = #{theater_code} )
+	    			</if>
+	  			</where>
+	  		)
+	</select> -->
+	<select id="getTotalA" resultType="int">
+		select count(*) from show_present
+	</select>
+	
+	<select id="reserveView" parameterType="int" resultType="reserveDTO">
+		select * from show_present where show_present_code=#{show_present_code}
+	</select>
+	
+	<!-- <select id="getSomething" parameterType="int" resultType="#package.#modelname">
+		SELECT
+		columnname1,
+		columnname2,
+		columnname3
+		FROM tablename1
+		WHERE columnname1 = #{value}
+	</select>
+
+	<resultMap type="#modelname" id="YourResultSet">
+		<id property="param1" column="columnname1" />
+		<result property="param2" column="columnname2" />
+		<result property="param3" column="columnname3" />
+	</resultMap>
+
+	<select id="getAll" resultMap="YourResultSet">
+		SELECT * FROM tablename1
+	</select>
+
+	<insert id="insertSomething" parameterType="#modelname">
+		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
+		VALUES(#{value1},#{value2},#{value3})
+	</insert>
+
+	<update id="updateSomething" parameterType="#modelname">
+		UPDATE tablename1
+		SET
+		columnname1=#{param1}
+		WHERE
+		columnname2 = #{param2}
+	</update>
+
+	<delete id="deleteSomething" parameterType="int">
+		DELETE FROM tablename1 WHERE
+		columnname1 = #{param1}
+	</delete> -->
+</mapper>

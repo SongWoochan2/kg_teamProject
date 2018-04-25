@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,21 +8,43 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
 <link rel="stylesheet" href="../../css/reserve/reserve.css" />
+
 </head>
 <body>
 <jsp:include page="../main/header.jsp"></jsp:include>
+
 <div class="div_top">
 	<div id="top_movie">
-		영화
+		<div id="top_movie_div1">영화</div>
+		<div id="top_movie_div2">
+			<c:forEach var="reserveDTO" items="${requestScope.list }">
+				${ reserveDTO.show_present_code }
+			</c:forEach>	
+		</div>
 	</div>
 	<div id="top_theater">
-		극장
+		<div id="top_theater_div1">극장</div>
+		<div id="top_theater_div2">DB</div>
 	</div>
 	<div id="top_date">
-		날짜
+		<div id="top_date_div1">날짜</div>
+		<div id="top_date_div2">DB
+			<div class="date" show_date="1">25일 </div>
+			<div class="date" show_date="2">26일 </div>
+			<div class="date" show_date="3">27일 </div>
+			<div class="date" show_date="4">28일 </div>
+			<div class="date" show_date="5">29일 </div>
+			<div class="date" show_date="6">30일 </div>
+			<div class="date" show_date="7">1일 </div>
+			<div class="date" show_date="8">2일 </div>
+			<div class="date" show_date="9">3일 </div>
+			<div class="date" show_date="10">4일 </div>
+			<div class="date" show_date="20180505">5일 </div>
+		</div>
 	</div>
 	<div id="top_time">
-		시간
+		<div id="top_time_div1">시간</div>
+		<div id="top_time_div2">DB</div>
 	</div>
 </div>
 

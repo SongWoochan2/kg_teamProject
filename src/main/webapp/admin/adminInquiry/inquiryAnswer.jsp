@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 	<title>Insert title here</title>
 	<script type="text/javascript">
 		window.onload = function(){
-			alert("작성하신 글을 수정하였습니다.");
+			alert("문의에 답변 하였습니다.");
 			location.href = "inquiryList.do?pg=1";
 		}
 	</script>

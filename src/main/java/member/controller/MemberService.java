@@ -7,8 +7,8 @@ public interface MemberService {
 	public int memberWrite(MemberDTO memberDTO);
 	// 회원 로그인
 	public String memberLogin(String member_id, String member_pwd);
-	// 아이디 존재 여부
-	public String isExistMemberId(String member_id);
+	// 아이디,닉네임 존재 여부
+	public String isExistMember(String member_id, String nick_name);
 	// 회원정보 상세보기
 	public MemberDTO memberView(String member_id);
 	// 회원정보 수정

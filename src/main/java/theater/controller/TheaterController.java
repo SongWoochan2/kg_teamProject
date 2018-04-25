@@ -130,7 +130,6 @@ public class TheaterController {
 		modelAndView.addObject("pg", pg);
 		modelAndView.setViewName("theaterList.jsp");
 		return modelAndView;
-
 	}
 
 	@RequestMapping(value="/admin/theater/theaterView.do")

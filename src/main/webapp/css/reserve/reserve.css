@@ -9,11 +9,35 @@
 	height: 100%;
 	float: left;
 }
+#top_movie_div1{
+ 	border : 1px dotted red;
+	float: left;
+	width: 100%;
+	height: 5%;
+}
+#top_movie_div2{
+	border : 1px dotted blue;
+	float: left;
+	width: 100%;
+	height: 94%;
+}
 #top_theater{
 	border : 1px dotted gray;
 	width: 22%;
 	height: 100%;
 	float: left;
+}
+#top_theater_div1{
+	border : 1px dotted red;
+	float: left;
+	width: 100%;
+	height: 5%;
+}
+#top_theater_div2{
+	border : 1px dotted blue;
+	float: left;
+	width: 100%;
+	height: 94%;
 }
 #top_date{
 	border : 1px dotted gray;
@@ -21,11 +45,35 @@
 	height: 100%;
 	float: left;
 }
+#top_date_div1{
+	border : 1px dotted red;
+	float: left;
+	width: 100%;
+	height: 5%;
+}
+#top_date_div2{
+	border : 1px dotted blue;
+	float: left;
+	width: 100%;
+	height: 94%;
+}
 #top_time{
 	border : 1px dotted gray;
 	width: 30%; /* 여유 14%남음 */
 	height: 100%;
 	float: left;
+}
+#top_time_div1{
+	border : 1px dotted red;
+	float: left;
+	width: 100%;
+	height: 5%;
+}
+#top_time_div2{
+	border : 1px dotted blue;
+	float: left;
+	width: 100%;
+	height: 94%;
 }
 .div_bottom{
 	padding: 0% 15% 0% 18%;
