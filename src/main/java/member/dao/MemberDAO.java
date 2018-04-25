@@ -17,9 +17,12 @@ public class MemberDAO {
 	public int memberWrite(MemberDTO memberDTO) {
 		return sqlSession.insert("mybatis.memberMapper.memberWrite", memberDTO);
 	}
-	
-	public String isExistMemberId(String member_id) {
-		return sqlSession.selectOne("mybatis.memberMapper.isExistMemberId", member_id);
+
+	public String isExistMember(String member_id,String nick_name) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("member_id", member_id);
+		map.put("nick_name", nick_name);
+		return sqlSession.selectOne("mybatis.memberMapper.isExistMember", map);
 	}
 	
 	public String memberLogin(String member_id,String member_pwd) {
@@ -44,4 +47,5 @@ public class MemberDAO {
 	public MemberDTO memberInfo(String member_id) {
 		return sqlSession.selectOne("mybatis.memberMapper.memberInfo", member_id);
 	}
+	
 }
