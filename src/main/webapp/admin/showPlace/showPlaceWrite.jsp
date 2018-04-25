@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+<link href="../css/bootstrap.css" rel = "stylesheet">
 	<c:if test="${su > 0 }">
 		<script type="text/javascript">
 			window.onload = function(){
@@ -25,5 +26,8 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 
+	<jsp:include page="../adminMain/adminTemplate.jsp"/>
+	<div id = "content" align="center">
+	</div>
 </body>
 </html>

@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../../css/bootstrap.css" rel = "stylesheet">
-<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
+<link href="/MyCGV/css/bootstrap.css" rel = "stylesheet">
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script>
 	$(function(){
 		function adminlogin(){
@@ -54,7 +54,7 @@
 		height: 71%;
 		padding-top: 30px;
 /*  		background-repeat : no-repeat; */
-		background-image: url('../../image/admintop.png');
+		background-image: url('/MyCGV/image/admintop.png');
 	}
 	div#container #logo img{
 		width: 200px;
@@ -79,6 +79,9 @@
 		height : 100%;
 /* 		background: linear-gradient(135deg, #b3dced 0%,#18458e 40%,#bce0ee 100%);  */
 		background: linear-gradient(to bottom, #f4ac5a 0%,#cc791c 50%,#7a450b 51%,#f4ac5a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	}
+	div#container #nevi ul.menu li#a{
+		width : 60%;
 	}
 	div#container #nevi ul.menu li .sub{
 		display: none;
@@ -121,7 +124,7 @@
 		text-align : center;
 		width: 100%;
 		height : 1200px;
-		background-image: url('../../image/adminlogin.png');
+		background-image: url('/MyCGV/image/adminlogin.png');
 	}
 	div#content th{
 		text-align: center;
@@ -211,15 +214,15 @@
 	<div id = "container">
 		<div id = "topnevi">
 		<c:if test="${sessionScope.admin_id == null }">
-			<a href = "../adminMain/adminLoginForm.do">로그인</a>
+			<a href = "/MyCGV/admin/adminMain/adminLoginForm.do">로그인</a>
 		</c:if>
 		<c:if test="${sessionScope.admin_id != null }">
 			<a>${sessionScope.admin_id} 관리자님 </a><a> | </a>
-			<a href = "../adminMain/adminLogout.do">로그아웃</a><a> | </a><a href = "../adminMain/adminPwdChangeForm.do">비밀번호수정</a><a> | </a><a href = "../adminMain/adminRequestList.do?pg=1">관리자등록관리</a>
+			<a href = "/MyCGV/admin/adminMain/adminLogout.do">로그아웃</a><a> | </a><a href = "/MyCGV/admin/adminMain/adminPwdChangeForm.do">비밀번호수정</a><a> | </a><a href = "../adminMain/adminRequestList.do?pg=1">관리자등록관리</a>
 		</c:if>
 		</div>
 		<div id = "logo">
-			<a href = "../adminMain/adminMain.do"><img src = "../../image/logo/cgvLogo.png"></a>
+			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/cgvLogo.png"></a>
 		</div>
 		<div id = "nevi">
 			<ul class = "menu">
@@ -232,15 +235,14 @@
 				</li>
 				<li><a>등록 리스트</a>
 					<ul class = "sub">
-						<li><a href = "../movie/movieAdmin.do?pg=1">영화관리</a></li>
+						<li><a href = "/MyCGV/admin/movie/movieAdmin.do?pg=1">영화관리</a></li>
 						<li><a href = "#">상영관리</a></li>
-						<li><a href = "/MyCGV/theater.main/theaterList.do?pg=1">극장관리</a></li>
+						<li><a href = "/MyCGV/admin/theater/theaterList.do?pg=1">극장관리</a></li>
 						<li><a href = "#">스토어관리</a></li>
 					</ul>
 				</li>
-				<li>
-				<li>	
-				<li>			
+				<li id = "a">
+						
 			</ul>
 		</div>
 	</div>

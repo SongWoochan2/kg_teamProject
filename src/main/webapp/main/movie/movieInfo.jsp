@@ -11,9 +11,11 @@
 <style type="text/css">
 	div{
 		margin : auto;
-		border : 1px solid red;
 	}
 
+	a{
+		color:black;
+	}
 	
 	#moviepage{
 		background-image : url('../../image/storage/movieInfo.png');
@@ -156,7 +158,8 @@
 <body>
 	<div id="moviepage">
 		<div id = "pagenevi">
-			영화 > <b>영화 상세</b>
+			<span class="glyphicon glyphicon-home"></span>
+			<a href = "#">홈</a> > 영화 > <b>영화 상세</b>
 		</div>
 		<div id="head-title">
 			 &nbsp;영화상세
@@ -188,7 +191,7 @@
 			<a href="#" class="btn btn-info btn-lg">
          		 <span class="glyphicon glyphicon-menu-left"></span>
         	</a>
-			&nbsp;&nbsp;&nbsp;<b>트레일러</b>&nbsp;&nbsp;&nbsp;
+			&emsp;<b>트레일러</b>&emsp;
 			<a href="#" class="btn btn-info btn-lg">
           		<span class="glyphicon glyphicon-menu-right"></span>
         	</a>
@@ -200,7 +203,7 @@
 			<a href="#" class="btn btn-info btn-lg">
          		 <span class="glyphicon glyphicon-menu-left"></span>
         	</a>
-			&nbsp;&nbsp;<b>스틸컷</b>&nbsp;&nbsp;&nbsp;
+			&emsp;<b>스틸컷</b>&emsp;
 			<a href="#" class="btn btn-info btn-lg">
           		<span class="glyphicon glyphicon-menu-right"></span>
         	</a>
@@ -214,6 +217,7 @@
 			<div id = "review-content">
 				<!-- 반복문 구간 -->
 				<div id = "review-info">
+					
 				</div>
 				<div id = "review-info">
 				</div>

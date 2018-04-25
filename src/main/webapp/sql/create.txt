@@ -1,0 +1,340 @@
+-------------------------------------------------------------  (1)
+
+--관리자 테이블
+create table admin(
+  admin_id varchar2(30) not null,
+  admin_name varchar2(30) not null,
+  admin_pwd varchar2(25) not null,
+  admin_enroll_date date,
+  primary key(admin_id)
+);
+
+--관리장계정 등록
+insert into admin values(
+   'cgv1', '강남cgv관리자', '1234', sysdate
+);
+
+-------------------------------------------------
+--극장 테이블
+create table theater(
+  theater_code int,
+  theater_name varchar2(30) not null,
+  theater_photo_addr varchar2(255) not null,
+  theater_phone varchar(11) not null,
+  primary key(theater_code)
+);
+
+create sequence theater_seq nocache nocycle;
+
+--관리장계정 등록
+insert into theater values(
+  theater_seq.nextval, '강남cgv', 'CGVgangnam.jpg', '01050439803'
+);
+insert into theater values(
+  theater_seq.nextval, '서초cgv', 'CGVgangbyeon.jpg', '01050439803'
+);
+insert into theater values(
+  theater_seq.nextval, '종로cgv', 'CGVmyeongdong.jpg', '01050439803'
+);
+
+----------------------------------------------------
+
+--좌석분류표
+create table seat_type(
+  seat_type_code int primary key,
+  add_cost number,
+  seat_type_name varchar(15)
+);
+
+insert into seat_type values(
+  0, 0, '빈좌석'
+);
+insert into seat_type values(
+  1, -1000, '장애인석'
+);
+insert into seat_type values(
+  2, 0, '일반석'
+);
+insert into seat_type values(
+  3, 1000, '우등석'
+);
+insert into seat_type values(
+  4, 1000, '커플석'
+);
+
+----------------------------------------------
+
+-- 영화 테이블
+create table movie(
+  movie_code int,
+  movie_name varchar(30) not null,
+  movie_content varchar(2048) not null,
+  make_nation varchar(15) not null,
+  movie_open_date date not null,
+  movie_recycle_time number not null,
+  movie_show_grade_name varchar(30) not null,
+  movie_type1 varchar(15) not null,
+  movie_type2 varchar(15),
+  movie_type3 varchar(15),
+  movie_director varchar(30) not null,
+  movie_evaluat_num number not null,
+  acc_evaluat_score number not null,
+  appear_actor varchar(2048) not null,
+  good_num number not null,
+  acc_audience_num number not null,
+  primary key(movie_code)
+);
+
+create sequence movie_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+insert into movie values(
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '김진환',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세이상', '액션', '', '', '성웅',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세이상', '코믹', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '빛나',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세이상', 'SF', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '재환',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '진환',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '빛나',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세이상', '판타지', '', '', '재민',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세이상', 'SF', '', '', '빛나',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+insert into movie values(
+  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '송우찬',
+  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+
+---------------------------------------------------------------------------------------------  insert 추가
+
+------------------------------------------------
+
+-- 관리자 신청
+create table admin_request(
+  admin_request_code int,
+  admin_id varchar2(30) not null UNIQUE,
+  admin_name varchar2(30) not null,
+  admin_pwd varchar2(25) not null,
+  request_date date not null,
+  primary key(admin_request_code)
+);
+
+create sequence admin_request_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+-----------------------------------------------
+
+
+-------------------------------------------------------------  (2)
+
+--상영관 테이블
+create table show_place(
+  show_place_code int primary key,
+  theater_code int not null,
+  show_place_name varchar(30) not null,
+  default_cost number not null,
+  show_place_photo_addr varchar(255),
+  FOREIGN KEY (theater_code) REFERENCES theater(theater_code)
+);
+
+create sequence show_place_seq nocache nocycle;
+
+--관리장계정 등록
+insert into show_place values(
+  show_place_seq.nextval, '1', '1상영관', 10000, '1.jpg'
+);
+insert into show_place values(
+  show_place_seq.nextval, '1', '2상영관', 12000, '2.jpg'
+);
+insert into show_place values(
+  show_place_seq.nextval, '1', '3상영관', 11000, '3.jpg'
+);
+insert into show_place values(
+  show_place_seq.nextval, '2', '1상영관', 11000, '4.jpg'
+);
+insert into show_place values(
+  show_place_seq.nextval, '2', '2상영관', 10000, '5.jpg'
+);
+insert into show_place values(
+  show_place_seq.nextval, '3', '1상영관', 11000, '6.jpg'
+);
+
+------------------------------------------------------
+
+-- 영화 트레일러
+create table movie_trailer(
+  movie_trailer_code int,
+  movie_code int,
+  movie_trailer_name varchar(30) not null,
+  movie_trailer_addr varchar(255) not null,
+  upload_date date not null,
+  constraint movietrailer_movie_code_fk foreign key(movie_code) references movie(movie_code),
+  primary key(movie_trailer_code)
+);
+
+create sequence movie_trailer_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+----------------------------------------------
+
+-- 영화 사진
+create table movie_photo(
+  movie_photo_code int,
+  movie_code int,
+  movie_photo_name varchar(30) not null,
+  movie_photo_addr varchar(255) not null,
+  upload_date date not null,
+  constraint moviephoto_movie_code_fk foreign key(movie_code) references movie(movie_code),
+  primary key(movie_photo_code)
+);
+
+create sequence movie_photo_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+---------------------------------------------
+
+
+
+
+-------------------------------------------------------------  (3)
+
+--좌석 테이블
+create table seat(
+  show_place_code int not null,
+  seat_type_code int not null,
+  x_index number not null,
+  y_index varchar(1) not null,
+  primary key(x_index, y_index, show_place_code),
+  FOREIGN KEY (show_place_code) REFERENCES show_place(show_place_code),
+  FOREIGN KEY (seat_type_code) REFERENCES seat_type(seat_type_code)
+);
+
+insert into seat values( 1, 2, 2, '!');
+insert into seat values( 1, 2, 5, '!');
+insert into seat values( 1, 2, 1, 'A');
+insert into seat values( 1, 2, 2, 'A');
+insert into seat values( 1, 2, 3, 'A');
+insert into seat values( 1, 2, 4, 'A');
+insert into seat values( 1, 2, 5, 'A');
+insert into seat values( 1, 2, 6, 'A');
+insert into seat values( 1, 2, 7, 'A');
+insert into seat values( 1, 2, 1, 'B');
+insert into seat values( 1, 2, 2, 'B');
+insert into seat values( 1, 2, 3, 'B');
+insert into seat values( 1, 2, 4, 'B');
+insert into seat values( 1, 2, 5, 'B');
+insert into seat values( 1, 2, 6, 'B');
+insert into seat values( 1, 2, 7, 'B');
+insert into seat values( 1, 2, 1, 'C');
+insert into seat values( 1, 2, 2, 'C');
+insert into seat values( 1, 2, 3, 'C');
+insert into seat values( 1, 2, 4, 'C');
+insert into seat values( 1, 2, 5, 'C');
+insert into seat values( 1, 2, 6, 'C');
+insert into seat values( 1, 2, 7, 'C');
+insert into seat values( 1, 2, 1, 'D');
+insert into seat values( 1, 2, 2, 'D');
+insert into seat values( 1, 2, 3, 'D');
+insert into seat values( 1, 2, 4, 'D');
+insert into seat values( 1, 2, 5, 'D');
+insert into seat values( 1, 2, 6, 'D');
+insert into seat values( 1, 2, 7, 'D');
+insert into seat values( 1, 2, 1, 'E');
+insert into seat values( 1, 2, 2, 'E');
+insert into seat values( 1, 2, 3, 'E');
+insert into seat values( 1, 2, 4, 'E');
+insert into seat values( 1, 2, 5, 'E');
+insert into seat values( 1, 2, 6, 'E');
+insert into seat values( 1, 2, 7, 'E');
+
+insert into seat values( 2, 2, 1, '!');
+insert into seat values( 2, 2, 3, '!');
+insert into seat values( 2, 2, 1, 'A');
+insert into seat values( 2, 2, 2, 'A');
+insert into seat values( 2, 2, 3, 'A');
+insert into seat values( 2, 2, 4, 'A');
+insert into seat values( 2, 2, 1, 'B');
+insert into seat values( 2, 2, 2, 'B');
+insert into seat values( 2, 2, 3, 'B');
+insert into seat values( 2, 2, 4, 'B');
+insert into seat values( 2, 3, 1, 'C');
+insert into seat values( 2, 3, 2, 'C');
+insert into seat values( 2, 3, 3, 'C');
+insert into seat values( 2, 3, 4, 'C');
+insert into seat values( 2, 2, 1, 'D');
+insert into seat values( 2, 2, 2, 'D');
+insert into seat values( 2, 2, 3, 'D');
+insert into seat values( 2, 2, 4, 'D');
+
+--------------------------------------------------
+
+-- 상영현황 
+create table show_present(
+  show_present_code int,
+  show_place_code int,
+  movie_code int,
+  show_date date not null,
+  show_time int not null,
+  show_minute int not null,
+  primary key(show_present_code),
+  FOREIGN KEY (show_place_code) REFERENCES show_place(show_place_code),
+  FOREIGN KEY (movie_code) REFERENCES movie(movie_code)  
+);
+
+
+create sequence show_present_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+insert into show_present values(
+  show_present_seq.nextval, 6, 1, SYSDATE , 50,70
+);
+
+
+-------------------------------------------------------------  (4)
+
+
+
+
+
+
+-------------------------------------------------------------  (5)
+
+

@@ -1,0 +1,77 @@
+-------------------------------------------------------------  (5)
+
+
+
+
+
+-------------------------------------------------------------  (4)
+
+
+
+
+
+
+-------------------------------------------------------------  (3)
+
+-- 상영현황
+drop table show_present purge;
+drop sequence show_present_seq;
+
+-- 좌석 
+drop table seat purge;
+
+
+-------------------------------------------------------------  (2)
+
+-- 영화 사진 
+drop table movie_photo purge;
+drop sequence movie_photo_seq;
+
+-- 영화 트레일러
+drop table movie_trailer purge;
+drop sequence movie_trailer_seq;
+
+-- 상영관
+drop table show_place purge;
+drop sequence show_place_seq;
+
+
+
+-------------------------------------------------------------  (1)
+
+-- 관리자 신청
+drop table admin_request purge;
+drop sequence admin_request_seq;
+
+-- 영화
+drop table movie purge;
+drop sequence movie_seq;
+
+-- 좌석 분류표
+drop table seat_type purge;
+
+-- 극장
+drop table theater purge;
+drop sequence theater_seq;
+
+-- 관리자
+drop table admin purge;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

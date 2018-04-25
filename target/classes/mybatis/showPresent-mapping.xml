@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="showPresent">
+
+	<select id="getList" parameterType="java.util.Map" resultType="showPresentAllVO">
+		SELECT * FROM show_present, movie, show_place
+		WHERE show_present.show_date=#{show_date}
+			AND show_present.show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
+			AND show_present.movie_code = movie.movie_code
+			AND show_present.movie_code = movie.movie_code
+	</select>
+	
+	<insert id="insert" parameterType="showPresentAllVO">
+		INSERT INTO show_present 
+		(show_present_code, show_place_code, movie_code, show_date, show_time, show_minute)
+		VALUES
+		(show_present_seq.NEXTVAL,#{show_place_code},#{movie_code},#{show_date},#{show_time},#{show_minute})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM show_present 
+		WHERE show_present_code = #{show_present_code}
+	</delete>
+	
+	<select id="getOne" parameterType="int" resultType="showPresentAllVO">
+		SELECT * FROM show_present, movie, show_place
+		WHERE show_present_code = #{show_present_code}
+			AND show_present.movie_code = movie.movie_code
+			AND show_present.movie_code = movie.movie_code
+	</select>
+	
+</mapper>
