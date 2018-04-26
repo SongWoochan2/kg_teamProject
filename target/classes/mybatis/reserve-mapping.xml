@@ -13,7 +13,7 @@
 	    			</if>
 	    			<if test="theater_code != null">
 						AND show_place_code IN ( select show_place_code from show_place
-							where theat_code = #{theater_code})
+							where theater_code = #{theater_code})
 	    			</if>
 	  			</where>
 	  		)

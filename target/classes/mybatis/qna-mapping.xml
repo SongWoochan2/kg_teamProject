@@ -6,7 +6,7 @@
 
  	<insert id="qnaWrite" parameterType="qnaDTO">
 		insert into qna values 
-		(seq_qna_code.nextval, #{qna_type}, #{qna_title}, #{qna_content}, sysdate)
+		(qna_code_seq.nextval, #{qna_type}, #{qna_title}, #{qna_content}, sysdate)
 	</insert>
 
 	<update id="qnaModify" parameterType="qnaDTO">
