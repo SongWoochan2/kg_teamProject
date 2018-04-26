@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
 		$("#cancle_btn").click(function(){
 			var result = confirm('입력하신 정보는 저장되지 않습니다.\n정말 취소하시겠습니까?'); 
 			if(result) { //yes 
-				location.replace('../index.jsp'); 
+				location.replace('index.do'); 
 			} else {
 				
 			}
@@ -142,8 +142,7 @@ pageEncoding="UTF-8"%>
 			</tr>
 		</table>
 
-		<a href="../index.jsp">메인으로</a>
-		<input type="button" value="메인으로" onclick="location.href='../index.jsp'">
+		<input type="button" value="MoveIt 첫화면으로" onclick="location.href='index.do'">
 	</form>
 </body>
 </html>

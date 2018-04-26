@@ -57,8 +57,8 @@ drop sequence theater_seq;
 -- 관리자
 drop table admin purge;
 
-
-
+-- 회원
+drop table member purge;
 
 
 

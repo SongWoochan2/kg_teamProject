@@ -9,16 +9,11 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript">
 		window.onload = function(){
 			alert("작성하신 글을 저장하였습니다.");
-				location.href = "inquiryList.do?pg=1";
+				location.href = "inquiryListMember.do?pg=1&{member_name}&{member_email}";
 		}
 	</script>
 </head>
 <body>
-	<%-- <c:if test="${su > 0 }">
-		작성한 글을 저장하였습니다.
-	</c:if>
-	<c:if test="${su <= 0 }">
-		작성한 글을 저장하지 못했습니다.
-	</c:if> --%>
+	
 </body>
 </html>

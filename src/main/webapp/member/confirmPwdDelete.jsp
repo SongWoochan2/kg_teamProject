@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<td colspan="2" align="center">
 			<input type="button" value="확인" onclick="javascript:checkMemberPwd()">
-			<input type="button" value="MoveIt 첫화면으로" onclick="javascript:location.href='../index.jsp'">
+			<input type="button" value="MoveIt 첫화면으로" onclick="javascript:location.href='index.do'">
  		</td>
 	</tr>
 </table>

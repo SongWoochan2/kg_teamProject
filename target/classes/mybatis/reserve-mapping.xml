@@ -3,37 +3,66 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.reserveMapper">
-<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
+
+	<!-- 극장이나 날짜를 눌렀을때 영화가 변경  -->
+	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
 		SELECT movie_name FROM movie 
 			where movie_code IN ( select movie_code from show_present
 	  			<where> 
-					 	to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')
+					 	to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')	
 	   				<if test="show_date != null">
-						AND to_char(show_date, 'YYYYMMDD') = '20180425'
+						AND to_char(show_date, 'YYYYMMDD') = '20180426'
 	    			</if>
 	    			<if test="theater_code != null">
 						AND show_place_code IN ( select show_place_code from show_place
 							where theater_code = #{theater_code})
 	    			</if>
 	  			</where>
-	  		)
+	  	)
 	</select>
+	<!-- 
+		필요한 것 : 영화이름
+		조건 : 
+		1. 영화의 영화코드는 상영현황의 영화코드 일치
+		2. 오늘을 포함한 이후의 날짜가 상영날짜인가
+		3. 극장의 극장코드와 요구하는 극장의 극장코드와 일치
+	 -->
 	
-	<!-- <select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
-		SELECT movie_name FROM movie 
-			where movie_code IN ( select movie_code from show_present
-	  			<where> 
-					to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD'),
-	   				<if test="show_date != null">
-						AND to_char(show_date, 'YYYYMMDD') = to_char(#{show_date}, 'YYYYMMDD'),
-	    			</if>
-	    			<if test="theater_code != null">
-						AND show_place IN ( select show_place from show_place
-							where theater_code = #{theater_code} )
-	    			</if>
-	  			</where>
-	  		)
-	</select> -->
+	<!-- 영화나 날짜를 눌렀을때 극장이 변경 -->
+	<!-- 
+	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
+		select theater_name FROM theater 
+			where theater_code in(select theater_code from show_place
+			where show_place_code in(select show_place_code from show_present
+			where movie_code in(select movie_code from movie where movie_code = #{movie_code})
+			and to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')
+			<if test="show_date != null">
+				AND to_char(show_date, 'YYYYMMDD') = '20180426'
+	    	</if>
+		))
+	</select>
+	 -->
+	<!-- 
+	극장 이름을 가져오는 조건
+	1. 극장의 코드와 상영관의 극장코드가 일치
+	2. 상영관과 상영현황의 상영관코드가 일치
+	3. 상영현황의 영화코드와 영화의 영화코드가 일치
+	4. 오늘을 포함한 이후의 날짜가 상영날짜인가
+	5. 특정 영화를 선택
+	ex)
+	select theater_name FROM theater 
+	where theater_code in(select theater_code from show_place
+	where show_place_code in(select show_place_code from show_present
+	where movie_code in(select movie_code from movie where movie_code = 1)
+	and to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')	
+	AND to_char(show_date, 'YYYYMMDD') = '20180426'));
+	
+	조인 사용방법
+	ex) 6상영관이 있는 극장의 이름이 궁금할때
+	select t.theater_name FROM theater t, show_place s
+	where s.theater_code = t.theater_code and s.show_place_name='6상영관';
+	-->
+	
 	<select id="getTotalA" resultType="int">
 		select count(*) from show_present
 	</select>

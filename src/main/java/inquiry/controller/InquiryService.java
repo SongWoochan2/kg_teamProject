@@ -18,12 +18,19 @@ public class InquiryService {
 		return inquiryDAO.inquiryWrite(inquiryDTO);
 	}
 	
+	public int inquiryAll(String inquiry_id) {
+		return inquiryDAO.inquiryAll(inquiry_id);
+	}
 	public int inquiryModify(InquiryDTO inquiryDTO) {
 		return inquiryDAO.inquiryModify(inquiryDTO);
 	}
 	
-	public List<InquiryDTO> inquiryList(int startNum, int endNum){
-		return inquiryDAO.inquiryList(startNum, endNum);
+	public List<InquiryDTO> inquiryListAdmin(int startNum, int endNum){
+		return inquiryDAO.inquiryListAdmin(startNum, endNum);
+	}
+	
+	public List<InquiryDTO> inquiryListMember(int startNum, int endNum){
+		return inquiryDAO.inquiryListMember(startNum, endNum);
 	}
 	
 	public InquiryDTO inquiryView(int inquiry_code) {

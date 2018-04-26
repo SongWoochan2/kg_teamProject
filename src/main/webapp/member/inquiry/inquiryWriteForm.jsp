@@ -88,15 +88,15 @@ pageEncoding="UTF-8"%>
 									</tr>
 									<tr>
 										<th>이름</th>
-										<td colspan="3"><strong name="member_name">${member_name }</strong></td>
+										<td colspan="3"><input type="text"name="member_name" value="${member_name }" ></td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><strong name="member_phone">${member_phone }</strong></td>
+										<td colspan="3"><input type="text"name="member_phone" value="${member_phone }" ></td>
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><strong name="member_email">${member_email }</strong></td>
+										<td colspan="3"><input type="text"name="member_email" value="${member_email }" ></td>
 									</tr>
 									<tr id="check_info">
 										<td colspan="4">
@@ -134,7 +134,7 @@ pageEncoding="UTF-8"%>
 							</table>
 						</div>
 						<div id="qna_email">
-							<button style="width: 80px" type="submit">
+							<button style="width: 80px" type="submit" >
 								<span>등록하기</span>
 							</button>
 							<button style="width: 80px" type="reset" >

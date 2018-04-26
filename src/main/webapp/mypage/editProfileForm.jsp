@@ -17,31 +17,31 @@ pageEncoding="UTF-8"%>
 		}
 		
 		var img_addr = $("#img_addr").val();
-		if(img_addr!=null || img_addr!="" || img_addr!='') {
+		if(img_addr==null || img_addr=='none.png' || img_addr.includes("none.")) {
+			$("#img_memprofileimage").attr("src", "../image/profile/none.png");	
+		} else {
 			$("#img_memprofileimage").attr("src", "../image/profile/"+img_addr);
 			var button = $("<button type='button'>프로필이미지 삭제</button>"); 
 			button.attr('id','delete_image');
 			$(".profile-mask").append(button);
-		} else {
-			$("#img_memprofileimage").attr("src", "../image/profile/none.png");
 		}
 		
         $('#delete_image').click(function () {
             if (!confirm('설정된 프로필 이미지를 삭제 하시겠습니까?'))
                 return;
-			
-            $('#img_memprofileimage').attr('src', '../image/profile/none.png');
-            /* $('#user_small_image').val(''); */
-           	$("#img_addr").val('');
-            $('#delete_image').remove();
-            
+
             $.ajax({
             	url: "./deleteProfileImg.do",
         		type: "post",
+        		dataType: "html",
         		cache: false,
         		timeout: 30000,
         		success: function(data) {
-        			
+                    $('#img_memprofileimage').attr('src', '../image/profile/none.png');
+                    /* $('#user_small_image').val(''); */
+                   	$("#img_addr").val("none.png");
+                    $('#delete_image').remove();
+                    $("#resultAlert").html(data);
         		},
         		error: function(xhr, textStatus, errorThrown) {
 					$("div.tbl-form").html("<div>" + textStatus 
@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%>
             		cache: false,
             		timeout: 30000,
             		success: function(data) {
-            			$("#existNick").html(data);
+            			$("#resultAlert").html(data);
             		},
             		error: function(xhr, textStatus, errorThrown) {
     					$("div.tbl-form").html("<div>" + textStatus 
@@ -94,67 +94,78 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-<div class="tit-mypage">
-    <h3>프로필 관리</h3>
-</div>
-<div class="tit-mypage">
-    <h4>나의 프로필 정보</h4>
-</div>
-<form name="editProfileForm" action="editProfile.do" method="post" enctype="multipart/form-data">
-<div class="tbl-form">
-    <table summary="나의 프로필정보:이름,아이디,닉네임,프로필이미지 표기">
-        <colgroup>
-        <col width="19%">
-        <col width="*">
-        </colgroup>
-        <tbody>
-            <tr>
-                <th scope="row">이름</th>
-                <td><strong>${memberDTO.member_name}</strong></td>
-            </tr>
-            <tr>
-                <th scope="row">아이디</th>
-                <td><strong>${memberDTO.member_id}</strong></td>
-            </tr>
-            <tr>
-                <th scope="row"><label for="nick_name">닉네임</label></th>
-                <td>
-                    <p>한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p>
-                    <input type="hidden" id="old_nick_name" name="old_nick_name" value="${memberDTO.nick_name}"> 
-                    <input type="text" id="nick_name" name="nick_name" value="" required="required" maxlength="10"> 
-                    <button id="check_duplication" type="button"><span>중복확인</span></button>
-                </td>
-            </tr>
-            
-            <tr>
-                <th scope="row">프로필이미지</th>
-                <td>
-                    <p class="profile-info">각 서비스(이벤트, 매거진, 영화리뷰 등)의 리뷰 및 덧글작성시 등록하신 대표이미지가 노출됩니다.<br>프로필 이미지 종류를 선택해 주세요.</p>
-                    <input type="hidden" id="img_addr" name="img_addr" value="${memberDTO.profile_img_addr}">
-                    <div class="sect-profile-img">
-                        <div class="box-image">
-                            <span class="profile-image">
-                                <img id="img_memprofileimage" src="" width="100px" height="100px"
-                                alt="${memberDTO.member_name}님 프로필 사진" onerror="errorImage(this, {type:'profile'})">
-                                <span class="profile-mask"></span>
-                                
-                                
-                            </span>
-                        </div>
-                        <div class="box-contents">
-                            <p>jpg, gif, BMP 파일만 등록 가능합니다. (최대 3M)</p>
-                            <input type="file" id="profile_upload_file" name="profile_upload_file" title="내용">
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="set-btn aright">
-<button type="submit" id="set_profile"><span>등록하기</span></button>
-</div>
-<div id="existNick"></div>
-</form>
+	<jsp:include page="../main/main/header.jsp"></jsp:include>
+	<div id="mypageBody">
+		<jsp:include page="./myInfoWrap.jsp"></jsp:include>
+		<div id="my-content-wrap">
+			<jsp:include page="./myContentAside.jsp"></jsp:include>
+			<div id="content-detail">
+				<div class="tit-mypage">
+				    <h3>프로필 관리</h3>
+				</div>
+				<div class="tit-mypage">
+				    <h4>나의 프로필 정보</h4>
+				</div>
+				<form name="editProfileForm" action="editProfile.do" method="post" enctype="multipart/form-data">
+				<div class="tbl-form">
+				    <table summary="나의 프로필정보:이름,아이디,닉네임,프로필이미지 표기">
+				        <colgroup>
+				        <col width="19%">
+				        <col width="*">
+				        </colgroup>
+				        <tbody>
+				            <tr>
+				                <th scope="row">이름</th>
+				                <td><strong>${memberDTO.member_name}</strong></td>
+				            </tr>
+				            <tr>
+				                <th scope="row">아이디</th>
+				                <td><strong>${memberDTO.member_id}</strong></td>
+				            </tr>
+				            <tr>
+				                <th scope="row"><label for="nick_name">닉네임</label></th>
+				                <td>
+				                    <p>한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p>
+				                    <input type="hidden" id="old_nick_name" name="old_nick_name" value="${memberDTO.nick_name}"> 
+				                    <input type="text" id="nick_name" name="nick_name" value="" required="required" maxlength="10"> 
+				                    <button id="check_duplication" type="button"><span>중복확인</span></button>
+				                </td>
+				            </tr>
+				            
+				            <tr>
+				                <th scope="row">프로필이미지</th>
+				                <td>
+				                    <p class="profile-info">각 서비스(이벤트, 매거진, 영화리뷰 등)의 리뷰 및 덧글작성시 등록하신 대표이미지가 노출됩니다.<br>프로필 이미지 종류를 선택해 주세요.</p>
+				                    <input type="hidden" id="img_addr" name="img_addr" value="${memberDTO.profile_img_addr}">
+				                    <div class="sect-profile-img">
+				                        <div class="box-image">
+				                            <span class="profile-image">
+				                                <img id="img_memprofileimage" src="" width="100px" height="100px"
+				                                alt="${memberDTO.member_name}님 프로필 사진" onerror="errorImage(this, {type:'profile'})">
+				                                <span class="profile-mask"></span>
+				                                
+				                                
+				                            </span>
+				                        </div>
+				                        <div class="box-contents">
+				                            <p>jpg, gif, BMP 파일만 등록 가능합니다. (최대 3M)</p>
+				                            <input type="file" id="profile_upload_file" name="profile_upload_file" title="내용">
+				                        </div>
+				                    </div>
+				                </td>
+				            </tr>
+				        </tbody>
+				    </table>
+				</div>
+				<div class="set-btn aright">
+				<button type="submit" id="set_profile"><span>등록하기</span></button>
+				</div>
+				<div id="resultAlert"></div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<jsp:include page="../main/main/footer.jsp"></jsp:include>
 </body>
 </html>
