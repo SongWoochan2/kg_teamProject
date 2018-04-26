@@ -56,8 +56,6 @@
 		<constructor-arg value = "${resource.path}"></constructor-arg>
 	</bean>
 	
-<<<<<<< HEAD
-=======
 	<!-- 메일보내기 -->
 
    <bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -74,5 +72,4 @@
          </props>
       </property>
    </bean>
->>>>>>> 8903307ca7da654c16660a62df873a87175fa2cd
 </beans>
