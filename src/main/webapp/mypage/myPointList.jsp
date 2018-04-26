@@ -6,7 +6,6 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
 (function ($) {
     $(function () {
@@ -45,7 +44,7 @@ pageEncoding="UTF-8"%>
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
-			<div id="content-detail-point">
+			<div id="content-detail">
 			    <div class="tit-mypage">
 				    <h3>MoveIt 포인트</h3>
 				</div>
@@ -54,7 +53,7 @@ pageEncoding="UTF-8"%>
 				</div>
 
 			    <div class="tbl-breakdown">
-			        <table summary="MoveIt 구매누적포인트,이벤트 누적포인트,당월 소멸 예정 포인트 정보 제공">
+			        <table>
 			            <caption>MoveIt 포인트 상세 내역</caption>
 			            <colgroup>
 			                <col span="2" width="50%">
@@ -76,26 +75,36 @@ pageEncoding="UTF-8"%>
 			                </tr>
 			            </tbody>
 			        </table>
-			        <p class="common_p">※ MoveIt VIP 선정은 이벤트 포인트를 제외한 매표/매점 구매 포인트 합산 기준으로 적용됩니다.</p>
+			        <p class="common_p">※ MoveIt VIP 선정은 매표/매점 구매 포인트 합산 기준으로 적용됩니다.</p>
 			    </div>
 
 <form name="myPointList" method="post" action="myPointListPeriod.do" id="myPointList" novalidate="novalidate">
-
     <div class="box-polaroid">
         <div class="box-inner">
             <strong class="period">조회기간</strong>
-            <span id="period_wrap"><button data-period="2" data-type="w" class="round gray"><span>2주일</span></button><button data-period="1" data-type="m" class="round gray"><span>1개월</span></button><button data-period="3" data-type="m" class="round gray"><span>3개월</span></button></span>
+            <span id="period_wrap">
+            	<button data-period="2" data-type="w" class="round gray"><span>2주일</span></button>
+            	<button data-period="1" data-type="m" class="round gray"><span>1개월</span></button>
+            	<button data-period="3" data-type="m" class="round gray"><span>3개월</span></button>
+            </span>
             <p>
-                <label for="startdate">시작일 입력</label><input type="text" id="startdate" name="startdate" value="2018-03-26" datepicker="datepicker" date="date" class="hasDatepicker" readonly="readonly"><button type="button" class="ui-datepicker-trigger" title="월이동:PageUp/PageDown, 일이동:Ctrl+방향키"><span>시작일 선택</span></button> ~
-                <label for="enddate">종료일 입력</label><input type="text" id="enddate" name="enddate" value="2018-04-26" datepicker="datepicker" date="date" class="hasDatepicker" readonly="readonly"><button type="button" class="ui-datepicker-trigger" title="월이동:PageUp/PageDown, 일이동:Ctrl+방향키"><span>종료일 선택</span></button>
+                <label for="startdate">시작일 입력</label>
+                <input type="text" id="startdate" name="startdate" value="2018-03-26" 
+                datepicker="datepicker" date="date" class="hasDatepicker" readonly="readonly">
+                <button type="button" class="ui-datepicker-trigger" title="월이동:PageUp/PageDown, 일이동:Ctrl+방향키">
+                <span>시작일 선택</span></button> ~
+                <label for="enddate">종료일 입력</label>
+                <input type="text" id="enddate" name="enddate" value="2018-04-26" 
+                datepicker="datepicker" date="date" class="hasDatepicker" readonly="readonly">
+                <button type="button" class="ui-datepicker-trigger" title="월이동:PageUp/PageDown, 일이동:Ctrl+방향키">
+                <span>종료일 선택</span></button>
                 <button type="button" id="btn_search" class="round inblack"><span>조회하기</span></button>
             </p>
         </div>
     </div>
 </form>
 	<div class="tbl-data">
-		<table summary="상품명, 구매극장, 결제금액, 적립일, 적립금액 표기">
-			<caption>MoveIt 영화 관람권 사용내역 리스트</caption>
+		<table summary="구매 구분, 결제 금액, 적립일, 적립 포인트 표기">
 			<colgroup>
 				<col width="18%">
 				<col width="18%">

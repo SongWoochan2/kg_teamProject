@@ -41,7 +41,7 @@
 			<c:if test="${ sessionScope.memId == null }">
 				<a href="/MyCGV/member/memberLoginForm.do"><strong>로그인 | </strong></a> 
 				<a href="/MyCGV/member/memberWriteForm.do"><strong>회원가입 | </strong></a>
-				<a href="/MyCGV/mypage/memberLoginForm.do"><strong>My MoveIt | </strong></a>  
+				<a href="/MyCGV/member/memberLoginForm.do"><strong>My MoveIt | </strong></a>  
 			</c:if>
 			<c:if test="${ sessionScope.memId != null }">
 				<a href="/MyCGV/member/memberLogout.do"><strong>로그아웃 | </strong></a>

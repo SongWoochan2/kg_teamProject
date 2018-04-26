@@ -13,11 +13,6 @@ $(function(){
 });
 </script>
 <style type="text/css">
-#my-content-wrap > #content-detail {
-	float: left;
-	width: 80%;
-	height: 100%;
-}
 div.sect-content-movie {
 	width: 80%;
 	height: 20%;
@@ -25,14 +20,12 @@ div.sect-content-movie {
 div.sect-content-movie div {
 	float: left;
 }
-
 </style>
 </head>
 <body>
 	<jsp:include page="../main/main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 		<jsp:include page="./myInfoWrap.jsp"></jsp:include>
-
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
 			<div id="content-detail">

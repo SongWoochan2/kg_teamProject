@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
-			<div id="content-detail-booking">
+			<div id="content-detail">
 				<div class="sect-register booking">
 					<div class="tit-mypage">
 						<h3>나의 예매내역</h3>

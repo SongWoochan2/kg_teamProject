@@ -25,6 +25,11 @@ div#content-aside {
 	width: 20%;
 	height: 100%;
 }
+div#content-detail {
+	float: left;
+	width: 80%;
+	height: 100%;
+}
 
 div.benefit > div. {
 	float: left;

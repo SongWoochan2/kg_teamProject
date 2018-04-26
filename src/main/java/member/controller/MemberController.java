@@ -29,6 +29,13 @@ public class MemberController {
 	@Autowired
 	private ResourceProvider resourceProvider;
 	
+	@RequestMapping(value="/member/index.do")
+	public ModelAndView toMainPage(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("redirect:../main/main/index.jsp");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="/member/memberLoginForm.do")
 	public ModelAndView memberLoginForm(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();

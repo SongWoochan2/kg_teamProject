@@ -36,8 +36,7 @@ pageEncoding="UTF-8"%>
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
-			<div id="content-detail-store">
-				    
+			<div id="content-detail">			    
 				<div class="tit-mypage">
 					<h3>MoveIt 스토어</h3>
 				</div>
