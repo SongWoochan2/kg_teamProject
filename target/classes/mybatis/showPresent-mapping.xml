@@ -6,7 +6,7 @@
 
 	<select id="getList" parameterType="java.util.Map" resultType="showPresentAllVO">
 		SELECT * FROM show_present, movie, show_place
-		WHERE show_present.show_date=#{show_date}
+		WHERE to_char(show_present.show_date, 'YYYYMMDD' = #{show_date}
 			AND show_present.show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
 			AND show_present.movie_code = movie.movie_code
 			AND show_present.movie_code = movie.movie_code

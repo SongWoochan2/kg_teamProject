@@ -175,7 +175,6 @@ public class MovieController {
 
 	@RequestMapping(value="/searchMovies.do")
 	public void movieSearch(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("hello!!!");
 		String movie_name= request.getParameter("movie_name");
 
 		List<MovieDTO> movie_list = null;
