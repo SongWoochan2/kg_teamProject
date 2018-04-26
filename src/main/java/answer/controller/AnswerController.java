@@ -7,7 +7,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +15,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import answer.bean.AnswerDTO;
+import resource.provider.ResourceProvider;
 
 @Controller
 public class AnswerController {
-	/*@Autowired
+	@Autowired
 	private AnswerService answerService;
 
 	@Autowired
-	private JavaMailSender mailSender;
+	private ResourceProvider resourceProvider;
+	
+	@Autowired
+	private JavaMailSenderImpl mailSender;
 	
 	
 	@RequestMapping(value="/member/answer/answerList.do")
@@ -69,11 +73,10 @@ public class AnswerController {
 	}
 	
 	@RequestMapping(value="/admin/answer/answer.do")
-	public ModelAndView inquiryAnswer(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
+	public ModelAndView answer(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
 		
 		
-		request.setCharacterEncoding("utf-8");
-		String inquiry_type = request.getParameter("inquiry_type");
+		/*String inquiry_type = request.getParameter("inquiry_type");
 		String inquiry_title = request.getParameter("inquiry_title");
 		String inquiry_content = request.getParameter("inquiry_content");
 		String inquiry_id = request.getParameter("inquiry_id");							
@@ -97,11 +100,14 @@ public class AnswerController {
 			}
 		inquiryDTO.setInquiry_file(filename);
 		//DB
-		int su = inquiryService.inquiryWrite(inquiryDTO);
+		int su = answerService.inquiryWrite(answerDTO);*/
 		
 		
+		request.setCharacterEncoding("utf-8");
 		String from_mail = "cgvproject7@gmail.com";						//보낼 메일
 		String answer_email = request.getParameter("answer_email");
+		String admin_id = request.getParameter("admin_id");
+		String member_id = request.getParameter("member_id");
 		String answer_title = request.getParameter("answer_title");
 		String answer_content = request.getParameter("answer_content");
 		ModelAndView modelAndView = new ModelAndView();
@@ -111,7 +117,7 @@ public class AnswerController {
 		answerDTO.setMember_id(member_id);
 		answerDTO.setAnswer_title(answer_title);
 		answerDTO.setAnswer_content(answer_content);
-		int su = answerService.answerWrite(inquiryDTO);
+		int su = answerService.answer(answerDTO);
 		
 		
 		 try {
@@ -132,7 +138,7 @@ public class AnswerController {
 		modelAndView.setViewName("inquiryList.jsp");
 		
 		return modelAndView;
-	}*/
+	}
 }
 
 
