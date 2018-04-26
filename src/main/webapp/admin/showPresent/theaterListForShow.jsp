@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
 
  <script type="text/javascript">
 function isLogin(theater_code) {	
-		 location.href="theaterView.do?theater_code=" + theater_code + "&pg=" + ${pg};
+		 location.href="/MyCGV/theaterViewForShow.do?theater_code=" + theater_code + "&pg=" + ${pg};
 }
 </script> 
 
@@ -67,23 +67,22 @@ function isLogin(theater_code) {
 			 <tr>
 				<td colspan=5 align=center>
 				<c:if test="${startPage>3 }">
-					[<a id="paging" href="theaterList.do?pg=${startPage-1 }">이전</a>]
+					[<a id="paging" href="/MyCGV/theaterListForShow.do?pg=${startPage-1 }">이전</a>]
 				</c:if>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<c:if test="${i==pg }">
-					[<a id="currentPaging" href="theaterList.do?pg=${i }">${i }</a>]
+					[<a id="currentPaging" href="/MyCGV/theaterListForShow.do?pg=${i }">${i }</a>]
 					</c:if>
 					<c:if test="${i!=pg }">
-					[<a id="paging" href="theaterList.do?pg=${i }">${i }</a>]
+					[<a id="paging" href="/MyCGV/theaterListForShow.do?pg=${i }">${i }</a>]
 					</c:if>
 				</c:forEach>
 				<c:if test="${endPage < totalP }">
-					[<a id="paging" href="theaterList.do?pg=${endPage+1 }">다음</a>]
+					[<a id="paging" href="/MyCGV/theaterListForShow.do?pg=${endPage+1 }">다음</a>]
 				</c:if>
 				</td> 
 			</tr>
 		</table>
-		<a href="theaterInsertForm.do">극장등록</a><br>
 	</div>
 </div>
 </body>

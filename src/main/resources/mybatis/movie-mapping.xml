@@ -29,10 +29,17 @@
 	</delete>
 	<select id = "movieView" parameterType="int" resultType="movieDTO">
 		select * from movie where movie_code = #{movie_code}
+		select * from movie where movie_code = #{movie_code} and movie_code in(
+		select * from movie 
+		<where>
+			fafas
+		</where>
+		)
+		
 	</select>
 	
 	<select id = "searchByName" parameterType="java.lang.String" resultType="movieDTO">
-		select * from movie where movie_name like '%'|| #{movie_code} || '%'
+		select * from movie where movie_name like '%'|| #{movie_name} || '%'
 	</select>
 	
 </mapper>

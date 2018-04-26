@@ -8,27 +8,28 @@
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<script>
 	    $(function(){
-	        $(".DatePicker").datepicker({});
+	    	var today = new Date();
+	    	var yy = today.getFullYear();
+	    	var mm = today.getMonth();
+	    	var dd = today.getDate();
+	    	for(var i = 0; i < 30; i++){
+	    		var date = new Date(yy, mm, dd+i);
+		    	var yy2 = date.getFullYear();
+		    	var mm2 = date.getMonth();
+		    	var dd2 = date.getDate();
+	    		alert(yy2 +"/"+ mm2 +"/"+ dd2);
+	    		
+	    	}
+	    	
+	    	
 	    });
 	</script>
     <title>Datepicker</title>
 </head>
 <body>
 Date:<input type="text" class="DatePicker">
+<div name="test"></div>
 </body>
 </html>
 
 
-
-
-	<script type="text/x-jquery-tmpl" id="itemTemplate">
-			<div class="movie_box">
-				<label for="movie_code">
-				<input type="radio" name="movie_code" value="\${movie_code}">
-				<div class="movie_name"><h3>\${movie_name}</h3></div><br>
-				<div class="movie_director">감독 : \${movie_director}</div><br>
-				<div class="movie_recycle_time">상영시간 : \${movie_recycle_time}분</div><br>
-				<div class="movie_open_date">개봉일 : \${movie_open_date}</div><br>
-				</label>
-			</div>
-	</script>
