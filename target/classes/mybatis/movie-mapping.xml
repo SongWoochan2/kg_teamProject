@@ -18,7 +18,7 @@
 		select count(*) from movie
 	</select>
 	<select id = "movieList" parameterType="java.util.Map" resultType="movieDTO">
-		<![CDATA[select movie_code, movie_name, movie_director, movie_show_grade_name, 
+		<![CDATA[select movie_code, movie_name, movie_director, movie_show_grade_name, movie_recycle_time,
 				to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from 
 				(select rownum rn, tt.* from 
 				(select * from movie order by movie_code desc) tt) 

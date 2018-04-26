@@ -15,8 +15,8 @@ public class AnswerDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int answer(AnswerDTO answerDTO) {
-		return sqlSession.insert("mybatis.answer.answer", answerDTO);
+	public int answerInsert(AnswerDTO answerDTO) {
+		return sqlSession.insert("mybatis.answer.answerInsert", answerDTO);
 	}
 	
 	public List<AnswerDTO> answerList(int startNum, int endNum){
@@ -26,11 +26,15 @@ public class AnswerDAO {
 		return sqlSession.selectList("mybatis.answer.answerList", map);
 	}
 	
-	public AnswerDTO answerView(int notice_item_code) {
-		return sqlSession.selectOne("mybatis.answer.answerView", notice_item_code);
+	public AnswerDTO answerView(int inquiry_code) {
+		return sqlSession.selectOne("mybatis.answer.answerView", inquiry_code);
 	}
 	
 	public int getTotalA() {
 		return sqlSession.selectOne("mybatis.answer.totalA");
+	}
+	
+	public int answerDelete(int answer_code) {
+		return sqlSession.delete("mybatis.answer.answerDelete", answer_code);
 	}
 }

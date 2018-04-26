@@ -7,17 +7,20 @@
 	<insert id="memberWrite" parameterType="memberDTO">
 		insert into member values
 		(#{member_id},#{member_name},null,#{member_pwd},to_date(#{member_birth},'YYYY-MM-DD'),
-		#{member_email},#{member_agency},#{member_phone},1000,sysdate,'C',#{member_gender},null)
+		#{member_email},#{member_agency},#{member_phone},1000,sysdate,'C',#{member_gender},'none.png')
 	</insert>
 	
 	<update id="memberModify" parameterType="memberDTO">
 		update member 
 		<set>
-		<if test="nick_name != null">nick_name=#{nick_name},</if>
-		<if test="profile_img_addr != null">profile_img_addr=#{profile_img_addr},</if>
-		member_pwd=#{member_pwd},member_birth=to_date(#{member_birth},'YYYY-MM-DD'),
-		member_email=#{member_email},member_agency=#{member_agency},member_phone=#{member_phone},
-		member_gender=#{member_gender} 
+			<if test="member_pwd != null">member_pwd=#{member_pwd},</if>
+			<if test="member_birth != null">member_birth=to_date(#{member_birth},'YYYY-MM-DD'),</if>
+			<if test="member_email != null">member_email=#{member_email},</if>
+			<if test="member_agency != null">member_agency=#{member_agency},</if>
+			<if test="member_phone != null">member_phone=#{member_phone},</if>
+			<if test="member_gender != null">member_gender=#{member_gender},</if>
+			<if test="nick_name != null">nick_name=#{nick_name},</if>
+			<if test="profile_img_addr != null">profile_img_addr=#{profile_img_addr}</if>
 		</set> 
 		where member_id=#{member_id}
 	</update>

@@ -7,24 +7,26 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import answer.bean.AnswerDTO;
+import answer.controller.AnswerService;
 import inquiry.bean.InquiryDTO;
+import member.bean.MemberDTO;
 import resource.provider.ResourceProvider;
 
 @Controller
 public class InquiryController {
+	@Autowired
+	private AnswerService answerService;
 	@Autowired
 	private InquiryService inquiryService;
 	@Autowired
@@ -33,24 +35,36 @@ public class InquiryController {
 	private JavaMailSender mailSender;*/
 	
 	@RequestMapping(value="/member/inquiry/inquiryWriteForm.do")
-	public String inquiryWriteForm() { 
+	public ModelAndView inquiryWriteForm(HttpServletRequest request) throws UnsupportedEncodingException { 
+		request.setCharacterEncoding("utf-8");
+		ModelAndView modelAndView = new ModelAndView();
+		String member_name = request.getParameter("member_name");
+		String member_phone = request.getParameter("member_phone");
+		String member_email = request.getParameter("member_email");
+		
+		modelAndView.addObject("member_name", member_name);
+		modelAndView.addObject("member_phone", member_phone);
+		modelAndView.addObject("member_email", member_email);
+		
+		modelAndView.setViewName("inquiryWriteForm.jsp");
 
-		return "inquiryWriteForm.jsp";
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/member/inquiry/inquiryWrite.do")
-	public ModelAndView inquiryWrite(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
+	public ModelAndView inquiryWrite(HttpServletRequest request,MultipartFile inquiry_file,HttpSession session) throws UnsupportedEncodingException { 
 		// 데이터
-		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		String inquiry_type = request.getParameter("inquiry_type");
 		String inquiry_title = request.getParameter("inquiry_title");
 		String inquiry_content = request.getParameter("inquiry_content");
+		String member_name = request.getParameter("member_name");
+		String member_email = request.getParameter("member_email");
 		String inquiry_id = request.getParameter("inquiry_id");							//임시 아이디	
 		session.setAttribute("inquiry_id", inquiry_id);									//임시 아이디
-		String admin_id = request.getParameter("admin_id");								//임시 아이디
+		/*String admin_id = request.getParameter("admin_id");								//임시 아이디
 		session.setAttribute("admin_id", admin_id);										//임시 아이디
-		
+*/		
 		
 		// 데이터 지정
 		InquiryDTO inquiryDTO = new InquiryDTO();
@@ -74,6 +88,8 @@ public class InquiryController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
+		modelAndView.addObject("member_name", member_name);
+		modelAndView.addObject("member_email", member_email);
 		modelAndView.addObject("su", su);
 		
 		modelAndView.setViewName("inquiryWrite.jsp");
@@ -81,18 +97,16 @@ public class InquiryController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/inquiry/inquiryList.do")
-	public ModelAndView inquiryList(HttpServletRequest request) {
-
+	@RequestMapping(value="/member/inquiry/inquiryListAdmin.do")
+	public ModelAndView inquiryListAdmin(HttpServletRequest request) {
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		
 		int endNum = pg*5;
 		int startNum = endNum-4;
-		List<InquiryDTO> list = inquiryService.inquiryList(startNum, endNum);
+		List<InquiryDTO> list = inquiryService.inquiryListAdmin(startNum, endNum);
 		
 		int totalA = inquiryService.getTotalA();
 		int totalP = (totalA + 4)/5;
-		
 		int startPage = (pg - 1)/3*3 +1;
 		int endPage = startPage + 3 - 1;
 		if(totalP < endPage) endPage = totalP;
@@ -103,8 +117,36 @@ public class InquiryController {
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("list", list);
 		
-		modelAndView.setViewName("inquiryList.jsp");
+		modelAndView.setViewName("inquiryListAdmin.jsp");
 		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/member/inquiry/inquiryListMember.do")
+	public ModelAndView inquiryListMember(HttpServletRequest request, HttpSession session) {
+		String inquiry_id=(String) session.getAttribute("inquiry_id");
+		ModelAndView modelAndView = new ModelAndView();
+		if(!inquiry_id.equals(null)) {
+			int pg = Integer.parseInt( request.getParameter("pg") );
+			
+			int endNum = pg*5;
+			int startNum = endNum-4;
+			List<InquiryDTO> list = inquiryService.inquiryListMember(startNum, endNum);
+			
+			int totalA = inquiryService.getTotalA();
+			int totalP = (totalA + 4)/5;
+			int startPage = (pg - 1)/3*3 +1;
+			int endPage = startPage + 3 - 1;
+			if(totalP < endPage) endPage = totalP;
+			
+			modelAndView.addObject("startPage", startPage);
+			modelAndView.addObject("endPage", endPage);
+			modelAndView.addObject("totalP", totalP);
+			modelAndView.addObject("list", list);
+			
+			modelAndView.setViewName("inquiryListMember.jsp");
+		
+		}
 		return modelAndView;
 	}
 	
@@ -115,9 +157,11 @@ public class InquiryController {
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
+		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("inquiryDTO", inquiryDTO);
+		modelAndView.addObject("answerDTO", answerDTO);
 		
 		modelAndView.setViewName("inquiryView.jsp");
 		
@@ -139,7 +183,7 @@ public class InquiryController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/admin/adminInquiry/inquiryAnswerForm.do")
+	/*@RequestMapping(value="/admin/adminInquiry/inquiryAnswerForm.do")
 	public ModelAndView inquiryAnswerForm(HttpServletRequest request) { 
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
@@ -149,7 +193,7 @@ public class InquiryController {
 		modelAndView.setViewName("redirect:../admin/inquiryAnswerForm.jsp");
 		
 		return modelAndView;
-	}
+	}*/
 	
 	/*@RequestMapping(value="/admin/adminInquiry/inquiryAnswer.do")
 	public ModelAndView inquiryAnswer(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
