@@ -20,27 +20,39 @@ public class InquiryDAO {
 		return sqlSession.insert("mybatis.inquiry.inquiryWrite", inquiryDTO);
 	}
 	
+	
+	
 	public int inquiryModify(InquiryDTO inquiryDTO) {
 		return sqlSession.update("mybatis.inquiry.inquiryModify", inquiryDTO);
 	}
 	
-	public List<InquiryDTO> inquiryList(int startNum, int endNum){
+	public List<InquiryDTO> inquiryListAdmin(int startNum, int endNum){
 		Map<String, Integer> map = new HashMap<>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
-		return sqlSession.selectList("mybatis.inquiry.inquiryList", map);
+		return sqlSession.selectList("mybatis.inquiry.inquiryListAdmin", map);
 	}
 	
-	public InquiryDTO inquiryView(int code) {
-		return sqlSession.selectOne("mybatis.inquiry.inquiryView", code);
+	public List<InquiryDTO> inquiryListMember(int startNum, int endNum){
+		Map<String, Integer> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		return sqlSession.selectList("mybatis.inquiry.inquiryListMember", map);
 	}
 	
+	public InquiryDTO inquiryView(int inqruiry_code) {
+		return sqlSession.selectOne("mybatis.inquiry.inquiryView", inqruiry_code);
+	}
+	
+	public int inquiryAll(String inqruiry_id) {
+		return sqlSession.selectOne("mybatis.inquiry.inquiryAll", inqruiry_id);
+	}
 	
 	public int getTotalA() {
 		return sqlSession.selectOne("mybatis.inquiry.totalA");
 	}
 	
-	public int inquiryDelete(int seq) {
-		return sqlSession.delete("mybatis.inquiry.inquiryDelete", seq);
+	public int inquiryDelete(int inqruiry_code) {
+		return sqlSession.delete("mybatis.inquiry.inquiryDelete", inqruiry_code);
 	}
 }

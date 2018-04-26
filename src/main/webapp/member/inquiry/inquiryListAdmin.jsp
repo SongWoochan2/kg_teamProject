@@ -23,6 +23,7 @@ pageEncoding="UTF-8"%>
 			<th width="50">구분</th>
 			<th width="300">제목</th>
 			<th width="50">등록일</th>
+			<th width="50">상태</th>
 		</tr>
 		<c:forEach var="inquiryDTO" items="${list}">
 			<tr bgcolor="ffffcc">
@@ -34,6 +35,13 @@ pageEncoding="UTF-8"%>
 					</a>
 				</td>
 				<td align="center">${inquiryDTO.inquiry_date}</td>
+				<c:if test="${inquiryDTO.inquiry_status == 0}">
+					<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
+				</c:if>
+				<c:if test="${inquiryDTO.inquiry_status != 0}">
+					<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
+				</c:if>
+				
 			</tr>
 		</c:forEach>
 		
