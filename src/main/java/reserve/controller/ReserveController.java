@@ -130,18 +130,18 @@ public class ReserveController {
 		
 		String show_date = "" + year + month + day;
 		
-		System.out.println(show_date);
+		System.out.println("상영 날짜 : "+show_date);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String n2 = sdf.format(now);
-		System.out.println(n2);
+		System.out.println("오늘 날짜 : "+ n2);
 	
 		
 		
-		int theater_code = 10;
-		System.out.println(theater_code);
+		int theater_code = 3;
+		System.out.println("극장 코드 : " + theater_code);
 		ArrayList<ReserveDTO> list = reserveService.reserveList(show_date, theater_code );
 		
-		System.out.println(list);
+		System.out.println("리스트 : " + list);
 		// 3. 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("show_date", show_date);

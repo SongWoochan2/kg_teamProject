@@ -61,7 +61,7 @@ public class MemberController {
 			
 			// redirect: 뒤에 쓰면
 			// forward 방식이 아니라 sendRedirect 방식으로 보냄
-			modelAndView.setViewName("redirect:../index.jsp");
+			modelAndView.setViewName("redirect:../main/main/index.jsp");
 		}
 		return modelAndView;
 	}
@@ -75,7 +75,7 @@ public class MemberController {
 		session.invalidate(); // 무효화 : 모두 지우기
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:../index.jsp");
+		modelAndView.setViewName("redirect:../main/main/index.jsp");
 		return modelAndView;
 	}
 	
@@ -231,7 +231,7 @@ public class MemberController {
 		session.invalidate(); // 무효화 : 모두 지우기
 		ModelAndView modelAndView = new ModelAndView();
 		//modelAndView.addObject("result", result);
-		modelAndView.setViewName("redirect:../index.jsp");
+		modelAndView.setViewName("redirect:../main/main/index.jsp");
 		return modelAndView;
 	}
 	

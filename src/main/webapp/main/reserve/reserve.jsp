@@ -103,7 +103,7 @@
 		<div id="bottom_pack">극장 @ 일시 @ 상영관 @ 인원 @</div>
 		<div id="bottom_seat">좌석선택 //이미지처리</div>
 		<div id="bottom_pay">결제 //이미지처리</div>
-		<div id="bottom_seat_choice">좌석선택-></div>
+		<div id="bottom_seat_choice"><Strong>좌석선택-></Strong></div>
 	</div>
 	<br>
 	<br>

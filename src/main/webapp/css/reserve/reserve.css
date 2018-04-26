@@ -95,31 +95,37 @@
 	height: 125px;
 }
 #bottom_photo_title{
-	border : 1px dotted red;
+	color:#A6A6A6;
+	border-left : 1px solid #FFFFF6;
 	width: 19%;
 	height: 100%;
 	float: left;
 }
 #bottom_pack{
-	border : 1px dotted red;
+	color:#A6A6A6;
+	border-left : 1px solid #FFFFF6;
 	width: 19%;
 	height: 100%;
 	float: left;
 }
 #bottom_seat{
-	border : 1px dotted red;
+	color:#A6A6A6;
+	border-left : 1px solid #FFFFF6;
 	width: 19%;
 	height: 100%;
 	float: left;
 }
 #bottom_pay{
-	border : 1px dotted red;
+	color:#A6A6A6;
+	border-left : 1px solid #FFFFF6;
 	width: 19%;
 	height: 100%;
 	float: left;
 }
 #bottom_seat_choice{
-	border : 1px dotted red;
+	color:white;
+	border-left : 1px solid #FFFFF6;
+	border-right : 1px solid #FFFFF6;
 	width: 19%;
 	height: 100%;
 	float: left;

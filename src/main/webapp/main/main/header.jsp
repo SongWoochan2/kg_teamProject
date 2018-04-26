@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/header/header.css" />
-<script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
+<link rel="stylesheet" href="/MyCGV/css/header/header.css" />
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js?v=1"></script>
 <script type="text/javascript">
 	$(function() {
 		// 모든 서브 메뉴 숨기기
@@ -26,20 +27,28 @@
 <body>
 	<div>
 		<div id="left_div1">
-			<a href="#"> <img alt="" src="../../image/header/header_cgv.png"
+			<a href="#"> <img alt="" src="/MyCGV/image/header/header_cgv.png"
 				width="30px" height="30px">CGV APP
 			</a>| <a href="#"><img alt=""
-				src="../../image/header/header_face.png" width="20px" height="20px">
+				src="/MyCGV/image/header/header_face.png" width="20px" height="20px">
 				Face </a> | <a href="#"> <img alt=""
-				src="../../image/header/header_insta.png" width="20px" height="20px">
+				src="/MyCGV/image/header/header_insta.png" width="20px" height="20px">
 				Insta
 			</a>
 		</div>
 		<div id="mid_div1" class="layer_fixed">
 			<p>
-				<a href="http:www.naver.com"><strong>로그인 | </strong></a> <a href="#"><strong>회원가입
-						| </strong></a> <a href="http:dau"><strong>My CGV | </strong></a> <a href="#">고객센터
-					| </a> <a href="#"><strong>ENGLISH TICKETING</strong></a>
+			<c:if test="${ sessionScope.memId == null }">
+				<a href="/MyCGV/member/memberLoginForm.do"><strong>로그인 | </strong></a> 
+				<a href="/MyCGV/member/memberWriteForm.do"><strong>회원가입 | </strong></a>
+				<a href="/MyCGV/mypage/memberLoginForm.do"><strong>My MoveIt | </strong></a>  
+			</c:if>
+			<c:if test="${ sessionScope.memId != null }">
+				<a href="/MyCGV/member/memberLogout.do"><strong>로그아웃 | </strong></a>
+				<a href="/MyCGV/mypage/mypageHome.do"><strong>My MoveIt | </strong></a> 
+			</c:if>
+				<a href="#">고객센터</a> 
+				<a href="#"><strong>ENGLISH TICKETING</strong></a>
 			</p>
 		</div>
 
@@ -54,9 +63,6 @@
 					</ul></li>
 				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
 				<li class="te"><a href="#">극장</a>
-					<ul class="sub">
-						<li><a href="#">교통안내</a></li>
-					</ul></li>
 				<li class="te"><a href="#">스토어</a></li>
 			</ul>
 		</div>
