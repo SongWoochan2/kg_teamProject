@@ -4,53 +4,111 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
-<link rel="stylesheet" href="../../css/reserve/reserve.css" />
-<script type="text/javascript">
-	$(function(){
-		$("#tem_1").click(function(){
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js?v=1"></script>
+	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
+	<link rel="stylesheet" href="/MyCGV/css/reserve/reserve.css" />
+	<script type="text/javascript">
+		$(function(){
 			$.ajax({
-				url : "reserve_jungbo/reserve.jsp", // 나중에 사이트 url로 바뀜
+				url : "/MyCGV/movieList_forReserve.do", // 나중에 사이트 url로 바뀜
 				type : "get", // 최종적으로 서버에 요청함
-				dataType : "text",
+				dataType : "json",
 				timeout : 30000, // 30초 (단위는 ms)
 				cache : false,
-				
 				// 파일 읽기에 성공한 경우
-				success : function(data){
-					// dataType값이 text일 경우에는 단순히 내용에 대한 문자열이므로,
-					// 직접 HTML요소에 출력할 수 있다.
-						$("#bottom_photo_title").html(data);
+				success : function(json){
+					alert(JSON.stringify(json));
 				},
-				// 파일 읽기에 실패한 경우 (주소 오타, 웹서버 중지 등)
 				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus
-						+"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
 				}
-		});
-	});
-	
-		$("#tem_2").click(function(){
+			});
+		
 			$.ajax({
-				url : "reserve_jungbo/reserve.jsp",
-				type : "get",
-				dataType : "text",
-				timeout : 30000,
+				url : "/MyCGV/theaterList_forReserve.do", // 나중에 사이트 url로 바뀜
+				type : "get", // 최종적으로 서버에 요청함
+				dataType : "json",
+				timeout : 30000, // 30초 (단위는 ms)
 				cache : false,
-				
-				success : function(data){
-						$("#bottom_photo_title").html(data);
+				// 파일 읽기에 성공한 경우
+				success : function(json){
+					alert(JSON.stringify(json));
 				},
 				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus
-						+"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
 				}
+			});
+			
+			$.ajax({
+				url : "/MyCGV/showList_forReserve.do", // 나중에 사이트 url로 바뀜
+				type : "get", // 최종적으로 서버에 요청함
+				dataType : "json",
+				timeout : 30000, // 30초 (단위는 ms)
+				cache : false,
+				// 파일 읽기에 성공한 경우
+				success : function(json){
+					alert(JSON.stringify(json));
+				},
+				error : function(xhr, textStatus, errorThrown){
+					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+				}
+			});
+		
+			$("#tem_1").click(function(){
+				$.ajax({
+					url : "reserve_jungbo/reserve.jsp", // 나중에 사이트 url로 바뀜
+					type : "get", // 최종적으로 서버에 요청함
+					dataType : "text",
+					timeout : 30000, // 30초 (단위는 ms)
+					cache : false,
+					
+					// 파일 읽기에 성공한 경우
+					success : function(data){
+						// dataType값이 text일 경우에는 단순히 내용에 대한 문자열이므로,
+						// 직접 HTML요소에 출력할 수 있다.
+							$("#bottom_photo_title").html(data);
+					},
+					// 파일 읽기에 실패한 경우 (주소 오타, 웹서버 중지 등)
+					error : function(xhr, textStatus, errorThrown){
+						$("div").html("<div>" + textStatus
+							+"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					}
+				});
+			});
+		
+			$("#tem_2").click(function(){
+				$.ajax({
+					url : "reserve_jungbo/reserve.jsp",
+					type : "get",
+					dataType : "text",
+					timeout : 30000,
+					cache : false,
+					
+					success : function(data){
+							$("#bottom_photo_title").html(data);
+					},
+					error : function(xhr, textStatus, errorThrown){
+						$("div").html("<div>" + textStatus
+							+"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					}
+				});
+			});
+			
+			
 		});
-	});
-});
-</script>
+	</script>
+	
+	<script type="text/x-jquery-tmpl" id="template">
+		<tr>
+			<td class="show_time">\${ show_time }시 \${show_minute}분</td>
+			<td class="movie_name">\${ movie_name }</td>
+			<td class="movie_recycle_time">\${movie_recycle_time} </td>
+			<td class="movie_director">\${movie_director}</td>
+			<td class="delete"><input type="button" name="delete_button" code="\${show_present_code}" value="삭제 하기"></td>
+		</tr>
+	</script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"></jsp:include>
