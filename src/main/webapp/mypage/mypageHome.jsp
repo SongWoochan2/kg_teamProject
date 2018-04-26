@@ -30,10 +30,57 @@ div.sect-content-movie div {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+
+	<div id="#mypageBody">
+		<div id="my-info-wrap">
+			<div class="profile">
+				<div class="profileImg">
+					<input type="hidden" id="origin_img_addr" value="${memberDTO.profile_img_addr}">
+					<img src="" alt="${memberDTO.member_name}님 프로필 사진" 
+					onerror="errorImage(this, {'type':'profile'})" width="100px" height="100px">
+				</div>
+				<div class="profileInfo">
+	<jsp:include page="../main/main/header.jsp"></jsp:include>
+		<div id="#mypageBody">
+			<div id="my-info-wrap">
+				<div class="profile">
+					<div class="profileImg">
+					</div>
+					<div class="personInfo">
+						<strong>${memberDTO.member_name}님</strong>&nbsp;<em>${memberDTO.member_id}</em>
+						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
+						<a href="editProfileForm.do">나의 프로필 수정</a>
+					</div>
+					<div class="gradeInfo">
+						<p style="margin-bottom:4px;color: #342929;
+						font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
+						font-size: 20px;line-height: 20px;">                     
+	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}</strong>등급 입니다.             
+	                    </p>
+                    </div>
+				</div>
+			</div>
+			<div class="benefit">
+				<div class="point">
+					<h3>MoveIt POINT</h3>
+	        		<a href="myPointList.do">MoveIt POINT 더보기</a>
+	        		<ul>
+	        			<li>
+	        				<strong>사용가능 MoveIt 포인트</strong>
+	        				<span><em class="txt-maroon">${memberDTO.saving_point}</em> 점</span>
+	        			</li>
+	        		</ul>
+        		</div>
+				<div class="favorite-theater">자주가는 영화관</div>
+			</div>
+		</div>
+=======
 	<jsp:include page="../main/main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 
+>>>>>>> defdca56c32fd898989186adf4ee0b6b9c0db13c
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
 
@@ -90,6 +137,12 @@ div.sect-content-movie div {
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
+
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+
+=======
+	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+>>>>>>> defdca56c32fd898989186adf4ee0b6b9c0db13c
 </body>
 </html>
