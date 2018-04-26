@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <title>프로필 관리</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-(function ($) {
+
 	$(function() {
 		var oldNick = $("#old_nick_name").val();
 		if(oldNick!=null) {
@@ -17,31 +17,33 @@ pageEncoding="UTF-8"%>
 		}
 		
 		var img_addr = $("#img_addr").val();
-		if(img_addr!=null || img_addr!="" || img_addr!='') {
+		if(img_addr==null || img_addr=='none.png' || img_addr.includes("none.")) {
+			$("#img_memprofileimage").attr("src", "../image/profile/none.png");	
+		} else {
 			$("#img_memprofileimage").attr("src", "../image/profile/"+img_addr);
 			var button = $("<button type='button'>프로필이미지 삭제</button>"); 
 			button.attr('id','delete_image');
 			$(".profile-mask").append(button);
-		} else {
-			$("#img_memprofileimage").attr("src", "../image/profile/none.png");
 		}
 		
         $('#delete_image').click(function () {
             if (!confirm('설정된 프로필 이미지를 삭제 하시겠습니까?'))
                 return;
 			
-            $('#img_memprofileimage').attr('src', '../image/profile/none.png');
-            /* $('#user_small_image').val(''); */
-           	$("#img_addr").val('');
-            $('#delete_image').remove();
+
             
             $.ajax({
             	url: "./deleteProfileImg.do",
         		type: "post",
+        		dataType: "html",
         		cache: false,
         		timeout: 30000,
         		success: function(data) {
-        			
+                    $('#img_memprofileimage').attr('src', '../image/profile/none.png');
+                    /* $('#user_small_image').val(''); */
+                   	$("#img_addr").val("none.png");
+                    $('#delete_image').remove();
+                    $("#resultAlert").html(data);
         		},
         		error: function(xhr, textStatus, errorThrown) {
 					$("div.tbl-form").html("<div>" + textStatus 
@@ -68,7 +70,7 @@ pageEncoding="UTF-8"%>
             		cache: false,
             		timeout: 30000,
             		success: function(data) {
-            			$("#existNick").html(data);
+            			$("#resultAlert").html(data);
             		},
             		error: function(xhr, textStatus, errorThrown) {
     					$("div.tbl-form").html("<div>" + textStatus 
@@ -89,7 +91,7 @@ pageEncoding="UTF-8"%>
 
 
 	});
-})(jQuery);
+
 	
 </script>
 </head>
@@ -154,7 +156,7 @@ pageEncoding="UTF-8"%>
 <div class="set-btn aright">
 <button type="submit" id="set_profile"><span>등록하기</span></button>
 </div>
-<div id="existNick"></div>
+<div id="resultAlert"></div>
 </form>
 </body>
 </html>

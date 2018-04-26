@@ -302,13 +302,13 @@ public class MemberController {
 	@RequestMapping(value="/mypage/editProfile.do", method=RequestMethod.POST)
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
-		String fileName = null;
+		String fileName = "none.png";
 		if (!profile_upload_file.isEmpty()) {
 			String originFileName = profile_upload_file.getOriginalFilename();
 			String img_addr = request.getParameter("img_addr");
 			System.out.println(originFileName);
 			System.out.println(img_addr);
-			if (originFileName != null || img_addr != null) {
+			if (!originFileName.contains("none.") || !img_addr.contains("none.")) {
 				String extension = originFileName.split("\\.")[1];
 				System.out.println(extension);
 				Date date = new Date();
@@ -328,9 +328,9 @@ public class MemberController {
 			}
 		} 
 
-		String nick_name = request.getParameter("nick_name");
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("memId");
+		String nick_name = request.getParameter("nick_name");
 
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setMember_id(member_id);
@@ -346,7 +346,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/mypage/deleteProfileImg.do", method=RequestMethod.POST)
-	public void deleteProfileImg(HttpServletRequest request) {
+	public ModelAndView deleteProfileImg(HttpServletRequest request) {
 		String filePath = resourceProvider.getPath("image/profile");
 		
 		HttpSession session = request.getSession();
@@ -356,6 +356,19 @@ public class MemberController {
 		memberDTO = memberService.memberView(member_id);
 		String fileName = memberDTO.getProfile_img_addr();
 		File file = new File(filePath, fileName);
-		System.out.println(file.delete());
+
+		int result = -1; // 오류 발생
+		if (file.exists()) {
+			if (file.delete()) {
+				result = 1; // 파일 삭제 성공
+			} else {
+				result = 0; // 파일 삭제 실패
+			}
+		}
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("deleteImgFile.jsp");
+		return modelAndView;
 	}
 }
