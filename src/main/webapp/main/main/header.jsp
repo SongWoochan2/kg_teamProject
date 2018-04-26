@@ -54,9 +54,6 @@
 					</ul></li>
 				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
 				<li class="te"><a href="#">극장</a>
-					<ul class="sub">
-						<li><a href="#">교통안내</a></li>
-					</ul></li>
 				<li class="te"><a href="#">스토어</a></li>
 			</ul>
 		</div>
