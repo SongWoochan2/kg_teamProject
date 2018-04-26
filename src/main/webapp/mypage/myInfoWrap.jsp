@@ -5,8 +5,8 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>MY MoveIt</title>
-<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
    $(function() {
 /*         $('#go_edit_profile').on('click', function () {
