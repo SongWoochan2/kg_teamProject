@@ -30,8 +30,6 @@ div.sect-content-movie div {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-
 	<div id="#mypageBody">
 		<div id="my-info-wrap">
 			<div class="profile">
@@ -75,12 +73,9 @@ div.sect-content-movie div {
 				<div class="favorite-theater">자주가는 영화관</div>
 			</div>
 		</div>
-=======
 	<jsp:include page="../main/main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
-
->>>>>>> defdca56c32fd898989186adf4ee0b6b9c0db13c
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
 
@@ -137,12 +132,9 @@ div.sect-content-movie div {
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
 
-=======
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
->>>>>>> defdca56c32fd898989186adf4ee0b6b9c0db13c
 </body>
 </html>
