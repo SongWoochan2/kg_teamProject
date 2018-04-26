@@ -1,0 +1,42 @@
+@charset "UTF-8";
+div#mypageBody {
+	width: 100%;
+	height: 100%;
+	border: 1px dotted black;
+	min-height: 100px;
+}
+div#my-info-wrap {
+	width: 80%;
+	height: 30%;
+	margin: auto;
+}
+div#my-info-wrap > div {
+	width: 100%;
+	height: 50%;
+
+}
+div#my-content-wrap {
+	width: 80%;
+	height: 70%;
+	margin: auto;
+}
+div#content-aside {
+	float: left;
+	width: 20%;
+	height: 100%;
+}
+
+div.benefit > div. {
+	float: left;
+	width: 50%;
+	height: 100%;
+} 
+
+div.profile > div {
+	float: left;
+}
+
+div#content-aside a {
+
+}
+

@@ -5,7 +5,7 @@ create table admin(
   admin_id varchar2(30) not null,
   admin_name varchar2(30) not null,
   admin_pwd varchar2(25) not null,
-  admin_enroll_date date,
+  enroll_date date,
   primary key(admin_id)
 );
 
@@ -154,8 +154,55 @@ nocache
 nomaxvalue;
 
 -----------------------------------------------
+-- 회원 테이블
+create table member(
+  member_id varchar(30),     
+  member_name varchar(30) not null,
+  nick_name varchar(30),
+  member_pwd varchar(20) not null,
+  member_birth date not null,
+  member_email varchar(50) not null,
+  member_agency varchar(10) not null,
+  member_phone varchar(11) not null,
+  saving_point int,
+  join_date date,
+  member_grade char(1),
+  member_gender varchar(10) not null,
+  profile_img_addr varchar(255),
+  primary key(member_id)
+);
+
+insert into member values(
+  'aaa','하하하',null,'1234',to_date('2010-12-15','YYYY-MM-DD'),
+  'aaa@naver.com','KT','01012345678',1000,sysdate,'C','여자','none.png'
+);
+insert into member values(
+  'bbb','호호호호',null,'1234',to_date('2000-1-20','YYYY-MM-DD'),
+  'bbb@naver.com','SKT','01011112222',1000,sysdate,'B','남자','none.png'
+);
+insert into member values(
+  'ccc','히히히',null,'1234',to_date('1990-05-01','YYYY-MM-DD'),
+  'ccc@naver.com','LGU+','01033335555',1000,sysdate,'A','남자','none.png'
+);
+insert into member values(
+  'ddd','흐흐흐',null,'1234',to_date('1997-7-30','YYYY-MM-DD'),
+  'ddd@naver.com','알뜰폰','01077779999',1000,sysdate,'C','여자','none.png'
+);
 
 
+
+-- 비회원 테이블
+create table nonmember(
+  nonmember_code int,
+  nonmember_name varchar(30) not null,
+  nonmember_birth date not null,
+  nonmember_pwd varchar(20) not null,
+  nonmember_phone varchar(11) not null,
+  nonmember_enroll_date date,
+  primary key(nonmember_code)
+);
+
+-----------------------------------------------
 -------------------------------------------------------------  (2)
 
 --상영관 테이블

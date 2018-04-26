@@ -5,66 +5,20 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>MY MoveIt HOME</title>
-<script type="text/javascript" src="../script/mypageScript.js?v=1"></script>
+<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-(function($){
-   $(function() {
-/*         $('#go_edit_profile').on('click', function () {
-            var win = window.open("./editProfileForm.do", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
-            win.focus();
-        }); */
-        
-        var originImgAddr = $("#origin_img_addr").val();
-        if(originImgAddr == null || originImgAddr == '') {
-        	$(".profileImg img").attr('src', '../image/profile/none.png');
-        } else {
-        	$(".profileImg img").attr('src', '../image/profile/'+$(this));
-        }
-    });
-})(jQuery);
+$(function(){
+	
+	
+});
 </script>
 <style type="text/css">
-div#mypageBody {
-	width: 100%;
-	height: 100%;
-	border: 1px dotted black;
-}
-div#my-info-wrap {
-	width: 80%;
-	height: 30%;
-	border: 1px solid black;
-	margin: auto;
-}
-div#my-info-wrap > div {
-	width: 100%;
-	height: 50%;
-	border:  1px dotted black;
-}
-div.profile > div {
-	float: left;
-}
-div#my-content-wrap {
-	width: 80%;
-	height: 70%;
-	border: 1px solid black;
-	margin: auto;
-}
-div#content-aside {
-	float: left;
-	width: 20%;
-	height: 100%;
-}
-div#content-detail {
+#my-content-wrap > #content-detail {
 	float: left;
 	width: 80%;
 	height: 100%;
 }
-/* div.benefit > div {
-	float: left;
-	width: 50%;
-	height: 100%;
-} */
 div.sect-content-movie {
 	width: 80%;
 	height: 20%;
@@ -72,12 +26,11 @@ div.sect-content-movie {
 div.sect-content-movie div {
 	float: left;
 }
-div#content-aside a {
 
-}
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<div id="#mypageBody">
 		<div id="my-info-wrap">
@@ -122,22 +75,16 @@ div#content-aside a {
 				<div class="favorite-theater">자주가는 영화관</div>
 			</div>
 		</div>
+=======
+	<jsp:include page="../main/main/header.jsp"></jsp:include>
+	<div id="mypageBody">
+	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
+
+>>>>>>> defdca56c32fd898989186adf4ee0b6b9c0db13c
 		<div id="my-content-wrap">
-			<div id="content-aside">
-				<ul>
-					<li><a href="mypageHome.do">MY MoveIt HOME</a></li>
-					<li><a href="myReserveList.do">나의 예매내역</a></li>
-					<li><a href="myStoreList.do">나의 스토어</a></li>
-					<li><a href="myPointList.do">나의 포인트</a></li>
-					<li><a href="../member/confirmPwdModify.do">나의 정보</a>
-						<ul>
-							<li><a href="../member/confirmPwdModify.do">개인정보 변경</a></li>
-							<li><a href="../member/confirmPwdDelete.do">회원탈퇴</a></li>
-						</ul></li>
-					<li><a href="editProfileForm.do">나의 프로필</a></li>
-					<li><a href="">나의 문의내역</a></li>
-				</ul>
-			</div>
+			<jsp:include page="./myContentAside.jsp"></jsp:include>
+
+		
 			<div id="content-detail">
 				<div class="sect-content-movie">
 					<div class="box-inner">
@@ -190,8 +137,12 @@ div#content-aside a {
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
 
+=======
+	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+>>>>>>> defdca56c32fd898989186adf4ee0b6b9c0db13c
 </body>
 </html>
