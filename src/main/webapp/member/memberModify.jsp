@@ -15,8 +15,7 @@ pageEncoding="UTF-8"%>
 회원정보 수정 성공
 </c:if>
 <br>
-<a href="../index.jsp">메인으로</a>
-<input type="button" value="메인으로" onclick="location.href='../index.jsp'">
+<input type="button" value="MoveIt 첫화면으로" onclick="location.href='index.do'">
 </body>
 </html>
 

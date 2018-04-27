@@ -4,14 +4,14 @@
 
 <mapper namespace="mybatis.answer">
 
-	<insert id="answerWrite" parameterType="answerDTO">
+	<insert id="answerInsert" parameterType="answerDTO">
 		insert into answer values 
 		(answer_code_seq.nextval, #{admin_id}, #{member_id}, #{answer_title}, #{answer_content}, sysdate)
 	</insert>
 
 	<select id="answerList" parameterType="java.util.Map" resultType="answerDTO">
 		<![CDATA[
-		select answer_code, answer_id, answer_type, answer_title, answer_content, to_char(answer_date, 'YYYY.MM.DD') as answer_date 
+		select answer_code, answer_id, member_id, answer_title, answer_content, to_char(answer_date, 'YYYY.MM.DD') as answer_date 
 		from (select rownum rn, tt.* 
 				from (select * from answer order by answer_code desc) tt) 
 		where rn >= #{startNum} and rn <= #{endNum}
@@ -19,12 +19,9 @@
 	</select>
 	
 	<select id="answerView" parameterType="int" resultType="answerDTO">
-		select * from answer where answer_code=#{answer_code}
+		select * from answer where answer_code=#{inaquiry_code}
 	</select>
 	
-	<select id="totalA" resultType="int">
-		select count(*) from answer
-	</select>
 	
 	<delete id="answerDelete" parameterType="int">
 		delete answer where answer_code=#{answer_code}

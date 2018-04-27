@@ -39,6 +39,40 @@ insert into theater values(
 
 ----------------------------------------------------
 
+-- 시간분류
+create table time_type(
+	time_type_code int primary key,
+	add_cost number not null,
+	time_type_name varchar(30)
+);
+
+insert into time_type values ( 5, -3000, '조조영화' );
+insert into time_type values ( 6, -3000, '조조영화' );
+insert into time_type values ( 7, -3000, '조조영화' );
+insert into time_type values ( 8, -3000, '조조영화' );
+insert into time_type values ( 9, 0, '일반영화' );
+insert into time_type values ( 10, 0, '일반영화' );
+insert into time_type values ( 11, 0, '일반영화' );
+insert into time_type values ( 12, 0, '일반영화' );
+insert into time_type values ( 13, 0, '일반영화' );
+insert into time_type values ( 14, 0, '일반영화' );
+insert into time_type values ( 15, 0, '일반영화' );
+insert into time_type values ( 16, 0, '일반영화' );
+insert into time_type values ( 17, 0, '일반영화' );
+insert into time_type values ( 18, 0, '일반영화' );
+insert into time_type values ( 19, 0, '일반영화' );
+insert into time_type values ( 20, 0, '일반영화' );
+insert into time_type values ( 21, 0, '일반영화' );
+insert into time_type values ( 22, 0, '일반영화' );
+insert into time_type values ( 23, 0, '일반영화' );
+insert into time_type values ( 24, -2000, '심야영화' );
+insert into time_type values ( 25, -2000, '심야영화' );
+insert into time_type values ( 26, -2000, '심야영화' );
+insert into time_type values ( 27, -2000, '심야영화' );
+
+
+-----------------------------------------------------
+
 --좌석분류표
 create table seat_type(
   seat_type_code int primary key,
@@ -131,9 +165,6 @@ insert into movie values(
   movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 
-
-
----------------------------------------------------------------------------------------------  insert 추가
 
 ------------------------------------------------
 

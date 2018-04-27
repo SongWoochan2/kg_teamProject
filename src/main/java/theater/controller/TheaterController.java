@@ -239,4 +239,52 @@ public class TheaterController {
 	     modelAndView.setViewName("theaterModify.jsp");
 	     return modelAndView;
 	}
+	
+	///// 우찬 추가 - 상영관리
+	@RequestMapping(value="/theaterListForShow.do")
+	public ModelAndView supertheaterListForShow(HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println("글 목록 처리");
+		// 1. 사용자 입력 정보 추출
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		// 2. DB 연동처리
+		int endNum = pg*5;			// 1*5 = 5
+		int startNum = endNum-4;	// 5-4 = 1
+		
+		ArrayList<TheaterDTO> list = theaterService.theaterList(startNum, endNum);
+		int totalA = theaterService.getTotalA();	// 총글수
+		int totalP = (totalA+4)/5;			// 총페이지수
+		//================================
+		int startPage = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
+		int endPage = startPage + 2;		// endPage = startPage + 3 - 1;
+		if(totalP < endPage) endPage = totalP;
+		// 3. 화면 네비게이션
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("pg", pg);
+		modelAndView.setViewName("/admin/showPresent/theaterListForShow.jsp");
+		return modelAndView;
+	}
+
+	@RequestMapping(value="/theaterViewForShow.do")
+	public ModelAndView supertheaterViewForShow(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("글 상세보기");
+		// 1. 사용자 입력 정보 추출
+		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		// 2. DB 연동처리
+		
+		theaterService.updateHit(theater_code);
+		TheaterDTO theaterDTO = theaterService.theaterView(theater_code);
+		// 3. 화면 네비게이션
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("theaterDTO", theaterDTO);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("theater_code", theater_code);
+		modelAndView.setViewName("/admin/showPresent/theaterViewForShow.jsp");
+		return modelAndView;
+	}
 }

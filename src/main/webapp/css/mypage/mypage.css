@@ -1,7 +1,7 @@
 @charset "UTF-8";
 div#mypageBody {
 	width: 100%;
-	height: 100%;
+	height: 800px;
 	border: 1px dotted black;
 	min-height: 100px;
 }
@@ -23,6 +23,11 @@ div#my-content-wrap {
 div#content-aside {
 	float: left;
 	width: 20%;
+	height: 100%;
+}
+div#content-detail {
+	float: left;
+	width: 80%;
 	height: 100%;
 }
 

@@ -16,7 +16,6 @@ pageEncoding="UTF-8"%>
 ~초뒤 메인화면 이동하게 만들기
 </c:if>
 <br>
-<a href="../index.jsp">메인으로</a>
-<input type="button" value="메인으로" onclick="location.href='../index.jsp'">
+<input type="button" value="MoveIt 첫화면으로" onclick="location.href='index.do'">
 </body>
 </html>

@@ -20,10 +20,11 @@
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/image/" mapping="/image/**"/>
-	<context:component-scan base-package="admin"/>
-	<context:component-scan base-package="movie"/>
+	
 
 	<!-- 재환 -->
+	<context:component-scan base-package="admin"/>
+	<context:component-scan base-package="movie"/>
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
 
@@ -31,7 +32,8 @@
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>
 	<context:component-scan base-package="theater"/>
-	<context:component-scan base-package="showPlace"/>
+	<context:component-scan base-package="showPlace.controller"/>
+	<context:component-scan base-package="showPresent.controller"/>
 	
 	<!-- 빛나 -->
 	<context:component-scan base-package="member"/>
@@ -42,6 +44,9 @@
     <context:component-scan base-package="noticeItem.controller"/>
     <context:component-scan base-package="inquiry.controller"/>
     <context:component-scan base-package="reserve.controller" />
+    
+    
+    
 	<!-- advice : 횡단(공통)관심사항  -->
 	<bean id="loginCheckAdvice" class="advice.log.Logging"/>
 

@@ -50,6 +50,9 @@ drop sequence movie_seq;
 -- 좌석 분류표
 drop table seat_type purge;
 
+-- 시간분류
+drop table time_type purge;
+
 -- 극장
 drop table theater purge;
 drop sequence theater_seq;

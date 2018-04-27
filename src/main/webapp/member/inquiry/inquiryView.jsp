@@ -8,13 +8,10 @@ pageEncoding="UTF-8"%>
 	<title>글보기</title>
 </head>
 <body>
-	<form id="form" name="inquiryView" method="post" action="inquiryAnswer.do" >
+	<form id="form" name="inquiryView" method="post" action="answerInsert.do" >
 		<table border="1" cellspacing="0" cellpadding="5">
 			<tr>
 				<td colspan="3">
-					<c:if test="${admin_id != null }">
-						<span style="color: #9d40b7;">[답변 완료]</span>
-					</c:if>
 					${inquiryDTO.inquiry_title }
 				</td>
 			</tr>
@@ -58,7 +55,7 @@ pageEncoding="UTF-8"%>
 			<input type="button" value="삭제" onclick="location.href='inquiryDelete.do?inquiry_code=${inquiryDTO.inquiry_code}'">
 		</c:if>
 		<c:if test="${admin_id != null }">
-			<input type="submit" value="답변" onclick="location.href='answer.do'">
+			<input type="submit" value="답변">
 		</c:if>
 		<br><br>
 		<input type="button" value="메인으로" onclick="location.href='/MyCGV/admin/clientCenter/clientCenterMain.jsp'">

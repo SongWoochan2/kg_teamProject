@@ -5,21 +5,65 @@
 <mapper namespace="mybatis.reserveMapper">
 
 	<!-- 극장이나 날짜를 눌렀을때 영화가 변경  -->
-	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
-		SELECT movie_name FROM movie 
-			where movie_code IN ( select movie_code from show_present
-	  			<where> 
-					 	to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')	
+	<select id="movieList" parameterType="java.util.Map" resultType="movieDTO">
+		SELECT * FROM movie 
+		where movie_code IN ( 
+			select movie_code from show_present
+ 			<where> 
+				<![CDATA[to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')]]>	
+  				<if test="show_date != null">
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+	   			</if>
+	   			<if test="theater_code != null">
+					AND show_place_code IN ( 
+						select show_place_code from show_place
+						where theater_code = #{theater_code}
+					)
+	   			</if>
+ 			</where>
+		)
+	</select>
+	
+	<!-- <![CDATA[  ]]> -->
+	
+	<!-- 영화나 날짜를 눌렀을때 극장이 변경  -->
+	<select id="theaterList" parameterType="java.util.Map" resultType="theaterDTO">
+		select * from theater
+		where theater_code IN ( 
+			select theater_code from show_place 
+			where show_place_code IN ( 
+				select show_place_code from show_present
+				<where> 
+					<![CDATA[to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')]]>	
 	   				<if test="show_date != null">
-						AND to_char(show_date, 'YYYYMMDD') = '20180426'
+						AND to_char(show_date, 'YYYYMMDD') = #{show_date}
 	    			</if>
-	    			<if test="theater_code != null">
-						AND show_place_code IN ( select show_place_code from show_place
-							where theater_code = #{theater_code})
+	    			<if test="movie_code != null">
+						AND movie_code = #{movie_code}
 	    			</if>
 	  			</where>
-	  	)
+			)
+		)
 	</select>
+	
+	
+	<!-- 영화나 극장를 눌렀을때 날짜및 상영현황이 변경  -->
+	<select id="showList" parameterType="java.util.Map" resultType="showPresentAllVO">
+		select * from show_present, show_place, movie
+		<where>
+			show_present.show_place_code = show_place.show_place_code
+			AND show_present.movie_code = movie.movie_code
+			<![CDATA[AND to_char(show_present.show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')]]>	
+  			<if test="theater_code != null">
+				AND show_place.theater_code = #{theater_code}
+   			</if>
+   			<if test="movie_code != null">
+				AND movie.movie_code = #{movie_code}
+   			</if>
+ 		</where>
+	</select>
+	
+	
 	<!-- 
 		필요한 것 : 영화이름
 		조건 : 
@@ -29,7 +73,8 @@
 	 -->
 	
 	<!-- 영화나 날짜를 눌렀을때 극장이 변경 -->
-	<!--
+
+	<!-- 
 	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
 		select theater_name FROM theater 
 			where theater_code in(select theater_code from show_place

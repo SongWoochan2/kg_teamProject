@@ -64,20 +64,19 @@ pageEncoding="UTF-8"%>
 		});
 	</script>
 	<style type="text/css">
+		
 		#wrapper{
-			width: 700px;
+			width: 1000px;
 			margin: 0 auto;
 			text-align: center;
 			align-items: center;
-			background-color: white;
+			background-color: #ffe9ce;
 			border: 3px solid black;
+			padding: 50px;
 		}
-		img{
-			width: 500px;
-			height: 500px;
-		}
-		table{
-			width: 100%;
+		#wrapper table{
+			margin : 0 auto;
+			background-color: white;
 		}
 	</style>
 </head>

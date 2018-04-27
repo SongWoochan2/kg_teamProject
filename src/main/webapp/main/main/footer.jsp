@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../css/footer/footer.css?v=1" />
+<link rel="stylesheet" href="/MyCGV/css/footer/footer.css?v=1" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 			출점문의 | 개인정보처리방침 | 법적고지 | 이메일주소무단수집거부 | 상생경영 | 사이트맵
 		</div>
 		<div id="footer_mid">
-			<img alt="" src="../../image/footer/line.png">
+			<img alt="" src="/MyCGV/image/footer/line.png">
 		</div>
 		<div id="footer_img_cj1">
 			<div id="footer_bottom">
@@ -26,16 +26,16 @@
 					</div>
 				<div id="footer_img">
 				<p>
-				<a href="#"><img alt="" src="../../image/footer/face.png"></a>
-				<a href="#"><img alt="" src="../../image/footer/twit.png"></a>
-				<a href="#"><img alt="" src="../../image/footer/insta.png"></a>
+				<a href="#"><img alt="" src="/MyCGV/image/footer/face.png"></a>
+				<a href="#"><img alt="" src="/MyCGV/image/footer/twit.png"></a>
+				<a href="#"><img alt="" src="/MyCGV/image/footer/insta.png"></a>
 				</p>
 			</div>			
 			</div>
 			
 		</div>
 		<div>
-		<img src="../../image/footer/foot.png" id="footer_bottom_img">
+		<img src="/MyCGV/image/footer/foot.png" id="footer_bottom_img">
 		</div>		
 	</div>
 </body>
