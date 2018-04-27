@@ -17,7 +17,9 @@ public class InquiryDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public int inquiryWrite(InquiryDTO inquiryDTO) {
-		return sqlSession.insert("mybatis.inquiry.inquiryWrite", inquiryDTO);
+		System.out.println("DAO!!!!!");
+		
+		return sqlSession.insert("mybatis.inquiry.inquiryWriteTest", inquiryDTO);
 	}
 	
 	
@@ -54,5 +56,9 @@ public class InquiryDAO {
 	
 	public int inquiryDelete(int inqruiry_code) {
 		return sqlSession.delete("mybatis.inquiry.inquiryDelete", inqruiry_code);
+	}
+	
+	public int updateStatus(int inquiry_code) {
+		return sqlSession.update("mybatis.inquiry.updateStatus", inquiry_code);
 	}
 }

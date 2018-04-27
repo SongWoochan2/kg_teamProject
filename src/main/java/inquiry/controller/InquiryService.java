@@ -44,5 +44,9 @@ public class InquiryService {
 	public int inquiryDelete(int inquiry_code) {
 		return inquiryDAO.inquiryDelete(inquiry_code);
 	}
+	
+	public int updateStatus(int inquiry_code) {
+		return inquiryDAO.updateStatus(inquiry_code);
+	}
 
 }

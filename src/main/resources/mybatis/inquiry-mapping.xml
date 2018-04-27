@@ -3,19 +3,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.inquiry">
-
+<!-- 
 	<insert id="inquiryWrite" parameterType="inquiryDTO">
 		insert into inquiry values 
-		(inquiry_code_seq.nextval, #{inquiry_id}, #{inquiry_type}, #{inquiry_title}, #{inquiry_content}, #{inquiry_file},  sysdate)
-	</insert>
-
-	<update id="inquiryModify" parameterType="inquiryDTO">
-		update inquiry set inquiry_type=#{inquiry_type}, inquiry_title=#{inquiry_title}, inquiry_content=#{inquiry_content}, inquiry_date=sysdate where inquiry_code=#{inquiry_code}
-	</update>
-	
+		(inquiry_code_seq.nextval, #{inquiry_id}, #{inquiry_type}, #{inquiry_title}, #{inquiry_content}, #{inquiry_file}, 0,  sysdate)
+	</insert> -->
+<!-- 	
 	<select id="inquiryListAdmin" parameterType="java.util.Map" resultType="inquiryDTO">
 		<![CDATA[
-		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
+		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, inquiry_status, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
 		from (select rownum rn, tt.* 
 				from (select * from inquiry order by inquiry_code desc) tt) 
 		where rn >= #{startNum} and rn <= #{endNum}
@@ -24,7 +20,7 @@
 	
 	<select id="inquiryListMember" parameterType="java.util.Map" resultType="inquiryDTO">
 		<![CDATA[
-		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
+		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, inquiry_status, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
 		from (select rownum rn, tt.* 
 				from (select * from inquiry where inquiry_id = #{inquiry_id} order by inquiry_code desc) tt) 
 		where rn >= #{startNum} and rn <= #{endNum}
@@ -42,5 +38,14 @@
 	<delete id="inquiryDelete" parameterType="int">
 		delete inquiry where inquiry_code=#{inquiry_code}
 	</delete>
-
+	
+	<update id="updateStatus" parameterType="int">
+		update board set status = status + 1 where inquiry_code=#{inquiry_code}
+	</update>
+ -->
+	<insert id="inquiryWriteTest" parameterType="inquiry.bean.InquiryDTO">
+		insert into inquiry values(
+		 	inquiry_code_seq.nextval, 'hello', 'hello', 'hello', 'hello', 'hello', 0, sysdate
+		)
+	</insert>
 </mapper>

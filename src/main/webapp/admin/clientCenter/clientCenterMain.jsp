@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <title>Insert title here</title>
 
 <style type="text/css">
- 	div{
+ 	.container{
  		box-sizing : border-box;
  		/* border : 1px solid red; */
 	}
@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%>
 </style>
 </head>
 <body>
-	<div id="container">
+	<div class="container">
 		<div id="side">
 			<ul>
 				<li id=""><a href="">고객센터 메인</a></li>

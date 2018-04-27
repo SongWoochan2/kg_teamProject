@@ -1,114 +1,112 @@
-create table admin(
-  admin_id varchar2(30) not null,
-  admin_name varchar2(30) not null,
-  admin_pwd varchar2(25) not null,
-  enroll_date date not null,
-  primary key(admin_id)
-);
-drop table admin;
-
-create table admin_request(
-  admin_request_code int,
-  admin_id varchar2(30) not null UNIQUE,
-  admin_name varchar2(30) not null,
-  admin_pwd varchar2(25) not null,
-  request_date date not null,
-  primary key(admin_request_code)
-);
-
-create table nonmember(
-  nonmember_code int,
-  nonmember_name varchar2(30) not null,
-  nonmember_birth date not null,
-  nonmember_pwd varchar2(20) not null,
-  nonmember_phone varchar2(11) not null,
-  nonmember_enroll_date date not null,
-  primary key(nonmember_code)
+insert into inquiry (
+			inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, inquiry_file, inquiry_status, inquiry_date
+		)values(
+		 inquiry_code_seq.nextval, 'jin', '문의', 'asdf', 'dggd', 'sdfgdfg', 0, sysdate
+		);
+		
+		create table answer(
+  answer_code int,
+  admin_id varchar(30),
+  member_id varchar(30),
+  answer_title varchar(255) not null,
+  answer_content varchar(2048) not null,
+  answer_date date default sysdate,
+  CONSTRAINT fk_admin_id FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  CONSTRAINT fk_member_id FOREIGN KEY (member_id) REFERENCES member(member_id),
+  CONSTRAINT fk_answer_code FOREIGN KEY (answer_code) REFERENCES inquiry(inquiry_code),
+  primary key(answer_code)
 );
 
-create table member(
-  member_id varchar(30),     
-  member_name varchar(30) not null,
-  nick_name varchar(30),
-  member_pwd varchar(20) not null,
-  member_birth date not null,
-  member_email varchar(50) not null,
-  member_agency varchar(10) not null,
-  member_phone varchar(11) not null,
-  saving_point number,
-  join_date date not null,
-  member_grade char(1),
-  member_gender varchar(10) not null,
-  profile_img_addr varchar(30),
-  primary key(member_id)
+--대답 시퀀스 생성
+create sequence answer_seq nocycle nocache;
+--대답 시퀀스 삭제
+drop sequence answer_seq;
+
+--대답 테이블 삭제
+drop table answer;
+-------------------------------------------------------------------------------------------------------------------
+
+--문의 테이블 생성
+create table inquiry(
+  inquiry_code number,
+  inquiry_id varchar2(30),
+  inquiry_type varchar2(100),
+  inquiry_title varchar2(255) not null,
+  inquiry_content varchar2(2048) not null,
+  inquiry_file varchar2(250),
+  inquiry_status number default 0,
+  inquiry_date date default sysdate,
+  FOREIGN KEY (inquiry_id) REFERENCES member(member_id),
+  primary key(inquiry_code)
 );
-drop table member;
 
-create table movie(
-  movie_code int,
-  movie_name varchar(30) not null,
-  movie_content varchar(2048) not null,
-  make_nation varchar(15) not null,
-  movie_open_date date not null,
-  movie_recycle_time number not null,
-  movie_show_grade_name varchar(30) not null,
-  movie_type varchar(15) not null,
-  movie_director varchar(30) not null,
-  movie_evaluat_num number not null,
-  acc_evaluat_score number not null,
-  appear_actor varchar(2048) not null,
-  good_num number not null,
-  acc_audience_num number not null,
-  primary key(movie_code)
+select * from inquiry;
+
+--문의 삽입
+insert into inquiry values(inquiry_code_seq.nextval, 'jin', '공지', '내일은', '웃으리', 'image', 0, sysdate);
+
+--시퀀스 생성
+create sequence inquiry_code_seq nocycle nocache;
+--시퀀스 삭제
+drop sequence inquiry_code_seq;
+
+--문의테이블 삭제
+drop table inquiry purge;
+
+
+------------------------------------------------------------------------------------------------
+
+--공지사항 테이블 생성
+create table notice_item(
+  notice_item_code int,
+  admin_id varchar(30),
+  notice_item_type varchar(100) not null,
+  notice_item_title varchar(255) not null,
+  notice_item_content varchar(2048) not null,
+  notice_item_date date default sysdate,
+  CONSTRAINT fk_notice_item FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  primary key(notice_item_code)
 );
-drop table movie;
-select * from  movie;
-delete from movie;
 
-create table movie_trailer(
-  movie_trailer_code int,
-  movie_code int,
-  movie_trailer_name varchar(30) not null,
-  movie_trailer_addr varchar(255) not null,
-  upload_date date not null,
-  constraint movietrailer_movie_code_fk foreign key(movie_code) references movie(movie_code),
-  primary key(movie_trailer_code)
-);
-drop table movie_trailer;
+--공지사항 삽입
+insert into notice_item values(notice_item_code_seq.nextval, 'jin', '시스템 고장', '내일은', '웃으리', sysdate);
 
-create table movie_photo(
-  movie_photo_code int,
-  movie_code int,
-  movie_photo_name varchar(30) not null,
-  movie_photo_addr varchar(255) not null,
-  upload_date date not null,
-  constraint moviephoto_movie_code_fk foreign key(movie_code) references movie(movie_code),
-  primary key(movie_photo_code)
-);
-drop table movie_photo;
+--공지사항 select
+select * from notice_item;
 
-create sequence movie_seq
-start with 1
-increment by 1
-nocache
-nomaxvalue;
+--noticeitem시퀀스 생성
+create sequence notice_item_code_seq nocycle nocache;
+drop sequence notice_item_code_seq;
 
-create sequence movie_photo_seq
-start with 1
-increment by 1
-nocache
-nomaxvalue;
-
-create sequence movie_trailer_seq
-start with 1
-increment by 1
-nocache
-nomaxvalue;
-
-create sequence admin_request_seq
-start with 1
-increment by 1
-nocache
-nomaxvalue;
+--noticeitem테이블 삭제
+drop table notice_item;
 
 commit;
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+--질문,답 테이블 생성
+create table qna(
+  qna_code int,
+  qna_type varchar(100) not null,
+  qna_title varchar(255) not null,
+  qna_content varchar(2048) not null,
+  qna_date date default sysdate,
+  primary key(qna_code)
+);
+
+--확인
+select * from qna;
+
+--문답 삽입
+insert into qna values(qna_code_seq.nextval, '시스템 고장', '내일은', '웃으리', sysdate);
+
+--qna시퀀스 생성
+create sequence qna_code_seq nocycle nocache;
+drop sequence qna_code_seq;
+
+--qna테이블 삭제
+drop table qna;
+		

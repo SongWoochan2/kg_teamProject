@@ -21,6 +21,7 @@ import answer.bean.AnswerDTO;
 import answer.controller.AnswerService;
 import inquiry.bean.InquiryDTO;
 import member.bean.MemberDTO;
+import member.controller.MemberServiceImpl;
 import resource.provider.ResourceProvider;
 
 @Controller
@@ -31,21 +32,18 @@ public class InquiryController {
 	private InquiryService inquiryService;
 	@Autowired
 	private ResourceProvider resourceProvider;
-	/*@Autowired
-	private JavaMailSender mailSender;*/
+	@Autowired
+	private MemberServiceImpl memberService;
 	
 	@RequestMapping(value="/member/inquiry/inquiryWriteForm.do")
-	public ModelAndView inquiryWriteForm(HttpServletRequest request) throws UnsupportedEncodingException { 
+	public ModelAndView inquiryWriteForm(HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException { 
 		request.setCharacterEncoding("utf-8");
 		ModelAndView modelAndView = new ModelAndView();
-		String member_name = request.getParameter("member_name");
-		String member_phone = request.getParameter("member_phone");
-		String member_email = request.getParameter("member_email");
+		String member_id = (String) session.getAttribute("member_id");         
+		session.setAttribute("inquiry_id", member_id);
 		
-		modelAndView.addObject("member_name", member_name);
-		modelAndView.addObject("member_phone", member_phone);
-		modelAndView.addObject("member_email", member_email);
-		
+		MemberDTO memberDTO = memberService.memberInfo(member_id);
+		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("inquiryWriteForm.jsp");
 
 		return modelAndView;
@@ -54,43 +52,39 @@ public class InquiryController {
 	@RequestMapping(value="/member/inquiry/inquiryWrite.do")
 	public ModelAndView inquiryWrite(HttpServletRequest request,MultipartFile inquiry_file,HttpSession session) throws UnsupportedEncodingException { 
 		// 데이터
+		System.out.println("HELLO!!!");
 		request.setCharacterEncoding("utf-8");
 		String inquiry_type = request.getParameter("inquiry_type");
 		String inquiry_title = request.getParameter("inquiry_title");
 		String inquiry_content = request.getParameter("inquiry_content");
-		String member_name = request.getParameter("member_name");
-		String member_email = request.getParameter("member_email");
-		String inquiry_id = request.getParameter("inquiry_id");							//임시 아이디	
-		session.setAttribute("inquiry_id", inquiry_id);									//임시 아이디
-		/*String admin_id = request.getParameter("admin_id");								//임시 아이디
-		session.setAttribute("admin_id", admin_id);										//임시 아이디
-*/		
+		String inquiry_id = request.getParameter("inquiry_id");								//수정후 삭제할 라인				
+		session.setAttribute("inquiry_id", inquiry_id);
+		/*String inquiry_id = (String) session.getAttribute("inquiry_id");	*/				// 수정 후 주석 풀것
+		/*String admin_id = request.getParameter("admin_id");*/		
 		
 		// 데이터 지정
 		InquiryDTO inquiryDTO = new InquiryDTO();
-		inquiryDTO.setInquiry_id(inquiry_id);
+		inquiryDTO.setInquiry_id("hello");
 		inquiryDTO.setInquiry_type(inquiry_type);
 		inquiryDTO.setInquiry_title(inquiry_title);
-		inquiryDTO.setInquiry_content(inquiry_content);
+		inquiryDTO.setInquiry_content(inquiry_content); 
+		
 		String realforder = resourceProvider.getPath("image/inquiry");
 		String filename = inquiry_file.getOriginalFilename();
 		File file = new File(realforder,filename);
-			try {
-				FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		try {
+			FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		inquiryDTO.setInquiry_file(filename);
-		//DB
-		int su = inquiryService.inquiryWrite(inquiryDTO);
+		System.out.println(inquiryDTO);
+		inquiryService.inquiryWrite(inquiryDTO);
 		
 		ModelAndView modelAndView = new ModelAndView();
-		
-		modelAndView.addObject("member_name", member_name);
-		modelAndView.addObject("member_email", member_email);
-		modelAndView.addObject("su", su);
 		
 		modelAndView.setViewName("inquiryWrite.jsp");
 		
@@ -126,6 +120,7 @@ public class InquiryController {
 	public ModelAndView inquiryListMember(HttpServletRequest request, HttpSession session) {
 		String inquiry_id=(String) session.getAttribute("inquiry_id");
 		ModelAndView modelAndView = new ModelAndView();
+		
 		if(!inquiry_id.equals(null)) {
 			int pg = Integer.parseInt( request.getParameter("pg") );
 			
@@ -158,8 +153,10 @@ public class InquiryController {
 		
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
 		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
+		MemberDTO memberDTO = memberService.memberInfo(inquiryDTO.getInquiry_id());
 		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.addObject("inquiryDTO", inquiryDTO);
 		modelAndView.addObject("answerDTO", answerDTO);
 		

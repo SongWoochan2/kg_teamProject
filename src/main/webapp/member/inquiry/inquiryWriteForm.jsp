@@ -72,7 +72,7 @@ pageEncoding="UTF-8"%>
 						불편사항이나 문의사항을 남겨주시면 최대한 신속하게답변 드리겠습니다.
 					</p>
 				</div>
-				<form	id="form" name="inquiryWriteForm" method="post" action="inquiryWrite.do" enctype="multipart/form-data">
+				<form id="form" name="inquiryWriteForm" method="post" action="inquiryWrite.do" enctype="multipart/form-data">
 					<fieldset>
 						<legend>
 							<h2>이메일 문의</h2>
@@ -81,26 +81,27 @@ pageEncoding="UTF-8"%>
 							<p id="tbl_info_txt">체크(<span id="star">*</span>)된 항목은 필수 입력 사항입니다.</p>
 							<table cellspacing="0" cellpadding="0" border="1">
 								<tbody>
+									<!-- 합친후 삭제할것 -->
 									<tr>
 										<th>임시 아이디</th>
-										<td colspan="3"><input type="text"name="inquiry_id" value="jin">
+										<td colspan="3"><input type="text" name="inquiry_id" value="jin">
 										</td>
 									</tr>
 									<tr>
 										<th>이름</th>
-										<td colspan="3"><input type="text"name="member_name" value="${member_name }" ></td>
+										<td colspan="3">${memberDTO.member_name }</td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><input type="text"name="member_phone" value="${member_phone }" ></td>
+										<td colspan="3">${memberDTO.member_phone }</td>
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><input type="text"name="member_email" value="${member_email }" ></td>
+										<td colspan="3">${memberDTO.member_email }</td>
 									</tr>
 									<tr id="check_info">
 										<td colspan="4">
-											<strong>※&nbsp;&nbsp;문의에 대한 빠른 답변을 위해&nbsp;회원 가입 시 입력하신 연락처를 확인해주세요.</strong>
+											<strong>※문의에 대한 빠른 답변을 위해 회원 가입 시 입력하신 연락처를 확인해주세요.</strong>
 											 <a href=""><span>수정</span></a>
 										 </td>
 									</tr>
@@ -125,7 +126,7 @@ pageEncoding="UTF-8"%>
 											style="height: 94px;" placeholder="내용을 입력해주세요"></textarea>
 										</td>
 									</tr>
-									<tr>
+									<tr> 
 										<th><label for="file">첨부파일</label></th>
 										<td colspan="3"><input type="file" id="file"name="inquiry_file" size="51">
 										</td>
