@@ -2,6 +2,7 @@ package movie.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,17 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public List<MovieDTO> movieSearchByName(String movie_name) {
 		return movieDAO.movieSearchByName(movie_name);
+	}
+
+	@Override
+	public ArrayList<MovieDTO> movieFinder(Map<String, Object> map) {
+	
+		return (ArrayList<MovieDTO>) movieDAO.movieFinder(map);
+	}
+
+	@Override
+	public int FinderTotalA(Map<String, Object> map) {
+		return movieDAO.FinderTotalA(map);
 	}
 	
 }
