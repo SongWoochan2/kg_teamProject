@@ -60,7 +60,7 @@
 				<hr>
 			</div>
 				<div id = "movie_top_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.1</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
 					</div>
@@ -75,7 +75,7 @@
 					</div>
 				</div>
 				<div id = "movie_top_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.2</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/Before I Go to Sleep_1.jpg">
 					</div>
@@ -90,7 +90,7 @@
 					</div>
 				</div>
 				<div id = "movie_top_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.3</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/img_1.jpg">
 					</div>
@@ -111,7 +111,7 @@
 					<hr>
 				</div>
 				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.4</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
 					</div>
@@ -126,7 +126,7 @@
 					</div>
 				</div>
 				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.5</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
 					</div>
@@ -141,7 +141,7 @@
 					</div>
 				</div>
 				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.6</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
 					</div>
@@ -156,7 +156,7 @@
 					</div>
 				</div>
 				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.</div>
+					<div id = "movie-rank">NO.7</div>
 					<div id = "movie-poster">
 						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
 					</div>

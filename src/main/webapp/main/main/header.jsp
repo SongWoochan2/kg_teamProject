@@ -25,7 +25,7 @@
 </script>
 </head>
 <body>
-	<div>
+	<div class="header_main_div">
 		<div id="left_div1">
 			<a href="#"> <img alt="" src="/MyCGV/image/header/header_cgv.png"
 				width="30px" height="30px">CGV APP
@@ -57,9 +57,9 @@
 			<ul class="menu">
 				<li class="te"><a href="#">영화</a>
 					<ul class="sub">
-						<li><a href="#">영화순위 | </a></li>
-						<li><a href="#">영화검색 | </a></li>
-						<li><a href="#">평점메인 </a></li>
+						<li><a href="../movie/movieChart.do">영화순위 | </a></li>
+						<li><a href="../movie/movieFinder.do?pg=1">영화검색 | </a></li>
+						<li><a href="../movie/movieReview.do">평점메인 </a></li>
 					</ul></li>
 				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
 				<li class="te"><a href="#">극장</a>

@@ -45,4 +45,11 @@ public class MovieDAO {
 		return sqlSession.selectList("movieMapper.searchByName", movie_name);
 	}
 	
+	public List<MovieDTO> movieFinder(Map<String, Object> map){
+		return sqlSession.selectList("movieMapper.movieFinder", map);
+	}
+	
+	public int FinderTotalA(Map<String, Object> map) {
+		return sqlSession.selectOne("movieMapper.FinderTotalA", map);
+	}
 }

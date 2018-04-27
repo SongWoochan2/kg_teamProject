@@ -58,12 +58,12 @@ tbody {
 						</tr>
 						<tr>
 							<td><select name="movie_show_grade_name">
-									<option value="all">전체이용가
-									<option value="7years">7세 시청가
-									<option value="12years">12세 이용가
-									<option value="15years">15세 이용가
-									<option value="18years">청소년 이용불가
-									<option value="limitedrelease">제한 상영가
+									<option value="전체이용가">전체이용가
+									<option value="7세 시청가">7세 시청가
+									<option value="12세 이용가">12세 이용가
+									<option value="15세 이용가">15세 이용가
+									<option value="청소년 이용불가">청소년 이용불가
+									<option value="제한 상영가">제한 상영가
 							</select></td>
 							
 							<td colspan="2"><input type="date" name="movie_open_date" required="required"></td>
@@ -71,56 +71,56 @@ tbody {
 						<tr>
 							<td><select name="movie_type1">
 									<option value="SF">SF
-									<option value="thriller">스릴러
-									<option value="horror">호러
-									<option value="action">액션
-									<option value="crime">범죄
-									<option value="noir">느와르
-									<option value="drama">드라마
-									<option value="erotic">에로
-									<option value="melo">멜로
-									<option value="comic">코미디
-									<option value="family">가족
-									<option value="fantasy">판타지
-									<option value="war">전쟁
-									<option value="sport">스포츠
-									<option value="Documentary">다큐
+									<option value="스릴러">스릴러
+									<option value="호러">호러
+									<option value="액션">액션
+									<option value="범죄">범죄
+									<option value="느와르">느와르
+									<option value="드라마">드라마
+									<option value="에로">에로
+									<option value="멜로">멜로
+									<option value="코미디">코미디
+									<option value="가족">가족
+									<option value="판타지">판타지
+									<option value="전쟁">전쟁
+									<option value="스포츠">스포츠
+									<option value="다큐">다큐
 							</select></td>
 							<td><select name="movie_type2">
 									<option value="">--장르2--
 									<option value="SF">SF
-									<option value="thriller">스릴러
-									<option value="horror">호러
-									<option value="action">액션
-									<option value="crime">범죄
-									<option value="noir">느와르
-									<option value="drama">드라마
-									<option value="erotic">에로
-									<option value="melo">멜로
-									<option value="comic">코미디
-									<option value="family">가족
-									<option value="fantasy">판타지
-									<option value="war">전쟁
-									<option value="sport">스포츠
-									<option value="Documentary">다큐
+									<option value="스릴러">스릴러
+									<option value="호러">호러
+									<option value="액션">액션
+									<option value="범죄">범죄
+									<option value="느와르">느와르
+									<option value="드라마">드라마
+									<option value="에로">에로
+									<option value="멜로">멜로
+									<option value="코미디">코미디
+									<option value="가족">가족
+									<option value="판타지">판타지
+									<option value="전쟁">전쟁
+									<option value="스포츠">스포츠
+									<option value="다큐">다큐
 							</select></td>
 							<td><select name="movie_type3">
 									<option value="">--장르3--
 									<option value="SF">SF
-									<option value="thriller">스릴러
-									<option value="horror">호러
-									<option value="action">액션
-									<option value="crime">범죄
-									<option value="noir">느와르
-									<option value="drama">드라마
-									<option value="erotic">에로
-									<option value="melo">멜로
-									<option value="comic">코미디
-									<option value="family">가족
-									<option value="fantasy">판타지
-									<option value="war">전쟁
-									<option value="sport">스포츠
-									<option value="Documentary">다큐
+									<option value="스릴러">스릴러
+									<option value="호러">호러
+									<option value="액션">액션
+									<option value="범죄">범죄
+									<option value="느와르">느와르
+									<option value="드라마">드라마
+									<option value="에로">에로
+									<option value="멜로">멜로
+									<option value="코미디">코미디
+									<option value="가족">가족
+									<option value="판타지">판타지
+									<option value="전쟁">전쟁
+									<option value="스포츠">스포츠
+									<option value="다큐">다큐
 							</select></td>
 						</tr>
 						<tr>
