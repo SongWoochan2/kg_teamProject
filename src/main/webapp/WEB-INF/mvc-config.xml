@@ -45,7 +45,8 @@
     <context:component-scan base-package="inquiry.controller"/>
     <context:component-scan base-package="reserve.controller" />
     
-    
+    <!-- 재민 -->
+    <context:component-scan base-package="productboard.controller"/>
     
 	<!-- advice : 횡단(공통)관심사항  -->
 	<bean id="loginCheckAdvice" class="advice.log.Logging"/>

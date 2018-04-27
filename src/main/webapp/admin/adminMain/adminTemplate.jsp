@@ -43,7 +43,7 @@
 						<li><a href = "/MyCGV/admin/movie/movieAdmin.do?pg=1">영화관리</a></li>
 						<li><a href = "/MyCGV/theaterListForShow.do?pg=1">상영관리</a></li>
 						<li><a href = "/MyCGV/admin/theater/theaterList.do?pg=1">극장관리</a></li>
-						<li><a href = "#">스토어관리</a></li>
+						<li><a href = "/MyCGV/admin/productboard/productboardList.do?pg=1">스토어관리</a></li>
 					</ul>
 				</li>
 				<li id = "a">
