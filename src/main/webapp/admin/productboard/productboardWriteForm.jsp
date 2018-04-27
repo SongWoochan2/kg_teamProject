@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../../script/productboardScript.js"></script>
 </head>
 <body>
+<jsp:include page="../adminMain/adminTemplate.jsp" />
 <form action="productboardWrite.do" method="post" name="productboardWriteForm" enctype="multipart/form-data">
 	<table border="1">
 		<tr>

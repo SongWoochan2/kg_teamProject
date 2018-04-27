@@ -14,6 +14,23 @@ import productboard.bean.ProductBoardDTO;
 public class ProductBoardDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	//pay 조회
+	public ProductBoardDTO productPay(int product_code) {
+		return sqlSession.selectOne("mybatis.boardMapper.productPay",product_code);
+	}
+		
+	//-----------------------------------------------------------------------------------
+		
+	// Store type 목록조회
+	public List<ProductBoardDTO> typeList(String type) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+			
+		return sqlSession.selectList("mybatis.boardMapper.typeList", map);
+	}
+		
+		//-------------------------------------------------------------------------------------
+		
 	
 	public List<ProductBoardDTO> productboardList(int startNum, int endNum) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
