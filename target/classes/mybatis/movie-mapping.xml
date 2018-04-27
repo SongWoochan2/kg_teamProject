@@ -29,17 +29,112 @@
 	</delete>
 	<select id = "movieView" parameterType="int" resultType="movieDTO">
 		select * from movie where movie_code = #{movie_code}
-		select * from movie where movie_code = #{movie_code} and movie_code in(
-		select * from movie 
-		<where>
-			fafas
-		</where>
-		)
-		
 	</select>
 	
 	<select id = "searchByName" parameterType="java.lang.String" resultType="movieDTO">
 		select * from movie where movie_name like '%'|| #{movie_name} || '%'
+	</select>
+	
+	<select id="FinderTotalA" parameterType="java.util.Map" resultType="int">
+		select count(*) from movie
+		<where>
+			<if test="movie_type != null">
+			 	movie_type1 IN 
+				<foreach item="item" index="index" collection="movie_type"
+     				 open="(" separator="," close=")">
+       				#{item}
+  				</foreach>
+  				or movie_type2 IN 
+				<foreach item="item" index="index" collection="movie_type"
+     				 open="(" separator="," close=")">
+       				#{item}
+  				</foreach>
+  				or movie_type3 IN 
+				<foreach item="item" index="index" collection="movie_type"
+     				 open="(" separator="," close=")">
+       				#{item}
+  				</foreach>
+			</if>
+			<if test="make_nation != null">
+				and make_nation IN 
+				<foreach item="item" index="index" collection="make_nation"
+     				 open="(" separator="," close=")">
+       				#{item}
+  				</foreach>
+			</if>
+			<if test="movie_show_grade != null">
+				and movie_show_grade IN 
+				<foreach item="item" index="index" collection="movie_show_grade"
+     				 open="(" separator="," close=")">
+       				#{item}
+  				</foreach>
+			</if>
+			<if test="movie_search != null and movie_search == 'all'">
+				and (movie_name like '%'|| #{movie_keyword} || '%' or appear_actor like '%'|| #{movie_keyword} || '%' or movie_director like '%'|| #{movie_keyword} || '%' )
+			</if>
+			<if test="movie_search != null and movie_search == 'movie_name'">
+				and (movie_name like '%'|| #{movie_keyword} || '%' )
+			</if>
+			<if test="movie_search != null and movie_search == 'movie_actor'">
+				and (appear_actor like '%'|| #{movie_keyword} || '%' )
+			</if>
+			<if test="movie_search != null and movie_search == 'movie_director'">
+				and (movie_director like '%'|| #{movie_keyword} || '%' )
+			</if>
+		</where>
+	</select>
+	
+	<select id = "movieFinder" parameterType="java.util.Map" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+ 		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 		from (select rownum rn, tt.*  
+ 				from (select * from movie ]]> 
+					<where>
+						<if test="movie_type != null">
+						 	movie_type1 IN 
+							<foreach item="item" index="index" collection="movie_type"
+			     				 open="(" separator="," close=")">
+			       				#{item}
+			  				</foreach>
+			  				or movie_type2 IN 
+							<foreach item="item" index="index" collection="movie_type"
+			     				 open="(" separator="," close=")">
+			       				#{item}
+			  				</foreach>
+			  				or movie_type3 IN 
+							<foreach item="item" index="index" collection="movie_type"
+			     				 open="(" separator="," close=")">
+			       				#{item}
+			  				</foreach>
+						</if>
+						<if test="make_nation != null">
+							and make_nation IN 
+							<foreach item="item" index="index" collection="make_nation"
+			     				 open="(" separator="," close=")">
+			       				#{item}
+			  				</foreach>
+						</if>
+						<if test="movie_show_grade != null">
+							and movie_show_grade IN 
+							<foreach item="item" index="index" collection="movie_show_grade"
+			     				 open="(" separator="," close=")">
+			       				#{item}
+			  				</foreach>
+						</if>
+						<if test="movie_search != null and movie_search == 'all'">
+							and (movie_name like '%'|| #{movie_keyword} || '%' or appear_actor like '%'|| #{movie_keyword} || '%' or movie_director like '%'|| #{movie_keyword} || '%' )
+						</if>
+						<if test="movie_search != null and movie_search == 'movie_name'">
+							and (movie_name like '%'|| #{movie_keyword} || '%' )
+						</if>
+						<if test="movie_search != null and movie_search == 'movie_actor'">
+							and (appear_actor like '%'|| #{movie_keyword} || '%' )
+						</if>
+						<if test="movie_search != null and movie_search == 'movie_director'">
+							and (movie_director like '%'|| #{movie_keyword} || '%' )
+						</if>
+					</where> order by movie_code desc) tt) 
+		<![CDATA[where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
 </mapper>

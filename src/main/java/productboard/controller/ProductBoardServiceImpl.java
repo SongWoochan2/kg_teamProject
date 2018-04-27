@@ -43,4 +43,17 @@ public class ProductBoardServiceImpl implements ProductBoardService{
 		return productboardDAO.getTotalA();
 	}
 
+	//store--------------------------------------------------
+	
+	@Override
+	public ArrayList<ProductBoardDTO> typeList(String type) {
+		return (ArrayList<ProductBoardDTO>) productboardDAO.typeList(type);
+	}
+	
+	//pay--------------------------------------------------
+	
+	@Override
+	public ProductBoardDTO productPay(int product_code) {
+		return productboardDAO.productboardView(product_code);
+	}
 }

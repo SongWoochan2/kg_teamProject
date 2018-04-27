@@ -1,13 +1,14 @@
 @charset "UTF-8";
 div#mypageBody {
 	width: 100%;
-	height: 800px;
+	height: 1600px;
 	border: 1px dotted black;
 	min-height: 100px;
 }
 div#my-info-wrap {
-	width: 80%;
-	height: 30%;
+	width: 971px;
+	height: 447px;
+	background-image: url("/MyCGV/image/mypage/main.png");
 	margin: auto;
 }
 div#my-info-wrap > div {
@@ -31,17 +32,110 @@ div#content-detail {
 	height: 100%;
 }
 
-div.benefit > div. {
-	float: left;
-	width: 50%;
-	height: 100%;
-} 
 
 div.profile > div {
 	float: left;
 }
-
+#my-info-wrap .benefit{
+	border: 1px dotted red;
+	/* border: 1px dotted red; */
+}
 div#content-aside a {
 
 }
 
+#my-info-wrap .profileImg{
+	position: relative;
+	top: 56px;
+	left: 50px;
+}
+#my-info-wrap #profile_img{
+	width: 136px;
+	height: 140px;
+}
+#my-info-wrap .personInfo{
+	position: relative;
+	left: 80px;
+	top: 56px;
+}
+#my-info-wrap #p_tag1{
+	position:relative;
+	top: 60px;
+	left: 80px;
+	margin-bottom:4px;color: #342929;
+	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
+	font-size: 20px;
+	line-height: 20px;
+}
+#my-info-wrap #strong_tag1{
+	font-size: 40px;
+}
+#my-info-wrap .point{
+	position: relative;
+	left: 250px;
+}
+#my-info-wrap li, ul{
+	list-style:none;
+	padding-left:0px;
+
+}
+#my-info-wrap .point{
+	width:300px;
+	text-align:center;
+	position: relative;
+	top : 90px;
+	left : 120px;
+}
+#my-info-wrap .favorite-theater{
+	text-align:center;
+	width:150px;
+	position: relative;
+	top : -70px;
+	left : 635px;
+}
+#my-info-wrap a{
+	text-decoration:none;
+}
+
+#my-info-wrap .a_tag1:hover {
+	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
+	color: red;
+	
+}
+#my-info-wrap .a_tag1{
+	color: #872600;
+}
+#my-info-wrap .a_tag:visited {
+	color:gray;
+}
+#my-info-wrap .theater_class{
+	text-align:center;
+	width: 235px;
+	height: 150px;
+	position: relative;
+	top: -50px;
+	left: 590px;	
+}
+#my-info-wrap .theater_class_left{
+	margin:1%;
+	width: 47%;
+	height: 100%;
+	float: left;
+	
+}
+#my-info-wrap .theater_class_rigth{
+	margin:1%;
+	width: 47%;
+	height: 100%;
+	float: right;
+}
+#my-info-wrap #div_theater1, #my-info-wrap #div_theater3, #my-info-wrap #div_theater5{
+	width: 100%;
+	height: 33.3%;
+	position: relative;
+}
+
+#my-info-wrap #div_theater2, #my-info-wrap #div_theater4, #my-info-wrap #div_theater6{
+	width: 100%;
+	height: 33.3%;
+}

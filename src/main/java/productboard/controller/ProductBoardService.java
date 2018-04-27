@@ -24,4 +24,15 @@ public interface ProductBoardService {
 	// 상품 게시판 상품 갯수 조회
 	int getTotalA();
 	
+	
+	//--------------------------------------------------------------------------------------------------
+	
+	// Store type 목록 조회
+	ArrayList<ProductBoardDTO> typeList(String type);
+	
+	//--------------------------------------------------------------------------------------------------
+	
+	// Pay 정보
+	ProductBoardDTO productPay(int product_code);
+	
 }

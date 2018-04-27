@@ -31,4 +31,8 @@
 	<select id = "getTotal" parameterType= "int" resultType="int">
 		select count(*) from movie_photo where movie_code = #{movie_code}
 	</select>
+	
+	<select id = "moviePosterView" parameterType= "int" resultType="moviePhotoDTO">
+		select * from movie_photo where movie_code = #{movie_code} and movie_photo_addr like 'poster_' || '%'
+	</select>
 </mapper>

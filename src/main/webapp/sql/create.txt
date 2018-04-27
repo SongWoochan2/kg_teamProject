@@ -234,6 +234,26 @@ create table nonmember(
 );
 
 -----------------------------------------------
+-- 상품 테이블
+create table product(
+	product_code number not null,	--상품코드 (pk)
+	product_name varchar2(30) not null,	--상품명
+	product_cost number not null,	--상품가격
+	product_type varchar2(15) not null,	--상품분류
+	product_photo_addr varchar2(255) 	--상품분류주소
+);
+
+-- primary key 부여
+alter table product add primary key(product_code);  --primary key 부여
+
+-- product 테이블 시퀸스
+create sequence product_seq nocache nocycle;	--(상품코드)
+
+-- 상품 등록
+insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
+
+
+-----------------------------------------------
 -------------------------------------------------------------  (2)
 
 --상영관 테이블

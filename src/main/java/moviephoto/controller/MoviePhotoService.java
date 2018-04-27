@@ -11,4 +11,5 @@ public interface MoviePhotoService {
 	int moviePhotoModify(MoviePhotoDTO moviePhotoDTO);
 	int getTotalA(int movie_code);
 	int moviePhotoDelete(int movie_photo_code);
+	ArrayList<MoviePhotoDTO> moviePosterView(int movie_code);
 }

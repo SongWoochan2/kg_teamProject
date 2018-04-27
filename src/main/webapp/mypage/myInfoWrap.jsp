@@ -25,22 +25,22 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 		<div id="my-info-wrap">
+			<img src="">
 			<div class="profile">
 				<div class="profileImg">
 					<input type="hidden" id="origin_img_addr" value="${memberDTO.profile_img_addr}">
-					<img src="" alt="${memberDTO.member_name}님 프로필 사진" 
+					<img id="profile_img" src="" alt="${memberDTO.member_name}님 프로필 사진" 
 					onerror="errorImage(this, {'type':'profile'})" width="100px" height="100px">
 				</div>
 				<div class="profileInfo">
 					<div class="personInfo">
-						<strong>${memberDTO.member_name}님</strong>&nbsp;<em>${memberDTO.member_id}</em>
+						<strong id="strong_tag1">${memberDTO.member_name}</strong><strong>님</strong>&nbsp;<em>${memberDTO.member_id}
+						</em>
 						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
-						<a href="editProfileForm.do">나의 프로필 수정</a>
+						<a class="a_tag1" href="editProfileForm.do"><strong>나의 프로필 수정</strong></a>
 					</div>
 					<div class="gradeInfo">
-						<p style="margin-bottom:4px;color: #342929;
-						font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
-						font-size: 20px;line-height: 20px;">                     
+						<p id="p_tag1">                     
 	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}</strong>등급 입니다.             
 	                    </p>
                     </div>
@@ -48,8 +48,7 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="benefit">
 				<div class="point">
-					<h3>MoveIt POINT</h3>
-	        		<a href="myPointList.do">MoveIt POINT 더보기</a>
+	        		<a class="a_tag1" href="myPointList.do"><strong>MoveIt POINT 더보기</strong></a>
 	        		<ul>
 	        			<li>
 	        				<strong>사용가능 MoveIt 포인트</strong>
@@ -57,9 +56,22 @@ pageEncoding="UTF-8"%>
 	        			</li>
 	        		</ul>
         		</div>
-				<div class="favorite-theater">자주가는 영화관</div>
+				<div class="favorite-theater"><strong>자주가는 영화관</strong></div>
+				
+				<div class="theater_class">
+					<div class="theater_class_left">
+						<div id="div_theater1">테스트1</div>
+						<div id="div_theater3">테스트3</div>
+						<div id="div_theater5">테스트5</div>
+					</div>
+				
+					<div class="theater_class_rigth">
+						<div id="div_theater2">테스트2</div>
+						<div id="div_theater4">테스트4</div>
+						<div id="div_theater6"></div>
+					</div>
+				</div>
 			</div>
 		</div>
-
 </body>
 </html>

@@ -1,12 +1,11 @@
 @charset "UTF-8";
-	div{
+	#moviefind div{
 		margin : auto;
 	}
 
-
-	a{
-		color:black;
-	}
+/* 	a{ */
+/* 		color:black; */
+/* 	} */
 	#moviefind{
 		width: 100%;
 		height: 1800px;
@@ -25,20 +24,28 @@
 	}
 	#moviefind #moviefinder *{
 	}
+
 	#moviefind #moviefinder #finder-title{
 		padding : 10px 0px 10px 0px;		
 		font-size: 25px;
 		font-weight: normal;
 		font-family: "Times New Roman", Times, serif;
 	}
-	#moviefind #moviefinder table{
-		border-radius : 30px;
+	
+	#moviefind #moviefinder form{
 		margin:auto;
 		width: 800px;
+		height: 100%;
+	}
+	
+	#moviefind #moviefinder table{
+		border-radius : 30px;
+		width: 100%;
 		height: 100%;
 		background-color: #2e3a44;
 	}
 	#moviefind #moviefinder table th,td{
+		padding-top : 5px;
 		border-top: 1px solid darkgray;
 		color : white;
 	}
@@ -53,12 +60,12 @@
 		font-size : 12px;
 		width: 80%;
 	}
-	#moviefind #moviefinder table td #movie_research,#movie_keyword{
+	#moviefind #moviefinder table td #movie_search,#movie_keyword{
 		font-size : 15px;
 		color : black;
 		height: 80%;
 	}
-	#moviefind #moviefinder table td #movie_research{
+	#moviefind #moviefinder table td #movie_search{
 		width: 100px;
 	}
 	#moviefind #moviefinder table td #movie_keyword{
@@ -67,7 +74,7 @@
 	#moviefind #moviefinder #finder-submit{
 		padding : 10px 0px 10px 0px;		
 	}
-	#moviefind #moviefinder #finder-submit a{
+	#moviefind #moviefinder #finder-submit button{
 		color : white;
 	}
 	
@@ -112,6 +119,7 @@
 		background-color: #cccccc;
 	}
 	#moviefind #findresult #findinfoform #findinfo table td{
+		
 		border-top : 0px;
 		color : black;
 		width: 200px;
@@ -120,6 +128,7 @@
 		margin-top: 10px;
 	}
 	#moviefind #findresult #findinfoform #findinfo #content li{
+		width : 700px;
 		list-style: none;
 	}
 	
