@@ -1,7 +1,7 @@
 @charset "UTF-8";
 div#mypageBody {
 	width: 100%;
-	height: 800px;
+	height: 1600px;
 	border: 1px dotted black;
 	min-height: 100px;
 }
@@ -64,7 +64,8 @@ div#content-aside a {
 	left: 80px;
 	margin-bottom:4px;color: #342929;
 	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
-	font-size: 20px;line-height: 20px;
+	font-size: 20px;
+	line-height: 20px;
 }
 #my-info-wrap #strong_tag1{
 	font-size: 40px;

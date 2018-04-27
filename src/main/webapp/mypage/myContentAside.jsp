@@ -5,13 +5,14 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypageHome.css" />
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+<div class="mypageHome_main_div">
 			<div id="content-aside">
 				<ul>
-					<li><a href="mypageHome.do">MY MoveIt HOME</a></li>
+					<li id="test"><a href="mypageHome.do">MY MoveIt HOME</a></li>
 					<li><a href="myReserveList.do">나의 예매내역</a></li>
 					<li><a href="myStoreList.do">나의 스토어</a></li>
 					<li><a href="myPointList.do">나의 포인트</a></li>
@@ -24,5 +25,6 @@ pageEncoding="UTF-8"%>
 					<li><a href="">나의 문의내역</a></li>
 				</ul>
 			</div>
+</div>
 </body>
 </html>
