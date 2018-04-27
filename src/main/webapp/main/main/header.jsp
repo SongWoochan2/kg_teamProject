@@ -25,7 +25,7 @@
 </script>
 </head>
 <body>
-	<div>
+	<div class="header_main_div">
 		<div id="left_div1">
 			<a href="#"> <img alt="" src="/MyCGV/image/header/header_cgv.png"
 				width="30px" height="30px">CGV APP

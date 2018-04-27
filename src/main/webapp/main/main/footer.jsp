@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div >
+	<div class="footer_main_div" >
 		<div id="footer_text">
 			<p id="p_top">회사소개 | IR | 채용정보 | 광고/프로모션문의 | 제휴문의 |
 			출점문의 | 개인정보처리방침 | 법적고지 | 이메일주소무단수집거부 | 상생경영 | 사이트맵
