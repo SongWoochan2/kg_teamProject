@@ -2,6 +2,7 @@ package movie.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import movie.bean.MovieDTO;
 
@@ -12,5 +13,7 @@ public interface MovieService {
 	int getTotalA();
 	ArrayList<MovieDTO> movieList(int startNum, int endNum);
 	MovieDTO movieView(int movie_code);
+	ArrayList<MovieDTO> movieFinder(Map<String, Object> map);
 	public List<MovieDTO> movieSearchByName(String movie_name);
+	int FinderTotalA(Map<String, Object> map);
 }
