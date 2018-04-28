@@ -25,11 +25,11 @@ div.sect-content-movie div {
 </head>
 <body>
 <jsp:include page="../main/main/header.jsp"></jsp:include>
-	<div id="mypageBody">
 		<jsp:include page="./myInfoWrap.jsp"></jsp:include>
+		<div id="mypageBody">
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
-			<div id="content-detail">
+			<!-- <div id="content-detail">
 				<div class="sect-content-movie">
 					<div class="box-inner">
 						<div class="box-inner wishlist">
@@ -78,7 +78,7 @@ div.sect-content-movie div {
 					</div>
 					<div class="box-inner"></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>

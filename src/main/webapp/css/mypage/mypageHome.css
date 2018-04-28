@@ -1,6 +1,8 @@
 .mypageHome_main_div{
 	border:1px dotted red;
-	width: 1550px;
+	width: 250px;
+	height: 300px;
+	position: 
 	/* height: 1600px; 나중에맞쳐줘야함*/
 }
 
@@ -31,7 +33,5 @@
 }
 
 #content-aside{
-	width: 200px;
-	margin-top:40px;
-	margin-left: 60px;	
+	width: 200px;	
 }
