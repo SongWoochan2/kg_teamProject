@@ -1,11 +1,19 @@
 package movie.bean;
 
 public class MoviePage {
+	private int totalA;
 	private int startPage;
 	private int endPage;
 	private int totalPage;
 	private int pg;
 	
+	
+	public int getTotalA() {
+		return totalA;
+	}
+	public void setTotalA(int totalA) {
+		this.totalA = totalA;
+	}
 	public int getStartPage() {
 		return startPage;
 	}

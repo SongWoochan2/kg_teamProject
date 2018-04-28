@@ -29,7 +29,7 @@
 	 -->
 	
 	<!-- 영화나 날짜를 눌렀을때 극장이 변경 -->
-	<!-- 
+	<!--
 	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
 		select theater_name FROM theater 
 			where theater_code in(select theater_code from show_place

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +18,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import productboard.bean.ProductBoardDTO;
+import productpay.bean.ProductPayDTO;
+import resource.provider.ResourceProvider;
 
 @Controller
 public class ProductBoardController {
 	@Autowired
 	private ProductBoardService productboardService;
+	@Autowired
+	private ResourceProvider resourceProvider;
 	
-	
-	@RequestMapping(value="/productboard/productboardModifyForm.do")
+	@RequestMapping(value="/admin/productboard/productboardModifyForm.do")
 	public ModelAndView handleRequest8(HttpServletRequest request) {
 
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
@@ -37,18 +41,18 @@ public class ProductBoardController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/productboard/productboardDelete.do")
+	@RequestMapping(value="/admin/productboard/productboardDelete.do")
 	public ModelAndView handleRequest(HttpServletRequest request) {
 		System.out.println("상품 삭제 처리");
 		
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
 		
+		String filePath = resourceProvider.getPath("image/productStorage");
 		String filename = request.getParameter("product_type_addr");
-		String filepath = "D:/JAVA_SW_File/spring/workspace/TeamAdd/src/main/webapp/image/productStorage/";
 		
 		int su = productboardService.productboardDelete(product_code);
 		
-		File file = new File(filepath+filename);
+		File file = new File(filePath+filename);
 		
 		if(file.exists() == true){
 			
@@ -62,7 +66,7 @@ public class ProductBoardController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/productboard/productboardList.do")
+	@RequestMapping(value="/admin/productboard/productboardList.do")
 	public ModelAndView handleRequest1(HttpServletRequest request) {
 		System.out.println("상품 목록 처리");
 		// 1. 사용자 입력 정보 추출
@@ -92,7 +96,7 @@ public class ProductBoardController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/productboard/productboardView.do")
+	@RequestMapping(value="/admin/productboard/productboardView.do")
 	public ModelAndView handleRequest3(HttpServletRequest request) {
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
@@ -107,11 +111,11 @@ public class ProductBoardController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/productboard/productboardWrite.do", method=RequestMethod.POST, headers = ("content-type=multipart/*"))
+	@RequestMapping(value="/admin/productboard/productboardWrite.do", method=RequestMethod.POST, headers = ("content-type=multipart/*"))
 	public ModelAndView handleRequest4(HttpServletRequest request, MultipartFile img) {
 		System.out.println("상품 등록 처리");
 		
-		String filePath = "D:/JAVA_SW_File/spring/workspace/TeamAdd/src/main/webapp/image/productStorage";
+		String filePath = resourceProvider.getPath("image/productStorage");
 		String fileName = img.getOriginalFilename();
 		
 		File file = new File(filePath, fileName);
@@ -144,11 +148,11 @@ public class ProductBoardController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/productboard/productboardModify.do", method=RequestMethod.POST, headers = ("content-type=multipart/*"))
+	@RequestMapping(value="/admin/productboard/productboardModify.do", method=RequestMethod.POST, headers = ("content-type=multipart/*"))
 	public ModelAndView handleRequest7(HttpServletRequest request, MultipartFile img) {
 		System.out.println("상품 수정 처리");
 		
-		String filePath = "D:/JAVA_SW_File/spring/workspace/TeamAdd/src/main/webapp/image/productStorage";
+		String filePath = resourceProvider.getPath("image/productStorage");
 		String fileName = img.getOriginalFilename();
 		
 		File file = new File(filePath, fileName);
@@ -182,10 +186,63 @@ public class ProductBoardController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/productboard/productboardWriteForm.do")
+	@RequestMapping(value="/admin/productboard/productboardWriteForm.do")
 	public ModelAndView handleRequest5(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("productboardWriteForm.jsp");
+		return modelAndView;
+	}
+	
+	
+	
+	//store part-------------------------------------------------------------------
+	
+	@RequestMapping(value="/store/store.do")
+	public ModelAndView handleRequest_1(HttpServletRequest request) {
+		System.out.println("스토어 목록 처리");
+		// 1. 사용자 입력 정보 추출
+		String type = request.getParameter("type");
+		System.out.println(type);
+		ArrayList<ProductBoardDTO> typeList = productboardService.typeList(type);
+		
+		// 2. 검색 결과를 세션에 저장하고 목록 화면으로 이동한다.
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("typeList",typeList);
+		modelAndView.addObject("type", type);
+		modelAndView.setViewName("../store/store.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/store/productView.do")
+	public ModelAndView handleRequest_2(HttpServletRequest request) {
+		int product_code = Integer.parseInt(request.getParameter("product_code"));
+		
+		ProductBoardDTO productboardDTO = productboardService.productboardView(product_code);
+		
+		// 3. 검색 결과를 request에 저장하고 상세 화면으로 이동한다.	
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("productboardDTO", productboardDTO);
+		modelAndView.setViewName("../store/productView.jsp");
+		return modelAndView;
+	}
+	
+	//pay part-----------------------------------------------------------------------------수정중;;
+	
+	@RequestMapping(value="/store/productPay.do")
+	public ModelAndView handleRequest_product_pay1(HttpServletRequest request) {
+		int product_code = Integer.parseInt(request.getParameter("product_code"));
+		String member_id = "홍길동";
+		
+		ProductBoardDTO productboardDTO = productboardService.productboardView(product_code);
+		/*HttpSession session = request.getSession();
+		String mem_id = (String) session.getAttribute("mem_id");*/
+	
+		
+		// 3. 검색 결과를 request에 저장하고 상세 화면으로 이동한다.	
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("productboardDTO", productboardDTO);
+		modelAndView.addObject("member_id", member_id);
+		modelAndView.setViewName("../store/productPay.jsp");
 		return modelAndView;
 	}
 }

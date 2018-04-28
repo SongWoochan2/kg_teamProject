@@ -1,5 +1,6 @@
 package moviephoto.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,5 +40,8 @@ public class MoviePhotoDAO {
 	
 	public int moviePhotoModify(MoviePhotoDTO moviePhotoDTO) {
 		return sqlSession.update("moviephotoMapper.moviePhotoModify", moviePhotoDTO);
+	}
+	public List<MoviePhotoDTO> moviePosterView(int movie_code) {
+		return sqlSession.selectList("moviephotoMapper.moviePosterView",movie_code);
 	}
 }

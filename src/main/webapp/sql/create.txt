@@ -39,6 +39,40 @@ insert into theater values(
 
 ----------------------------------------------------
 
+-- 시간분류
+create table time_type(
+	time_type_code int primary key,
+	add_cost number not null,
+	time_type_name varchar(30)
+);
+
+insert into time_type values ( 5, -3000, '조조영화' );
+insert into time_type values ( 6, -3000, '조조영화' );
+insert into time_type values ( 7, -3000, '조조영화' );
+insert into time_type values ( 8, -3000, '조조영화' );
+insert into time_type values ( 9, 0, '일반영화' );
+insert into time_type values ( 10, 0, '일반영화' );
+insert into time_type values ( 11, 0, '일반영화' );
+insert into time_type values ( 12, 0, '일반영화' );
+insert into time_type values ( 13, 0, '일반영화' );
+insert into time_type values ( 14, 0, '일반영화' );
+insert into time_type values ( 15, 0, '일반영화' );
+insert into time_type values ( 16, 0, '일반영화' );
+insert into time_type values ( 17, 0, '일반영화' );
+insert into time_type values ( 18, 0, '일반영화' );
+insert into time_type values ( 19, 0, '일반영화' );
+insert into time_type values ( 20, 0, '일반영화' );
+insert into time_type values ( 21, 0, '일반영화' );
+insert into time_type values ( 22, 0, '일반영화' );
+insert into time_type values ( 23, 0, '일반영화' );
+insert into time_type values ( 24, -2000, '심야영화' );
+insert into time_type values ( 25, -2000, '심야영화' );
+insert into time_type values ( 26, -2000, '심야영화' );
+insert into time_type values ( 27, -2000, '심야영화' );
+
+
+-----------------------------------------------------
+
 --좌석분류표
 create table seat_type(
   seat_type_code int primary key,
@@ -132,9 +166,6 @@ insert into movie values(
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 
 
-
----------------------------------------------------------------------------------------------  insert 추가
-
 ------------------------------------------------
 
 -- 관리자 신청
@@ -201,6 +232,26 @@ create table nonmember(
   nonmember_enroll_date date,
   primary key(nonmember_code)
 );
+
+-----------------------------------------------
+-- 상품 테이블
+create table product(
+	product_code number not null,	--상품코드 (pk)
+	product_name varchar2(30) not null,	--상품명
+	product_cost number not null,	--상품가격
+	product_type varchar2(15) not null,	--상품분류
+	product_photo_addr varchar2(255) 	--상품분류주소
+);
+
+-- primary key 부여
+alter table product add primary key(product_code);  --primary key 부여
+
+-- product 테이블 시퀸스
+create sequence product_seq nocache nocycle;	--(상품코드)
+
+-- 상품 등록
+insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
+
 
 -----------------------------------------------
 -------------------------------------------------------------  (2)

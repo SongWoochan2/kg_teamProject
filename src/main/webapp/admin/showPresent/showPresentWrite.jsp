@@ -11,7 +11,8 @@ pageEncoding="UTF-8"%>
 		<script type="text/javascript">
 			window.onload = function(){
 				alert("등록 성공");
-				location.href="/MyCGV/theater.main/theaterView.do?theater_code=${param.theater_code}&pg=1";
+				history.go(-2);
+				/* location.href="/MyCGV/theater.main/theaterView.do?theater_code=${param.theater_code}&pg=1"; */
 			}
 		</script>
 	</c:if>

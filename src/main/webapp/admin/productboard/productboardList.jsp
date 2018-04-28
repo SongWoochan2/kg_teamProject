@@ -26,6 +26,9 @@
 </script>
 </head>
 <body>
+<jsp:include page="../adminMain/adminTemplate.jsp" />
+
+
 <table cellpadding="5">
 	<tr bgcolor="pink">
 		<th width="100">상품분류</th>

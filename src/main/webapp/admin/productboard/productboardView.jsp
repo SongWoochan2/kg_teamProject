@@ -6,6 +6,7 @@
 <title>상품보기</title>
 </head>
 <body>
+<jsp:include page="../adminMain/adminTemplate.jsp" />
 <table border="1" cellpadding="5">
 	<tr>
 		<td colspan="3">
@@ -21,7 +22,7 @@
 	
 	<tr>
 		<td colspan="3" height="200" valign="top">
-			<img alt="" src="../productStorage/${productboardDTO.product_photo_addr}">
+			<img alt="" src="../../image/productStorage/${productboardDTO.product_photo_addr}">
 		</td>
 	</tr>
 </table>

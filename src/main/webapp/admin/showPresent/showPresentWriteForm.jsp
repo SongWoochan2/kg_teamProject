@@ -73,6 +73,16 @@
 			var dd = today.getDate();
 			var mm = today.getMonth();
 			var yyyy = today.getFullYear();
+
+    		var search_day = new Date(yyyy, mm, dd+${param.count});
+	    	var search_yyyy = search_day.getFullYear();
+	    	var search_mm = search_day.getMonth() + 1;
+	    	var search_dd = search_day.getDate();
+			$("#set_time_box input[name='year']").val(search_yyyy).html(search_yyyy);
+			$("#set_time_box input[name='month']").val(search_mm).html(search_mm);
+			$("#set_time_box input[name='day']").val(search_dd).html(search_dd);
+			
+			/* 
 			$("#year_select").append( $("<option>").val(yyyy).html(yyyy) );
 			$("#year_select").append( $("<option>").val(yyyy+1).html(yyyy+1) );
 
@@ -94,15 +104,19 @@
 				for(var i = 1; i <= last_day; i++){
 					$("#day_select").append( $("<option>").val(i).html(i) );
 				}
-			});
+			}); */
 			
+			
+			// hour select 태그 option 생성
 			for(var i = 5; i <= 27; i++){
 				$("#hour_select").append( $("<option>").val(i).html(i) );
 			}
+			// minute select 태그 option 생성
 			for(var i = 0; i <= 59; i+=5){
 				$("#minute_select").append( $("<option>").val(i).html(i) );
 			}
 			
+			// submit 
 			$("#present_write_form").submit(function(){
 				var result = confirm("등록하시겠습니까?");
 				if(result){
@@ -143,7 +157,12 @@
 			margin: 0 auto;
 			width: 800px;
 		}
-		
+		#set_time_box input{
+			width: 70px;
+		}
+		#movie_list_box fieldset{
+			padding: 30px;
+		}
 		#movie_select{
 			width: 100%;
 			height: 700px;
@@ -186,7 +205,7 @@
 </head>
 <body>
 	<div id="movie_list_box">
-		<form id="present_write_form" name="present_write_form" action="/MyCGV/showPresentWrite.do?sp_code=${param.sp_code }">
+		<form id="present_write_form" method="post" name="present_write_form" action="/MyCGV/showPresentWrite.do?sp_code=${param.sp_code }">
 			<fieldset>
 				<div id="insert_div">
 					<input type="submit" id="insert_button" value="등록">
@@ -201,7 +220,10 @@
 				<div id="set_time_box">
 					<label>
 						상영날짜 :
-						<select id="year_select" name="year" required="required"></select> 년  
+						<input type="text" name="year" readonly="readonly"> 년 
+						<input type="text" name="month" readonly="readonly"> 월 
+						<input type="text" name="day" readonly="readonly"> 일 
+<!-- 						<select id="year_select" name="year" required="required"></select> 년  
 						<select id="month_select" name="month" required="required">
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -216,7 +238,7 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select> 월  
-						<select id="day_select" name="day" required="required"></select> 일  
+						<select id="day_select" name="day" required="required"></select> 일   -->
 					</label><br>
 					<label>
 						상영시간 :
