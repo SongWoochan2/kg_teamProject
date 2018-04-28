@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
 					<li><a href="mypageHome.do">MY MoveIt HOME</a></li>
 					<li><a href="myReserveList.do">나의 예매내역</a></li>
 					<li><a href="myStoreList.do">나의 스토어</a></li>
-					<li><a href="myPointList.do">나의 포인트</a></li>
+					<li><a href="myPointList.do?p=1">나의 포인트</a></li>
 					<li><a href="/MyCGV/member/confirmPwdModify.do">나의 정보</a>
 						<ul>
 							<li><a href="/MyCGV/member/confirmPwdModify.do">개인정보 변경</a></li>

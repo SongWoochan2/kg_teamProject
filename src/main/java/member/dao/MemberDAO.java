@@ -44,8 +44,4 @@ public class MemberDAO {
 		return sqlSession.delete("mybatis.memberMapper.memberDelete", member_id);
 	}
 	
-	public MemberDTO memberInfo(String member_id) {
-		return sqlSession.selectOne("mybatis.memberMapper.memberInfo", member_id);
-	}
-	
 }

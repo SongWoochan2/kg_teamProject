@@ -8,19 +8,21 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+(function ($) {
    $(function() {
 /*         $('#go_edit_profile').on('click', function () {
             var win = window.open("./editProfileForm.do", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
             win.focus();
         }); */
-
+        
         var originImgAddr = $("#origin_img_addr").val();
-        if(originImgAddr == null || originImgAddr == 'none.png' || originImgAddr.includes("none.")) {
-        	$(".profileImg > img").attr('src', '../image/profile/none.png');
+        if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
+        	$(".profileImg > img").attr("src", "../image/profile/none.png");
         } else {
-        	$(".profileImg > img").attr('src', '../image/profile/'+$(this));
+        	$(".profileImg > img").attr("src", "../image/profile/"+originImgAddr);
         }
     });
+})(jQuery);
 </script>
 </head>
 <body>
@@ -49,7 +51,7 @@ pageEncoding="UTF-8"%>
 			<div class="benefit">
 				<div class="point">
 					<h3>MoveIt POINT</h3>
-	        		<a href="myPointList.do">MoveIt POINT 더보기</a>
+	        		<a href="myPointList.do?p=1">MoveIt POINT 더보기</a>
 	        		<ul>
 	        			<li>
 	        				<strong>사용가능 MoveIt 포인트</strong>
