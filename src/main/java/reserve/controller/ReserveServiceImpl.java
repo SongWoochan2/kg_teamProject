@@ -57,18 +57,17 @@ public class ReserveServiceImpl implements ReserveService{
 
 	@Override
 	public List<TheaterDTO> getTheaterList(String show_date, int movie_code) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("show_date", show_date);
-		map.put("movie_code", movie_code);
 		return reserveDAO.getTheaterList(show_date, movie_code);
 	}
 
 	@Override
-	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code) {
-		Map<String, Integer> map = new HashMap<>();
-		map.put("movie_code", movie_code);
-		map.put("theater_code", theater_code);
-		return reserveDAO.getShowList(movie_code, theater_code);
+	public List<ShowPresentAllVO> getDateList(int movie_code, int theater_code) {
+		return reserveDAO.getDateList(movie_code, theater_code);
+	}
+
+	@Override
+	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code, String show_date) {
+		return reserveDAO.getShowList(movie_code, theater_code, show_date);
 	}
 	
 }

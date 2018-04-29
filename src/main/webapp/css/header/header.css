@@ -25,6 +25,13 @@
 	float: left;
 }
 
+/* 로고이미지 삽입 */
+#header_logo_img{
+	width: 200px;
+	height: 100px;
+	float: left;	
+}
+
 /** 목록의 기본 속성 초기화 */
 .header_main_div #header_main ul {
 	margin: 0;

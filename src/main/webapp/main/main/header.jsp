@@ -54,7 +54,9 @@
 		</div>
 
 		<div id="right_div2"></div>
+		
 		<div id="header_main">
+			<img id="header_logo_img" alt="로고이미지" src="/MyCGV/image/logo/moviet_logo3.png">
 			<ul class="menu">
 				<li class="te"><a href="#">영화</a>
 					<ul class="sub">

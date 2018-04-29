@@ -22,6 +22,7 @@
 	   			</if>
  			</where>
 		)
+		ORDER BY movie_name asc, movie_code desc
 	</select>
 	
 	<!-- <![CDATA[  ]]> -->
@@ -44,11 +45,12 @@
 	  			</where>
 			)
 		)
+		ORDER BY theater_code desc
 	</select>
 	
 	
 	<!-- 영화나 극장를 눌렀을때 날짜및 상영현황이 변경  -->
-	<select id="showList" parameterType="java.util.Map" resultType="showPresentAllVO">
+	<select id="dateList" parameterType="java.util.Map" resultType="showPresentAllVO">
 		select * from show_present, show_place, movie
 		<where>
 			show_present.show_place_code = show_place.show_place_code
@@ -61,7 +63,22 @@
 				AND movie.movie_code = #{movie_code}
    			</if>
  		</where>
- 		ORDER BY show_place.theater_code asc, show_present.show_place_code asc, show_present.show_date asc, show_present.show_time asc, 
+ 		ORDER BY show_present.show_date asc, show_place.theater_code asc, show_present.show_place_code asc,  show_present.show_time asc
+	</select>
+	
+	
+	
+	<!-- 영화나 극장를 눌렀을때 날짜및 상영현황이 변경  -->
+	<select id="showList" parameterType="java.util.Map" resultType="showPresentAllVO">
+		select * from show_present, show_place, movie
+		<where>
+			show_present.show_place_code = show_place.show_place_code
+			AND show_present.movie_code = movie.movie_code
+			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+			AND show_place.theater_code = #{theater_code}
+			AND movie.movie_code = #{movie_code}
+ 		</where>
+ 		ORDER BY show_present.show_date asc, show_place.theater_code asc, show_present.show_place_code asc,  show_present.show_time asc
 	</select>
 	
 	
