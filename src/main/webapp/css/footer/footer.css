@@ -1,13 +1,13 @@
 /* 푸터영역 */
-#footer_text{
+.footer_main_div #footer_text{
 	text-align: center;
 	font-size: 5px;
 }
-#footer_img_cj1{
+.footer_main_div #footer_img_cj1{
 	width:100%;
 	text-align: center;
 }
-#footer_img_cj2{
+.footer_main_div #footer_img_cj2{
 	float: left;
 	align-content: center;
 	height:50px;
@@ -18,30 +18,29 @@
 	align-content: center;
 	margin: 0px;
 }
-#p_top{
+.footer_main_div #p_top{
 	margin: 10px;
 }
 
-#footer_bottom{
+.footer_main_div #footer_bottom{
 	margin-top:10px;
 	width:100%;
 	float: left;
 	font-size: 9px;
 }
-#footer_img{
+.footer_main_div #footer_img{
 	margin-top:-40px;
 	margin-left:1400px;
 	width:250px;
 }
-#footer_mid{
+.footer_main_div #footer_mid{
 	text-align:  center;
 }
 
-#footer_bottom_img{
-	text-align:center;
-	width: 1900px;
+.footer_main_div #footer_bottom_img{
+	width: 100px;
 }
 /* 헤더영역 */
-#footer_text{
+.footer_main_div #footer_text{
 	text-align: center;
 }
