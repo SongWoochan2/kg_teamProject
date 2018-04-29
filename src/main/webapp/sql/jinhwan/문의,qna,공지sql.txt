@@ -1,3 +1,79 @@
+insert into member values(
+  'jin','김진환',null,'1234',to_date('2010-12-15','YYYY-MM-DD'),
+  'jinhwanea@naver.com','KT','01012345678',1000,sysdate,'C','남자','none.png'
+);
+
+
+select * from member;
+
+
+create table answer(
+  answer_code int,
+  inquiry_code int,
+  admin_id varchar(30),
+  member_id varchar(30),
+  answer_title varchar(255) not null,
+  answer_content varchar(2048) not null,
+  answer_date date default sysdate,
+  CONSTRAINT fk_admin_id FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  CONSTRAINT fk_member_id FOREIGN KEY (member_id) REFERENCES member(member_id),
+  CONSTRAINT fk_inquiry_code FOREIGN KEY (inquiry_code) REFERENCES inquiry(inquiry_code),
+  primary key(answer_code)
+);
+
+--대답 시퀀스 생성
+create sequence answer_seq nocycle nocache;
+--대답 시퀀스 삭제
+drop sequence answer_seq;
+
+--대답 테이블 삭제
+drop table answer;
+-------------------------------------------------------------------------------------------------------------------
+create table kkkk(
+  kkkk_code number,
+  kkkk_id varchar2(30),
+  kkkk_type varchar2(100),
+  kkkk_title varchar2(255) not null,
+  kkkk_content varchar2(2048) not null,
+  kkkk_file varchar2(250),
+  kkkk_status number default 0,
+  kkkk_date date default sysdate,
+  FOREIGN KEY (kkkk_id) REFERENCES member(member_id),
+  primary key(kkkk_code)
+);
+select * from kkkk;
+--문의 테이블 생성
+create table inquiry(
+  inquiry_code number,
+  inquiry_id varchar2(30),
+  inquiry_type varchar2(100),
+  inquiry_title varchar2(255) not null,
+  inquiry_content varchar2(2048) not null,
+  inquiry_file varchar2(250),
+  inquiry_status number default 0,
+  inquiry_date date,
+  FOREIGN KEY (inquiry_id) REFERENCES member(member_id),
+  primary key(inquiry_code)
+);
+
+select * from inquiry;
+select * from seq;
+
+--문의 삽입
+insert into inquiry values(inquiry_code_seq.nextval, 'jin', '공지', '내일은', '웃으리', 'image', 0, sysdate);
+
+--시퀀스 생성
+create sequence inquiry_code_seq nocycle nocache;
+create sequence kkkk_seq nocycle nocache;
+--시퀀스 삭제
+drop sequence inquiry_code_seq;
+
+--문의테이블 삭제
+drop table inquiry purge;
+
+
+------------------------------------------------------------------------------------------------
+
 --공지사항 테이블 생성
 create table notice_item(
   notice_item_code int,
@@ -6,51 +82,26 @@ create table notice_item(
   notice_item_title varchar(255) not null,
   notice_item_content varchar(2048) not null,
   notice_item_date date default sysdate,
-  CONSTRAINT fk_notice_item FOREIGN KEY (admin_id) REFERENCES admin(admin_id)
+  CONSTRAINT fk_notice_item FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  primary key(notice_item_code)
 );
 
 --공지사항 삽입
-insert into notice_item values(seq_notice_item_code.nextval, 'jin', '시스템 고장', '내일은', '웃으리', sysdate);
+insert into notice_item values(notice_item_code_seq.nextval, 'jin', '시스템 고장', '내일은', '웃으리', sysdate);
 
 --공지사항 select
 select * from notice_item;
 
-
-
 --noticeitem시퀀스 생성
-create sequence seq_notice_item_code nocycle nocache;
-drop sequence seq_notice_item_code;
+create sequence notice_item_code_seq nocycle nocache;
+drop sequence notice_item_code_seq;
 
 --noticeitem테이블 삭제
 drop table notice_item;
 
 commit;
 
--------------------------------------------------------------------------------------------------------------------
 
---문의 테이블 생성
-create table inquiry(
-  inquiry_code int,
-  inquiry_id varchar(30),
-  inquiry_type varchar(100),
-  inquiry_title varchar(255) not null,
-  inquiry_content varchar(2048) not null,
-  inquiry_file varchar(250),
-  inquiry_date date default sysdate,
-  CONSTRAINT fk_inquiry FOREIGN KEY (inquiry_id) REFERENCES member(member_id)
-);
-
---문의 삽입
-insert into inquiry values(seq_inquiry_code.nextval, 'jin', '공지', '내일은', '웃으리', 'image', sysdate);
-
---시퀀스 생성
-create sequence seq_inquiry_code nocycle nocache;
---시퀀스 삭제
-drop sequence seq_inquiry_code;
---문의테이블 삭제
-drop table inquiry;
-
-select * from inquiry;
 
 --------------------------------------------------------------------------------------------------------
 
@@ -60,18 +111,19 @@ create table qna(
   qna_type varchar(100) not null,
   qna_title varchar(255) not null,
   qna_content varchar(2048) not null,
-  qna_date date default sysdate
+  qna_date date default sysdate,
+  primary key(qna_code)
 );
 
 --확인
 select * from qna;
 
 --문답 삽입
-insert into qna values(seq_qna_code.nextval, '시스템 고장', '내일은', '웃으리', sysdate);
+insert into qna values(qna_code_seq.nextval, '시스템 고장', '내일은', '웃으리', sysdate);
 
 --qna시퀀스 생성
-create sequence seq_qna_code nocycle nocache;
-drop sequence seq_qna_code;
+create sequence qna_code_seq nocycle nocache;
+drop sequence qna_code_seq;
 
 --qna테이블 삭제
 drop table qna;

@@ -6,23 +6,16 @@
 <meta charset="UTF-8">
 <title>productView</title>
     
-<link rel="stylesheet" media="all" type="text/css" href="../css/store/reset.css">
-<link rel="stylesheet" media="all" type="text/css" href="../css/store/layout.css">
-<link rel="stylesheet" media="all" type="text/css" href="../css/store/module.css">   
+<link rel="stylesheet" media="all" type="text/css" href="../../css/store/reset.css">
+<link rel="stylesheet" media="all" type="text/css" href="../../css/store/layout.css">
+<link rel="stylesheet" media="all" type="text/css" href="../../css/store/module.css">   
     
 </head>
 
 <body class="" style="">
-    
-<div id="cgvwrap">  
-	<!-- Header -->
-	<h1>헤더영역</h1>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+<jsp:include page="/main/main/header.jsp"/>
+
+<div id="cgvwrap">
 	
 	<!-- Contaniner -->
 	<div id="contaniner" class="">
@@ -35,22 +28,22 @@
 			<div class="wrap-cultureshop">
     
 				<div class="menu_list">
-					<figure class="snip1581"><img src="../storeStorage/set.jpg" alt="profile-sample2"/>
+					<figure class="snip1581"><img src="../../image/storeStorage/set.jpg" alt="profile-sample2"/>
 					  <figcaption>
 					    <h3 class="title3">Combo Set</h3>
 					  </figcaption><a href="store.do?type=set"></a>
 					</figure>
-					<figure class="snip1581"><img src="../storeStorage/popcorn.jpg" alt="profile-sample7"/>
+					<figure class="snip1581"><img src="../../image/storeStorage/popcorn.jpg" alt="profile-sample7"/>
 					  <figcaption>
 					    <h3 class="title3">Popcorn</h3>
 					  </figcaption><a href="store.do?type=popcorn"></a>
 					</figure>
-					<figure class="snip1581"><img src="../storeStorage/beverage.jpg" alt="profile-sample6"/>
+					<figure class="snip1581"><img src="../../image/storeStorage/beverage.jpg" alt="profile-sample6"/>
 					  <figcaption>
 					    <h3 class="title3">Beverage</h3>
 					  </figcaption><a href="store.do?type=beverage"></a>
 					</figure>
-					<figure class="snip1581"><img src="../storeStorage/snack.jpg" alt="profile-sample6"/>
+					<figure class="snip1581"><img src="../../image/storeStorage/snack.jpg" alt="profile-sample6"/>
 					  <figcaption>
 					    <h3 class="title3">Snack</h3>
 					  </figcaption><a href="store.do?type=snack"></a>
@@ -63,7 +56,7 @@
 
     			<div class="sect-cultureshopdetail">z
         <div class="box-image">
-	        <img src="../productStorage/${productboardDTO.product_photo_addr}">
+	        <img src="../../image/productStorage/${productboardDTO.product_photo_addr}">
              <p class="txt_caution">  </p>  
         </div>
         <div class="box-contents">
@@ -127,23 +120,23 @@
 		                </ul>
 		                <ol class="step">
 		                    <li>
-		                        <strong><img src="../storeStorage/step01.gif" alt="step01"></strong>
-		                        <img src="../storeStorage/이용안내_step01.jpg" alt="기프트콘 구매/선물 step01 썸네일">
+		                        <strong><img src="../../image/storeStorage/step01.gif" alt="step01"></strong>
+		                        <img src="../../image/storeStorage/이용안내_step01.jpg" alt="기프트콘 구매/선물 step01 썸네일">
 		                        <em>기프트콘 구매/선물</em>
 		                        <p>기프트콘 선택 후 선물 받는 사람 <br>
 						                  또는 본인의 핸드폰번호를 입력하여 <br>
 						                  결제합니다.</p>
 		                    </li>
 		                    <li>
-		                        <strong><img src="../storeStorage/step02.gif" alt="step02"></strong>
-		                        <img src="../storeStorage/이용안내_step02.jpg" alt="기프트콘 MMS 수신 step02 썸네일">
+		                        <strong><img src="../../image/storeStorage/step02.gif" alt="step02"></strong>
+		                        <img src="../../image/storeStorage/이용안내_step02.jpg" alt="기프트콘 MMS 수신 step02 썸네일">
 		                        <em>기프트콘 MMS 수신</em>
 		                        <p>결제가 완료 되면 입력한 번호로 <br>
 		                       	구매한 상품의 MMS가 전송됩니다.</p>
 		                    </li>
 		                    <li>
-		                        <strong><img src="../storeStorage/step03.gif" alt="step03"></strong>
-		                        <img src="../storeStorage/이용안내_step03.jpg" alt="영화 예매 또는 CGV매점에서 상품 교환 step03 썸네일">
+		                        <strong><img src="../../image/storeStorage/step03.gif" alt="step03"></strong>
+		                        <img src="../../image/storeStorage/이용안내_step03.jpg" alt="영화 예매 또는 CGV매점에서 상품 교환 step03 썸네일">
 		                        <em>CGV매점에서 상품 교환</em>
 		                        <p>수신된 MMS로 CGV 홈페이지/모바일 앱,<br>
 						                  현장매표소에서 예매하거나 cgv 매점에서<br>
@@ -161,18 +154,8 @@
 		<!-- /Contents Area -->
 	</div>
 	<!-- /Contaniner -->
-	
-	<!-- Footer -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>푸터영역</h1>
-    
 </div>
 
-
+<jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>

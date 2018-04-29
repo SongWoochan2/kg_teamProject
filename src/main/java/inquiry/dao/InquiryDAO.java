@@ -33,10 +33,11 @@ public class InquiryDAO {
 		return sqlSession.selectList("mybatis.inquiry.inquiryListAdmin", map);
 	}
 	
-	public List<InquiryDTO> inquiryListMember(int startNum, int endNum){
-		Map<String, Integer> map = new HashMap<>();
+	public List<InquiryDTO> inquiryListMember(int startNum, int endNum, String inquiry_id){
+		Map<String, Object> map = new HashMap<>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
+		map.put("inquiry_id", inquiry_id);
 		return sqlSession.selectList("mybatis.inquiry.inquiryListMember", map);
 	}
 	

@@ -7,8 +7,26 @@ public class InquiryDTO {
 	private String inquiry_title;
 	private String inquiry_content;
 	private String inquiry_file;
+	private int inquiry_status;
 	private String inquiry_date;
 	
+	
+	
+	
+	public int getInquiry_status() {
+		return inquiry_status;
+	}
+
+	public void setInquiry_status(int inquiry_status) {
+		this.inquiry_status = inquiry_status;
+	}
+
+	@Override
+	public String toString() {
+		return "InquiryDTO [inquiry_code=" + inquiry_code + ", inquiry_id=" + inquiry_id + ", inquiry_type="
+				+ inquiry_type + ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content
+				+ ", inquiry_file=" + inquiry_file + ", inquiry_date=" + inquiry_date + "]";
+	}
 	
 	public int getInquiry_code() {
 		return inquiry_code;

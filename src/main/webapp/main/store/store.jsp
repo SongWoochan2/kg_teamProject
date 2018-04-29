@@ -6,6 +6,15 @@
 <meta charset="UTF-8">
 <title>store</title>
 <style type="text/css">
+#list_p{
+	align:center;
+}
+
+#list{
+	width:25%;
+	float:left;
+}
+
 body{
 	background-color:#FDFCF0;
 }
@@ -64,12 +73,7 @@ button:hover:before,button:hover:after{
 
 </head>
 <body>
-<h1 align="center">헤더영역</h1>
-
-<br>
-<br>
-<br>
-<br>
+<jsp:include page="/main/main/header.jsp"/>
 
 <ul>
 	<div class="wrapper" align="center">
@@ -81,41 +85,22 @@ button:hover:before,button:hover:after{
 </ul>
 
 <p align="center">
-	<img src="../storeStorage/store_main_img.jpg"/>
+	<img src="../../image/storeStorage/store_main_img.jpg"/>
 </p>
 
 <h1 align="center">Menu</h1>
 
 
-<table cellpadding="4" align="center">
-<c:forEach var="productboardDTO" items="${typeList }">
-	
-		<td><a id="subjectA" href="#" onclick="isLogin(${productboardDTO.product_code})"> 
-			<img width="250px" height="300px" src="../productStorage/${productboardDTO.product_photo_addr}"></a>
-			<br>${productboardDTO.product_name }	
-		</td>
-	
-</c:forEach>
-</table>
+	<c:forEach var="productboardDTO" items="${typeList }">
+<div id="list_p">
+		<div id="list">
+				<a id="subjectA" href="#" onclick="isLogin(${productboardDTO.product_code})"> 
+				<img width="250px" height="300px" src="../../image/productStorage/${productboardDTO.product_photo_addr}"></a>
+				<br><a align="center">${productboardDTO.product_name }</a>
+		</div>
+</div>
+	</c:forEach>
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<h1 align="center" font-color="red">푸터영역</h1>
+<jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>

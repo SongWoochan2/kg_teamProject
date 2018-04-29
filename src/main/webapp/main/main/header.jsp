@@ -64,7 +64,7 @@
 					</ul></li>
 				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
 				<li class="te"><a href="#">극장</a>
-				<li class="te"><a href="#">스토어</a></li>
+				<li class="te"><a href="/MyCGV/main/store/store.do?type=set">스토어</a></li>
 			</ul>
 		</div>
 	</div>

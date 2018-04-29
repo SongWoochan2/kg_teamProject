@@ -1,0 +1,43 @@
+
+<product table>
+
+ - product 테이블 생성
+create table product(
+	product_code number not null,		--상품코드 (pk)
+	product_name varchar2(30) not null,	--상품명
+	product_cost number not null,		--상품가격
+	product_type varchar2(15) not null,	--상품분류
+	product_photo_addr varchar2(255) 	--상품분류주소
+);
+
+ - primary key 부여
+alter table product add primary key(product_code);  --primary key 부여
+
+ - product 테이블 시퀸스
+create sequence product_seq nocache nocycle;	--(상품코드)
+
+---------------------------------------------------------------------------------------------
+
+<product_pay table>
+
+ - product_pay 테이블 생성
+create table product_pay(
+	product_pay_code int not null,		--상품결제코드
+	pay_id varchar(30) not null,		--결제ID (fk)
+	product_code int not null,			--상품코드 (fk)
+										--보내는사람 연락처
+										--받는사람 연착처1
+										--받는사람 연착처2
+										--받는사람 연착처3
+										--구매/선물 분류
+	buy_time  date,						--구매시간
+	but_cancle_able char(1) not null,	--구매취소여부
+	order_num number not null			--주문수량
+);
+
+ - foreign key 부여
+alter table product_pay add foreign key(pay_id) references member(member_id);			--결제ID (fk)
+alter table product_pay add foreign key(product_code) references product(product_code);	--상품코드 (fk)
+
+ - product_pay 테이블 시퀸스
+create sequence pay_seq nocache nocycle;	--(상품결제코드)
