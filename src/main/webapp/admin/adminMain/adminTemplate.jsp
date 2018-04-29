@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="/MyCGV/css/bootstrap.css" rel = "stylesheet">
-<link rel="stylesheet" href="../../css/admin/adminTemplate.css" />
+<link rel="stylesheet" href="/MyCGV/css/admin/adminTemplate.css" />
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script>
 	$(function(){
@@ -26,7 +26,7 @@
 		</c:if>
 		</div>
 		<div id = "logo">
-			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/moviet_logo2.png"></a>
+			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/moviet_logo3.png"></a>
 		</div>
 		<div id = "nevi">
 			<ul class = "menu">
