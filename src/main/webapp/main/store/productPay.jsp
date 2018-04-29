@@ -182,6 +182,19 @@
 					<span class="dash">-</span>
 					<input name="ctl00$bodyPlaceHolder$receiver1_phone3" type="text" id="ctl00_bodyPlaceHolder_receiver1_phone3" maxlength="4" onkeydown="allowOnlyNumeric()" onkeyup="calculate()" class="phone2">
 				</dd>
+				<dt class="col_label qty">
+					<img src="../../image/storeStorage/label_num.png" width="24" height="13" alt="수량">
+				</dt>
+				<dd class="col_qty">
+					<div class="select_qty_wrap">
+                        <select name="ctl00$bodyPlaceHolder$qty1" id="ctl00_bodyPlaceHolder_qty1" class="select_qty" onchange="calculate()">
+							<option value="1" selected="selected">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>						
+					</div>					
+					<div class="select_qty_over"><span>1</span></div>				
+				</dd>
 			</dl>
 			<!-- //받는분 리스트 요소-->
 			<!-- 받는분 리스트 요소 -->
@@ -212,6 +225,19 @@
 					<span class="dash">-</span>
 					<input name="ctl00$bodyPlaceHolder$receiver2_phone3" type="text" id="ctl00_bodyPlaceHolder_receiver2_phone3" maxlength="4" onkeydown="allowOnlyNumeric()" onkeyup="calculate()" class="phone2">
 				</dd>
+				<dt class="col_label qty">
+					<img src="../../image/storeStorage/label_num.png" width="24" height="13" alt="수량">
+				</dt>
+				<dd class="col_qty">
+					<div class="select_qty_wrap">
+                        <select name="ctl00$bodyPlaceHolder$qty2" id="ctl00_bodyPlaceHolder_qty2" class="select_qty" onchange="calculate()">
+							<option value="1" selected="selected">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>						
+					</div>					
+					<div class="select_qty_over"><span>1</span></div>				
+				</dd>
 			</dl>
 			<!-- // 받는분 리스트 요소 -->
 			<!-- 받는분 리스트 요소 -->
@@ -241,6 +267,19 @@
 					<input name="ctl00$bodyPlaceHolder$receiver3_phone2" type="text" id="ctl00_bodyPlaceHolder_receiver3_phone2" maxlength="4" class="phone2" onkeydown="allowOnlyNumeric()" onkeyup="calculate()">
 					<span class="dash">-</span>
 					<input name="ctl00$bodyPlaceHolder$receiver3_phone3" type="text" id="ctl00_bodyPlaceHolder_receiver3_phone3" maxlength="4" class="phone2" onkeydown="allowOnlyNumeric()" onkeyup="calculate()">
+				</dd>
+				<dt class="col_label qty">
+					<img src="../../image/storeStorage/label_num.png" width="24" height="13" alt="수량">
+				</dt>
+				<dd class="col_qty">
+					<div class="select_qty_wrap">
+                        <select name="ctl00$bodyPlaceHolder$qty3" id="ctl00_bodyPlaceHolder_qty3" class="select_qty" onchange="calculate()">
+							<option value="1" selected="selected">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>						
+					</div>					
+					<div class="select_qty_over"><span>1</span></div>				
 				</dd>
 			</dl>
 			<!-- // 받는분 리스트 요소 -->
