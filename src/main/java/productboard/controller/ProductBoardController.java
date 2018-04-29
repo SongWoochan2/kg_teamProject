@@ -197,7 +197,7 @@ public class ProductBoardController {
 	
 	//store part-------------------------------------------------------------------
 	
-	@RequestMapping(value="/store/store.do")
+	@RequestMapping(value="/main/store/store.do")
 	public ModelAndView handleRequest_1(HttpServletRequest request) {
 		System.out.println("스토어 목록 처리");
 		// 1. 사용자 입력 정보 추출
@@ -209,11 +209,11 @@ public class ProductBoardController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("typeList",typeList);
 		modelAndView.addObject("type", type);
-		modelAndView.setViewName("../store/store.jsp");
+		modelAndView.setViewName("store.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/store/productView.do")
+	@RequestMapping(value="/main/store/productView.do")
 	public ModelAndView handleRequest_2(HttpServletRequest request) {
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
 		
@@ -222,13 +222,13 @@ public class ProductBoardController {
 		// 3. 검색 결과를 request에 저장하고 상세 화면으로 이동한다.	
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("productboardDTO", productboardDTO);
-		modelAndView.setViewName("../store/productView.jsp");
+		modelAndView.setViewName("productView.jsp");
 		return modelAndView;
 	}
 	
 	//pay part-----------------------------------------------------------------------------수정중;;
 	
-	@RequestMapping(value="/store/productPay.do")
+	@RequestMapping(value="/main/store/productPay.do")
 	public ModelAndView handleRequest_product_pay1(HttpServletRequest request) {
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
 		String member_id = "홍길동";
@@ -242,7 +242,7 @@ public class ProductBoardController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("productboardDTO", productboardDTO);
 		modelAndView.addObject("member_id", member_id);
-		modelAndView.setViewName("../store/productPay.jsp");
+		modelAndView.setViewName("productPay.jsp");
 		return modelAndView;
 	}
 }

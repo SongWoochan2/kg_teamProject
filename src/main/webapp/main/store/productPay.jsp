@@ -3,7 +3,7 @@
 <html>
 <title>Pay</title>
 
-<link rel="stylesheet" href="../css/pay/giftcon_1509.css">
+<link rel="stylesheet" href="../../css/pay/giftcon_1509.css">
 
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
 <script src="http://img.cgv.co.kr/common/js/jquery.cycle2.js"></script>
@@ -85,7 +85,7 @@
 
 
 <form action="productPay.do" method="post" name="productPay">
-
+<jsp:include page="/main/main/header.jsp"/>
 	
     <!--원가 -->
 <input type="hidden" name="ctl00$bodyPlaceHolder$hidPrice" id="ctl00_bodyPlaceHolder_hidPrice" value="${productboardDTO.product_cost }">
@@ -97,7 +97,7 @@
 		
 		<!-- 상품 정보 -->
 		<div class="order_detail cf">
-			<img src="../productStorage/${productboardDTO.product_photo_addr}" id="ctl00_bodyPlaceHolder_imgProductImg" alt="상품명" width="153" height="161"> 
+			<img src="../../image/productStorage/${productboardDTO.product_photo_addr}" id="ctl00_bodyPlaceHolder_imgProductImg" alt="상품명" width="153" height="161"> 
 			<dl>
 				<dt class="blind_txt">상품</dt>
 				<dd class="item_name">${productboardDTO.product_name }</dd>
@@ -111,7 +111,7 @@
 	<!-- 보내는/받는 사람 -->
 	<div class="contact_section">
 		<div class="title">
-			<img src="../storeStorage/연락처 입력.png" alt="연락처를 입력해 주세요" width="171" height="17">
+			<img src="../../image/storeStorage/연락처 입력.png" alt="연락처를 입력해 주세요" width="171" height="17">
 		</div>
 		
 		<!-- 보내는 이 입력-->
@@ -257,7 +257,7 @@
 			</p>
          <span id="ctl00_bodyPlaceHolder_UpdatePanel1">
 			<a onclick="pay()" id="ctl00_bodyPlaceHolder_lnkResult" href="#">
-				<img src="../storeStorage/btn_pay.png" width="122" height="39" alt="결제하기">
+				<img src="../../image/storeStorage/btn_pay.png" width="122" height="39" alt="결제하기">
 			</a>
 		</span>
         </div>
@@ -313,15 +313,7 @@
 	    });	      		
 	</script>
     
-    
-<!-- footer_area (s) -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>푸터영역</h1>
-
+<jsp:include page="/main/main/footer.jsp"/>
 </form>
 </body>
 </html>

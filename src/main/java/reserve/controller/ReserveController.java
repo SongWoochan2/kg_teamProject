@@ -42,6 +42,7 @@ public class ReserveController {
 	
 	@RequestMapping(value="/movieList_forReserve.do")
 	public void movieList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		
 		int theater_code = 0;
 		if(request.getParameter("theater_code") != null) {
 			theater_code = Integer.parseInt(request.getParameter("theater_code"));

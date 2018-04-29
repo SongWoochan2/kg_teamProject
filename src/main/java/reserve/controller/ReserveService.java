@@ -1,7 +1,9 @@
 package reserve.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import movie.bean.MovieDTO;
 import reserve.bean.ReserveDTO;
@@ -32,4 +34,6 @@ public interface ReserveService {
 	public List<TheaterDTO> getTheaterList(String show_date, int movie_code);
 
 	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code);
+	
+
 }

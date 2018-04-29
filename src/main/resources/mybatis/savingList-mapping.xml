@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="savingList">
+	<select id="getList" parameterType="java.util.Map" resultType="savingListDTO">
+		<![CDATA[select saving_name,pay_cost,saving_cost,to_char(saving_date,'YYYY.MM.DD') as saving_date 
+		from (select rownum rn, tt.* 
+		from (select * from saving_list where saving_id=#{saving_id} order by saving_code desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+
+	<select id="getTotalA" parameterType="String" resultType="int">
+		select count(*) from saving_list where saving_id=#{saving_id}
+	</select>
+
+
+</mapper>
