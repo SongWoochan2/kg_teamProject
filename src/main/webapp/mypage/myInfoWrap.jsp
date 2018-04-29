@@ -36,21 +36,20 @@ pageEncoding="UTF-8"%>
 				</div>
 				<div class="profileInfo">
 					<div class="personInfo">
-						<strong id="strong_tag1">${memberDTO.member_name}</strong><strong>님</strong>&nbsp;<em>${memberDTO.member_id}
+						<strong id="strong_tag1">${memberDTO.member_name}테스트</strong><strong>님</strong>&nbsp;<em>${memberDTO.member_id}
 						</em>
 						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
 						<a class="a_tag1" href="editProfileForm.do"><strong>나의 프로필 수정</strong></a>
 					</div>
 					<div class="gradeInfo">
 						<p id="p_tag1">                     
-	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}</strong>등급 입니다.             
+	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}테스트</strong>등급 입니다.             
 	                    </p>
                     </div>
 				</div>
 			</div>
 			<div class="benefit">
 				<div class="point">
-					<h3>MoveIt POINT</h3>
 	        		<a class="a_tag1" href="myPointList.do?p=1">MoveIt POINT 더보기</a>
 	        		<ul>
 	        			<li>
@@ -59,6 +58,7 @@ pageEncoding="UTF-8"%>
 	        			</li>
 	        		</ul>
         		</div>
+        		<div id="theater_class_bottom">
 				<div class="favorite-theater"><strong>자주가는 영화관</strong></div>
 				
 				<div class="theater_class">
@@ -75,6 +75,7 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 </body>
 </html>

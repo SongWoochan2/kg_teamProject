@@ -33,9 +33,7 @@ pageEncoding="UTF-8"%>
 			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
 			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
 			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
+			
 			
 		</ul>
 	</div>
