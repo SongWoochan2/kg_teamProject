@@ -1,11 +1,12 @@
+
 .mypageHome_main_div{
 	width: 150px;
 	height: 233px;
 	float: left;
-	/* height: 1600px; 나중에맞쳐줘야함*/
 }
 
 .mypageHome_main_div ul{
+	
 	padding-left:0px;
 	list-style:none;
 	width: 100%;
@@ -29,6 +30,8 @@
 
 .mypageHome_main_div #content-aside{
 	width: 200px;
+/* 	border: 1px solid red; */
+	margin-left: -70px;
 }
 .mypageHome_main_div .myContentAside_a_tag:hover {
 	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
