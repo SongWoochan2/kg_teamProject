@@ -75,6 +75,12 @@ public class ReserveDAO {
 		return sqlSession.selectList("mybatis.reserveMapper.showList", map);
 	}
 	
+
+	public List<MovieDTO> arrayTest(String[] movie_type) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("movie_type", movie_type);
+		return sqlSession.selectList("mybatis.reserveMapper.arrayTest", map);
+	}
 	
 	
 	

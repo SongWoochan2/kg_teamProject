@@ -57,8 +57,8 @@
 		background-image: url('/MyCGV/image/admintop.png');
 	}
 	div#container #logo img{
-		width: 200px;
-		height: 80px;
+		width: 280px;
+		height: 180px;
 	}
 	div#container #nevi{
 		width: 100%;
@@ -222,7 +222,7 @@
 		</c:if>
 		</div>
 		<div id = "logo">
-			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/cgvLogo.png"></a>
+			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/moviet_logo2.png"></a>
 		</div>
 		<div id = "nevi">
 			<ul class = "menu">
