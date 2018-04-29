@@ -43,12 +43,7 @@
 	
 	<select id="memberView" parameterType="String" resultType="memberDTO">
 		select member_id,member_name,nick_name,to_char(member_birth,'YYYY-MM-DD') as member_birth,
-		member_email,member_agency,member_phone,member_gender,profile_img_addr
-		from member where member_id=#{member_id}
-	</select>
-
-	<select id="memberInfo" parameterType="String" resultType="memberDTO">
-		select member_id,member_name,nick_name,saving_point,member_grade,profile_img_addr
+		member_email,member_agency,member_phone,saving_point,member_grade,member_gender,profile_img_addr
 		from member where member_id=#{member_id}
 	</select>
 		

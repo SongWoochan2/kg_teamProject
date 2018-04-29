@@ -2,9 +2,10 @@ package movie.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,12 +19,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MovieDTO;
 import movie.bean.MoviePage;
+import moviephoto.bean.MoviePhotoDTO;
+import moviephoto.controller.MoviePhotoService;
 
 @Controller
 public class MovieController {
 	@Autowired
 	private MovieService movieService;
-	
+	@Autowired
+	private MoviePhotoService moviePhotoService;
 	
 	// 관리자 영역
 	
@@ -142,27 +146,17 @@ public class MovieController {
 		String page = request.getParameter("pg");
 		MovieDTO movieDTO = new MovieDTO();
 		movieDTO.setMovie_code(Integer.parseInt(request.getParameter("movie_code")));
-		System.out.println("movie_code:"+Integer.parseInt(request.getParameter("movie_code")));
 		movieDTO.setMovie_name(request.getParameter("movie_name"));
-		System.out.println("movie_name:"+request.getParameter("movie_name"));
 		movieDTO.setMovie_content(request.getParameter("movie_content"));
-		System.out.println("movie_content : "+request.getParameter("movie_content"));
 		movieDTO.setMake_nation(request.getParameter("make_nation"));
-		System.out.println("make_nation "+request.getParameter("make_nation"));
 		movieDTO.setMovie_director(request.getParameter("movie_director"));
-		System.out.println("movie_director "+request.getParameter("movie_director"));		
 		movieDTO.setMovie_recycle_time(Integer.parseInt(request.getParameter("movie_recycle_time")));
-		System.out.println("movie_recycle_time "+Integer.parseInt(request.getParameter("movie_recycle_time")));		
 		movieDTO.setMovie_show_grade_name(request.getParameter("movie_show_grade_name"));
-		System.out.println("movie_show_grade_name "+request.getParameter("movie_show_grade_name"));		
 		movieDTO.setMovie_type1(request.getParameter("movie_type1"));
 		movieDTO.setMovie_type2(request.getParameter("movie_type2"));
 		movieDTO.setMovie_type3(request.getParameter("movie_type3"));
-		System.out.println("movie_type " + request.getParameter("movie_type"));
 		movieDTO.setMovie_open_date(request.getParameter("movie_open_date"));
-		System.out.println("movie_open_date "+request.getParameter("movie_open_date"));
 		movieDTO.setAppear_actor(request.getParameter("appear_actor"));
-		System.out.println("appear_actor "+request.getParameter("appear_actor"));
 		int result = movieService.movieModify(movieDTO);
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -214,20 +208,108 @@ public class MovieController {
 	
 	@RequestMapping(value="/main/movie/movieDetailView.do")
 	public ModelAndView movieDetailView(HttpServletRequest request) {
-		String page = request.getParameter("pg");
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		MovieDTO movieDTO = movieService.movieView(movie_code);
+//		arr = moviePhotoService.moviePosterView(movie_code);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("movie_code", movie_code);
-		modelAndView.addObject("pg", page);
 		modelAndView.setViewName("movieInfo.jsp");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/main/movie/movieFinder.do")
 	public ModelAndView movieFinder(HttpServletRequest request) {
-//		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+			int pg = 0;		
+			int endNum = 0;
+			int startNum = 0;
+			String[] movie_type = null;
+			String[] make_nation = null;
+			String[] movie_show_grade = null;
+			String movie_keyword = "";
+			String movie_search = "";
+
+//			받아온 값 저장
+			
+			if(request.getParameter("pg") != null) {
+				pg = Integer.parseInt(request.getParameter("pg"));
+				endNum = pg * 12;
+				startNum = endNum - 11;	
+			}
+			if(request.getParameterValues("movie_type") != null) {
+				movie_type = request.getParameterValues("movie_type");	
+				for(int i = 0; i<movie_type.length; i++){
+					System.out.println("movie_type : " + movie_type[i]);						
+				}
+			}
+			if(request.getParameterValues("movie_show_grade") != null) {
+				movie_show_grade = request.getParameterValues("movie_show_grade");					
+			}
+			if(request.getParameterValues("make_nation") != null) {
+				make_nation = request.getParameterValues("make_nation");					
+			}
+			if(request.getParameter("movie_search") != null) {
+				movie_search = request.getParameter("movie_search");
+			}
+			if(request.getParameter("movie_keyword") != null) {
+				movie_keyword = request.getParameter("movie_keyword");
+			}
+	
+			System.out.println("movie_keyword" + request.getParameter("movie_keyword"));	
+			System.out.println("movie_search" + request.getParameter("movie_search"));	
+//			받아온 값 처리
+			Map<String, Object> map = new HashMap<>();
+			
+			map.put("movie_type", movie_type);
+			map.put("make_nation", make_nation);
+			map.put("movie_show_grade", movie_show_grade);
+			map.put("movie_search", movie_search);
+			map.put("movie_keyword", movie_keyword);
+			map.put("endNum", endNum);
+			map.put("startNum", startNum);
+			
+			ArrayList<MovieDTO> find_list = movieService.movieFinder(map);
+			Map<Integer, String> photo_map = new HashMap<>();
+			
+			for(MovieDTO finder_result : find_list) {
+
+				System.out.println("영화명 : " +finder_result.getMovie_name());
+				System.out.println("개봉일 : "+finder_result.getMovie_open_date());
+				System.out.println("영화 코드 : " + finder_result.getMovie_code());
+				
+				ArrayList<MoviePhotoDTO> photo_addr = moviePhotoService.moviePosterView(finder_result.getMovie_code());
+				
+//				photo_map.put("movie_code",finder_result.getMovie_code());
+				System.out.println("photosize " + photo_addr.size());
+				photo_map.put(finder_result.getMovie_code(), photo_addr.get(0).getMovie_photo_addr());	
+				System.out.println("photo_addr : "+photo_addr.get(0).getMovie_photo_addr());
+			}
+			
+//			페이징 영역
+			
+			int totalA = movieService.FinderTotalA(map);
+			System.out.println("totalA : " +totalA);
+			int totalPage = (totalA + 11) / 12;
+			
+			int startPage = (pg-1)/3*3 + 1;
+			int endPage = startPage + 2;
+			if(totalPage < endPage) endPage = totalPage;
+			
+			MoviePage moviePage = new MoviePage();
+			moviePage.setTotalA(totalA);
+			moviePage.setEndPage(endPage);
+			moviePage.setStartPage(startPage);
+			moviePage.setTotalPage(totalPage);
+			moviePage.setPg(pg);
+			
 		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.addObject("movie_show_grade", movie_show_grade);
+		modelAndView.addObject("make_nation", make_nation);
+		modelAndView.addObject("movie_type", movie_type);
+		modelAndView.addObject("movie_search", movie_type);
+		modelAndView.addObject("movie_keyword", movie_type);
+		modelAndView.addObject("moviePage", moviePage);
+		modelAndView.addObject("find_list", find_list);
+		modelAndView.addObject("photo_map", photo_map);
 		modelAndView.setViewName("movieFinder.jsp");
 		return modelAndView;
 	}

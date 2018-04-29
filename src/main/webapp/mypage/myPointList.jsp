@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<!-- <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script> -->
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript">
 (function ($) {
     $(function () {
-
+    	$("#startdate").val($.datepicker.formatDate('yy-mm-dd', new Date()-30))
+		$("#enddate").val($.datepicker.formatDate('yy-mm-dd', new Date()));
+		
         $('#btn_search').on('click', function () {
             var arr = $("#startdate").val().split('-');
             var dt = new Date(arr[0], arr[1], arr[2]);
@@ -33,7 +38,11 @@ pageEncoding="UTF-8"%>
 
             ]
         });
-
+		$('#period_wrap > button').on('click', function(){
+			
+			
+		});
+        
     });
 })(jQuery);
 </script>
@@ -89,12 +98,12 @@ pageEncoding="UTF-8"%>
             </span>
             <p>
                 <label for="startdate">시작일 입력</label>
-                <input type="text" id="startdate" name="startdate" value="2018-03-26" 
+                <input type="text" id="startdate" name="startdate" value="" 
                 datepicker="datepicker" date="date" class="hasDatepicker" readonly="readonly">
                 <button type="button" class="ui-datepicker-trigger" title="월이동:PageUp/PageDown, 일이동:Ctrl+방향키">
                 <span>시작일 선택</span></button> ~
                 <label for="enddate">종료일 입력</label>
-                <input type="text" id="enddate" name="enddate" value="2018-04-26" 
+                <input type="text" id="enddate" name="enddate" value="" 
                 datepicker="datepicker" date="date" class="hasDatepicker" readonly="readonly">
                 <button type="button" class="ui-datepicker-trigger" title="월이동:PageUp/PageDown, 일이동:Ctrl+방향키">
                 <span>종료일 선택</span></button>
@@ -115,18 +124,44 @@ pageEncoding="UTF-8"%>
 				<tr>
 					<th scope="col">구매 구분</th>
 					<th scope="col">결제 금액</th>
+					<th scope="col">적립 포인트</th>
 					<th scope="col">적립일</th>
-					<th scope="col">적립</th>
 				</tr>
-			</thead>
+			</thead> 
 			<tbody>  
-                <tr>
-                    <td colspan="4" class="nodata">내역이 존재하지 않습니다.</td>
-                </tr>	
+				<c:if test="${empty savingList}">
+					<tr>
+                    	<td colspan="4" class="nodata">내역이 존재하지 않습니다.</td>
+                	</tr>	
+				</c:if>
+				<c:if test="${not empty savingList}">
+					<c:forEach var="savingListDTO" items="${savingList}">
+		               	<tr>
+		                	<td>${savingListDTO.saving_name}</td>
+		                	<td>${savingListDTO.pay_cost}</td>
+		                	<td>${savingListDTO.saving_cost}</td>
+		                	<td>${savingListDTO.saving_date}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</tbody>
 		</table>
 	</div>
 	<div class="paging">
+		<c:if test="${startPage>5 }">
+			[<a id="paging" href="myPointList.do?p=${startPage-1 }">이전</a>]
+		</c:if>
+		<c:forEach var="i" begin="${startPage }" end="${endPage }">
+			<c:if test="${i==p }">
+			[<a id="currentPaging" href="myPointList.do?p=${i }">${i }</a>]
+			</c:if>
+			<c:if test="${i!=p }">
+			[<a id="paging" href="myPointList.do?p=${i }">${i }</a>]
+			</c:if>
+		</c:forEach>
+		<c:if test="${endPage < totalP }">
+			[<a id="paging" href="myPointList.do?p=${endPage+1 }">다음</a>]
+		</c:if>	
 	</div>
 </div>
 </div>

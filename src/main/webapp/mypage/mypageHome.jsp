@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>MY MoveIt HOME</title>
-<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="../css/mypage/mypageHome.css" />
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -24,12 +24,12 @@ div.sect-content-movie div {
 </style>
 </head>
 <body>
-	<jsp:include page="../main/main/header.jsp"></jsp:include>
-	<div id="mypageBody">
+<jsp:include page="../main/main/header.jsp"></jsp:include>
 		<jsp:include page="./myInfoWrap.jsp"></jsp:include>
+		<div id="mypageBody">
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
-			<div id="content-detail">
+			<!-- <div id="content-detail">
 				<div class="sect-content-movie">
 					<div class="box-inner">
 						<div class="box-inner wishlist">
@@ -78,7 +78,7 @@ div.sect-content-movie div {
 					</div>
 					<div class="box-inner"></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>

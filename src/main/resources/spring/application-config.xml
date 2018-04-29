@@ -33,7 +33,8 @@
 	<context:component-scan base-package="noticeItem"/>
 	<context:component-scan base-package="advice"/>
 	<context:component-scan base-package="reserve" />
-	
+	<context:component-scan base-package="savingList"/>
+	<context:component-scan base-package="productboard"/>
 	<context:property-placeholder location="classpath:spring/db.properties, 
 											classpath:spring/resource.properties"/>
 	<bean id="dataSource"

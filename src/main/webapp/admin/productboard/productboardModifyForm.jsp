@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../../script/productboardScript.js"></script>
 </head>
 <body>
+<jsp:include page="../adminMain/adminTemplate.jsp" />
 <form action="productboardModify.do" method="post" name="productboardModifyForm" enctype="multipart/form-data">
 	<input type="hidden"  name="product_code" value="${productboardDTO.product_code}">
 	<table border="1">

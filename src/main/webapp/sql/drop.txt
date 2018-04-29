@@ -63,6 +63,9 @@ drop table admin purge;
 -- 회원
 drop table member purge;
 
+-- 상품
+drop table product purge;
+drop sequence product_seq;
 
 
 
