@@ -15,7 +15,6 @@
 		
 	});
 </script>
-
 	<div id = "container">
 		<div id = "topnevi">
 		<c:if test="${sessionScope.admin_id == null }">
@@ -27,7 +26,7 @@
 		</c:if>
 		</div>
 		<div id = "logo">
-			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/cgvLogo.png"></a>
+			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/moviet_logo2.png"></a>
 		</div>
 		<div id = "nevi">
 			<ul class = "menu">

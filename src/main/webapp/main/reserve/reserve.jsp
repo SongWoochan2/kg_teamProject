@@ -8,7 +8,7 @@
 	<title>Insert title here</title>
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js?v=1"></script>
 	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
-	<link rel="stylesheet" href="/MyCGV/css/reserve/reserve.css" />
+<!-- 	<link rel="stylesheet" href="/MyCGV/css/reserve/reserve.css" /> -->
 	<script type="text/javascript">
 		$(function(){
 			$.ajax({
@@ -19,7 +19,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
-					alert(JSON.stringify(json));
+					//alert(JSON.stringify(json));
 				},
 				error : function(xhr, textStatus, errorThrown){
 					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
@@ -34,7 +34,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
-					alert(JSON.stringify(json));
+					//alert(JSON.stringify(json));
 				},
 				error : function(xhr, textStatus, errorThrown){
 					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
@@ -49,7 +49,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
-					alert(JSON.stringify(json));
+					//alert(JSON.stringify(json));
 				},
 				error : function(xhr, textStatus, errorThrown){
 					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
@@ -99,6 +99,185 @@
 			
 		});
 	</script>
+	<style type="text/css">
+		div{
+			box-sizing: border-box;
+		}
+		.div_top{
+			text-align:center;
+			width: 800px;
+			height: 600px;
+			margin: 0 auto;
+			display: block;
+		}
+		#top_movie{
+			margin:1px;
+			width: 31%;
+			height: 100%;
+			float: left;
+		}
+			#top_movie_div1{
+				border:1px solid white;
+				background-color:#4C4C4C;
+				color: #F3F3F3;
+				float: left;
+				width: 100%;
+				height: 5%;
+			}
+			#top_movie_reset{
+				background-color:#FFFFF6;
+				border : 1px solid #D5D5D5;
+				width: 100%;
+				height: 5%;
+			}
+			#top_movie_div2{
+				background-color:#FFFFF6;
+				border : 1px solid #D5D5D5;
+				float: left;
+				width: 100%;
+				height: 89%;
+			}
+				#top_movie_div2 .movie_item{
+					border : 1px solid black;
+					width: 100%;
+					height: 40px;
+				}
+				#top_movie_div2 .movie_item .movie_name{
+					text-align: center;
+					width: 100%;
+					height: 100%;
+					font-weight: bold;
+					font-size: 30px;
+				}
+				
+		#top_theater{
+			margin:1px;
+			width: 22%;
+			height: 100%;
+			float: left;
+		}
+			#top_theater_div1{
+				border:1px solid white;
+				background-color:#4C4C4C;
+				color: #F3F3F3;
+				float: left;
+				width: 100%;
+				height: 5%;
+			}
+			#top_theater_div2{
+				background-color:#FFFFF6;
+				border : 1px solid #D5D5D5;
+				float: left;
+				width: 100%;
+				height: 94%;
+			}
+		#top_date{
+			margin:1px;
+			width: 12%;
+			height: 100%;
+			float: left;
+		}
+			#top_date_div1{
+				border:1px solid white;
+				background-color:#4C4C4C;
+				color: #F3F3F3;
+				float: left;
+				width: 100%;
+				height: 5%;
+			}
+			#top_date_div2{
+				background-color:#FFFFF6;
+				border : 1px solid #D5D5D5;
+				float: left;
+				width: 100%;
+				height: 94%;
+			}
+		#top_time{
+			margin:1px;
+			width: 34%; /* 여유 14%남음 */
+			height: 100%;
+			float: left;
+		}
+		
+			#top_time_div1{
+				border:1px solid white;
+				background-color:#4C4C4C;
+				color: #F3F3F3;
+				float: left;
+				width: 100%;
+				height: 5%;
+			}
+			#top_time_div2{
+				background-color:#FFFFF6;
+				border : 1px solid #D5D5D5;
+				float: left;
+				width: 100%;
+				height: 94%;
+			}
+		.div_bottom{
+			background-color:#242424;
+			text-align:center;
+			padding: 0% 15% 0% 18%;
+			height: 125px;
+		}
+		#bottom_photo_title{
+			color:#A6A6A6;
+			border-left : 1px solid #FFFFF6;
+			width: 19%;
+			height: 100%;
+			float: left;
+		}
+		#bottom_pack{
+			color:#A6A6A6;
+			border-left : 1px solid #FFFFF6;
+			width: 19%;
+			height: 100%;
+			float: left;
+		}
+		#bottom_seat{
+			color:#A6A6A6;
+			border-left : 1px solid #FFFFF6;
+			width: 19%;
+			height: 100%;
+			float: left;
+		}
+		#bottom_pay{
+			color:#A6A6A6;
+			border-left : 1px solid #FFFFF6;
+			width: 19%;
+			height: 100%;
+			float: left;
+		}
+		#bottom_seat_choice{
+			color:white;
+			border-left : 1px solid #FFFFF6;
+			border-right : 1px solid #FFFFF6;
+			width: 19%;
+			height: 100%;
+			float: left;
+		}
+			
+	</style>
+	
+	<script type="text/x-jquery-tmpl" id="template">
+		<tr>
+			<td class="show_time">\${ show_time }시 \${show_minute}분</td>
+			<td class="movie_name">\${ movie_name }</td>
+			<td class="movie_recycle_time">\${movie_recycle_time} </td>
+			<td class="movie_director">\${movie_director}</td>
+			<td class="delete"><input type="button" name="delete_button" code="\${show_present_code}" value="삭제 하기"></td>
+		</tr>
+	</script>
+	
+	<script type="text/x-jquery-tmpl" id="template">
+		<tr>
+			<td class="show_time">\${ show_time }시 \${show_minute}분</td>
+			<td class="movie_name">\${ movie_name }</td>
+			<td class="movie_recycle_time">\${movie_recycle_time} </td>
+			<td class="movie_director">\${movie_director}</td>
+			<td class="delete"><input type="button" name="delete_button" code="\${show_present_code}" value="삭제 하기"></td>
+		</tr>
+	</script>
 	
 	<script type="text/x-jquery-tmpl" id="template">
 		<tr>
@@ -111,46 +290,56 @@
 	</script>
 </head>
 <body>
+
+	
+
+
+
+
+
 	<jsp:include page="../main/header.jsp"></jsp:include>
+	
+	<div class="movie_item">
+		<div class="movie_name" data="\${movie_name }">\${movie_name }</div>
+		<div class="movie_code" data="\${movie_code }"></div>
+		<div class="movie_show_grade_name" data="\${movie_show_grade_name }"></div>
+	</div>
+	
 	<div class="div_top">
 		<div id="top_movie">
 			<div id="top_movie_div1">
 				<strong>영화</strong>
 			</div>
+			<div id="top_movie_reset">
+				<input type="button" id="" value="전체">
+			</div>
 			<div id="top_movie_div2">
-				<a id="tem_1" href="#">테스트</a>
+
 			</div>
 		</div>
 		<div id="top_theater">
 			<div id="top_theater_div1">
 				<strong>극장</strong>
 			</div>
-			<div id="top_theater_div2">DB</div>
+			<div id="top_theater_div2">
+			
+			</div>
 		</div>
 		<div id="top_date">
 			<div id="top_date_div1">
 				<strong>날짜</strong>
 			</div>
 			<div id="top_date_div2">
-				DB
-				<div class="date" show_date="1">25일</div>
-				<div class="date" show_date="2">26일</div>
-				<div class="date" show_date="3">27일</div>
-				<div class="date" show_date="4">28일</div>
-				<div class="date" show_date="5">29일</div>
-				<div class="date" show_date="6">30일</div>
-				<div class="date" show_date="7">1일</div>
-				<div class="date" show_date="8">2일</div>
-				<div class="date" show_date="9">3일</div>
-				<div class="date" show_date="10">4일</div>
-				<div class="date" show_date="20180505">5일</div>
+			
 			</div>
 		</div>
 		<div id="top_time">
 			<div id="top_time_div1">
 				<strong>시간</strong>
 			</div>
-			<div id="top_time_div2">DB</div>
+			<div id="top_time_div2">
+			
+			</div>
 		</div>
 	</div>
 
