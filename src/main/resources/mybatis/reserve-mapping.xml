@@ -61,7 +61,10 @@
 				AND movie.movie_code = #{movie_code}
    			</if>
  		</where>
+ 		ORDER BY show_place.theater_code asc, show_present.show_place_code asc, show_present.show_date asc, show_present.show_time asc, 
 	</select>
+	
+	
 	
 	
 	<!-- 
