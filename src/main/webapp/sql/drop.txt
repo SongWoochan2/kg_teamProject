@@ -1,5 +1,7 @@
 -------------------------------------------------------------  (5)
-
+-- 회원 티켓 결제 
+drop table member_ticket_pay purge;
+drop sequence member_ticket_pay_seq;
 
 
 

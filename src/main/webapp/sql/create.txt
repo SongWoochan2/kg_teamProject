@@ -288,6 +288,35 @@ insert into show_place values(
   show_place_seq.nextval, '3', '1상영관', 11000, '6.jpg'
 );
 
+--------------------------------------
+
+-- 적립목록 테이블
+create table saving_list(
+  saving_code int,
+  saving_id varchar(30) not null,
+  FOREIGN KEY (saving_id) REFERENCES member(member_id),
+  saving_name varchar(30) not null,
+  pay_cost number not null,
+  saving_cost number not null,
+  saving_date date not null,
+  primary key(saving_code)
+);
+
+create sequence saving_list_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+drop table saving_list purge;
+drop sequence saving_list_seq;
+
+insert into saving_list values(
+  saving_list_seq.nextval, 'admin', '@@@@@@@', 8000, 40, '2018.04.05');
+
+insert into saving_list values(
+  saving_list_seq.nextval, 'hhh', '///////', 8000, 40, '2018.04.05');
+
 ------------------------------------------------------
 
 -- 영화 트레일러
@@ -429,12 +458,60 @@ insert into show_present values(
 
 
 -------------------------------------------------------------  (4)
+-- 회원 예매
+create table member_reserve(
+  reserve_code int,
+  reserve_id varchar(30),
+  show_present_code int,
+  FOREIGN KEY (reserve_id) REFERENCES member(member_id),
+  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code),
+  member_seat1 varchar(20) not null,
+  member_seat2 varchar(20),
+  member_seat3 varchar(20),
+  member_seat4 varchar(20),
+  member_seat5 varchar(20),
+  member_seat6 varchar(20),
+  member_seat7 varchar(20),
+  member_seat8 varchar(20),
+  primary key(reserve_code)
+);
 
+create sequence member_reserve_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+insert into member_reserve values(
+  member_reserve_seq.nextval, 'aaa', 1, 'A-1', 'H-5', null, null, null, null, null, null
+); 
+insert into member_reserve values(
+  member_reserve_seq.nextval, 'aaa', 2, 'B-5', null, null, null, null, null, null, null
+); 
 
 
 
 
 
 -------------------------------------------------------------  (5)
+-- 회원 티켓 결제
+create table member_ticket_pay(
+  member_pay_code int,
+  reserve_code int,
+  FOREIGN KEY (reserve_code) REFERENCES member_reserve(reserve_code),
+  reserve_date date not null,
+  reserve_cancle_able char(1) not null,
+  primary key(member_pay_code)
+);
+
+create sequence member_ticket_pay_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+insert into member_ticket_pay values(
+  member_ticket_pay_seq.nextval, 1, sysdate, 'y'
+);
 
 

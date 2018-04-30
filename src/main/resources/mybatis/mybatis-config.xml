@@ -24,6 +24,8 @@
 		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
  		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
  		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
+ 		<typeAlias type="memberReserve.bean.MemberReserveDTO" alias="memberReserveDTO"></typeAlias>
+ 		<typeAlias type="memberReserve.bean.MemberReserveListDTO" alias="memberReserveListDTO"></typeAlias>
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 	<mappers>
@@ -45,6 +47,7 @@
 		<mapper resource="mybatis/member-mapping.xml"/>
  		<mapper resource="mybatis/reserve-mapping.xml" />
 		<mapper resource="mybatis/savingList-mapping.xml"/>
+		<mapper resource="mybatis/memberReserve-mapping.xml"/>
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 
 	</mappers>

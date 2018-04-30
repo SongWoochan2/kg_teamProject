@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
 						<strong id="strong_tag1">${memberDTO.member_name}</strong><strong>님</strong>&nbsp;<em>${memberDTO.member_id}
 						</em>
 						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
-						<a class="a_tag1" href="editProfileForm.do"><strong>나의 프로필 수정</strong></a>
+						<a class="a_tag1" href="myProfileForm.do"><strong>나의 프로필 수정</strong></a>
 					</div>
 					<div class="gradeInfo">
 						<p id="p_tag1">                     
