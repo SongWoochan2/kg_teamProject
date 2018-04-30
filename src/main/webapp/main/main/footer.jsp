@@ -38,5 +38,6 @@
 			<img src="/MyCGV/image/footer/foot.png">
 		</div>		
 	</div>
+</div>
 </body>
 </html>
