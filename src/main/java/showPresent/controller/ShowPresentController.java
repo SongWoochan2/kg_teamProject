@@ -76,10 +76,10 @@ public class ShowPresentController {
 		
 		JSONObject json = new JSONObject();
 		json.put("show_list", json_list);
+		System.out.println("json : " + json.toJSONString());
 		
 	    List<ShowPlaceVO> sp_list = ShowPlaceService.selectList(theater_code);
-	    System.out.println("json : " + json.toJSONString());
-	    
+
 	    ModelAndView modelAndView = new ModelAndView();
 	    modelAndView.addObject("json", json.toJSONString());
 	    modelAndView.addObject("sp_list", sp_list);

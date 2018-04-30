@@ -20,9 +20,7 @@ public class AnswerService {
 		return answerDAO.answerInsert(answerDTO);
 	}
 	
-	public List<AnswerDTO> answerList(int startNum, int endNum){
-		return answerDAO.answerList(startNum, endNum);
-	}
+	
 	
 	public AnswerDTO answerView(int inquiry_code) {
 		return answerDAO.answerView(inquiry_code);

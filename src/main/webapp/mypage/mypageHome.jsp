@@ -24,7 +24,7 @@ $(function(){
 				<div class="sect-content-movie">
 					<div class="box-inner">
 						<div class="box-innerwishlist">
-							<a href="" title="위시리스트">
+							<a href="#"  onclick="location.href='myWishList.do'" title="위시리스트">
 								<span id="home_span1">보고 싶은 영화들을 <br>미리 담아두고 싶다면?</span>
 							</a>
 						</div>
@@ -50,19 +50,20 @@ $(function(){
 					</div>
 					<div class="box-inner"></div>
 				</div>
+					<div class="sect-content-buying">
+					<div class="title-mypage">
+						<h3 class="title-mypage_h3">MY 구매정보</h3>
+						<p id="mypagehome_border2_p">현재 사용하실 수 있는 쿠폰정보입니다. 상품명을 클릭하시면 내역조회페이지로 이동합니다.</p>
+					</div>
+					<img id="title-mypage_em1_img3_3" src="/MyCGV/image/mypage/5.png">
+					<div class="box-inner"></div>
+				</div>
 				<div class="title-mypage">
 						<h3 class="title-mypage_h3">MY Q&amp;A</h3>
 							<em id="title-mypage_em2">건</em><a href=""><img id="title-mypage_em1_img2" src="/MyCGV/image/mypage/1+.PNG"></a>
 					</div>
 					<img id="title-mypage_em1_img2_2" src="/MyCGV/image/mypage/4.PNG">
-				<div class="sect-content-buying">
-					<div class="title-mypage">
-						<h3 class="title-mypage_h3">MY 구매정보</h3>
-						<p id="mypagehome_border2_p">현재 사용하실 수 있는 쿠폰정보입니다. 상품명을 클릭하시면 내역조회페이지로 이동합니다.</p>
-					</div>
-					<img id="title-mypage_em1_img3_3" src="/MyCGV/image/mypage/2.PNG">
-					<div class="box-inner"></div>
-				</div>
+			
 				<div class="sect-content-inquiry">
 					
 					<div class="box-inner"></div>

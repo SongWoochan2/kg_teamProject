@@ -81,7 +81,7 @@ pageEncoding="UTF-8"%>
 							<p id="tbl_info_txt">체크(<span id="star">*</span>)된 항목은 필수 입력 사항입니다.</p>
 							<table cellspacing="0" cellpadding="0" border="1">
 								<tbody>
-									<!--  <tr>
+									<!-- <tr>
 										<th>임시 아이디</th>
 										<td colspan="3"><input type="text"name="inquiry_id" value="jinhwanea">
 										</td>

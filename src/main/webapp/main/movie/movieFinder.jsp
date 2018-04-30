@@ -28,7 +28,7 @@
 	<div id="moviefind">
 		<div id="pagenevi">
 			<span class="glyphicon glyphicon-home"></span>
-			<a href = "#">홈</a> > 영화 > <b>무비파인더</b>
+			<a href = "../main/movieMain.do">홈</a> > 영화 > <b>무비파인더</b>
 		</div>
 		<div id="moviefinder">
 			<form action = "movieFinder.do?pg=1" method="post" name ="movieFinder">
@@ -177,7 +177,7 @@
 						</c:forEach>
 						</div>
 						<div id = "entity-title">
-							<a href = "movieDetailView.do?movie_code=${find_list.movie_code }">
+							<a href = "movieDetailView.do?movie_code=${find_list.movie_code }&photo_pg=1&trailer_pg=1">
 							${find_list.movie_name }
 							</a>
 						</div>

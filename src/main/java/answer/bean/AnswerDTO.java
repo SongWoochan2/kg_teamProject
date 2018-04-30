@@ -3,6 +3,7 @@ package answer.bean;
 public class AnswerDTO {
 	
 	private int answer_code;
+	private int inquiry_code;
 	private String admin_id;
 	private String member_id;
 	private String answer_title;
@@ -12,13 +13,14 @@ public class AnswerDTO {
 	
 	
 	
-	@Override
-	public String toString() {
-		return "AnswerDTO [answer_code=" + answer_code + ", admin_id=" + admin_id + ", member_id=" + member_id
-				+ ", answer_title=" + answer_title + ", answer_content=" + answer_content + ", answer_date="
-				+ answer_date + "]";
-	}
 	
+	
+	public int getInquiry_code() {
+		return inquiry_code;
+	}
+	public void setInquiry_code(int inquiry_code) {
+		this.inquiry_code = inquiry_code;
+	}
 	public int getAnswer_code() {
 		return answer_code;
 	}

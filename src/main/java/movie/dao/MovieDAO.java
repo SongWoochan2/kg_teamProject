@@ -1,5 +1,6 @@
 package movie.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,5 +52,19 @@ public class MovieDAO {
 	
 	public int FinderTotalA(Map<String, Object> map) {
 		return sqlSession.selectOne("movieMapper.FinderTotalA", map);
+	}
+	
+	public int goodUpdate(int movie_code, int good) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("movie_code", movie_code);
+		map.put("good", good);
+		return sqlSession.update("movieMapper.goodUpdate", map);
+	}
+	public List<MovieDTO> presentMovieList(ArrayList<String> code_list, int m_startNum, int m_endNum){
+		Map<String, Object> map = new HashMap<>();
+		map.put("code_list", code_list);
+		map.put("m_startNum", m_startNum);
+		map.put("m_endNum", m_endNum);
+		return sqlSession.selectList("movieMapper.presentMovieList", map);
 	}
 }

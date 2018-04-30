@@ -12,10 +12,12 @@
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
             
+     <!-- 진환 -->
 	<context:component-scan base-package="answer"/>
 	<context:component-scan base-package="inquiry"/>
    	<context:component-scan base-package="qna"/>
    	<context:component-scan base-package="noticeItem"/>
+   	
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="movie"/>
 	<context:component-scan base-package="moviephoto"/>
@@ -28,8 +30,12 @@
 	<context:component-scan base-package="showPresent" />
 	<context:component-scan base-package="member"/>
 	<context:component-scan base-package="mypage"/>
+	<context:component-scan base-package="inquiry"/>
+	<context:component-scan base-package="qna"/>
+	<context:component-scan base-package="noticeItem"/>
 	<context:component-scan base-package="advice"/>
 	<context:component-scan base-package="reserve" />
+	<context:component-scan base-package="select"/>
 	<context:component-scan base-package="savingList"/>
 	<context:component-scan base-package="productboard"/>
 	<context:component-scan base-package="productpay"/>
@@ -59,7 +65,7 @@
 	</bean>
 	
 	<!-- 메일보내기 -->
- 
+
    <bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />
@@ -74,5 +80,5 @@
          </props>
       </property>
    </bean>
-
+   
 </beans>
