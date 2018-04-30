@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
 import member.controller.MemberService;
+import memberReserve.bean.MemberReserveDTO;
+import memberReserve.bean.MemberReserveListDTO;
+import memberReserve.controller.MemberReserveService;
 import resource.provider.ResourceProvider;
 import savingList.bean.SavingListDTO;
 import savingList.controller.SavingListService;
@@ -32,7 +36,80 @@ public class MypageController {
 	@Autowired
 	private SavingListService savingListService;
 	@Autowired
+	private MemberReserveService memberReserveService;
+	@Autowired
 	private ResourceProvider resourceProvider;
+	
+	@RequestMapping(value="/mypage/myReserveList.do")
+	public ModelAndView myReserveList(HttpServletRequest request) {
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int endNum = pg*5;			
+		int startNum = endNum-4;	
+		
+		HttpSession session = request.getSession();
+		String reserve_id = (String)session.getAttribute("memId");
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(reserve_id);
+
+		// 예매내역
+		ArrayList<Integer> reserveCodes
+		= memberReserveService.getReserveCodes(reserve_id,startNum,endNum);
+
+		List<MemberReserveListDTO> reserveList = new ArrayList<>();
+		for(int i=0,n=reserveCodes.size();i<n;i++) {
+			MemberReserveListDTO memberReserveListDTO = new MemberReserveListDTO();
+			System.out.println(reserveCodes.get(i));
+			memberReserveListDTO = memberReserveService.getAllReserveList(reserveCodes.get(i));
+			//memberReserveListDTO.setReserve_code(reserveCodes.get(i));
+			System.out.println(memberReserveListDTO.getReserve_code());
+			reserveList.add(i,memberReserveListDTO);
+		}
+		
+		int totalVal = 	memberReserveService.getTotalVal(reserve_id);// 예매내역 총글수
+		int totalPVal = (totalVal+4)/5;			// 총페이지수
+		//================================
+		int startPageVal = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
+		int endPageVal = startPageVal + 2;		// endPage = startPage + 3 - 1;
+		if(totalPVal < endPageVal) endPageVal = totalPVal;
+		
+		//System.out.println(savingList.isEmpty());
+		
+		// 취소내역
+		ArrayList<Integer> cancleCodes
+		= memberReserveService.getCancleCodes(reserve_id,startNum,endNum);
+		
+		List<MemberReserveListDTO> cancleList = new ArrayList<>();
+		for(int i=0,n=cancleCodes.size();i<n;i++) {
+			MemberReserveListDTO memberCancleListDTO = new MemberReserveListDTO();
+			System.out.println(cancleCodes.get(i));
+			memberCancleListDTO = memberReserveService.getAllReserveList(cancleCodes.get(i));
+			//memberReserveListDTO.setReserve_code(reserveCodes.get(i));
+			System.out.println(memberCancleListDTO.getReserve_code());
+			reserveList.add(i,memberCancleListDTO);
+		}
+		
+		int totalCancle = 	memberReserveService.getTotalCancle(reserve_id);// 취소내역 총글수
+		int totalPCancle = (totalCancle+4)/5;			// 총페이지수
+		//================================
+		int startPageCancle = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
+		int endPageCancle = startPageCancle + 2;		// endPage = startPage + 3 - 1;
+		if(totalPCancle < endPageCancle) endPageCancle = totalPCancle;
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.addObject("reserveList", reserveList);
+		modelAndView.addObject("startPageVal", startPageVal);
+		modelAndView.addObject("endPageVal", endPageVal);
+		modelAndView.addObject("totalPVal", totalPVal);
+		modelAndView.addObject("p", pg);
+		modelAndView.addObject("cancleList", cancleList);
+		modelAndView.addObject("startPageCancle", startPageCancle);
+		modelAndView.addObject("endPageCancle", endPageCancle);
+		modelAndView.addObject("totalPCancle", totalPCancle);
+		modelAndView.setViewName("myReserveList.jsp?p="+pg);
+		return modelAndView;
+	}
 	
 	@RequestMapping(value="/mypage/myPointList.do")
 	public ModelAndView myPointList(HttpServletRequest request) {		
@@ -82,7 +159,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/editProfileForm.do")
+	@RequestMapping(value="/mypage/myProfileForm.do")
 	public ModelAndView profileView(HttpServletRequest request) {
 		System.out.println("프로필 불러오기");
 		HttpSession session = request.getSession();
@@ -93,7 +170,7 @@ public class MypageController {
 		memberDTO = memberService.memberView(member_id);
 		System.out.println(memberDTO.getNick_name());
 		modelAndView.addObject("memberDTO", memberDTO);
-		modelAndView.setViewName("editProfileForm.jsp");
+		modelAndView.setViewName("myProfileForm.jsp");
 		return modelAndView;
 	}
 	
@@ -117,7 +194,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/editProfile.do")
+	@RequestMapping(value="/mypage/myProfile.do", method=RequestMethod.POST)
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
 		String fileName = "none.png";
@@ -159,7 +236,7 @@ public class MypageController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
-		modelAndView.setViewName("editProfile.jsp");
+		modelAndView.setViewName("myProfile.jsp");
 		return modelAndView;
 	}
 	

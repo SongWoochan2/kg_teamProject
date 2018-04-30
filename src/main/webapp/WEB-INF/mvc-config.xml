@@ -40,6 +40,7 @@
 	<context:component-scan base-package="member"/>
 	<context:component-scan base-package="mypage"/>
 	<context:component-scan base-package="savingList"/>
+	<context:component-scan base-package="memberReserve"/>
 	
 	<!-- 진환 -->
     <context:component-scan base-package="qna.controller"/>
