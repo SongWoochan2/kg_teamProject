@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import answer.bean.AnswerDTO;
+import answer.controller.AnswerService;
 import inquiry.bean.InquiryDTO;
 import resource.provider.ResourceProvider;
 
@@ -27,8 +29,11 @@ import resource.provider.ResourceProvider;
 public class InquiryController {
 	@Autowired
 	private InquiryService inquiryService;
+
 	@Autowired
-	private JavaMailSender mailSender;
+	private AnswerService answerService;
+	@Autowired
+	private JavaMailSenderImpl mailSender;
 	@Autowired
 	private ResourceProvider resourceProvider;
 	
@@ -36,13 +41,6 @@ public class InquiryController {
 	public ModelAndView inquiryWriteForm(HttpServletRequest request) throws UnsupportedEncodingException { 
 		request.setCharacterEncoding("utf-8");
 		ModelAndView modelAndView = new ModelAndView();
-		String member_name = request.getParameter("member_name");
-		String member_phone = request.getParameter("member_phone");
-		String member_email = request.getParameter("member_email");
-		
-		modelAndView.addObject("member_name", member_name);
-		modelAndView.addObject("member_phone", member_phone);
-		modelAndView.addObject("member_email", member_email);
 		
 		modelAndView.setViewName("inquiryWriteForm.jsp");
 
@@ -56,11 +54,11 @@ public class InquiryController {
 		String inquiry_type = request.getParameter("inquiry_type");
 		String inquiry_title = request.getParameter("inquiry_title");
 		String inquiry_content = request.getParameter("inquiry_content");
-		String inquiry_id = request.getParameter("inquiry_id");							//임시 아이디	
+		String inquiry_id = request.getParameter("inquiry_id");						//완료후 주석 풀기	
+		//String inquiry_id = "jinhwanea";												//임시 아이디	
+		
 		session.setAttribute("inquiry_id", inquiry_id);									//임시 아이디
-		/*String admin_id = request.getParameter("admin_id");								//임시 아이디
-		session.setAttribute("admin_id", admin_id);										//임시 아이디
-*/		
+	
 		
 		// 데이터 지정
 		InquiryDTO inquiryDTO = new InquiryDTO();
@@ -68,23 +66,22 @@ public class InquiryController {
 		inquiryDTO.setInquiry_type(inquiry_type);
 		inquiryDTO.setInquiry_title(inquiry_title);
 		inquiryDTO.setInquiry_content(inquiry_content);
-		//String realforder = resourceProvider.getPath("image/inquiry");
+		String realforder = resourceProvider.getPath("image/inquiry");
 		String filename = inquiry_file.getOriginalFilename();
-		/*	File file = new File(realforder,filename);
+			File file = new File(realforder,filename);
 			try {
 				FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}*/
+			}
 		inquiryDTO.setInquiry_file(filename);
-		//DB
-		String result=inquiryDTO.toString();
-		System.out.println(result);
+		
+		System.out.println(inquiryDTO.toString());
+		
 		inquiryService.inquiryWrite(inquiryDTO);
 
-		System.out.println("END");
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.setViewName("inquiryWrite.jsp");
@@ -93,26 +90,29 @@ public class InquiryController {
 	}
 	
 	@RequestMapping(value="/member/inquiry/inquiryListAdmin.do")
-	public ModelAndView inquiryListAdmin(HttpServletRequest request) {
+	public ModelAndView inquiryListAdmin(HttpServletRequest request, HttpSession session) {
 		int pg = Integer.parseInt( request.getParameter("pg") );
-		
-		int endNum = pg*5;
-		int startNum = endNum-4;
-		List<InquiryDTO> list = inquiryService.inquiryListAdmin(startNum, endNum);
-		
-		int totalA = inquiryService.getTotalA();
-		int totalP = (totalA + 4)/5;
-		int startPage = (pg - 1)/3*3 +1;
-		int endPage = startPage + 3 - 1;
-		if(totalP < endPage) endPage = totalP;
-		
+		String admin_id=(String) session.getAttribute("admin_id");
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("startPage", startPage);
-		modelAndView.addObject("endPage", endPage);
-		modelAndView.addObject("totalP", totalP);
-		modelAndView.addObject("list", list);
 		
-		modelAndView.setViewName("inquiryListAdmin.jsp");
+		if(!admin_id.equals(null)) {
+			int endNum = pg*5;
+			int startNum = endNum-4;
+			List<InquiryDTO> list = inquiryService.inquiryListAdmin(startNum, endNum);
+			
+			int totalA = inquiryService.getTotalA();
+			int totalP = (totalA + 4)/5;
+			int startPage = (pg - 1)/3*3 +1;
+			int endPage = startPage + 3 - 1;
+			if(totalP < endPage) endPage = totalP;
+			
+			modelAndView.addObject("startPage", startPage);
+			modelAndView.addObject("endPage", endPage);
+			modelAndView.addObject("totalP", totalP);
+			modelAndView.addObject("list", list);
+			
+			modelAndView.setViewName("inquiryListAdmin.jsp");
+		}
 		
 		return modelAndView;
 	}
@@ -120,17 +120,15 @@ public class InquiryController {
 	@RequestMapping(value="/member/inquiry/inquiryListMember.do")
 	public ModelAndView inquiryListMember(HttpServletRequest request, HttpSession session) {
 		String inquiry_id=(String) session.getAttribute("inquiry_id");
-		System.out.println(inquiry_id);
 		ModelAndView modelAndView = new ModelAndView();
+		
 		if(!inquiry_id.equals(null)) {
 			int pg = Integer.parseInt( request.getParameter("pg") );
-			
 			int endNum = pg*5;
 			int startNum = endNum-4;
-			System.out.println("pg : " + pg);
-			System.out.println("startNum : " + startNum);
-			System.out.println("endNum : " + endNum);
+			
 			List<InquiryDTO> list = inquiryService.inquiryListMember(startNum, endNum, inquiry_id);
+			
 			int totalA = inquiryService.getTotalA();
 			int totalP = (totalA + 4)/5;
 			int startPage = (pg - 1)/3*3 +1;
@@ -145,7 +143,7 @@ public class InquiryController {
 			modelAndView.setViewName("inquiryListMember.jsp");
 		
 		}
-		modelAndView.setViewName("inquiryListMember.jsp");
+	
 		return modelAndView;
 	}
 	
@@ -154,13 +152,13 @@ public class InquiryController {
 	public ModelAndView inquiryView(HttpServletRequest request) {
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		
+		System.out.println(inquiry_code);
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
-//		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
+		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("inquiryDTO", inquiryDTO);
-//		modelAndView.addObject("answerDTO", answerDTO);
+		modelAndView.addObject("answerDTO", answerDTO);
 		
 		modelAndView.setViewName("inquiryView.jsp");
 		

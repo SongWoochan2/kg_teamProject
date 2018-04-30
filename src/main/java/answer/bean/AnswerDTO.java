@@ -10,6 +10,15 @@ public class AnswerDTO {
 	private String answer_date;
 	
 	
+	
+	
+	@Override
+	public String toString() {
+		return "AnswerDTO [answer_code=" + answer_code + ", admin_id=" + admin_id + ", member_id=" + member_id
+				+ ", answer_title=" + answer_title + ", answer_content=" + answer_content + ", answer_date="
+				+ answer_date + "]";
+	}
+	
 	public int getAnswer_code() {
 		return answer_code;
 	}

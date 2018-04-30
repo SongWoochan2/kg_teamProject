@@ -29,19 +29,8 @@ drop sequence answer_seq;
 --대답 테이블 삭제
 drop table answer;
 -------------------------------------------------------------------------------------------------------------------
-create table kkkk(
-  kkkk_code number,
-  kkkk_id varchar2(30),
-  kkkk_type varchar2(100),
-  kkkk_title varchar2(255) not null,
-  kkkk_content varchar2(2048) not null,
-  kkkk_file varchar2(250),
-  kkkk_status number default 0,
-  kkkk_date date default sysdate,
-  FOREIGN KEY (kkkk_id) REFERENCES member(member_id),
-  primary key(kkkk_code)
-);
-select * from kkkk;
+
+
 --문의 테이블 생성
 create table inquiry(
   inquiry_code number,

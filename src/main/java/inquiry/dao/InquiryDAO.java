@@ -41,8 +41,9 @@ public class InquiryDAO {
 		return sqlSession.selectList("mybatis.inquiry.inquiryListMember", map);
 	}
 	
-	public InquiryDTO inquiryView(int inqruiry_code) {
-		return sqlSession.selectOne("mybatis.inquiry.inquiryView", inqruiry_code);
+	public InquiryDTO inquiryView(int inquiry_code) {
+		System.out.println("inquiry_code :"+inquiry_code);
+		return sqlSession.selectOne("mybatis.inquiry.inquiryView", inquiry_code);
 	}
 	
 	public int inquiryAll(String inqruiry_id) {
