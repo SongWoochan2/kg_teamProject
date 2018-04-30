@@ -1,0 +1,35 @@
+.myWishList_top_div{
+	width: 100%;
+	height: 500px;
+	border: 1px solid red;
+}
+.left_right_tong{
+	margin: auto;
+	width:1000px;
+	height:100%;
+	border: 1px solid gray;
+}
+.myWishList_top_div .left_right_tong .wish_left_div{
+	border: 1px solid black;
+	width: 20%;
+	height: 500px;
+	float: left;
+}
+
+.myWishList_top_div .left_right_tong .wish_right_div{
+	border: 1px solid blue;
+	width: 100%;
+	height: 500px;
+}
+.myWishList_top_div .wish_profileImg{
+	border: 1px solid gray;
+	text-align: center;
+}
+.myWishList_top_div #profile_img{
+
+	margin-top:10px;
+	border: 1px solid red;
+}
+.myWishList_top_div #wish_strong_tag1{
+	text-align: center;
+}

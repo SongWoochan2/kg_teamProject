@@ -117,7 +117,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/editProfile.do", method=RequestMethod.POST)
+	@RequestMapping(value="/mypage/editProfile.do")
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
 		String fileName = "none.png";
@@ -189,4 +189,27 @@ public class MypageController {
 		modelAndView.setViewName("deleteImgFile.jsp");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/mypage/myWishList.do")
+	public ModelAndView myWishList(HttpServletRequest request) {
+		System.out.println("myWishList.do");
+		
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("memId");
+
+
+		MemberDTO memberDTO = memberService.memberView(member_id);
+		System.out.println(member_id);
+		ModelAndView modelAndView = new ModelAndView();
+		
+		
+		modelAndView.addObject("memberDTO", memberDTO);
+		System.out.println(memberDTO.getMember_name());
+		System.out.println(memberDTO.getNick_name());
+		modelAndView.addObject("member_id", member_id);
+		modelAndView.setViewName("myWishList.jsp");
+		return modelAndView;
+		
+	}
+	
 }

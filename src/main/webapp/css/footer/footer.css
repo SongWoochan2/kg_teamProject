@@ -30,7 +30,7 @@
 }
 .footer_main_div #footer_img{
 	margin-top:-40px;
-	margin-left:1400px;
+	margin-left:1100px;
 	width:250px;
 }
 .footer_main_div #footer_mid{
@@ -43,4 +43,8 @@
 /* 헤더영역 */
 .footer_main_div #footer_text{
 	text-align: center;
+}
+#footer_bottom_img_img{
+	width: 1520px;
+	margin-left: 20px;
 }
