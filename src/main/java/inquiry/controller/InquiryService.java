@@ -29,11 +29,12 @@ public class InquiryService {
 		return inquiryDAO.inquiryListAdmin(startNum, endNum);
 	}
 	
-	public List<InquiryDTO> inquiryListMember(int startNum, int endNum){
-		return inquiryDAO.inquiryListMember(startNum, endNum);
+	public List<InquiryDTO> inquiryListMember(int startNum, int endNum, String inquiry_id){
+		return inquiryDAO.inquiryListMember(startNum, endNum, inquiry_id);
 	}
 	
 	public InquiryDTO inquiryView(int inquiry_code) {
+		System.out.println("inquiry_code:"+inquiry_code);
 		return inquiryDAO.inquiryView(inquiry_code);
 	}
 	

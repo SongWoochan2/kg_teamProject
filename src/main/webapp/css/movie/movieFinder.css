@@ -2,10 +2,9 @@
 	#moviefind div{
 		margin : auto;
 	}
-
-/* 	a{ */
-/* 		color:black; */
-/* 	} */
+	#moviefind a{
+		color:black;
+	}
 	#moviefind{
 		width: 100%;
 		height: 1800px;

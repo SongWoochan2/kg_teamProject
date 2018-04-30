@@ -5,21 +5,103 @@
 <mapper namespace="mybatis.reserveMapper">
 
 	<!-- 극장이나 날짜를 눌렀을때 영화가 변경  -->
-	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
-		SELECT movie_name FROM movie 
-			where movie_code IN ( select movie_code from show_present
-	  			<where> 
-					 	to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')	
+	<select id="movieList" parameterType="java.util.Map" resultType="movieDTO">
+		SELECT * FROM movie 
+		where movie_code IN ( 
+			select movie_code from show_present
+ 			<where> 
+				<![CDATA[to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')]]>	
+  				<if test="show_date != null">
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+	   			</if>
+	   			<if test="theater_code != null">
+					AND show_place_code IN ( 
+						select show_place_code from show_place
+						where theater_code = #{theater_code}
+					)
+	   			</if>
+ 			</where>
+		)
+		ORDER BY movie_name asc, movie_code desc
+	</select>
+	
+	<!-- <![CDATA[  ]]> -->
+	
+	<!-- 영화나 날짜를 눌렀을때 극장이 변경  -->
+	<select id="theaterList" parameterType="java.util.Map" resultType="theaterDTO">
+		select * from theater
+		where theater_code IN ( 
+			select theater_code from show_place 
+			where show_place_code IN ( 
+				select show_place_code from show_present
+				<where> 
+					<![CDATA[to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')]]>	
 	   				<if test="show_date != null">
-						AND to_char(show_date, 'YYYYMMDD') = '20180426'
+						AND to_char(show_date, 'YYYYMMDD') = #{show_date}
 	    			</if>
-	    			<if test="theater_code != null">
-						AND show_place_code IN ( select show_place_code from show_place
-							where theater_code = #{theater_code})
+	    			<if test="movie_code != null">
+						AND movie_code = #{movie_code}
 	    			</if>
 	  			</where>
-	  	)
+			)
+		)
+		ORDER BY theater_code desc
 	</select>
+	
+	
+	<!-- 영화나 극장를 눌렀을때 날짜및 상영현황이 변경  -->
+	<select id="dateList" parameterType="java.util.Map" resultType="showPresentAllVO">
+		select * from show_present, show_place, movie
+		<where>
+			show_present.show_place_code = show_place.show_place_code
+			AND show_present.movie_code = movie.movie_code
+			<![CDATA[AND to_char(show_present.show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')]]>	
+  			<if test="theater_code != null">
+				AND show_place.theater_code = #{theater_code}
+   			</if>
+   			<if test="movie_code != null">
+				AND movie.movie_code = #{movie_code}
+   			</if>
+ 		</where>
+ 		ORDER BY show_present.show_date asc, show_place.theater_code asc, show_present.show_place_code asc,  show_present.show_time asc
+	</select>
+	
+	
+	
+	<!-- 영화나 극장를 눌렀을때 날짜및 상영현황이 변경  -->
+	<select id="showList" parameterType="java.util.Map" resultType="showPresentAllVO">
+		select * from show_present, show_place, movie
+		<where>
+			show_present.show_place_code = show_place.show_place_code
+			AND show_present.movie_code = movie.movie_code
+			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+			AND show_place.theater_code = #{theater_code}
+			AND movie.movie_code = #{movie_code}
+ 		</where>
+ 		ORDER BY show_present.show_date asc, show_place.theater_code asc, show_present.show_place_code asc,  show_present.show_time asc
+	</select>
+	
+	<!-- 영화별 좌석 예매수 -->
+	<select id="reserveRate">
+	select movie_code, count(*) as reserve_num 
+	from 	(select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
+			from nonmember_reserve rr, show_present ss
+			where rr.show_present_code = ss.show_present_code
+			AND ss.show_date >= sysdate-7
+
+			UNION ALL
+			
+			select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
+			from member_reserve rr, show_present ss
+			where rr.show_present_code = ss.show_present_code
+			AND ss.show_date >= sysdate-7
+
+			) as reserve
+	group by movie_code
+	</select>
+	
+	
+	
 	<!-- 
 		필요한 것 : 영화이름
 		조건 : 

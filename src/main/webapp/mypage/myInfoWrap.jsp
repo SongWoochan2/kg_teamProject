@@ -50,7 +50,6 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="benefit">
 				<div class="point">
-					<h3>MoveIt POINT</h3>
 	        		<a class="a_tag1" href="myPointList.do?p=1">MoveIt POINT 더보기</a>
 	        		<ul>
 	        			<li>
@@ -59,6 +58,7 @@ pageEncoding="UTF-8"%>
 	        			</li>
 	        		</ul>
         		</div>
+        		<div id="theater_class_bottom">
 				<div class="favorite-theater"><strong>자주가는 영화관</strong></div>
 				
 				<div class="theater_class">
@@ -75,6 +75,7 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 </body>
 </html>

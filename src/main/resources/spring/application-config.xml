@@ -12,10 +12,12 @@
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
             
+     <!-- 진환 -->
 	<context:component-scan base-package="answer"/>
 	<context:component-scan base-package="inquiry"/>
    	<context:component-scan base-package="qna"/>
    	<context:component-scan base-package="noticeItem"/>
+   	
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="movie"/>
 	<context:component-scan base-package="moviephoto"/>
@@ -33,9 +35,12 @@
 	<context:component-scan base-package="noticeItem"/>
 	<context:component-scan base-package="advice"/>
 	<context:component-scan base-package="reserve" />
+	<context:component-scan base-package="select"/>
 	<context:component-scan base-package="savingList"/>
 	<context:component-scan base-package="productboard"/>
 	<context:component-scan base-package="memberReserve"/>
+	<context:component-scan base-package="productpay"/>
+
 	<context:property-placeholder location="classpath:spring/db.properties, 
 											classpath:spring/resource.properties"/>
 	<bean id="dataSource"

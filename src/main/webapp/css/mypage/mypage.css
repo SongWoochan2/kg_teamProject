@@ -1,10 +1,12 @@
 @charset "UTF-8";
+
+
 div#mypageBody {
 	width: 100%;
-	height: 1800px;
-	border: 1px dotted black;
+	height: 800px;
 	min-height: 100px;
 }
+
 div#my-info-wrap {
 	width: 971px;
 	height: 447px;
@@ -14,14 +16,7 @@ div#my-info-wrap {
 div#my-info-wrap > div {
 	width: 100%;
 	height: 50%;
-
 }
-div#my-content-wrap {
-	width: 80%;
-	height: 70%;
-	margin: auto;
-}
-
 div#content-detail {
 	float: left;
 	width: 80%;
@@ -31,11 +26,9 @@ div#content-detail {
 
 div.profile > div {
 	float: left;
+
 }
-#my-info-wrap .benefit{
-	border: 1px dotted red;
-	/* border: 1px dotted red; */
-}
+
 
 
 #my-info-wrap .profileImg{
@@ -44,10 +37,11 @@ div.profile > div {
 	left: 50px;
 }
 #my-info-wrap #profile_img{
-	width: 136px;
+	width: 140px;
 	height: 140px;
 }
 #my-info-wrap .personInfo{
+
 	position: relative;
 	left: 80px;
 	top: 56px;
@@ -56,7 +50,8 @@ div.profile > div {
 	position:relative;
 	top: 60px;
 	left: 80px;
-	margin-bottom:4px;color: #342929;
+	margin-bottom:4px;
+	color: #342929;
 	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
 	font-size: 20px;
 	line-height: 20px;
@@ -89,6 +84,7 @@ div.profile > div {
 }
 #my-info-wrap a{
 	text-decoration:none;
+	color: #353535;
 }
 
 #my-info-wrap .a_tag1:hover {
@@ -97,7 +93,7 @@ div.profile > div {
 	
 }
 #my-info-wrap .a_tag1{
-	color: #872600;
+	color: #353535;
 }
 #my-info-wrap .a_tag:visited {
 	color:gray;
@@ -132,4 +128,7 @@ div.profile > div {
 #my-info-wrap #div_theater2, #my-info-wrap #div_theater4, #my-info-wrap #div_theater6{
 	width: 100%;
 	height: 33.3%;
+}
+.benefit{
+	margin-top: 30px;
 }

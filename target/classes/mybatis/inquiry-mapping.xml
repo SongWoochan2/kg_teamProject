@@ -6,8 +6,9 @@
 
 	<insert id="inquiryWrite" parameterType="inquiryDTO">
 		insert into inquiry values 
-		(inquiry_code_seq.nextval, #{inquiry_id}, #{inquiry_type}, #{inquiry_title}, #{inquiry_content}, #{inquiry_file},  sysdate)
+		(inquiry_code_seq.nextval, #{inquiry_id}, #{inquiry_type}, #{inquiry_title}, #{inquiry_content}, #{inquiry_file}, 0, sysdate)
 	</insert>
+
 
 	<update id="inquiryModify" parameterType="inquiryDTO">
 		update inquiry set inquiry_type=#{inquiry_type}, inquiry_title=#{inquiry_title}, inquiry_content=#{inquiry_content}, inquiry_date=sysdate where inquiry_code=#{inquiry_code}

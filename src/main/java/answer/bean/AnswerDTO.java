@@ -3,6 +3,7 @@ package answer.bean;
 public class AnswerDTO {
 	
 	private int answer_code;
+	private int inquiry_code;
 	private String admin_id;
 	private String member_id;
 	private String answer_title;
@@ -10,6 +11,16 @@ public class AnswerDTO {
 	private String answer_date;
 	
 	
+	
+	
+	
+	
+	public int getInquiry_code() {
+		return inquiry_code;
+	}
+	public void setInquiry_code(int inquiry_code) {
+		this.inquiry_code = inquiry_code;
+	}
 	public int getAnswer_code() {
 		return answer_code;
 	}
