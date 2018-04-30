@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+
+div#mypageBody {
+	width: 100%;
+	height: 800px;
+	min-height: 100px;
+}
+
 div#my-info-wrap {
 	width: 971px;
 	height: 447px;
@@ -11,7 +18,6 @@ div#my-info-wrap > div {
 	height: 50%;
 }
 div#content-detail {
-	
 	float: left;
 	width: 80%;
 	height: 100%;
@@ -20,6 +26,7 @@ div#content-detail {
 
 div.profile > div {
 	float: left;
+
 }
 
 
@@ -34,6 +41,7 @@ div.profile > div {
 	height: 140px;
 }
 #my-info-wrap .personInfo{
+
 	position: relative;
 	left: 80px;
 	top: 56px;

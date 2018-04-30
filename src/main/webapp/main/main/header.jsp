@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/MyCGV/css/header/header.css" />
-<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js?v=1"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/MyCGV/css/header/header.css" />
+	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		// 모든 서브 메뉴 숨기기
@@ -53,7 +54,9 @@
 		</div>
 
 		<div id="right_div2"></div>
+		
 		<div id="header_main">
+			<img id="header_logo_img" alt="로고이미지" src="/MyCGV/image/logo/moviet_logo3.png">
 			<ul class="menu">
 				<li class="te"><a href="#">영화</a>
 					<ul class="sub">

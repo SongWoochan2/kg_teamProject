@@ -33,7 +33,9 @@ public interface ReserveService {
 
 	public List<TheaterDTO> getTheaterList(String show_date, int movie_code);
 
-	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code);
+	public List<ShowPresentAllVO> getDateList(int movie_code, int theater_code);
+	
+	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code, String show_date);
 	
 
 }

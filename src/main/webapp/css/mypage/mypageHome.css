@@ -1,11 +1,10 @@
 /* 마이페이지홈 바디 전체 최상위 영역*/
 div#mypageBody {
 	width: 100%;
-	height: 900px;
+	height: 1200px;
 }
 /* 마이페이지홈 바디 전체 최상위의 한단계아래 영역, 여기는 mypageHome.jsp실행하면 먹히는 css */
 div#my-content-wrap {
-	border:1px solid red;
 	width: 970px;
 	height: 70%;
 	margin-top: 10px;
@@ -43,6 +42,7 @@ div.sect-content-movie div {
 	position: relative;
 	top:73px;
 	left: 197px;
+	
 }
 .sect-content-movie .box-innerwishlist a{
 	text-decoration:none;
@@ -55,8 +55,60 @@ div.sect-content-movie div {
 }
 .mypage_bottom_div{
  	position:relative;
- 	top:100px;
- 	left:100px;
-	border: 1px solid blue;
+ 	top:50px;
+ 	left:5px;
+	/* border: 1px solid blue; */
 	float: left;
+}
+.title-mypage_h3{
+	float: left;
+}
+#title-mypage_em1{
+	float: left;
+	position: relative;
+	top: 20px;
+	left: 50px;
+	
+}
+#title-mypage_em1_img1{
+	float: left;
+	position: relative;
+	top: 13px;
+	left: 50px;
+	
+}
+#mypagehome_border1_p{
+	font-size: 11px;
+	float: right;
+	margin-top: 20px;
+}
+#title-mypage_em2{
+	float: left;
+	position: relative;
+	top: 20px;
+	left: 50px;
+	
+}
+#title-mypage_em1_img2{
+	float: left;
+	position: relative;
+	top: 13px;
+	left: 50px;
+	
+}
+#mypagehome_border2_p{
+	font-size: 11px;
+	float: right;
+	margin-top: 20px;
+}
+#title-mypage_em1_img2_2{
+	margin-top: -40px;
+}
+#mypagehome_border2_p{
+	font-size: 11px;
+	float: right;
+	margin-top: 20px;
+}
+#title-mypage_em1_img3_3{
+	margin-top: -60px;
 }
