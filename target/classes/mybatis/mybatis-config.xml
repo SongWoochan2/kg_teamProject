@@ -27,27 +27,19 @@
 		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
  		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
  		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
-<<<<<<< HEAD
- 		
+ 		<typeAlias type="memberReserve.bean.MemberReserveDTO" alias="memberReserveDTO"></typeAlias>
+ 		<typeAlias type="memberReserve.bean.MemberReserveListDTO" alias="memberReserveListDTO"></typeAlias>
+
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
-=======
->>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
 	</typeAliases>
 
 	<mappers>
-<<<<<<< HEAD
 		<!-- 진환 -->
-<<<<<<< HEAD
-=======
->>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
-=======
->>>>>>> 654e9409725024b0f06bb13532d50cd3919cd468
 		<mapper resource="mybatis/answer-mapping.xml"/>
 		<mapper resource="mybatis/inquiry-mapping.xml"/>
 		<mapper resource="mybatis/noticeItem-mapping.xml"/>
 		<mapper resource="mybatis/qna-mapping.xml"/>
 		
-		<mapper resource="mybatis/savingList-mapping.xml"/>
 		<mapper resource="mybatis/admin-mapping.xml"/>
 		<mapper resource="mybatis/movie-mapping.xml"/>
 		<mapper resource="mybatis/moviephoto-mapping.xml"/>
@@ -61,12 +53,11 @@
 		<mapper resource="mybatis/productboard-mapping.xml" />
 		<mapper resource="mybatis/member-mapping.xml" />
  		<mapper resource="mybatis/reserve-mapping.xml" />
+		<mapper resource="mybatis/savingList-mapping.xml"/>
+		<mapper resource="mybatis/memberReserve-mapping.xml"/>
 		<mapper resource="mybatis/select-mapping.xml" />
-<<<<<<< HEAD
 
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
-=======
->>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
 
 	</mappers>
 </configuration>

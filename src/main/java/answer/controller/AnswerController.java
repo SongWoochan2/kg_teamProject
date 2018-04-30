@@ -1,9 +1,13 @@
 package answer.controller;
 
+import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.util.List;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -30,13 +34,14 @@ public class AnswerController {
 	private JavaMailSenderImpl mailSender;
 	
 	@RequestMapping(value="/admin/answer/inquiryAnswer.do")
-	public ModelAndView inquiryAnswer(HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException { 
+	public ModelAndView inquiryAnswer(HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException{ 
 		ModelAndView modelAndView = new ModelAndView();
+		AnswerDTO answerDTO = new AnswerDTO();
 		request.setCharacterEncoding("utf-8");
 		
 		String from_mail = "cgvproject7@gmail.com";		
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		String to_mail = request.getParameter("member_email");
+		String to_mail = request.getParameter("answer_email");
 		
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		String admin_id = (String) session.getAttribute("admin_id");
@@ -44,7 +49,6 @@ public class AnswerController {
 		String answer_title = request.getParameter("answer_title");
 		String answer_content = request.getParameter("answer_content");
 		
-		AnswerDTO answerDTO = new AnswerDTO();
 		answerDTO.setInquiry_code(inquiry_code);
 		answerDTO.setAdmin_id(admin_id);
 		answerDTO.setMember_id(member_id);
@@ -53,8 +57,7 @@ public class AnswerController {
 		
 		int su = answerService.answerInsert(answerDTO);
 		
-		
-		 try {
+		try {
 		      MimeMessage message = mailSender.createMimeMessage();
 		      MimeMessageHelper messageHelper 
 		      = new MimeMessageHelper(message, true, "UTF-8");
@@ -65,6 +68,7 @@ public class AnswerController {
 		      messageHelper.setText(answer_content);  							// 메일 내용
 		     
 		      mailSender.send(message);
+		      
 		    } catch(Exception e){
 		      System.out.println(e);
 		    }
@@ -120,6 +124,12 @@ public class AnswerController {
 		
 		return modelAndView;
 	}
+	
+	public void sendMail(    String formUrl) throws FileNotFoundException, URISyntaxException {
+
+		    
+
+		}
 }
 
 
