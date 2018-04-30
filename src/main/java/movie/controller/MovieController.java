@@ -24,6 +24,7 @@ import moviephoto.controller.MoviePhotoService;
 import movietrailer.bean.MovieTrailerDTO;
 import movietrailer.controller.MovieTrailerService;
 import select.controller.SelectService;
+import showPresent.controller.ShowPresentService;
 
 @Controller
 public class MovieController {
@@ -35,7 +36,8 @@ public class MovieController {
 	private MovieTrailerService movieTrailerService;
 	@Autowired
 	private SelectService selectService;
-	
+	@Autowired
+	private ShowPresentService showPresentService;
 	// 관리자 영역
 	
 	@RequestMapping(value="/admin/movie/movieAdmin.do")
@@ -259,7 +261,6 @@ public class MovieController {
 		int p_totalA = moviePhotoService.getTotalA(movie_code);
 		int p_totalPage = (p_totalA) / 1;
 		
-		
 		if(p_totalPage < photo_pg) photo_pg = p_totalPage;
 		
 		MoviePage p_moviePage = new MoviePage();
@@ -296,7 +297,7 @@ public class MovieController {
 	
 	@RequestMapping(value="/main/movie/movieFinder.do")
 	public ModelAndView movieFinder(HttpServletRequest request) {
-			int pg = 0;		
+			int pg = 1;		
 			int endNum = 0;
 			int startNum = 0;
 			String[] movie_type = null;
@@ -342,15 +343,12 @@ public class MovieController {
 			Map<Integer, String> photo_map = new HashMap<>();
 			
 			for(MovieDTO finder_result : find_list) {
-
-				System.out.println("영화명 : " +finder_result.getMovie_name());
-				System.out.println("개봉일 : "+finder_result.getMovie_open_date());
-				System.out.println("영화 코드 : " + finder_result.getMovie_code());
+//				System.out.println("영화명 : " +finder_result.getMovie_name());
 				
 				MoviePhotoDTO photo_addr = moviePhotoService.moviePosterView(finder_result.getMovie_code());
 				
 				photo_map.put(finder_result.getMovie_code(), photo_addr.getMovie_photo_addr());	
-				System.out.println("photo_addr : "+photo_addr.getMovie_photo_addr());
+//				System.out.println("photo_addr : "+photo_addr.getMovie_photo_addr());
 			}
 			
 //			페이징 영역
@@ -393,16 +391,52 @@ public class MovieController {
 	
 	@RequestMapping(value="/main/movie/movieReview.do")
 	public ModelAndView movieReview(HttpServletRequest request) {
-//		int movie_code = 0 ;
-//		if(request.getParameter("movie_code") == null) {
-//			movie_code = 0;
-//		}else {
-//			movie_code = Integer.parseInt(request.getParameter("movie_code"));			
-//		}
-//		MoviePhotoDTO poster_addr = moviePhotoService.moviePosterView(movie_code);
+		int movie_count = 0;
+		int movie_code = 0 ;
+		int movie_pg = Integer.parseInt(request.getParameter("movie_pg"));
+		
+		int m_endNum = movie_pg*4;
+		int m_startNum = m_endNum-3;	
+
+		
+		ArrayList<String> code_list = showPresentService.getUniqueMovieCode();
+		for(String tmp : code_list) {movie_count++;}
+		
+		ArrayList<MovieDTO> movie_list =  movieService.presentMovieList(code_list,m_startNum,m_endNum);
+		Map<Integer, String> poster_map = new HashMap<>();
+		
+		for(MovieDTO movie_result : movie_list) {
+//			System.out.println("영화이름 : " + movie_result.getMovie_name());
+			
+			MoviePhotoDTO photo_addr = moviePhotoService.moviePosterView(movie_result.getMovie_code());
+			poster_map.put(movie_result.getMovie_code(), photo_addr.getMovie_photo_addr());	
+			
+//			System.out.println("photo_addr : "+photo_addr.getMovie_photo_addr());
+		}
+		
+		int m_totalA = movie_count;
+		int m_totalPage = ((m_totalA+3) / 4);		
+		
+		if(m_totalPage < movie_pg) movie_pg = m_totalPage;
+		
+		MoviePage m_moviePage = new MoviePage();
+		m_moviePage.setTotalA(m_totalA);
+		m_moviePage.setTotalPage(m_totalPage);
+		m_moviePage.setPg(movie_pg);
+		
+	//		if(request.getParameter("movie_code") == null) {
+	//		movie_code = 0;
+	//	}else {
+	//		movie_code = Integer.parseInt(request.getParameter("movie_code"));			
+	//	}
+	//	MoviePhotoDTO poster_addr = moviePhotoService.moviePosterView(movie_code);
+		
 		
 		ModelAndView modelAndView = new ModelAndView();
 //		modelAndView.addObject("movie_code", movie_code);
+		modelAndView.addObject("m_moviePage", m_moviePage);
+		modelAndView.addObject("poster_map", poster_map);
+		modelAndView.addObject("movie_list", movie_list);
 		modelAndView.setViewName("movieReview.jsp");
 		return modelAndView;
 	}

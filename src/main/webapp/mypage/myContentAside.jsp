@@ -23,16 +23,6 @@ pageEncoding="UTF-8"%>
 				</ul></li>
 			<li class="dsas"><a class="myContentAside_a_tag" href="editProfileForm.do">나의 프로필</a></li>
 			<li class="dsas"><a class="myContentAside_a_tag" href="">나의 문의내역</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
-			<li class="dsas"><a class="myContentAside_a_tag" href="">테스트</a></li>
 			
 			
 		</ul>

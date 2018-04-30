@@ -38,7 +38,10 @@
 	<context:component-scan base-package="select"/>
 	<context:component-scan base-package="savingList"/>
 	<context:component-scan base-package="productboard"/>
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
 	<context:property-placeholder location="classpath:spring/db.properties, 
 											classpath:spring/resource.properties"/>
 	<bean id="dataSource"

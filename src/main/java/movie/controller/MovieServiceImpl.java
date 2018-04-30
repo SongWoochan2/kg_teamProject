@@ -65,5 +65,10 @@ public class MovieServiceImpl implements MovieService{
 	public int goodUpdate(int movie_code, int good) {
 		return movieDAO.goodUpdate(movie_code, good);
 	}
+
+	@Override
+	public ArrayList<MovieDTO> presentMovieList(ArrayList<String> code_list, int m_startNum, int m_endNum) {
+		return (ArrayList<MovieDTO>) movieDAO.presentMovieList(code_list,m_startNum,m_endNum);
+	}
 	
 }

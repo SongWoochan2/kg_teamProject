@@ -26,48 +26,59 @@
 </script>
 </head>
 <body>
+<div id="full_content_wrap">
 	<div class="header_main_div">
-		<div id="left_div1">
-			<a href="#"> <img alt="" src="/MyCGV/image/header/header_cgv.png"
-				width="30px" height="30px">CGV APP
-			</a>| <a href="#"><img alt=""
-				src="/MyCGV/image/header/header_face.png" width="20px" height="20px">
-				Face </a> | <a href="#"> <img alt=""
-				src="/MyCGV/image/header/header_insta.png" width="20px" height="20px">
-				Insta
-			</a>
+		<div id="top_menu_box">
+			<div id="top_left_div">
+				<a href="#"> 
+					<img alt="" src="/MyCGV/image/logo/moviet_logo4.png" width="60px" height="30px">
+					MovieT APP
+				</a> | 
+				<a href="#">
+					<img alt=""src="/MyCGV/image/header/header_face.png" width="20px" height="20px">
+					Face 
+				</a> | 
+				<a href="#"> 
+					<img alt="" src="/MyCGV/image/header/header_insta.png" width="20px" height="20px">
+					Insta
+				</a>
+			</div>
+			<div id="top_right_div">
+				<p>
+					<c:if test="${ sessionScope.memId == null }">
+						<a href="/MyCGV/member/memberLoginForm.do"><strong>로그인 | </strong></a> 
+						<a href="/MyCGV/member/memberWriteForm.do"><strong>회원가입 | </strong></a>
+						<a href="/MyCGV/member/memberLoginForm.do"><strong>My MoveIt | </strong></a>  
+					</c:if>
+					<c:if test="${ sessionScope.memId != null }">
+						<a href="/MyCGV/member/memberLogout.do"><strong>로그아웃 | </strong></a>
+						<a href="/MyCGV/mypage/mypageHome.do"><strong>My MoveIt | </strong></a> 
+					</c:if>
+					<a href="#"><strong>고객센터</strong></a> 
+					<a href="#"><strong>ENGLISH TICKETING</strong></a>
+				</p>
+			</div>
 		</div>
-		<div id="mid_div1" class="layer_fixed">
-			<p>
-			<c:if test="${ sessionScope.memId == null }">
-				<a href="/MyCGV/member/memberLoginForm.do"><strong>로그인 | </strong></a> 
-				<a href="/MyCGV/member/memberWriteForm.do"><strong>회원가입 | </strong></a>
-				<a href="/MyCGV/member/memberLoginForm.do"><strong>My MoveIt | </strong></a>  
-			</c:if>
-			<c:if test="${ sessionScope.memId != null }">
-				<a href="/MyCGV/member/memberLogout.do"><strong>로그아웃 | </strong></a>
-				<a href="/MyCGV/mypage/mypageHome.do"><strong>My MoveIt | </strong></a> 
-			</c:if>
-				<a href="#">고객센터</a> 
-				<a href="#"><strong>ENGLISH TICKETING</strong></a>
-			</p>
-		</div>
-
-		<div id="right_div2"></div>
 		
 		<div id="header_main">
-			<img id="header_logo_img" alt="로고이미지" src="/MyCGV/image/logo/moviet_logo3.png">
-			<ul class="menu">
-				<li class="te"><a href="#">영화</a>
-					<ul class="sub">
-						<li><a href="/MyCGV/main/movie/movieChart.do">영화순위 | </a></li>
-						<li><a href="/MyCGV/main/movie/movieFinder.do?pg=1">영화검색 | </a></li>
-						<li><a href="/MyCGV/main/movie/movieReview.do">평점메인 </a></li>
-					</ul></li>
-				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
-				<li class="te"><a href="#">극장</a>
-				<li class="te"><a href="/MyCGV/main/store/store.do?type=set">스토어</a></li>
-			</ul>
+			<div id="main_inner">
+				<div id="inner_left">
+					<a href="/MyCGV/main/main/index.jsp"><img id="header_logo_img" alt="로고이미지" src="/MyCGV/image/logo/moviet_logo3.png"></a>
+				</div>
+				<div id="inner_center">
+					<ul class="menu">
+						<li class="te"><a href="/MyCGV/main/movie/movieChart.do">영화</a></li>
+						<li class="te"><a href="/MyCGV/main/movie/movieFinder.do?pg=1">검색</a></li>
+						<li class="te"><a href="/MyCGV/main/movie/movieReview.do?movie_pg=1">리뷰 </a></li>
+						<li class="te"><a href="/MyCGV/main/reserve.do?pg=1">예매</a></li>
+						<li class="te"><a href="#">극장</a>
+						<li class="te"><a href="/MyCGV/main/store/store.do?type=set">스토어</a></li>
+					</ul>
+				</div>
+				<div id="inner_right">
+				
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

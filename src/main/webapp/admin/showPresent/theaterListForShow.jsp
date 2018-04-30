@@ -51,8 +51,6 @@ function isLogin(theater_code) {
 				<th width="100">극장연락처</th>
 			</tr>
 			
-			
-			
 		<c:forEach var="theaterDTO" items="${requestScope.list }">
 			<tr bgcolor="#D5D5D5">
 				<td align="center">${ theaterDTO.theater_code }</td>

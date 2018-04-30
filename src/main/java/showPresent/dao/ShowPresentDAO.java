@@ -1,5 +1,6 @@
 package showPresent.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,4 +38,7 @@ public class ShowPresentDAO {
 		return sqlSession.selectOne("showPresent.getOne", show_present_code);
 	}
 	
+	public List<String> getUniqueMovieCode(){
+		return sqlSession.selectList("showPresent.getUniqueMovieCode");
+	}
 }
