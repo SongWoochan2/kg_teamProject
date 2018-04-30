@@ -141,4 +141,21 @@
 	<update id="goodUpdate" parameterType="java.util.Map">
 		update movie set good_num = good_num+#{good} where movie_code=#{movie_code} 
 	</update>
+	
+	<select id="presentMovieList" parameterType="java.util.Map" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+ 		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 		from (select rownum rn, tt.*  
+ 				from (select * from movie ]]> 
+					<where>
+						<if test="code_list != null">
+						 	movie_code IN 
+							<foreach item="item" index="index" collection="code_list"
+			     				 open="(" separator="," close=")">
+			       				#{item} 
+			  				</foreach>
+			  			</if>
+					</where> order by movie_code desc) tt) 
+		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
+	</select>
 </mapper>

@@ -55,80 +55,39 @@
 		</div>
 		<div id="review-all">
 			<div id="review-movie">
-				<button type="button" class="btn btn-default btn-sm"  id = "leftbtn">
+			<c:if test="${m_moviePage.pg>1 }">
+				<a href = "movieReview.do?movie_pg=${m_moviePage.pg-1 }" class="btn btn-default btn-sm"  id = "leftbtn">
          				<span class="glyphicon glyphicon-triangle-left"></span>
-       			</button>
+       			</a>
+       		</c:if>
+       			<c:forEach var ="movie_list" items="${requestScope.movie_list }">
 				<div id = "entity">
 					<div id = "entity-poster">
-						<img src = "../../image/storage/moviephoto/memento1.jpg">
+					<c:forEach var ="poster_map" items="${requestScope.poster_map }" >
+							<c:if test="${poster_map.key == movie_list.movie_code }">
+								<img src = "../../image/storage/moviephoto/${poster_map.value }">
+							</c:if>
+					</c:forEach>
 					</div>
 					<div id = "entity-name">
-						<a href = "#">메맨토</a>
+						<a href = "#">${movie_list.movie_name }</a>
 					</div>
 					<div id = "entity-reserve">
 						<font>예매율</font> 0.0%
 					</div>
 					<div id = "entity-opendate">
-						2016.5.23 개봉
+						${movie_list.movie_open_date }
 					</div>
 					<div id = "entity-request">
 						<button>예매</button>
 					</div>
 				</div>
-				<div id = "entity">
-					<div id = "entity-poster">
-						<img src = "../../image/storage/moviephoto/memento1.jpg">
-					</div>
-					<div id = "entity-name">
-						<a href = "#">메맨토</a>
-					</div>
-					<div id = "entity-reserve">
-						<font>예매율</font> 0.0%
-					</div>
-					<div id = "entity-opendate">
-						2016.5.23 개봉
-					</div>
-					<div id = "entity-request">
-						<button>예매</button>
-					</div>
-				</div>
-				<div id = "entity">
-					<div id = "entity-poster">
-						<img src = "../../image/storage/moviephoto/memento1.jpg">
-					</div>
-					<div id = "entity-name">
-						<a href = "#">메맨토</a>
-					</div>
-					<div id = "entity-reserve">
-						<font>예매율</font> 0.0%
-					</div>
-					<div id = "entity-opendate">
-						2016.5.23 개봉
-					</div>
-					<div id = "entity-request">
-						<button>예매</button>
-					</div>
-				</div>
-				<div id = "entity">
-					<div id = "entity-poster">
-						<img src = "../../image/storage/moviephoto/memento1.jpg">
-					</div>
-					<div id = "entity-name">
-						<a href = "#">메맨토</a>
-					</div>
-					<div id = "entity-reserve">
-						<font>예매율</font> 0.0%
-					</div>
-					<div id = "entity-opendate">
-						2016.5.23 개봉
-					</div>
-					<div id = "entity-request">
-						<button>예매</button>
-					</div>
-				</div>
-				<button type="button" class="btn btn-default btn-sm"  id = "rightbtn">
+       			</c:forEach>
+			<c:if test="${m_moviePage.pg<m_moviePage.totalPage}">
+				<a href = "movieReview.do?movie_pg=${m_moviePage.pg+1 }" class="btn btn-default btn-sm"  id = "rightbtn">
           			<span class="glyphicon glyphicon-triangle-right"></span>
-        		</button>
+        		</a>
+       		</c:if>
 			</div>
 			<div id="review">
 				<div id = "left">실관람객평점 ▶</div><div id="right">영화를 보시고 평점을 남겨주세요. <a class="btn btn-info btn-lg" id="reviewInsert">평점 작성</a></div>

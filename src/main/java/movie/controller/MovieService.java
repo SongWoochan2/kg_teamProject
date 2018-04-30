@@ -13,6 +13,7 @@ public interface MovieService {
 	int getTotalA();
 	int goodUpdate(int movie_code, int good);
 	ArrayList<MovieDTO> movieList(int startNum, int endNum);
+	ArrayList<MovieDTO> presentMovieList(ArrayList<String> code_list, int m_startNum, int m_endNum);
 	MovieDTO movieView(int movie_code);
 	ArrayList<MovieDTO> movieFinder(Map<String, Object> map);
 	public List<MovieDTO> movieSearchByName(String movie_name);
