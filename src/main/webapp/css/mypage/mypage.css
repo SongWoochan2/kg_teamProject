@@ -37,7 +37,7 @@ div.profile > div {
 	left: 50px;
 }
 #my-info-wrap #profile_img{
-	width: 136px;
+	width: 140px;
 	height: 140px;
 }
 #my-info-wrap .personInfo{
@@ -128,4 +128,7 @@ div.profile > div {
 #my-info-wrap #div_theater2, #my-info-wrap #div_theater4, #my-info-wrap #div_theater6{
 	width: 100%;
 	height: 33.3%;
+}
+.benefit{
+	margin-top: 30px;
 }

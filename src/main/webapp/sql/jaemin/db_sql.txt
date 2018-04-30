@@ -25,13 +25,13 @@ create table product_pay(
 	product_pay_code int not null,		--상품결제코드
 	pay_id varchar(30) not null,		--결제ID (fk)
 	product_code int not null,			--상품코드 (fk)
-										--보내는사람 연락처
-										--받는사람 연착처1
-										--받는사람 연착처2
-										--받는사람 연착처3
-										--구매/선물 분류
-	buy_time  date,						--구매시간
-	but_cancle_able char(1) not null,	--구매취소여부
+	buy_phone varchar2(11) not null,	--구매자 연락처
+	gift_phone1	varchar2(11) not null,	--선물 연착처1
+	gift_phone2	varchar2(11),			--선물 연착처2
+	gift_phone3	varchar2(11),			--선물 연착처3
+	pay_type varchar2(15) not null,		--결제분류
+	pay_time  date,						--결제날자
+	pay_cancle_able char(1) not null,	--결제취소여부
 	order_num number not null			--주문수량
 );
 

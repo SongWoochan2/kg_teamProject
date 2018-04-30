@@ -231,11 +231,10 @@ public class ProductBoardController {
 	@RequestMapping(value="/main/store/productPay.do")
 	public ModelAndView handleRequest_product_pay1(HttpServletRequest request) {
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
-		String member_id = "홍길동";
 		
 		ProductBoardDTO productboardDTO = productboardService.productboardView(product_code);
-		/*HttpSession session = request.getSession();
-		String mem_id = (String) session.getAttribute("mem_id");*/
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("memId");
 	
 		
 		// 3. 검색 결과를 request에 저장하고 상세 화면으로 이동한다.	

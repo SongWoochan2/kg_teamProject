@@ -32,7 +32,7 @@
 			<ul class = "menu">
 				<li><a>회원관리</a>
 					<ul class = "sub">
-						<li><a href = "#">문의내역 보기</a></li>
+						<li><a href = "/MyCGV/admin/answer/inquiryListAdmin.do?pg=1">문의내역 보기</a></li>
 						<li><a href = "#">공지사항 등록</a></li>
 						<li><a href = "#">기타</a></li>
 					</ul>

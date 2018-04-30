@@ -43,6 +43,14 @@
 	<select id="productView" parameterType="int" resultType="productboardDTO">
 		SELECT * FROM product WHERE product_code = #{product_code}
 	</select>
+	
+<!-- Pay -->
+	<insert id="productpayComplete" parameterType="productpayDTO">
+		INSERT INTO product_pay (
+		product_pay_code, pay_id, product_code, buy_phone, gift_phone1, gift_phone2, gift_phone3, pay_type, pay_time, pay_cancle_able, order_num1, order_num2, order_num3
+		)
+		VALUES(pay_seq.nextval, #{pay_id},#{product_code},#{buy_phone},#{gift_phone1},#{gift_phone2},#{gift_phone3},#{pay_type}, sysdate,#{pay_cancle_able},#{order_num1},#{order_num2},#{order_num3})
+	</insert>
 </mapper>
 
 

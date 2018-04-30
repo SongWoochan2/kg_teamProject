@@ -6,17 +6,9 @@
 
 	<insert id="answerInsert" parameterType="answerDTO">
 		insert into answer values 
-		(answer_code_seq.nextval, #{admin_id}, #{member_id}, #{answer_title}, #{answer_content}, sysdate)
+		(answer_code_seq.nextval, #{inquiry_code}, #{admin_id},  #{member_id}, #{answer_title}, #{answer_content}, sysdate)
 	</insert>
 
-	<select id="answerList" parameterType="java.util.Map" resultType="answerDTO">
-		<![CDATA[
-		select answer_code, answer_id, member_id, answer_title, answer_content, to_char(answer_date, 'YYYY.MM.DD') as answer_date 
-		from (select rownum rn, tt.* 
-				from (select * from answer order by answer_code desc) tt) 
-		where rn >= #{startNum} and rn <= #{endNum}
-		]]>
-	</select>
 	
 	<select id="answerView" parameterType="int" resultType="answerDTO">
 		select * from inquiry where inaquiry_code=#{inaquiry_code}

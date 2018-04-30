@@ -1,5 +1,6 @@
 package showPresent.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class ShowPresentService {
 		return showPresentDAO.getShowPresentOne(show_present_code);
 	}
 	
+	public ArrayList<String> getUniqueMovieCode(){
+		return (ArrayList<String>) showPresentDAO.getUniqueMovieCode();
+	}
 	
-
 }
