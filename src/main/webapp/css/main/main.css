@@ -1,16 +1,18 @@
 @charset "UTF-8";
+	
 	#mainpage div{
 		margin: auto;
 	}
-
 	#mainpage{
 		height : 1200px;
-		width: 100%;
+		width: 1600px;
+		margin: 0 auto;
 	}
 	#mainpage #mainback{
 		width: 100%;
 		height: 40%;
 		background-image: url('../../image/storage/test.png');
+		margin: 0 auto;
 	}
 	#mainpage #mainback #main{
 		width: 1000px;

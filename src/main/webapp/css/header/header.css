@@ -1,11 +1,24 @@
+
+*{
+	padding: 0;
+	margin: 0;
+}
+div{
+	box-sizing: border-box;
+}
+/*                               가장 바깥 틀           */
+.header_main_div{
+	width: 1600px;
+	height: 200px;
+	margin: 0 auto;
+}
 .header_main_div a {
 	text-decoration: none;
-	font-size: 10px;
+	font-size: 12px;
 	color: #BDBDBD;
 }
-
 .header_main_div a:visited {
-	color: blue;
+	color: #BDBDBD;
 }
 
 .header_main_div a:active {
@@ -15,6 +28,71 @@
 .header_main_div a:hover {
 	color: #8C8C8C;
 }
+/*                               상단 링크 박스           */
+#top_menu_box{
+	width: 1200px;
+	height: 75px;
+	margin: 0 auto;
+}
+
+
+
+.header_main_div #top_left_div {
+	text-align: left;
+	width: 30%;
+	height: 100%;
+	float: left;
+	padding-top: 15px;
+	font-size: 10px;
+}
+.header_main_div #top_right_div {
+	text-align: right;
+	width: 100%;
+	height: 100%;
+	padding-top: 20px;
+}
+
+/*                               하단 링크 박스           */
+.header_main_div #header_main {
+	background-image: url('../../image/header/header_main1.png');
+	width: 100%;
+	height: 125px;
+	background-repeat: none;
+	
+	
+}
+.header_main_div #main_inner{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+#main_inner #inner_left{
+	width: 20%;
+	height: 100%;
+	float: left;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 로고이미지 삽입 */
+#inner_left #header_logo_img{
+	width: 200px;
+	height: 100px;
+}
+#main_inner #inner_center{
+	width: 60%;
+	height: 100%;
+	float: left;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+#main_inner #inner_rigth{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+
 
 /** 목록 아이템의 가로 배치 및 크기와 배경이미지 지정 */
 .header_main_div ul{
@@ -25,68 +103,11 @@
 	float: left;
 }
 
-/* 로고이미지 삽입 */
-#header_logo_img{
-	width: 200px;
-	height: 100px;
-	float: left;	
-}
-
 /** 목록의 기본 속성 초기화 */
 .header_main_div #header_main ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
-
-.header_main_div #header_main ul.menu .te {
-	float: left;
-	width: 178px;
-	height: 35px;
-	
-}
-
-.header_main_div #header_main ul.menu .te .sub {
-	width: 650px;
-	height: 35px;
-	float:left;
-	text-align: center;
-	position: relative;
-	left: -230px;
-}
-
-.header_main_div #header_main ul.menu .sub li{
-	display:inline-block;
-	width: 88px ;
-	height: 35px ;
-	float: none;
-	margin-top: -21px;
-}
-.header_main_div #header_main ul.menu .sub .te li a{	
-	color:#3E3E3E;
-	float: left ;
-	width: 178px ;
-	height: 35px ;
-}
-
-.header_main_div #header_main ul.menu{
-	margin-left:440px;
-}
-
-.header_main_div #header_main ul.menu li.te{
-	margin-top: 19px;
-}
-
-/** 메뉴의 링크에 대한 크기 지정 및 글자 꾸미기 */
-.header_main_div #header_main ul.menu li a {
-	display: block;
-	line-height: 47px;
-	text-align: center;
-	font-weight: bold;
-	color: #363636;
-	font-size:18px;
-	text-decoration: none;
-
 }
 
 /** 가로 배치에 사용된 float 속성 해제 */
@@ -97,38 +118,27 @@
 	float: none;
 }
 
-.header_main_div #header_main #header_main2 {
+.header_main_div #header_main ul.menu li.te {
 	float: left;
+	width: 110px;
+	margin-top: 24px;
 }
-
-.header_main_div #header_main {
-	height: 125px;
-	background-image: url('../../image/header/header_main1.png');
-	width: 1500px;
-	background-repeat: none;
-	margin: 0 auto auto auto;
+/** 메뉴의 링크에 대한 크기 지정 및 글자 꾸미기 */
+.header_main_div #header_main ul.menu li.te a {
+	display: block;
+	line-height: 47px;
+	text-align: center;
+	font-weight: bold;
+	color: #363636;
+	font-size:18px;
+	text-decoration: none;
 }
 /** 마우스가 올라간 링크에 대한 배경이미지 변경 */
-.header_main_div #header_main ul.menu li a:hover {
+.header_main_div #header_main ul.menu li.te a:hover {
 	color: #949494;
 }
 
-.header_main_div #left_div1 {
-	margin-top:-8px;
-	margin-left: 20px;
-	text-align: center;
-	width: 30%;
-	float: left;
-	line-height: 5px;
-	font-size: 10px;
-}
-
-.header_main_div #mid_div1 {
-	text-align: right;
-	width: 90%;
-	line-height: 30px;
-}
-
-.header_main_div #right_div2 {
-	width: 5%
+#full_content_wrap{
+	width: 1600px;
+	margin: 0 auto;
 }
