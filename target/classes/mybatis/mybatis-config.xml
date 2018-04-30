@@ -37,13 +37,13 @@
 <<<<<<< HEAD
 		<!-- 진환 -->
 =======
-		<mapper resource="mybatis/savingList-mapping.xml"/>
 >>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
 		<mapper resource="mybatis/answer-mapping.xml"/>
 		<mapper resource="mybatis/inquiry-mapping.xml"/>
 		<mapper resource="mybatis/noticeItem-mapping.xml"/>
 		<mapper resource="mybatis/qna-mapping.xml"/>
 		
+		<mapper resource="mybatis/savingList-mapping.xml"/>
 		<mapper resource="mybatis/admin-mapping.xml"/>
 		<mapper resource="mybatis/movie-mapping.xml"/>
 		<mapper resource="mybatis/moviephoto-mapping.xml"/>
@@ -59,7 +59,7 @@
  		<mapper resource="mybatis/reserve-mapping.xml" />
 		<mapper resource="mybatis/select-mapping.xml" />
 <<<<<<< HEAD
-		<mapper resource="mybatis/savingList-mapping.xml" />
+
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 =======
 >>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f

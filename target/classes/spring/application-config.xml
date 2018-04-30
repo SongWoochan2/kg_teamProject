@@ -42,7 +42,6 @@
 	<context:component-scan base-package="productpay"/>
 =======
 <<<<<<< HEAD
-	
 =======
 >>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
 >>>>>>> 2debb4c0d5b99eef0a8068c8cc7377e7f2c730b9
