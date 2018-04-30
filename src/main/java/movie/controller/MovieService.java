@@ -11,6 +11,7 @@ public interface MovieService {
 	int movieDelete(int movie_code);
 	int movieInsert(MovieDTO movieDTO);
 	int getTotalA();
+	int goodUpdate(int movie_code, int good);
 	ArrayList<MovieDTO> movieList(int startNum, int endNum);
 	MovieDTO movieView(int movie_code);
 	ArrayList<MovieDTO> movieFinder(Map<String, Object> map);

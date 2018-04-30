@@ -33,12 +33,12 @@ pageEncoding="UTF-8"%>
 			<c:if test="${admin_id != null }">
 				<tr>
 					<th>답변 이메일</th>
-					<td colspan="3"><input type="text" id="answer_email" value="${member_email }" name="answer_email">
+					<td colspan="3"><input type="text" id="answer_email" value="${memberDTO.member_email }" name="answer_email">
 					</td>
 				</tr>
 				<tr>
 					<th>답변 제목</th>
-					<td colspan="3"><input type="text" id="answer_title" placeholder="답변 제목을 입력해주세요" name="answer_title">
+					<td colspan="3"><input type="text" id="answer_title" value="CGV의 고객 ${memberDTO.member_name }님께" name="answer_title">
 					</td>
 				</tr>
 				<tr>
@@ -50,11 +50,12 @@ pageEncoding="UTF-8"%>
 				</tr>
 			</c:if>
 		</table>
-		<input type="button" value="목록" onclick="location.href='inquiryList.do?pg=${param.pg}'">
 		<c:if test="${inquiry_id == inquiryDTO.inquiry_id }">
+		<input type="button" value="목록" onclick="location.href='inquiryListMember.do?pg=${param.pg}'">
 			<input type="button" value="삭제" onclick="location.href='inquiryDelete.do?inquiry_code=${inquiryDTO.inquiry_code}'">
 		</c:if>
 		<c:if test="${admin_id != null }">
+			<input type="button" value="목록" onclick="location.href='inquiryListAdmin.do?pg=${param.pg}'">
 			<input type="submit" value="답변">
 		</c:if>
 		<br><br>

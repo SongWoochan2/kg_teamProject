@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id="answerView" parameterType="int" resultType="answerDTO">
-		select * from answer where answer_code=#{inaquiry_code}
+		select * from inquiry where inaquiry_code=#{inaquiry_code}
 	</select>
 	
 	

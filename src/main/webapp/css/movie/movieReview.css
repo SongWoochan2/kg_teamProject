@@ -2,7 +2,9 @@
 
 	#movieReview div{
 		margin: auto;
+		border : 1px solid red;
 	}
+
 	#movieReview{
 		width: 100%;
 		height: 1200px;
@@ -80,7 +82,6 @@
 	}
 	#movieReview #review-all #review-movie #entity #entity-request button{
 		border : 1px solid #d14010;
-		
 		font-size : 14px;
 		color : white;
 		text-decoration : none;
@@ -92,6 +93,7 @@
 		background-color: #ef4f1a;
 	}
 	#movieReview #review-all #review{
+		overflow : auto;
 		box-sizing : border-box;
 		height: 61%;
 		width: 100%;
@@ -120,6 +122,25 @@
 		height : 100%;
 	}
 	
+	#movieReview #review-all #review #review-insert{
+		height: 40%;
+		width: 99.8%;
+		background-color: gray;
+	}
+	#movieReview #review-all #review #review-insert #review-score{
+		width: 40%;
+		height: 40%;
+	}
+	#movieReview #review-all #review #review-insert #review-score input[type = 'button']{
+		background-color: white;
+		color :red;
+		font-size: 20px;
+	}
+	#movieReview #review-all #review #review-insert #review-content{
+		width: 100%;
+		height: 60%;
+		
+	}
 	#movieReview #review-all #review #review-content{
 		background-color : #cccccc;
 		height: 31%;

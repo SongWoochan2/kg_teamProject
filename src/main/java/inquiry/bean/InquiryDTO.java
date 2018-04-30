@@ -11,6 +11,13 @@ public class InquiryDTO {
 	private String inquiry_date;
 	
 	
+	@Override
+	public String toString() {
+		return "InquiryDTO [inquiry_code=" + inquiry_code + ", inquiry_id=" + inquiry_id + ", inquiry_type="
+				+ inquiry_type + ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content
+				+ ", inquiry_file=" + inquiry_file + ", inquiry_status=" + inquiry_status + ", inquiry_date="
+				+ inquiry_date + "]";
+	}
 	
 	
 	public int getInquiry_status() {
@@ -21,13 +28,6 @@ public class InquiryDTO {
 		this.inquiry_status = inquiry_status;
 	}
 
-	@Override
-	public String toString() {
-		return "InquiryDTO [inquiry_code=" + inquiry_code + ", inquiry_id=" + inquiry_id + ", inquiry_type="
-				+ inquiry_type + ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content
-				+ ", inquiry_file=" + inquiry_file + ", inquiry_date=" + inquiry_date + "]";
-	}
-	
 	public int getInquiry_code() {
 		return inquiry_code;
 	}

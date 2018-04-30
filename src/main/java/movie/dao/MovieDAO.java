@@ -52,4 +52,11 @@ public class MovieDAO {
 	public int FinderTotalA(Map<String, Object> map) {
 		return sqlSession.selectOne("movieMapper.FinderTotalA", map);
 	}
+	
+	public int goodUpdate(int movie_code, int good) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("movie_code", movie_code);
+		map.put("good", good);
+		return sqlSession.update("movieMapper.goodUpdate", map);
+	}
 }
