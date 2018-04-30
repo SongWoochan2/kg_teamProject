@@ -7,84 +7,11 @@
 
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
 <script src="http://img.cgv.co.kr/common/js/jquery.cycle2.js"></script>
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 
-<script language="javascript" type="text/javascript">
-	//결제버튼
-	function pay() {
-		var chk = browerChk2();
-		if (chk != "Internet Explorer") {
-			alert("구매하기와 선물하기는 인터넷 익스플로러(Internet Explorer) 환경에서만 이용이 가능합니다.");
-		    return false;
-		}
-        alert("결제를 진행합니다!");
+<script type="text/javascript" src="../../script/productpayScript.js"></script>
 
-        var senderPhoneNumber =  $("#ctl00_bodyPlaceHolder_sender_phone1").val()+ $("#ctl00_bodyPlaceHolder_sender_phone2").val() + $("#ctl00_bodyPlaceHolder_sender_phone3").val();
-        var receivePhoneNumber1 =  $("#ctl00_bodyPlaceHolder_receiver1_phone1").val()+ $("#ctl00_bodyPlaceHolder_receiver1_phone2").val() + $("#ctl00_bodyPlaceHolder_receiver1_phone3").val();
-        var receivePhoneNumber2 =  $("#ctl00_bodyPlaceHolder_receiver2_phone1").val()+ $("#ctl00_bodyPlaceHolder_receiver2_phone2").val() + $("#ctl00_bodyPlaceHolder_receiver2_phone3").val();
-        var receivePhoneNumber3 =  $("#ctl00_bodyPlaceHolder_receiver3_phone1").val()+ $("#ctl00_bodyPlaceHolder_receiver3_phone2").val() + $("#ctl00_bodyPlaceHolder_receiver3_phone3").val();
-
-		if(senderPhoneNumber !=""){
-			if(senderPhoneNumber.length < 9){
-            	alert("보내는 사람의 전화번호가 잘못 되었습니다.");
-                $("#ctl00_bodyPlaceHolder_sender_phone2").focus();
-               	return false;	
-            }
-       	}
-            
-        if(receivePhoneNumber1 !=""){
-			if(receivePhoneNumber1.length < 9){
-				alert("받는사람 전화번호가 잘못 되었습니다.");
-				$("#ctl00_bodyPlaceHolder_receiver1_phone2").focus();
-                return false;	
-            }
-        }
-            
-        if(receivePhoneNumber2 !=""){
-			if(receivePhoneNumber2.length < 9){
-				alert("받는사람 전화번호가 잘못 되었습니다.");
-				$("#ctl00_bodyPlaceHolder_receiver2_phone2").focus();
-				return false;	
-           	}
-        }
-
-        if(receivePhoneNumber3 !=""){
-			if(receivePhoneNumber3.length < 9){
-				alert("받는사람 전화번호가 잘못 되었습니다.");
-                $("#ctl00_bodyPlaceHolder_receiver3_phone2").focus();
-                return false;	
-            }
-        }
-	}
-
-    // 결제 팝업 호출
-    function fn_PopUpPays(code, type, flag){// PaysISP
-    	var chk = browerChk2();
-        alert("결제가 완료되었습니다.")
-	}
-
-    // 가격 계산 -- 미완성********************************
-    function calculate() {  
-        var receivePhoneNumber1 =  $("#ctl00_bodyPlaceHolder_receiver1_phone1").val()+ $("#ctl00_bodyPlaceHolder_receiver1_phone2").val() + $("#ctl00_bodyPlaceHolder_receiver1_phone3").val();
-        var receivePhoneNumber2 =  $("#ctl00_bodyPlaceHolder_receiver2_phone1").val()+ $("#ctl00_bodyPlaceHolder_receiver2_phone2").val() + $("#ctl00_bodyPlaceHolder_receiver2_phone3").val();
-        var receivePhoneNumber3 =  $("#ctl00_bodyPlaceHolder_receiver3_phone1").val()+ $("#ctl00_bodyPlaceHolder_receiver3_phone2").val() + $("#ctl00_bodyPlaceHolder_receiver3_phone3").val();
-        
-        var pcnt = 0; //상품개수
-        if(receivePhoneNumber1 !=""){ pcnt += parseInt($("#ctl00_bodyPlaceHolder_qty1").val());}
-        if(receivePhoneNumber2 !=""){ pcnt += parseInt($("#ctl00_bodyPlaceHolder_qty2").val());}            
-        if(receivePhoneNumber3 !=""){ pcnt += parseInt($("#ctl00_bodyPlaceHolder_qty3").val());}            
-        
-        var price = $("#ctl00_bodyPlaceHolder_hidPrice").val(); //원가
-        var totalprice = (pcnt * price);
-        var dc = "상품 총 금액 <b>"+ toNumber(""+할인제외금액) +"원</b> = 최종 결제 금액" ;
-        
-        $("#dc").html(dc);
-        $("#ctl00_bodyPlaceHolder_TotalPrice").html(toNumber(""+totalprice)+"원"); //결제금액
-        
-	}
-</script>
-
-
-<form action="productPay.do" method="post" name="productPay">
+<form action="productPayComplete.do?product_code=${param.product_code }" method="post" name="productPay">
 <jsp:include page="/main/main/header.jsp"/>
 	
     <!--원가 -->
@@ -121,7 +48,7 @@
 				<dt class="col_label name">
 					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_name.png" width="22" height="13" alt="이름">
 				</dt>
-				<dd class="col_sender_name">${sessionScope.member_id }보내는 사람ID</dd>
+				<dd class="col_sender_name">${member_id } 님</dd>
 				<dt class="col_label phone">
 					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_phone.png" width="60" height="13" alt="휴대폰 번호">
 				</dt>
@@ -231,7 +158,8 @@
 				<dd class="col_qty">
 					<div class="select_qty_wrap">
                         <select name="ctl00$bodyPlaceHolder$qty2" id="ctl00_bodyPlaceHolder_qty2" class="select_qty" onchange="calculate()">
-							<option value="1" selected="selected">1</option>
+							<option value="" selected="selected"></option>
+							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 						</select>						
@@ -274,7 +202,8 @@
 				<dd class="col_qty">
 					<div class="select_qty_wrap">
                         <select name="ctl00$bodyPlaceHolder$qty3" id="ctl00_bodyPlaceHolder_qty3" class="select_qty" onchange="calculate()">
-							<option value="1" selected="selected">1</option>
+							<option value="" selected="selected"></option>
+							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 						</select>						
@@ -295,14 +224,14 @@
 				</span>
 			</p>
          <span id="ctl00_bodyPlaceHolder_UpdatePanel1">
-			<a onclick="pay()" id="ctl00_bodyPlaceHolder_lnkResult" href="#">
+			<a onclick="checkProductPay()" id="ctl00_bodyPlaceHolder_lnkResult" href="#">
 				<img src="../../image/storeStorage/btn_pay.png" width="122" height="39" alt="결제하기">
 			</a>
 		</span>
         </div>
 	</div>
 	<!-- //결제 금액 -->
-
+	
      <div id="ctl00_bodyPlaceHolder_pnGfit">
 		
 		<div class="guide_area">
