@@ -28,7 +28,8 @@
 		delete from movie where movie_code = #{movie_code}
 	</delete>
 	<select id = "movieView" parameterType="int" resultType="movieDTO">
-		select * from movie where movie_code = #{movie_code}
+		select movie_code, movie_name, movie_director, movie_show_grade_name, movie_recycle_time, movie_type1, movie_type2, movie_type3, movie_content, make_nation, appear_actor, movie_evaluat_num, acc_evaluat_score, acc_audience_num, good_num,
+				to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from movie where movie_code = #{movie_code}
 	</select>
 	
 	<select id = "searchByName" parameterType="java.lang.String" resultType="movieDTO">
@@ -39,7 +40,7 @@
 		select count(*) from movie
 		<where>
 			<if test="movie_type != null">
-			 	movie_type1 IN 
+			 	(movie_type1 IN 
 				<foreach item="item" index="index" collection="movie_type"
      				 open="(" separator="," close=")">
        				#{item}
@@ -53,7 +54,7 @@
 				<foreach item="item" index="index" collection="movie_type"
      				 open="(" separator="," close=")">
        				#{item}
-  				</foreach>
+  				</foreach>)
 			</if>
 			<if test="make_nation != null">
 				and make_nation IN 
@@ -91,7 +92,7 @@
  				from (select * from movie ]]> 
 					<where>
 						<if test="movie_type != null">
-						 	movie_type1 IN 
+						 	(movie_type1 IN 
 							<foreach item="item" index="index" collection="movie_type"
 			     				 open="(" separator="," close=")">
 			       				#{item}
@@ -105,7 +106,7 @@
 							<foreach item="item" index="index" collection="movie_type"
 			     				 open="(" separator="," close=")">
 			       				#{item}
-			  				</foreach>
+			  				</foreach>)
 						</if>
 						<if test="make_nation != null">
 							and make_nation IN 
@@ -137,4 +138,7 @@
 		<![CDATA[where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
+	<update id="goodUpdate" parameterType="java.util.Map">
+		update movie set good_num = good_num+#{good} where movie_code=#{movie_code} 
+	</update>
 </mapper>

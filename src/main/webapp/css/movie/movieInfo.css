@@ -1,17 +1,17 @@
 @charset "UTF-8";
-	#moviepage div{
+	div{
 		margin : auto;
 	}
 	
 	#moviepage{
 		background-image : url('../../image/storage/movieInfo.png');
 		width: 1000px;
-		height: 1800px;
+		height: 2300px;
 	}
 	#moviepage #pagenevi{
 		padding-left : 10px;
 		width: 100%;
-		height: 1%;
+		height: 0.8%;
 		background-color: lightgray;
 	}
 	#moviepage #head-title{
@@ -19,7 +19,7 @@
 		font-size : 35px;
 		font-weight : bold;
 		width: 100%;
-		height: 5%;
+		height: 4%;
 	}
 	#moviepage #head-title hr{
 		border-width: 4px;
@@ -28,56 +28,67 @@
 	
 	#moviepage #middle{
 		width: 100%;	
-		height: 16%;
+		height: 33%;
 	}
-	
-	#moviepage #middle #movieposter{
+	#moviepage #middle #movieContent{
+		width: 100%;
+		height: 40%;
+	}
+	#moviepage #middle #moviestore{
+		width: 100%;
+		height: 60%;
+	}
+	#moviepage #middle #moviestore font{
+		font-size: 25px;
+		font-weight: bold;
+	}
+	#moviepage #middle #movieContent #movieposter{
 		padding : 3px;
 		width: 20%;
 		height: 100%;
 		float: left;
 	}
-	#moviepage #middle #movieposter img{
+	#moviepage #middle #movieContent #movieposter img{
 		width: 100%;
 		height: 100%;
 	}
-	#moviepage #middle #movieinfo{
+	#moviepage #middle #movieContent #movieinfo{
 		width: 79%;
 		height: 100%;
 		float: left;
 	}
-	#moviepage #middle #movieinfo *{
+	#moviepage #middle #movieContent #movieinfo *{
 		padding-top : 7px;
 		padding-left : 5px;
 	}
-	#moviepage #middle #movieinfo #movietitle{
+	#moviepage #middle #movieContent #movieinfo #movietitle{
 		width: 100%;
 		height: 25%;
 	}
-	#moviepage #middle #movieinfo #movietitle #title-font{
+	#moviepage #middle #movieContent #movieinfo #movietitle #title-font{
 		font-size: 25px;
 		font-weight: bold;
 	}
-	#moviepage #middle #movieinfo #moviescore{
+	#moviepage #middle #movieContent #movieinfo #moviescore{
 		width: 100%;
-		height: 25%;
+		height: 15%;
 	}
-	#moviepage #middle #movieinfo #spec{
+	#moviepage #middle #movieContent #movieinfo #spec{
 		font-size : 13px;
 		font-weight : bold;
 		width: 100%;
-		height: 25%;
+		height: 35%;
 	}
-	#moviepage #middle #movieinfo #like{
+	#moviepage #middle #movieContent #movieinfo #like{
 		width: 100%;
 		height: 25%;
 	}
-	#moviepage #middle #movieinfo #like a{
+	#moviepage #middle #movieContent #movieinfo #like a{
 		color : white;
 	}
 	#moviepage #movietrailer{
 		width: 100%;
-		height: 20%;
+		height: 15%;
 	}
 	#moviepage #movietrailer #trailer-title{
 		padding-top : 10px;
@@ -89,10 +100,42 @@
 	}
 	#moviepage #movietrailer #trailer-content{
 		width: 100%;
+		height: 75%;
+	}
+	#moviepage #movietrailer #trailer-content #trailer-entity{
+		padding : 0px 5px;
+		float : left;
+		width: 33.3%;
+		height: 100%;
+	}
+	#moviepage #movietrailer #trailer-content #trailer-entity #trailer-top{
+		border-radius: 10px 10px 0px 0px;
+		background-color: #bef7bf;
+		height : 10%;
+	}
+	#moviepage #movietrailer #trailer-content #trailer-entity #trailer-name{
+		padding-top : 5px;
+		background-color: lightgray;
+		height : 15%;
+		text-align : center;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	#moviepage #movietrailer #trailer-content #trailer-entity #trailer-name:hover{
+		background-color: darkgray;
+	}
+	#moviepage #movietrailer #trailer-content #trailer-entity #trailer-addr{
+		text-align : center;
+		background: gray;
+	}
+	#moviepage #movietrailer #trailer-content #trailer-entity #trailer-bottom{
+		border-radius: 0px 0px 10px 10px;
+		background-color: #bef7bf;
+		height : 10%;
 	}
 	#moviepage #moviesteelcut{
 		width: 100%;
-		height: 30%;		
+		height: 22%;		
 	}
 	#moviepage #moviesteelcut #steelcut-title{
 		padding-top : 10px;
@@ -103,11 +146,21 @@
 		height: 12%;
 	}
 	#moviepage #moviesteelcut #steelcut-content{
+		padding : 20px 40px;
+		height : 87%;
+		width: 100%;
+	}
+	#moviepage #moviesteelcut #steelcut-content #steelcut-entity{
+		height: 100%;
+		width: 100%;
+	}
+	#moviepage #moviesteelcut #steelcut-content #steelcut-entity img{
+		height: 100%;
 		width: 100%;
 	}
 	#moviepage #moviereview{
 		width: 100%;
-		height: 28%;
+		height: 23%;
 	}
 	#moviepage #moviereview #review-title{
 		width: 100%;
@@ -144,4 +197,21 @@
 		height: 50%;
 		width: 50%;
 		float: left;
+	}
+	/** 배경 레이어의 위치, 크기, 투명도 지정 > 기본적으로 표시되지 않도록 설정 */
+	div#glayLayer {
+		z-index : 2;
+		display: none; position: fixed; left: 0; top: 0;
+		height: 100%; width: 100%; background: black;
+		filter: alpha(opacity=60); opacity: 0.60;
+	}
+	/** 이미지가 표현될 레이어를 화면 중앙에 배치 > 기본적으로 표시되지 않도록 설정 */ 
+	#overLayer {
+		height : 650px;
+		width : 684px;
+		z-index : 2;
+		display: none; position: fixed;
+		top: 50%; left: 50%;
+		text-align: center;
+		margin-top : -320px; margin-left: -340px;
 	}

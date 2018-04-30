@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
 		<typeAlias type="answer.bean.AnswerDTO" alias="answerDTO"></typeAlias>
 		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
 		<typeAlias type="inquiry.bean.InquiryDTO" alias="inquiryDTO"></typeAlias>
@@ -42,7 +43,7 @@
 		<mapper resource="mybatis/productboard-mapping.xml" />
 		<mapper resource="mybatis/member-mapping.xml" />
  		<mapper resource="mybatis/reserve-mapping.xml" />
-		
+		<mapper resource="mybatis/select-mapping.xml" />
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 
 	</mappers>

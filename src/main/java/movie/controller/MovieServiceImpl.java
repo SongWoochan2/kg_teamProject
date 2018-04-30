@@ -53,13 +53,17 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public ArrayList<MovieDTO> movieFinder(Map<String, Object> map) {
-	
 		return (ArrayList<MovieDTO>) movieDAO.movieFinder(map);
 	}
 
 	@Override
 	public int FinderTotalA(Map<String, Object> map) {
 		return movieDAO.FinderTotalA(map);
+	}
+
+	@Override
+	public int goodUpdate(int movie_code, int good) {
+		return movieDAO.goodUpdate(movie_code, good);
 	}
 	
 }

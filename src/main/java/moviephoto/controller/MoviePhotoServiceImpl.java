@@ -41,8 +41,8 @@ public class MoviePhotoServiceImpl implements MoviePhotoService{
 	}
 
 	@Override
-	public ArrayList<MoviePhotoDTO> moviePosterView(int movie_code) {
-		return (ArrayList<MoviePhotoDTO>) moviePhotoDAO.moviePosterView(movie_code);
+	public MoviePhotoDTO moviePosterView(int movie_code) {
+		return (MoviePhotoDTO) moviePhotoDAO.moviePosterView(movie_code);
 	}
 
 	

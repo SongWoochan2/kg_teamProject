@@ -57,9 +57,9 @@
 			<ul class="menu">
 				<li class="te"><a href="#">영화</a>
 					<ul class="sub">
-						<li><a href="../movie/movieChart.do">영화순위 | </a></li>
-						<li><a href="../movie/movieFinder.do?pg=1">영화검색 | </a></li>
-						<li><a href="../movie/movieReview.do">평점메인 </a></li>
+						<li><a href="/MyCGV/main/movie/movieChart.do">영화순위 | </a></li>
+						<li><a href="/MyCGV/main/movie/movieFinder.do?pg=1">영화검색 | </a></li>
+						<li><a href="/MyCGV/main/movie/movieReview.do">평점메인 </a></li>
 					</ul></li>
 				<li class="te"><a href="reserve.do?pg=1">예매</a></li>
 				<li class="te"><a href="#">극장</a>

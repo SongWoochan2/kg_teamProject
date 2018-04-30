@@ -127,7 +127,7 @@ tbody {
 						</tr>
 						<tr>
 							<td colspan="3"><textarea class="form-control"
-									placeholder="출연배우진" maxlength="1500"
+									placeholder="출연배우진" maxlength="600"
 									style="height: 300px; resize: none;" name="appear_actor"
 									required="required"></textarea></td>
 						</tr>
