@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="/MyCGV/css/bootstrap.css" rel = "stylesheet">
-<link rel="stylesheet" href="../../css/admin/adminTemplate.css" />
+<link rel="stylesheet" href="/MyCGV/css/admin/adminTemplate.css" />
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script>
 	$(function(){
@@ -15,7 +15,6 @@
 		
 	});
 </script>
-
 	<div id = "container">
 		<div id = "topnevi">
 		<c:if test="${sessionScope.admin_id == null }">
@@ -27,7 +26,7 @@
 		</c:if>
 		</div>
 		<div id = "logo">
-			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/cgvLogo.png"></a>
+			<a href = "/MyCGV/admin/adminMain/adminMain.do"><img src = "/MyCGV/image/logo/moviet_logo3.png"></a>
 		</div>
 		<div id = "nevi">
 			<ul class = "menu">
@@ -43,7 +42,7 @@
 						<li><a href = "/MyCGV/admin/movie/movieAdmin.do?pg=1">영화관리</a></li>
 						<li><a href = "/MyCGV/theaterListForShow.do?pg=1">상영관리</a></li>
 						<li><a href = "/MyCGV/admin/theater/theaterList.do?pg=1">극장관리</a></li>
-						<li><a href = "#">스토어관리</a></li>
+						<li><a href = "/MyCGV/admin/productboard/productboardList.do?pg=1">스토어관리</a></li>
 					</ul>
 				</li>
 				<li id = "a">

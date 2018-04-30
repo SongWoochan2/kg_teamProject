@@ -6,7 +6,7 @@
 	
 	<insert id="productboardWrite" parameterType="productboardDTO">
 		INSERT INTO product 
-		VALUES(seq_board.nextval, #{product_name},#{product_cost},#{product_type},#{product_photo_addr})
+		VALUES(product_seq.nextval, #{product_name},#{product_cost},#{product_type},#{product_photo_addr})
 	</insert>
 
 	<delete id="productboardDelete" parameterType="int">
@@ -33,6 +33,16 @@
 		select count(*) from product
 	</select>
 
+
+<!-- Store -->
+	<select id="typeList" parameterType="java.lang.String"	resultType="productboardDTO">
+			select * from product 
+			where product_type=#{type} order by product_code desc
+	</select>
+	
+	<select id="productView" parameterType="int" resultType="productboardDTO">
+		SELECT * FROM product WHERE product_code = #{product_code}
+	</select>
 </mapper>
 
 

@@ -42,11 +42,15 @@ public class ReserveController {
 	
 	@RequestMapping(value="/movieList_forReserve.do")
 	public void movieList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		
 		int theater_code = 0;
 		if(request.getParameter("theater_code") != null) {
 			theater_code = Integer.parseInt(request.getParameter("theater_code"));
 		}
 		String show_date = request.getParameter("show_date");
+		if(show_date.equals("")) {
+			show_date = null;
+		}
 
 	    List<MovieDTO> list = reserveService.getMovieList(show_date, theater_code);
 
@@ -78,6 +82,9 @@ public class ReserveController {
 			movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		}
 		String show_date = request.getParameter("show_date");
+		if(show_date.equals("")) {
+			show_date = null;
+		}
 
 	    List<TheaterDTO> list = reserveService.getTheaterList(show_date, movie_code);
 
@@ -101,6 +108,45 @@ public class ReserveController {
 		return;
 	}
 
+	@RequestMapping(value="/dateList_forReserve.do")
+	public void dateList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		int movie_code = 0;
+		int theater_code = 0;
+		if(request.getParameter("movie_code") != null) {
+			movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		}
+		if(request.getParameter("theater_code") != null) {
+			theater_code = Integer.parseInt(request.getParameter("theater_code"));
+		}
+	    List<ShowPresentAllVO> list = reserveService.getDateList(movie_code, theater_code);
+
+		JSONArray show_list = new JSONArray();
+		for(ShowPresentAllVO tmp : list) {
+			JSONObject show = new JSONObject();
+			show.put("show_date", tmp.getShow_date());
+			show.put("show_time", tmp.getShow_time());
+			show.put("show_minute", tmp.getShow_minute());
+			show.put("movie_name", tmp.getMovie_name());
+			show.put("movie_recycle_time", tmp.getMovie_recycle_time());
+			show.put("movie_director", tmp.getMovie_director());
+			show.put("show_present_code", tmp.getShow_present_code());
+			show.put("show_place_code", tmp.getShow_place_code());
+			show.put("show_place_name", tmp.getShow_place_name());
+			show_list.add(show);
+		}
+		
+		JSONObject json = new JSONObject();
+		json.put("shows", show_list);
+		
+		try {
+			response.getWriter().println(json.toJSONString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
+
 	@RequestMapping(value="/showList_forReserve.do")
 	public void showList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
@@ -109,9 +155,13 @@ public class ReserveController {
 			movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		}
 		if(request.getParameter("theater_code") != null) {
-			movie_code = Integer.parseInt(request.getParameter("theater_code"));
+			theater_code = Integer.parseInt(request.getParameter("theater_code"));
 		}
-	    List<ShowPresentAllVO> list = reserveService.getShowList(movie_code, theater_code);
+		String show_date = request.getParameter("show_date");
+		if(show_date.equals("")) {
+			show_date = null;
+		}
+	    List<ShowPresentAllVO> list = reserveService.getShowList(movie_code, theater_code, show_date);
 
 		JSONArray show_list = new JSONArray();
 		for(ShowPresentAllVO tmp : list) {

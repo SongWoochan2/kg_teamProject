@@ -8,19 +8,21 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+(function ($) {
    $(function() {
 /*         $('#go_edit_profile').on('click', function () {
             var win = window.open("./editProfileForm.do", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
             win.focus();
         }); */
-
+        
         var originImgAddr = $("#origin_img_addr").val();
-        if(originImgAddr == null || originImgAddr == 'none.png' || originImgAddr.includes("none.")) {
-        	$(".profileImg > img").attr('src', '../image/profile/none.png');
+        if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
+        	$(".profileImg > img").attr("src", "../image/profile/none.png");
         } else {
-        	$(".profileImg > img").attr('src', '../image/profile/'+$(this));
+        	$(".profileImg > img").attr("src", "../image/profile/"+originImgAddr);
         }
     });
+})(jQuery);
 </script>
 </head>
 <body>
@@ -35,27 +37,28 @@ pageEncoding="UTF-8"%>
 				<div class="profileInfo">
 					<div class="personInfo">
 						<strong id="strong_tag1">${memberDTO.member_name}테스트</strong><strong>님</strong>&nbsp;<em>${memberDTO.member_id}
-						테스트다</em>
-						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}테스트닉네임</i></span>&nbsp;
+						</em>
+						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
 						<a class="a_tag1" href="editProfileForm.do"><strong>나의 프로필 수정</strong></a>
 					</div>
 					<div class="gradeInfo">
 						<p id="p_tag1">                     
-	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}테스트등급</strong>등급 입니다.             
+	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}테스트</strong>등급 입니다.             
 	                    </p>
                     </div>
 				</div>
 			</div>
 			<div class="benefit">
 				<div class="point">
-	        		<a class="a_tag1" href="myPointList.do"><strong>MoveIt POINT 더보기</strong></a>
+	        		<a class="a_tag1" href="myPointList.do?p=1">MoveIt POINT 더보기</a>
 	        		<ul>
 	        			<li>
 	        				<strong>사용가능 MoveIt 포인트</strong>
-	        				<span><em class="txt-maroon">${memberDTO.saving_point}테스트점</em> 점</span>
+	        				<span><em class="txt-maroon">${memberDTO.saving_point}</em> 점</span>
 	        			</li>
 	        		</ul>
         		</div>
+        		<div id="theater_class_bottom">
 				<div class="favorite-theater"><strong>자주가는 영화관</strong></div>
 				
 				<div class="theater_class">
@@ -73,6 +76,6 @@ pageEncoding="UTF-8"%>
 				</div>
 			</div>
 		</div>
-
+		</div>
 </body>
 </html>

@@ -81,22 +81,22 @@ pageEncoding="UTF-8"%>
 							<p id="tbl_info_txt">체크(<span id="star">*</span>)된 항목은 필수 입력 사항입니다.</p>
 							<table cellspacing="0" cellpadding="0" border="1">
 								<tbody>
-									<tr>
+									<!--  <tr>
 										<th>임시 아이디</th>
-										<td colspan="3"><input type="text"name="inquiry_id" value="jin">
+										<td colspan="3"><input type="text"name="inquiry_id" value="jinhwanea">
 										</td>
-									</tr>
+									</tr> -->
 									<tr>
 										<th>이름</th>
-										<td colspan="3"><input type="text"name="member_name" value="${member_name }" ></td>
+										<td colspan="3"><input type="text"name="member_name" value="${memberDTO.member_name }" ></td>
 									</tr>
 									<tr>
 										<th>휴대전화</th>
-										<td colspan="3"><input type="text"name="member_phone" value="${member_phone }" ></td>
+										<td colspan="3"><input type="text"name="member_phone" value="${memberDTO.member_phone }" ></td>
 									</tr>
 									<tr>
 										<th>이메일</th>
-										<td colspan="3"><input type="text"name="member_email" value="${member_email }" ></td>
+										<td colspan="3"><input type="text"name="member_email" value="${memberDTO.member_email }" ></td>
 									</tr>
 									<tr id="check_info">
 										<td colspan="4">

@@ -1,0 +1,398 @@
+@charset "UTF-8";
+/* Nanum Gothic --------------------------------------------------------------*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/* -------------------------------------------------------------------- RESET */
+body{
+	background-color:#FDFCF0;
+}
+html,body{
+	margin:0;padding:0;border:0;
+}
+body{
+	height:100%;font-size:12px;font-family:'Dotum','돋움','굴림',Sans-serif;
+}
+div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,form,fieldset,p{
+	margin:0;padding:0;font-size:12px;font-weight:normal;vertical-align:top;list-style:none
+}
+table{
+	border-collapse:collapse;border-spacing:0
+}
+select{
+	height:20px;padding:1px;font-size:11px;font-family:'Dotum','돋움','굴림'
+}
+fieldset,dl,dd,dt,img{
+	border:0;vertical-align:top
+}
+address,em{
+	font-style:normal
+}
+hr,legend,caption{
+	display:none
+}
+button,label{
+	cursor:pointer
+}
+.cf:before,.cf:after{
+	content: " "; /* 1 */display: table; /* 2 */
+}
+.cf:after{
+	clear: both;
+}
+.cf{
+	*zoom: 1;
+}
+.blind_txt{
+	font-size:20px;line-height:1;
+}
+/* giftshop_wrap */ 
+.giftshop_wrap {
+	position: relative;
+	width: 980px;	
+	font-family:'나눔고딕', NanumGothic, 'Nanum Gothic';
+	margin: 30px auto;
+}
+
+/* order section */
+.order_section {
+	width: 100%;
+}
+
+.order_detail {
+	width: 978px;
+	height: 185px;
+	margin: 10px 0;
+	border:1px solid black;
+}
+
+.order_detail dl {
+	display: block;
+	position: absolute;
+	width: 700px;
+	top: 100px;
+	left: 280px;
+	color: black;
+}
+.order_detail dd {
+	float: left;
+	width : 285px;
+	font-size: 30px;
+	font-weight: 700;	
+}
+
+.order_detail .item_name {
+	width: 245px;
+	margin-right: 40px;
+}
+
+.order_detail .item_detail {
+	font-size :12px;
+	word-spacing: 0px;
+	text-indent: 2px;
+}
+
+
+
+.order_detail .price_normal {
+	width: 245px;
+}
+
+.order_detail .price_same {
+	width: 193px;
+	text-decoration: none;
+}
+
+
+.giftshop_wrap .title{
+	width: 980px;
+	height: 40px;
+	background: #222;
+	margin : 20px 0;
+}
+
+.giftshop_wrap .title img {
+	margin: 12px 15px;
+}
+
+/* 분리 선 */
+.line_sp_contact {
+	width: 100%;
+	margin-top: 20px;
+	background-color: #222;
+	height: 2px;	
+}
+
+
+/* contact section */
+.contact_section {
+	padding-bottom: 10px;
+}
+
+.contact_section .sender {
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+.contact_section .sender_row {
+	position: relative;
+	margin: 10px 0;
+	width: 100%;
+}
+
+.contact_section .sender dt,
+.contact_section .sender dd {
+	height: 30px;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;	
+	color:black;
+}
+
+.contact_section .col_sender_name{
+	line-height: 30px;
+	font-size: 15px;
+	font-weight: 700;
+	width: 105px;
+}
+.contact_section .col_sender_name span{
+	height: 17px;
+	width: 1px;
+	background: silver;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;		
+	margin: 0 30px;
+	vertical-align: middle;
+}
+.contact_section .col_phone1 {
+	width: 96px;
+}
+
+.contact_section .col_phone2 {
+	width: 240px;
+}
+
+.contact_section .col_label.name {
+	width: 49px;
+}
+
+.contact_section .col_label.phone {
+	width: 70px;
+}
+
+.contact_section .col_label.qty {
+	width: 30px;
+	margin-left: 70px;
+}
+
+.contact_section .col_label img {
+	position: absolute;
+	top: 50%;
+	margin-top: -7px;
+}
+
+.contact_section input[type=text] {	
+	height: 27px;
+	line-height: 27px;
+	font-size: 12px;
+	border: 1px solid silver;
+	width: 88px;
+	padding-left:8px;
+	font-family:'나눔고딕', NanumGothic, 'Nanum Gothic';
+}
+.contact_section .dash {
+	color: #222;
+	margin: 0 5px;
+	vertical-align: middle;
+}
+
+.contact_section .receiver_row {
+	position: relative;
+	width: 100%;
+	padding: 15px 0;
+	border-bottom: 1px solid silver; 
+}
+
+/*  셀렉트 박스 for phone */
+.contact_section .select_phone1_wrap {
+	position: absolute;
+	width: 96px;
+	height: 28px;
+	overflow: hidden;
+	z-index: 100;
+}		
+
+.contact_section .select_phone1_over {
+	width:96px;
+	height:29px;
+	background:url(http://img.cgv.co.kr/images/gift/1404_new/select_phone.png) no-repeat 0 0;
+	overflow:hidden;
+}
+
+.contact_section .select_phone1_over span {
+	display:block;
+	width:96px;
+	padding-left:10px;
+	line-height:29px;
+	overflow:hidden;
+	font-size:12px;
+	color:#666;
+}
+
+.contact_section .select_phone1 {
+	opacity:0;filter:alpha(opacity=0);*zoom:1.9;
+	width: 96px;
+	height: 29px;	
+	-webkit-appearance: none;
+	-moz-appearance: none;	
+	display: block;
+	overflow: hidden;
+	font-size:15px;
+}
+
+/* select box for quantity */
+.contact_section .select_qty_wrap {
+	width: 74px;
+	height: 28px;
+	overflow: hidden;
+	z-index: 100;
+	position: absolute;
+}		
+
+.contact_section .select_qty_over {
+	width:74px;
+	height:28px;
+	background:url(http://img.cgv.co.kr/images/gift/1404_new/select_qty.png) no-repeat 0 0;
+	left:25px;
+	overflow:hidden;
+}
+
+.contact_section .select_qty_over span {
+	display:block;
+	width:74px;
+	padding-left:10px;
+	line-height:29px;
+	display:block;
+	overflow:hidden;
+	font-size: 12px;
+		
+}
+
+.contact_section .select_qty {
+	opacity:0;filter:alpha(opacity=0);*zoom:1.9;
+	width: 74px;
+	height: 29px;	
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	display: block;
+	overflow: hidden;
+	font-size:15px;
+}
+
+
+
+.contact_section .receiver_row dt,
+.contact_section .receiver_row dd {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	
+}
+
+.chk-group > * {vertical-align:middle;}
+.contact_section .receiver_row dd .chk-group {line-height:30px;}
+
+.contact_section .col_receiver_num {
+	font-size:15px;
+	font-weight: 700;
+	width: 35px;
+	line-height: 30px;
+	
+}
+
+.contact_section .receiver {
+	margin-top: 30px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.contact_section .receiver p.alert {margin-top:10px; color:#333333; font-size:12px; font-family:'NanumBarunGothicBold';}
+
+.contact_section .col_qty {
+	width: 80px;
+}
+
+.contact_section .col_btn_reset {
+	width: 285px;
+	text-align: right;
+}
+
+.contact_section .sum {
+	line-height: 60px;
+	text-align: right;
+
+}
+
+.contact_section .sum p {
+	font-size:17px;
+	/* font-weight: 700; */
+}	
+	
+.contact_section .sum  .total{
+	color: black;
+	font-size:19px;
+	font-weight: 800 !important;
+}	
+
+
+	 
+.guide_area {
+	border:1px solid silver;
+	position: relative;
+	width: 978px;
+    padding-bottom:30px;
+	margin-bottom: 100px;
+}
+
+.guide_title {
+	display: block;
+	position: absolute;
+	top: 30px;
+	left: 40px;
+	font-size:15px;
+	font-weight: 700;
+}
+
+.guide_sp_line {
+	width: 1px;
+	height: 70%;
+	background: silver;
+	position: absolute;
+	left: 130px;
+	top: 30px;
+    display:none
+}
+
+.guide_txt {	
+    border-left:1px solid silver;
+    padding:0 30px;
+	margin-left: 150px;
+	margin-top: 30px;
+	line-height: 1.5em;
+}
+
+.guide_txt > li {
+	list-style: disc;
+}
+
+.guide_txt > li ol > li {
+	list-style: decimal;
+	margin-left:15px;
+}
+
+.guide_txt > li .round {line-height:15px;}
+
+
+.gs2_ls_none {
+	list-style: none !important;
+}
+
