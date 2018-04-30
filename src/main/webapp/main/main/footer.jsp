@@ -36,7 +36,7 @@
 			</div>	
 		</div>
 		<div id="footer_bottom_img">
-			<img id="footer_bottom_img_img" src="/MyCGV/image/footer/foot.png">
+			<img src="/MyCGV/image/footer/foot.png">
 		</div>		
 	</div>
 </div>

@@ -58,19 +58,18 @@
 		
 		<div class="wish_right_div">
 			<div id="wish_right_div_lefttop">
-				<strong class="wish_right_div_strong">위시리스트</strong> 0건	
+				<strong class="wish_right_div_strong">내가본영화</strong> 0건	
 			</div>
 			
 			<div id="wish_right_div_righttop">
 				<select>
-      		 		<option value="서버로 넘길 값"> 등록일순 </option>
-       			 	<option value="서버로 넘길 값"> 개봉일순 </option>
+      		 		<option value="서버로 넘길 값"> 전체 </option>
    			 	</select>
    			 <input type="button" value="GO">
 			</div>
 			<div id="wish_right_div_div">
-				<strong class="wish_right_div_strong">위시리스트가 없습니다.<br>
-				무비차트 영화포스터에서 영화 찜하기를 눌러 위시영화를 추가해보세요.</strong>
+				<strong class="wish_right_div_strong">CGV에서 관람하신 영화가 없습니다. 오늘 영화 한 편 어떠세요?
+				</strong>
 			</div>
 		</div>
 	</div>
