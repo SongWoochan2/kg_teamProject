@@ -81,6 +81,24 @@
  		ORDER BY show_present.show_date asc, show_place.theater_code asc, show_present.show_place_code asc,  show_present.show_time asc
 	</select>
 	
+	<!-- 영화별 좌석 예매수 -->
+	<select id="reserveRate">
+	select movie_code, count(*) as reserve_num 
+	from 	(select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
+			from nonmember_reserve rr, show_present ss
+			where rr.show_present_code = ss.show_present_code
+			AND ss.show_date >= sysdate-7
+
+			UNION ALL
+			
+			select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
+			from member_reserve rr, show_present ss
+			where rr.show_present_code = ss.show_present_code
+			AND ss.show_date >= sysdate-7
+
+			) as reserve
+	group by movie_code
+	</select>
 	
 	
 	

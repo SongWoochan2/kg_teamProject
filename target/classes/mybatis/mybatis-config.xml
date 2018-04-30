@@ -23,6 +23,7 @@
 		<typeAlias type="showPresent.bean.ShowPresentVO" alias="showPresentVO"></typeAlias>
 		<typeAlias type="showPresent.bean.ShowPresentAllVO" alias="showPresentAllVO"></typeAlias>
 		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
+		<typeAlias type="productpay.bean.ProductPayDTO" alias="productPayDTO"></typeAlias>
 		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
  		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
  		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
@@ -36,8 +37,11 @@
 	<mappers>
 <<<<<<< HEAD
 		<!-- 진환 -->
+<<<<<<< HEAD
 =======
 >>>>>>> 50de11c8464ac903d5d125ede4aeb8f0862a2f8f
+=======
+>>>>>>> 654e9409725024b0f06bb13532d50cd3919cd468
 		<mapper resource="mybatis/answer-mapping.xml"/>
 		<mapper resource="mybatis/inquiry-mapping.xml"/>
 		<mapper resource="mybatis/noticeItem-mapping.xml"/>

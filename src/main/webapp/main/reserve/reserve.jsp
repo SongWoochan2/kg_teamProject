@@ -321,6 +321,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
+					alert(JSON.stringify(json));
 					//alert(JSON.stringify(json.shows));
 					var month_count = 0;
 					var date_count = 0;
@@ -464,6 +465,7 @@
 	<script type="text/x-jquery-tmpl" id="movieTT">
 		<div class="movie_item">
 			<div class="movie_code" data="\${movie_code }">
+				<input type='hidden
 				<label><input type="radio" class="movie_choice" name="movie_code" value="\${movie_code }">\${movie_name }</label>
 			</div>
 		</div>
