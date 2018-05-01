@@ -1,36 +1,30 @@
 package reserve.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.xml.bind.ParseConversionEvent;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MovieDTO;
-import reserve.bean.ReserveDTO;
+import moviephoto.bean.MoviePhotoDTO;
+import moviephoto.controller.MoviePhotoService;
 import resource.provider.ResourceProvider;
+import showPlace.bean.SeatSize;
+import showPlace.bean.SeatVO;
+import showPlace.bean.ShowPlaceVO;
+import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
+import showPresent.controller.ShowPresentService;
 import theater.bean.TheaterDTO;
+import theater.controller.TheaterService;
 
 @Controller
 public class ReserveController {
@@ -38,12 +32,64 @@ public class ReserveController {
 	@Autowired
 	private ReserveService reserveService;
 	@Autowired
+	private ShowPresentService showPresentService;
+	@Autowired
+	private ShowPlaceService showPlaceService;
+	@Autowired
+	private MoviePhotoService moviePhotoService;
+	@Autowired
+	private TheaterService theaterService;
+	@Autowired
 	private ResourceProvider resourceProvider;
 	
 	@RequestMapping(value="/reserve.do")
 	public String reserve(HttpServletRequest request, HttpServletResponse response) {
 		return "/main/reserve/reserve.jsp";
 	}
+	
+	@RequestMapping(value="/SeatView_ForReserve.do")
+	public ModelAndView SeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
+
+		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
+		ShowPresentAllVO showPresentAllVO = showPresentService.getShowPresentOne(show_present_code);
+		
+		int movie_code = showPresentAllVO.getMovie_code();
+		int show_place_code = showPresentAllVO.getShow_place_code();
+		
+		List<SeatVO> seatList = showPlaceService.seatList(show_place_code);
+		JSONObject json = new JSONObject();
+		JSONArray list = new JSONArray();
+		for(SeatVO seatVO : seatList) {
+			JSONObject seat_json = new JSONObject();
+			seat_json.put("x_index", seatVO.getX_index());
+			seat_json.put("y_index", seatVO.getY_index());
+			seat_json.put("seat_type_code", seatVO.getSeat_type_code());
+			list.add(seat_json);
+		}
+		json.put("seat", list);
+		
+		SeatSize size = showPlaceService.seatSize(show_place_code);
+		int seat_num = showPlaceService.getTotal(show_place_code);
+		String theater_name = theaterService.theaterView(showPresentAllVO.getTheater_code()).getTheater_name();
+		
+		MoviePhotoDTO photo_addr = moviePhotoService.moviePosterView(movie_code);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("showPresentAllVO", showPresentAllVO);
+		modelAndView.addObject("theater_name", theater_name);
+		modelAndView.addObject("photo_addr", photo_addr.getMovie_photo_addr());
+		modelAndView.addObject("json", json.toJSONString());
+		modelAndView.addObject("seat_num", seat_num);
+		modelAndView.addObject("x_size", size.getX_size());
+		modelAndView.addObject("y_size", size.getY_size());
+		
+		modelAndView.setViewName("/main/reserve/selectSeat.jsp");
+		
+		
+		return modelAndView;
+	}
+	
+	
 	
 	@RequestMapping(value="/movieList_forReserve.do")
 	public void movieList_forReserve(HttpServletRequest request, HttpServletResponse response) {

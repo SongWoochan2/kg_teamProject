@@ -355,6 +355,21 @@ increment by 1
 nocache
 nomaxvalue;
 
+
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 11, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 12, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 13, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+
 ---------------------------------------------
 
 

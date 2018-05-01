@@ -37,6 +37,10 @@ public class ShowPlaceService {
 		return showPlaceDAO.selectList(theater_code);
 	}
 
+	public List<ShowPlaceVO> selectListWithSeat(int theater_code) {
+		return showPlaceDAO.selectListWithSeat(theater_code);
+	}
+
 	/////////   seat
 	public int insertSeat(SeatVO seatVO) {
 		return showPlaceDAO.insertSeat(seatVO);
