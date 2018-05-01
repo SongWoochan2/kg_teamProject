@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
 					<pre>${inquiryDTO.inquiry_content }</pre>
 				</td>
 			</tr>
-			<c:if test="${inquiryDTO.inquiry_status!=0 }">
+			<c:if test="${inquiryDTO.inquiry_status>0 }">
 				<tr>
 					<th>답변 이메일</th>
 					<td colspan="3"><input type="text" id="answer_email" value="${memberDTO.member_email }">
@@ -88,7 +88,9 @@ pageEncoding="UTF-8"%>
 		</c:if>
 		<c:if test="${admin_id != null }">
 			<input type="button" value="목록" onclick="location.href='../../admin/answer/inquiryListAdmin.do?pg=${param.pg}'">
-			<input type="submit" value="답변">
+				<c:if test="${inquiryDTO.inquiry_status==0 }">
+					<input type="submit" value="답변">
+				</c:if>
 		</c:if>
 		<br><br>
 		<input type="button" value="메인으로" onclick="location.href='/MyCGV/admin/clientCenter/clientCenterMain.jsp'">
