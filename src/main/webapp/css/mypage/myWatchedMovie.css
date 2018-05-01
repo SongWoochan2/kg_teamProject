@@ -1,0 +1,32 @@
+@charset "UTF-8";
+div.movielog-detail-wrap {
+	padding-left:20px;
+	/* border: 1px solid blue; */
+	width: 80%;
+	height: 100%;
+	float: left;
+}
+
+div.tit-mypage h {
+	width:200px;
+	float:left;
+	margin: 0;
+	padding: 0;
+}
+
+div.set-combo {
+	margin:0;
+	padding:0;
+	width:110px;
+	float: right;
+}
+
+div.sect-movielog-lst {
+	/* border: 1px solid red; */
+	width: 800px;
+	height: 300px;	
+	margin: auto;
+	margin-top: 100px;
+	padding-top:100px;
+	text-align: center;
+}

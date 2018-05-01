@@ -3,19 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberReserve">
+	<!-- 예매내역 -->
 	<select id="getReserveCodes" parameterType="java.util.Map" resultType="int">
-		<![CDATA[select * from 
+		<![CDATA[select reserve_code from 
 			(select rownum rn,tt.* from 
 			(select reserve_code from member_reserve
 			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
-			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date+0.5)
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate <= show_date)
 			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
 	<select id="getTotalVal" parameterType="String" resultType="int">
 		<![CDATA[select count(*) from member_reserve
 			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
-			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date+0.5)]]>
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate <= show_date)]]>
 	</select>
 	
 	<select id="getAllReserveList" parameterType="int" resultType="memberReserveListDTO">
@@ -38,56 +39,47 @@
       		AND sp2.theater_code = th.theater_code]]>
 	</select>
 	
+	<select id="countSeats" parameterType="int" resultType="int">
+		select NVL2(MEMBER_SEAT1, 1, 0)+NVL2(MEMBER_SEAT2, 1, 0)+NVL2(MEMBER_SEAT3, 1, 0)+NVL2(MEMBER_SEAT4, 1, 0)
+				+NVL2(MEMBER_SEAT5, 1, 0)+NVL2(MEMBER_SEAT6, 1, 0)+NVL2(MEMBER_SEAT7, 1, 0)+NVL2(MEMBER_SEAT8, 1, 0)  
+		from member_reserve where reserve_code=#{reserve_code}
+	</select>
+	
+	<!-- 예매 취소 -->
+	<update id="memReserveCancle" parameterType="int">
+		update member_reserve set reserve_cancle_able='y',reserve_date=sysdate where reserve_code=#{reserve_code}
+	</update>
+	
+	<!-- 취소내역 -->
 	<select id="getCancleCodes" parameterType="java.util.Map" resultType="int">
-		<![CDATA[select * from 
+		<![CDATA[select reserve_code from 
 			(select rownum rn,tt.* from 
 			(select reserve_code from member_reserve
 			where reserve_id=#{reserve_id} and reserve_cancle_able='y' 
-			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date+0.5)
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE show_date < sysdate and sysdate <= show_date+7)
 			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
 	<select id="getTotalCancle" parameterType="String" resultType="int">
 		<![CDATA[select count(*) from member_reserve
 			where reserve_id=#{reserve_id} and reserve_cancle_able='y' 
-			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date+0.5)]]>
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE show_date < sysdate and sysdate <= show_date+7)]]>
 	</select>
 	
-<!-- 	<select id="getSomething" parameterType="int" resultType="#package.#modelname">
-		SELECT
-		columnname1,
-		columnname2,
-		columnname3
-		FROM tablename1
-		WHERE columnname1 = #{value}
+	<!-- 내가 본 영화 -->
+	<select id="getTotalWatched" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date)]]>
 	</select>
-
-	<resultMap type="#modelname" id="YourResultSet">
-		<id property="param1" column="columnname1" />
-		<result property="param2" column="columnname2" />
-		<result property="param3" column="columnname3" />
-	</resultMap>
-
-	<select id="getAll" resultMap="YourResultSet">
-		SELECT * FROM tablename1
+	
+	<select id="getWatchedCodes" parameterType="java.util.Map" resultType="int">
+		<![CDATA[select reserve_code from 
+			(select rownum rn,tt.* from 
+			(select reserve_code from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date)
+			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
-
-	<insert id="insertSomething" parameterType="#modelname">
-		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
-		VALUES(#{value1},#{value2},#{value3})
-	</insert>
-
-	<update id="updateSomething" parameterType="#modelname">
-		UPDATE tablename1
-		SET
-		columnname1=#{param1}
-		WHERE
-		columnname2 = #{param2}
-	</update>
-
-	<delete id="deleteSomething" parameterType="int">
-		DELETE FROM tablename1 WHERE
-		columnname1 = #{param1}
-	</delete> -->
 
 </mapper>
