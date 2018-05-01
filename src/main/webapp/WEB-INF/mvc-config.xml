@@ -55,6 +55,9 @@
     
 	<!-- advice : 횡단(공통)관심사항  -->
 	<bean id="loginCheckAdvice" class="advice.log.Logging"/>
+	
+	<!-- client : 횡단(공통)관심사항  -->
+	<bean id="loginCheckClient" class="client.log.Client_logging"/>
 
 	<aop:config>
 		<!-- 횡단(공통)관심사항이 설정된 advice를 등록한다. -->
@@ -66,6 +69,17 @@
 				비즈니스 메소드 실행 전후에 처리할 로직을 삽입 -->
 			<!-- around = before + after -->
 			<aop:around method="logAround" pointcut-ref="logPointCut"/>	
+		</aop:aspect>
+		
+		<!-- 횡단(공통)관심사항이 설정된 client를 등록한다. -->
+		<aop:aspect id="C_logAspect" ref="loginCheckClient">
+			<!-- 동작시킬 함수를 등록한다. -->
+			<aop:pointcut expression="execution(* hyper*(..))" id="C_logPointCut"/>
+			
+			<!-- around는 메소드의 호출자체를 가로채 
+				비즈니스 메소드 실행 전후에 처리할 로직을 삽입 -->
+			<!-- around = before + after -->
+			<aop:around method="logAround" pointcut-ref="C_logPointCut"/>	
 		</aop:aspect>
 	</aop:config>
 </beans>
