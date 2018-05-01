@@ -43,11 +43,11 @@
 	<context:component-scan base-package="memberReserve"/>
 	
 	<!-- 진환 -->
-    <context:component-scan base-package="qna.controller"/>
-    <context:component-scan base-package="noticeItem.controller"/>
-    <context:component-scan base-package="inquiry.controller"/>
-    <context:component-scan base-package="answer.controller" />
-    <context:component-scan base-package="reserve.controller" />
+    <context:component-scan base-package="qna"/>
+    <context:component-scan base-package="noticeItem"/>
+    <context:component-scan base-package="inquiry"/>
+    <context:component-scan base-package="answer" />
+    <context:component-scan base-package="reserve" />
     
     <!-- 재민 -->
     <context:component-scan base-package="productboard.controller"/>
