@@ -11,12 +11,12 @@ pageEncoding="UTF-8"%>
 		$("#form").submit(function() {
 			if (!$("#qna_title").val()) {
 				alert("제목을 입력하세요.");
-				$("#title").focus();
+				$("#qna_title").focus();
 				return false;
 			}
 			if (!$("#qna_content").val()) {
 				alert("내용을 입력하세요.");
-				$("#content").focus();
+				$("#qna_content").focus();
 				return false;
 			}
 		});
