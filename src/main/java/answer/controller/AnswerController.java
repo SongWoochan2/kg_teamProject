@@ -1,13 +1,9 @@
 package answer.controller;
 
-import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
 import java.util.List;
 
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -41,7 +37,7 @@ public class AnswerController {
 		
 		String from_mail = "cgvproject7@gmail.com";		
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		String to_mail = request.getParameter("answer_email");
+		String to_mail = request.getParameter("member_email");
 		
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		String admin_id = (String) session.getAttribute("admin_id");
@@ -72,12 +68,14 @@ public class AnswerController {
 		    } catch(Exception e){
 		      System.out.println(e);
 		    }
+		System.out.println(1);
+		inquiryService.inquiryStatus(inquiry_code);
 		 
 			modelAndView.addObject("su", su);
 			modelAndView.addObject("pg", pg);
 		 
 		
-		modelAndView.setViewName("inquiryanswer.jsp");
+		modelAndView.setViewName("inquiryAnswer.jsp");
 		
 		return modelAndView;
 	}
@@ -110,7 +108,7 @@ public class AnswerController {
 		
 		return modelAndView;
 	}
-	
+	/*
 	@RequestMapping(value="/admin/answer/answerDelete.do")
 	public ModelAndView answerDelete(HttpServletRequest request) { 
 		int answer_code = Integer.parseInt(request.getParameter("answer_code"));
@@ -123,13 +121,9 @@ public class AnswerController {
 		modelAndView.setViewName("answerDelete.jsp");
 		
 		return modelAndView;
-	}
+	}*/
 	
-	public void sendMail(    String formUrl) throws FileNotFoundException, URISyntaxException {
-
-		    
-
-		}
+	
 }
 
 
