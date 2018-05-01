@@ -63,19 +63,16 @@ button:hover:before,button:hover:after{
   transition:800ms ease all;
 }
 #productRealBody{
-	border : 1px solid red;
 	margin: 30px auto;
 	width:  1200px;
 	display: block;
 }
 #productRealBody #body_top{
-	border : 1px solid red;
 	width:  100%;
 	height:  350px;
 }
 
 #productRealBody #bady_bottom{
-	border : 1px solid red;
 	width:  100%;
 	height: 100%;
 	padding: 50px;

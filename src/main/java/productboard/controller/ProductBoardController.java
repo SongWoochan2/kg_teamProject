@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -229,7 +230,7 @@ public class ProductBoardController {
 	//pay part-----------------------------------------------------------------------------수정중;;
 	
 	@RequestMapping(value="/main/store/productPay.do")
-	public ModelAndView handleRequest_product_pay1(HttpServletRequest request) {
+	public ModelAndView hyperhandleRequest_product_pay1(HttpServletRequest request, HttpServletResponse response) {
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
 		
 		ProductBoardDTO productboardDTO = productboardService.productboardView(product_code);
