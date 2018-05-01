@@ -51,7 +51,16 @@
 		)
 		VALUES(pay_seq.nextval, #{pay_id},#{product_code},#{buy_phone},#{gift_phone1},#{gift_phone2},#{gift_phone3},#{pay_type}, sysdate,#{pay_cancle_able},#{order_num1},#{order_num2},#{order_num3})
 	</insert>
+	
+<!-- PayList -->
+	<select id="productpayList" parameterType="java.util.Map"	resultType="productpayDTO">
+		<![CDATA[select information 
+				 from  (select rownum rn, tt.* 
+				 from (select * from product_pay order by pay_code desc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
 </mapper>
+
 
 
 

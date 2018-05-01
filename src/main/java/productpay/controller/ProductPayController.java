@@ -1,6 +1,7 @@
 package productpay.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import productpay.bean.ProductPayDTO;
 
@@ -48,7 +50,12 @@ public class ProductPayController {
 							+request.getParameter("ctl00$bodyPlaceHolder$receiver3_phone2")
 							+request.getParameter("ctl00$bodyPlaceHolder$receiver3_phone3");
 		
-		String pay_type = "pay";
+		String pay_type=null;
+		if(buy_phone.equals(gift_phone1)) {
+			pay_type = "pay";
+		}else{
+			pay_type="gift";
+		}
 		
 		String pay_cancle_able = "N";
 
@@ -99,6 +106,40 @@ public class ProductPayController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
 		modelAndView.setViewName("productPayComplete.jsp");
+		return modelAndView;
+	}
+	
+	
+	
+	//-----------------------------------------------------------------------------------------------
+	// MyPage 결제 목록
+	@RequestMapping(value="")
+	public ModelAndView handleRequest_payList(HttpServletRequest request) {
+		System.out.println("결제 목록 처리");
+		
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = pg*5;		
+		int startNum = endNum-4;
+		
+		ArrayList<ProductPayDTO> list = productpayService.productpayList(startNum, endNum);
+		
+		// 페이징 처리
+		int totalA = productpayService.getTotal_A();	
+		int totalP = (totalA+4) / 5;					
+		
+		int startPage = (pg-1)/3*3+1;			
+		int endPage = startPage + 2;			
+		if(totalP < endPage) endPage = totalP;	
+		
+		// 3. 검색 결과를 세션에 저장하고 목록 화면으로 이동한다.
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("list",list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("pg", pg);
+		modelAndView.setViewName("");
 		return modelAndView;
 	}
 }
