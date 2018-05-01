@@ -6,17 +6,19 @@
 
 	<insert id="answerInsert" parameterType="answerDTO">
 		insert into answer values 
-		(answer_code_seq.nextval, #{inquiry_code}, #{admin_id},  #{member_id}, #{answer_title}, #{answer_content}, sysdate)
+		(answer_code_seq.nextval, #{inquiry_code}, #{admin_id}, #{member_id}, #{answer_title}, #{answer_content}, sysdate)
 	</insert>
 
-	
 	<select id="answerView" parameterType="int" resultType="answerDTO">
-		select * from inquiry where inaquiry_code=#{inaquiry_code}
+		select * from answer where inquiry_code=#{inquiry_code}
 	</select>
 	
 	
+
+	
+	<!-- 
 	<delete id="answerDelete" parameterType="int">
 		delete answer where answer_code=#{answer_code}
-	</delete>
+	</delete> -->
 
 </mapper>

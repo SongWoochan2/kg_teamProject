@@ -16,7 +16,7 @@
 	
 	<select id="inquiryListAdmin" parameterType="java.util.Map" resultType="inquiryDTO">
 		<![CDATA[
-		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
+		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, inquiry_file, inquiry_status,  to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
 		from (select rownum rn, tt.* 
 				from (select * from inquiry order by inquiry_code desc) tt) 
 		where rn >= #{startNum} and rn <= #{endNum}
@@ -25,7 +25,7 @@
 	
 	<select id="inquiryListMember" parameterType="java.util.Map" resultType="inquiryDTO">
 		<![CDATA[
-		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
+		select inquiry_code, inquiry_id, inquiry_type, inquiry_title, inquiry_content, inquiry_file, inquiry_status, to_char(inquiry_date, 'YYYY.MM.DD') as inquiry_date 
 		from (select rownum rn, tt.* 
 				from (select * from inquiry where inquiry_id = #{inquiry_id} order by inquiry_code desc) tt) 
 		where rn >= #{startNum} and rn <= #{endNum}
@@ -35,6 +35,10 @@
 	<select id="inquiryView" parameterType="int" resultType="inquiryDTO">
 		select * from inquiry where inquiry_code=#{inquiry_code}
 	</select>
+	
+	<update id="inquiryStatus" parameterType="int">
+		update inquiry set inquiry_status = inquiry_status + 1 where inquiry_code=#{inquiry_code}
+	</update>
 	
 	<select id="totalA" resultType="int">
 		select count(*) from inquiry

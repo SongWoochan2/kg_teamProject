@@ -30,9 +30,6 @@
 	<context:component-scan base-package="showPresent" />
 	<context:component-scan base-package="member"/>
 	<context:component-scan base-package="mypage"/>
-	<context:component-scan base-package="inquiry"/>
-	<context:component-scan base-package="qna"/>
-	<context:component-scan base-package="noticeItem"/>
 	<context:component-scan base-package="advice"/>
 	<context:component-scan base-package="reserve" />
 	<context:component-scan base-package="select"/>
@@ -74,11 +71,11 @@
       <property name="username" value="cgvproject7@gmail.com" />
       <property name="password" value="vmfhwprxm123" />
       <property name="javaMailProperties">
-         <props>
-               <prop key="mail.transport.protocol">smtp</prop>
-               <prop key="mail.smtp.auth">true</prop>
-               <prop key="mail.smtp.starttls.enable">true</prop>
-               <prop key="mail.debug">true</prop>
+		<props>
+			<prop key="mail.smtp.auth">true</prop>
+			<prop key="mail.smtp.starttls.enable">true</prop>
+			<prop key="mail.smtp.timeout">8500</prop>
+			<prop key="mail.debug">true</prop>
          </props>
       </property>
    </bean>

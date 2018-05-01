@@ -30,8 +30,9 @@ public class AnswerController {
 	private JavaMailSenderImpl mailSender;
 	
 	@RequestMapping(value="/admin/answer/inquiryAnswer.do")
-	public ModelAndView inquiryAnswer(HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException { 
+	public ModelAndView inquiryAnswer(HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException{ 
 		ModelAndView modelAndView = new ModelAndView();
+		AnswerDTO answerDTO = new AnswerDTO();
 		request.setCharacterEncoding("utf-8");
 		
 		String from_mail = "cgvproject7@gmail.com";		
@@ -44,7 +45,6 @@ public class AnswerController {
 		String answer_title = request.getParameter("answer_title");
 		String answer_content = request.getParameter("answer_content");
 		
-		AnswerDTO answerDTO = new AnswerDTO();
 		answerDTO.setInquiry_code(inquiry_code);
 		answerDTO.setAdmin_id(admin_id);
 		answerDTO.setMember_id(member_id);
@@ -53,8 +53,7 @@ public class AnswerController {
 		
 		int su = answerService.answerInsert(answerDTO);
 		
-		
-		 try {
+		try {
 		      MimeMessage message = mailSender.createMimeMessage();
 		      MimeMessageHelper messageHelper 
 		      = new MimeMessageHelper(message, true, "UTF-8");
@@ -65,15 +64,18 @@ public class AnswerController {
 		      messageHelper.setText(answer_content);  							// 메일 내용
 		     
 		      mailSender.send(message);
+		      
 		    } catch(Exception e){
 		      System.out.println(e);
 		    }
+		System.out.println(1);
+		inquiryService.inquiryStatus(inquiry_code);
 		 
 			modelAndView.addObject("su", su);
 			modelAndView.addObject("pg", pg);
 		 
 		
-		modelAndView.setViewName("inquiryanswer.jsp");
+		modelAndView.setViewName("inquiryAnswer.jsp");
 		
 		return modelAndView;
 	}
@@ -106,7 +108,7 @@ public class AnswerController {
 		
 		return modelAndView;
 	}
-	
+	/*
 	@RequestMapping(value="/admin/answer/answerDelete.do")
 	public ModelAndView answerDelete(HttpServletRequest request) { 
 		int answer_code = Integer.parseInt(request.getParameter("answer_code"));
@@ -119,7 +121,9 @@ public class AnswerController {
 		modelAndView.setViewName("answerDelete.jsp");
 		
 		return modelAndView;
-	}
+	}*/
+	
+	
 }
 
 

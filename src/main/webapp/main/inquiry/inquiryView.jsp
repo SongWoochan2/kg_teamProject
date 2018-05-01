@@ -23,42 +23,63 @@ pageEncoding="UTF-8"%>
 			</tr>
 			
 			<c:if test="${inquiryDTO.inquiry_file != null}">
-			<tr>
-				<td colspan="3">
-					첨부파일 : <a href="../../image/inquiry/${inquiryDTO.inquiry_file }">${inquiryDTO.inquiry_file }</a>
-				</td>
-			</tr>
+				<tr>
+					<td colspan="3">
+						첨부파일 : <a href="../../image/inquiry/${inquiryDTO.inquiry_file }">${inquiryDTO.inquiry_file }</a>
+					</td>
+				</tr>
 			</c:if>
 			<c:if test="${inquiryDTO.inquiry_file == null}">
-			<tr>
-				<td colspan="3">
-					첨부파일 : <span>없음</span>
-				</td>
-			</tr>
+				<tr>
+					<td colspan="3">
+						첨부파일 : <span>없음</span>
+					</td>
+				</tr>
 			</c:if>
 			<tr>
 				<td colspan="3" height="200" valign="top">
 					<pre>${inquiryDTO.inquiry_content }</pre>
 				</td>
 			</tr>
-			<c:if test="${admin_id != null }">
+			<c:if test="${inquiryDTO.inquiry_status!=0 }">
 				<tr>
 					<th>답변 이메일</th>
-					<td colspan="3"><input type="text" id="answer_email" value="${memberDTO.member_email }" name="answer_email">
+					<td colspan="3"><input type="text" id="answer_email" value="${memberDTO.member_email }">
 					</td>
 				</tr>
 				<tr>
 					<th>답변 제목</th>
-					<td colspan="3"><input type="text" id="answer_title" value="CGV의 고객 ${memberDTO.member_name }님께" name="answer_title">
+					<td colspan="3"><input type="text" id="answer_title" value="${answerDTO.answer_title }">
 					</td>
 				</tr>
 				<tr>
 					<th>답변 내용<span id="star">*</span></th>
 					<td colspan="3">
-						<textarea cols="60" rows="5" id="answer_content" name="answer_content"
-						style="height: 94px;" placeholder="답변 내용을 입력해주세요"></textarea>
+						<textarea cols="60" rows="5" id="answer_content"
+						style="height: 94px;" >${answerDTO.answer_content }</textarea>
 					</td>
 				</tr>
+			</c:if>
+			<c:if test="${inquiryDTO.inquiry_status == 0 }">
+				<c:if test="${admin_id != null }">
+					<tr>
+						<th>답변 이메일</th>
+						<td colspan="3"><input type="text" id="answer_email" value="${memberDTO.member_email }" name="member_email">
+						</td>
+					</tr>
+					<tr>
+						<th>답변 제목</th>
+						<td colspan="3"><input type="text" id="answer_title" value="CGV의 고객 ${memberDTO.member_name }님께" name="answer_title">
+						</td>
+					</tr>
+					<tr>
+						<th>답변 내용</th>
+						<td colspan="3">
+							<textarea cols="60" rows="5" id="answer_content" name="answer_content"
+							style="height: 94px;" placeholder="답변 내용을 입력해주세요"></textarea>
+						</td>
+					</tr>
+				</c:if>
 			</c:if>
 		</table>
 		<c:if test="${inquiry_id == inquiryDTO.inquiry_id }">
