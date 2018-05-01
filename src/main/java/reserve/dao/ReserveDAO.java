@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import movie.bean.MovieDTO;
 import reserve.bean.ReserveDTO;
+import reserve.bean.ReservedSeatVO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
 
@@ -21,26 +22,6 @@ public class ReserveDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<ReserveDTO> reserveList(String show_date, int theater_code) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		if(show_date != null) {
-			map.put("show_date", show_date);	
-		}
-		if(theater_code != 0) {
-			map.put("theater_code", theater_code);			
-		}
-		return sqlSession.selectList("mybatis.reserveMapper.reserveList", map);
-	}
-	
-	public int getTotalA() {
-		return sqlSession.selectOne("mybatis.reserveMapper.getTotalA");
-	}
-	
-	public ReserveDTO reserveView(int show_present_code) {
-		return sqlSession.selectOne("mybatis.reserveMapper.reserveView", show_present_code);
-	}
-	
 	
 	
 	
@@ -88,6 +69,15 @@ public class ReserveDAO {
 		return sqlSession.selectList("mybatis.reserveMapper.showList", map);
 	}
 	
+
+	public List<ReservedSeatVO> getreservedSeats_list() {
+		return sqlSession.selectList("mybatis.reserveMapper.getreservedSeats_list");
+	}
+	
+
+	public List<ReservedSeatVO> getreservedSeats(int show_present_code) {
+		return sqlSession.selectList("mybatis.reserveMapper.getreservedSeats", show_present_code);
+	}
 	
 	
 }

@@ -468,8 +468,8 @@ create table seat(
   FOREIGN KEY (seat_type_code) REFERENCES seat_type(seat_type_code)
 );
 
-insert into seat values( 1, 2, 2, '!');
-insert into seat values( 1, 2, 5, '!');
+insert into seat values( 1, 0, 2, '!');
+insert into seat values( 1, 0, 5, '!');
 insert into seat values( 1, 2, 1, 'A');
 insert into seat values( 1, 2, 2, 'A');
 insert into seat values( 1, 2, 3, 'A');
@@ -506,8 +506,8 @@ insert into seat values( 1, 2, 5, 'E');
 insert into seat values( 1, 2, 6, 'E');
 insert into seat values( 1, 2, 7, 'E');
 
-insert into seat values( 2, 2, 1, '!');
-insert into seat values( 2, 2, 3, '!');
+insert into seat values( 2, 0, 1, '!');
+insert into seat values( 2, 0, 3, '!');
 insert into seat values( 2, 2, 1, 'A');
 insert into seat values( 2, 2, 2, 'A');
 insert into seat values( 2, 2, 3, 'A');
@@ -524,6 +524,77 @@ insert into seat values( 2, 2, 1, 'D');
 insert into seat values( 2, 2, 2, 'D');
 insert into seat values( 2, 2, 3, 'D');
 insert into seat values( 2, 2, 4, 'D');
+
+insert into seat values( 3, 0, 2, '!');
+insert into seat values( 3, 2, 1, 'A');
+insert into seat values( 3, 2, 2, 'A');
+insert into seat values( 3, 2, 3, 'A');
+insert into seat values( 3, 2, 4, 'A');
+insert into seat values( 3, 2, 1, 'B');
+insert into seat values( 3, 2, 2, 'B');
+insert into seat values( 3, 2, 3, 'B');
+insert into seat values( 3, 2, 4, 'B');
+insert into seat values( 3, 3, 1, 'C');
+insert into seat values( 3, 3, 2, 'C');
+insert into seat values( 3, 3, 3, 'C');
+insert into seat values( 3, 3, 4, 'C');
+insert into seat values( 3, 2, 1, 'D');
+insert into seat values( 3, 2, 2, 'D');
+insert into seat values( 3, 2, 3, 'D');
+insert into seat values( 3, 2, 4, 'D');
+insert into seat values( 3, 2, 1, 'E');
+insert into seat values( 3, 2, 2, 'E');
+insert into seat values( 3, 2, 3, 'E');
+insert into seat values( 3, 2, 4, 'E');
+
+insert into seat values( 4, 0, 2, '!');
+insert into seat values( 4, 2, 1, 'A');
+insert into seat values( 4, 2, 2, 'A');
+insert into seat values( 4, 2, 3, 'A');
+insert into seat values( 4, 2, 4, 'A');
+insert into seat values( 4, 2, 1, 'B');
+insert into seat values( 4, 2, 2, 'B');
+insert into seat values( 4, 2, 3, 'B');
+insert into seat values( 4, 2, 4, 'B');
+insert into seat values( 4, 3, 1, 'C');
+insert into seat values( 4, 3, 2, 'C');
+insert into seat values( 4, 3, 3, 'C');
+insert into seat values( 4, 3, 4, 'C');
+insert into seat values( 4, 2, 1, 'D');
+insert into seat values( 4, 2, 2, 'D');
+insert into seat values( 4, 2, 3, 'D');
+insert into seat values( 4, 2, 4, 'D');
+
+insert into seat values( 5, 0, 1, '!');
+insert into seat values( 5, 0, 3, '!');
+insert into seat values( 5, 2, 1, 'A');
+insert into seat values( 5, 2, 2, 'A');
+insert into seat values( 5, 2, 3, 'A');
+insert into seat values( 5, 2, 4, 'A');
+insert into seat values( 5, 3, 1, 'B');
+insert into seat values( 5, 3, 2, 'B');
+insert into seat values( 5, 3, 3, 'B');
+insert into seat values( 5, 3, 4, 'B');
+insert into seat values( 5, 3, 1, 'C');
+insert into seat values( 5, 3, 2, 'C');
+insert into seat values( 5, 3, 3, 'C');
+insert into seat values( 5, 3, 4, 'C');
+insert into seat values( 5, 2, 1, 'D');
+insert into seat values( 5, 2, 2, 'D');
+insert into seat values( 5, 2, 3, 'D');
+insert into seat values( 5, 2, 4, 'D');
+
+insert into seat values( 6, 0, 1, '!');
+insert into seat values( 6, 0, 2, '!');
+insert into seat values( 6, 2, 1, 'A');
+insert into seat values( 6, 2, 2, 'A');
+insert into seat values( 6, 2, 3, 'A');
+insert into seat values( 6, 2, 1, 'B');
+insert into seat values( 6, 2, 2, 'B');
+insert into seat values( 6, 2, 3, 'B');
+insert into seat values( 6, 3, 1, 'C');
+insert into seat values( 6, 3, 2, 'C');
+insert into seat values( 6, 3, 3, 'C');
 
 --------------------------------------------------
 
@@ -584,7 +655,7 @@ insert into member_reserve values(
   member_reserve_seq.nextval, 'aaa', 1, 'A-1', 'H-5', null, null, null, null, null, null, 20000, sysdate, 'n'
 ); 
 insert into member_reserve values(
-  member_reserve_seq.nextval, 'aaa', 1, 'B-5', null, null, null, null, null, null, null, 20000, sysdate, 'n'
+  member_reserve_seq.nextval, 'aaa', 1, 'B-3', null, null, null, null, null, null, null, 20000, sysdate, 'n'
 ); 
 
 -------------------------------------------------------
@@ -594,7 +665,7 @@ create table nonmember_reserve(
   nonmember_reserve_code int,
   nonmember_code int,
   show_present_code int,
-  member_seat1 varchar(20) not null,
+  nonmember_seat1 varchar(20) not null,
   nonmember_seat2 varchar(20),
   nonmember_seat3 varchar(20),
   nonmember_seat4 varchar(20),
@@ -622,4 +693,36 @@ nomaxvalue;
 
 -------------------------------------------------------------  (5)
 
+-- 영화 포스터 뷰
+create view movie_poster as 
+  SELECT movie_code, movie_photo_addr  FROM movie_photo 
+  WHERE movie_photo_code IN (
+      SELECT max(movie_photo_code) movie_photo_code FROM movie_photo 
+      where movie_photo_addr like 'poster_' || '%' GROUP BY movie_code
+      );
+      
+-- 상영정보 뷰 : 상영현황 + 영화 + 상영관
+create view show_all as 
+    SELECT * FROM show_place join (
+        SELECT * FROM show_present join movie USING (movie_code)
+        ) tt USING (show_place_code);
+          
+          
+-- 상영상세정보 뷰 : 상영정보 + 영화관 이름 + 포스터
+create view show_fully as 
+      SELECT * FROM theater join (
+          SELECT * FROM show_all join movie_poster USING (movie_code)
+          ) tt USING (theater_code);
+      select * from show_fully;
+
+
+-- 예약 좌석 뷰
+create view reserved_seat as 
+SELECT show_present_code, count(*) AS reserve_num 
+		FROM ( SELECT show_present_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserved_num 
+				FROM nonmember_reserve
+				UNION ALL
+				SELECT show_present_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserved_num 
+				FROM member_reserve )
+		GROUP BY show_present_code ;
 

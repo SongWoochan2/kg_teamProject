@@ -482,9 +482,7 @@
 			getDateList();
 			
 			
-			
-			
-			getSeatSelector();
+			getSeatSelector(1);
 			
 			$("input.reset_choice").click(function(){
 				var choice = $(this).parent().parent().find("input[type='radio']:checked");

@@ -1,7 +1,9 @@
 package reserve.controller;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,14 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MovieDTO;
-import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
+import reserve.bean.ReservedSeatVO;
 import resource.provider.ResourceProvider;
-import showPlace.bean.SeatSize;
 import showPlace.bean.SeatVO;
-import showPlace.bean.ShowPlaceVO;
 import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
+import showPresent.bean.ShowPresentSuperVO;
 import showPresent.controller.ShowPresentService;
 import theater.bean.TheaterDTO;
 import theater.controller.TheaterService;
@@ -47,41 +48,95 @@ public class ReserveController {
 		return "/main/reserve/reserve.jsp";
 	}
 	
+	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/SeatView_ForReserve.do")
 	public ModelAndView SeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
-
+		System.out.println(request.getParameter("show_present_code"));
 		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
-		ShowPresentAllVO showPresentAllVO = showPresentService.getShowPresentOne(show_present_code);
 		
-		int movie_code = showPresentAllVO.getMovie_code();
-		int show_place_code = showPresentAllVO.getShow_place_code();
+		
+		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
+		
+		
+		int show_place_code = showPresentSuperVO.getShow_place_code();
 		
 		List<SeatVO> seatList = showPlaceService.seatList(show_place_code);
 		JSONObject json = new JSONObject();
 		JSONArray list = new JSONArray();
+		
+		Set<Integer> x_set = new HashSet<>();
+		Set<String> y_set = new HashSet<>();
+		int seat_num = 0;
 		for(SeatVO seatVO : seatList) {
 			JSONObject seat_json = new JSONObject();
-			seat_json.put("x_index", seatVO.getX_index());
-			seat_json.put("y_index", seatVO.getY_index());
-			seat_json.put("seat_type_code", seatVO.getSeat_type_code());
+			int x_index = seatVO.getX_index();
+			String y_index = seatVO.getY_index();
+			int seat_type_code =  seatVO.getSeat_type_code();
+			
+			x_set.add(x_index);
+			y_set.add(y_index);
+			if(seat_type_code != 0) {
+				seat_num++;
+			}
+			
+			seat_json.put("x_index", x_index);
+			seat_json.put("y_index", y_index);
+			seat_json.put("seat_type_code", seat_type_code);
 			list.add(seat_json);
 		}
+		if(y_set.contains("!")) y_set.remove("!");
 		json.put("seat", list);
+		json.put("x_size", x_set.size());
+		json.put("y_size", y_set.size());
+		json.put("seat_num", seat_num);
 		
-		SeatSize size = showPlaceService.seatSize(show_place_code);
-		int seat_num = showPlaceService.getTotal(show_place_code);
-		String theater_name = theaterService.theaterView(showPresentAllVO.getTheater_code()).getTheater_name();
 		
-		MoviePhotoDTO photo_addr = moviePhotoService.moviePosterView(movie_code);
+////////////// 예약된 좌석 json 으로 만들기
+		List<ReservedSeatVO> reservedSeatVOs =  reserveService.getreservedSeats(show_present_code);
+		
+		JSONArray reserved_seats = new JSONArray();
+		for(ReservedSeatVO vo : reservedSeatVOs) {
+			if(vo.getSeat1() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat1()));
+			}
+			if(vo.getSeat2() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat2()));
+			}
+			if(vo.getSeat3() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat3()));
+			}
+			if(vo.getSeat4() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat4()));
+			}
+			if(vo.getSeat5() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat5()));
+			}
+			if(vo.getSeat6() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat6()));
+			}
+			if(vo.getSeat7() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat7()));
+			}
+			if(vo.getSeat8() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat8()));
+			}
+		}
+
+		json.put("reserved", reserved_seats);
+		
+		
+		//SeatSize size = showPlaceService.seatSize(show_place_code);
+		//int seat_num = showPlaceService.getTotal(show_place_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("showPresentAllVO", showPresentAllVO);
-		modelAndView.addObject("theater_name", theater_name);
-		modelAndView.addObject("photo_addr", photo_addr.getMovie_photo_addr());
+		modelAndView.addObject("showInfo", showPresentSuperVO);
+		//modelAndView.addObject("theater_name", theater_name);
+		//modelAndView.addObject("photo_addr", photo_addr.getMovie_photo_addr());
 		modelAndView.addObject("json", json.toJSONString());
-		modelAndView.addObject("seat_num", seat_num);
+		/*modelAndView.addObject("seat_num", seat_num);
 		modelAndView.addObject("x_size", size.getX_size());
-		modelAndView.addObject("y_size", size.getY_size());
+		modelAndView.addObject("y_size", size.getY_size());*/
 		
 		modelAndView.setViewName("/main/reserve/selectSeat.jsp");
 		
@@ -241,5 +296,13 @@ public class ReserveController {
 		
 		return;
 	}
-	
+
+
+	private JSONObject resolveToIndex(String seat) {
+		JSONObject reservedSeat = new JSONObject();
+		String[] seat_str = seat.split("-");
+		reservedSeat.put("y_index", seat_str[0]);
+		reservedSeat.put("x_index", seat_str[1]);
+		return reservedSeat;
+	}
 }

@@ -3,8 +3,19 @@ drop table member_ticket_pay purge;
 drop sequence member_ticket_pay_seq;
 
 
+
+
 -------------------------------------------------------------  (5)
 
+-- 예약 좌석 뷰
+drop view reserved_seat;
+
+-- 상영상세정보 뷰
+drop VIEW show_fully;
+-- 상영정보 뷰
+drop VIEW show_all;
+--포스터 뷰
+drop VIEW movie_poster;
 
 
 

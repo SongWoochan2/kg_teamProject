@@ -80,17 +80,26 @@
 				float: left;
 			}
 				#frame_top_right #inner_top{
+					font-size: 15px;
+					font-weight: bold;
 					width: 100%;
 					height: 40%;
 					float: left;
 				}
-				
+				#frame_top_right #inner_middle{
+					font-size: 10px;
+					width: 100%;
+					height: 20%;
+					float: left;
+					line-height: 20px;
+				}
 				#frame_top_right #inner_bottom{
-					font-size: 20px;
+					font-size: 15px;
 					font-weight: bold;
 					width: 100%;
-					height: 50%;
+					height: 40%;
 					float: left;
+					line-height: 40px;
 				}
 		
 		#seat_select_frame #frame_bottom{
@@ -150,8 +159,8 @@
 			var seat_json = ${json};
 			var seat_list = seat_json.seat;
 			
-			var x_size = ${x_size};
-			var y_size = ${y_size};
+			var x_size = seat_json.x_size;
+			var y_size = seat_json.y_size;
 			var seatView = $("#seatView").empty();
 
 			for(var y = 1; y <= y_size; y++){
@@ -198,6 +207,18 @@
 				}
 			}
 			
+			var reserved_list = seat_json.reserved;
+
+			for(var i = 0; i < reserved_list.length; i++){
+				var row_number = reserved_list[i].y_index;
+				var col_number = reserved_list[i].x_index;
+				//alert(JSON.stringify(reserved_list));
+				//alert(row_number+ " / " + col_number);
+				var rSeat = $("div[name='seat'][row_number='"+row_number+"'][col_number='"+col_number+"']");
+				rSeat.removeClass().addClass("reserved").attr("seat_type", 100);
+				
+			}
+			
 			
 			
 			
@@ -223,10 +244,13 @@
 			</div>
 			<div id="frame_top_right">
 				<div id="inner_top">
-					극장 명 | 상영관 명 | 남은 좌석 / 총 좌석
+					${showInfo.movie_name }
+				</div>
+				<div id="inner_middle">
+					${showInfo.theater_name } | ${showInfo.show_place_name } | (남은 좌석 / 총 좌석)
 				</div>
 				<div id="inner_bottom">
-					상영 날짜 | 상영 시간 | 종료 시간
+					${showInfo.show_date } ${showInfo.show_time }시 ${showInfo.show_minute }분  시작 (${showInfo.movie_recycle_time }분 )
 				</div>
 			</div>
 		</div>
@@ -240,10 +264,10 @@
 			</div>
 			<div id="bottom_right">
 				<div id="inner_top">
-					<img alt="영화이미지" src="/MyCGV/image/storage/moviephoto/${photo_addr }">
+					<img alt="영화이미지" src="/MyCGV/image/storage/moviephoto/${showInfo.movie_photo_addr }">
 				</div>
 				<div id="inner_middle">
-					${photo_addr }
+					${showInfo.movie_name }
 				</div>
 				<div id="inner_bottom">
 					<input type="button" value="결제하기">
