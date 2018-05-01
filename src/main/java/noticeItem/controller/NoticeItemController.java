@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,28 +21,19 @@ public class NoticeItemController {
 	private NoticeItemService noticeItemService;
 	
 	@RequestMapping(value="/admin/noticeItem/noticeItemWriteForm.do")
-	public String noticeItemWriteForm() { 
+	public String supernoticeItemWriteForm( HttpServletResponse response, HttpServletRequest request) { 
 		return "noticeItemWriteForm.jsp";
 	}
 	
 	@RequestMapping(value="/admin/noticeItem/noticeItemWrite.do")
-	public ModelAndView noticeItemWrite(HttpServletRequest request) throws UnsupportedEncodingException { 
+	public ModelAndView supernoticeItemWrite(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException { 
 		// 데이터
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		String notice_item_type = request.getParameter("notice_item_type");
 		String notice_item_title = request.getParameter("notice_item_title");
 		String notice_item_content = request.getParameter("notice_item_content");
-		
-		
-		String admin_id="jin";														//임시 로그인
-		session.setAttribute("admin_id", admin_id);
-		admin_id = (String) session.getAttribute("admin_id");						//여기까지 삭제 할것
-		
-		
-		/*String admin_id = (String) session.getAttribute("admin_id");*/			//주석 풀기
-		
-		
+		String admin_id = (String) session.getAttribute("admin_id");			
 		
 		// 데이터 지정
 		NoticeItemDTO noticeItemDTO = new NoticeItemDTO();
@@ -63,7 +55,7 @@ public class NoticeItemController {
 	}
 	
 	@RequestMapping(value="/admin/noticeItem/noticeItemList.do")
-	public ModelAndView noticeItemList(HttpServletRequest request) {
+	public ModelAndView supernoticeItemList(HttpServletRequest request, HttpServletResponse response) {
 
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		
@@ -88,7 +80,7 @@ public class NoticeItemController {
 	
 	
 	@RequestMapping(value="/admin/noticeItem/noticeItemView.do")
-	public ModelAndView noticeItemView(HttpServletRequest request) {
+	public ModelAndView supernoticeItemView(HttpServletRequest request, HttpServletResponse response) {
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
@@ -103,7 +95,7 @@ public class NoticeItemController {
 	}
 
 	@RequestMapping(value="/admin/noticeItem/noticeItemModifyForm.do")
-	public ModelAndView noticeItemModifyForm(HttpServletRequest request) {
+	public ModelAndView supernoticeItemModifyForm(HttpServletRequest request, HttpServletResponse response) {
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		
 		NoticeItemDTO noticeItemDTO = noticeItemService.noticeItemView(notice_item_code);
@@ -118,24 +110,15 @@ public class NoticeItemController {
 	
 
 	@RequestMapping(value="/admin/noticeItem/noticeItemModify.do")
-	public ModelAndView noticeItemModify(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
+	public ModelAndView supernoticeItemModify(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException {
 		// 데이터
 		request.setCharacterEncoding("utf-8");
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		String notice_item_type = request.getParameter("notice_item_type");
 		String notice_item_title = request.getParameter("notice_item_title");
 		String notice_item_content = request.getParameter("notice_item_content");
+		String admin_id=(String) session.getAttribute("admin_id");
 		
-		String admin_id="jin";														//임시 로그인
-		session.setAttribute("admin_id", admin_id);
-		admin_id = (String) session.getAttribute("admin_id");						//여기까지 삭제 할것
-
-//		System.out.println("notice_item_title : "+notice_item_title);
-//		System.out.println("notice_item_type : "+notice_item_type);
-//		System.out.println("notice_item_content : "+notice_item_content);
-//		System.out.println("notice_item_code :" +notice_item_code);
-		
-		/*String admin_id = (String) session.getAttribute("admin_Id");*/					//4-19잠시 주석
 		// 데이터 지정
 		NoticeItemDTO noticeItemDTO = new NoticeItemDTO();
 		noticeItemDTO.setAdmin_id(admin_id);
@@ -143,12 +126,9 @@ public class NoticeItemController {
 		noticeItemDTO.setNotice_item_type(notice_item_type);
 		noticeItemDTO.setNotice_item_title(notice_item_title);
 		noticeItemDTO.setNotice_item_content(notice_item_content);
-		System.out.println(1);
 		//DB
-		int su = noticeItemService.noticeItemModify(noticeItemDTO);
-		System.out.println(2);
+		noticeItemService.noticeItemModify(noticeItemDTO);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("su", su);
 		
 		modelAndView.setViewName("noticeItemModify.jsp");
 		
@@ -156,7 +136,7 @@ public class NoticeItemController {
 	}
 
 	@RequestMapping(value="/admin/noticeItem/noticeItemDelete.do")
-	public ModelAndView noticeItemDelete(HttpServletRequest request) { 
+	public ModelAndView supernoticeItemDelete(HttpServletRequest request, HttpServletResponse response) { 
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int su = noticeItemService.noticeItemDelete(notice_item_code);
 		ModelAndView modelAndView = new ModelAndView();

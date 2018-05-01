@@ -24,35 +24,38 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-	<form id="form" name="qnaModifyForm" method="post" action="qnaModify.do">
-		<div>
-			<input type="hidden" name="qna_code" value="${qnaDTO.qna_code }">
-			<table border="1">
-				<tr>
-					<th scope="row">질문 종류</th>
-					<td colspan="3">
-						<input type="radio" name="qna_type" value="[예매/관람권]" checked="checked" ><label>[예매/관람권]</label>
-						<input type="radio" name="qna_type" value="[영화관이용]"><label>[영화관이용]</label>
-						<input type="radio" name="qna_type" value="[홈페이지]"><label>[홈페이지]</label>
-						<input type="radio" name="qna_type" value="[기타]"><label>[기타]</label>
-					</td>
-				</tr>
-				<tr>
-					<th width="50">제목</th>
-					<td><input id="title" type="text" name="qna_title" size="59" value="${qnaDTO.qna_title }"></td>
-				</tr>
-				<tr>
-					<th width="50">내용</th>
-					<td><textarea id="content" name="qna_content" rows="15" cols="45">${qnaDTO.qna_content }</textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="글수정">
-						<input type="reset" value="다시 작성">
-					</td>
-				</tr>
-			</table>
-		</div>
-	</form>
+	<jsp:include page="../adminMain/adminTemplate.jsp"/>
+	<div id = "content" align="center">
+		<form id="form" name="qnaModifyForm" method="post" action="qnaModify.do">
+			<div>
+				<input type="hidden" name="qna_code" value="${qnaDTO.qna_code }">
+				<table border="1">
+					<tr>
+						<th scope="row">질문 종류</th>
+						<td colspan="3">
+							<input type="radio" name="qna_type" value="[예매/관람권]" checked="checked" ><label>[예매/관람권]</label>
+							<input type="radio" name="qna_type" value="[영화관이용]"><label>[영화관이용]</label>
+							<input type="radio" name="qna_type" value="[홈페이지]"><label>[홈페이지]</label>
+							<input type="radio" name="qna_type" value="[기타]"><label>[기타]</label>
+						</td>
+					</tr>
+					<tr>
+						<th width="50">제목</th>
+						<td><input id="title" type="text" name="qna_title" size="59" value="${qnaDTO.qna_title }"></td>
+					</tr>
+					<tr>
+						<th width="50">내용</th>
+						<td><textarea id="content" name="qna_content" rows="15" cols="45">${qnaDTO.qna_content }</textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" value="글수정">
+							<input type="reset" value="다시 작성">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

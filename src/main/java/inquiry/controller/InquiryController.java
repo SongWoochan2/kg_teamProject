@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class InquiryController {
 	private AnswerService answerService;
 	
 	@RequestMapping(value="/main/inquiry/inquiryWriteForm.do")
-	public ModelAndView inquiryWriteForm(HttpServletRequest request) throws UnsupportedEncodingException {
+	public ModelAndView superinquiryWriteForm(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -52,7 +53,7 @@ public class InquiryController {
 	}
 	
 	@RequestMapping(value="/main/inquiry/inquiryWrite.do")
-	public ModelAndView inquiryWrite(HttpServletRequest request,MultipartFile inquiry_file,HttpSession session) throws UnsupportedEncodingException { 
+	public ModelAndView superinquiryWrite(HttpServletRequest request, HttpServletResponse response, MultipartFile inquiry_file, HttpSession session) throws UnsupportedEncodingException { 
 		// 데이터
 		request.setCharacterEncoding("utf-8");
 		String inquiry_type = request.getParameter("inquiry_type");
@@ -96,8 +97,8 @@ public class InquiryController {
 	
 	
 	@RequestMapping(value="/main/inquiry/inquiryListMember.do")
-	public ModelAndView inquiryListMember(HttpServletRequest request, HttpSession session) {
-		String inquiry_id=(String) session.getAttribute("inquiry_id");
+	public ModelAndView superinquiryListMember(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String inquiry_id=(String) session.getAttribute("memId");
 		ModelAndView modelAndView = new ModelAndView();
 		
 		if(!inquiry_id.equals(null)) {
@@ -127,7 +128,7 @@ public class InquiryController {
 	
 	
 	@RequestMapping(value="/main/inquiry/inquiryView.do")
-	public ModelAndView inquiryView(HttpServletRequest request) {
+	public ModelAndView superinquiryView(HttpServletRequest request, HttpServletResponse response) {
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
@@ -147,7 +148,7 @@ public class InquiryController {
 
 
 	@RequestMapping(value="/main/inquiry/inquiryDelete.do")
-	public ModelAndView inquiryDelete(HttpServletRequest request) { 
+	public ModelAndView superinquiryDelete(HttpServletRequest request, HttpServletResponse response) { 
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 	
 		int su = inquiryService.inquiryDelete(inquiry_code);
@@ -160,95 +161,6 @@ public class InquiryController {
 		
 		return modelAndView;
 	}
-	
-	/*	@RequestMapping(value="/member/inquiry/inquiryAnswerView.do")
-	public ModelAndView inquiryAnswerView(HttpServletRequest request) {
-		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
-		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("inquiryDTO", inquiryDTO);
-		modelAndView.addObject("answerDTO", answerDTO);
-		
-		modelAndView.setViewName("inquiryAnswerView.jsp");
-		
-		return modelAndView;
-	}*/
-	
-	/*@RequestMapping(value="/admin/adminInquiry/inquiryAnswerForm.do")
-	public ModelAndView inquiryAnswerForm(HttpServletRequest request) { 
-		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
-		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("inquiryDTO", inquiryDTO);
-		
-		modelAndView.setViewName("redirect:../admin/inquiryAnswerForm.jsp");
-		
-		return modelAndView;
-	}*/
-	
-	/*@RequestMapping(value="/admin/adminInquiry/inquiryAnswer.do")
-	public ModelAndView inquiryAnswer(HttpServletRequest request,MultipartFile inquiry_file) throws UnsupportedEncodingException { 
-		
-		
-		request.setCharacterEncoding("utf-8");
-		String inquiry_type = request.getParameter("inquiry_type");
-		String inquiry_title = request.getParameter("inquiry_title");
-		String inquiry_content = request.getParameter("inquiry_content");
-		String inquiry_id = request.getParameter("inquiry_id");							
-		
-		// 데이터 지정
-		InquiryDTO inquiryDTO = new InquiryDTO();
-		inquiryDTO.setInquiry_id(inquiry_id);
-		inquiryDTO.setInquiry_type(inquiry_type);
-		inquiryDTO.setInquiry_title(inquiry_title);
-		inquiryDTO.setInquiry_content(inquiry_content);
-		String realforder = resourceProvider.getPath("image/inquiry");
-		String filename = inquiry_file.getOriginalFilename();
-		System.out.println("realFolder : " + realforder + "/ filename : " + filename);
-		File file = new File(realforder,filename);
-			try {
-				FileCopyUtils.copy(inquiry_file.getInputStream(), new FileOutputStream(file));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		inquiryDTO.setInquiry_file(filename);
-		//DB
-		inquiryService.inquiryWrite(inquiryDTO);
-		
-		
-		String from_mail = "cgvproject7@gmail.com";						//보낼 메일
-		String answer_email = request.getParameter("answer_email");
-		String answer_title = request.getParameter("answer_title");
-		String answer_content = request.getParameter("answer_content");
-		ModelAndView modelAndView = new ModelAndView();
-		
-		
-		
-		 try {
-		      MimeMessage message = mailSender.createMimeMessage();
-		      MimeMessageHelper messageHelper 
-		      = new MimeMessageHelper(message, true, "UTF-8");
-		 
-		      messageHelper.setFrom(from_mail);  						// 보내는사람 생략하거나 하면 정상작동을 안함
-		      messageHelper.setTo(answer_email);   						// 받는사람 이메일
-		      messageHelper.setSubject(answer_title); 					// 메일제목은 생략이 가능하다
-		      messageHelper.setText(answer_content);  					// 메일 내용
-		     
-		      mailSender.send(message);
-		    } catch(Exception e){
-		      System.out.println(e);
-		    }
-		
-		modelAndView.setViewName("inquiryList.jsp");
-		
-		return modelAndView;
-	}*/
-
 	
 }
 
