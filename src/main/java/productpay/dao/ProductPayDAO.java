@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import productboard.bean.ProductBoardDTO;
 import productpay.bean.ProductPayDTO;
 
 @Repository
@@ -34,6 +33,11 @@ public class ProductPayDAO {
 	public int getTotal_A() {
 		return sqlSession.selectOne("mybatis.boardMapper.getTotal_A");
 	}
+	
+	// 결제 취소
+/*	public int productpayCancle(ProductPayDTO productpayDTO) {
+		return sqlSession.update("mybatis.boardMapper.productpayCancle", productpayDTO);
+	}*/
 }
 
 

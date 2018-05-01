@@ -15,4 +15,6 @@ public interface ProductPayService {
 	ArrayList<ProductPayDTO> productpayList(int startNum, int endNum);
 	// 결제 리스트 갯수
 	int getTotal_A();
+	// 결제 취소
+	/*int productpayCancle(ProductPayDTO productpayDTO);*/
 }

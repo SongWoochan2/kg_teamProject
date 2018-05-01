@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import productpay.bean.ProductPayDTO;
 
 @Controller
@@ -21,7 +20,6 @@ public class ProductPayController {
 	
 	@RequestMapping(value="/main/store/productPayComplete.do")
 	public ModelAndView memberModify(HttpServletRequest request) {
-		System.out.println("FGHJF");
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -76,17 +74,6 @@ public class ProductPayController {
 		if(order_num3_st != null && !order_num3_st.equals("")) {
 			order_num3 = Integer.parseInt(order_num3_st);
 		}
-		System.out.println(pay_id);
-		System.out.println(product_code);
-		System.out.println(buy_phone);
-		System.out.println(gift_phone1);
-		System.out.println(gift_phone2);
-		System.out.println(gift_phone3);
-		System.out.println(pay_type);
-		System.out.println(pay_cancle_able);
-		System.out.println(order_num1);
-		System.out.println(order_num2);
-		System.out.println(order_num3);
 		
 		productpayDTO.setPay_id(pay_id);
 		productpayDTO.setProduct_code(product_code);
@@ -112,6 +99,35 @@ public class ProductPayController {
 	
 	
 	//-----------------------------------------------------------------------------------------------
+	
+	/*
+	// 결제 취소--------미완
+	@RequestMapping(value="")
+	public ModelAndView handleRequest7(HttpServletRequest request) {
+		System.out.println("결제 취소 처리");
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		ProductPayDTO productpayDTO = new ProductPayDTO();
+		
+		HttpSession session = request.getSession();
+		String pay_id = (String)session.getAttribute("memId");
+		int product_pay_code = Integer.parseInt(request.getParameter("product_pay_code"));
+		
+		productpayDTO.setPay_id(pay_id);
+		
+		int su = productpayService.productpayCancle(productpayDTO);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("su", su);
+		modelAndView.setViewName("");
+		return modelAndView;
+	}
+	*/
+	
 	// MyPage 결제 목록
 	@RequestMapping(value="")
 	public ModelAndView handleRequest_payList(HttpServletRequest request) {

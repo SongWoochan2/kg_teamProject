@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import productboard.bean.ProductBoardDTO;
 import productpay.bean.ProductPayDTO;
 import productpay.dao.ProductPayDAO;
 
@@ -28,5 +27,11 @@ public class ProductPayServiceImpl implements ProductPayService{
 	public int getTotal_A() {
 		return productpayDAO.getTotal_A();
 	}
+
+/*	@Override
+	public int productpayCancle(ProductPayDTO productpayDTO) {
+		return productpayDAO.productpayCancle(productpayDTO);
+	}*/
+
 
 }

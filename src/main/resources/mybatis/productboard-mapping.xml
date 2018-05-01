@@ -13,10 +13,10 @@
 		DELETE FROM product WHERE product_code = #{product_code}
 	</delete>
 	
-	<delete id="productboardModify" parameterType="productboardDTO">
+	<update id="productboardModify" parameterType="productboardDTO">
 		UPDATE product SET product_name=#{product_name},product_cost=#{product_cost},product_type=#{product_type},product_photo_addr=#{product_photo_addr}
 		WHERE product_code=#{product_code}
-	</delete>
+	</update>
 	
 	<select id="productboardView" parameterType="int" resultType="productboardDTO">
 		SELECT * FROM product WHERE product_code = #{product_code}
@@ -59,6 +59,12 @@
 				 from (select * from product_pay order by pay_code desc) tt)   
 				 where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
+	
+<!-- PayCancle -->
+<!-- 	<update id="productpayCancle" parameterType="productcancleDTO">
+		UPDATE product_pay SET pay_cancle_able='Y'
+		WHERE member_id=#{member_id} and product_pay_code=#{product_pay_code}
+	</update> -->
 </mapper>
 
 

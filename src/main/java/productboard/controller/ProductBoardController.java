@@ -50,20 +50,21 @@ public class ProductBoardController {
 		
 		String filePath = resourceProvider.getPath("image/productStorage");
 		String filename = request.getParameter("product_type_addr");
-		
+		System.out.println("productcode : " + product_code);
 		int su = productboardService.productboardDelete(product_code);
-		
+		System.out.println(333);
 		File file = new File(filePath+filename);
-		
-		if(file.exists() == true){
+		System.out.println(1);
+		if(file.exists()){
 			
 			file.delete();
 			
 		}
-
+		System.out.println(111);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
 		modelAndView.setViewName("productboardDelete.jsp");
+		System.out.println(2);
 		return modelAndView;
 	}
 	
