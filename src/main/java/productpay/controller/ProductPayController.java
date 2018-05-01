@@ -93,13 +93,12 @@ public class ProductPayController {
 		productpayDTO.setOrder_num2(order_num2);
 		productpayDTO.setOrder_num3(order_num3);
 
-		System.out.println(1);
-		int result = productpayService.productPayComplete(productpayDTO);
-		System.out.println(2);
+		
+		int su = productpayService.productPayComplete(productpayDTO);
+		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
+		modelAndView.addObject("su", su);
 		modelAndView.setViewName("productPayComplete.jsp");
-		System.out.println(3);
 		return modelAndView;
 	}
 }

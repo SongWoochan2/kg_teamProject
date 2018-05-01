@@ -67,5 +67,7 @@
 			<!-- around = before + after -->
 			<aop:around method="logAround" pointcut-ref="logPointCut"/>	
 		</aop:aspect>
+		
+		
 	</aop:config>
 </beans>
