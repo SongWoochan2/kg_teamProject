@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import answer.bean.AnswerDTO;
 import answer.controller.AnswerService;
 import inquiry.bean.InquiryDTO;
 import member.bean.MemberDTO;
@@ -36,6 +37,9 @@ public class InquiryController {
 	
 	@Autowired
 	private ResourceProvider resourceProvider;
+	
+	@Autowired
+	private AnswerService answerService;
 	
 	@RequestMapping(value="/main/inquiry/inquiryWriteForm.do")
 	public ModelAndView inquiryWriteForm(HttpServletRequest request) throws UnsupportedEncodingException {
@@ -128,12 +132,14 @@ public class InquiryController {
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
 		MemberDTO memberDTO = memberService.memberView(inquiryDTO.getInquiry_id());
+		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
+		modelAndView.addObject("answerDTO", answerDTO);
 		modelAndView.addObject("inquiryDTO", inquiryDTO);
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("inquiryView.jsp");
-		
 		return modelAndView;
 	}
 	

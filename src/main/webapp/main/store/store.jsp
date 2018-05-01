@@ -62,6 +62,26 @@ button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
+#productRealBody{
+	margin: 30px auto;
+	width:  1200px;
+	display: block;
+}
+#productRealBody #body_top{
+	width:  100%;
+	height:  350px;
+}
+
+#productRealBody #bady_bottom{
+	width:  100%;
+	height: 100%;
+	padding: 50px;
+	overflow: auto;
+}
+#list_p{
+	display: inline;
+}
+
 
 </style>
 
@@ -74,33 +94,35 @@ button:hover:before,button:hover:after{
 </head>
 <body>
 <jsp:include page="/main/main/header.jsp"/>
-
-<ul>
-	<div class="wrapper" align="center">
-		<button onclick="location.href='store.do?type=set'">COMBO SET</button>
-		<button onclick="location.href='store.do?type=popcorn'">POPCORN</button>
-		<button onclick="location.href='store.do?type=beverage'">BEVERAGE</button>
-		<button onclick="location.href='store.do?type=snack'">SNACK</button>
+<div id="productRealBody">
+	<div id="body_top">
+		<ul>
+			<div class="wrapper" align="center">
+				<button onclick="location.href='store.do?type=set'">COMBO SET</button>
+				<button onclick="location.href='store.do?type=popcorn'">POPCORN</button>
+				<button onclick="location.href='store.do?type=beverage'">BEVERAGE</button>
+				<button onclick="location.href='store.do?type=snack'">SNACK</button>
+			</div>
+		</ul>
+		
+		<p align="center">
+			<img src="../../image/storeStorage/store_main_img.jpg"/>
+		</p>
+		
+		<h1 align="center">Menu</h1>
 	</div>
-</ul>
-
-<p align="center">
-	<img src="../../image/storeStorage/store_main_img.jpg"/>
-</p>
-
-<h1 align="center">Menu</h1>
-
-
-	<c:forEach var="productboardDTO" items="${typeList }">
-<div id="list_p">
-		<div id="list">
-				<a id="subjectA" href="#" onclick="isLogin(${productboardDTO.product_code})"> 
-				<img width="250px" height="300px" src="../../image/productStorage/${productboardDTO.product_photo_addr}"></a>
-				<br><a align="center">${productboardDTO.product_name }</a>
-		</div>
+	<div id="bady_bottom">
+		<c:forEach var="productboardDTO" items="${typeList }">
+			<div id="list_p">
+				<div id="list">
+					<a id="subjectA" href="#" onclick="isLogin(${productboardDTO.product_code})"> 
+					<img width="250px" height="300px" src="../../image/productStorage/${productboardDTO.product_photo_addr}"></a>
+					<br><a align="center">${productboardDTO.product_name }</a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 </div>
-	</c:forEach>
-
 <jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>

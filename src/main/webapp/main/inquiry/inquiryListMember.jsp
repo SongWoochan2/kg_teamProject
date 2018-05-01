@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
 				<c:if test="${inquiryDTO.inquiry_status == 0}">
 					<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
 				</c:if>
-				<c:if test="${inquiryDTO.inquiry_status != 0}">
+				<c:if test="${inquiryDTO.inquiry_status >= 0}">
 					<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
 				</c:if>
 				<td align="center">${inquiryDTO.inquiry_date}</td>
