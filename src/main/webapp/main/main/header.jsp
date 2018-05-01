@@ -31,7 +31,7 @@
 		<div id="top_menu_box">
 			<div id="top_left_div">
 				<a href="#"> 
-					<img alt="" src="/MyCGV/image/logo/moviet_logo4.png" width="60px" height="30px">
+					<img alt="" src="/MyCGV/image/logo/moviet_logo.png" width="60px" height="30px">
 					MovieT APP
 				</a> | 
 				<a href="#">
@@ -63,7 +63,7 @@
 		<div id="header_main">
 			<div id="main_inner">
 				<div id="inner_left">
-					<a href="/MyCGV/main/main/index.jsp"><img id="header_logo_img" alt="로고이미지" src="/MyCGV/image/logo/moviet_logo3.png"></a>
+					<a href="/MyCGV/main/main/index.jsp"><img id="header_logo_img" alt="로고이미지" src="/MyCGV/image/logo/moviet_logo.png"></a>
 				</div>
 				<div id="inner_center">
 					<ul class="menu">
