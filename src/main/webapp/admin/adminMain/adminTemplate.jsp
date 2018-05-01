@@ -33,7 +33,7 @@
 				<li><a>회원관리</a>
 					<ul class = "sub">
 						<li><a href = "/MyCGV/admin/answer/inquiryListAdmin.do?pg=1">문의내역 보기</a></li>
-						<li><a href = "/MyCGV/admin/noticeItem/noticeItemWriteForm.do?pg=1">공지사항 등록</a></li>
+						<li><a href = "/MyCGV/admin/noticeItem/noticeItemList.do?pg=1">공지사항 등록</a></li>
 						<li><a href = "/MyCGV/admin/qna/qnaList.do?pg=1">자주 묻는 질문</a></li>
 					</ul>
 				</li>

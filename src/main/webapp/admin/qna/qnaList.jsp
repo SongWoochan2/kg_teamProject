@@ -60,7 +60,7 @@ pageEncoding="UTF-8"%>
 			</tr>
 		</table>
 		
-		<c:if test="${admin != null }">
+		<c:if test="${admin_id != null }">
 			<input type="button" value="새 글 등록" onclick="location.href='qnaWriteForm.do'">
 		</c:if>
 	</div>
