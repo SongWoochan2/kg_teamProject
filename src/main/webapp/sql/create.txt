@@ -233,6 +233,15 @@ create table nonmember(
   primary key(nonmember_code)
 );
 
+create sequence nonmember_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+
+
+
 -----------------------------------------------
 -- 상품 테이블
 create table product(
@@ -240,14 +249,17 @@ create table product(
 	product_name varchar2(30) not null,	--상품명
 	product_cost number not null,	--상품가격
 	product_type varchar2(15) not null,	--상품분류
-	product_photo_addr varchar2(255) 	--상품분류주소
+	product_photo_addr varchar2(255), 	--상품분류주소
+	primary key(product_code)
 );
 
--- primary key 부여
-alter table product add primary key(product_code);  --primary key 부여
 
 -- product 테이블 시퀸스
-create sequence product_seq nocache nocycle;	--(상품코드)
+create sequence product_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
 
 -- 상품 등록
 insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
@@ -307,9 +319,6 @@ start with 1
 increment by 1
 nocache
 nomaxvalue;
-
-drop table saving_list purge;
-drop sequence saving_list_seq;
 
 insert into saving_list values(
   saving_list_seq.nextval, 'admin', '@@@@@@@', 8000, 40, '2018.04.05');
@@ -478,8 +487,6 @@ create table member_reserve(
   reserve_code int,
   reserve_id varchar(30),
   show_present_code int,
-  FOREIGN KEY (reserve_id) REFERENCES member(member_id),
-  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code),
   member_seat1 varchar(20) not null,
   member_seat2 varchar(20),
   member_seat3 varchar(20),
@@ -488,7 +495,12 @@ create table member_reserve(
   member_seat6 varchar(20),
   member_seat7 varchar(20),
   member_seat8 varchar(20),
-  primary key(reserve_code)
+  reserve_cost number not null,
+  reserve_date date not null,
+  reserve_cancel_able char(1),
+  primary key(reserve_code),
+  FOREIGN KEY (reserve_id) REFERENCES member(member_id),
+  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code)
 );
 
 create sequence member_reserve_seq
@@ -498,35 +510,45 @@ nocache
 nomaxvalue;
 
 insert into member_reserve values(
-  member_reserve_seq.nextval, 'aaa', 1, 'A-1', 'H-5', null, null, null, null, null, null
+  member_reserve_seq.nextval, 'aaa', 1, 'A-1', 'H-5', null, null, null, null, null, null, 20000, sysdate, 'n'
 ); 
 insert into member_reserve values(
-  member_reserve_seq.nextval, 'aaa', 2, 'B-5', null, null, null, null, null, null, null
+  member_reserve_seq.nextval, 'aaa', 1, 'B-5', null, null, null, null, null, null, null, 20000, sysdate, 'n'
 ); 
 
+-------------------------------------------------------
 
-
-
-
--------------------------------------------------------------  (5)
--- 회원 티켓 결제
-create table member_ticket_pay(
-  member_pay_code int,
-  reserve_code int,
-  FOREIGN KEY (reserve_code) REFERENCES member_reserve(reserve_code),
-  reserve_date date not null,
-  reserve_cancle_able char(1) not null,
-  primary key(member_pay_code)
+-- 비회원 예매
+create table nonmember_reserve(
+  nonmember_reserve_code int,
+  nonmember_code int,
+  show_present_code int,
+  member_seat1 varchar(20) not null,
+  nonmember_seat2 varchar(20),
+  nonmember_seat3 varchar(20),
+  nonmember_seat4 varchar(20),
+  nonmember_seat5 varchar(20),
+  nonmember_seat6 varchar(20),
+  nonmember_seat7 varchar(20),
+  nonmember_seat8 varchar(20),
+  nonmember_reserve_cost number not null,
+  nonmember_reserve_date date not null,
+  nonmember_reserve_cancel_able char(1),
+  primary key(nonmember_reserve_code),
+  FOREIGN KEY (nonmember_code) REFERENCES nonmember(nonmember_code),
+  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code)
 );
 
-create sequence member_ticket_pay_seq
+
+create sequence nonmember_reserve_seq
 start with 1
 increment by 1
 nocache
 nomaxvalue;
 
-insert into member_ticket_pay values(
-  member_ticket_pay_seq.nextval, 1, sysdate, 'y'
-);
+
+
+
+-------------------------------------------------------------  (5)
 
 
