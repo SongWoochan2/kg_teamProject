@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import memberReserve.bean.MemberReserveDTO;
 import memberReserve.bean.MemberReserveListDTO;
 
 @Repository
@@ -16,6 +17,7 @@ public class MemberReserveDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	// 예매내역
 	public ArrayList<Integer> getReserveCodes(String reserve_id, int startNum, int endNum) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startNum", startNum);
@@ -32,6 +34,20 @@ public class MemberReserveDAO {
 		return sqlSession.selectOne("memberReserve.getAllReserveList", reserve_code);
 	}
 	
+	public int countSeats(int reserve_code) {
+		return sqlSession.selectOne("memberReserve.countSeats", reserve_code);
+	}
+	
+	public MemberReserveDTO getSeats(int reserve_code) {
+		return sqlSession.selectOne("memberReserve.getSeats", reserve_code);
+	}
+	
+	// 예매취소
+	public int memReserveCancle(int reserve_code) {
+		return sqlSession.update("memberReserve.memReserveCancle", reserve_code);
+	}
+	
+	// 취소내역
 	public ArrayList<Integer> getCancleCodes(String reserve_id, int startNum, int endNum) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startNum", startNum);
@@ -43,4 +59,20 @@ public class MemberReserveDAO {
 	public int getTotalCancle(String reserve_id) {
 		return sqlSession.selectOne("memberReserve.getTotalCancle", reserve_id);
 	}
+	
+	
+	
+	// 내가 본 영화
+	public ArrayList<Integer> getWatchedCodes(String reserve_id, int startNum, int endNum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("reserve_id", reserve_id);
+		return (ArrayList)sqlSession.selectList("memberReserve.getWatchedCodes", map);
+	}
+	
+	public int getTotalWatched(String reserve_id) {
+		return sqlSession.selectOne("memberReserve.getTotalWatched", reserve_id);
+	}
+
 }

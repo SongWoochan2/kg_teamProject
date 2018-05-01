@@ -58,16 +58,17 @@ public class MypageController {
 
 		List<MemberReserveListDTO> reserveList = new ArrayList<>();
 		for(int i=0,n=reserveCodes.size();i<n;i++) {
+			int reserve_code = reserveCodes.get(i);
+			System.out.println("예매코드:"+reserve_code);
 			MemberReserveListDTO memberReserveListDTO = new MemberReserveListDTO();
-			System.out.println(reserveCodes.get(i));
-			memberReserveListDTO = memberReserveService.getAllReserveList(reserveCodes.get(i));
-			//memberReserveListDTO.setReserve_code(reserveCodes.get(i));
-			System.out.println(memberReserveListDTO.getReserve_code());
+			memberReserveListDTO = memberReserveService.getAllReserveList(reserve_code);
+			int count_seats = memberReserveService.countSeats(reserve_code);
+			memberReserveListDTO.setCount_seats(count_seats);	
 			reserveList.add(i,memberReserveListDTO);
 		}
 		
 		int totalVal = 	memberReserveService.getTotalVal(reserve_id);// 예매내역 총글수
-		int totalPVal = (totalVal+4)/5;			// 총페이지수
+		int totalPVal = (totalVal+2)/3;			// 총페이지수
 		//================================
 		int startPageVal = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
 		int endPageVal = startPageVal + 2;		// endPage = startPage + 3 - 1;
@@ -81,20 +82,20 @@ public class MypageController {
 		
 		List<MemberReserveListDTO> cancleList = new ArrayList<>();
 		for(int i=0,n=cancleCodes.size();i<n;i++) {
+			int cancle_code = cancleCodes.get(i);
+			System.out.println("취소코드:"+cancle_code);
 			MemberReserveListDTO memberCancleListDTO = new MemberReserveListDTO();
-			System.out.println(cancleCodes.get(i));
-			memberCancleListDTO = memberReserveService.getAllReserveList(cancleCodes.get(i));
-			//memberReserveListDTO.setReserve_code(reserveCodes.get(i));
+			memberCancleListDTO = memberReserveService.getAllReserveList(cancle_code);
 			System.out.println(memberCancleListDTO.getReserve_code());
-			reserveList.add(i,memberCancleListDTO);
+			cancleList.add(i,memberCancleListDTO);
 		}
 		
-		int totalCancle = 	memberReserveService.getTotalCancle(reserve_id);// 취소내역 총글수
+/*		int totalCancle = memberReserveService.getTotalCancle(reserve_id);// 취소내역 총글수
 		int totalPCancle = (totalCancle+4)/5;			// 총페이지수
 		//================================
 		int startPageCancle = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
 		int endPageCancle = startPageCancle + 2;		// endPage = startPage + 3 - 1;
-		if(totalPCancle < endPageCancle) endPageCancle = totalPCancle;
+		if(totalPCancle < endPageCancle) endPageCancle = totalPCancle;*/
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
@@ -104,13 +105,24 @@ public class MypageController {
 		modelAndView.addObject("totalPVal", totalPVal);
 		modelAndView.addObject("p", pg);
 		modelAndView.addObject("cancleList", cancleList);
-		modelAndView.addObject("startPageCancle", startPageCancle);
+/*		modelAndView.addObject("startPageCancle", startPageCancle);
 		modelAndView.addObject("endPageCancle", endPageCancle);
-		modelAndView.addObject("totalPCancle", totalPCancle);
+		modelAndView.addObject("totalPCancle", totalPCancle);*/
 		modelAndView.setViewName("myReserveList.jsp?p="+pg);
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="/mypage/memReserveCancle.do")
+	public ModelAndView cancleMemReserve(HttpServletRequest request) {	
+		int reserve_code = Integer.parseInt(request.getParameter("reserve_code"));
+		int result = memberReserveService.memReserveCancle(reserve_code);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("cancleMemReserve.jsp");
+		return modelAndView;
+	}
+		
 	@RequestMapping(value="/mypage/myPointList.do")
 	public ModelAndView myPointList(HttpServletRequest request) {		
 		int pg = Integer.parseInt(request.getParameter("p"));
@@ -150,7 +162,6 @@ public class MypageController {
 	public ModelAndView mypageHome(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("memId");
-		System.out.println("1");
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO = memberService.memberView(member_id);
 		ModelAndView modelAndView = new ModelAndView();
@@ -290,25 +301,48 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/myWatchedMovie.do")
-	public ModelAndView myWatchedMovie(HttpServletRequest request) {
-		System.out.println("myWishList.do");
+	public ModelAndView myWatchedMovieList(HttpServletRequest request) {
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int endNum = pg*10;			
+		int startNum = endNum-9;	
 		
 		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("memId");
+		String reserve_id = (String)session.getAttribute("memId");
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(reserve_id);
+		
+		// 내가 본 영화 내역
+		ArrayList<Integer> watchedCodes
+		= memberReserveService.getWatchedCodes(reserve_id,startNum,endNum);
 
-
-		MemberDTO memberDTO = memberService.memberView(member_id);
-		System.out.println(member_id);
+		List<MemberReserveListDTO> watchedList = new ArrayList<>();
+		for(int i=0,n=watchedCodes.size();i<n;i++) {
+			int watched_code = watchedCodes.get(i);
+			System.out.println("내가본영화코드:"+watched_code);
+			MemberReserveListDTO memberWatchedListDTO = new MemberReserveListDTO();
+			memberWatchedListDTO = memberReserveService.getAllReserveList(watched_code);
+			int count_seats = memberReserveService.countSeats(watched_code);
+			memberWatchedListDTO.setCount_seats(count_seats);	
+			watchedList.add(i,memberWatchedListDTO);
+		}
+		
+		int totalWatch = memberReserveService.getTotalWatched(reserve_id); // 내가 본 영화 총 갯수
+		int totalPWatch = (totalWatch+4)/5;			
+		//================================
+		int startPageWatch = (pg-1)/5*5+1;	
+		int endPageWatch = startPageWatch + 4;		
+		if(totalPWatch < endPageWatch) endPageWatch = totalPWatch;
+		
 		ModelAndView modelAndView = new ModelAndView();
-		
-		
 		modelAndView.addObject("memberDTO", memberDTO);
-		System.out.println(memberDTO.getMember_name());
-		System.out.println(memberDTO.getNick_name());
-		modelAndView.addObject("member_id", member_id);
-		modelAndView.setViewName("myWatchedMovie.jsp");
+		modelAndView.addObject("p", pg);
+		modelAndView.addObject("totalWatch", totalWatch);
+		modelAndView.addObject("startPageWatch", startPageWatch);
+		modelAndView.addObject("endPageWatch", endPageWatch);
+		modelAndView.addObject("totalPWatch", totalPWatch);	
+		modelAndView.addObject("watchedList", watchedList);		
+		modelAndView.setViewName("myWatchedMovie.jsp?p="+pg);
 		return modelAndView;
-		
 	}
-	
 }

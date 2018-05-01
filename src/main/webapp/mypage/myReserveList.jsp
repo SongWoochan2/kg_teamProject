@@ -6,11 +6,33 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="../css/mypage/myContentAside.css" />
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 (function ($) {
 	$(function() {	
-			
+		$(".set-btn button").click(function(){
+			var result = confirm('예매를 정말 취소하시겠습니까?'); 
+			if(result) { //yes 
+            	$.ajax({
+            		url: "./memReserveCancle.do?reserve_code="+$("#reserveCode").val(),
+            		type: "get",
+            		dataType: "html",
+            		cache: false,
+            		timeout: 30000,
+            		success: function(data) {
+            			$("#resultAlert").html(data);
+            		},
+            		error: function(xhr, textStatus, errorThrown) {
+    					$("div.tbl-form").html("<div>" + textStatus 
+  							  + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
+  					}
+            	});
+			} else {
+				
+			}	
+		});
 	
 	});
 })(jQuery);
@@ -22,11 +44,15 @@ pageEncoding="UTF-8"%>
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
+<!-- 	<form name="targetform" id="targetform" method="post" novalidate="novalidate">
+	<input type="hidden" name="reverse_no" id="reverse_no">
+	<input type="hidden" name="theater_code" id="theater_code"> -->
+	
 			<div id="content-detail">
 				<div class="sect-register booking">
 					<div class="tit-mypage">
 						<h3>나의 예매내역</h3>
-						<a href=""><span>내가 본 영화</span></a>
+						<a href="myWatchedMovie.do?p=1"><span>내가 본 영화</span></a>
 					</div>
 					<p>
 						<strong>현장에서 발권하실 경우 꼭 <em>예매번호</em>를 확인하세요.
@@ -50,7 +76,7 @@ pageEncoding="UTF-8"%>
 	                    </div>
 			    		<div class="box-info">
 				        	<div class="box-image">
-				        		<a href="../main/movie/movieDetailView.do?movie_code=${memberReserveListDTO.movie_code}">
+				        		<a href="../main/movie/movieDetailView.do?photo_pg=1&movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
 				            		<span class="thumb-image"> 
 				                        <img src="../image/storage/moviephoto/${memberReserveListDTO.movie_photo_addr}" 
 				                        alt="${memberReserveListDTO.movie_name} 포스터" onerror="errorImage(this)"
@@ -64,7 +90,7 @@ pageEncoding="UTF-8"%>
 				        	<div class="box-contents">
 				        		<dl>
 				        			<dt>
-	                                    <a href="../main/movie/movieDetailView.do?movie_code=${memberReserveListDTO.movie_code}">
+	                                    <a href="../main/movie/movieDetailView.do?photo_pg=1&movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
 	                                    	 ${memberReserveListDTO.movie_name}</a>
 	                                </dt>
 				        			<dd>
@@ -76,12 +102,33 @@ pageEncoding="UTF-8"%>
 	                                    <em>관람일시</em>
 	                                    <strong class="txt-red">
 	                                        ${memberReserveListDTO.show_date}&nbsp;
-	                                        ${memberReserveListDTO.show_time}:${memberReserveListDTO.show_minute}
+	                                        ${memberReserveListDTO.show_time}:${memberReserveListDTO.show_minute}&nbsp;
+ 											(${memberReserveListDTO.movie_recycle_time}분)
 	                                    </strong>
 	                                </dd>
 				        			<dd><em>상영관</em> <strong>${memberReserveListDTO.show_place_name}</strong></dd>
-				        			<dd><em>관람인원</em> <strong> Prime석 일반 1</strong></dd>
-				        			<dd><em>관람좌석</em> <strong></strong></dd>
+				        			<dd><em>관람인원</em> <strong>${memberReserveListDTO.count_seats}</strong></dd>
+				        			<dd><em>관람좌석</em> 
+				        				<strong>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat1}">
+				        						${memberReserveListDTO.member_seat1}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat2}">
+				        						${memberReserveListDTO.member_seat2}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat3}">
+				        						${memberReserveListDTO.member_seat3}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat4}">
+				        						${memberReserveListDTO.member_seat4}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat5}">
+				        						${memberReserveListDTO.member_seat5}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat6}">
+				        						${memberReserveListDTO.member_seat6}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat7}">
+				        						${memberReserveListDTO.member_seat7}&nbsp;</c:if>
+				        					<c:if test="${not empty memberReserveListDTO.member_seat8}">
+				        						${memberReserveListDTO.member_seat8}&nbsp;</c:if>
+				        				</strong>
+				        				
+				        			</dd>
 				        			<!-- <dd><em>매수</em> <strong>1매</strong></dd> -->
 				        		</dl>
 				        	</div>  
@@ -110,12 +157,12 @@ pageEncoding="UTF-8"%>
 				        	</div>
 						</div>
 	                    <div class="set-btn">
-	                        <input type="hidden" class="reserve-no" name="reserve-no" value="s5rlqSlwu7WcGSPnXdV6XfuZ1Gkf5/7ipXUdFHRMM7A=">  
 	                        <div class="col-print"> 
 <!-- 	                        <button type="button" title="새창" data="s5rlqSlwu7WcGSPnXdV6XfuZ1Gkf5%2f7ipXUdFHRMM7A%3d" class="round inblack hometicket"><span>예매정보 출력</span></button>
 	                        <button type="button" title="새창" class="round black sendsmspopup"><span>문자보내기</span></button>  
 	                        <button type="button" title="새창" data="6B8B49A4YKEL4YI7A4VJ" class="round black receipt"><span>영수증출력</span></button>   -->  
-	                        <button type="button" data-status="1" class="round black cancel" onclick="./"><span>예매취소</span></button>
+	                        <input type="hidden" id="reserveCode" value="${memberReserveListDTO.reserve_code}">
+	                        <button type="button" data-status="1" class="round black cancel"><span>예매취소</span></button>
 	                        </div>
 	                    </div>
 		        	</div>	        	
@@ -123,18 +170,18 @@ pageEncoding="UTF-8"%>
 					</c:if>
 					<div class="paging">
 						<c:if test="${startPageVal>5 }">
-							[<a id="paging" href="myPointList.do?p=${startPageVal-1 }">이전</a>]
+							[<a id="paging" href="myReserveList.do?p=${startPageVal-1 }">이전</a>]
 						</c:if>
 						<c:forEach var="i" begin="${startPageVal}" end="${endPageVal}">
 							<c:if test="${i==p }">
-							[<a id="currentPaging" href="myPointList.do?p=${i }">${i }</a>]
+							[<a id="currentPaging" href="myReserveList.do?p=${i }">${i }</a>]
 							</c:if>
 							<c:if test="${i!=p }">
-							[<a id="paging" href="myPointList.do?p=${i }">${i }</a>]
+							[<a id="paging" href="myReserveList.do?p=${i }">${i }</a>]
 							</c:if>
 						</c:forEach>
 						<c:if test="${endPageVal < totalPVal }">
-							[<a id="paging" href="myPointList.do?p=${endPageVal+1 }">다음</a>]
+							[<a id="paging" href="myReserveList.do?p=${endPageVal+1 }">다음</a>]
 						</c:if>	
 					</div>
 		    	</div>
@@ -144,30 +191,34 @@ pageEncoding="UTF-8"%>
 						<p>상영일 기준 지난 7일 동안의 취소내역입니다.</p>
 					</div>
 					<div class="tbl-data">
-						<table summary="상영일 기준 지난 7일 동안의 취소내역">
-							<caption>MY 취소내역</caption>
+						<table>
 							<thead>
 								<tr>
 									<th scope="col">관람 영화</th>
-									<th scope="col">관람CGV</th>
+									<th scope="col">관람 극장</th>
 									<th scope="col">관람 일시</th>
 									<th scope="col">취소일</th>
 									<th scope="col">결제취소 금액</th>
 								</tr>
 							</thead>
 							<tbody>
+							<c:if test="${empty cancleList}">
 								<tr>
 									<td colspan="5" class="nodata">고객님의 최근 취소내역이 존재하지 않습니다.</td>
 								</tr>
-								<!-- foreach문 시작 -->
+							</c:if>
+							<c:if test="${not empty cancleList}">
+								<c:forEach var="memberCancleListDTO" items="${cancleList}">
 								<tr>
-									<td>그날, 바다</td>
-									<td>CGV 피카디리1958</td>
-									<td>2018.04.30(월) 09:20</td>
-									<td>2018.04.29(일)</td>
-									<td><strong>7,000</strong> 원 </td>
+									<td>${memberCancleListDTO.movie_name}</td>
+									<td>${memberCancleListDTO.theater_name}</td>
+									<td>${memberCancleListDTO.show_date}&nbsp;
+									${memberCancleListDTO.show_time}:${memberCancleListDTO.show_minute}</td>
+									<td>${memberCancleListDTO.reserve_date}</td>
+									<td><strong>${memberCancleListDTO.pay_cost}</strong> 원 </td>
 								</tr>
-								<!-- foreach문 끝 -->
+								</c:forEach>
+							</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -299,14 +350,13 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 			</div>
+<!-- 	</form> -->
 		</div>
 	</div>
-	
+
 	<jsp:include page="../main/main/footer.jsp"></jsp:include>
-<form name="targetform" id="targetform" method="post" novalidate="novalidate">
-	<input type="hidden" name="reverse_no" id="reverse_no">
-	<input type="hidden" name="theater_code" id="theater_code">
-</form>
+
+<div id="resultAlert"></div>
 </body>
 </html>
 

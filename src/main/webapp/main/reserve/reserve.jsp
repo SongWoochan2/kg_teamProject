@@ -247,6 +247,36 @@
 			float: left;
 		}
 			
+		#my_popup_div{
+			position: fixed; 
+			top: 50px;
+			left: 25%; 
+			width: 800px;
+			height: 600px;
+			z-index: 20;
+		}
+		#my_popup_div #popup_title{
+			color: white;
+			font-weight: bold;
+			text-align: right;
+			width: 100%;
+			height: 5%;
+		}
+		#my_popup_div #popup_main{
+			border: 1px solid gray;
+			width: 100%;
+			height: 95%;
+		}
+		
+		#my_popup_shadow{
+			position: fixed; left: 0; top: 0;
+			height: 100%; width: 100%; background: black;
+			filter: alpha(opacity=60); opacity: 0.60;
+			z-index: 10;
+		}
+		
+			
+			
 	</style>
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
@@ -321,7 +351,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
-					alert(JSON.stringify(json));
+					//alert(JSON.stringify(json));
 					//alert(JSON.stringify(json.shows));
 					var month_count = 0;
 					var date_count = 0;
@@ -401,6 +431,26 @@
 				});
 			}
 		}
+		function getSeatSelector(show_present_code){
+			$.ajax({
+				url : "/MyCGV/SeatView_ForReserve.do", // 나중에 사이트 url로 바뀜
+				type : "post", // 최종적으로 서버에 요청함
+				dataType : "html",
+				timeout : 30000, // 30초 (단위는 ms)
+				data : {
+					"show_present_code" : show_present_code
+				},
+				cache : false,
+				// 파일 읽기에 성공한 경우
+				success : function(html){
+					$("#my_popup_div #popup_main").empty().append(html);
+					
+				},
+				error : function(xhr, textStatus, errorThrown){
+					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+				}
+			});
+		}
 	</script>
 	<script type="text/javascript">
 		var show_date = "";
@@ -430,6 +480,11 @@
 			getMovie();
 			getTheater();
 			getDateList();
+			
+			
+			
+			
+			getSeatSelector();
 			
 			$("input.reset_choice").click(function(){
 				var choice = $(this).parent().parent().find("input[type='radio']:checked");
@@ -465,7 +520,6 @@
 	<script type="text/x-jquery-tmpl" id="movieTT">
 		<div class="movie_item">
 			<div class="movie_code" data="\${movie_code }">
-				<input type='hidden
 				<label><input type="radio" class="movie_choice" name="movie_code" value="\${movie_code }">\${movie_name }</label>
 			</div>
 		</div>
@@ -494,8 +548,7 @@
 </head>
 <body>
 	<jsp:include page="/main/main/header.jsp"></jsp:include>
-	<div id="header_div"></div>
-	<table id="movie_select"></table>
+
 	<div class="div_top">
 		<div id="top_movie">
 			<div id="top_movie_div1">
@@ -549,6 +602,17 @@
 		<div id="bottom_pay">결제 //이미지처리</div>
 		<div id="bottom_seat_choice"><Strong>좌석선택-></Strong></div>
 	</div>
+	
+	<div id="my_popup_div">
+		<div id="popup_title">
+			<input type="button" value="새로고침">
+			<input type="button" value="닫기">
+		</div>
+		<div id="popup_main">
+		</div>
+	</div>
+	<div id="my_popup_shadow"></div>
+	
 	<br>
 	<br>
 	<br>
