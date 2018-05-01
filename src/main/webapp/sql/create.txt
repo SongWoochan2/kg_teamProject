@@ -1,4 +1,20 @@
 -------------------------------------------------------------  (1)
+--질문,답 테이블 생성
+create table qna(
+  qna_code int,
+  qna_type varchar(100) not null,
+  qna_title varchar(255) not null,
+  qna_content varchar(2048) not null,
+  qna_date date default sysdate,
+  primary key(qna_code)
+);
+
+--qna시퀀스 생성
+create sequence qna_code_seq nocycle nocache;
+
+-------------------------------------------------
+
+
 
 --관리자 테이블
 create table admin(
@@ -256,6 +272,42 @@ insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
 -----------------------------------------------
 -------------------------------------------------------------  (2)
 
+--공지사항 테이블 생성
+create table notice_item(
+  notice_item_code int,
+  admin_id varchar(30),
+  notice_item_type varchar(100) not null,
+  notice_item_title varchar(255) not null,
+  notice_item_content varchar(2048) not null,
+  notice_item_date date default sysdate,
+  CONSTRAINT fk_notice_item FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  primary key(notice_item_code)
+);
+
+--noticeitem시퀀스 생성
+create sequence notice_item_code_seq nocycle nocache;
+
+-------------------------------------------------
+
+--문의 테이블 생성
+create table inquiry(
+  inquiry_code number,
+  inquiry_id varchar2(30),
+  inquiry_type varchar2(100),
+  inquiry_title varchar2(255) not null,
+  inquiry_content varchar2(2048) not null,
+  inquiry_file varchar2(250),
+  inquiry_status number default 0,
+  inquiry_date date,
+  FOREIGN KEY (inquiry_id) REFERENCES member(member_id),
+  primary key(inquiry_code)
+);
+
+--시퀀스 생성
+create sequence inquiry_code_seq nocycle nocache;
+
+-------------------------------------------------
+
 --상영관 테이블
 create table show_place(
   show_place_code int primary key,
@@ -355,12 +407,46 @@ increment by 1
 nocache
 nomaxvalue;
 
+
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 11, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 12, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 13, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+
 ---------------------------------------------
 
 
 
 
 -------------------------------------------------------------  (3)
+
+--답변 테이블 생성
+create table answer(
+  answer_code int,
+  inquiry_code int UNIQUE,
+  admin_id varchar(30),
+  member_id varchar(30),
+  answer_title varchar(255) not null,
+  answer_content varchar(2048) not null,
+  answer_date date default sysdate,
+  CONSTRAINT fk_admin_id FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  CONSTRAINT fk_member_id FOREIGN KEY (member_id) REFERENCES member(member_id),
+  CONSTRAINT fk_inquiry_code FOREIGN KEY (inquiry_code) REFERENCES inquiry(inquiry_code),
+  primary key(answer_code)
+);
+
+--답변 시퀀스 생성
+create sequence answer_code_seq nocycle nocache;
+---------------------------------------------
 
 --좌석 테이블
 create table seat(

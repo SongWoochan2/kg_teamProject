@@ -35,6 +35,11 @@ public class ShowPlaceDAO {
 	public List<ShowPlaceVO> selectList(int theater_code) {
 		return sqlSession.selectList("showPlace.getList", theater_code);
 	}
+	
+	public List<ShowPlaceVO> selectListWithSeat(int theater_code) {
+		return sqlSession.selectList("showPlace.getListWithSeat", theater_code);
+	}
+
 
 	///////////  seat
 	public int insertSeat(SeatVO seatVO) {

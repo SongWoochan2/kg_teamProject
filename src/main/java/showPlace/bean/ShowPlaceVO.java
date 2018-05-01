@@ -6,6 +6,13 @@ public class ShowPlaceVO {
 	private String show_place_name;
 	private int default_cost;
 	private String show_place_photo_addr;
+	private int totalSeat;
+	public int getTotalSeat() {
+		return totalSeat;
+	}
+	public void setTotalSeat(int totalSeat) {
+		this.totalSeat = totalSeat;
+	}
 	public int getShow_place_code() {
 		return show_place_code;
 	}

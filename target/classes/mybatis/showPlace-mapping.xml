@@ -10,6 +10,14 @@
 		WHERE show_place_code = #{show_place_code}
 	</select>
 	
+	<select id="getListWithSeat" parameterType="int" resultType="showPlaceVO">
+		SELECT seat.show_place_code, count(*) AS totalSeat FROM seat, show_place 
+		WHERE show_place.theater_code = #{theater_code}
+  		AND seat.y_index != '!'
+		AND seat.show_place_code = show_place.show_place_code
+		GROUP BY seat.show_place_code
+		ORDER BY seat.show_place_code ASC
+	</select>
 
 	<select id="getList" parameterType="int" resultType="showPlaceVO">
 		SELECT * FROM show_place

@@ -4,7 +4,9 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MY MoveIt HOME</title>
+<title>MY MovieT HOME</title>
+<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="../css/mypage/myContentAside.css" />
 <link rel="stylesheet" type="text/css" href="../css/mypage/mypageHome.css" />
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">

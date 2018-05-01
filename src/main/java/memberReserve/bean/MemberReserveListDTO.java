@@ -13,6 +13,7 @@ public class MemberReserveListDTO {
 	private String member_seat6;
 	private String member_seat7;
 	private String member_seat8;
+	private int count_seats;
 	private int pay_cost;
 	private String reserve_date;
 	private char reserve_cancle_able;
@@ -98,6 +99,12 @@ public class MemberReserveListDTO {
 	}
 	public void setMember_seat8(String member_seat8) {
 		this.member_seat8 = member_seat8;
+	}
+	public int getCount_seats() {
+		return count_seats;
+	}
+	public void setCount_seats(int count_seats) {
+		this.count_seats = count_seats;
 	}
 	public int getPay_cost() {
 		return pay_cost;

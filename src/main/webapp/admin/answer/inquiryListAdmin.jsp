@@ -21,7 +21,7 @@ pageEncoding="UTF-8"%>
 		<tr bgcolor="ffff00">
 			<th width="50">번호</th>
 			<th width="50">구분</th>
-			<th width="300">제목</th>
+			<th width="500">제목</th>
 			<th width="50">상태</th>
 			<th width="50">등록일</th>
 		</tr>
@@ -29,28 +29,19 @@ pageEncoding="UTF-8"%>
 			<tr bgcolor="ffffcc">
 				<td align="center">${inquiryDTO.inquiry_code}</td>
 				<td align="center">${inquiryDTO.inquiry_type }</td>
-				<c:if test="${inquiryDTO.inquiry_status == 0}">
 					<td>
 						<a id="titleA" href="../../main/inquiry/inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
 							${inquiryDTO.inquiry_title}
 						</a>
 					</td>
-				</c:if>
-				<c:if test="${inquiryDTO.inquiry_status != 0}">
-					<td>
-						<a id="titleA" href="../../main/inquiry/inquiryAnswerView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
-							${inquiryDTO.inquiry_title}
-						</a>
-					</td>
-				</c:if>
 				<c:if test="${inquiryDTO.inquiry_status == 0}">
 					<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
 				</c:if>
-				<c:if test="${inquiryDTO.inquiry_status != 0}">
+				
+				<c:if test="${inquiryDTO.inquiry_status > 0}">
 					<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
 				</c:if>
 				<td align="center">${inquiryDTO.inquiry_date}</td>
-				
 			</tr>
 		</c:forEach>
 		
