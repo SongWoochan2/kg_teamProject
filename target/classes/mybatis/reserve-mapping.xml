@@ -105,9 +105,11 @@
 		SELECT * FROM ( 
 			SELECT show_present_code, nonmember_seat1 seat1, nonmember_seat2 seat2, nonmember_seat3 seat3, nonmember_seat4 seat4, nonmember_seat5 seat5, nonmember_seat6 seat6, nonmember_seat7 seat7, nonmember_seat8 seat8
 			FROM nonmember_reserve
+			WHERE nonmember_reserve_cancel_able != 'y'
 			UNION ALL
 			SELECT show_present_code, member_seat1 seat1, member_seat2 seat2, member_seat3 seat3, member_seat4 seat4, member_seat5 seat5, member_seat6 seat6, member_seat7 seat7, member_seat8 seat8
-			FROM member_reserve ) reserve
+			FROM member_reserve 
+			WHERE reserve_cancel_able != 'y') reserve
 		ORDER BY show_present_code
 	</select>
 	
@@ -117,15 +119,21 @@
 			SELECT show_present_code, nonmember_seat1 seat1, nonmember_seat2 seat2, nonmember_seat3 seat3, nonmember_seat4 seat4, nonmember_seat5 seat5, nonmember_seat6 seat6, nonmember_seat7 seat7, nonmember_seat8 seat8
 			FROM nonmember_reserve
 			WHERE show_present_code = #{show_present_code}
+			AND nonmember_reserve_cancel_able != 'y'
 			UNION ALL
 			SELECT show_present_code, member_seat1 seat1, member_seat2 seat2, member_seat3 seat3, member_seat4 seat4, member_seat5 seat5, member_seat6 seat6, member_seat7 seat7, member_seat8 seat8
 			FROM member_reserve
-			WHERE show_present_code = #{show_present_code} ) reserve
+			WHERE show_present_code = #{show_present_code} 
+			AND reserve_cancel_able != 'y') reserve
 		ORDER BY show_present_code
 	</select>
 	
 	
-	
+	<insert id="insertMemberReserve" parameterType="reserve.bean.MemberReserveVO">
+		insert into member_reserve values(
+			member_reserve_seq.nextval, #{reserve_id}, #{show_present_code}, #{member_seat1}, #{member_seat2}, #{member_seat3}, #{member_seat4}, #{member_seat5}, #{member_seat6}, #{member_seat7}, #{member_seat8}, #{reserve_cost}, sysdate, 'n'
+		)
+	</insert>
 	
 	
 	

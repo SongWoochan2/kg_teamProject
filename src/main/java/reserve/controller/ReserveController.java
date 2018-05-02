@@ -1,16 +1,14 @@
 package reserve.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,10 +21,8 @@ import movie.bean.MovieDTO;
 import movie.controller.MovieService;
 import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
-import reserve.bean.ReserveDTO;
-import moviephoto.controller.MoviePhotoService;
+import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
-import resource.provider.ResourceProvider;
 import showPlace.bean.SeatVO;
 import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
@@ -49,8 +45,6 @@ public class ReserveController {
 	@Autowired
 	private TheaterService theaterService;
 	@Autowired
-	private ResourceProvider resourceProvider;
-	@Autowired
 	private MovieService movieService;
 	
 	@RequestMapping(value="/showChoice_forReserve.do")
@@ -68,7 +62,8 @@ public class ReserveController {
 		
 		return;
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/dateChoice_forReserve.do")
 	public void dateChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -91,7 +86,8 @@ public class ReserveController {
 		
 		return;
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/theaterChoice_forReserve.do")
 	public void theaterChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -116,7 +112,8 @@ public class ReserveController {
 		
 		return;
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/movieChoice_forReserve.do")
 	public void movieChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -147,14 +144,74 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value="/reserve.do")
-	public String reserve(HttpServletRequest request, HttpServletResponse response) {
+	public String hyperreserve(HttpServletRequest request, HttpServletResponse response) {
 		return "/main/reserve/reserve.jsp";
+	}
+	
+	@RequestMapping(value="/reserving.do")
+	public ModelAndView hyperreserving(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("memId");
+		
+		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
+		int show_place_code = Integer.parseInt(request.getParameter("show_place_code"));
+
+		List<SeatVO> seatVOs = new ArrayList<>();
+		for(int i = 1; i <= 8; i++) {
+			SeatVO seatVO = new SeatVO();
+			String seat = request.getParameter("seat" + i);
+			if(seat != null && !seat.equals("")) {
+				System.out.println("["+seat+"]");//////////////////////////////
+				String[] index = seat.split("-");
+				seatVO.setY_index(index[0]);
+				seatVO.setX_index(Integer.parseInt(index[1]));
+				seatVO.setShow_place_code(show_place_code);
+				
+				seatVOs.add(seatVO);
+			}
+		}
+		
+		List<ReservedSeatVO> reservedSeatVOs = reserveService.getreservedSeats(show_present_code);
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		
+		if(isAlreadyReseved(reservedSeatVOs, seatVOs)) {
+			modelAndView.addObject("su", 0);
+			modelAndView.setViewName("/main/reserve/reserving.jsp");
+			return modelAndView;
+		} 
+		
+		MemberReserveVO memberReserveVO = new MemberReserveVO();
+		
+		memberReserveVO.setReserve_id(member_id);
+		memberReserveVO.setShow_present_code(show_present_code);
+		memberReserveVO.setMember_seat1(request.getParameter("seat1"));
+		memberReserveVO.setMember_seat2(request.getParameter("seat2"));
+		memberReserveVO.setMember_seat3(request.getParameter("seat3"));
+		memberReserveVO.setMember_seat4(request.getParameter("seat4"));
+		memberReserveVO.setMember_seat5(request.getParameter("seat5"));
+		memberReserveVO.setMember_seat6(request.getParameter("seat6"));
+		memberReserveVO.setMember_seat7(request.getParameter("seat7"));
+		memberReserveVO.setMember_seat8(request.getParameter("seat8"));
+		memberReserveVO.setReserve_cost(10000);
+		
+		
+		int su = reserveService.insertMemberReserve(memberReserveVO);
+
+		
+		modelAndView.setViewName("/main/reserve/reserving.jsp");
+		modelAndView.addObject("su", su);
+		
+		return modelAndView;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/SeatView_ForReserve.do")
-	public ModelAndView SeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView hyperSeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println(request.getParameter("show_present_code"));
 		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
 		
@@ -183,7 +240,6 @@ public class ReserveController {
 			if(seat_type_code != 0) {
 				seat_num++;
 			}
-			
 			seat_json.put("x_index", x_index);
 			seat_json.put("y_index", y_index);
 			seat_json.put("seat_type_code", seat_type_code);
@@ -194,7 +250,6 @@ public class ReserveController {
 		json.put("x_size", x_set.size());
 		json.put("y_size", y_set.size());
 		json.put("seat_num", seat_num);
-		
 		
 		////////////// 예약된 좌석 json 으로 만들기
 		List<ReservedSeatVO> reservedSeatVOs =  reserveService.getreservedSeats(show_present_code);
@@ -229,18 +284,9 @@ public class ReserveController {
 
 		json.put("reserved", reserved_seats);
 		
-		
-		//SeatSize size = showPlaceService.seatSize(show_place_code);
-		//int seat_num = showPlaceService.getTotal(show_place_code);
-		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("showInfo", showPresentSuperVO);
-		//modelAndView.addObject("theater_name", theater_name);
-		//modelAndView.addObject("photo_addr", photo_addr.getMovie_photo_addr());
 		modelAndView.addObject("json", json.toJSONString());
-		/*modelAndView.addObject("seat_num", seat_num);
-		modelAndView.addObject("x_size", size.getX_size());
-		modelAndView.addObject("y_size", size.getY_size());*/
 		
 		modelAndView.setViewName("/main/reserve/selectSeat.jsp");
 		
@@ -249,9 +295,10 @@ public class ReserveController {
 	}
 	
 	
-	
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/movieList_forReserve.do")
-	public void movieList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+	public void hypermovieList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		
 		int theater_code = 0;
 		if(request.getParameter("theater_code") != null) {
@@ -285,8 +332,9 @@ public class ReserveController {
 		return;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/theaterList_forReserve.do")
-	public void theaterList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+	public void hypertheaterList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
 		if(request.getParameter("movie_code") != null) {
 			movie_code = Integer.parseInt(request.getParameter("movie_code"));
@@ -318,8 +366,9 @@ public class ReserveController {
 		return;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/dateList_forReserve.do")
-	public void dateList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+	public void hyperdateList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
 		int theater_code = 0;
 		if(request.getParameter("movie_code") != null) {
@@ -359,8 +408,9 @@ public class ReserveController {
 		return;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/showList_forReserve.do")
-	public void showList_forReserve(HttpServletRequest request, HttpServletResponse response) {
+	public void hypershowList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
 		int theater_code = 0;
 		if(request.getParameter("movie_code") != null) {
@@ -403,7 +453,78 @@ public class ReserveController {
 		return;
 	}
 	
+	private boolean isAlreadyReseved(List<ReservedSeatVO> reservedSeatVOs, List<SeatVO> seatVOs) {
+		for(ReservedSeatVO tmp : reservedSeatVOs) {
+			if(tmp.getSeat1() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat1())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat2() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat2())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat3() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat3())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat4() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat4())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat5() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat5())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat6() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat6())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat7() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat7())) {
+						return true;
+					}
+				}
+			}
+			if(tmp.getSeat8() != null ) {
+				for(SeatVO seatVO : seatVOs) {
+					String seat_str = seatVO.getY_index() + "-" + seatVO.getX_index();
+					if(seat_str.equals(tmp.getSeat8())) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 
+
+	@SuppressWarnings("unchecked")
 	private JSONObject resolveToIndex(String seat) {
 		JSONObject reservedSeat = new JSONObject();
 		String[] seat_str = seat.split("-");

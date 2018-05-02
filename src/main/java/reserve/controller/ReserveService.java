@@ -1,12 +1,9 @@
 package reserve.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import movie.bean.MovieDTO;
-import reserve.bean.ReserveDTO;
+import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
@@ -31,5 +28,7 @@ public interface ReserveService {
 	public List<ReservedSeatVO> getreservedSeats_list();
 	
 	public List<ReservedSeatVO> getreservedSeats(int show_present_code);
+
+	public int insertMemberReserve(MemberReserveVO memberReserveVO);
 	
 }

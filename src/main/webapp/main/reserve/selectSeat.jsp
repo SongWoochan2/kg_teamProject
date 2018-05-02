@@ -227,7 +227,13 @@
 			//$("div[name='seat']").off("click");
 			
 			
-			
+			$("#reserve_submit").off("click");
+			$("#reserve_submit").submit(function(){
+				if(chooseCount() < $("input[name='total_seat_num']:checked").val()){
+					alert("인원 수와 좌석 수가 맞지 않습니다.");
+					return false;
+				}
+			});
 			
 		});
 		
@@ -286,16 +292,19 @@
 					${showInfo.movie_name }
 				</div>
 				<div id="inner_bottom">
-					<input type="hidden" name="show_present_code" value="${showInfo.show_present_code }">
-					<input type="hidden" name="seat1" x_index="" y_index="" value="">
-					<input type="hidden" name="seat2" x_index="" y_index="" value="">
-					<input type="hidden" name="seat3" x_index="" y_index="" value="">
-					<input type="hidden" name="seat4" x_index="" y_index="" value="">
-					<input type="hidden" name="seat5" x_index="" y_index="" value="">
-					<input type="hidden" name="seat6" x_index="" y_index="" value="">
-					<input type="hidden" name="seat7" x_index="" y_index="" value="">
-					<input type="hidden" name="seat8" x_index="" y_index="" value="">
-					<input type="button" value="결제하기">
+					<form id="reservingForm" name="reservingForm" method="post" action="/MyCGV/reserving.do">
+						<input type="hidden" name="show_present_code" value="${showInfo.show_present_code }">
+						<input type="hidden" name="show_place_code" value="${showInfo.show_place_code }">
+						<input type="hidden" name="seat1" x_index="" y_index="" value="">
+						<input type="hidden" name="seat2" x_index="" y_index="" value="">
+						<input type="hidden" name="seat3" x_index="" y_index="" value="">
+						<input type="hidden" name="seat4" x_index="" y_index="" value="">
+						<input type="hidden" name="seat5" x_index="" y_index="" value="">
+						<input type="hidden" name="seat6" x_index="" y_index="" value="">
+						<input type="hidden" name="seat7" x_index="" y_index="" value="">
+						<input type="hidden" name="seat8" x_index="" y_index="" value="">
+						<input type="submit" id="reserve_submit" value="결제하기">
+					</form>
 				</div>
 			</div>
 		</div>
