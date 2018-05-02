@@ -21,6 +21,14 @@
 			// 링크의 페이지 이동 중단.
 			return false;
 		});
+		
+		$("a#unlike").click(function() {
+			if(${sessionScope.memId == null} == true){
+				alert("먼저 로그인 해주세요.");				
+				return false;
+			}
+		});
+		
 		$("#glayLayer,#overLayer").click(function(){
 			// 배경 레이어의 숨김
 			$("#glayLayer").fadeOut(300);
@@ -55,11 +63,11 @@
 					개봉 : ${movieDTO.movie_open_date }</div>
 					<div id="like">
 						<c:if test="${requestScope.like_able == 0 }">
-						<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=1" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=1" id="unlike" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-down"></span> unLike </a> 
 						</c:if>
 						<c:if test="${requestScope.like_able == 1 }">
-						<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" id="like" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-up"></span> Like </a> 
 						</c:if>
        					<b>${movieDTO.good_num }</b> 명 &nbsp;&nbsp;&nbsp;
@@ -134,10 +142,8 @@
 			<div id = "review-content">
 				<!-- 반복문 구간 -->
 				<div id = "review-info">
-					
 				</div>
 				<div id = "review-info">
-					
 				</div>
 				<div id = "review-info">
 				</div>

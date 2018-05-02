@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MovieDTO;
+import movie.controller.MovieService;
+import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
-import resource.provider.ResourceProvider;
 import showPlace.bean.SeatVO;
 import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
@@ -44,7 +45,103 @@ public class ReserveController {
 	@Autowired
 	private TheaterService theaterService;
 	@Autowired
-	private ResourceProvider resourceProvider;
+	private MovieService movieService;
+	
+	@RequestMapping(value="/showChoice_forReserve.do")
+	public void showChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		
+		
+		JSONObject json = new JSONObject();
+		
+		
+		try {
+			response.getWriter().println(json.toJSONString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/dateChoice_forReserve.do")
+	public void dateChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		
+		String show_date = request.getParameter("show_date");
+		if(show_date.equals("")) {
+			show_date = null;
+		}
+		
+	    JSONObject date = new JSONObject();
+	    date.put("show_date", show_date);
+	    
+		JSONObject json = new JSONObject();
+		json.put("date", date);
+		
+		try {
+			response.getWriter().println(json.toJSONString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/theaterChoice_forReserve.do")
+	public void theaterChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		
+		int theater_code = 0;
+		if(request.getParameter("theater_code") != null) {
+			theater_code = Integer.parseInt(request.getParameter("theater_code"));
+		}
+		System.out.println(theater_code);
+		TheaterDTO theaterDTO = theaterService.theaterView(theater_code);
+			
+	    JSONObject theater = new JSONObject();
+	    theater.put("theater_name", theaterDTO.getTheater_name());
+	    
+		JSONObject json = new JSONObject();
+		json.put("theater", theater);
+		
+		try {
+			response.getWriter().println(json.toJSONString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/movieChoice_forReserve.do")
+	public void movieChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		
+		int movie_code = 0;
+		if(request.getParameter("movie_code") != null) {
+			movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		}
+		MovieDTO movieDTO = movieService.movieView(movie_code);
+		MoviePhotoDTO moviePhotoDTO = moviePhotoService.moviePosterView(movie_code);
+			
+	    JSONObject movie = new JSONObject();
+	    movie.put("movie_code", movieDTO.getMovie_code());
+	    movie.put("movie_name", movieDTO.getMovie_name());
+	    JSONObject poster = new JSONObject();
+	    poster.put("poster_addr", moviePhotoDTO.getMovie_photo_addr());
+	    
+		JSONObject json = new JSONObject();
+		json.put("movie", movie);
+		json.put("poster", poster);
+		
+		try {
+			response.getWriter().println(json.toJSONString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
 	
 	@RequestMapping(value="/reserve.do")
 	public String hyperreserve(HttpServletRequest request, HttpServletResponse response) {
@@ -198,7 +295,8 @@ public class ReserveController {
 	}
 	
 	
-	
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/movieList_forReserve.do")
 	public void hypermovieList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -213,7 +311,7 @@ public class ReserveController {
 
 	    List<MovieDTO> list = reserveService.getMovieList(show_date, theater_code);
 
-		JSONArray movie_list = new JSONArray();
+	    JSONArray movie_list = new JSONArray();
 		for(MovieDTO tmp : list) {
 			JSONObject movie = new JSONObject();
 			movie.put("movie_code", tmp.getMovie_code());
@@ -234,6 +332,7 @@ public class ReserveController {
 		return;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/theaterList_forReserve.do")
 	public void hypertheaterList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
@@ -246,8 +345,8 @@ public class ReserveController {
 		}
 
 	    List<TheaterDTO> list = reserveService.getTheaterList(show_date, movie_code);
-
-		JSONArray theater_list = new JSONArray();
+	   
+	    JSONArray theater_list = new JSONArray();
 		for(TheaterDTO tmp : list) {
 			JSONObject theater = new JSONObject();
 			theater.put("theater_code", tmp.getTheater_code());
@@ -267,6 +366,7 @@ public class ReserveController {
 		return;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/dateList_forReserve.do")
 	public void hyperdateList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
@@ -277,8 +377,10 @@ public class ReserveController {
 		if(request.getParameter("theater_code") != null) {
 			theater_code = Integer.parseInt(request.getParameter("theater_code"));
 		}
+		
 	    List<ShowPresentAllVO> list = reserveService.getDateList(movie_code, theater_code);
-
+//	    showPresentService.
+	    
 		JSONArray show_list = new JSONArray();
 		for(ShowPresentAllVO tmp : list) {
 			JSONObject show = new JSONObject();
@@ -306,6 +408,7 @@ public class ReserveController {
 		return;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/showList_forReserve.do")
 	public void hypershowList_forReserve(HttpServletRequest request, HttpServletResponse response) {
 		int movie_code = 0;
@@ -421,6 +524,7 @@ public class ReserveController {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	private JSONObject resolveToIndex(String seat) {
 		JSONObject reservedSeat = new JSONObject();
 		String[] seat_str = seat.split("-");

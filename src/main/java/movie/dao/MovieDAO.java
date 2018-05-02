@@ -41,7 +41,12 @@ public class MovieDAO {
 	public int movieModify(MovieDTO movieDTO) {
 		return sqlSession.update("movieMapper.movieModify", movieDTO);
 	}
-	
+	public int updateEvaluatScore(int movie_code, int acc_evaluat_score) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("movie_code", movie_code);
+		map.put("acc_evaluat_score", acc_evaluat_score);
+		return sqlSession.update("movieMapper.updateEvaluatScore",map);
+	}
 	public List<MovieDTO> movieSearchByName(String movie_name) {
 		return sqlSession.selectList("movieMapper.searchByName", movie_name);
 	}

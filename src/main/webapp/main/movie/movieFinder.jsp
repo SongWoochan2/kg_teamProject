@@ -186,7 +186,7 @@
 							예매율&emsp; 0.0% 
 						</div>
 						<div id = "entity-opendate">
-							${find_list.movie_open_date }<font>D-3</font>
+							${find_list.movie_open_date }
 						</div>
 						<div id = "entity-like">
 <!-- 							<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a> -->

@@ -17,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import evaluat.bean.EvaluatDTO;
+import evaluat.controller.EvaluatService;
 import movie.bean.MovieDTO;
 import movie.bean.MoviePage;
 import moviephoto.bean.MoviePhotoDTO;
@@ -38,6 +40,9 @@ public class MovieController {
 	private SelectService selectService;
 	@Autowired
 	private ShowPresentService showPresentService;
+	@Autowired
+	private EvaluatService evaluatService;
+	
 	// 관리자 영역
 	
 	@RequestMapping(value="/admin/movie/movieAdmin.do")
@@ -59,7 +64,6 @@ public class MovieController {
 			int startPage = (pg-1)/3*3 + 1;
 			int endPage = startPage + 2;
 			if(totalPage < endPage) endPage = totalPage;
-			
 			
 			
 			MoviePage moviePage = new MoviePage();
@@ -215,40 +219,23 @@ public class MovieController {
 	
 	@RequestMapping(value="/main/movie/movieDetailView.do")
 	public ModelAndView movieDetailView(HttpServletRequest request, HttpSession session) {
+		int like_able = 0;
 		String member_id = (String) session.getAttribute("memId");
-		int photo_pg = Integer.parseInt(request.getParameter("photo_pg"));	
-		int trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));		
+		int photo_pg = 1;
+		int trailer_pg = 1;
+		if(request.getParameter("photo_pg") != null) {
+			photo_pg = Integer.parseInt(request.getParameter("photo_pg"));				
+		}
+		if(request.getParameter("trailer_pg") != null) {
+			trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));					
+		}
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		
-		// 찜하기 정보/등록
-		if(request.getParameter("good") != null) {
-			int good = Integer.parseInt(request.getParameter("good"));
-			int good_update = movieService.goodUpdate(movie_code,good);
-			if(good_update == 1) {
-				System.out.println("수정완료");
-				
-				if(good == 1) {
-					int add_result = selectService.addSelect(member_id, movie_code);
-					if(add_result == 1) {
-						System.out.println("추가완료");
-					}else if(add_result == 0) {
-						System.out.println("추가실패");
-					}					
-				}else if(good == -1) {
-					int delete_result = selectService.deleteSelect(member_id, movie_code);
-					if(delete_result == 1) {
-						System.out.println("삭제완료");
-					}else if(delete_result == 0) {
-						System.out.println("삭제실패");
-					}					
-				}
-				
-			}else if(good_update == 0) {
-				System.out.println("수정실패");				
-			}
-		}
 		
-		int like_able = selectService.selectMovieList(member_id, movie_code);
+		
+		if(member_id != null) {
+			like_able = selectService.selectMovieList(member_id, movie_code);			
+		}
 		
 		int p_endNum = photo_pg;
 		int p_startNum = p_endNum;	
@@ -393,12 +380,23 @@ public class MovieController {
 	@RequestMapping(value="/main/movie/movieReview.do")
 	public ModelAndView movieReview(HttpServletRequest request) {
 		int movie_count = 0;
-		int movie_code = 0 ;
-		int movie_pg = Integer.parseInt(request.getParameter("movie_pg"));
+		int movie_code = 0;
+		int movie_pg = 1;
+		int review_pg = 1;
+		ArrayList<EvaluatDTO> evaluat_list = null;
+		if(request.getParameter("movie_pg") != null) {
+			movie_pg = Integer.parseInt(request.getParameter("movie_pg"));
+		}
+		if(request.getParameter("review_pg") != null) {
+			review_pg = Integer.parseInt(request.getParameter("review_pg"));
+		}
 		
 		int m_endNum = movie_pg*4;
 		int m_startNum = m_endNum-3;	
 
+		int e_endNum = review_pg*6;
+		int e_startNum = e_endNum-5;	
+		
 		
 		ArrayList<String> code_list = showPresentService.getUniqueMovieCode();
 		for(String tmp : code_list) {movie_count++;}
@@ -414,10 +412,9 @@ public class MovieController {
 			
 //			System.out.println("photo_addr : "+photo_addr.getMovie_photo_addr());
 		}
-		
+		System.out.println("리스트 첫번쨰 영화코드 : "+movie_list.get(0).getMovie_code());
 		int m_totalA = movie_count;
 		int m_totalPage = ((m_totalA+3) / 4);		
-		
 		if(m_totalPage < movie_pg) movie_pg = m_totalPage;
 		
 		MoviePage m_moviePage = new MoviePage();
@@ -425,19 +422,39 @@ public class MovieController {
 		m_moviePage.setTotalPage(m_totalPage);
 		m_moviePage.setPg(movie_pg);
 		
-	//		if(request.getParameter("movie_code") == null) {
-	//		movie_code = 0;
-	//	}else {
-	//		movie_code = Integer.parseInt(request.getParameter("movie_code"));			
-	//	}
-	//	MoviePhotoDTO poster_addr = moviePhotoService.moviePosterView(movie_code);
+		if(request.getParameter("movie_code") == null) {
+			movie_code = movie_list.get(0).getMovie_code();
+		}else {
+			movie_code = Integer.parseInt(request.getParameter("movie_code"));			
+		}
+		int e_totalA = evaluatService.getTotal(movie_code);
+		int e_totalPage = ((e_totalA+5) / 6);
+		int e_startPage = (review_pg-1)/3*3 + 1;
+		int e_endPage = e_startPage + 2;
+
+		if(e_totalPage < e_endPage) e_endPage = e_totalPage;
 		
+		
+		MoviePage e_moviePage = new MoviePage();
+		e_moviePage.setTotalA(e_totalA);
+		e_moviePage.setStartPage(e_startPage);
+		e_moviePage.setEndPage(e_endPage);
+		e_moviePage.setTotalPage(e_totalPage);
+		e_moviePage.setPg(review_pg);
+		
+		if(evaluatService.EvaluatList(movie_code, e_startNum, e_endNum) != null) {
+			evaluat_list = evaluatService.EvaluatList(movie_code, e_startNum, e_endNum);			
+		}
 		
 		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.addObject("movie_code", movie_code);
-		modelAndView.addObject("m_moviePage", m_moviePage);
+		modelAndView.addObject("movie_code", movie_code);
 		modelAndView.addObject("poster_map", poster_map);
+		modelAndView.addObject("m_moviePage", m_moviePage);
+		modelAndView.addObject("e_moviePage", e_moviePage);
 		modelAndView.addObject("movie_list", movie_list);
+		if(evaluat_list != null) {			
+			modelAndView.addObject("evaluat_list", evaluat_list);
+		}
 		modelAndView.setViewName("movieReview.jsp");
 		return modelAndView;
 	}
@@ -450,7 +467,6 @@ public class MovieController {
 	}
 
 	
-					
 }
 
 
