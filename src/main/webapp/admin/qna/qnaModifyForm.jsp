@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -7,20 +8,20 @@ pageEncoding="UTF-8"%>
 <title>Insert title here</title>
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-/* $(function(){
-	$("#form").submit(function() {
-		if (!$("#qna_title").val()) {
-			alert("제목을 입력하세요.");
-			$("#qna_title").focus();
-			return false;
-		}
-		if (!$("#qna_content").val()) {
-			alert("내용을 입력하세요.");
-			$("#qna_content").focus();
-			return false;
-		}
+	$(function(){
+		$("#form").submit(function() {
+			if (!$("#qna_title").val()) {
+				alert("제목을 입력하세요.");
+				$("#qna_title").focus();
+				return false;
+			}
+			if (!$("#qna_content").val()) {
+				alert("내용을 입력하세요.");
+				$("#qna_content").focus();
+				return false;
+			}
+		});
 	});
-}); */
 </script>
 <style type="text/css">
 #title, #qna_type{
@@ -52,7 +53,7 @@ pageEncoding="UTF-8"%>
 				<div>
 					<input id="qna_title" type="text" name="qna_title" size="80" value="${qnaDTO.qna_title }">
 				</div>
-				<div id="qna_content">
+				<div>
 					<textarea id="qna_content" name="qna_content" rows="15" cols="82">${qnaDTO.qna_content }</textarea>
 				</div>
 				<div>
