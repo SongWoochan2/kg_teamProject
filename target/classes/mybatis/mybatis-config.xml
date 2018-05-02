@@ -5,6 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
+		<typeAlias type="evaluat.bean.EvaluatDTO" alias="evaluatDTO"></typeAlias>
+		<typeAlias type="evaluat.bean.EvaluatLikeDTO" alias="evaluatLikeDTO"></typeAlias>
 		<typeAlias type="answer.bean.AnswerDTO" alias="answerDTO"></typeAlias>
 		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
 		<typeAlias type="inquiry.bean.InquiryDTO" alias="inquiryDTO"></typeAlias>
@@ -28,6 +30,7 @@
 
 	<mappers>
 		<mapper resource="mybatis/savingList-mapping.xml"/>
+		<mapper resource="mybatis/evaluat-mapping.xml"/>
 		<mapper resource="mybatis/answer-mapping.xml"/>
 		<mapper resource="mybatis/inquiry-mapping.xml"/>
 		<mapper resource="mybatis/noticeItem-mapping.xml"/>

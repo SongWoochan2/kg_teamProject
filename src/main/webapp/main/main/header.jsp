@@ -68,8 +68,8 @@
 				<div id="inner_center">
 					<ul class="menu">
 						<li class="te"><a href="/MyCGV/main/movie/movieChart.do">영화</a></li>
-						<li class="te"><a href="/MyCGV/main/movie/movieFinder.do?pg=1">검색</a></li>
-						<li class="te"><a href="/MyCGV/main/movie/movieReview.do?movie_pg=1">리뷰 </a></li>
+						<li class="te"><a href="/MyCGV/main/movie/movieFinder.do">검색</a></li>
+						<li class="te"><a href="/MyCGV/main/movie/movieReview.do">리뷰 </a></li>
 						<li class="te"><a href="/MyCGV/main/reserve.do?pg=1">예매</a></li>
 						<li class="te"><a href="#">극장</a>
 						<li class="te"><a href="/MyCGV/main/store/store.do?type=set">스토어</a></li>

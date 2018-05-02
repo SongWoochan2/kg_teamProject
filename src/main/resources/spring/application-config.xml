@@ -11,7 +11,7 @@
     <!-- Uncomment and add your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
-            
+    <context:component-scan base-package="evaluat"/>        
 	<context:component-scan base-package="answer"/>
 	<context:component-scan base-package="inquiry"/>
    	<context:component-scan base-package="qna"/>

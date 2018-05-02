@@ -28,6 +28,8 @@
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
 	<context:component-scan base-package="select"/>
+	<context:component-scan base-package="evaluat"/>
+	   
 	<!-- 우찬 -->
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>

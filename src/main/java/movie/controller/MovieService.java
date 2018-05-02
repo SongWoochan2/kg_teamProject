@@ -8,6 +8,7 @@ import movie.bean.MovieDTO;
 
 public interface MovieService {
 	int movieModify(MovieDTO movieDTO);
+	int updateEvaluatScore(int movie_code, int acc_evaluat_score);
 	int movieDelete(int movie_code);
 	int movieInsert(MovieDTO movieDTO);
 	int getTotalA();
