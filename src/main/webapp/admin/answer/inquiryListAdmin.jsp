@@ -21,47 +21,47 @@ pageEncoding="UTF-8"%>
 		<tr bgcolor="ffff00">
 			<th width="50">번호</th>
 			<th width="50">구분</th>
-			<th width="300">제목</th>
-			<th width="50">등록일</th>
+			<th width="500">제목</th>
 			<th width="50">상태</th>
+			<th width="50">등록일</th>
 		</tr>
 		<c:forEach var="inquiryDTO" items="${list}">
 			<tr bgcolor="ffffcc">
 				<td align="center">${inquiryDTO.inquiry_code}</td>
 				<td align="center">${inquiryDTO.inquiry_type }</td>
-				<td>
-					<a id="titleA" href="inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
-						${inquiryDTO.inquiry_title}
-					</a>
-				</td>
-				<td align="center">${inquiryDTO.inquiry_date}</td>
+					<td>
+						<a id="titleA" href="../../main/inquiry/inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
+							${inquiryDTO.inquiry_title}
+						</a>
+					</td>
 				<c:if test="${inquiryDTO.inquiry_status == 0}">
 					<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
 				</c:if>
-				<c:if test="${inquiryDTO.inquiry_status != 0}">
+				
+				<c:if test="${inquiryDTO.inquiry_status > 0}">
 					<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
 				</c:if>
-				
+				<td align="center">${inquiryDTO.inquiry_date}</td>
 			</tr>
 		</c:forEach>
 		
 		<tr>
 			<td colspan="5" align="center">
 				<c:if test="${startPage > 3 }">
-					[<a id="paging" href="inquiryList.do?pg=${startPage-1}">이전</a>]
+					[<a id="paging" href="inquiryListAdmin.do?pg=${startPage-1}">이전</a>]
 				</c:if>
 				
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<c:if test="${i == param.pg }">
-						[<a id="currentPaging" href="inquiryList.do?pg=${i }">${i }</a>]
+						[<a id="currentPaging" href="inquiryListAdmin.do?pg=${i }">${i }</a>]
 					</c:if>
 					<c:if test="${i != param.pg }">
-						[<a id="paging" href="inquiryList.do?pg=${i }">${i }</a>]
+						[<a id="paging" href="inquiryListAdmin.do?pg=${i }">${i }</a>]
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${endPage < totalP }">
-					[<a id="paging" href="inquiryList.do?pg=${endPage+1}">다음</a>]
+					[<a id="paging" href="inquiryListAdmin.do?pg=${endPage+1}">다음</a>]
 				</c:if>
 			</td>
 		</tr>

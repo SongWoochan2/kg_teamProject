@@ -29,15 +29,16 @@ pageEncoding="UTF-8"%>
 			<tr bgcolor="ffffcc">
 				<td align="center">${inquiryDTO.inquiry_code}</td>
 				<td align="center">${inquiryDTO.inquiry_type }</td>
-				<td>
-					<a id="titleA" href="inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
-						${inquiryDTO.inquiry_title}
-					</a>
-				</td>
+					<td>
+						<a id="titleA" href="inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
+							${inquiryDTO.inquiry_title}
+						</a>
+					</td>
 				<c:if test="${inquiryDTO.inquiry_status == 0}">
 					<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
 				</c:if>
-				<c:if test="${inquiryDTO.inquiry_status != 0}">
+				
+				<c:if test="${inquiryDTO.inquiry_status > 0}">
 					<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
 				</c:if>
 				<td align="center">${inquiryDTO.inquiry_date}</td>
@@ -59,7 +60,6 @@ pageEncoding="UTF-8"%>
 						[<a id="paging" href="inquiryListMember.do?pg=${i }">${i }</a>]
 					</c:if>
 				</c:forEach>
-				
 				<c:if test="${endPage < totalP }">
 					[<a id="paging" href="inquiryListMember.do?pg=${endPage+1}">다음</a>]
 				</c:if>

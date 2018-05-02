@@ -6,29 +6,38 @@ pageEncoding="UTF-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>글보기</title>
+<style type="text/css">
+#qna_content{
+	margin: auto;
+    width: 30%;
+}
+#title, #qna_code, #qna_type{
+	color: #c7d6a0;
+}
+#title{
+	font-size: 30;
+	font-weight: 900;
+}
+</style>
 </head>
 <body>
-	<table border="1" cellspacing="0" cellpadding="5">
-		<tr>
-			<td colspan="3">
+	<jsp:include page="../adminMain/adminTemplate.jsp"/>
+	<div id = "content" align="center">
+			<div id="title">
 				<font size="5">${qnaDTO.qna_title }</font>
-			</td>
-		</tr>
-		<tr>
-			<td>글번호 : ${qnaDTO.qna_code }</td>
-			<td>질문 종류 : ${qnaDTO.qna_type }</td>
-		</tr>
-		<tr>
-			<td colspan="3" height="200" valign="top">
+			</div>
+			<div id="qna_code">
+				글번호 : ${qnaDTO.qna_code }
+			</div>
+			<div id="qna_type">
+				질문 종류 : ${qnaDTO.qna_type }
+			</div>
+			<div id="qna_content">
 				<pre>${qnaDTO.qna_content }</pre>
-			</td>
-		</tr>
-	</table>
-	<input type="button" value="목록" onclick="location.href='qnaList.do?pg=${param.pg}'">
-	<input type="button" value="수정" onclick="location.href='qnaModifyForm.do?qna_code=${qnaDTO.qna_code}'">
-	<input type="button" value="삭제" onclick="location.href='qnaDelete.do?qna_code=${qnaDTO.qna_code}'">
-	<br><br>
-	<input type="button" value="메인으로" onclick="location.href='/MyCGV/admin/clientCenter/clientCenterMain.jsp'">
-	<input type="button" value="뒤로" onclick="history.back(); return false;">
+			</div>
+		<input type="button" value="목록" onclick="location.href='qnaList.do?pg=${param.pg}'">
+		<input type="button" value="수정" onclick="location.href='qnaModifyForm.do?qna_code=${qnaDTO.qna_code}'">
+		<input type="button" value="삭제" onclick="location.href='qnaDelete.do?qna_code=${qnaDTO.qna_code}'">
+	</div>
 </body>
 </html>

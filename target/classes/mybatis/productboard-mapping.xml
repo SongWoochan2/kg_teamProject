@@ -13,10 +13,10 @@
 		DELETE FROM product WHERE product_code = #{product_code}
 	</delete>
 	
-	<delete id="productboardModify" parameterType="productboardDTO">
+	<update id="productboardModify" parameterType="productboardDTO">
 		UPDATE product SET product_name=#{product_name},product_cost=#{product_cost},product_type=#{product_type},product_photo_addr=#{product_photo_addr}
 		WHERE product_code=#{product_code}
-	</delete>
+	</update>
 	
 	<select id="productboardView" parameterType="int" resultType="productboardDTO">
 		SELECT * FROM product WHERE product_code = #{product_code}
@@ -43,7 +43,30 @@
 	<select id="productView" parameterType="int" resultType="productboardDTO">
 		SELECT * FROM product WHERE product_code = #{product_code}
 	</select>
+	
+<!-- Pay -->
+	<insert id="productpayComplete" parameterType="productPayDTO">
+		INSERT INTO product_pay (
+		product_pay_code, pay_id, product_code, buy_phone, gift_phone1, gift_phone2, gift_phone3, pay_type, pay_time, pay_cancle_able, order_num1, order_num2, order_num3
+		)
+		VALUES(pay_seq.nextval, #{pay_id},#{product_code},#{buy_phone},#{gift_phone1},#{gift_phone2},#{gift_phone3},#{pay_type}, sysdate,#{pay_cancle_able},#{order_num1},#{order_num2},#{order_num3})
+	</insert>
+	
+<!-- PayList -->
+	<select id="productpayList" parameterType="java.util.Map"	resultType="productpayDTO">
+		<![CDATA[select information 
+				 from  (select rownum rn, tt.* 
+				 from (select * from product_pay order by pay_code desc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+<!-- PayCancle -->
+<!-- 	<update id="productpayCancle" parameterType="productcancleDTO">
+		UPDATE product_pay SET pay_cancle_able='Y'
+		WHERE member_id=#{member_id} and product_pay_code=#{product_pay_code}
+	</update> -->
 </mapper>
+
 
 
 

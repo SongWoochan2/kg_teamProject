@@ -1,16 +1,7 @@
 /* 마이페이지홈 바디 전체 최상위 영역*/
-div#mypageBody {
-	width: 100%;
-	height: 1200px;
-}
+
 /* 마이페이지홈 바디 전체 최상위의 한단계아래 영역, 여기는 mypageHome.jsp실행하면 먹히는 css */
-div#my-content-wrap {
-	width: 970px;
-	height: 70%;
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
-}
+
 .sect-content-movie{
 	margin-left: 100px;
 	width: 601px;
@@ -20,7 +11,7 @@ div#my-content-wrap {
 
 div.sect-content-movie div {
 	float: left;
-}
+} 
 .sect-content-movie .box-inner{
 	width:600px;
 	height:120px;
@@ -44,15 +35,10 @@ div.sect-content-movie div {
 	left: 197px;
 	
 }
-.sect-content-movie .box-innerwishlist a{
+.sect-content-movie .box-inner a{
 	text-decoration:none;
 }
-.sect-content-movie .box-innerwatched a{
-	text-decoration:none;
-}
-.sect-content-movie .box-innermvdiary a{
-	text-decoration:none;
-}
+
 .mypage_bottom_div{
  	position:relative;
  	top:50px;
@@ -110,5 +96,5 @@ div.sect-content-movie div {
 	margin-top: 20px;
 }
 #title-mypage_em1_img3_3{
-	margin-top: -60px;
+	margin-top: -10px;
 }

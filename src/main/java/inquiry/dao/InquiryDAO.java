@@ -20,7 +20,10 @@ public class InquiryDAO {
 		return sqlSession.insert("mybatis.inquiry.inquiryWrite", inquiryDTO);
 	}
 	
-	
+	public int inquiryStatus(int inquiry_code) {
+		System.out.println(3);
+		return sqlSession.update("mybatis.inquiry.inquiryStatus", inquiry_code);
+	}
 	
 	public int inquiryModify(InquiryDTO inquiryDTO) {
 		return sqlSession.update("mybatis.inquiry.inquiryModify", inquiryDTO);
@@ -42,7 +45,6 @@ public class InquiryDAO {
 	}
 	
 	public InquiryDTO inquiryView(int inquiry_code) {
-		System.out.println("inquiry_code :"+inquiry_code);
 		return sqlSession.selectOne("mybatis.inquiry.inquiryView", inquiry_code);
 	}
 	

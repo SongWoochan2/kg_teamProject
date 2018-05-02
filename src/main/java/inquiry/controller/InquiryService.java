@@ -25,6 +25,11 @@ public class InquiryService {
 		return inquiryDAO.inquiryModify(inquiryDTO);
 	}
 	
+	public int inquiryStatus(int inquiry_code) {
+		System.out.println(2);
+		return inquiryDAO.inquiryStatus(inquiry_code);
+	}
+	
 	public List<InquiryDTO> inquiryListAdmin(int startNum, int endNum){
 		return inquiryDAO.inquiryListAdmin(startNum, endNum);
 	}

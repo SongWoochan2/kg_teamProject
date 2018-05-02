@@ -284,6 +284,7 @@ public class MovieController {
 	
 	@RequestMapping(value="/main/movie/movieFinder.do")
 	public ModelAndView movieFinder(HttpServletRequest request) {
+		System.out.println("파인더");
 			int pg = 1;		
 			int endNum = 0;
 			int startNum = 0;

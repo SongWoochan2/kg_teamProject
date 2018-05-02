@@ -166,6 +166,7 @@
 				</div>
 			</div>
 			<div id = "findcontentform">
+			
 				<div id = "findcontent">
 				<c:forEach var ="find_list" items="${requestScope.find_list }">
 					<div id = "findentity">

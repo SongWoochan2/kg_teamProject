@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +24,14 @@ import movie.controller.MovieService;
 import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
 import reserve.bean.ReserveDTO;
+import moviephoto.controller.MoviePhotoService;
+import reserve.bean.ReservedSeatVO;
 import resource.provider.ResourceProvider;
+import showPlace.bean.SeatVO;
+import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
+import showPresent.bean.ShowPresentSuperVO;
+import showPresent.controller.ShowPresentService;
 import theater.bean.TheaterDTO;
 import theater.controller.TheaterService;
 
@@ -33,13 +41,17 @@ public class ReserveController {
 	@Autowired
 	private ReserveService reserveService;
 	@Autowired
-	private ResourceProvider resourceProvider;
+	private ShowPresentService showPresentService;
 	@Autowired
-	private MovieService movieService;
+	private ShowPlaceService showPlaceService;
 	@Autowired
 	private MoviePhotoService moviePhotoService;
 	@Autowired
 	private TheaterService theaterService;
+	@Autowired
+	private ResourceProvider resourceProvider;
+	@Autowired
+	private MovieService movieService;
 	
 	@RequestMapping(value="/showChoice_forReserve.do")
 	public void showChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
@@ -133,6 +145,110 @@ public class ReserveController {
 		
 		return;
 	}
+	
+	@RequestMapping(value="/reserve.do")
+	public String reserve(HttpServletRequest request, HttpServletResponse response) {
+		return "/main/reserve/reserve.jsp";
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/SeatView_ForReserve.do")
+	public ModelAndView SeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println(request.getParameter("show_present_code"));
+		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
+		
+		
+		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
+		String show_date = showPresentSuperVO.getShow_date();
+		showPresentSuperVO.setShow_date(show_date.substring(0, 11));
+		
+		int show_place_code = showPresentSuperVO.getShow_place_code();
+		
+		List<SeatVO> seatList = showPlaceService.seatList(show_place_code);
+		JSONObject json = new JSONObject();
+		JSONArray list = new JSONArray();
+		
+		Set<Integer> x_set = new HashSet<>();
+		Set<String> y_set = new HashSet<>();
+		int seat_num = 0;
+		for(SeatVO seatVO : seatList) {
+			JSONObject seat_json = new JSONObject();
+			int x_index = seatVO.getX_index();
+			String y_index = seatVO.getY_index();
+			int seat_type_code =  seatVO.getSeat_type_code();
+			
+			x_set.add(x_index);
+			y_set.add(y_index);
+			if(seat_type_code != 0) {
+				seat_num++;
+			}
+			
+			seat_json.put("x_index", x_index);
+			seat_json.put("y_index", y_index);
+			seat_json.put("seat_type_code", seat_type_code);
+			list.add(seat_json);
+		}
+		if(y_set.contains("!")) y_set.remove("!");
+		json.put("seat", list);
+		json.put("x_size", x_set.size());
+		json.put("y_size", y_set.size());
+		json.put("seat_num", seat_num);
+		
+		
+		////////////// 예약된 좌석 json 으로 만들기
+		List<ReservedSeatVO> reservedSeatVOs =  reserveService.getreservedSeats(show_present_code);
+		
+		JSONArray reserved_seats = new JSONArray();
+		for(ReservedSeatVO vo : reservedSeatVOs) {
+			if(vo.getSeat1() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat1()));
+			}
+			if(vo.getSeat2() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat2()));
+			}
+			if(vo.getSeat3() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat3()));
+			}
+			if(vo.getSeat4() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat4()));
+			}
+			if(vo.getSeat5() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat5()));
+			}
+			if(vo.getSeat6() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat6()));
+			}
+			if(vo.getSeat7() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat7()));
+			}
+			if(vo.getSeat8() != null) {
+				reserved_seats.add(resolveToIndex(vo.getSeat8()));
+			}
+		}
+
+		json.put("reserved", reserved_seats);
+		
+		
+		//SeatSize size = showPlaceService.seatSize(show_place_code);
+		//int seat_num = showPlaceService.getTotal(show_place_code);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("showInfo", showPresentSuperVO);
+		//modelAndView.addObject("theater_name", theater_name);
+		//modelAndView.addObject("photo_addr", photo_addr.getMovie_photo_addr());
+		modelAndView.addObject("json", json.toJSONString());
+		/*modelAndView.addObject("seat_num", seat_num);
+		modelAndView.addObject("x_size", size.getX_size());
+		modelAndView.addObject("y_size", size.getY_size());*/
+		
+		modelAndView.setViewName("/main/reserve/selectSeat.jsp");
+		
+		
+		return modelAndView;
+	}
+	
+	
 	
 	@RequestMapping(value="/movieList_forReserve.do")
 	public void movieList_forReserve(HttpServletRequest request, HttpServletResponse response) {
@@ -274,6 +390,7 @@ public class ReserveController {
 			show_list.add(show);
 		}
 		
+		
 		JSONObject json = new JSONObject();
 		json.put("shows", show_list);
 		
@@ -286,234 +403,12 @@ public class ReserveController {
 		return;
 	}
 	
-	/*@RequestMapping(value="/admin/theater/theaterInsertForm.do", method=RequestMethod.GET)
-	public ModelAndView supertheaterInsertForm(HttpServletRequest request, HttpServletResponse response) { 
-		System.out.println("글작성");
-		// 매개변수가 반드시 2개일 필요 없음
-		// HttpServletRequest request도 안 쓰고
 
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("theaterInsertForm.jsp");
-		return modelAndView;
-
-	}*/
-	
-	/*@RequestMapping(value="/theater.main/theaterInsertForm.do")
-	public ModelAndView theaterInsertForm() { 
-		System.out.println("글작성");
-		// 매개변수가 반드시 2개일 필요 없음
-		// HttpServletRequest request도 안 쓰고
-
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("theaterInsertForm.jsp");
-		return modelAndView;
-
-	}*/
-	
-	/*@RequestMapping(value="/admin/theater/theaterInsert.do", method=RequestMethod.POST)
-	public ModelAndView supertheaterInsert(HttpServletRequest request,  MultipartFile theater_photo_addr, HttpServletResponse response) {
-		System.out.println("극장 등록 처리");
-		
-//		String filePath = "J://1802JavaSW_HBN//spring//teamProject//src//main//webapp//image//theater_juso";
-		String filePath = resourceProvider.getPath("image/theater_juso");
-		String fileName = theater_photo_addr.getOriginalFilename();	
-		File file = new File(filePath, fileName);
-		ModelAndView modelAndView = new ModelAndView();
-		
-		// 파일을 storage 폴더에 복사
-				try {
-					// getInputStream() : 업로드한 파일 데이터를 읽어오는 InputStream을 구한다.
-					FileCopyUtils.copy(theater_photo_addr.getInputStream(), new FileOutputStream(file));
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-				
-				
-				
-				
-				
-		try {
-			request.setCharacterEncoding("utf-8");	// 예외처리만 해주면 됨
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			System.out.println("예외");
-		}
-		// 1. 사용자 입력 정보 추출
-		String theater_name = request.getParameter("theater_name");
-		String theater_phone = request.getParameter("theater_phone");
-		HttpSession session = request.getSession();
-		// 2. DB 연동처리
-		TheaterDTO theaterDTO = new TheaterDTO();
-		theaterDTO.setTheater_name(theater_name);
-		theaterDTO.setTheater_phone(theater_phone);
-		theaterDTO.setTheater_photo_addr(fileName);
-		int result = reserveService.theaterInsert(theaterDTO);
-	
-		// 3. 화면 네비게이션
-		modelAndView.addObject("result", result);
-		modelAndView.setViewName("theaterInsert.jsp");
-		return modelAndView;
-
+	private JSONObject resolveToIndex(String seat) {
+		JSONObject reservedSeat = new JSONObject();
+		String[] seat_str = seat.split("-");
+		reservedSeat.put("y_index", seat_str[0]);
+		reservedSeat.put("x_index", seat_str[1]);
+		return reservedSeat;
 	}
-
-	*/
-	@RequestMapping(value="/main/reserve/reserve.do")
-	public ModelAndView theaterList(HttpServletRequest request) {
-		System.out.println("reserve2.do");
-		System.out.println("글 목록 처리");
-		// 1. 사용자 입력 정보 추출
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		// 2. DB 연동처리
-	
-		//int day_count = Integer.parseInt(request.getParameter("day_count"));
-		int day_count = 3;
-		Date now = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, day_count);
-		
-		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH);
-		int day = cal.get(Calendar.DATE);
-		
-		String show_date = "" + year + month + day;
-		
-		System.out.println("상영 날짜 : "+show_date);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		String n2 = sdf.format(now);
-		System.out.println("오늘 날짜 : "+ n2);
-	
-		
-		
-		int theater_code = 3;
-		System.out.println("극장 코드 : " + theater_code);
-		ArrayList<ReserveDTO> list = reserveService.reserveList(show_date, theater_code );
-		
-		System.out.println("리스트 : " + list);
-		
-		
-		
-		
-		
-		// 3. 화면 네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("show_date", show_date);
-		modelAndView.addObject("list", list);
-		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("reserve.jsp");
-		System.out.println("끝");
-		return modelAndView;
-
-	}
-
-	/*@RequestMapping(value="/admin/theater/theaterView.do")
-	public ModelAndView supertheaterView(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("글 상세보기");
-		// 1. 사용자 입력 정보 추출
-		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		// 2. DB 연동처리
-		
-		reserveService.updateHit(theater_code);
-		TheaterDTO theaterDTO = reserveService.theaterView(theater_code);
-		// 3. 화면 네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("theaterDTO", theaterDTO);
-		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("theater_code", theater_code);
-		modelAndView.setViewName("theaterView.jsp");
-		return modelAndView;
-	}*/
-	
-	/*@RequestMapping(value="/admin/theater/theaterDelete.do")
-	public ModelAndView supertheaterDelete(HttpServletRequest request,HttpServletResponse response) {
-		System.out.println("글 삭제");
-		// 1. 사용자 입력 정보 추출
-		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
-		// 2. DB 연동처리
-	
-		int result = reserveService.theaterDelete(theater_code);
-
-		// 3. 화면 네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.setViewName("theaterDelete.jsp");
-		return modelAndView;
-	}*/
-	
-	
-	
-/*	@RequestMapping(value="/admin/theater/theaterModifyForm.do")
-	public ModelAndView supertheaterModifyForm(HttpServletRequest request,HttpServletResponse response ) { 
-		System.out.println("수정");
-		
-		int theater_code = Integer.parseInt(request.getParameter("theater_code"));
-		TheaterDTO theaterDTO = reserveService.theaterView(theater_code);
-		ModelAndView modelAndView = new ModelAndView();
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		
-		modelAndView.addObject("theaterDTO", theaterDTO);
-		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("theaterModifyForm.jsp");
-		return modelAndView;
-	
-	}
-	
-	@RequestMapping(value="/admin/theater/theaterModify.do", method=RequestMethod.POST)
-	public ModelAndView supertheaterModify(HttpServletRequest request, MultipartFile theater_photo_addr,HttpServletResponse response) {
-		   // 데이터
-	    System.out.println("수정완료");
-	    ModelAndView modelAndView = new ModelAndView();
-					
-	    HttpSession session = request.getSession();
-        try {
-           request.setCharacterEncoding("utf-8");
-        } catch (UnsupportedEncodingException e) {
-           e.printStackTrace();
-           System.out.println("인코딩에러");
-        }
-        int theater_code = Integer.parseInt(request.getParameter("theater_code"));
-        String theater_name = request.getParameter("theater_name");
-//	            String theater_photo_addr = request.getParameter("theater_photo_addr");
-//	            System.out.println(theater_photo_addr);
-        String theater_phone = request.getParameter("theater_phone");
-        // 데이터 지정
-        TheaterDTO theaterDTO = new TheaterDTO();
-        theaterDTO.setTheater_code(theater_code);
-        theaterDTO.setTheater_name(theater_name);
-//	            theaterDTO.setTheater_photo_addr(theater_photo_addr);
-        theaterDTO.setTheater_phone(theater_phone);
-
-  	    if(!theater_photo_addr.isEmpty()) {
-  	    	  // 이미지 파일 저장
-  	    	  
-  	    	  String filePath = resourceProvider.getPath("image/theater_juso");
-  	    	  String fileName = theater_photo_addr.getOriginalFilename();
-  	    	  File file = new File(filePath, fileName);
-  	    	  
-  	    	  System.out.println("check1 : " + theater_photo_addr);
-  	    	  System.out.println("check2 : " + fileName);
-  	    	  System.out.println("check3 : " + theater_photo_addr.isEmpty());
-  	    	  // 파일을 storage 폴더에 복사
-  	    	  try {
-  	    		  // getInputStream() : 업로드한 파일 데이터를 읽어오는 InputStream을 구한다.
-  	    		  FileCopyUtils.copy(theater_photo_addr.getInputStream(), new FileOutputStream(file));
-  	    	  } catch (FileNotFoundException e) {
-  	    		  e.printStackTrace();
-  	    	  } catch (IOException e) {
-  	    		  e.printStackTrace();
-  	    	  }
-  	    	  
-  	    	  // DTO에 filename 넣기
-  	    	  theaterDTO.setTheater_photo_addr(fileName);
-  	      }
-	    //DB
-	     int result = reserveService.theaterModify(theaterDTO);
-	     modelAndView.addObject("result", result);
-	     modelAndView.setViewName("theaterModify.jsp");
-	     return modelAndView;
-	}*/
 }

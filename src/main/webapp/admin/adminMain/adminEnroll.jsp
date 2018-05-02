@@ -140,6 +140,6 @@
 			</form>
 		</div>
 	</div>
-	<jsp:include page="/admin/adminMain/footer_admin.jsp"/>
+	<%-- <jsp:include page="/admin/adminMain/footer_admin.jsp"/> --%>
 </body>
 </html>

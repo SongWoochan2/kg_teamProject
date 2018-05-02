@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberReserve">
+	<!-- 예매내역 -->
+	<select id="getReserveCodes" parameterType="java.util.Map" resultType="int">
+		<![CDATA[select reserve_code from 
+			(select rownum rn,tt.* from 
+			(select reserve_code from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate <= show_date)
+			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="getTotalVal" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate <= show_date)]]>
+	</select>
+	
+	<select id="getAllReserveList" parameterType="int" resultType="memberReserveListDTO">
+		<![CDATA[SELECT reserve_code,reserve_id,mr.show_present_code,
+			member_seat1,member_seat2,member_seat3,member_seat4,
+			member_seat5,member_seat6,member_seat7,member_seat8,
+			to_char(reserve_date,'YYYY.MM.DD') as reserve_date,
+			pay_cost,reserve_cancle_able,
+			sp1.show_place_code,sp1.movie_code,
+			to_char(show_date,'YYYY.MM.DD') as show_date,show_time,show_minute,
+  			mv.movie_name,mv.MOVIE_SHOW_GRADE_NAME,mv.movie_recycle_time,mp.MOVIE_PHOTO_ADDR,
+  			sp2.theater_code,sp2.show_place_name,
+  			th.theater_name
+    	FROM member_reserve mr,show_present sp1,show_place sp2,movie mv,movie_photo mp,theater th
+		WHERE mr.reserve_code=#{reserve_code} 
+			AND mr.show_present_code=sp1.show_present_code
+			AND sp1.movie_code = mv.movie_code
+			AND sp1.show_place_code = sp2.show_place_code
+      		AND mv.movie_code = mp.movie_code
+      		AND sp2.theater_code = th.theater_code]]>
+	</select>
+	
+	<select id="countSeats" parameterType="int" resultType="int">
+		select NVL2(MEMBER_SEAT1, 1, 0)+NVL2(MEMBER_SEAT2, 1, 0)+NVL2(MEMBER_SEAT3, 1, 0)+NVL2(MEMBER_SEAT4, 1, 0)
+				+NVL2(MEMBER_SEAT5, 1, 0)+NVL2(MEMBER_SEAT6, 1, 0)+NVL2(MEMBER_SEAT7, 1, 0)+NVL2(MEMBER_SEAT8, 1, 0)  
+		from member_reserve where reserve_code=#{reserve_code}
+	</select>
+	
+	<!-- 예매 취소 -->
+	<update id="memReserveCancle" parameterType="int">
+		update member_reserve set reserve_cancle_able='y',reserve_date=sysdate where reserve_code=#{reserve_code}
+	</update>
+	
+	<!-- 취소내역 -->
+	<select id="getCancleCodes" parameterType="java.util.Map" resultType="int">
+		<![CDATA[select reserve_code from 
+			(select rownum rn,tt.* from 
+			(select reserve_code from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='y' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE show_date < sysdate and sysdate <= show_date+7)
+			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="getTotalCancle" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='y' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE show_date < sysdate and sysdate <= show_date+7)]]>
+	</select>
+	
+	<!-- 내가 본 영화 -->
+	<select id="getTotalWatched" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date)]]>
+	</select>
+	
+	<select id="getWatchedCodes" parameterType="java.util.Map" resultType="int">
+		<![CDATA[select reserve_code from 
+			(select rownum rn,tt.* from 
+			(select reserve_code from member_reserve
+			where reserve_id=#{reserve_id} and reserve_cancle_able='n' 
+			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate > show_date)
+			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+
+</mapper>
