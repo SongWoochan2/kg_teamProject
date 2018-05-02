@@ -303,7 +303,9 @@ public class MypageController {
 
 
 		MemberDTO memberDTO = memberService.memberView(member_id);
-		
+
+
+		memberDTO = memberService.memberView(member_id);
 		
 		System.out.println(member_id);
 		ModelAndView modelAndView = new ModelAndView();
@@ -326,31 +328,23 @@ public class MypageController {
 			endNum = pg * 6;
 			startNum = endNum - 5;	
 		}
-		
-		
 
-			
-//		페이징 영역
-		
 		int movie_code = 0;
-		Map<Object, Object> movie_map = new HashMap<>();
-		ArrayList<Integer> code_list = new ArrayList<>();
+		Map<Integer, Object> photo_map = new HashMap<>();
+		ArrayList<MovieDTO> movie_list = new ArrayList<>();
 		for(SelectDTO selectDTO : selectlist) {
 			movie_code = selectDTO.getMovie_code();
 			MoviePhotoDTO moviePhotoDTO =moviePhotoService.moviePosterView(movie_code);
 			MovieDTO movieDTO = movieService.movieView(movie_code);
-			movie_map.put(movie_code+"_movie_name", movieDTO.getMovie_name());
-			movie_map.put(movie_code+"_open_date", movieDTO.getMovie_open_date());
-			movie_map.put(movie_code+"_good_num", movieDTO.getGood_num());
-			movie_map.put(movie_code+"_poster", moviePhotoDTO.getMovie_photo_addr());
-			code_list.add(movie_code);
+			movie_list.add(movieDTO);
+			photo_map.put(movie_code, moviePhotoDTO.getMovie_photo_addr());
+			System.out.println("for - " +movie_code + "/ " + movieDTO+ " / " + moviePhotoDTO);
 		}
-		
-		modelAndView.addObject("movie_map", movie_map);
+		System.out.println("photo : " + photo_map);
+		System.out.println("movie : " + movie_list);
 		modelAndView.addObject("memberDTO", memberDTO);
-		modelAndView.addObject("code_list", code_list);
-		modelAndView.addObject("member_id", member_id);
-		System.out.println("test");
+		modelAndView.addObject("movie_list", movie_list);
+		modelAndView.addObject("photo_map", photo_map);
 		modelAndView.setViewName("myWishList.jsp");
 		return modelAndView;
 		

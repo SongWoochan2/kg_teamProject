@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-(function ($) {
    $(function() {
 /*         $('#go_edit_profile').on('click', function () {
             var win = window.open("./editProfileForm.do", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
@@ -24,7 +23,13 @@
         	$(".wish_profileImg > img").attr("src", "../image/profile/"+originImgAddr);
         }
     });
-})(jQuery);
+   
+   $(function(){
+	   $("#wishlist_bt").click(function(){
+		   alert("hello!");
+	   });
+	   
+   });
 </script>
 </head>
 <body>
@@ -70,58 +75,47 @@
    			 		</select>
    				 <input type="button" value="GO">
 				</div>
-				<div id="wish_right_div_div">
 			<%-- ${movie_map }
 			<c:forEach var ="movie_map" items="${code_list }">
 				
 			</c:forEach> --%>
-			
 				<!-- <strong class="wish_right_div_strong">위시리스트가 없습니다.<br>
 				무비차트 영화포스터에서 영화 찜하기를 눌러 위시영화를 추가해보세요.</strong> -->
-
-
-<%-- 이어서해야함
-				<div id = "findentity">
-					<c:forEach var ="m_code" items="${code_list }">
-					 	<c:forEach var ="movie_map" items="${movie_map }">
-							<div id = "entity-poster">
-								<c:forEach var ="photo_map" items="${requestScope.photo_map }" >
-									<c:if test="${photo_map.key == find_list.movie_code }">
-										<img src = "../image/storage/moviephoto/${photo_map.value }">
-									</c:if>
-								</c:forEach>
-							</div>
+				<div id = "wish_right_div_div">
+					<c:forEach var ="movie" items="${movie_list }">
+						<div id = "each_movie_view">
+					 		<c:forEach var ="photo" items="${photo_map }">	
+								<c:if test="${ photo.key == movie.movie_code }">
+									<div id = "entity-poster">
+											<img src = "../image/storage/moviephoto/${photo.value }">
+						 			</div>
+				 				</c:if>
+							</c:forEach>
 							<div id = "entity-title">
 								<a href = "movieDetailView.do?movie_code=${find_list.movie_code }&photo_pg=1&trailer_pg=1">
-									<c:if test="${m_code + '_movie_name' == movie_map.key}">
-				 	 					${movie_map.value}
-				 					</c:if>
+				 	 				영화이름 : ${movie.movie_name }
 								</a>
 							</div>
 							<div id = "entity-opendate">
-								<c:if test="${m_code + '_open_date' == movie_map.key}">
-				 	 				${movie_map.value}
-				 				</c:if>
+				 	 			개봉날짜 : ${movie.movie_open_date}
 							</div>
-							<div id = "entity-like">
-<!-- 								<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a> -->
-         						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
-         						<b>
-									<c:if test="${m_code +'_good_num' == movie_map.key}">
-				 	 					${movie_map.value}
-				 					</c:if>
-								</b>
-								<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${find_list.movie_code }">
+							<div class = "entity-like">
+								좋아요 : ${movie.good_num}
+							</div>
+							<div id= "entity-love_reserve">
+<!-- 							<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a> -->
+         						<a href="#" id="wishlist_bt" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+         						<b></b>
+								<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${movie.movie_code }">
           							<span class="glyphicon glyphicon-film"> 예매</span>
         						</a>
-							</div>
-						</c:forEach>
-					</c:forEach> 
-				</div> --%>
+							</div> 
+				 		</div>
+					</c:forEach>			
+				</div> 
 			</div>
 		</div>
 	</div>
-</div>
 <jsp:include page="../main/main/footer.jsp"></jsp:include>
 </body>
 </html>
