@@ -231,8 +231,14 @@ public class MovieController {
 		}
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		
-		
-		
+		double count = (double)evaluatService.getTotal(movie_code);
+		Integer sum =  evaluatService.movieScoreTotal(movie_code);
+		if(sum == null) {sum = 0;}
+		System.out.println("count : " + count);
+		System.out.println("평점 : "+sum/count);
+		double movie_average = Double.parseDouble(String.format("%.2f",sum/count));
+		System.out.println("평점 : "+movie_average);
+
 		if(member_id != null) {
 			like_able = selectService.selectMovieList(member_id, movie_code);			
 		}
@@ -271,6 +277,7 @@ public class MovieController {
 		ArrayList<MovieTrailerDTO> trailer_list = movieTrailerService.movieTrailerList(t_startNum, t_endNum, movie_code);
 		ArrayList<MoviePhotoDTO> photo_list = moviePhotoService.moviePhotoList(p_startNum, p_endNum, movie_code);
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("movie_average", movie_average);
 		modelAndView.addObject("like_able", like_able);
 		modelAndView.addObject("movieDTO", movieDTO);
 		modelAndView.addObject("poster_addr", poster_addr);
@@ -297,9 +304,9 @@ public class MovieController {
 //			받아온 값 저장
 			if(request.getParameter("pg") != null) {
 				pg = Integer.parseInt(request.getParameter("pg"));
-				endNum = pg * 12;
-				startNum = endNum - 11;	
 			}
+			endNum = pg * 12;
+			startNum = endNum - 11;	
 			if(request.getParameterValues("movie_type") != null) {
 				movie_type = request.getParameterValues("movie_type");	
 			}
@@ -400,7 +407,9 @@ public class MovieController {
 		
 		ArrayList<String> code_list = showPresentService.getUniqueMovieCode();
 		for(String tmp : code_list) {movie_count++;}
-		
+		System.out.println("movie_count : "+ movie_count);
+		System.out.println("m_startNum : " + m_startNum);	
+		System.out.println("m_endNum : " + m_endNum);
 		ArrayList<MovieDTO> movie_list =  movieService.presentMovieList(code_list,m_startNum,m_endNum);
 		Map<Integer, String> poster_map = new HashMap<>();
 		

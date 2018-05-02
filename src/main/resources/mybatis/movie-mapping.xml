@@ -77,7 +77,7 @@
   				</foreach>
 			</if>
 			<if test="movie_show_grade != null">
-				and movie_show_grade IN 
+				and movie_show_grade_name IN 
 				<foreach item="item" index="index" collection="movie_show_grade"
      				 open="(" separator="," close=")">
        				#{item}
@@ -129,7 +129,7 @@
 			  				</foreach>
 						</if>
 						<if test="movie_show_grade != null">
-							and movie_show_grade IN 
+							and movie_show_grade_name IN 
 							<foreach item="item" index="index" collection="movie_show_grade"
 			     				 open="(" separator="," close=")">
 			       				#{item}
@@ -158,11 +158,11 @@
  				from (select * from movie ]]> 
 					<where>
 						<if test="code_list != null">
-						 	movie_code IN 
+						 	movie_code IN (
 							<foreach item="item" index="index" collection="code_list"
 			     				 open="(" separator="," close=")">
 			       				#{item} 
-			  				</foreach>
+			  				</foreach>)
 			  			</if>
 					</where> order by movie_code desc) tt) 
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>

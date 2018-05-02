@@ -1,3 +1,5 @@
+
+
 -------------------------------------------------------------  (1)
 --질문,답 테이블 생성
 create table qna(
@@ -142,43 +144,43 @@ nocache
 nomaxvalue;
 
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '송우찬',
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '김진환',
+  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '액션', '', '', '김진환',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세이상', '액션', '', '', '성웅',
+  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세 이용가', '액션', '', '', '성웅',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세이상', '코믹', '', '', '송우찬',
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세 이용가', '코미디', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '빛나',
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '빛나',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세이상', 'SF', '', '', '송우찬',
+  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세 이용가', 'SF', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '재환',
+  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '재환',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '송우찬',
+  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '진환',
+  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '진환',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '빛나',
+  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '빛나',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세이상', '판타지', '', '', '재민',
+  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세 이용가', '판타지', '', '', '재민',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세이상', 'SF', '', '', '빛나',
+  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세 이용가', 'SF', '', '', '빛나',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '송우찬',
+  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '액션', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 
 
@@ -284,6 +286,46 @@ insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
 -----------------------------------------------
 -------------------------------------------------------------  (2)
 
+--찜하기 테이블 생성
+create table select_do(
+  select_code int,
+  member_id varchar(30),
+  movie_code int,
+  constraint select_do_movie_code_fk foreign key(movie_code) references movie(movie_code),
+  constraint select_do_member_id_fk foreign key(member_id) references member(member_id),
+  primary key(select_code)
+);
+
+--찜하기 시퀀스 생성
+create sequence select_do_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+--평가 테이블 생성
+create table evaluat(
+  evaluat_code int,
+  movie_code int,
+  evaluat_id varchar(30),
+  evaluat_score number,
+  evaluat_content varchar(2048),
+  evaluat_like_num number,
+  evaluat_date date,
+  constraint evaluat_movie_code_fk foreign key(movie_code) references movie(movie_code),
+  constraint evaluat_member_id_fk foreign key(evaluat_id) references member(member_id),
+  primary key(evaluat_code)
+);
+
+--평가 시퀀스 생성
+create sequence evaluat_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+
+
 --공지사항 테이블 생성
 create table notice_item(
   notice_item_code int,
@@ -373,10 +415,10 @@ nocache
 nomaxvalue;
 
 insert into saving_list values(
-  saving_list_seq.nextval, 'admin', '@@@@@@@', 8000, 40, '2018.04.05');
+  saving_list_seq.nextval, 'aaa', '@@@@@@@', 8000, 40, '2018.04.05');
 
 insert into saving_list values(
-  saving_list_seq.nextval, 'hhh', '///////', 8000, 40, '2018.04.05');
+  saving_list_seq.nextval, 'ccc', '///////', 8000, 40, '2018.04.05');
 
 ------------------------------------------------------
 
@@ -437,6 +479,24 @@ insert into movie_photo values ( movie_photo_seq.nextval, 13, '영화 포스터'
 
 
 -------------------------------------------------------------  (3)
+
+--평가좋아요 테이블 생성
+create table evaluat_like(
+  evaluat_like_code int,
+  evaluat_code int,
+  like_id varchar(30),
+  constraint evaluat_like_evaluat_code_fk foreign key(evaluat_code) references evaluat(evaluat_code),
+  constraint evaluat_like_like_id_fk foreign key(like_id) references member(member_id),
+  primary key(evaluat_like_code)
+);
+
+--평가좋아요 시퀀스 생성
+create sequence evaluat_like_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
 
 --답변 테이블 생성
 create table answer(

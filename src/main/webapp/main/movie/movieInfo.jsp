@@ -56,7 +56,7 @@
 					<img src="../../image/storage/moviephoto/${poster_addr.movie_photo_addr }">
 				</div>
 				<div id=movieinfo>
-					<div id="movietitle"> <div id = "title-font">${movieDTO.movie_name }</div></div>
+					<div id="movietitle"> <div id = "title-font">${movieDTO.movie_name }(평점 : ${requestScope.movie_average })</div></div>
 					<div id="moviescore"><font color="gray"><b>예매율 : </b></font>8%(실 관람객 : ${movieDTO.acc_audience_num } 명)</div>
 					<div id="spec">감독 : ${movieDTO.movie_director }&nbsp;/ 배우 : ${movieDTO.appear_actor } <br>
 					장르 : ${movieDTO.movie_type1 } ${movieDTO.movie_type2 } ${movieDTO.movie_type3 }&nbsp;/ 연령제한 : ${movieDTO.movie_show_grade_name } /&nbsp;상영 시간 : ${movieDTO.movie_recycle_time }분 /&nbsp;제작국가 : ${movieDTO.make_nation }<br>
@@ -67,7 +67,7 @@
           				<span class="glyphicon glyphicon-thumbs-down"></span> unLike </a> 
 						</c:if>
 						<c:if test="${requestScope.like_able == 1 }">
-						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" id="like" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-up"></span> Like </a> 
 						</c:if>
        					<b>${movieDTO.good_num }</b> 명 &nbsp;&nbsp;&nbsp;
