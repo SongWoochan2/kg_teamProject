@@ -1,3 +1,6 @@
+
+-------삭제
+
 -- 회원 티켓 결제 
 drop table member_ticket_pay purge;
 drop sequence member_ticket_pay_seq;
@@ -34,6 +37,10 @@ drop sequence member_reserve_seq;
 
 -------------------------------------------------------------  (3)
 
+-- 평가좋아요
+drop table evaluat_like;
+drop sequence evaluat_like_seq;
+
 -- 상영현황
 drop table show_present purge;
 drop sequence show_present_seq;
@@ -60,9 +67,15 @@ drop sequence show_place_seq;
 drop table saving_list purge;
 drop sequence saving_list_seq;
 
+-- 평가 테이블
+drop table evaluat;
+drop sequence evaluat_seq;
+
+-- 찜하기 테이블
+drop table select_do;
+drop sequence select_do_seq;
 
 -------------------------------------------------------------  (1)
-
 
 
 -- 관리자 신청
@@ -97,13 +110,6 @@ drop sequence nonmember_seq;
 -- 상품
 drop table product purge;
 drop sequence product_seq;
-
-
-
-
-
-
-
 
 
 

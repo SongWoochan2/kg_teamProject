@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import movie.bean.MovieDTO;
-import reserve.bean.ReserveDTO;
+import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
@@ -79,5 +79,9 @@ public class ReserveDAO {
 		return sqlSession.selectList("mybatis.reserveMapper.getreservedSeats", show_present_code);
 	}
 	
+	
+	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
+		return sqlSession.insert("mybatis.reserveMapper.insertMemberReserve", memberReserveVO);
+	}
 	
 }

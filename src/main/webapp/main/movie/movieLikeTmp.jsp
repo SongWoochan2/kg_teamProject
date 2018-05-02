@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+	<script type="text/javascript">
+		alert("확인");
+		location.href = "movieDetailView.do?photo_pg=${requestScope.photo_pg}&trailer_pg=${requestScope.trailer_pg}&movie_code=${requestScope.movie_code}";
+	</script>
+</html>
