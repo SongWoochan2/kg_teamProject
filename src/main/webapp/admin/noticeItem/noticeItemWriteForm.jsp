@@ -33,7 +33,6 @@ pageEncoding="UTF-8"%>
 					<td colspan="3">
 						<input type="radio" name="notice_item_type" value="[시스템 점검]" checked="checked" ><label>[시스템 점검]</label>
 						<input type="radio" name="notice_item_type" value="[극장]"><label>[극장]</label>
-						<input type="radio" name="notice_item_type" value="[이벤트/행사]"><label>[이벤트/행사]</label>
 						<input type="radio" name="notice_item_type" value="[기타]"><label>[기타]</label>
 					</td>
 				</tr>
