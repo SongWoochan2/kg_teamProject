@@ -609,7 +609,7 @@
 						return;
 					}
 					$(this).attr("choose", "y");
-					$("input[name='seat"+(chooseCount()+1)+"']").attr("x_index", x_index).attr("y_index", y_index).val(y_index + "/" + x_index);
+					$("input[name='seat"+(chooseCount()+1)+"']").attr("x_index", x_index).attr("y_index", y_index).val(y_index + "-" + x_index);
 				}
 				return;
 				

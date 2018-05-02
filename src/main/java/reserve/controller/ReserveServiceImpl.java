@@ -1,6 +1,5 @@
 package reserve.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import movie.bean.MovieDTO;
-import reserve.bean.ReserveDTO;
+import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import reserve.dao.ReserveDAO;
 import showPresent.bean.ShowPresentAllVO;
-import theater.dao.TheaterDAO;
 import theater.bean.TheaterDTO;
 
 @Service
@@ -58,6 +56,11 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public List<ReservedSeatVO> getreservedSeats(int show_present_code) {
 		return reserveDAO.getreservedSeats(show_present_code);
+	}
+
+	@Override
+	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
+		return reserveDAO.insertMemberReserve(memberReserveVO);
 	}
 	
 	
