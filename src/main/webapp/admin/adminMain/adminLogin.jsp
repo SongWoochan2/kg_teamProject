@@ -27,7 +27,7 @@
 						</div>
 					</form>
 					<div id = "loginbottom">
-						<a href = "adminEnrollForm.do">관리자등록</a> <a href = "#">아이디/비밀번호 찾기</a>
+						<a href = "adminEnrollForm.do">관리자등록</a>
 					</div>
 			</div>
 		</div>

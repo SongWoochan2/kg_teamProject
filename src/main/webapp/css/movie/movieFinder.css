@@ -171,11 +171,6 @@
 		font-size: 12px;
 		color : darkgray;	
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-opendate font{
-		font-size : 14px;
-		font-weight: bold;
-		color : red;
-	}
 	#moviefind #findresult #findcontentform #findcontent #findentity #entity-like{
 		height : 15%;
 	}

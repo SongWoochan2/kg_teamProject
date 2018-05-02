@@ -8,7 +8,8 @@
 		SELECT show_present_code, count(*) AS reserve_num 
 		FROM 	(SELECT show_present_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserve_num 
 				FROM nonmember_reserve 
-				WHERE show_present_code IN ( 
+				WHERE nonmember_reserve_cancel_able != 'y'
+				AND show_present_code IN ( 
 					SELECT show_present_code FROM show_present 
 					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
 					AND movie_code = #{movie_code}
@@ -17,7 +18,8 @@
 				UNION ALL
 				SELECT show_present_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserve_num 
 				FROM member_reserve 
-				WHERE show_present_code IN ( 
+				WHERE reserve_cancel_able != 'y'
+				AND show_present_code IN ( 
 					SELECT show_present_code FROM show_present 
 					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
 					AND movie_code = #{movie_code}

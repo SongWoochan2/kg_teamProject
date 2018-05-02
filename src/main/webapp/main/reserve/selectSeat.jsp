@@ -149,15 +149,15 @@
 					}	
 		
 		
-		
-		
-		
-		
 	</style>
 	<script type="text/javascript">
 		$(function(){
 			var seat_json = ${json};
 			var seat_list = seat_json.seat;
+			var reserved_list = seat_json.reserved;
+			var seat_num = seat_json.seat_num;
+			
+			$("#frame_top_right #inner_middle").append("( " + (seat_num-reserved_list.length) + "석 / " + seat_num + "석 ) ");
 			
 			var x_size = seat_json.x_size;
 			var y_size = seat_json.y_size;
@@ -206,24 +206,46 @@
 					continue;
 				}
 			}
-			
-			var reserved_list = seat_json.reserved;
-
 			for(var i = 0; i < reserved_list.length; i++){
 				var row_number = reserved_list[i].y_index;
 				var col_number = reserved_list[i].x_index;
-				//alert(JSON.stringify(reserved_list));
-				//alert(row_number+ " / " + col_number);
 				var rSeat = $("div[name='seat'][row_number='"+row_number+"'][col_number='"+col_number+"']");
 				rSeat.removeClass().addClass("reserved").attr("seat_type", 100);
-				
 			}
 			
 			
 			
 			
+			$("input[name='total_seat_num']").off("click");
+			$("input[name='total_seat_num']").click(function(){
+				if($(this).val() < chooseCount()){
+					alert("선택된 좌석보다 적습니다.");
+					$("#total_seat_num"+chooseCount()).prop("checked", true);
+				}
+			});
+
+			//$("div[name='seat']").off("click");
+			
+			
+			$("#reserve_submit").off("click");
+			$("#reserve_submit").submit(function(){
+				if(chooseCount() < $("input[name='total_seat_num']:checked").val()){
+					alert("인원 수와 좌석 수가 맞지 않습니다.");
+					return false;
+				}
+			});
 			
 		});
+		
+		function chooseCount(){
+			var count = 0;
+			for(var i = 1; i <= 8; i++){
+				if($("input[name='seat" + i + "']").val()){
+					count++;
+				}
+			}
+			return count;
+		}
 	</script>
 </head>
 <body>
@@ -247,10 +269,10 @@
 					${showInfo.movie_name }
 				</div>
 				<div id="inner_middle">
-					${showInfo.theater_name } | ${showInfo.show_place_name } | (남은 좌석 / 총 좌석)
+					${showInfo.theater_name } | ${showInfo.show_place_name } | 
 				</div>
 				<div id="inner_bottom">
-					${showInfo.show_date } ${showInfo.show_time }시 ${showInfo.show_minute }분  시작 (${showInfo.movie_recycle_time }분 )
+					${showInfo.show_date } ${showInfo.show_time }시 ${showInfo.show_minute }분 ~ (${showInfo.movie_recycle_time }분 )
 				</div>
 			</div>
 		</div>
@@ -270,7 +292,19 @@
 					${showInfo.movie_name }
 				</div>
 				<div id="inner_bottom">
-					<input type="button" value="결제하기">
+					<form id="reservingForm" name="reservingForm" method="post" action="/MyCGV/reserving.do">
+						<input type="hidden" name="show_present_code" value="${showInfo.show_present_code }">
+						<input type="hidden" name="show_place_code" value="${showInfo.show_place_code }">
+						<input type="hidden" name="seat1" x_index="" y_index="" value="">
+						<input type="hidden" name="seat2" x_index="" y_index="" value="">
+						<input type="hidden" name="seat3" x_index="" y_index="" value="">
+						<input type="hidden" name="seat4" x_index="" y_index="" value="">
+						<input type="hidden" name="seat5" x_index="" y_index="" value="">
+						<input type="hidden" name="seat6" x_index="" y_index="" value="">
+						<input type="hidden" name="seat7" x_index="" y_index="" value="">
+						<input type="hidden" name="seat8" x_index="" y_index="" value="">
+						<input type="submit" id="reserve_submit" value="결제하기">
+					</form>
 				</div>
 			</div>
 		</div>
