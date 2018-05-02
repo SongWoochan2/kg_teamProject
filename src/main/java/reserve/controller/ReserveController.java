@@ -57,7 +57,8 @@ public class ReserveController {
 		
 		
 		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
-		
+		String show_date = showPresentSuperVO.getShow_date();
+		showPresentSuperVO.setShow_date(show_date.substring(0, 11));
 		
 		int show_place_code = showPresentSuperVO.getShow_place_code();
 		
@@ -92,7 +93,7 @@ public class ReserveController {
 		json.put("seat_num", seat_num);
 		
 		
-////////////// 예약된 좌석 json 으로 만들기
+		////////////// 예약된 좌석 json 으로 만들기
 		List<ReservedSeatVO> reservedSeatVOs =  reserveService.getreservedSeats(show_present_code);
 		
 		JSONArray reserved_seats = new JSONArray();

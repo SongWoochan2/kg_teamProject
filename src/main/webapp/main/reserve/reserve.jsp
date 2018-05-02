@@ -248,6 +248,7 @@
 		}
 			
 		#my_popup_div{
+			display: none;
 			position: fixed; 
 			top: 50px;
 			left: 25%; 
@@ -269,15 +270,66 @@
 		}
 		
 		#my_popup_shadow{
+			display: none;
 			position: fixed; left: 0; top: 0;
 			height: 100%; width: 100%; background: black;
 			filter: alpha(opacity=60); opacity: 0.60;
 			z-index: 10;
 		}
-		
-			
-			
+		#popup_title input:focus{
+			border: 0;
+		}
+		#renew_my_popup:hover{
+			background: url(/MyCGV/image/logo/reButton2.png);
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+		}
+		#renew_my_popup, #renew_my_popup:active{
+			background: url(/MyCGV/image/logo/reButton1.png) ;
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;    
+			cursor: pointer;
+		}
+		#renew_my_popup:focus{
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;    
+		}
+		#close_my_popup:hover{
+			background: url(/MyCGV/image/logo/xButton2.png);
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+			text-decoration:none;
+		}
+		#close_my_popup, #close_my_popup:active{
+			background: url(/MyCGV/image/logo/xButton1.png) ;
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;    
+			text-decoration:none;
+			cursor: pointer;
+		}
+		#close_my_popup:focus{
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;    
+			text-decoration:none;
+			cursor: pointer;
+		}
 	</style>
+	
+	
+	
+	
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
 	<script type="text/javascript">
@@ -434,11 +486,11 @@
 		function getSeatSelector(show_present_code){
 			$.ajax({
 				url : "/MyCGV/SeatView_ForReserve.do", // 나중에 사이트 url로 바뀜
-				type : "post", // 최종적으로 서버에 요청함
+				type : "get", // 최종적으로 서버에 요청함
 				dataType : "html",
 				timeout : 30000, // 30초 (단위는 ms)
 				data : {
-					"show_present_code" : show_present_code
+					"show_present_code" : show_present_code,
 				},
 				cache : false,
 				// 파일 읽기에 성공한 경우
@@ -453,6 +505,7 @@
 		}
 	</script>
 	<script type="text/javascript">
+		var choose_count = 0;
 		var show_date = "";
 		var movie_code = 0;
 		var theater_code = 0;
@@ -482,7 +535,7 @@
 			getDateList();
 			
 			
-			getSeatSelector(1);
+			//getSeatSelector(1);
 			
 			$("input.reset_choice").click(function(){
 				var choice = $(this).parent().parent().find("input[type='radio']:checked");
@@ -510,8 +563,57 @@
 				//alert(movie_code + " / " + theater_code + " / " + show_date);
 			});
 			
+			var last_select;
 			
+			$(document).on("click", ".show_item input[name='show_present_code']", function(){
+				last_select = $(this).parent().parent().attr("data")
+				getSeatSelector(last_select);
+				$("#my_popup_shadow").show(0);
+				$("#my_popup_div").show(0);
+				
+			});
+
+			$("#renew_my_popup").click(function(){
+				getSeatSelector(last_select);
+				$("#my_popup_shadow").show(0);
+				$("#my_popup_div").show(0);
+			});
+
+			$("#close_my_popup, #my_popup_shadow").click(function(){
+				getSeatSelector(last_select);
+				$("#my_popup_shadow").hide(0);
+				$("#my_popup_div #popup_main").empty();
+				$("#my_popup_div").hide(0);
+			});
 			
+
+			// 좌석을 눌렀을떄 처리
+			$(document).on("click","div[name='seat']", function(){
+
+				if($(this).attr("class") == "reserved" || $(this).attr("class") == "empty"){
+					return;
+				}
+				
+				var x_index= $(this).attr("col_number");
+				var y_index= $(this).attr("row_number");
+				
+				//alert($(this).attr("choose"));
+				if($(this).attr("choose") == "y"){
+					
+					$("input[name='seat"+chooseCount()+"']").attr("x_index", "").attr("y_index", "").val("");
+					$(this).attr("choose", "n");
+				} else {
+					var full_count = $("input[name='total_seat_num']:checked").val();
+					if(full_count == chooseCount()){
+						alert("인원 수를 초과하였습니다.");
+						return;
+					}
+					$(this).attr("choose", "y");
+					$("input[name='seat"+(chooseCount()+1)+"']").attr("x_index", x_index).attr("y_index", y_index).val(y_index + "/" + x_index);
+				}
+				return;
+				
+			});
 		});
 	</script>
 	
@@ -603,10 +705,11 @@
 	
 	<div id="my_popup_div">
 		<div id="popup_title">
-			<input type="button" value="새로고침">
-			<input type="button" value="닫기">
+			<input type="button" id="renew_my_popup">
+			<input type="button" id="close_my_popup">
 		</div>
 		<div id="popup_main">
+		
 		</div>
 	</div>
 	<div id="my_popup_shadow"></div>
