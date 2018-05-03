@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import movie.bean.MovieDTO;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
+import reserve.bean.SeatNumVO;
 import reserve.dao.ReserveDAO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
@@ -57,7 +58,18 @@ public class ReserveServiceImpl implements ReserveService{
 	public List<ReservedSeatVO> getreservedSeats(int show_present_code) {
 		return reserveDAO.getreservedSeats(show_present_code);
 	}
+	
+	
+	public List<SeatNumVO> getReservedSeatOfShow(int movie_code, int theater_code, String show_date){
+		return reserveDAO.getReservedSeatOfShow(movie_code, theater_code, show_date);
+	}
 
+
+	public List<SeatNumVO> getTotalSeatOfShow(int movie_code, int theater_code, String show_date){
+		return reserveDAO.getTotalSeatOfShow(movie_code, theater_code, show_date);
+	}
+	
+	
 	@Override
 	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
 		return reserveDAO.insertMemberReserve(memberReserveVO);

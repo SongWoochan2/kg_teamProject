@@ -1,7 +1,5 @@
 package showPresent.bean;
 
-import java.util.Date;
-
 public class ShowPresentVO {
 	
 	private int show_present_code;
