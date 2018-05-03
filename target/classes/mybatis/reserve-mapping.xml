@@ -108,36 +108,6 @@
 	</select>
 	
 	
-	<!-- 상영현황별 예매 총수 -->
-	<select id="getListWithReserve" parameterType="java.util.Map" resultType="showPresentAllVO">
-		SELECT show_present_code, reserve_num from reserved_serat
-		ORDER BY show_present_code desc
-	
-		SELECT show_present_code, sum(reserve_num) AS reserve_num 
-		FROM 	(SELECT show_present_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserve_num 
-				FROM nonmember_reserve 
-				WHERE nonmember_reserve_cancel_able != 'Y'
-				AND show_present_code IN ( 
-					SELECT show_present_code FROM show_present 
-					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
-					AND movie_code = #{movie_code}
-					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
-					)
-				UNION ALL
-				SELECT show_present_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserve_num 
-				FROM member_reserve 
-				WHERE reserve_cancel_able != 'Y'
-				AND show_present_code IN ( 
-					SELECT show_present_code FROM show_present 
-					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
-					AND movie_code = #{movie_code}
-					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
-					)
-				) reserve
-		GROUP BY show_present_code
-		ORDER BY show_present_code
-	</select>
-	
 	<!-- 영화별 좌석 예매수 -->
 	<select id="reserveRate">
 		select movie_code, sum(reserve_num) as reserve_num 
@@ -197,6 +167,15 @@
  			in(select show_present_code from show_present where movie_code=#{movie_code}) 
 	</select>
 	
+	
+	<select id="getSeatType"  resultType="reserve.bean.SeatTypeVO">
+		select * from seat_type
+	</select>
+	
+	
+	<select id="getTimeType"  resultType="reserve.bean.TimeTypeVO">
+		select * from time_type
+	</select>
 	
 </mapper>
 

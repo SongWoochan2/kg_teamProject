@@ -11,6 +11,8 @@ import movie.bean.MovieDTO;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import reserve.bean.SeatNumVO;
+import reserve.bean.SeatTypeVO;
+import reserve.bean.TimeTypeVO;
 import reserve.dao.ReserveDAO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
@@ -59,12 +61,14 @@ public class ReserveServiceImpl implements ReserveService{
 		return reserveDAO.getreservedSeats(show_present_code);
 	}
 	
-	
+
+	@Override
 	public List<SeatNumVO> getReservedSeatOfShow(int movie_code, int theater_code, String show_date){
 		return reserveDAO.getReservedSeatOfShow(movie_code, theater_code, show_date);
 	}
 
 
+	@Override
 	public List<SeatNumVO> getTotalSeatOfShow(int movie_code, int theater_code, String show_date){
 		return reserveDAO.getTotalSeatOfShow(movie_code, theater_code, show_date);
 	}
@@ -78,6 +82,16 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public Integer movieReserveCheck(String member_id, int movie_code) {
 		return reserveDAO.movieReserveCheck(member_id, movie_code);
+	}
+
+	@Override
+	public Map<Integer, SeatTypeVO> getSeatType(){
+		return reserveDAO.getSeatType();
+	}
+
+	@Override
+	public Map<Integer, TimeTypeVO> getTimeType(){
+		return reserveDAO.getTimeType();
 	}
 	
 	

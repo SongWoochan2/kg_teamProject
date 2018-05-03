@@ -2,8 +2,10 @@ package reserve.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +21,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MovieDTO;
 import movie.controller.MovieService;
-import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import reserve.bean.SeatNumVO;
+import reserve.bean.SeatTypeVO;
+import reserve.bean.TimeTypeVO;
 import showPlace.bean.SeatVO;
 import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
@@ -48,101 +51,6 @@ public class ReserveController {
 	@Autowired
 	private MovieService movieService;
 	
-	@RequestMapping(value="/showChoice_forReserve.do")
-	public void showChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
-		
-		
-		JSONObject json = new JSONObject();
-		
-		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return;
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/dateChoice_forReserve.do")
-	public void dateChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
-		
-		String show_date = request.getParameter("show_date");
-		if(show_date.equals("")) {
-			show_date = null;
-		}
-		
-	    JSONObject date = new JSONObject();
-	    date.put("show_date", show_date);
-	    
-		JSONObject json = new JSONObject();
-		json.put("date", date);
-		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return;
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/theaterChoice_forReserve.do")
-	public void theaterChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
-		
-		int theater_code = 0;
-		if(request.getParameter("theater_code") != null) {
-			theater_code = Integer.parseInt(request.getParameter("theater_code"));
-		}
-		System.out.println(theater_code);
-		TheaterDTO theaterDTO = theaterService.theaterView(theater_code);
-			
-	    JSONObject theater = new JSONObject();
-	    theater.put("theater_name", theaterDTO.getTheater_name());
-	    
-		JSONObject json = new JSONObject();
-		json.put("theater", theater);
-		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return;
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/movieChoice_forReserve.do")
-	public void movieChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
-		
-		int movie_code = 0;
-		if(request.getParameter("movie_code") != null) {
-			movie_code = Integer.parseInt(request.getParameter("movie_code"));
-		}
-		MovieDTO movieDTO = movieService.movieView(movie_code);
-		MoviePhotoDTO moviePhotoDTO = moviePhotoService.moviePosterView(movie_code);
-			
-	    JSONObject movie = new JSONObject();
-	    movie.put("movie_code", movieDTO.getMovie_code());
-	    movie.put("movie_name", movieDTO.getMovie_name());
-	    JSONObject poster = new JSONObject();
-	    poster.put("poster_addr", moviePhotoDTO.getMovie_photo_addr());
-	    
-		JSONObject json = new JSONObject();
-		json.put("movie", movie);
-		json.put("poster", poster);
-		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return;
-	}
 	
 	@RequestMapping(value="/reserve.do")
 	public String hyperreserve(HttpServletRequest request, HttpServletResponse response) {
@@ -213,13 +121,17 @@ public class ReserveController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/SeatView_ForReserve.do")
 	public ModelAndView hyperSeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(request.getParameter("show_present_code"));
 		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
 		
-		
 		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
+		
+		// 상영날짜 의 시간 string 없애기
 		String show_date = showPresentSuperVO.getShow_date();
 		showPresentSuperVO.setShow_date(show_date.substring(0, 11));
+		
+		// 요금 계산에 필요한 시간분류, 좌석분류 테이블 가져와서 MAP에 저장
+		Map<Integer, SeatTypeVO> seatTypeMap = reserveService.getSeatType();
+		Map<Integer, TimeTypeVO> timeTypeMap = reserveService.getTimeType();
 		
 		int show_place_code = showPresentSuperVO.getShow_place_code();
 		
@@ -244,8 +156,11 @@ public class ReserveController {
 			seat_json.put("x_index", x_index);
 			seat_json.put("y_index", y_index);
 			seat_json.put("seat_type_code", seat_type_code);
+			seat_json.put("add_cost", seatTypeMap.get(seat_type_code).getAdd_cost());
 			list.add(seat_json);
 		}
+		
+		
 		if(y_set.contains("!")) y_set.remove("!");
 		json.put("seat", list);
 		json.put("x_size", x_set.size());
@@ -286,6 +201,7 @@ public class ReserveController {
 		json.put("reserved", reserved_seats);
 		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("time_add_cost", timeTypeMap.get(showPresentSuperVO.getShow_time()).getAdd_cost());
 		modelAndView.addObject("showInfo", showPresentSuperVO);
 		modelAndView.addObject("json", json.toJSONString());
 		

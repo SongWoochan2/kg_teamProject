@@ -22,6 +22,7 @@
 	<select id="getList" parameterType="int" resultType="showPlaceVO">
 		SELECT * FROM show_place
 		WHERE theater_code = #{theater_code}
+		ORDER BY show_place_code asc
 	</select>
 
 	<insert id="insert" parameterType="showPlaceVO">

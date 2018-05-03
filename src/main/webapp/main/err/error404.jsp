@@ -13,6 +13,7 @@
 		box-sizing: border-box;
 	}
 	#wrap_frame{
+		background: #FFFFF6;
 		border: 3px dotted #ff3b0f;
 		border-radius: 10px;
 		width: 500px;

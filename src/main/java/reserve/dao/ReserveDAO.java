@@ -14,6 +14,8 @@ import movie.bean.MovieDTO;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import reserve.bean.SeatNumVO;
+import reserve.bean.SeatTypeVO;
+import reserve.bean.TimeTypeVO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
 
@@ -118,5 +120,14 @@ public class ReserveDAO {
 
 		return sqlSession.selectOne("mybatis.reserveMapper.movieReserveCheck", map);
 	}
+	
+	public Map<Integer, SeatTypeVO> getSeatType(){
+		return sqlSession.selectMap("mybatis.reserveMapper.getSeatType", "seat_type_code");
+	}
+	
+	public Map<Integer, TimeTypeVO> getTimeType(){
+		return sqlSession.selectMap("mybatis.reserveMapper.getTimeType", "time_type_code");
+	}
+	
 	
 }

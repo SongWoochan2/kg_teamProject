@@ -42,6 +42,10 @@ public class ShowPlaceService {
 	}
 
 	/////////   seat
+	public int insertSeatList(List<SeatVO> seatVOs) {
+		return showPlaceDAO.insertSeatList(seatVOs);
+	}
+	
 	public int insertSeat(SeatVO seatVO) {
 		return showPlaceDAO.insertSeat(seatVO);
 	}
