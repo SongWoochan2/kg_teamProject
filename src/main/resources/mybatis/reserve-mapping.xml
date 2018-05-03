@@ -82,13 +82,12 @@
 	
 	<!-- 상영현황별 예매 총수 -->
 	<select id="getReservedSeatOfShow" parameterType="java.util.Map" resultType="reserve.bean.SeatNumVO">
-		SELECT show_present_code, reserve_num as seatNum From reserved_serat
+		SELECT show_present_code, reserve_num as seatNum From reserved_seat
 		WHERE show_present_code IN (
 			SELECT show_present_code FROM show_fully
 			WHERE theater_code = #{theater_code}
 			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
 			AND movie_code = #{movie_code}
-	 		ORDER BY show_date ASC, theater_code ASC, show_place_code ASC,  show_time ASC
 		)
 	</select>
 	
@@ -103,7 +102,6 @@
 			WHERE theater_code = #{theater_code}
 			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
 			AND movie_code = #{movie_code}
-	 		ORDER BY show_date ASC, theater_code ASC, show_place_code ASC,  show_time ASC
 		)
 		GROUP BY seat.show_place_code
 		ORDER BY seat.show_place_code ASC

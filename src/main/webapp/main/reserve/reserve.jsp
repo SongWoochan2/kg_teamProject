@@ -242,7 +242,7 @@
 					cache : false,
 					// 파일 읽기에 성공한 경우
 					success : function(json){
-						//alert(JSON.stringify(json.shows));
+						console.log(JSON.stringify(json));
 						var place_count = 0;
 						$("#top_time_div2").empty();
 						
@@ -253,7 +253,7 @@
 							if(place_count != show_place_code){
 								place_count = show_place_code;
 								$("<div>").addClass("place_label").html(show.show_place_name).appendTo($("#top_time_div2"));
-								$("<div>").addClass("place_totalSeat").html(show.totalSeat).appendTo($("#top_time_div2"));
+								//$("<div>").addClass("place_totalSeat").html(show.totalSeat).appendTo($("#top_time_div2"));
 							}
 							var tmpl = $("#showTT").tmpl(show);
 							$("#top_time_div2").append(tmpl);
