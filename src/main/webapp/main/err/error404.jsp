@@ -7,7 +7,7 @@
 <title>404 : ERROR</title>
 <style type="text/css">
 	body{
-		background: #fff0d1;
+		background: #FFFFF6;
 	}
 	div{
 		box-sizing: border-box;
@@ -68,7 +68,7 @@
 		</div>
 		<div id="location_button">
 			<input type="button" value="뒤로가기" onclick="history.back();">
-			<input type="button" value="홈으로" onclick="/MyCGV/main/main/index.jsp">
+			<input type="button" value="홈으로" onclick="location.href='/MyCGV/main/main/index.jsp'">
 		</div>
 	</div>
 </body>

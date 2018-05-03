@@ -94,17 +94,17 @@
 	
 	<!-- 상영현황별 총 좌석수 -->
 	<select id="getTotalSeatOfShow" parameterType="java.util.Map" resultType="reserve.bean.SeatNumVO">
- 		SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place 
-		WHERE seat.y_index != '!'
-		AND seat.show_place_code = show_place.show_place_code
-		AND show_place.show_place_code IN(
-			SELECT show_place_code FROM show_fully
-			WHERE theater_code = #{theater_code}
-			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
-			AND movie_code = #{movie_code}
-		)
-		GROUP BY seat.show_place_code
-		ORDER BY seat.show_place_code ASC
+		SELECT * FROM   (
+	    		SELECT show_place_code, show_present_code FROM show_fully
+				WHERE theater_code = #{theater_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					AND movie_code = #{movie_code})
+				JOIN
+					(SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place 
+					WHERE seat.y_index != '!'
+					AND seat.show_place_code = show_place.show_place_code
+		     		GROUP BY seat.show_place_code) 
+		     	USING(show_place_code)
 	</select>
 	
 	
