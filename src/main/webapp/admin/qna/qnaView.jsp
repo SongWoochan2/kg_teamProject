@@ -21,20 +21,19 @@ pageEncoding="UTF-8"%>
 </style>
 </head>
 <body>
-	<jsp:include page="../adminMain/adminTemplate.jsp"/>
-	<div id = "content" align="center">
-			<div id="title">
-				<font size="5">${qnaDTO.qna_title }</font>
-			</div>
-			<div id="qna_code">
-				글번호 : ${qnaDTO.qna_code }
-			</div>
-			<div id="qna_type">
-				질문 종류 : ${qnaDTO.qna_type }
-			</div>
-			<div id="qna_content">
-				<pre>${qnaDTO.qna_content }</pre>
-			</div>
+	<div id="title">
+		${qnaDTO.qna_title }
+	</div>
+	<div id="qna_code">
+		글번호 : ${qnaDTO.qna_code }
+	</div>
+	<div id="qna_type">
+		질문 종류 : ${qnaDTO.qna_type }
+	</div>
+	<div id="qna_content">
+		<pre>${qnaDTO.qna_content }</pre>
+	</div>
+	<div>
 		<input type="button" value="목록" onclick="location.href='qnaList.do?pg=${param.pg}'">
 		<input type="button" value="수정" onclick="location.href='qnaModifyForm.do?qna_code=${qnaDTO.qna_code}'">
 		<input type="button" value="삭제" onclick="location.href='qnaDelete.do?qna_code=${qnaDTO.qna_code}'">
