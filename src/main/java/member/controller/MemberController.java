@@ -44,19 +44,11 @@ public class MemberController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		if(member_name==null){		// 로그인 실패
-			modelAndView.setViewName("memberLoginForm.jsp");
+			modelAndView.setViewName("memberLoginFail.jsp");
 		} else {				// 로그인 성공
-			// JSP에선 내장객체라서 그냥 쓸 수 있었지만 
-			// 여긴 자바코드,즉 서블릿이므로 session 클래스를 만들어줘야 함
 			HttpSession session = request.getSession();
 			session.setAttribute("memName", member_name);
 			session.setAttribute("memId", member_id);
-			// loginForm이 member 폴더 안에 있기 때문에 얘만 sendRedirect로 움직이게 할 것
-			// forward 방식으로 보내면 폴더명이 안 바뀜
-			//return "../board/boardList.do?pg=1";
-			
-			// redirect: 뒤에 쓰면
-			// forward 방식이 아니라 sendRedirect 방식으로 보냄
 			modelAndView.setViewName("redirect:../main/main/index.jsp");
 		}
 		return modelAndView;

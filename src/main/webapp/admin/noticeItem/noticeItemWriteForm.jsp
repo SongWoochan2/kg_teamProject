@@ -9,14 +9,14 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript">
 	$(function(){
 		$("#form").submit(function() {
-			if (!$("#title").val()) {
+			if (!$("#notice_item_title").val()) {
 				alert("제목을 입력하세요.");
-				$("#title").focus();
+				$("#notice_item_title").focus();
 				return false;
 			}
-			if (!$("#content").val()) {
+			if (!$("#notice_item_content").val()) {
 				alert("내용을 입력하세요.");
-				$("#content").focus();
+				$("#notice_item_content").focus();
 				return false;
 			}
 		});

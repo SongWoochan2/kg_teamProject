@@ -30,17 +30,6 @@ function checkId(){
 	}
 }
 
-function checkLogin(){
-	if(document.memberLoginForm.member_id.value==""){
-		alert("아이디를 입력하세요.");
-		document.memberLoginForm.member_id.focus();
-	}else if(document.memberLoginForm.member_pwd.value==""){
-		alert("비밀번호를 입력하세요.");
-	}else{
-		document.memberLoginForm.submit();
-	}
-}
-
 function checkModify(){
 	if(document.memberModifyForm.member_pwd.value==""){
 		alert("비밀번호를 입력하세요.");

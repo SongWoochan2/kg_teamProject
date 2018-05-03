@@ -1,32 +1,188 @@
 @charset "UTF-8";
-div.movielog-detail-wrap {
-	padding-left:20px;
-	/* border: 1px solid blue; */
-	width: 80%;
+a {
+	text-decoration: none;
+}
+div#mypageBody {
+	border: 1px solid black;
+	width: 100%;
+	min-height: 1200px;
+	height: auto;
+	margin: auto;
+}
+
+div#mypageBody #myWatchedMovie-wrap {
+	border: 1px solid black;
+	width: 70%;
+	height: auto;
+	margin: 30px auto;
+}
+
+div#mypageBody #myWatchedMovie-wrap .col-aside {
+	text-align:center;
+	width: 20%;
 	height: 100%;
 	float: left;
 }
+div#mypageBody #myWatchedMovie-wrap .movielog-detail-wrap {
+	padding-left: 30px;
+	width: 80%;
+	height: auto;
+	float: left;
+}
 
-div.tit-mypage h {
-	width:200px;
+div#mypageBody #myWatchedMovie-wrap .movielog-detail-wrap .sect-movielog-lst {
+	border: 1px solid black;
+	width: 100%;
+	min-height: 1000px;
+	height: auto;	
+	margin-top: 25px;
+	text-align: left;
+}
+
+div.col-aside .profile {
+	padding-top: 45px;
+	border: 1px solid #a4a6a8;
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	width: 99%;
+	height: 300px;
+	border-radius: 10px;
+}
+.profile>img {
+	width: 60%;
+	height: 50%;
+	border-radius: 10px;
+}
+
+#wishlist {
+	padding-top: 25px;
+	height: 150px;
+	margin-top: 10px;
+	border: 1px solid #d2d5d8;	
+	border-radius: 10px;
+}
+#myWatchedMovie {
+	padding-top: 25px;
+	height: 150px;
+	margin-top: 10px;
+	border: 1px solid #d2d5d8;	
+	border-radius: 10px;
+}
+/* #moviediary{
+	padding-top:25px;
+	height:20%;
+	margin-top: 10px;
+	border: 1px solid gray;	
+} */
+div#wishlist>a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+div#myWatchedMovie>a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+div#wishlist>a>strong {
+	color: black;
+}
+
+div#myWatchedMovie.on {
+	background-color: #e71a0f;
+	color: #fdfcf0;
+}
+div#myWatchedMovie.on>a>strong {
+	color: white;
+}
+
+div.tit-mypage {
+	margin-left: 15px;
+	height: 20px;
+	text-align: center;
+}
+
+div.tit-mypage h3 {
 	float:left;
-	margin: 0;
-	padding: 0;
+	margin-right: 20px;
+}
+div.tit-mypage h4 {
+	float:left;
+	padding-top: 3px;
 }
 
 div.set-combo {
-	margin:0;
-	padding:0;
-	width:110px;
+	margin: 5px;
+	padding: 0;
+	width: 300px;
 	float: right;
+	text-align: right;
 }
 
-div.sect-movielog-lst {
-	/* border: 1px solid red; */
-	width: 800px;
-	height: 300px;	
-	margin: auto;
-	margin-top: 100px;
-	padding-top:100px;
+div.sect-movielog-lst>ul,li {
+	list-style: none;
+	border-bottom: 1px solid #cdcfd3;
+
+}
+	
+	
+div.article-movie-info {
+	width: 100%;
+	height: 200px;
+	border: 1px solid black;
+}
+
+
+div.article-movie-info .box-image {
+	float: left;
+	width: 25%;
+	height: 100%;
+	text-align: center;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+div.article-movie-info .box-contents {
+	float: left;
+	width: 75%;
+	height: 100%;
+	line-height: 30px;
+	padding-left: 50px;
+	padding-top: 40px;
+}
+div.box-contents>.title {
+	margin-bottom: 20px;
+}
+
+div#mypageBody #myWatchedMovie-wrap .movielog-detail-wrap .sect-movielog-lst .paging {
 	text-align: center;
 }
+
+.paging a {
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+.paging a:hover {
+	color: gray;
+}
+
+
+
+div.box-contents a{
+	color: black;
+	font-size: 30px;
+}
+
+div.box-contents a:hover {
+	color: gray;
+}
+
+#year {
+	width:100px;
+	height:30px;
+    padding-left: 10px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+

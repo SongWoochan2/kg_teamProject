@@ -9,6 +9,7 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript">
     (function ($) {
         $(function () {
+        	$("#content-aside > ul > li:eq(2)").attr("class", "on");
             $('#period_wrap').datePeriod({
                 'start': $('#startdate'),
                 'end': $('#enddate'),

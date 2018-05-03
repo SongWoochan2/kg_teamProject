@@ -7,16 +7,16 @@ pageEncoding="UTF-8"%>
 	<meta charset="UTF-8">
 	<title>글보기</title>
 <style type="text/css">
-#qna_content{
-	margin: auto;
-    width: 30%;
-}
-#title, #qna_code, #qna_type{
-	color: #c7d6a0;
-}
-#title{
-	font-size: 30;
-	font-weight: 900;
+	#qna_content{
+		margin: auto;
+	    width: 30%;
+	}
+	#title, #qna_code, #qna_type{
+		color: #c7d6a0;
+	}
+	#title{
+		font-size: 30;
+		font-weight: 900;
 }
 </style>
 </head>
@@ -35,8 +35,10 @@ pageEncoding="UTF-8"%>
 	</div>
 	<div>
 		<input type="button" value="목록" onclick="location.href='qnaList.do?pg=${param.pg}'">
-		<input type="button" value="수정" onclick="location.href='qnaModifyForm.do?qna_code=${qnaDTO.qna_code}'">
-		<input type="button" value="삭제" onclick="location.href='qnaDelete.do?qna_code=${qnaDTO.qna_code}'">
+		<c:if test="${admin_id != null }">
+			<input type="button" value="수정" onclick="location.href='qnaModifyForm.do?qna_code=${qnaDTO.qna_code}'">
+			<input type="button" value="삭제" onclick="location.href='qnaDelete.do?qna_code=${qnaDTO.qna_code}'">
+		</c:if>
 	</div>
 </body>
 </html>
