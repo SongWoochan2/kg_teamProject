@@ -105,10 +105,18 @@
 							
 
 							<div id= "entity-love_reserve">
-<!-- 							<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a> -->
-         						<a href="#" id="wishlist_bt" class="btn btn-info btn-lg" onclick="location.href='selectLike.do?select_code=${select_code}'"><span class="glyphicon glyphicon-heart-empty"></span></a>
+							<c:forEach var="like_map" items="${requestScope.like_map }">
+								<c:if test="${like_map.key ==  movie.movie_code}">
+									<c:if test="${like_map.value == 1 }">
+		         						<a href="../main/movie/selectLike.do?movie_code=${movie.movie_code}&good=-1&pagetype=wishlist" id="wishlist_bt" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a>
+									</c:if>
+									<c:if test="${like_map.value == 0 }">
+		         						<a href="../main/movie/selectLike.do?movie_code=${movie.movie_code}&good=1&pagetype=wishlist" id="wishlist_bt" class="btn btn-info btn-lg" ><span class="glyphicon glyphicon-heart-empty"></span></a>
+									</c:if>
+								</c:if>
+							</c:forEach>
          						<b></b>
-								<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "selectLike.do?movie_code=${movie.movie_code }">
+								<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "#">
           							<span class="glyphicon glyphicon-film"> 예매</span>
         						</a>
 							</div> 

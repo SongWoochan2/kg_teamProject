@@ -24,6 +24,7 @@ public class SelectController {
 		int trailer_pg = 1;
 		int review_pg = 1;
 		int movie_pg = 1;
+		String pagetype = null;
 		// 영화 상세 정보
 		if(request.getParameter("photo_pg") != null) {
 			photo_pg = Integer.parseInt(request.getParameter("photo_pg"));				
@@ -38,7 +39,10 @@ public class SelectController {
 		if(request.getParameter("movie_pg") != null) {
 			movie_pg = Integer.parseInt(request.getParameter("movie_pg"));					
 		}
-		
+		// 위시 리스트
+		if(request.getParameter("pagetype")!=null) {
+			pagetype = request.getParameter("pagetype");
+		}
 		
 		
 		
@@ -78,6 +82,9 @@ public class SelectController {
 		}
 		
 		ModelAndView modelAndView = new ModelAndView();
+		if(request.getParameter("pagetype")!=null) {
+			modelAndView.addObject("pagetype", pagetype);	
+		}
 		if(request.getParameter("movie_code") != null) {
 			modelAndView.addObject("movie_code", movie_code);
 		}

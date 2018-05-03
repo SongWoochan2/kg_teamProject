@@ -55,7 +55,7 @@ public class MypageController {
 	private MemberReserveService memberReserveService;
 	@Autowired
 	private ResourceProvider resourceProvider;
-	
+
 	@RequestMapping(value="/mypage/myReserveList.do")
 	public ModelAndView myReserveList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
@@ -296,7 +296,7 @@ public class MypageController {
 	
 	@RequestMapping(value="/mypage/myWishList.do")
 	public ModelAndView myWishList(HttpServletRequest request) {
-		
+		int like_able = 0;
 		System.out.println("myWishList.do");
 		
 		HttpSession session = request.getSession();
@@ -332,6 +332,7 @@ public class MypageController {
 
 		int movie_code = 0;
 		Map<Integer, Object> photo_map = new HashMap<>();
+		Map<Integer, Object> like_map = new HashMap<>();
 		ArrayList<MovieDTO> movie_list = new ArrayList<>();
 		for(SelectDTO selectDTO : selectlist) {
 			movie_code = selectDTO.getMovie_code();
@@ -340,9 +341,21 @@ public class MypageController {
 			movie_list.add(movieDTO);
 			photo_map.put(movie_code, moviePhotoDTO.getMovie_photo_addr());
 			System.out.println("for - " +movie_code + "/ " + movieDTO+ " / " + moviePhotoDTO);
+			
+			if(member_id != null) {
+				like_able = selectService.selectMovieList(member_id, movie_code);	
+				System.out.println("movie_code : " + movie_code);
+				System.out.println("like_able : " + like_able);
+				like_map.put(movie_code, like_able);
+				System.out.println("like_map:" + like_map);
+			}else {
+				like_map.put(movie_code, like_able);
+			}
+			
 		}
 		System.out.println("photo : " + photo_map);
 		System.out.println("movie : " + movie_list);
+		modelAndView.addObject("like_map", like_map);
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.addObject("movie_list", movie_list);
 		modelAndView.addObject("photo_map", photo_map);
