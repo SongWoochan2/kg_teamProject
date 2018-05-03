@@ -442,15 +442,20 @@ public class ReserveController {
 			show.put("show_place_name", tmp.getShow_place_name());
 			
 			int totalSeat = 0;
-			int remainSeat = 0;
+			System.out.println("#### total seat #####");
 			for(SeatNumVO tmpVO : totalSeatNumlist) {
+				System.out.println(tmpVO.getShow_present_code() + "-" + tmpVO.getSeatNum());
 				if(tmpVO.getShow_present_code() == tmp.getShow_present_code()) {
 					totalSeat = tmpVO.getSeatNum();
 				}
 			}
+
+			int remainSeat = totalSeat;
+			System.out.println("#### reserved seat #####");
 			for(SeatNumVO tmpVO : reservedSeatNumlist) {
+				System.out.println(tmpVO.getShow_present_code() + "-" + tmpVO.getSeatNum());
 				if(tmpVO.getShow_present_code() == tmp.getShow_present_code()) {
-					remainSeat = totalSeat - tmpVO.getSeatNum();
+					remainSeat -= tmpVO.getSeatNum();
 				}
 			}
 			show.put("totalSeat", totalSeat);

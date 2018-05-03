@@ -23,7 +23,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
-						alert(JSON.stringify(json));
+						//alert(JSON.stringify(json));
 				
 				},
 				error : function(xhr, textStatus, errorThrown){
@@ -253,7 +253,7 @@
 							if(place_count != show_place_code){
 								place_count = show_place_code;
 								$("<div>").addClass("place_label").html(show.show_place_name).appendTo($("#top_time_div2"));
-								//$("<div>").addClass("place_totalSeat").html(show.totalSeat).appendTo($("#top_time_div2"));
+								$("<div>").addClass("place_totalSeat").html(" 총 " +show.totalSeat + "석").appendTo($("#top_time_div2"));
 							}
 							var tmpl = $("#showTT").tmpl(show);
 							$("#top_time_div2").append(tmpl);
@@ -408,10 +408,10 @@
 		});
 	</script>
 	<script type="text/x-jquery-tmpl" id="moviePosterTT">
-		<img src="../../image/storage/moviephoto/\${poster_addr}">
+		<img src="/MyCGV/image/storage/moviephoto/\${poster_addr}">
 	</script>
 	<script type="text/x-jquery-tmpl" id="movieNameTT">
-		<a href="../movie/movieDetailView.do?photo_pg=1&trailer_pg=1&movie_code=\${movie_code}">\${movie_name }</a>
+		<a href="/MyCGV/movie/movieDetailView.do?photo_pg=1&trailer_pg=1&movie_code=\${movie_code}">\${movie_name }</a>
 	</script>
 	<script type="text/x-jquery-tmpl" id="theaterChoiceTT">
 		\${theater_name}
@@ -443,7 +443,7 @@
 	<script type="text/x-jquery-tmpl" id="showTT">
 		<div class="show_item">
 			<div class="show_present_code" data="\${show_present_code }">
-				<label><input type="button" class="show_choice" name="show_present_code" value="\${show_time }:\${show_minute }">\${remainSeat }석</label>
+				<label><input type="button" class="show_choice" name="show_present_code" value="\${show_time }시 \${show_minute }분">\${remainSeat }석</label>
 			</div>
 		</div>
 	</script>
