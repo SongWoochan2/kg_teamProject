@@ -22,36 +22,42 @@ pageEncoding="UTF-8"%>
 		});
 	});
 </script>
+<style type="text/css">
+#title, #notice_item_type{
+	color: #c7d6a0;
+}
+#title{
+	font-size: 30;
+	font-weight: 900;
+}
+</style>
 </head>
 <body>
-	<form id="form" name="noticeItemWriteForm" method="post" action="noticeItemWrite.do">
-		<div>
-			<h2>관리자 공지사항 입력</h2>
-			<table border="1">
-				<tr>
-					<th scope="row">공지 종류</th>
-					<td colspan="3">
-						<input type="radio" name="notice_item_type" value="[시스템 점검]" checked="checked" ><label>[시스템 점검]</label>
-						<input type="radio" name="notice_item_type" value="[극장]"><label>[극장]</label>
-						<input type="radio" name="notice_item_type" value="[기타]"><label>[기타]</label>
-					</td>
-				</tr>
-				<tr>
-					<th width="50">제목</th>
-					<td><input type="text" name="notice_item_title" size="59" id="title"></td>
-				</tr>
-				<tr>
-					<th width="50">내용</th>
-					<td><textarea name="notice_item_content" rows="15" cols="45" id="content"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
+	<jsp:include page="../adminMain/adminTemplate.jsp"/>
+	<div id = "content" align="center">
+		<div id= container>
+			<form id="form" name="noticeItemWriteForm" method="post" action="noticeItemWrite.do">
+				<div id="title">
+					관리자 공지사항 입력
+				</div>
+				<div id="notice_item_type">
+					공지 종류:
+					<input type="radio" name="notice_item_type" value="[시스템 점검]" checked="checked" ><label>[시스템 점검]</label>
+					<input type="radio" name="notice_item_type" value="[극장]"><label>[극장]</label>
+					<input type="radio" name="notice_item_type" value="[기타]"><label>[기타]</label>
+				</div>
+				<div>
+					<input type="text" name="notice_item_title" size="80" id="notice_item_title" placeholder="제목">
+				</div>
+				<div>
+					<textarea name="notice_item_content" rows="15" cols="82" id="notice_item_content" placeholder="내용"></textarea>
+				</div>
+				<div>
 						<input type="submit" value="글쓰기">
 						<input type="reset" value="다시 작성">
-					</td>
-				</tr>
-			</table>
+				</div>
+			</form>
 		</div>
-	</form>
+	</div>
 </body>
 </html>
