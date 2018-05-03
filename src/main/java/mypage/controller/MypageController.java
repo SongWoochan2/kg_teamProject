@@ -68,7 +68,7 @@ public class MypageController {
 		}
 		
 		int totalVal = 	memberReserveService.getTotalVal(reserve_id);// 예매내역 총글수
-		int totalPVal = (totalVal+2)/3;			// 총페이지수
+		int totalPVal = (totalVal+4)/5;			// 총페이지수
 		//================================
 		int startPageVal = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
 		int endPageVal = startPageVal + 2;		// endPage = startPage + 3 - 1;
@@ -164,8 +164,28 @@ public class MypageController {
 		String member_id = (String)session.getAttribute("memId");
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO = memberService.memberView(member_id);
+		
+		// 예매내역
+		ArrayList<Integer> reserveCodes
+		= memberReserveService.getReserveCodes(member_id,1,5);
+		
+		List<MemberReserveListDTO> reserveList = new ArrayList<>();
+		for(int i=0,n=reserveCodes.size();i<n;i++) {
+			int reserve_code = reserveCodes.get(i);
+			System.out.println("예매코드:"+reserve_code);
+			MemberReserveListDTO memberReserveListDTO = new MemberReserveListDTO();
+			memberReserveListDTO = memberReserveService.getAllReserveList(reserve_code);
+			int count_seats = memberReserveService.countSeats(reserve_code);
+			memberReserveListDTO.setCount_seats(count_seats);	
+			reserveList.add(i,memberReserveListDTO);
+		}
+		
+		int totalVal = 	memberReserveService.getTotalVal(member_id);// 예매내역 총글수
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.addObject("reserveList", reserveList);
+		modelAndView.addObject("totalVal", totalVal);
 		modelAndView.setViewName("mypageHome.jsp");
 		return modelAndView;
 	}
@@ -270,8 +290,7 @@ public class MypageController {
 			} else {
 				result = 0; // 파일 삭제 실패
 			}
-		}
-		
+		}	
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
 		modelAndView.setViewName("deleteImgFile.jsp");
@@ -328,7 +347,7 @@ public class MypageController {
 		}
 		
 		int totalWatch = memberReserveService.getTotalWatched(reserve_id); // 내가 본 영화 총 갯수
-		int totalPWatch = (totalWatch+4)/5;			
+		int totalPWatch = (totalWatch+9)/10;			
 		//================================
 		int startPageWatch = (pg-1)/5*5+1;	
 		int endPageWatch = startPageWatch + 4;		
