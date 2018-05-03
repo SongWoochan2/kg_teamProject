@@ -16,11 +16,13 @@
 		select count(*) from select_do where member_id=#{member_id} and movie_code=#{movie_code}
 	</select>
 	
-	<select id="selectMemberList" parameterType="String" resultType="int">
+	<select id="selectMemberList" parameterType="String" resultType="selectDTO">
 		select * from select_do where member_id=#{member_id}
 	</select>
 	
 	<select id="movieGoodCount" parameterType="int" resultType="int">
 		select count(*) from select_do where movie_code=#{movie_code}
 	</select>
+	
+	
 </mapper>

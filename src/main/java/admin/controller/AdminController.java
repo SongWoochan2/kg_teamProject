@@ -4,6 +4,7 @@ package admin.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminLogout.do")
-	public ModelAndView adminLogout(HttpSession session) {
+	public ModelAndView adminLogout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("adminLogin.jsp");
@@ -71,7 +72,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminEnrollForm.do")
-	public ModelAndView adminEnrollForm(HttpServletRequest request) {
+	public ModelAndView superadminEnrollForm(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		String admin_name = request.getParameter("admin_name");
 		String id_check = request.getParameter("id_check");
@@ -84,7 +85,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminEnrollRequest.do")
-	public ModelAndView adminEnrollRequest(HttpServletRequest request) {
+	public ModelAndView superadminEnrollRequest(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		String admin_name = request.getParameter("admin_name");
 		String admin_pwd = request.getParameter("admin_pwd");
@@ -102,7 +103,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminRequestList.do")
-	public ModelAndView adminRequestList(HttpServletRequest request) {
+	public ModelAndView superadminRequestList(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		
 		int endNum = page*20;
@@ -127,7 +128,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminAllowable.do")
-	public ModelAndView adminAllowable(HttpServletRequest request) {
+	public ModelAndView superadminAllowable(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int admin_request_code = Integer.parseInt(request.getParameter("admin_request_code"));
 		int allowable = Integer.parseInt(request.getParameter("allowable"));
@@ -167,7 +168,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminIdCheck.do")
-	public ModelAndView adminIdCheck(HttpServletRequest request) {
+	public ModelAndView superadminIdCheck(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		AdminDTO adminDTO = new AdminDTO();
 		adminDTO.setAdmin_id(admin_id);
@@ -192,14 +193,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminPwdChangeForm.do")
-	public ModelAndView adminPwdChangeForm(HttpServletRequest request) {
+	public ModelAndView superadminPwdChangeForm(HttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("adminPwdChangeForm.jsp");
 		return modelAndView;
 	}
 	@RequestMapping(value="/admin/adminMain/adminPwdChange.do")
-	public ModelAndView adminPwdChange(HttpServletRequest request, HttpSession session) {
+	public ModelAndView superadminPwdChange(HttpServletRequest request, HttpSession session) {
 		String admin_id = (String) session.getAttribute("admin_id");
 		String admin_pwd = request.getParameter("admin_pwd");
 		String new_admin_pwd = request.getParameter("new_admin_pwd");

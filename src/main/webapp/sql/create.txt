@@ -1,4 +1,22 @@
+
+
 -------------------------------------------------------------  (1)
+--질문,답 테이블 생성
+create table qna(
+  qna_code int,
+  qna_type varchar(100) not null,
+  qna_title varchar(255) not null,
+  qna_content varchar(2048) not null,
+  qna_date date default sysdate,
+  primary key(qna_code)
+);
+
+--qna시퀀스 생성
+create sequence qna_code_seq nocycle nocache;
+
+-------------------------------------------------
+
+
 
 --관리자 테이블
 create table admin(
@@ -126,43 +144,43 @@ nocache
 nomaxvalue;
 
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '송우찬',
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '김진환',
+  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '액션', '', '', '김진환',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세이상', '액션', '', '', '성웅',
+  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세 이용가', '액션', '', '', '성웅',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세이상', '코믹', '', '', '송우찬',
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세 이용가', '코미디', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '빛나',
+  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '빛나',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세이상', 'SF', '', '', '송우찬',
+  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세 이용가', 'SF', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '재환',
+  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '재환',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '송우찬',
+  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세이상', '코믹', '', '', '진환',
+  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '진환',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '18세이상', '코믹', '', '', '빛나',
+  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '빛나',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세이상', '판타지', '', '', '재민',
+  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세 이용가', '판타지', '', '', '재민',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세이상', 'SF', '', '', '빛나',
+  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세 이용가', 'SF', '', '', '빛나',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 insert into movie values(
-  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '18세이상', '액션', '', '', '송우찬',
+  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '액션', '', '', '송우찬',
   10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
 
 
@@ -233,6 +251,15 @@ create table nonmember(
   primary key(nonmember_code)
 );
 
+create sequence nonmember_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+
+
+
 -----------------------------------------------
 -- 상품 테이블
 create table product(
@@ -240,14 +267,17 @@ create table product(
 	product_name varchar2(30) not null,	--상품명
 	product_cost number not null,	--상품가격
 	product_type varchar2(15) not null,	--상품분류
-	product_photo_addr varchar2(255) 	--상품분류주소
+	product_photo_addr varchar2(255), 	--상품분류주소
+	primary key(product_code)
 );
 
--- primary key 부여
-alter table product add primary key(product_code);  --primary key 부여
 
 -- product 테이블 시퀸스
-create sequence product_seq nocache nocycle;	--(상품코드)
+create sequence product_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
 
 -- 상품 등록
 insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
@@ -255,6 +285,82 @@ insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
 
 -----------------------------------------------
 -------------------------------------------------------------  (2)
+
+--찜하기 테이블 생성
+create table select_do(
+  select_code int,
+  member_id varchar(30),
+  movie_code int,
+  constraint select_do_movie_code_fk foreign key(movie_code) references movie(movie_code),
+  constraint select_do_member_id_fk foreign key(member_id) references member(member_id),
+  primary key(select_code)
+);
+
+--찜하기 시퀀스 생성
+create sequence select_do_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+--평가 테이블 생성
+create table evaluat(
+  evaluat_code int,
+  movie_code int,
+  evaluat_id varchar(30),
+  evaluat_score number,
+  evaluat_content varchar(2048),
+  evaluat_like_num number,
+  evaluat_date date,
+  constraint evaluat_movie_code_fk foreign key(movie_code) references movie(movie_code),
+  constraint evaluat_member_id_fk foreign key(evaluat_id) references member(member_id),
+  primary key(evaluat_code)
+);
+
+--평가 시퀀스 생성
+create sequence evaluat_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+
+
+--공지사항 테이블 생성
+create table notice_item(
+  notice_item_code int,
+  admin_id varchar(30),
+  notice_item_type varchar(100) not null,
+  notice_item_title varchar(255) not null,
+  notice_item_content varchar(2048) not null,
+  notice_item_date date default sysdate,
+  CONSTRAINT fk_notice_item FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  primary key(notice_item_code)
+);
+
+--noticeitem시퀀스 생성
+create sequence notice_item_code_seq nocycle nocache;
+
+-------------------------------------------------
+
+--문의 테이블 생성
+create table inquiry(
+  inquiry_code number,
+  inquiry_id varchar2(30),
+  inquiry_type varchar2(100),
+  inquiry_title varchar2(255) not null,
+  inquiry_content varchar2(2048) not null,
+  inquiry_file varchar2(250),
+  inquiry_status number default 0,
+  inquiry_date date,
+  FOREIGN KEY (inquiry_id) REFERENCES member(member_id),
+  primary key(inquiry_code)
+);
+
+--시퀀스 생성
+create sequence inquiry_code_seq nocycle nocache;
+
+-------------------------------------------------
 
 --상영관 테이블
 create table show_place(
@@ -308,14 +414,11 @@ increment by 1
 nocache
 nomaxvalue;
 
-drop table saving_list purge;
-drop sequence saving_list_seq;
+insert into saving_list values(
+  saving_list_seq.nextval, 'aaa', '@@@@@@@', 8000, 40, '2018.04.05');
 
 insert into saving_list values(
-  saving_list_seq.nextval, 'admin', '@@@@@@@', 8000, 40, '2018.04.05');
-
-insert into saving_list values(
-  saving_list_seq.nextval, 'hhh', '///////', 8000, 40, '2018.04.05');
+  saving_list_seq.nextval, 'ccc', '///////', 8000, 40, '2018.04.05');
 
 ------------------------------------------------------
 
@@ -355,12 +458,64 @@ increment by 1
 nocache
 nomaxvalue;
 
+
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 11, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 12, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 13, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+
 ---------------------------------------------
 
 
 
 
 -------------------------------------------------------------  (3)
+
+--평가좋아요 테이블 생성
+create table evaluat_like(
+  evaluat_like_code int,
+  evaluat_code int,
+  like_id varchar(30),
+  constraint evaluat_like_evaluat_code_fk foreign key(evaluat_code) references evaluat(evaluat_code),
+  constraint evaluat_like_like_id_fk foreign key(like_id) references member(member_id),
+  primary key(evaluat_like_code)
+);
+
+--평가좋아요 시퀀스 생성
+create sequence evaluat_like_seq
+start with 1
+increment by 1
+nocache
+nomaxvalue;
+
+
+--답변 테이블 생성
+create table answer(
+  answer_code int,
+  inquiry_code int UNIQUE,
+  admin_id varchar(30),
+  member_id varchar(30),
+  answer_title varchar(255) not null,
+  answer_content varchar(2048) not null,
+  answer_date date default sysdate,
+  CONSTRAINT fk_admin_id FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  CONSTRAINT fk_member_id FOREIGN KEY (member_id) REFERENCES member(member_id),
+  CONSTRAINT fk_inquiry_code FOREIGN KEY (inquiry_code) REFERENCES inquiry(inquiry_code),
+  primary key(answer_code)
+);
+
+--답변 시퀀스 생성
+create sequence answer_code_seq nocycle nocache;
+---------------------------------------------
 
 --좌석 테이블
 create table seat(
@@ -373,8 +528,8 @@ create table seat(
   FOREIGN KEY (seat_type_code) REFERENCES seat_type(seat_type_code)
 );
 
-insert into seat values( 1, 2, 2, '!');
-insert into seat values( 1, 2, 5, '!');
+insert into seat values( 1, 0, 2, '!');
+insert into seat values( 1, 0, 5, '!');
 insert into seat values( 1, 2, 1, 'A');
 insert into seat values( 1, 2, 2, 'A');
 insert into seat values( 1, 2, 3, 'A');
@@ -411,8 +566,8 @@ insert into seat values( 1, 2, 5, 'E');
 insert into seat values( 1, 2, 6, 'E');
 insert into seat values( 1, 2, 7, 'E');
 
-insert into seat values( 2, 2, 1, '!');
-insert into seat values( 2, 2, 3, '!');
+insert into seat values( 2, 0, 1, '!');
+insert into seat values( 2, 0, 3, '!');
 insert into seat values( 2, 2, 1, 'A');
 insert into seat values( 2, 2, 2, 'A');
 insert into seat values( 2, 2, 3, 'A');
@@ -429,6 +584,77 @@ insert into seat values( 2, 2, 1, 'D');
 insert into seat values( 2, 2, 2, 'D');
 insert into seat values( 2, 2, 3, 'D');
 insert into seat values( 2, 2, 4, 'D');
+
+insert into seat values( 3, 0, 2, '!');
+insert into seat values( 3, 2, 1, 'A');
+insert into seat values( 3, 2, 2, 'A');
+insert into seat values( 3, 2, 3, 'A');
+insert into seat values( 3, 2, 4, 'A');
+insert into seat values( 3, 2, 1, 'B');
+insert into seat values( 3, 2, 2, 'B');
+insert into seat values( 3, 2, 3, 'B');
+insert into seat values( 3, 2, 4, 'B');
+insert into seat values( 3, 3, 1, 'C');
+insert into seat values( 3, 3, 2, 'C');
+insert into seat values( 3, 3, 3, 'C');
+insert into seat values( 3, 3, 4, 'C');
+insert into seat values( 3, 2, 1, 'D');
+insert into seat values( 3, 2, 2, 'D');
+insert into seat values( 3, 2, 3, 'D');
+insert into seat values( 3, 2, 4, 'D');
+insert into seat values( 3, 2, 1, 'E');
+insert into seat values( 3, 2, 2, 'E');
+insert into seat values( 3, 2, 3, 'E');
+insert into seat values( 3, 2, 4, 'E');
+
+insert into seat values( 4, 0, 2, '!');
+insert into seat values( 4, 2, 1, 'A');
+insert into seat values( 4, 2, 2, 'A');
+insert into seat values( 4, 2, 3, 'A');
+insert into seat values( 4, 2, 4, 'A');
+insert into seat values( 4, 2, 1, 'B');
+insert into seat values( 4, 2, 2, 'B');
+insert into seat values( 4, 2, 3, 'B');
+insert into seat values( 4, 2, 4, 'B');
+insert into seat values( 4, 3, 1, 'C');
+insert into seat values( 4, 3, 2, 'C');
+insert into seat values( 4, 3, 3, 'C');
+insert into seat values( 4, 3, 4, 'C');
+insert into seat values( 4, 2, 1, 'D');
+insert into seat values( 4, 2, 2, 'D');
+insert into seat values( 4, 2, 3, 'D');
+insert into seat values( 4, 2, 4, 'D');
+
+insert into seat values( 5, 0, 1, '!');
+insert into seat values( 5, 0, 3, '!');
+insert into seat values( 5, 2, 1, 'A');
+insert into seat values( 5, 2, 2, 'A');
+insert into seat values( 5, 2, 3, 'A');
+insert into seat values( 5, 2, 4, 'A');
+insert into seat values( 5, 3, 1, 'B');
+insert into seat values( 5, 3, 2, 'B');
+insert into seat values( 5, 3, 3, 'B');
+insert into seat values( 5, 3, 4, 'B');
+insert into seat values( 5, 3, 1, 'C');
+insert into seat values( 5, 3, 2, 'C');
+insert into seat values( 5, 3, 3, 'C');
+insert into seat values( 5, 3, 4, 'C');
+insert into seat values( 5, 2, 1, 'D');
+insert into seat values( 5, 2, 2, 'D');
+insert into seat values( 5, 2, 3, 'D');
+insert into seat values( 5, 2, 4, 'D');
+
+insert into seat values( 6, 0, 1, '!');
+insert into seat values( 6, 0, 2, '!');
+insert into seat values( 6, 2, 1, 'A');
+insert into seat values( 6, 2, 2, 'A');
+insert into seat values( 6, 2, 3, 'A');
+insert into seat values( 6, 2, 1, 'B');
+insert into seat values( 6, 2, 2, 'B');
+insert into seat values( 6, 2, 3, 'B');
+insert into seat values( 6, 3, 1, 'C');
+insert into seat values( 6, 3, 2, 'C');
+insert into seat values( 6, 3, 3, 'C');
 
 --------------------------------------------------
 
@@ -463,8 +689,6 @@ create table member_reserve(
   reserve_code int,
   reserve_id varchar(30),
   show_present_code int,
-  FOREIGN KEY (reserve_id) REFERENCES member(member_id),
-  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code),
   member_seat1 varchar(20) not null,
   member_seat2 varchar(20),
   member_seat3 varchar(20),
@@ -473,7 +697,12 @@ create table member_reserve(
   member_seat6 varchar(20),
   member_seat7 varchar(20),
   member_seat8 varchar(20),
-  primary key(reserve_code)
+  reserve_cost number not null,
+  reserve_date date not null,
+  reserve_cancel_able char(1),
+  primary key(reserve_code),
+  FOREIGN KEY (reserve_id) REFERENCES member(member_id),
+  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code)
 );
 
 create sequence member_reserve_seq
@@ -483,35 +712,79 @@ nocache
 nomaxvalue;
 
 insert into member_reserve values(
-  member_reserve_seq.nextval, 'aaa', 1, 'A-1', 'H-5', null, null, null, null, null, null
+  member_reserve_seq.nextval, 'aaa', 1, 'A-1', 'H-5', null, null, null, null, null, null, 20000, sysdate, 'n'
 ); 
 insert into member_reserve values(
-  member_reserve_seq.nextval, 'aaa', 2, 'B-5', null, null, null, null, null, null, null
+  member_reserve_seq.nextval, 'aaa', 1, 'B-3', null, null, null, null, null, null, null, 20000, sysdate, 'n'
 ); 
 
+-------------------------------------------------------
 
-
-
-
--------------------------------------------------------------  (5)
--- 회원 티켓 결제
-create table member_ticket_pay(
-  member_pay_code int,
-  reserve_code int,
-  FOREIGN KEY (reserve_code) REFERENCES member_reserve(reserve_code),
-  reserve_date date not null,
-  reserve_cancle_able char(1) not null,
-  primary key(member_pay_code)
+-- 비회원 예매
+create table nonmember_reserve(
+  nonmember_reserve_code int,
+  nonmember_code int,
+  show_present_code int,
+  nonmember_seat1 varchar(20) not null,
+  nonmember_seat2 varchar(20),
+  nonmember_seat3 varchar(20),
+  nonmember_seat4 varchar(20),
+  nonmember_seat5 varchar(20),
+  nonmember_seat6 varchar(20),
+  nonmember_seat7 varchar(20),
+  nonmember_seat8 varchar(20),
+  nonmember_reserve_cost number not null,
+  nonmember_reserve_date date not null,
+  nonmember_reserve_cancel_able char(1),
+  primary key(nonmember_reserve_code),
+  FOREIGN KEY (nonmember_code) REFERENCES nonmember(nonmember_code),
+  FOREIGN KEY (show_present_code) REFERENCES show_present(show_present_code)
 );
 
-create sequence member_ticket_pay_seq
+
+create sequence nonmember_reserve_seq
 start with 1
 increment by 1
 nocache
 nomaxvalue;
 
-insert into member_ticket_pay values(
-  member_ticket_pay_seq.nextval, 1, sysdate, 'y'
-);
 
+
+
+-------------------------------------------------------------  (5)
+
+-- 영화 포스터 뷰
+create view movie_poster as 
+  SELECT movie_code, movie_photo_addr  FROM movie_photo 
+  WHERE movie_photo_code IN (
+      SELECT max(movie_photo_code) movie_photo_code FROM movie_photo 
+      where movie_photo_addr like 'poster_' || '%' GROUP BY movie_code
+      );
+      
+-- 상영정보 뷰 : 상영현황 + 영화 + 상영관
+create view show_all as 
+    SELECT * FROM show_place join (
+        SELECT * FROM show_present join movie USING (movie_code)
+        ) tt USING (show_place_code);
+          
+          
+-- 상영상세정보 뷰 : 상영정보 + 영화관 이름 + 포스터
+create view show_fully as 
+      SELECT * FROM theater join (
+          SELECT * FROM show_all join movie_poster USING (movie_code)
+          ) tt USING (theater_code);
+      select * from show_fully;
+
+
+-- 예약 좌석 뷰
+create view reserved_seat as 
+SELECT show_present_code, sum(reserved_num) AS reserve_num 
+		FROM ( SELECT show_present_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserved_num 
+				FROM nonmember_reserve
+				WHERE nonmember_reserve_cancel_able != 'Y'
+				UNION ALL
+				SELECT show_present_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserved_num 
+				FROM member_reserve 
+				WHERE reserve_cancel_able != 'Y')
+		GROUP BY show_present_code ;
 

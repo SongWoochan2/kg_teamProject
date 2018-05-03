@@ -8,6 +8,8 @@ import movie.bean.MovieDTO;
 
 public interface MovieService {
 	int movieModify(MovieDTO movieDTO);
+	int updateEvaluatScore(int movie_code, int acc_evaluat_score);
+	int updateEvaluatNum(int movie_code, int movie_evaluat_num);
 	int movieDelete(int movie_code);
 	int movieInsert(MovieDTO movieDTO);
 	int getTotalA();
@@ -18,4 +20,6 @@ public interface MovieService {
 	ArrayList<MovieDTO> movieFinder(Map<String, Object> map);
 	public List<MovieDTO> movieSearchByName(String movie_name);
 	int FinderTotalA(Map<String, Object> map);
+	ArrayList<MovieDTO> movieNonOpenRank();
+	ArrayList<MovieDTO> movieScoreRank(int startNum, int endNum);
 }

@@ -33,6 +33,12 @@
 	</select>
 	
 	<select id = "moviePosterView" parameterType= "int" resultType="moviePhotoDTO">
-		select * from movie_photo where movie_code = #{movie_code} and movie_photo_addr like 'poster_' || '%'
+		SELECT * FROM movie_photo 
+		WHERE movie_photo_code IN (
+		      SELECT max(movie_photo_code) movie_photo_code FROM movie_photo 
+		      where movie_photo_addr like 'poster_' || '%' GROUP BY movie_code
+		      )
+		AND movie_code = #{movie_code}
+		ORDER BY movie_code
 	</select>
 </mapper>

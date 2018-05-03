@@ -14,11 +14,5 @@ pageEncoding="UTF-8"%>
 	</script>
 </head>
 <body>
-	<%-- <c:if test="${su > 0 }">
-		작성한 글을 저장하였습니다.
-	</c:if>
-	<c:if test="${su <= 0 }">
-		작성한 글을 저장하지 못했습니다.
-	</c:if> --%>
 </body>
 </html>

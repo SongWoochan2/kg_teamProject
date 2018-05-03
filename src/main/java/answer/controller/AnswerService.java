@@ -20,15 +20,4 @@ public class AnswerService {
 		return answerDAO.answerView(inquiry_code);
 	}
 	
-	
-	
-	
-/*	public int getTotalA() {
-		return answerDAO.getTotalA();
-	}
-	
-	public int answerDelete(int answer_code) {
-		return answerDAO.answerDelete(answer_code);
-	}*/
-	
 }

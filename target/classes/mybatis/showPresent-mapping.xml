@@ -4,6 +4,32 @@
 
 <mapper namespace="showPresent">
 
+	<select id="getListWithReserve" parameterType="java.util.Map" resultType="showPresentAllVO">
+		SELECT show_present_code, count(*) AS reserve_num 
+		FROM 	(SELECT show_present_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserve_num 
+				FROM nonmember_reserve 
+				WHERE nonmember_reserve_cancel_able != 'Y'
+				AND show_present_code IN ( 
+					SELECT show_present_code FROM show_present 
+					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
+					AND movie_code = #{movie_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					)
+				UNION ALL
+				SELECT show_present_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserve_num 
+				FROM member_reserve 
+				WHERE reserve_cancel_able != 'Y'
+				AND show_present_code IN ( 
+					SELECT show_present_code FROM show_present 
+					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
+					AND movie_code = #{movie_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					)
+				) reserve
+		GROUP BY show_present_code
+		ORDER BY show_present_code
+	</select>
+
 	<select id="getList" parameterType="java.util.Map" resultType="showPresentAllVO">
 		SELECT * FROM show_present, movie, show_place
 		WHERE to_char(show_present.show_date, 'YYYYMMDD') = #{show_date}
@@ -24,11 +50,32 @@
 		WHERE show_present_code = #{show_present_code}
 	</delete>
 	
+	<select id="getOneFully" parameterType="int" resultType="showPresent.bean.ShowPresentSuperVO">
+		SELECT * FROM show_fully WHERE show_present_code = #{show_present_code}
+	</select>
+	
+<!-- 	<select id="getOneFully" parameterType="int" resultType="showPresent.bean.ShowPresentSuperVO">
+		SELECT * from theater, (
+			SELECT * FROM show_present, movie, show_place
+			WHERE show_present_code = #{show_present_code}
+			AND show_present.movie_code = movie.movie_code
+			AND show_present.show_place_code = show_place.show_place_code
+			) ss, (
+				SELECT * FROM movie_photo 
+				WHERE movie_photo_code IN (
+					SELECT max(movie_photo_code) movie_photo_code FROM movie_photo 
+					where movie_photo_addr like 'poster_' || '%' GROUP BY movie_code
+					)
+			) mm
+		WHERE ss.movie_code = mm.movie_code
+		AND ss.theater_code = theater.theater_code
+	</select> -->
+	
 	<select id="getOne" parameterType="int" resultType="showPresentAllVO">
 		SELECT * FROM show_present, movie, show_place
 		WHERE show_present_code = #{show_present_code}
 			AND show_present.movie_code = movie.movie_code
-			AND show_present.show_place_code = show_place.show_place_code;
+			AND show_present.show_place_code = show_place.show_place_code
 	</select>
 	
 	<select id="getUniqueMovieCode" resultType="String">

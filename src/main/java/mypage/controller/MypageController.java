@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,21 +27,35 @@ import member.controller.MemberService;
 import memberReserve.bean.MemberReserveDTO;
 import memberReserve.bean.MemberReserveListDTO;
 import memberReserve.controller.MemberReserveService;
+import movie.bean.MovieDTO;
+import movie.bean.MoviePage;
+import movie.controller.MovieService;
+import moviephoto.bean.MoviePhotoDTO;
+import moviephoto.controller.MoviePhotoService;
 import resource.provider.ResourceProvider;
 import savingList.bean.SavingListDTO;
 import savingList.controller.SavingListService;
+import select.bean.SelectDTO;
+import select.controller.SelectService;
+import wishlist.controller.WishlistService;
 
 @Controller
 public class MypageController {
 	@Autowired
 	private MemberService memberService;
 	@Autowired
+	private SelectService selectService;
+	@Autowired
+	private MoviePhotoService moviePhotoService;
+	@Autowired
+	private MovieService movieService;
+	@Autowired
 	private SavingListService savingListService;
 	@Autowired
 	private MemberReserveService memberReserveService;
 	@Autowired
 	private ResourceProvider resourceProvider;
-	
+
 	@RequestMapping(value="/mypage/myReserveList.do")
 	public ModelAndView myReserveList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
@@ -280,6 +296,7 @@ public class MypageController {
 	
 	@RequestMapping(value="/mypage/myWishList.do")
 	public ModelAndView myWishList(HttpServletRequest request) {
+		int like_able = 0;
 		System.out.println("myWishList.do");
 		
 		HttpSession session = request.getSession();
@@ -287,14 +304,61 @@ public class MypageController {
 
 
 		MemberDTO memberDTO = memberService.memberView(member_id);
+
+
+		memberDTO = memberService.memberView(member_id);
+		
 		System.out.println(member_id);
 		ModelAndView modelAndView = new ModelAndView();
 		
-		
+		// '내가 찜한' -> 영화 코드-> 영화 리스트
+		List<SelectDTO> selectlist = selectService.selectMemberList(member_id);
+		// 해당 영화 리스트 -> 영화코드 리스트 -> 영화 사진 '한장' 리스트
+		int pg = 1;		
+		int endNum = 0;
+		int startNum = 0;
+		String[] movie_type = null;
+		String[] make_nation = null;
+		String[] movie_show_grade = null;
+		String movie_keyword = "";
+		String movie_search = "";
+
+//		받아온 값 저장
+		if(request.getParameter("pg") != null) {
+			pg = Integer.parseInt(request.getParameter("pg"));
+			endNum = pg * 6;
+			startNum = endNum - 5;	
+		}
+
+		int movie_code = 0;
+		Map<Integer, Object> photo_map = new HashMap<>();
+		Map<Integer, Object> like_map = new HashMap<>();
+		ArrayList<MovieDTO> movie_list = new ArrayList<>();
+		for(SelectDTO selectDTO : selectlist) {
+			movie_code = selectDTO.getMovie_code();
+			MoviePhotoDTO moviePhotoDTO =moviePhotoService.moviePosterView(movie_code);
+			MovieDTO movieDTO = movieService.movieView(movie_code);
+			movie_list.add(movieDTO);
+			photo_map.put(movie_code, moviePhotoDTO.getMovie_photo_addr());
+			System.out.println("for - " +movie_code + "/ " + movieDTO+ " / " + moviePhotoDTO);
+			
+			if(member_id != null) {
+				like_able = selectService.selectMovieList(member_id, movie_code);	
+				System.out.println("movie_code : " + movie_code);
+				System.out.println("like_able : " + like_able);
+				like_map.put(movie_code, like_able);
+				System.out.println("like_map:" + like_map);
+			}else {
+				like_map.put(movie_code, like_able);
+			}
+			
+		}
+		System.out.println("photo : " + photo_map);
+		System.out.println("movie : " + movie_list);
+		modelAndView.addObject("like_map", like_map);
 		modelAndView.addObject("memberDTO", memberDTO);
-		System.out.println(memberDTO.getMember_name());
-		System.out.println(memberDTO.getNick_name());
-		modelAndView.addObject("member_id", member_id);
+		modelAndView.addObject("movie_list", movie_list);
+		modelAndView.addObject("photo_map", photo_map);
 		modelAndView.setViewName("myWishList.jsp");
 		return modelAndView;
 		
@@ -345,4 +409,5 @@ public class MypageController {
 		modelAndView.setViewName("myWatchedMovie.jsp?p="+pg);
 		return modelAndView;
 	}
+	
 }

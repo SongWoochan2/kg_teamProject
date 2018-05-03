@@ -41,6 +41,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
     
+    <error-page>
+	  <error-code>404</error-code>
+	  <location>/main/err/error404.jsp</location>
+	</error-page>
+	
+    <error-page>
+	  <error-code>500</error-code>
+	  <location>/main/err/error500.jsp</location>
+	</error-page>
+	
 	<filter>
 	   <filter-name>CharacterEncodingFilter</filter-name>
 	   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

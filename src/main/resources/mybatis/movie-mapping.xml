@@ -9,14 +9,33 @@
 		VALUES(movie_seq.nextval,#{movie_name},#{movie_content},#{make_nation},#{movie_open_date},#{movie_recycle_time},#{movie_show_grade_name},#{movie_type1},#{movie_type2},#{movie_type3},
 		#{movie_director},0,0,#{appear_actor},0,0)
 	</insert>
+	
 	<update id="movieModify" parameterType="movieDTO">
 		update movie set movie_name=#{movie_name}, movie_content=#{movie_content}, make_nation=#{make_nation},movie_director=#{movie_director},movie_open_date=#{movie_open_date},
 		movie_recycle_time=#{movie_recycle_time},movie_show_grade_name=#{movie_show_grade_name},movie_type1=#{movie_type1},movie_type2=#{movie_type2},movie_type3=#{movie_type3},appear_actor=#{appear_actor}
 		 where movie_code = #{movie_code}
 	</update>
+		
+	<update id="goodUpdate" parameterType="java.util.Map">
+		update movie set good_num = good_num+#{good} where movie_code=#{movie_code} 
+	</update>
+	
+	<update id="updateEvaluatScore" parameterType="java.util.Map">
+		update movie set acc_evaluat_score=#{acc_evaluat_score} where movie_code=#{movie_code}
+	</update>
+	
+	<update id="updateEvaluatNum" parameterType="java.util.Map">
+		update movie set movie_evaluat_num=#{movie_evaluat_num} where movie_code=#{movie_code}
+	</update>
+	
+	<delete id="movieDelete" parameterType="movieDTO">
+		delete from movie where movie_code = #{movie_code}
+	</delete>
+	
 	<select id="getTotalA" resultType="int">
 		select count(*) from movie
 	</select>
+	
 	<select id = "movieList" parameterType="java.util.Map" resultType="movieDTO">
 		<![CDATA[select movie_code, movie_name, movie_director, movie_show_grade_name, movie_recycle_time,
 				to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from 
@@ -24,9 +43,7 @@
 				(select * from movie order by movie_code desc) tt) 
 				 where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
-	<delete id="movieDelete" parameterType="movieDTO">
-		delete from movie where movie_code = #{movie_code}
-	</delete>
+	
 	<select id = "movieView" parameterType="int" resultType="movieDTO">
 		select movie_code, movie_name, movie_director, movie_show_grade_name, movie_recycle_time, movie_type1, movie_type2, movie_type3, movie_content, make_nation, appear_actor, movie_evaluat_num, acc_evaluat_score, acc_audience_num, good_num,
 				to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from movie where movie_code = #{movie_code}
@@ -64,7 +81,7 @@
   				</foreach>
 			</if>
 			<if test="movie_show_grade != null">
-				and movie_show_grade IN 
+				and movie_show_grade_name IN 
 				<foreach item="item" index="index" collection="movie_show_grade"
      				 open="(" separator="," close=")">
        				#{item}
@@ -116,7 +133,7 @@
 			  				</foreach>
 						</if>
 						<if test="movie_show_grade != null">
-							and movie_show_grade IN 
+							and movie_show_grade_name IN 
 							<foreach item="item" index="index" collection="movie_show_grade"
 			     				 open="(" separator="," close=")">
 			       				#{item}
@@ -138,10 +155,6 @@
 		<![CDATA[where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
-	<update id="goodUpdate" parameterType="java.util.Map">
-		update movie set good_num = good_num+#{good} where movie_code=#{movie_code} 
-	</update>
-	
 	<select id="presentMovieList" parameterType="java.util.Map" resultType="movieDTO">
 		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
  		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
@@ -157,5 +170,24 @@
 			  			</if>
 					</where> order by movie_code desc) tt) 
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
+	</select>
+	
+<!-- 	<select id="reserveRank"> -->
+<!-- 		select  -->
+<!-- 	</select> -->
+<!-- 	<select id="audienceRank"> -->
+<!-- 		select * from movie -->
+<!-- 	</select> -->
+
+	<select id="movieScoreRank" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, acc_evaluat_score, movie_evaluat_num, 
+ 			to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 				from (select rownum rn, tt.*  
+ 					from (select * from movie order by (ACC_EVALUAT_SCORE/MOVIE_EVALUAT_NUM) desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="movieNonOpenRank" resultType="movieDTO">
+		select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+ 		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from movie where movie_open_date > sysdate order by good_num desc
 	</select>
 </mapper>
