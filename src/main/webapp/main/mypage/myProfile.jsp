@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <c:if test="${result == 0}">
 <script type="text/javascript">
 $(function(){
@@ -19,7 +19,7 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	alert("등록 성공");
-	location.href="/MyCGV/mypage/editProfileForm.do"
+	location.href="/MyCGV/main/mypage/myProfileForm.do"
 });	
 </script>
 </c:if>

@@ -24,7 +24,8 @@
 	</select>
 	
 	<select id="noticeItemView" parameterType="int" resultType="noticeItemDTO">
-		select * from notice_item where notice_item_code=#{notice_item_code}
+		select notice_item_code, admin_id, notice_item_type, notice_item_title, notice_item_content, to_char(notice_item_date, 'YYYY.MM.DD') as notice_item_date
+		from notice_item where notice_item_code=#{notice_item_code}
 	</select>
 	
 	<select id="totalA" resultType="int">

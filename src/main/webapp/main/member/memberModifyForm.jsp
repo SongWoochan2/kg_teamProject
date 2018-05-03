@@ -4,14 +4,58 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-<script type="text/javascript" src="../script/memberScript.js"></script>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<!-- 생년월일은 텍스트 말고 다른 방식으로 -->
-<!-- 성별 -->
+<title>회원정보 수정</title>
+<script type="text/javascript" src="/MyCGV/script/memberScript.js?v=1"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <!-- 유효성 검사 (영문,숫자 포함 입력,공백없게) / 모든 필드 글자수 제한 걸기 -->
+<!-- 회원정보 수정이랑 탈퇴 전에 비밀번호 확인 창 만들기 -->
 <script type="text/javascript">
 	$(function(){		
+		// 불러온 값 표시하기 -------
+		// 생년월일
+		var splitBirth = $("#birthView").val().split('-');
+		$("input[type=text][name=yy]").val(splitBirth[0]);
+		$("select[name=mm]").val(splitBirth[1]);
+		$("input[type=text][name=dd]").val(splitBirth[2]);
+		
+		// 성별
+		if ($("#genderView").val() == "남자") {
+			$("#gender_m").attr("checked", "checked");
+		} else {
+			$("#gender_f").attr("checked", "checked");
+		}
+
+		// 통신사
+		if ($("#agencyView").val() == "SKT") {
+			$("#agc_s").attr("checked", "checked");
+		} else if ($("#agencyView").val() == "KT") {
+			$("#agc_k").attr("checked", "checked");
+		} else if ($("#agencyView").val() == "LGU+") {
+			$("#agc_l").attr("checked", "checked");
+		} else {
+			$("#agc_a").attr("checked", "checked");
+		}
+
+		// 휴대전화
+		var member_phone = $("#phoneView").val();
+		var phone1 = member_phone.substring(0,3);
+		$("select[name=phone1]").val(phone1);
+		if(member_phone.length > 10) {
+			var phone2 = member_phone.substring(3,7);
+			var phone3 = member_phone.substring(7,11);
+		} else {
+			var phone2 = member_phone.substring(3,6);
+			var phone3 = member_phone.substring(6,10);
+		}
+		$("input[type=text][name=phone2]").val(phone2);
+		$("input[type=text][name=phone3]").val(phone3);
+		
+		// 이메일
+		var splitEmail = $("#emailView").val().split('@');
+		$("input[type=text][name=email1]").val(splitEmail[0]);
+		$("#email2").val(splitEmail[1]).attr("readonly", true);
+		
+		
 		// 변경시 이벤트
 		$("#email3").change(function() {
 			$("#email3 option:selected").each(function() {
@@ -33,9 +77,9 @@ pageEncoding="UTF-8"%>
 			});
 		});
 		
-		// 입력 취소시
+		// 수정 취소시
 		$("#cancle_btn").click(function(){
-			var result = confirm('입력하신 정보는 저장되지 않습니다.\n정말 취소하시겠습니까?'); 
+			var result = confirm('수정하신 정보는 저장되지 않습니다.\n수정을 취소하시겠습니까?'); 
 			if(result) { //yes 
 				location.replace('index.do'); 
 			} else {
@@ -46,18 +90,15 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-	<form name="memberWriteForm" method="post" action="memberWrite.do">
+	<form name="memberModifyForm" method="post" action="memberModify.do">
 		<table>
 			<tr>
 				<th>아이디</th>
-				<td>
-					<input type="text" name="member_id">
-					<input type="button" value="중복 확인" onclick="checkId()">
-				</td>
+				<td>${memberDTO.member_id }</td>
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="member_name" placeholder="이름 입력"></td>
+				<td>${memberDTO.member_name }</td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
@@ -70,8 +111,8 @@ pageEncoding="UTF-8"%>
 			<tr>
 				<!-- <th>법정생년월일(6자리)</th> -->
 				<th>법정생년월일</th>
-				<!-- <input type="date" name="member_birth"> -->
 				<td>
+					<input type="hidden" id="birthView" value="${memberDTO.member_birth}">
 					<input type="text" name="yy" maxlength="4" value="" placeholder="년(4자)"> 
 					<select name="mm">
 					<option value="">월</option>
@@ -94,17 +135,21 @@ pageEncoding="UTF-8"%>
 			<tr>
 				<th>성별</th>
 				<td>
-					<input type="radio" name="member_gender" value="남자">남자
-					<input type="radio" name="member_gender" value="여자">여자
+					<input type="hidden" id="genderView" value="${memberDTO.member_gender}">
+					<input type="radio" name="member_gender" id="gender_m" value="남자">남자
+					<input type="radio" name="member_gender" id="gender_f" value="여자">여자
 				</td>
 			</tr>
 			<tr>
 				<th>휴대전화</th>
 				<td>
-					<input type="radio" name="member_agency" value="SKT">SKT
-					<input type="radio" name="member_agency" value="KT">KT
-					<input type="radio" name="member_agency" value="LGU+">LGU+
-					<input type="radio" name="member_agency" value="알뜰폰">알뜰폰<br>
+					<input type="hidden" id="agencyView" value="${memberDTO.member_agency}">
+					<input type="radio" name="member_agency" id="agc_s" value="SKT">SKT
+					<input type="radio" name="member_agency" id="agc_k" value="KT">KT
+					<input type="radio" name="member_agency" id="agc_l" value="LGU+">LGU+
+					<input type="radio" name="member_agency" id="agc_a" value="알뜰폰">알뜰폰<br>
+					
+					<input type="hidden" id="phoneView" value="${memberDTO.member_phone}">
 					<select name="phone1" style="width:70px;">
 						<option value="010">010</option>
 						<option value="011">011</option>
@@ -120,6 +165,7 @@ pageEncoding="UTF-8"%>
 			<tr>
 				<th>이메일</th>
 				<td>
+					<input type="hidden" id="emailView" value="${memberDTO.member_email}">
 					<input type="text" name="email1">@
 					<input type="text" id="email2" name="email2">
 					<select id="email3" name="email3" style="width:100px;">
@@ -136,8 +182,7 @@ pageEncoding="UTF-8"%>
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="취소" id="cancle_btn">
-					<input type="reset" value="다시 작성">
-					<input type="button" value="회원가입" onclick="javascript:checkWrite()">
+					<input type="button" value="수정" onclick="javascript:checkModify()">
 				</td>
 			</tr>
 		</table>

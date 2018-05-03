@@ -6,12 +6,13 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script> -->
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/myContentAside.css" />
 <script type="text/javascript">
 (function ($) {
     $(function () {
+    	$("#content-aside > ul > li:eq(3)").attr("class", "on");
     	$("#startdate").val($.datepicker.formatDate('yy-mm-dd', new Date()-30))
 		$("#enddate").val($.datepicker.formatDate('yy-mm-dd', new Date()));
 		
@@ -48,46 +49,29 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-	<jsp:include page="../main/main/header.jsp"></jsp:include>
+	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
 			<jsp:include page="./myContentAside.jsp"></jsp:include>
 			<div id="content-detail">
-			    <div class="tit-mypage">
+			    <div class="tit-mypage" style="margin:10px;">
 				    <h3>MoveIt 포인트</h3>
 				</div>
-			    <div class="tit-mypage">
-				    <h4>MoveIt 포인트 적립 및 사용내역</h4>
-				</div>
-
-			    <div class="tbl-breakdown">
-			        <table>
-			            <caption>MoveIt 포인트 상세 내역</caption>
-			            <colgroup>
-			                <col span="2" width="50%">
-			            </colgroup>
-			            <thead>
-			                <tr>
-				                <th scope="col">구분</th>
-				                <th scope="col">내용</th>
-			                </tr>
-			            </thead>
-			            <tbody>
-			                <tr class="tooltip_list">
-			                	<th scope="row">
-									<strong>MoveIt 사용가능 포인트</strong>
-									
-								</th>
-			
-			                	<td>${memberDTO.saving_point}</td>
-			                </tr>
-			            </tbody>
-			        </table>
+				
+				<div class="tbl-breakdown" style="margin:10px;">
+			    	<strong>MoveIt 사용가능 포인트</strong>&nbsp;&nbsp;
+			    	<font style="font-weight: bold;">${memberDTO.saving_point}</font>
 			        <p class="common_p">※ MoveIt VIP 선정은 매표/매점 구매 포인트 합산 기준으로 적용됩니다.</p>
 			    </div>
+				
+			    <div class="tit-mypage" style="margin:5px;margin-top: 30px;">
+				    <h4>MovieT 포인트 적립 및 사용내역</h4>
+				</div>
 
-<form name="myPointList" method="post" action="myPointListPeriod.do" id="myPointList" novalidate="novalidate">
+
+
+<!-- <form name="myPointList" method="post" action="myPointListPeriod.do" id="myPointList" novalidate="novalidate">
     <div class="box-polaroid">
         <div class="box-inner">
             <strong class="period">조회기간</strong>
@@ -111,7 +95,7 @@ pageEncoding="UTF-8"%>
             </p>
         </div>
     </div>
-</form>
+</form> -->
 	<div class="tbl-data">
 		<table summary="구매 구분, 결제 금액, 적립일, 적립 포인트 표기">
 			<colgroup>
@@ -149,23 +133,23 @@ pageEncoding="UTF-8"%>
 	</div>
 	<div class="paging">
 		<c:if test="${startPage>5 }">
-			[<a id="paging" href="myPointList.do?p=${startPage-1 }">이전</a>]
+			<a id="paging" href="myPointList.do?p=${startPage-1 }">이전</a>
 		</c:if>
 		<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i==p }">
-			[<a id="currentPaging" href="myPointList.do?p=${i }">${i }</a>]
+			<a id="currentPaging" href="myPointList.do?p=${i }">${i }</a>
 			</c:if>
 			<c:if test="${i!=p }">
-			[<a id="paging" href="myPointList.do?p=${i }">${i }</a>]
+			<a id="paging" href="myPointList.do?p=${i }">${i }</a>
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage < totalP }">
-			[<a id="paging" href="myPointList.do?p=${endPage+1 }">다음</a>]
+			<a id="paging" href="myPointList.do?p=${endPage+1 }">다음</a>
 		</c:if>	
 	</div>
 </div>
 </div>
 </div>
-	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>

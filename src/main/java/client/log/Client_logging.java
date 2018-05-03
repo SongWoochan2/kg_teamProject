@@ -39,7 +39,7 @@ public class Client_logging {
         	String member_id = (String) session.getAttribute("memId");
         	if(response != null) {
         		if(member_id == null || member_id.equals("")) {
-        			response.sendRedirect("/MyCGV/member/memberLoginForm.do");
+        			response.sendRedirect("/MyCGV/main/member/memberLoginForm.do");
         		} else {
         	        retVal = proceedingJoinPoint.proceed();
         		}

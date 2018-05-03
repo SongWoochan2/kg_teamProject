@@ -5,10 +5,11 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
     (function ($) {
         $(function () {
+        	$("#content-aside > ul > li:eq(2)").attr("class", "on");
             $('#period_wrap').datePeriod({
                 'start': $('#startdate'),
                 'end': $('#enddate'),
@@ -31,7 +32,7 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-	<jsp:include page="../main/main/header.jsp"></jsp:include>
+	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
@@ -102,7 +103,7 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 
 <!-- CGV 예매 관련 정책 안내 Box Type -->
 <!-- <div class="sect-box-descri">

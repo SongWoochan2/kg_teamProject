@@ -18,21 +18,21 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="/member/index.do")
+	@RequestMapping(value="/main/member/index.do")
 	public ModelAndView toMainPage(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:../main/main/index.jsp");
+		modelAndView.setViewName("redirect:../main/index.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberLoginForm.do")
+	@RequestMapping(value="/main/member/memberLoginForm.do")
 	public ModelAndView memberLoginForm(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("memberLoginForm.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberLogin.do")
+	@RequestMapping(value="/main/member/memberLogin.do")
 	public ModelAndView memberLogin(HttpServletRequest request) {
 		System.out.println("로그인 처리");
 
@@ -44,25 +44,17 @@ public class MemberController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		if(member_name==null){		// 로그인 실패
-			modelAndView.setViewName("memberLoginForm.jsp");
+			modelAndView.setViewName("memberLoginFail.jsp");
 		} else {				// 로그인 성공
-			// JSP에선 내장객체라서 그냥 쓸 수 있었지만 
-			// 여긴 자바코드,즉 서블릿이므로 session 클래스를 만들어줘야 함
 			HttpSession session = request.getSession();
 			session.setAttribute("memName", member_name);
 			session.setAttribute("memId", member_id);
-			// loginForm이 member 폴더 안에 있기 때문에 얘만 sendRedirect로 움직이게 할 것
-			// forward 방식으로 보내면 폴더명이 안 바뀜
-			//return "../board/boardList.do?pg=1";
-			
-			// redirect: 뒤에 쓰면
-			// forward 방식이 아니라 sendRedirect 방식으로 보냄
-			modelAndView.setViewName("redirect:../main/main/index.jsp");
+			modelAndView.setViewName("redirect:../main/index.jsp");
 		}
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberLogout.do")
+	@RequestMapping(value="/main/member/memberLogout.do")
 	public ModelAndView memberLogout(HttpServletRequest request) {
 		// 세션 삭제
 		HttpSession session = request.getSession();
@@ -71,18 +63,18 @@ public class MemberController {
 		session.invalidate(); // 무효화 : 모두 지우기
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:../main/main/index.jsp");
+		modelAndView.setViewName("redirect:../main/index.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberWriteForm.do")
+	@RequestMapping(value="/main/member/memberWriteForm.do")
 	public ModelAndView memberWriteForm(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("memberWriteForm.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberWrite.do")
+	@RequestMapping(value="/main/member/memberWrite.do")
 	public ModelAndView memberWrite(HttpServletRequest request) {
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -120,7 +112,7 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/checkMemberId.do")
+	@RequestMapping(value="/main/member/checkMemberId.do")
 	public ModelAndView isExistMemberId(HttpServletRequest request) {
 		System.out.println("아이디 중복 확인");
 		String member_id = request.getParameter("member_id");
@@ -141,7 +133,7 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberView.do")
+	@RequestMapping(value="/main/member/memberView.do")
 	public ModelAndView memberView(HttpServletRequest request) {
 		System.out.println("회원정보 상세보기");
 		HttpSession session = request.getSession();
@@ -162,7 +154,7 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberModify.do")
+	@RequestMapping(value="/main/member/memberModify.do")
 	public ModelAndView memberModify(HttpServletRequest request) {
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -199,7 +191,7 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberDeleteForm.do")
+	@RequestMapping(value="/main/member/memberDeleteForm.do")
 	public ModelAndView memberDeleteForm(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("memId");
@@ -216,7 +208,7 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/memberDelete.do")
+	@RequestMapping(value="/main/member/memberDelete.do")
 	public ModelAndView memberDelete(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("memId");
@@ -227,18 +219,18 @@ public class MemberController {
 		session.invalidate(); // 무효화 : 모두 지우기
 		ModelAndView modelAndView = new ModelAndView();
 		//modelAndView.addObject("result", result);
-		modelAndView.setViewName("redirect:../main/main/index.jsp");
+		modelAndView.setViewName("redirect:../main/index.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/member/confirmPwdModify.do")
+	@RequestMapping(value="/main/member/confirmPwdModify.do")
 	public ModelAndView confirmPwdModify(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("confirmPwdModify.jsp");
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/member/confirmPwdDelete.do")
+	@RequestMapping(value="/main/member/confirmPwdDelete.do")
 	public ModelAndView confirmPwdDelete(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("confirmPwdDelete.jsp");

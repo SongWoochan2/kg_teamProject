@@ -17,9 +17,9 @@ pageEncoding="UTF-8"%>
         
         var originImgAddr = $("#origin_img_addr").val();
         if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
-        	$(".profileImg > img").attr("src", "../image/profile/none.png");
+        	$(".profileImg > img").attr("src", "/MyCGV/image/profile/none.png");
         } else {
-        	$(".profileImg > img").attr("src", "../image/profile/"+originImgAddr);
+        	$(".profileImg > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
     });
 })(jQuery);
@@ -27,7 +27,6 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 		<div id="my-info-wrap">
-			<img src="">
 			<div class="profile">
 				<div class="profileImg">
 					<input type="hidden" id="origin_img_addr" value="${memberDTO.profile_img_addr}">
@@ -36,10 +35,10 @@ pageEncoding="UTF-8"%>
 				</div>
 				<div class="profileInfo">
 					<div class="personInfo">
-						<strong id="strong_tag1">${memberDTO.member_name}</strong><strong>님</strong>&nbsp;<em>${memberDTO.member_id}
-						</em>
-						&nbsp;<span>닉네임 : <i>${memberDTO.nick_name}</i></span>&nbsp;
-						<a class="a_tag1" href="myProfileForm.do"><strong>나의 프로필 수정</strong></a>
+						<strong style="font-size: 40px;">${memberDTO.member_name}님</strong>&nbsp;
+						<em>${memberDTO.member_id}</em><br><br>
+						&nbsp;<span>닉네임 : ${memberDTO.nick_name}</span>&nbsp;
+						<a href="myProfileForm.do"><strong>나의 프로필 수정</strong></a>
 					</div>
 					<div class="gradeInfo">
 						<p id="p_tag1">                     
@@ -50,32 +49,29 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="benefit">
 				<div class="point">
-	        		<a class="a_tag1" href="myPointList.do?p=1">MoveIt POINT 더보기</a>
-	        		<ul>
-	        			<li>
-	        				<strong>사용가능 MoveIt 포인트</strong>
-	        				<span><em class="txt-maroon">${memberDTO.saving_point}</em> 점</span>
-	        			</li>
-	        		</ul>
-        		</div>
-        		<div id="theater_class_bottom">
-				<div class="favorite-theater"><strong>자주가는 영화관</strong></div>
-				
-				<div class="theater_class">
-					<div class="theater_class_left">
-						<div id="div_theater1">테스트1</div>
-						<div id="div_theater3">테스트3</div>
-						<div id="div_theater5">테스트5</div>
-					</div>
-				
-					<div class="theater_class_rigth">
-						<div id="div_theater2">테스트2</div>
-						<div id="div_theater4">테스트4</div>
-						<div id="div_theater6"></div>
-					</div>
-				</div>
+					<strong style="float: left;font-size: 35px;">MovieT POINT</strong>
+			        <a class="a_tag1" href="myPointList.do?p=1" title="MovieT POINT 더보기">
+			        <img alt="MovieT POINT 더보기" src="/MyCGV/image/mypage/1+.PNG"
+			        		style="float:left;margin-top: 5px;margin-left: 5px;">
+			        </a>
+			        <br><br><br>
+					<strong style="font-size: 20px;">사용가능 MovieT 포인트
+					&nbsp;&nbsp;${memberDTO.saving_point}점</strong>
+        		</div>	        
+        		<!-- 자주가는 극장명 select count -->
+		        <div class="col-favorite-theater">
+	        		<h2>자주가는 MovieT</h2>
+		    		<div class="sect-favorite">
+			            <ul>
+	                        <li><a href="#"><span>1</span>CGV남주안</a></li>
+	                        <li><a href="#"><span>2</span>CGV인천</a></li>
+	                        <li><a href="#"><span>3</span>CGV인천터미널</a></li>
+	                        <li><a href="#"><span>4</span>CGV피카디리1958</a></li>
+	                        <li><a href="#"><span>5</span></a></li>                       
+			            </ul>       
+			        </div>
+	        	</div>
 			</div>
-		</div>
 		</div>
 </body>
 </html>

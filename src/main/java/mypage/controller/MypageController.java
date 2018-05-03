@@ -24,11 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
 import member.controller.MemberService;
-import memberReserve.bean.MemberReserveDTO;
 import memberReserve.bean.MemberReserveListDTO;
 import memberReserve.controller.MemberReserveService;
 import movie.bean.MovieDTO;
-import movie.bean.MoviePage;
 import movie.controller.MovieService;
 import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
@@ -37,7 +35,6 @@ import savingList.bean.SavingListDTO;
 import savingList.controller.SavingListService;
 import select.bean.SelectDTO;
 import select.controller.SelectService;
-import wishlist.controller.WishlistService;
 
 @Controller
 public class MypageController {
@@ -56,7 +53,7 @@ public class MypageController {
 	@Autowired
 	private ResourceProvider resourceProvider;
 
-	@RequestMapping(value="/mypage/myReserveList.do")
+	@RequestMapping(value="/main/mypage/myReserveList.do")
 	public ModelAndView myReserveList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int endNum = pg*5;			
@@ -84,7 +81,7 @@ public class MypageController {
 		}
 		
 		int totalVal = 	memberReserveService.getTotalVal(reserve_id);// 예매내역 총글수
-		int totalPVal = (totalVal+2)/3;			// 총페이지수
+		int totalPVal = (totalVal+4)/5;			// 총페이지수
 		//================================
 		int startPageVal = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
 		int endPageVal = startPageVal + 2;		// endPage = startPage + 3 - 1;
@@ -128,7 +125,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/memReserveCancle.do")
+	@RequestMapping(value="/main/mypage/memReserveCancle.do")
 	public ModelAndView cancleMemReserve(HttpServletRequest request) {	
 		int reserve_code = Integer.parseInt(request.getParameter("reserve_code"));
 		int result = memberReserveService.memReserveCancle(reserve_code);
@@ -139,7 +136,7 @@ public class MypageController {
 		return modelAndView;
 	}
 		
-	@RequestMapping(value="/mypage/myPointList.do")
+	@RequestMapping(value="/main/mypage/myPointList.do")
 	public ModelAndView myPointList(HttpServletRequest request) {		
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int endNum = pg*10;			
@@ -174,19 +171,39 @@ public class MypageController {
 	}
 	
 	// mypage -------------------------------------
-	@RequestMapping(value="/mypage/mypageHome.do")
+	@RequestMapping(value="/main/mypage/mypageHome.do")
 	public ModelAndView mypageHome(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("memId");
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO = memberService.memberView(member_id);
+		
+		// 예매내역
+		ArrayList<Integer> reserveCodes
+		= memberReserveService.getReserveCodes(member_id,1,5);
+		
+		List<MemberReserveListDTO> reserveList = new ArrayList<>();
+		for(int i=0,n=reserveCodes.size();i<n;i++) {
+			int reserve_code = reserveCodes.get(i);
+			System.out.println("예매코드:"+reserve_code);
+			MemberReserveListDTO memberReserveListDTO = new MemberReserveListDTO();
+			memberReserveListDTO = memberReserveService.getAllReserveList(reserve_code);
+			int count_seats = memberReserveService.countSeats(reserve_code);
+			memberReserveListDTO.setCount_seats(count_seats);	
+			reserveList.add(i,memberReserveListDTO);
+		}
+		
+		int totalVal = 	memberReserveService.getTotalVal(member_id);// 예매내역 총글수
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.addObject("reserveList", reserveList);
+		modelAndView.addObject("totalVal", totalVal);
 		modelAndView.setViewName("mypageHome.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/myProfileForm.do")
+	@RequestMapping(value="/main/mypage/myProfileForm.do")
 	public ModelAndView profileView(HttpServletRequest request) {
 		System.out.println("프로필 불러오기");
 		HttpSession session = request.getSession();
@@ -201,7 +218,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/checkNickName.do", method=RequestMethod.GET)
+	@RequestMapping(value="/main/mypage/checkNickName.do", method=RequestMethod.GET)
 	public ModelAndView checkNickName(HttpServletRequest request) {
 		System.out.println("닉네임 중복확인");
 		String nick_name = request.getParameter("nick_name");
@@ -221,7 +238,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/myProfile.do", method=RequestMethod.POST)
+	@RequestMapping(value="/main/mypage/myProfile.do", method=RequestMethod.POST)
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
 		String fileName = "none.png";
@@ -267,7 +284,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/deleteProfileImg.do", method=RequestMethod.POST)
+	@RequestMapping(value="/main/mypage/deleteProfileImg.do", method=RequestMethod.POST)
 	public ModelAndView deleteProfileImg(HttpServletRequest request) {
 		String filePath = resourceProvider.getPath("image/profile");
 		
@@ -286,15 +303,14 @@ public class MypageController {
 			} else {
 				result = 0; // 파일 삭제 실패
 			}
-		}
-		
+		}	
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
 		modelAndView.setViewName("deleteImgFile.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/myWishList.do")
+	@RequestMapping(value="/main/mypage/myWishList.do")
 	public ModelAndView myWishList(HttpServletRequest request) {
 		int like_able = 0;
 		System.out.println("myWishList.do");
@@ -364,7 +380,7 @@ public class MypageController {
 		
 	}
 	
-	@RequestMapping(value="/mypage/myWatchedMovie.do")
+	@RequestMapping(value="/main/mypage/myWatchedMovie.do")
 	public ModelAndView myWatchedMovieList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int endNum = pg*10;			
@@ -392,7 +408,7 @@ public class MypageController {
 		}
 		
 		int totalWatch = memberReserveService.getTotalWatched(reserve_id); // 내가 본 영화 총 갯수
-		int totalPWatch = (totalWatch+4)/5;			
+		int totalPWatch = (totalWatch+9)/10;			
 		//================================
 		int startPageWatch = (pg-1)/5*5+1;	
 		int endPageWatch = startPageWatch + 4;		

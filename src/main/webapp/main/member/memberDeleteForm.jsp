@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
 
-<link rel="stylesheet" media="all" type="text/css" href="../css/memberConfirm/delete.css">
+<link rel="stylesheet" media="all" type="text/css" href="/MyCGV/css/memberConfirm/delete.css">
 
 </head>
 <body>
