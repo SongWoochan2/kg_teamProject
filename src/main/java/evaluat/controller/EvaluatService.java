@@ -11,7 +11,7 @@ public interface EvaluatService {
 	int insertEvaluat(EvaluatDTO evaluatDTO);
 	EvaluatDTO evaluatView(int evaluat_code);
 	ArrayList<EvaluatDTO> EvaluatList(int movie_code,int e_startNum, int e_endNum);
-	int getTotal(int movie_code);
+	Integer getTotal(int movie_code);
 	Integer movieScoreTotal(int movie_code);
 	int evaluatMemberCheck(String evaluat_id, int movie_code);
 	int updateLikeNum(int evaluat_code,int evaluat_like_num);

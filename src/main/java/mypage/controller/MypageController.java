@@ -37,6 +37,7 @@ import savingList.bean.SavingListDTO;
 import savingList.controller.SavingListService;
 import select.bean.SelectDTO;
 import select.controller.SelectService;
+import wishlist.controller.WishlistService;
 
 @Controller
 public class MypageController {
@@ -395,4 +396,5 @@ public class MypageController {
 		modelAndView.setViewName("myWatchedMovie.jsp?p="+pg);
 		return modelAndView;
 	}
+	
 }

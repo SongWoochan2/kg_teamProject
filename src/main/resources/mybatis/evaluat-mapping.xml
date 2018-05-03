@@ -36,7 +36,7 @@
 		select sum(evaluat_score) from evaluat where movie_code=#{movie_code} 
 	</select>
 	
-	<select id="getTotal" parameterType="int" resultType="int">
+	<select id="getTotal" parameterType="int" resultType="Integer">
 		select count(*) from evaluat where movie_code=#{movie_code} 
 	</select>
 	

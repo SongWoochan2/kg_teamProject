@@ -166,7 +166,6 @@
 				</div>
 			</div>
 			<div id = "findcontentform">
-			
 				<div id = "findcontent">
 				<c:forEach var ="find_list" items="${requestScope.find_list }">
 					<div id = "findentity">
@@ -182,23 +181,19 @@
 							${find_list.movie_name }
 							</a>
 						</div>
-						<div id = "entity-reserve">
+						<div id = "entity-reserverate">
 							예매율&emsp; 0.0% 
 						</div>
 						<div id = "entity-opendate">
 							${find_list.movie_open_date }
 						</div>
-						<div id = "entity-like">
-<!-- 							<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a> -->
-         					<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a><b>20,201명 </b>
+						<div id = "entity-reserve">
 							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${find_list.movie_code }">
           						<span class="glyphicon glyphicon-film"> 예매</span>
         					</a>
 						</div>
 					</div>
 				</c:forEach>
-			
-					
 				</div>
 			</div>
 			<div id = "findpagingform">

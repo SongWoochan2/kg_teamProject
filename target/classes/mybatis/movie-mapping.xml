@@ -24,6 +24,10 @@
 		update movie set acc_evaluat_score=#{acc_evaluat_score} where movie_code=#{movie_code}
 	</update>
 	
+	<update id="updateEvaluatNum" parameterType="java.util.Map">
+		update movie set movie_evaluat_num=#{movie_evaluat_num} where movie_code=#{movie_code}
+	</update>
+	
 	<delete id="movieDelete" parameterType="movieDTO">
 		delete from movie where movie_code = #{movie_code}
 	</delete>
@@ -158,13 +162,32 @@
  				from (select * from movie ]]> 
 					<where>
 						<if test="code_list != null">
-						 	movie_code IN (
+						 	movie_code IN 
 							<foreach item="item" index="index" collection="code_list"
 			     				 open="(" separator="," close=")">
 			       				#{item} 
-			  				</foreach>)
+			  				</foreach>
 			  			</if>
 					</where> order by movie_code desc) tt) 
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
+	</select>
+	
+<!-- 	<select id="reserveRank"> -->
+<!-- 		select  -->
+<!-- 	</select> -->
+<!-- 	<select id="audienceRank"> -->
+<!-- 		select * from movie -->
+<!-- 	</select> -->
+
+	<select id="movieScoreRank" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, acc_evaluat_score, movie_evaluat_num, 
+ 			to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 				from (select rownum rn, tt.*  
+ 					from (select * from movie order by (ACC_EVALUAT_SCORE/MOVIE_EVALUAT_NUM) desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="movieNonOpenRank" resultType="movieDTO">
+		select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+ 		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from movie where movie_open_date > sysdate order by good_num desc
 	</select>
 </mapper>

@@ -100,13 +100,15 @@
 				 	 			개봉날짜 : ${movie.movie_open_date}
 							</div>
 							<div class = "entity-like">
-								좋아요 : ${movie.good_num}
+								좋아요 : ${movie.good_num} 
 							</div>
+							
+
 							<div id= "entity-love_reserve">
 <!-- 							<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart"></span></a> -->
-         						<a href="#" id="wishlist_bt" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+         						<a href="#" id="wishlist_bt" class="btn btn-info btn-lg" onclick="location.href='selectLike.do?select_code=${select_code}'"><span class="glyphicon glyphicon-heart-empty"></span></a>
          						<b></b>
-								<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${movie.movie_code }">
+								<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "selectLike.do?movie_code=${movie.movie_code }">
           							<span class="glyphicon glyphicon-film"> 예매</span>
         						</a>
 							</div> 

@@ -37,4 +37,7 @@ public interface ReserveService {
 	
 	public int insertMemberReserve(MemberReserveVO memberReserveVO);
 	
+	// 재환
+	
+	public Integer movieReserveCheck(String member_id, int movie_code);
 }

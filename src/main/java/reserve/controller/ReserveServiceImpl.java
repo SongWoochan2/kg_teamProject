@@ -74,6 +74,11 @@ public class ReserveServiceImpl implements ReserveService{
 	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
 		return reserveDAO.insertMemberReserve(memberReserveVO);
 	}
+
+	@Override
+	public Integer movieReserveCheck(String member_id, int movie_code) {
+		return reserveDAO.movieReserveCheck(member_id, movie_code);
+	}
 	
 	
 }
