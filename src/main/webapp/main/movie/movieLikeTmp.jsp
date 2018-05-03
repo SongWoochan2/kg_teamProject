@@ -17,4 +17,10 @@
 		location.href = "movieDetailView.do?review_pg=${requestScope.review_pg}&movie_pg=${requestScope.movie_pg}&movie_code=${requestScope.movie_code}";
 	</script>
 </c:if>
+<c:if test="${requestScope.pagetype == 'wishlist' }">
+	<script type="text/javascript">
+		alert('확인');
+		location.href = "../../mypage/myWishList.do?movie_code=${requestScope.movie_code}";
+	</script>
+</c:if>
 </html>

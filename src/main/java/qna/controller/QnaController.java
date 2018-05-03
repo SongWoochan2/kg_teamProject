@@ -50,11 +50,11 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="/admin/qna/qnaList.do")
-	public ModelAndView superqnaList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView qnaList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
 		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt( request.getParameter("pg") );
-		
+		System.out.println("admin_id:"+admin_id);
 		int endNum = pg*10;
 		int startNum = endNum-9;
 		List<QnaDTO> list = qnaService.qnaList(startNum, endNum);
@@ -81,7 +81,7 @@ public class QnaController {
 	
 	
 	@RequestMapping(value="/admin/qna/qnaView.do")
-	public ModelAndView superqnaView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView qnaView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
 		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt(request.getParameter("pg"));

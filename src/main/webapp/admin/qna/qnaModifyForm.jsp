@@ -24,21 +24,20 @@ pageEncoding="UTF-8"%>
 	});
 </script>
 <style type="text/css">
-#title, #qna_type{
-	color: #c7d6a0;
-}
-#title{
-	font-size: 30;
-	font-weight: 900;
-}
+	#title, #qna_type{
+		color: #c7d6a0;
+	}
+	#title{
+		font-size: 30;
+		font-weight: 900;
+	}
 </style>
-
 </head>
 <body>
 	<jsp:include page="../adminMain/adminTemplate.jsp"/>
 	<div id = "content" align="center">
 		<form id="form" name="qnaModifyForm" method="post" action="qnaModify.do">
-					<input type="hidden" name="qna_code" value="${qnaDTO.qna_code }">
+			<input type="hidden" name="qna_code" value="${qnaDTO.qna_code }">
 			<div>
 				<div id="title">
 					자주 묻는 질문  수정

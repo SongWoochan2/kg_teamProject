@@ -194,7 +194,6 @@
 }
 
 /* 컬쳐샵 */
-
 .sect-cultureshopdetail{ margin-top:10px;}
 .sect-cultureshopdetail:after{ content:''; clear:both; display:block;}
 *+html .sect-cultureshopdetail{ zoom:1;}
@@ -207,12 +206,7 @@
 .sect-cultureshopdetail .box-contents .title strong + .comm_ic {margin-left:5px;}
 .sect-cultureshopdetail .box-contents .title strong + .comm_ic > * {padding:2px 5px;}
 .sect-cultureshopdetail .box-contents .title .menuitems{ margin-top:10px; color:#666666; font-family:'NanumBarunGothicBold';}
-.sect-cultureshopdetail .box-contents .price{ margin-top:20px; padding-top:30px; border-top:2px solid #cacac1;}
-.sect-cultureshopdetail .box-contents .price em{ display:inline-block; width:90px; color:#666666; font-size:11px;}
-.sect-cultureshopdetail .box-contents .price > span{ display:block; color:#333333; }
-.sect-cultureshopdetail .box-contents .price > span > i{ font-size:14px; font-family:Verdana, Geneva, sans-serif; font-weight:bold; text-decoration:line-through;vertical-align:middle;}
-.sect-cultureshopdetail .box-contents .price > strong{ margin:10px 0 20px; display:block; color:black;}
-.sect-cultureshopdetail .box-contents .price > strong > i{ font-size:21px; font-family:Verdana, Geneva, sans-serif; font-weight:bold; vertical-align:-2px;}
+.sect-cultureshopdetail .box-contents .price{ margin-top:10px; padding-top:10px; border-top:2px solid #cacac1;}
 
 .sect-cultureshopdetail .box-snacks{float:left; width:464px; padding:28px 0; background:url('../images/common/bg/dot_horizontal.gif') 0 0 repeat-x; line-height:1.4;}
 .sect-cultureshopdetail .box-snacks .info {margin-bottom:10px; font-family:'NanumBarunGothicBold';}
@@ -226,44 +220,16 @@
 .sect-cultureshopdetail .box-snacks .snack-list > li .txtbox .tit {display:block; line-height:1.2;}
 .sect-cultureshopdetail .box-snacks .snack-list > li .txtbox .price {display:block; margin-top:3px;}
 
-.sect-cultureshopdetail .box-payinfo {float:left; width:464px; margin:30px 0;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list > li {float:left; font-family:'NanumBarunGothicBold';}
-.sect-cultureshopdetail .box-payinfo .payinfo-list > li dt,
-.sect-cultureshopdetail .box-payinfo .payinfo-list > li dd {display:inline-block; font-size:12px; line-height:16px; color:#000; vertical-align:middle;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list > li dt {margin-right:5px;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list .pricebox1 .add {padding-left:25px; height:16px; background:url('../images/common/ico_add.gif') no-repeat 0 0;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list .pricebox1 dt {margin-left:10px;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list .pricebox1 dt:first-child {margin-left:0;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list .pricebox2 {float:right;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list .pricebox2 dt {margin-right:13px; font-size:16px; color:#ff1a1a;}
-.sect-cultureshopdetail .box-payinfo .payinfo-list .pricebox2 dd em {font-size:22px;}
 
 .sect-cultureshopdetail .box-payinfo + .box-btn {margin-top:0;}
 
-.sect-cultureshopdetail .box-spec{ float:left;width:464px; padding:20px 0; border-bottom:2px solid #cacac1; background:url('../images/common/bg/dot_horizontal.gif') 0 0 repeat-x; line-height:1.4;}
-.sect-cultureshopdetail .box-spec dt{ float:left; width:90px; margin:4px 0; color:#666666; font-family:'NanumBarunGothicBold';}
-.sect-cultureshopdetail .box-spec dd{ float:left; width:374px; margin:4px 0; color:#222222; font-family:'NanumBarunGothicBold';}
+.sect-cultureshopdetail .box-spec{ float:left;width:464px; padding:20px 0; border-bottom:2px solid #cacac1;  line-height:1.4;}
+
 .sect-cultureshopdetail .box-btn{ float:left; width:464px; margin-top:20px; text-align:left;}
 .sect-cultureshopdetail .box-btn .round{ width:112px; margin-left:5px; font-size:15px; line-height:31px;}
 .sect-cultureshopdetail .box-btn .round:first-child{ margin-left:0; margin-right:100px;}
 .sect-cultureshopdetail .txt_caution {color:#e71a0f}
 .sect-cultureshopnote{}
-.sect-cultureshopnote > h4{ padding-bottom:8px; border-bottom:2px solid #333333;}
-.sect-cultureshopnote > .note{ padding:20px 0 25px;}
-.sect-cultureshopnote > .note > li{ margin:4px 0; padding-left:30px; background:url('../images/common/bg/bg_blit.png') 15px 7px no-repeat; color:#222222; line-height:1.6}
-.sect-cultureshopnote > .note > li strong{ color:#e71a0f } 
-.sect-cultureshopnote > .note > li em{font-family:'NanumBarunGothicBold';}
-.sect-cultureshopnote > .note > li ol > li {list-style:decimal; margin-left:13px;}
-.sect-cultureshopnote > .note > li ul > li > ul {margin-left:10px;}
-.sect-cultureshopnote > .note .round {line-height:15px;}
 
-.sect-cultureshopnote > .step{ padding-top:25px; border-top:1px solid #dfded4;}
-.sect-cultureshopnote > .step:after{ content:''; clear:both; display:block;}
-*+html .sect-cultureshopnote > .step{ zoom:1;}
-.sect-cultureshopnote > .step li{ float:left; width:235px; padding-left:30px; color:#222222; background:url('../images/common/bg/bg_arrow03.gif') 0 100px no-repeat;}
-.sect-cultureshopnote > .step li:first-child{ width:265px; padding-left:0; background:none;}
-.sect-cultureshopnote > .step li > img{ display:block; width:230px; height:165px;}
-.sect-cultureshopnote > .step li > em{ font-size:14px; font-family:'NanumBarunGothicBold';}
-.sect-cultureshopnote > .step li > p{ margin-top:8px; }
 
 

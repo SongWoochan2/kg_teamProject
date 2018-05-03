@@ -1,8 +1,8 @@
 
 .myWishList_top_div{
-	margin:30px auto;
+	margin:5% auto;
 	width: 100%;
-	height: 1500px;
+	height: 500px;
 }
 .left_right_tong{
 	margin: auto;
@@ -28,6 +28,7 @@
 
 .myWishList_top_div .wish_profileImg{
 	border:1px solid gray;
+	background-color:white;
 	text-align: center;
 	height: 180px;
 	border-radius: 15px;
@@ -89,6 +90,7 @@
 #each_movie_view{
 	padding: 10px;
 	border: 1px solid gray;
+	background-color:white;
 	width: 23%;
 	height: 400px;
 	margin:1%;

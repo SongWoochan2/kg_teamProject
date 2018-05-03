@@ -1,100 +1,265 @@
-/* 마이페이지홈 바디 전체 최상위 영역*/
+/* mypageHome.jsp */
 
-/* 마이페이지홈 바디 전체 최상위의 한단계아래 영역, 여기는 mypageHome.jsp실행하면 먹히는 css */
-
-.sect-content-movie{
-	margin-left: 100px;
-	width: 601px;
-	height: 124px;
-	background-image: url("/MyCGV/image/mypage/wishlist_img.png");
+#mypageBody #my-content-wrap #content-detail .sect-content-movie {
+	float: left;
+	width: 98%;
+	height: 180px;
+	border: 1px solid black;
+	margin-bottom: 30px;
+}
+#mypageBody #my-content-wrap #content-detail>.sect-content-reserve {	
+	float: left;
+	width: 98%;
+	height: auto;
+	min-height: 250px;
+	margin-bottom: 30px;
+}
+#mypageBody #my-content-wrap #content-detail>.sect-content-buying {
+	float: left;
+	width: 98%;
+	height: 15%;
+	border: 1px solid black;
+	margin-bottom: 30px;
+}
+#mypageBody #my-content-wrap #content-detail .sect-content-inquiry {
+	float: left;
+	width: 98%;
+	height: 180px;
+	border: 1px solid black;
+	margin-bottom: 30px;
 }
 
-div.sect-content-movie div {
-	float: left;
-} 
-.sect-content-movie .box-inner{
-	width:600px;
-	height:120px;
-	text-align: center;
+.sect-content-movie>.box-inner{
+	border: 1px solid black;
+	width: 100%;
+	height: 100%;
 	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
 	font-size:11px;
 }
-.sect-content-movie #home_span1{
-	position: relative;
-	top:73px;
-	left: 42px;
-}
-.sect-content-movie #home_span2{
-	position: relative;
-	top:73px;
-	left: 127px;
-}
-.sect-content-movie #home_span3{
-	position: relative;
-	top:73px;
-	left: 197px;
-	
-}
-.sect-content-movie .box-inner a{
-	text-decoration:none;
+
+.sect-content-movie>.box-inner>.box-inner-wishlist {
+	float: left;
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	border-right: 2px white;
+	border-right-style: dotted;
 }
 
-.mypage_bottom_div{
- 	position:relative;
- 	top:50px;
- 	left:5px;
-	/* border: 1px solid blue; */
+.sect-content-movie>.box-inner>.box-inner-watched {
+	float: left;
+	width: 50%;
+	height: 100%;
+	text-align: center;
+}
+
+.sect-content-movie>.box-inner img {
+	width: 100%;
+	height: 100%;
+}
+
+
+.sect-content-reserve {
+	padding: 20px;
+	width: 100%;
+	height: auto;
+	min-height: 500px;
+}
+
+.sect-content-reserve>.title-mypage {
+	float: left;
+	width: 100%;
+	height: 50px;
+	text-align: left;
+	line-height: 40px;
+}
+
+.sect-content-reserve>.title-mypage>h3,h4 {
+	float: left;
+	margin-right: 10px;
+}
+
+.sect-content-reserve>.box-inner {
+	float: left;
+	width: 100%;
+	height: auto;
+	min-height: 150px;
+	border: 1px solid black;
+}
+
+.sect-content-reserve>.box-inner .box-set-info-nodata {
+	padding: 55px;
+	width: 100%;
+	text-align: left;
+	line-height: 35px;
+}
+
+.sect-content-reserve>.box-inner .box-set-info {
+	padding: 10px;
+	width: 100%;
+	height: 150px;
+	border-bottom: 1px solid gray;
+}
+
+.sect-content-reserve .box-set-info > div {
 	float: left;
 }
-.title-mypage_h3{
+
+.sect-content-reserve .box-set-info > .box-number {
+	line-height: 40px;
+	align-content: center;
+	width: 20%;
+	height: 100%;
+}
+.sect-content-reserve .box-set-info > .box-image {
+	align-items: center;
+	width: 15%;
+	height: 100%;
+}
+.sect-content-reserve .box-set-info > .box-contents {
+	line-height: 30px;
+	text-align: left;
+	width: 40%;
+	height: 100%;
+}
+.sect-content-reserve .box-set-info > .box-detail {
+	padding-left: 30px;
+	line-height: 40px;
+	width: 25%;
+	height: 100%;
+	border-left-color: gray;
+	border-left-style: dotted;
+}
+.box-set-info > .box-contents a {
+	color: black;
+	font-weight: bold;
+}
+.box-set-info > .box-contents a:hover {
+	color: gray;
+	font-weight: bold;
+}
+
+.box-set-info > .box-detail > .set-btn {
+	padding-top: 10px;
+	padding-right: 20px;
+	text-align: right;
+}
+
+/* myReserveList.jsp */
+#mypageBody #my-content-wrap #content-detail .sect-register-booking {
+	width: 100%;
+	height: 100px;
+	border-bottom: 3px solid black;	
+}
+.sect-register-booking>.tit-mypage-reserve {
+	text-align: center;
+}
+
+#mypageBody #my-content-wrap #content-detail .lst-item-reserve {
+	width: 100%;
+	min-height: 30%;
+	height: auto;
+}
+#mypageBody #my-content-wrap #content-detail .sect-mypage-reserve-cancle {
+	width: 100%;
+	min-height: 200px;
+	height: auto;
+	margin-top: 30px;
+}
+.sect-mypage-reserve-cancle .tit-mypage {
+	width: 100%;
+	height: 30px;
+}
+.sect-mypage-reserve-cancle .tbl-data {
+	width: 100%;
+	height: auto;
+}
+#mypageBody #my-content-wrap #content-detail .sect-box-descri {
+	width: 100%;
+	height: 450px;
+	margin-top: 50px;
+}
+
+#mypageBody #my-content-wrap #content-detail .lst-item-reserve .box-set-info-nodata-reserve {
+	padding: 55px;
+	width: 100%;
+	text-align: center;
+	line-height: 35px;
+	border-bottom: 1px solid gray;
+}
+#mypageBody #my-content-wrap #content-detail .lst-item-reserve .box-set-info-reserve {
+	padding: 10px;
+	width: 100%;
+	height: 250px;
+	border-bottom: 1px solid gray;
+}
+
+.lst-item-reserve .box-set-info-reserve > .box-number {
+	line-height: 40px;
+	text-align: left;
+	width: 100%;
+	height: 15%;
+}
+.lst-item-reserve .box-set-info-reserve > .box-info {
+	line-height: 40px;
+	width: 100%;
+	height: 70%;
+}
+.lst-item-reserve .box-set-info-reserve > .box-info >.box-image {
 	float: left;
+	line-height: 40px;
+	text-align: center;
+	width: 20%;
+	height: 100%;
+	padding-top: 10px;
 }
-#title-mypage_em1{
+.lst-item-reserve .box-set-info-reserve > .box-info >.box-contents {
 	float: left;
-	position: relative;
-	top: 20px;
-	left: 50px;
-	
+	line-height: 30px;
+	text-align: left;
+	width: 50%;
+	height: 100%;
 }
-#title-mypage_em1_img1{
+.lst-item-reserve .box-set-info-reserve .box-detail {
 	float: left;
-	position: relative;
-	top: 13px;
-	left: 50px;
-	
+	width: 30%;
+	height: 100%;
 }
-#mypagehome_border1_p{
-	font-size: 11px;
-	float: right;
-	margin-top: 20px;
+
+.lst-item-reserve .box-set-info-reserve > .set-btn {
+	line-height: 40px;
+	text-align: right;
+	width: 100%;
+	height: 15%;
 }
-#title-mypage_em2{
-	float: left;
-	position: relative;
-	top: 20px;
-	left: 50px;
-	
+
+.box-set-info-reserve .box-info a {
+	color: black;
+	font-weight: bold;
 }
-#title-mypage_em1_img2{
-	float: left;
-	position: relative;
-	top: 13px;
-	left: 50px;
-	
+.box-set-info-reserve .box-info a:hover {
+	color: gray;
+	font-weight: bold;
 }
-#mypagehome_border2_p{
-	font-size: 11px;
-	float: right;
-	margin-top: 20px;
-}
-#title-mypage_em1_img2_2{
-	margin-top: -40px;
-}
-#mypagehome_border2_p{
-	font-size: 11px;
-	float: right;
-	margin-top: 20px;
-}
-#title-mypage_em1_img3_3{
-	margin-top: -10px;
-}
+
+
+.sect-box-descri > h4 {font:0/0 a; visibility:hidden; zoom:1;}
+.sect-box-descri .box-polaroid {width:100%;height:100%;border: 2px solid #d5d5ce;}
+.sect-box-descri .box-inner {width:99%; height:99%; padding:29px 0 0;}
+.sect-box-descri .box-inner > ul > li {padding:20px 0; border-top:1px dashed #cfcbc2; height:auto;}
+.sect-box-descri .box-inner > ul > li:first-child {padding-top:0; border-top:0 none; height: auto;}
+.sect-box-descri .box-inner > ul > li > dl > dt {float:left; width:20%; padding:0 0 0 27px; font-family:'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif; font-size:18px; line-height:1.5;}
+.sect-box-descri .box-inner > ul > li > dl > dd {float:left; width:598px; padding:0 2px 0 25px; border-left:1px solid #d7d6ce; font-family:'NanumBarunGothic', '맑은 고딕', '돋움', Dotum, sans-serif;}
+.sect-box-descri .box-inner > ul > li > dl > dd > ul {margin-top:30px;}
+.sect-box-descri .box-inner > ul > li > dl > dd > ul:first-child {margin-top:0;}
+.sect-box-descri .box-inner dd > ul > li {margin-top:5px; font-size:14px; line-height:1.5;}
+.sect-box-descri .box-inner dd > ul > li:first-child {margin-top:0;}
+.sect-box-descri .box-inner dd > ul > li > p {margin-bottom:10px;}
+.sect-box-descri .box-inner dd > ul > li > p strong {color:#222;}
+.sect-box-descri .box-inner dd > ul > li > p strong.underline {text-decoration:underline;}
+
+.sect-box-descri .box-inner dd > ul.mvpasscard li h5{font-size: 14px;}
+
+
+
+
