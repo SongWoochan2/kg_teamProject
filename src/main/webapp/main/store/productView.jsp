@@ -26,7 +26,7 @@
             <!-- Contents Start -->
 			
 			<div class="wrap-cultureshop">
-    
+    			<br>
 				<div class="menu_list">
 					<figure class="snip1581"><img src="../../image/storeStorage/set.jpg" alt="profile-sample2"/>
 					  <figcaption>
@@ -49,39 +49,46 @@
 					  </figcaption><a href="store.do?type=snack"></a>
 					</figure>
 				</div>
+			
+			
+			
+			
+			
+			<!-- *****상품 상세 정보 표시***** -->
+			
+			<div class="tit-heading-wrap">
+       			<h3>상품정보</h3>
+   			</div>
 
-				<div class="tit-heading-wrap">
-       				 <h3>상품정보</h3>
-   				</div>
-
-    			<div class="sect-cultureshopdetail">
-        <div class="box-image">
-	        <img src="../../image/productStorage/${productboardDTO.product_photo_addr}">
-             <p class="txt_caution">  </p>  
-        </div>
-        <div class="box-contents">
-            <div class="title">
-                <strong>${productboardDTO.product_name}</strong>   
-                <p class="menuitems"></p>
-            </div>
-           		<div class="price">
-	                <strong><em>판매가</em>
-	                    <i>${productboardDTO.product_cost}</i>원
-	                </strong>
-            	</div>
-       		</div>
-        	<div class="box-spec">
-	            <dl>
-	                <dt>사용가능극장</dt>
-	                <dd>서울CGV/경기CGV/인천CGV</dd>
-	                
-	                <dt>유효기간</dt>
-	                <dd>구매 후 6개월 이내</dd>
-	                
-	                <dt>상품교환</dt>
-	                <dd>관람 예정 극장의 매점</dd>
-	            </dl>
-        	</div>
+    		<div class="sect-cultureshopdetail">
+		        <div class="box-image">
+			        <img src="../../image/productStorage/${productboardDTO.product_photo_addr}">
+		        </div>
+		        
+	        	<div class="box-contents">
+		            <div class="title">
+		                <strong>${productboardDTO.product_name}</strong>
+		            </div>
+	           		<div class="price">
+		                <strong><em>판매가</em>
+		                    <i>${productboardDTO.product_cost}</i>원
+		                </strong>
+	            	</div>
+	       		</div>
+	       		
+	        	<div class="box-spec">
+		            <dl>
+		                <dt>사용가능극장</dt>
+		                <dd>서울CGV/경기CGV/인천CGV</dd>
+		                
+		                <dt>유효기간</dt>
+		                <dd>구매 후 6개월 이내</dd>
+		                
+		                <dt>상품교환</dt>
+		                <dd>관람 예정 극장의 매점</dd>
+		            </dl>
+	        	</div>
+	        	
        			<div class="box-btn">
 		            <a href="store.do?type=set" class="round_menu"><span>목록으로</span></a>
 		            <a class="round_gift" href="productPay.do?product_code=${productboardDTO.product_code}"><span>선물하기</span></a>
