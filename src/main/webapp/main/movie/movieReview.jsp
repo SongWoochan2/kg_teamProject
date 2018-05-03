@@ -24,6 +24,12 @@
 			}
 		});
 		
+		$("a#movie_like").click(function() {
+			if(${sessionScope.memId == null} == true){
+				alert("먼저 로그인 해주세요.");				
+				return false;
+			}
+		});
 		
 		$("#score").text(10);
 		
@@ -95,13 +101,35 @@
 						</c:forEach>
 						</div>
 						<div id = "select-name">
-							<a href = "#">${movie_list.movie_name }</a>
+							<a href = "#">${movie_list.movie_name }
+							</a>
 						</div>
 						<div id = "select-reserve">
 							<font>예매율</font> 0.0%
 						</div>
 						<div id = "select-opendate">
 							${movie_list.movie_open_date }
+								<c:forEach var ="average_map" items="${requestScope.average_map }" >
+									<c:if test="${average_map.key == movie_list.movie_code }">
+										( 
+										<c:if test="${average_map.value == 'NaN'}">
+											평점 없음
+										</c:if>
+										<c:if test="${average_map.value != 'NaN'}">
+											평점 : ${average_map.value } 점
+										</c:if>)&emsp;&emsp;
+									</c:if>
+								</c:forEach>
+								<c:forEach var ="like_map" items="${requestScope.like_map }" >
+									<c:if test="${like_map.key == movie_list.movie_code }">
+										<c:if test="${like_map.value == 1}">
+											<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+										</c:if>
+										<c:if test="${like_map.value == 0}">
+											<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+										</c:if>
+									</c:if>
+								</c:forEach>
 						</div>
 						<div id = "select-request">
 							<button>예매</button>
@@ -123,6 +151,27 @@
 						</div>
 						<div id = "entity-opendate">
 							${movie_list.movie_open_date }
+							<c:forEach var ="average_map" items="${requestScope.average_map }" >
+								<c:if test="${average_map.key == movie_list.movie_code }">
+									( 
+									<c:if test="${average_map.value == 'NaN'}">
+										평점 없음
+									</c:if>
+									<c:if test="${average_map.value != 'NaN'}">
+										평점 : ${average_map.value } 점
+									</c:if>)&emsp;&emsp;
+								</c:if>
+							</c:forEach>
+							<c:forEach var ="like_map" items="${requestScope.like_map }" >
+								<c:if test="${like_map.key == movie_list.movie_code }">
+									<c:if test="${like_map.value == 1}">
+										<a class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+									</c:if>
+									<c:if test="${like_map.value == 0}">
+										<a class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+									</c:if>
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "entity-request">
 							<button>예매</button>
@@ -154,7 +203,7 @@
 					</div>
 					<div id="review-content">
 						<label for="comment">Comment:</label>
-  						<textarea class="form-control" rows="5" id="comment" name="evaluat_content" style="resize: none;" maxlength="500"></textarea>
+  						<textarea class="form-control" rows="5" id="comment" name="evaluat_content" style="resize: none;" maxlength="500" required="required"></textarea>
 					</div>
 				</form>
 				</div>

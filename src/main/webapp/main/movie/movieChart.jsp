@@ -38,7 +38,7 @@
 			<div id="chart-type">
 				<ul>
 					<li id="chart"><a id = "off">무비차트</a><a id = "on">▶무비차트</a></li>				
-					<li id="show"><a id = "off">상영예정작</a><a id = "on">▶상영예정작</a></li>
+					<li id="show"><a href ="movieChart.do?chartType=movieNonOpenRank" id = "off">상영예정작</a><a id = "on">▶상영예정작</a></li>
 				</ul>
 			</div>
 		</div>
@@ -59,117 +59,83 @@
 			<div class="chart-hr">
 				<hr>
 			</div>
+			<c:forEach var="top_movie_list" items="${requestScope.top_movie_list }" varStatus="status">
 				<div id = "movie_top_entity">
-					<div id = "movie-rank">NO.1</div>
+					<div id = "movie-rank">NO.${status.count }</div>
 					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
+						<c:forEach var="poster_map" items="${requestScope.poster_map }">
+							<c:if test="${top_movie_list.movie_code == poster_map.key }">
+								<img src = "../../image/storage/moviephoto/${poster_map.value }">
+							</c:if>
+						</c:forEach>
 					</div>
-					<div id = "entity-name">곡성</div>
+					<div id = "entity-name">${top_movie_list.movie_name }</div>
 					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
+					<div id = "entity-opendate">${top_movie_list.movie_open_date } 개봉
+					(평점 : 
+						<c:forEach var="average_map" items="${requestScope.average_map }">
+							<c:if test="${top_movie_list.movie_code == average_map.key }">
+								<c:if test="${average_map.value == 'NaN' }">
+									평점 없음
+								</c:if>
+								<c:if test="${average_map.value != 'NaN' }">
+									${average_map.value } 점
+								</c:if>
+							</c:if>
+						</c:forEach>)
+					</div>
 					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
+						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+						<b>${top_movie_list.good_num } 명 </b>
 							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
           						<span class="glyphicon glyphicon-film"> 예매</span>
         					</a>
 					</div>
 				</div>
-				<div id = "movie_top_entity">
-					<div id = "movie-rank">NO.2</div>
-					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/Before I Go to Sleep_1.jpg">
-					</div>
-					<div id = "entity-name"><a href ="#">내가 잠들기 전에</a></div>
-					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
-					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
-							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
-          						<span class="glyphicon glyphicon-film"> 예매</span>
-        					</a>
-					</div>
-				</div>
-				<div id = "movie_top_entity">
-					<div id = "movie-rank">NO.3</div>
-					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/img_1.jpg">
-					</div>
-					<div id = "entity-name"><a href ="#">파라노말 액티비티</a></div>
-					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
-					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
-							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
-          						<span class="glyphicon glyphicon-film"> 예매</span>
-        					</a>
-					</div>
-				</div>
+			</c:forEach>
 				<div id = "promotion">
 					<img src = "../../image/storage/promotion.jpg">
 				</div>
 				<div class="chart-hr">
 					<hr>
 				</div>
+			<c:forEach var="bottom_movie_list" items="${requestScope.bottom_movie_list }" varStatus="status">
 				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.4</div>
-					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
+					<div id = "movie-rank">
+							NO.${status.count+3} 
 					</div>
-					<div id = "entity-name">곡성</div>
+					<div id = "movie-poster">
+						<c:forEach var="poster_map" items="${requestScope.poster_map }">
+							<c:if test="${bottom_movie_list.movie_code == poster_map.key }">
+								<img src = "../../image/storage/moviephoto/${poster_map.value }">
+							</c:if>
+						</c:forEach>
+					</div>
+					<div id = "entity-name">${bottom_movie_list.movie_name }</div>
 					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
+					<div id = "entity-opendate">${bottom_movie_list.movie_open_date } 개봉 
+					(평점 : 
+						<c:forEach var="average_map" items="${requestScope.average_map }">
+							<c:if test="${bottom_movie_list.movie_code == average_map.key }">
+								<c:if test="${average_map.value == 'NaN' }">
+									평점 없음
+								</c:if>
+								<c:if test="${average_map.value != 'NaN' }">
+									${average_map.value } 점
+								</c:if>
+							</c:if>
+						</c:forEach>)
+					</div>
 					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
+						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+						<b>${bottom_movie_list.good_num } 명 </b>
 							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
           						<span class="glyphicon glyphicon-film"> 예매</span>
         					</a>
 					</div>
 				</div>
-				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.5</div>
-					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
-					</div>
-					<div id = "entity-name">곡성</div>
-					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
-					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
-							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
-          						<span class="glyphicon glyphicon-film"> 예매</span>
-        					</a>
-					</div>
-				</div>
-				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.6</div>
-					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
-					</div>
-					<div id = "entity-name">곡성</div>
-					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
-					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
-							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
-          						<span class="glyphicon glyphicon-film"> 예매</span>
-        					</a>
-					</div>
-				</div>
-				<div id = "movie_bottom_entity">
-					<div id = "movie-rank">NO.7</div>
-					<div id = "movie-poster">
-						<img src = "../../image/storage/moviephoto/the wailing_1.jpg">
-					</div>
-					<div id = "entity-name">곡성</div>
-					<div id = "entity-reserve"><font>예매율</font> 0.0 %</div>
-					<div id = "entity-opendate">2018.04.12 개봉</div>
-					<div id = "entity-like">
-						<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a> <b>20,201명 </b>
-							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg">
-          						<span class="glyphicon glyphicon-film"> 예매</span>
-        					</a>
-					</div>
-				</div>
+			</c:forEach>
+			
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

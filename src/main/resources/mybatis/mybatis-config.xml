@@ -32,7 +32,8 @@
  		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
  		<typeAlias type="memberReserve.bean.MemberReserveDTO" alias="memberReserveDTO"></typeAlias>
  		<typeAlias type="memberReserve.bean.MemberReserveListDTO" alias="memberReserveListDTO"></typeAlias>
-
+		<typeAlias type="wishlist.bean.WishListDTO" alias="WishListDTO"></typeAlias>
+		
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 
@@ -61,6 +62,7 @@
 		<mapper resource="mybatis/savingList-mapping.xml"/>
 		<mapper resource="mybatis/memberReserve-mapping.xml"/>
 		<mapper resource="mybatis/select-mapping.xml" />
+		<mapper resource="mybatis/wishlist-mapping.xml" />
 
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 

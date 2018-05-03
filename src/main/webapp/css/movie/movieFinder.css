@@ -164,27 +164,28 @@
 	#moviefind #findresult #findcontentform #findcontent #findentity #entity-title:hover{
 		text-decoration: underline;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve{
+	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserverate{
 		font-weight: bold;
 	}
 	#moviefind #findresult #findcontentform #findcontent #findentity #entity-opendate{
 		font-size: 12px;
-		color : darkgray;	
+		color : gray;	
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-like{
+	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve{
+		padding-left : 45px;
 		height : 15%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-like a{
+	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve a{
 		color : white;
 		padding-left : 10px;
 		width: 25%;
 		height: 100%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-like #reserve-btn{
-		width: 40%;
+	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve #reserve-btn{
+		width: 70%;
 		background-color: #e02c14;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-like #reserve-btn:hover{
+	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve #reserve-btn:hover{
 		background-color: red;
 	}
 	

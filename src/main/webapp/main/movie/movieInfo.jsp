@@ -56,7 +56,14 @@
 					<img src="../../image/storage/moviephoto/${poster_addr.movie_photo_addr }">
 				</div>
 				<div id=movieinfo>
-					<div id="movietitle"> <div id = "title-font">${movieDTO.movie_name }(평점 : ${requestScope.movie_average })</div></div>
+					<div id="movietitle"> <div id = "title-font">${movieDTO.movie_name }(평점 : 
+					<c:if test="${requestScope.movie_average == 'NaN' }">
+						평가사항 없음
+					</c:if>
+					<c:if test="${requestScope.movie_average != 'NaN' }">
+						${requestScope.movie_average }점
+					</c:if>
+					)</div></div>
 					<div id="moviescore"><font color="gray"><b>예매율 : </b></font>8%(실 관람객 : ${movieDTO.acc_audience_num } 명)</div>
 					<div id="spec">감독 : ${movieDTO.movie_director }&nbsp;/ 배우 : ${movieDTO.appear_actor } <br>
 					장르 : ${movieDTO.movie_type1 } ${movieDTO.movie_type2 } ${movieDTO.movie_type3 }&nbsp;/ 연령제한 : ${movieDTO.movie_show_grade_name } /&nbsp;상영 시간 : ${movieDTO.movie_recycle_time }분 /&nbsp;제작국가 : ${movieDTO.make_nation }<br>

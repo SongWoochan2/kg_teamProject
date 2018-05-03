@@ -47,4 +47,5 @@ public class MemberDAO {
 		return sqlSession.selectOne("mybatis.memberMapper.movieGoodCount", member_id);
 	}
 	
+	
 }

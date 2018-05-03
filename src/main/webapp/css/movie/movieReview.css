@@ -2,12 +2,11 @@
 
 	#movieReview div{
 		margin: auto;
-		border : 1px solid red;
 	}
 
 	#movieReview{
 		width: 100%;
-		height: 1200px;
+		height: 1400px;
 	}
 	#movieReview #review-title{
 		padding-top : 5px;
@@ -26,15 +25,16 @@
 		width: 100%;
 	}
 	#movieReview #review-all #review-movie #leftbtn{
+		margin-left : -25px;
 		line-height : 50px;		
 		position: absolute;
-		top: 350px;
+		top: 450px;
 		
 	}
 	#movieReview #review-all #review-movie #rightbtn{
 		line-height : 50px;
 		position: absolute;
-		top: 350px;
+		top: 450px;
 
 	}
 	#movieReview #review-all #review-movie #entity{
@@ -54,7 +54,7 @@
 	}
 	
 	#movieReview #review-all #review-movie #entity #select-poster{
-		height: 70%;
+		height: 65%;
 		width: 100%;
 	}
 	#movieReview #review-all #review-movie #entity #select-poster img{
@@ -75,7 +75,7 @@
 	#movieReview #review-all #review-movie #entity #select-reserve{
 		color : #424344;
 		font-size : 13px;
-		height: 7%;	
+		height: 5%;	
 	}
 	#movieReview #review-all #review-movie #entity #select-reserve font{
 		color : gray;
@@ -85,7 +85,7 @@
 		color : black;
 		font-weight : bold;
 		font-size : 13px;
-		height: 6%;
+		height: 13%;
 	}
 	#movieReview #review-all #review-movie #entity #select-request{
 		text-align : center;
@@ -108,7 +108,7 @@
 		비선택된 리뷰 영화
 	*/
 	#movieReview #review-all #review-movie #entity #entity-poster{
-		height: 70%;
+		height: 65%;
 		width: 100%;
 	}
 	#movieReview #review-all #review-movie #entity #entity-poster img{
@@ -128,7 +128,7 @@
 	}
 	#movieReview #review-all #review-movie #entity #entity-reserve{
 		font-size : 13px;
-		height: 7%;	
+		height: 5%;	
 	}
 	#movieReview #review-all #review-movie #entity #entity-reserve font{
 		color : lightgray;
@@ -136,7 +136,7 @@
 	}
 	#movieReview #review-all #review-movie #entity #entity-opendate{
 		font-size : 13px;
-		height: 6%;
+		height: 13%;
 	}
 	#movieReview #review-all #review-movie #entity #entity-request{
 		text-align : center;

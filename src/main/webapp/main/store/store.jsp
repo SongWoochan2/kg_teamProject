@@ -116,7 +116,7 @@ button:hover:before,button:hover:after{
 			<div id="list_p">
 				<div id="list">
 					<a id="subjectA" href="#" onclick="isLogin(${productboardDTO.product_code})"> 
-					<img width="250px" height="300px" src="../../image/productStorage/${productboardDTO.product_photo_addr}"></a>
+					<img width="250px" height="250px" src="../../image/productStorage/${productboardDTO.product_photo_addr}"></a>
 					<br><a align="center">${productboardDTO.product_name }</a>
 				</div>
 			</div>

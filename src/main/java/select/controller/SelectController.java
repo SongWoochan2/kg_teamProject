@@ -22,13 +22,30 @@ public class SelectController {
 		int like_able = 0;
 		int photo_pg = 1;
 		int trailer_pg = 1;
-		
+		int review_pg = 1;
+		int movie_pg = 1;
+		String pagetype = null;
+		// 영화 상세 정보
 		if(request.getParameter("photo_pg") != null) {
 			photo_pg = Integer.parseInt(request.getParameter("photo_pg"));				
 		}
 		if(request.getParameter("trailer_pg") != null) {
 			trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));					
 		}
+		// 영화 리뷰
+		if(request.getParameter("review_pg") != null) {
+			review_pg = Integer.parseInt(request.getParameter("review_pg"));				
+		}
+		if(request.getParameter("movie_pg") != null) {
+			movie_pg = Integer.parseInt(request.getParameter("movie_pg"));					
+		}
+		// 위시 리스트
+		if(request.getParameter("pagetype")!=null) {
+			pagetype = request.getParameter("pagetype");
+		}
+		
+		
+		
 		String member_id = (String) session.getAttribute("memId");
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		
@@ -59,19 +76,31 @@ public class SelectController {
 				System.out.println("수정실패");				
 			}
 		}
+		
 		if(member_id != null) {
-			like_able = selectService.selectMovieList(member_id, movie_code);			
+				like_able = selectService.selectMovieList(member_id, movie_code);							
 		}
 		
 		ModelAndView modelAndView = new ModelAndView();
+		if(request.getParameter("pagetype")!=null) {
+			modelAndView.addObject("pagetype", pagetype);	
+		}
 		if(request.getParameter("movie_code") != null) {
 			modelAndView.addObject("movie_code", movie_code);
 		}
 		if(request.getParameter("photo_pg") != null) {
+			modelAndView.addObject("pagetype", "movieinfo");	
 			modelAndView.addObject("photo_pg", photo_pg);			
 		}
 		if(request.getParameter("trailer_pg") != null) {
 			modelAndView.addObject("trailer_pg", trailer_pg);			
+		}
+		if(request.getParameter("review_pg") != null) {
+			modelAndView.addObject("pagetype", "moviereview");	
+			modelAndView.addObject("review_pg", review_pg);			
+		}
+		if(request.getParameter("movie_pg") != null) {
+			modelAndView.addObject("movie_pg", movie_pg);			
 		}
 		modelAndView.setViewName("movieLikeTmp.jsp");
 		return modelAndView;

@@ -19,7 +19,7 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	alert("등록 성공");
-	location.href="/MyCGV/mypage/editProfileForm.do"
+	location.href="/MyCGV/mypage/myProfileForm.do"
 });	
 </script>
 </c:if>

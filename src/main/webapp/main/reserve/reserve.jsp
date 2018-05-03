@@ -4,380 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<style type="text/css">
-		div{
-			box-sizing: border-box;
-		}
-		.div_top{
-			text-align:center;
-			width: 800px;
-			height: 600px;
-			margin: 0 auto;
-			display: block;
-		}
-		#top_movie{
-			margin:1px;
-			width: 31%;
-			height: 100%;
-			float: left;
-		}
-			#top_movie_div1{
-				border:1px solid white;
-				background-color:#4C4C4C;
-				color: #F3F3F3;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_movie_reset{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_movie_div2{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 89%;
-				overflow-y: auto;
-			}
-				#top_movie_div2 .movie_item{
-					border : 1px solid black;
-					width: 100%;
-					height: 40px;
-				}
-				#top_movie_div2 .movie_item .movie_code{
-					width: 100%;
-					height: 100%;
-				}
-				#top_movie_div2 .movie_item .movie_code label{
-					text-align: center;
-					width: 100%;
-					height: 100%;
-					font-weight: bold;
-					font-size: 20px;
-					line-height: 40px;
-				}
-				
-		#top_theater{
-			margin:1px;
-			width: 22%;
-			height: 100%;
-			float: left;
-		}
-			#top_theater_div1{
-				border:1px solid white;
-				background-color:#4C4C4C;
-				color: #F3F3F3;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_theater_reset{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_theater_div2{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 89%;
-				overflow-y: auto;
-			}
-				#top_theater_div2 .theater_item{
-					border : 1px solid black;
-					width: 100%;
-					height: 40px;
-				}
-				#top_theater_div2 .theater_item .theater_code{
-					width: 100%;
-					height: 100%;
-				}
-				#top_theater_div2 .theater_item .theater_code label{
-					text-align: center;
-					width: 100%;
-					height: 100%;
-					font-weight: bold;
-					font-size: 20px;
-					line-height: 40px;
-				}
-				
-		#top_date{
-			margin:1px;
-			width: 12%;
-			height: 100%;
-			float: left;
-		}
-			#top_date_div1{
-				border:1px solid white;
-				background-color:#4C4C4C;
-				color: #F3F3F3;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_date_reset{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_date_div2{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 89%;
-				overflow-y: auto; 
-			}
-				#top_date_div2 .month_label{
-					border-top : 1px solid black;
-					width: 100%;
-					height: 40px;
-					text-align: left;
-					font-weight: bold;
-					font-size: 20px;
-					line-height: 40px;
-				}
-				#top_date_div2 .date_item{
-					width: 100%;
-					height: 40px;
-				}
-				#top_date_div2 .date_item .date_code{
-					width: 100%;
-					height: 100%;
-				}
-				#top_date_div2 .date_item .date_code label{
-					text-align: center;
-					width: 100%;
-					height: 100%;
-					font-weight: bold;
-					font-size: 20px;
-					line-height: 40px;
-				}
-			#top_time{
-				margin:1px;
-				width: 34%; /* 여유 14%남음 */
-				height: 100%;
-				float: left;
-			}
-		
-			#top_time_div1{
-				border:1px solid white;
-				background-color:#4C4C4C;
-				color: #F3F3F3;
-				float: left;
-				width: 100%;
-				height: 5%;
-			}
-			#top_time_div2{
-				background-color:#FFFFF6;
-				border : 1px solid #D5D5D5;
-				float: left;
-				width: 100%;
-				height: 94%;
-			}
-				#top_time_div2 .place_label{
-					border-top : 1px solid black;
-					width: 100%;
-					height: 40px;
-					text-align: left;
-					font-weight: bold;
-					font-size: 20px;
-					line-height: 40px;
-				}
-				#top_time_div2 .show_item{
-					width: 30%;
-					height: 40px;
-					float: left;
-				}
-				#top_time_div2 .show_item .show_present_code{
-					width: 100%;
-					height: 100%;
-					margin-left: 5px; 
-				}
-		.div_bottom{
-			background-color:#242424;
-			text-align:center;
-			padding: 0% 15% 0% 18%;
-			height: 125px;
-		}
-		.div_bottom *{
-			color:#A6A6A6;
-			height: 100%;
-			float: left;
-			font-size: 20px;
-		}
-		
-		.div_bottom #bottom_photo_title{
-			border-left : 1px solid #FFFFF6;
-			width: 30%;
-		}
-		.div_bottom #bottom_photo_title #movie-poster{
-			height: 100%;
-			width: 50%;
-			float: left;
-			padding: 5px 10px;
-		}
-		.div_bottom #bottom_photo_title #movie-poster img{
-			height: 100%;
-			width: 100%;
-		}
-		.div_bottom #bottom_photo_title #movie-info{
-			padding-top : 20px;
-			height: 100%;
-			width: 50%;
-			float: left;
-			font-weight: bold;
-		}
-		.div_bottom #bottom_photo_title #movie-info a{
-			color : white;
-			font-size: 15px;
-			text-decoration: none;
-		}
-		.div_bottom #bottom_photo_title #movie-info a:hover{
-			text-decoration: underline;
-		}
-		.div_bottom #bottom_pack{
-			border-left : 1px solid #FFFFF6;
-			width: 20%;	
-		}
-		.div_bottom #bottom_pack #show-title, #show-info{
-			padding-top : 10px;
-			height: 100%;
-			width: 50%;
-		}
-		.div_bottom #bottom_pack #show-title #title{
-			font-size: 15px;
-			height: 20%;
-			width: 100%;	
-		}
-		.div_bottom #bottom_pack #show-info *{
-			color : white;
-			height: 20%;
-			width: 100%;	
-			font-weight: bold;
-			font-size: 15px;
-		}
-		.div_bottom #bottom_seat, #bottom_pay{
-			border-left : 1px solid #FFFFF6;
-			width: 15%;
-		}
-		
-		.div_bottom #bottom_seat_choice{
-			border-left : 1px solid #FFFFF6;
-			padding-top : 10px;
-			padding-left : 55px;
-			width: 19%;	
-			border-right : 1px solid #FFFFF6;
-		}
-		
-		.div_bottom #bottom_seat_choice button{
-			height : 50px;
-			border : 1px solid #d14010;
-			font-size : 14px;
-			color : white;
-			text-decoration : none;
-			width : 100px;
-			border-radius: 10px;
-			background-color: #e24d1b;
-		}
-		.div_bottom #bottom_seat_choice button:hover {
-			background-color: #ef4f1a;
-		}
-					
-			
-		#my_popup_div{
-			display: none;
-			position: fixed; 
-			top: 50px;
-			left: 25%; 
-			width: 800px;
-			height: 600px;
-			z-index: 20;
-		}
-		#my_popup_div #popup_title{
-			color: white;
-			font-weight: bold;
-			text-align: right;
-			width: 100%;
-			height: 5%;
-		}
-		#my_popup_div #popup_main{
-			border: 1px solid gray;
-			width: 100%;
-			height: 95%;
-		}
-		
-		#my_popup_shadow{
-			display: none;
-			position: fixed; left: 0; top: 0;
-			height: 100%; width: 100%; background: black;
-			filter: alpha(opacity=60); opacity: 0.60;
-			z-index: 10;
-		}
-		#popup_title input:focus{
-			border: 0;
-		}
-		#renew_my_popup:hover{
-			background: url(/MyCGV/image/logo/reButton2.png);
-			border: 0;
-			padding: 0;
-			width: 30px;
-			height: 30px;
-		}
-		#renew_my_popup, #renew_my_popup:active{
-			background: url(/MyCGV/image/logo/reButton1.png) ;
-			border: 0;
-			padding: 0;
-			width: 30px;
-			height: 30px;    
-			cursor: pointer;
-		}
-		#renew_my_popup:focus{
-			border: 0;
-			padding: 0;
-			width: 30px;
-			height: 30px;    
-		}
-		#close_my_popup:hover{
-			background: url(/MyCGV/image/logo/xButton2.png);
-			border: 0;
-			padding: 0;
-			width: 30px;
-			height: 30px;
-			text-decoration:none;
-		}
-		#close_my_popup, #close_my_popup:active{
-			background: url(/MyCGV/image/logo/xButton1.png) ;
-			border: 0;
-			padding: 0;
-			width: 30px;
-			height: 30px;    
-			text-decoration:none;
-			cursor: pointer;
-		}
-		#close_my_popup:focus{
-			border: 0;
-			padding: 0;
-			width: 30px;
-			height: 30px;    
-			text-decoration:none;
-			cursor: pointer;
-		}
-	</style>
-	
-	
-	
-	
+	<link rel="stylesheet" type="text/css" href="/MyCGV/css/reserve/reserve.css" />
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
 	<script type="text/javascript">
@@ -396,7 +23,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(json){
-						alert(JSON.stringify(json));
+						//alert(JSON.stringify(json));
 				
 				},
 				error : function(xhr, textStatus, errorThrown){
@@ -615,7 +242,7 @@
 					cache : false,
 					// 파일 읽기에 성공한 경우
 					success : function(json){
-						//alert(JSON.stringify(json.shows));
+						console.log(JSON.stringify(json));
 						var place_count = 0;
 						$("#top_time_div2").empty();
 						
@@ -626,6 +253,7 @@
 							if(place_count != show_place_code){
 								place_count = show_place_code;
 								$("<div>").addClass("place_label").html(show.show_place_name).appendTo($("#top_time_div2"));
+								$("<div>").addClass("place_totalSeat").html(" 총 " +show.totalSeat + "석").appendTo($("#top_time_div2"));
 							}
 							var tmpl = $("#showTT").tmpl(show);
 							$("#top_time_div2").append(tmpl);
@@ -780,10 +408,10 @@
 		});
 	</script>
 	<script type="text/x-jquery-tmpl" id="moviePosterTT">
-		<img src="../../image/storage/moviephoto/\${poster_addr}">
+		<img src="/MyCGV/image/storage/moviephoto/\${poster_addr}">
 	</script>
 	<script type="text/x-jquery-tmpl" id="movieNameTT">
-		<a href="../movie/movieDetailView.do?photo_pg=1&trailer_pg=1&movie_code=\${movie_code}">\${movie_name }</a>
+		<a href="/MyCGV/movie/movieDetailView.do?photo_pg=1&trailer_pg=1&movie_code=\${movie_code}">\${movie_name }</a>
 	</script>
 	<script type="text/x-jquery-tmpl" id="theaterChoiceTT">
 		\${theater_name}
@@ -815,7 +443,7 @@
 	<script type="text/x-jquery-tmpl" id="showTT">
 		<div class="show_item">
 			<div class="show_present_code" data="\${show_present_code }">
-				<label><input type="button" class="show_choice" name="show_present_code" value="\${show_time }:\${show_minute }">\${left_seat }석</label>
+				<label><input type="button" class="show_choice" name="show_present_code" value="\${show_time }시 \${show_minute }분">\${remainSeat }석</label>
 			</div>
 		</div>
 	</script>
@@ -867,34 +495,34 @@
 		</div>
 	</div>
 
-	<div class="div_bottom">
-		<div id="bottom_photo_title">
-			<div id = "movie-poster">
+<!-- 	<div class="div_bottom"> -->
+<!-- 		<div id="bottom_photo_title"> -->
+<!-- 			<div id = "movie-poster"> -->
 				
-			</div>
-			<div id = "movie-info">
+<!-- 			</div> -->
+<!-- 			<div id = "movie-info"> -->
 				
-			<br>
-			</div>
-		</div>
-		<div id="bottom_pack">
-		<div id="show-title">
-			<div id = "title">극장명 :</div>
-			<div id = "title">상영날짜 : </div>
-			<div id = "title">상영시간 : </div>
-			<div id = "title">상영관 : </div>
-		</div>
-		<div id="show-info">
-			<div id = "theater-name"></div>
-			<div id = "show-date"></div>
-			<div id = "show-time"></div>
-			<div id = "show-place"></div>
-		</div>
-		</div>
-		<div id="bottom_seat">좌석선택-></div>
-		<div id="bottom_pay">결제-></div>
-		<div id="bottom_seat_choice"><button>좌석선택▶</button></div>
-	</div>
+<!-- 			<br> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div id="bottom_pack"> -->
+<!-- 		<div id="show-title"> -->
+<!-- 			<div id = "title">극장명 :</div> -->
+<!-- 			<div id = "title">상영날짜 : </div> -->
+<!-- 			<div id = "title">상영시간 : </div> -->
+<!-- 			<div id = "title">상영관 : </div> -->
+<!-- 		</div> -->
+<!-- 		<div id="show-info"> -->
+<!-- 			<div id = "theater-name"></div> -->
+<!-- 			<div id = "show-date"></div> -->
+<!-- 			<div id = "show-time"></div> -->
+<!-- 			<div id = "show-place"></div> -->
+<!-- 		</div> -->
+<!-- 		</div> -->
+<!-- 		<div id="bottom_seat">좌석선택-></div> -->
+<!-- 		<div id="bottom_pay">결제-></div> -->
+<!-- 		<div id="bottom_seat_choice"><button>좌석선택▶</button></div> -->
+<!-- 	</div> -->
 	
 	<div id="my_popup_div">
 		<div id="popup_title">
