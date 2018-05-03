@@ -55,15 +55,16 @@ public class NoticeItemController {
 	}
 	
 	@RequestMapping(value="/admin/noticeItem/noticeItemList.do")
-	public ModelAndView supernoticeItemList(HttpServletRequest request, HttpServletResponse response) {
-
+	public ModelAndView supernoticeItemList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String admin_id = (String)session.getAttribute("admin_id");
+		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		
-		int endNum = pg*5;
-		int startNum = endNum-4;
+		int endNum = pg*10;
+		int startNum = endNum-9;
 		List<NoticeItemDTO> list = noticeItemService.noticeItemList(startNum, endNum);
 		int totalA = noticeItemService.getTotalA();
-		int totalP = (totalA + 4)/5;
+		int totalP = (totalA + 9)/10;
 		int startPage = (pg - 1)/3*3 +1;
 		int endPage = startPage + 3 - 1;
 		if(totalP < endPage) endPage = totalP;
@@ -73,23 +74,36 @@ public class NoticeItemController {
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("list", list);
-		modelAndView.setViewName("noticeItemList.jsp");
+		
+		if(admin_id!=null) {
+			modelAndView.setViewName("noticeItemListAdmin.jsp");
+		}else if(member_id!=null) {
+			modelAndView.setViewName("noticeItemListMember.jsp");
+		}
 		
 		return modelAndView;
 	}
 	
 	
 	@RequestMapping(value="/admin/noticeItem/noticeItemView.do")
-	public ModelAndView supernoticeItemView(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView supernoticeItemView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		System.out.println(1);
+		String admin_id = (String)session.getAttribute("admin_id");
+		String member_id = (String)session.getAttribute("memId");
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		
+		System.out.println(2);
 		NoticeItemDTO noticeItemDTO = noticeItemService.noticeItemView(notice_item_code);
-		
+		System.out.println(3);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("noticeItemDTO", noticeItemDTO);
-		
-		modelAndView.setViewName("noticeItemView.jsp");
+		System.out.println(4);
+		if(admin_id!=null) {
+			System.out.println(5);
+			modelAndView.setViewName("noticeItemViewAdmin.jsp");
+		}else if(member_id!=null) {
+			modelAndView.setViewName("noticeItemViewMember.jsp");
+		}
 		
 		return modelAndView;
 	}

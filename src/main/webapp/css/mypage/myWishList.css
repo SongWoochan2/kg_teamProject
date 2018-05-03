@@ -1,19 +1,18 @@
 
 .myWishList_top_div{
-	
 	margin:30px auto;
 	width: 100%;
-	height: 500px;
+	height: 1500px;
 }
 .left_right_tong{
 	margin: auto;
-	width:1000px;
+	width:1200px;
 	height:100%;
 	/* border: 1px solid gray; */
 }
 .myWishList_top_div .left_right_tong .wish_left_div{
 	text-align:center;
-	width: 20%;
+	width: 15%;
 	height: 100%;
 	float: left;
 }
@@ -24,12 +23,14 @@
 	width: 80%;
 	height: 100%;
 	float: left;
-
+	/* border: 1px solid red; */
 }
+
 .myWishList_top_div .wish_profileImg{
 	border:1px solid gray;
 	text-align: center;
-	height: 35%;
+	height: 180px;
+	border-radius: 15px;
 }
 .myWishList_top_div #profile_img{
 	margin-top: 5%;
@@ -39,21 +40,24 @@
 }
 #wish_wishlist{
 	padding-top:25px;
-	height:20%;
+	height:100px;
 	margin-top:3%;
 	border: 1px solid gray;	
+	border-radius: 15px;
 }
 #wish_mytheater{
 	padding-top:25px;
-	height:20%;
+	height:100px;
 	margin-top:3%;
 	border: 1px solid gray;	
+	border-radius: 15px;
 }
 #wish_moviediry{
 	padding-top:25px;
-	height:20%;
+	height:100px;
 	margin-top:3%;
 	border: 1px solid gray;	
+	border-radius: 15px;
 }
 
 .myWishList_top_div .wish_left_div a{
@@ -66,15 +70,61 @@
 .myWishList_top_div .wish_left_div a:hover {
 	color: red;
 }
+
+
 #wish_right_div_div{
 	/* border: 1px solid red; */
-	width: 800px;
-	height: 300px;	
+	overflow:scroll;
+	width:300px;
+	height:150px;
+	padding:10px;
+	background-color:#FAF4C0;
+	border:1px solid gray;
+	width: 100%;
+	height: 100%;	
 	margin: auto;
-	margin-top: 100px;
-	padding-top:100px;
 	text-align: center;
+	float: left;
 }
+#each_movie_view{
+	padding: 10px;
+	border: 1px solid gray;
+	width: 23%;
+	height: 400px;
+	margin:1%;
+	float: left;
+	border-radius: 15px;
+}
+#entity-poster{
+	float: left;
+	width: 100%;
+	height: 60%;
+}
+#entity-poster img{
+	width: 100%;
+	height: 100%;
+}
+#entity-title{
+	float: left;
+	width: 100%;
+	height: 8%;
+}
+#entity-opendate{
+	float: left;
+	width: 100%;
+	height: 8%;
+}
+.entity-like{
+	float: left;
+	width: 100%;
+	height: 8%;
+}
+#entity-love_reserve{
+	float: left;
+	width: 100%;
+	height: 16%;
+}
+
 #wish_right_div_lefttop{
 	width:200px;
 	float:left;
@@ -89,4 +139,10 @@
 	padding:0;
 	width:110px;
 	float: right;
+}
+#myListjungbo{
+	margin: 0;
+	padding: 0;
+	border: 1px solid red;
+	float: left;
 }

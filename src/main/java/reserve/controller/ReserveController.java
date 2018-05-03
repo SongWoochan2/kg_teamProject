@@ -23,6 +23,7 @@ import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
+import reserve.bean.SeatNumVO;
 import showPlace.bean.SeatVO;
 import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
@@ -424,6 +425,8 @@ public class ReserveController {
 			show_date = null;
 		}
 	    List<ShowPresentAllVO> list = reserveService.getShowList(movie_code, theater_code, show_date);
+	    List<SeatNumVO> reservedSeatNumlist = reserveService.getReservedSeatOfShow(movie_code, theater_code, show_date);
+	    List<SeatNumVO> totalSeatNumlist = reserveService.getTotalSeatOfShow(movie_code, theater_code, show_date);
 
 		JSONArray show_list = new JSONArray();
 		for(ShowPresentAllVO tmp : list) {
@@ -437,6 +440,22 @@ public class ReserveController {
 			show.put("show_present_code", tmp.getShow_present_code());
 			show.put("show_place_code", tmp.getShow_place_code());
 			show.put("show_place_name", tmp.getShow_place_name());
+			
+			int totalSeat = 0;
+			int remainSeat = 0;
+			for(SeatNumVO tmpVO : totalSeatNumlist) {
+				if(tmpVO.getShow_present_code() == tmp.getShow_present_code()) {
+					totalSeat = tmpVO.getSeatNum();
+				}
+			}
+			for(SeatNumVO tmpVO : reservedSeatNumlist) {
+				if(tmpVO.getShow_present_code() == tmp.getShow_present_code()) {
+					remainSeat = totalSeat - tmpVO.getSeatNum();
+				}
+			}
+			show.put("totalSeat", totalSeat);
+			show.put("remainSeat", remainSeat);
+			
 			show_list.add(show);
 		}
 		

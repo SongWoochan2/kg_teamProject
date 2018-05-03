@@ -45,4 +45,7 @@ public class ShowPresentDAO {
 	public List<String> getUniqueMovieCode(){
 		return sqlSession.selectList("showPresent.getUniqueMovieCode");
 	}
+	
+	
+	
 }
