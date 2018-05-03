@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import evaluat.bean.EvaluatDTO;
 import evaluat.bean.EvaluatLikeDTO;
 import movie.controller.MovieService;
+import reserve.controller.ReserveService;
 
 @Controller
 public class EvaluatController {
@@ -18,6 +19,8 @@ public class EvaluatController {
 	private EvaluatService evaluatService;
 	@Autowired
 	private MovieService movieService;
+	@Autowired
+	private ReserveService reserveService;
 	
 	@RequestMapping(value="/main/movie/reviewDelete.do")
 	public ModelAndView reviewDelete(HttpServletRequest request) {
@@ -42,8 +45,15 @@ public class EvaluatController {
 		}else {
 			acc_evaluat_score = evaluatService.movieScoreTotal(movie_code);
 		}
+		int update_Score = movieService.updateEvaluatScore(movie_code, acc_evaluat_score);
 		
-		int update_Result = movieService.updateEvaluatScore(movie_code, acc_evaluat_score);
+		int movie_evaluat_num = 0;
+		if(evaluatService.getTotal(movie_code) == null) {
+			movie_evaluat_num = 0;
+		}else {
+			movie_evaluat_num = evaluatService.getTotal(movie_code);
+		}
+		int update_Num = movieService.updateEvaluatNum(movie_code, movie_evaluat_num);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("movie_code", movie_code);
@@ -53,9 +63,9 @@ public class EvaluatController {
 		if(request.getParameter("movie_pg") != null) {
 			modelAndView.addObject("movie_pg", movie_pg);
 		}
-		modelAndView.addObject("like_delete_result", like_delete_result);
 		modelAndView.addObject("delete_Result", delete_Result);
-		modelAndView.addObject("update_Result", update_Result);
+		modelAndView.addObject("update_Score", update_Score);
+		modelAndView.addObject("update_Num", update_Num);
 		modelAndView.setViewName("movieReviewDelete.jsp");
 		return modelAndView;
 	}
@@ -70,8 +80,11 @@ public class EvaluatController {
 		}else {
 			String member_id = (String) session.getAttribute("memId");
 			int check_result = evaluatService.evaluatMemberCheck(member_id, movie_code);
+			int reserve_check = reserveService.movieReserveCheck(member_id, movie_code);
 			
-			if(check_result > 0) {
+			if(reserve_check == 0) {
+				modelAndView.setViewName("movieReserveCheck.jsp");
+			}else if(check_result > 0) {
 				modelAndView.setViewName("evaluatMemberCheck.jsp");
 			}else {
 				
@@ -89,8 +102,12 @@ public class EvaluatController {
 				
 				int insert_Result = evaluatService.insertEvaluat(evaluatDTO);
 				int acc_evaluat_score = evaluatService.movieScoreTotal(movie_code);
-				int update_Result = movieService.updateEvaluatScore(movie_code, acc_evaluat_score);
+				int update_Score = movieService.updateEvaluatScore(movie_code, acc_evaluat_score);
+				int movie_evaluat_num = evaluatService.getTotal(movie_code);
+				int update_Num = movieService.updateEvaluatNum(movie_code, movie_evaluat_num);
 				
+				modelAndView.addObject("update_Score", update_Score);
+				modelAndView.addObject("update_Num", update_Num);
 				modelAndView.addObject("movie_code", movie_code);
 				modelAndView.addObject("insert_Result", insert_Result);
 				if(request.getParameter("movie_pg") != null) {
@@ -121,11 +138,13 @@ public class EvaluatController {
 		
 			EvaluatDTO evaluatDTO = evaluatService.evaluatView(Integer.parseInt(request.getParameter("evaluat_code")));
 			member_id = (String) session.getAttribute("memId");	
+			
 			if(evaluatDTO.getEvaluat_id().equals(member_id)) {
 				modelAndView.setViewName("movieIdCheck.jsp");
 			}else {
 				// 좋아요 체크(필요요소 : 평가코드, 멤버아이디)
 				int check_result = evaluatService.likeMemberCheck(member_id, evaluatDTO.getEvaluat_code());
+				
 				if(check_result > 0) {
 					modelAndView.setViewName("likeMemberCheck.jsp");
 				}else {

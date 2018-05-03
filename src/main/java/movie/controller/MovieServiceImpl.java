@@ -75,5 +75,20 @@ public class MovieServiceImpl implements MovieService{
 	public int updateEvaluatScore(int movie_code, int acc_evaluat_score) {
 		return movieDAO.updateEvaluatScore(movie_code, acc_evaluat_score);
 	}
+
+	@Override
+	public ArrayList<MovieDTO> movieNonOpenRank() {
+		return (ArrayList<MovieDTO>) movieDAO.movieNonOpenRank();
+	}
+
+	@Override
+	public ArrayList<MovieDTO> movieScoreRank(int startNum, int endNum) {
+		return (ArrayList<MovieDTO>) movieDAO.movieScoreRank(startNum, endNum);
+	}
+
+	@Override
+	public int updateEvaluatNum(int movie_code, int movie_evaluat_num) {
+		return movieDAO.updateEvaluatNum(movie_code, movie_evaluat_num);
+	}
 	
 }
