@@ -69,7 +69,7 @@ public class ProductBoardController {
 	}
 	
 	@RequestMapping(value="/admin/productboard/productboardList.do")
-	public ModelAndView handleRequest1(HttpServletRequest request) {
+	public ModelAndView superhandleRequest1(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("상품 목록 처리");
 		// 1. 사용자 입력 정보 추출
 		int pg = Integer.parseInt(request.getParameter("pg"));

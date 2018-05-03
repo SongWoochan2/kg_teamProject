@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+body{
+	background-color:#FDFCF0;
+}
+
+div{
+	box-sizing: border-box;
+}
+
+.big_form{
+	margin:100px;
+	width:90%;
+	text-align:center;
+}
+
+.big_form .form_text{
+	margin:100px; 
+}
+
+.logo_img{
+	height:250px;
+	width:500px;
+}
+
+
+
+/* button effect */
+.member_delete_btn{
+  background:red;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:35px;
+  font-size:0.8em;
+  padding:0 1em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.member_delete_btn:hover{
+  background:#fff;
+  color:red;
+}
+.member_delete_btn:before,.member_delete_btn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: red;
+  transition:400ms ease all;
+}
+.member_delete_btn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.member_delete_btn:hover:before, .member_delete_btn:hover:after{
+  width:0;
+  transition:800ms ease all;
+}
