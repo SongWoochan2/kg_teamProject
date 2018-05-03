@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/myWishList.css" />
-<link rel="stylesheet" href="../../css/movie/movieFinder.css" />
+<link rel="stylesheet" href="/MyCGV/css/movie/movieFinder.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
    $(function() {
 	   if(${result > 0}) {

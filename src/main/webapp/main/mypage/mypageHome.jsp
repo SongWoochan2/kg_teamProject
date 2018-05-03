@@ -6,10 +6,10 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>MY MovieT HOME</title>
-<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
-<link rel="stylesheet" type="text/css" href="../css/mypage/myContentAside.css" />
-<link rel="stylesheet" type="text/css" href="../css/mypage/mypageHome.css" />
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/myContentAside.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypageHome.css" />
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 (function ($) {
 	$(function() {
@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-<jsp:include page="../main/main/header.jsp"></jsp:include>
+<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 		<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
@@ -50,12 +50,12 @@ pageEncoding="UTF-8"%>
 					<div class="box-inner">
 						<div class="box-inner-wishlist">
 							<a href="#" title="위시리스트">
-								<img alt="위시리스트" src="../image/mypage/wishlist.png">
+								<img alt="위시리스트" src="/MyCGV/image/mypage/wishlist.png">
 							</a>
 						</div>
 						<div class="box-inner-watched">
 							<a href="myWatchedMovie.do?p=1" title="내가 본 영화">
-								<img alt="내가 본 영화" src="../image/mypage/watched_movie.png">
+								<img alt="내가 본 영화" src="/MyCGV/image/mypage/watched_movie.png">
 							</a>
 						</div>
 						<!-- <div class="box-inner mvdiary">
@@ -169,7 +169,7 @@ pageEncoding="UTF-8"%>
 
 	    </div>
     </div>
-	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 <div id="resultAlert"></div>
 </body>
 </html>

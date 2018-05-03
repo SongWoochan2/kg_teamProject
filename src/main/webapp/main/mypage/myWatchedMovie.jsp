@@ -5,17 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/mypage/myWatchedMovie.css" />
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/myWatchedMovie.css" />
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 (function ($) {
    $(function() {
         $("div#myWatchedMovie").attr("class", "on");	
         var originImgAddr = $("#origin_img_addr").val();
         if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
-        	$(".profile > img").attr("src", "../image/profile/none.png");
+        	$(".profile > img").attr("src", "/MyCGV/image/profile/none.png");
         } else {
-        	$(".profile > img").attr("src", "../image/profile/"+originImgAddr);
+        	$(".profile > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
         
        // var show_date = $("#show_date").val().split('.');
@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="../main/main/header.jsp"></jsp:include>
+<jsp:include page="../main/header.jsp"></jsp:include>
 <div id="mypageBody">
 	<div id="myWatchedMovie-wrap">
 		<div class="col-aside">
@@ -103,7 +103,7 @@
                     			href="../main/movie/movieDetailView.do?photo_pg=1&movie_code=${memberWatchedListDTO.movie_code}&photo_pg=1&trailer_pg=1">
 				                <span class="thumb-image"> 
 				                <img alt="${memberWatchedListDTO.movie_name} 포스터" 
-				                src="../image/storage/moviephoto/${memberWatchedListDTO.movie_photo_addr}" 
+				                src="/MyCGV/image/storage/moviephoto/${memberWatchedListDTO.movie_photo_addr}" 
 				                onerror="errorImage(this)" width="130px" height="180px">
                                 <%-- <span class="ico-grade">${memberWatchedListDTO.movie_show_grade_name}</span> --%>
                                 <!-- 상영등급 -->
@@ -161,6 +161,6 @@
 	    	</div>
 		</div>
 	</div>
-<jsp:include page="../main/main/footer.jsp"></jsp:include>
+<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>

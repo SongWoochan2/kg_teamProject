@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <!-- 
 /* old_nick_name val()이랑 같으면   */
 /*      

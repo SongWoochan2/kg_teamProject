@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
 			<li><a href="myStoreList.do">나의 스토어</a></li>
 			<li><a href="myPointList.do?p=1">나의 포인트</a></li>
 			<li><a href="myProfileForm.do">나의 프로필</a></li>
-			<li><a href="../main/inquiry/inquiryListMember.do">나의 문의내역</a></li>
+			<li><a href="../inquiry/inquiryListMember.do">나의 문의내역</a></li>
 			<li><a href="../member/confirmPwdModify.do">나의 정보 변경</a></li>
 			<li><a href="../member/confirmPwdDelete.do">회원탈퇴</a></li>	
 		</ul>

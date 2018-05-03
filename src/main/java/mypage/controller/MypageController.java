@@ -24,11 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
 import member.controller.MemberService;
-import memberReserve.bean.MemberReserveDTO;
 import memberReserve.bean.MemberReserveListDTO;
 import memberReserve.controller.MemberReserveService;
 import movie.bean.MovieDTO;
-import movie.bean.MoviePage;
 import movie.controller.MovieService;
 import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
@@ -37,7 +35,6 @@ import savingList.bean.SavingListDTO;
 import savingList.controller.SavingListService;
 import select.bean.SelectDTO;
 import select.controller.SelectService;
-import wishlist.controller.WishlistService;
 
 @Controller
 public class MypageController {
@@ -56,7 +53,7 @@ public class MypageController {
 	@Autowired
 	private ResourceProvider resourceProvider;
 
-	@RequestMapping(value="/mypage/myReserveList.do")
+	@RequestMapping(value="/main/mypage/myReserveList.do")
 	public ModelAndView myReserveList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int endNum = pg*5;			
@@ -128,7 +125,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/memReserveCancle.do")
+	@RequestMapping(value="/main/mypage/memReserveCancle.do")
 	public ModelAndView cancleMemReserve(HttpServletRequest request) {	
 		int reserve_code = Integer.parseInt(request.getParameter("reserve_code"));
 		int result = memberReserveService.memReserveCancle(reserve_code);
@@ -139,7 +136,7 @@ public class MypageController {
 		return modelAndView;
 	}
 		
-	@RequestMapping(value="/mypage/myPointList.do")
+	@RequestMapping(value="/main/mypage/myPointList.do")
 	public ModelAndView myPointList(HttpServletRequest request) {		
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int endNum = pg*10;			
@@ -174,7 +171,7 @@ public class MypageController {
 	}
 	
 	// mypage -------------------------------------
-	@RequestMapping(value="/mypage/mypageHome.do")
+	@RequestMapping(value="/main/mypage/mypageHome.do")
 	public ModelAndView mypageHome(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("memId");
@@ -206,7 +203,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/myProfileForm.do")
+	@RequestMapping(value="/main/mypage/myProfileForm.do")
 	public ModelAndView profileView(HttpServletRequest request) {
 		System.out.println("프로필 불러오기");
 		HttpSession session = request.getSession();
@@ -221,7 +218,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/checkNickName.do", method=RequestMethod.GET)
+	@RequestMapping(value="/main/mypage/checkNickName.do", method=RequestMethod.GET)
 	public ModelAndView checkNickName(HttpServletRequest request) {
 		System.out.println("닉네임 중복확인");
 		String nick_name = request.getParameter("nick_name");
@@ -241,7 +238,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/myProfile.do", method=RequestMethod.POST)
+	@RequestMapping(value="/main/mypage/myProfile.do", method=RequestMethod.POST)
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
 		String fileName = "none.png";
@@ -287,7 +284,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/deleteProfileImg.do", method=RequestMethod.POST)
+	@RequestMapping(value="/main/mypage/deleteProfileImg.do", method=RequestMethod.POST)
 	public ModelAndView deleteProfileImg(HttpServletRequest request) {
 		String filePath = resourceProvider.getPath("image/profile");
 		
@@ -313,7 +310,7 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mypage/myWishList.do")
+	@RequestMapping(value="/main/mypage/myWishList.do")
 	public ModelAndView myWishList(HttpServletRequest request) {
 		int like_able = 0;
 		System.out.println("myWishList.do");
@@ -383,7 +380,7 @@ public class MypageController {
 		
 	}
 	
-	@RequestMapping(value="/mypage/myWatchedMovie.do")
+	@RequestMapping(value="/main/mypage/myWatchedMovie.do")
 	public ModelAndView myWatchedMovieList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int endNum = pg*10;			

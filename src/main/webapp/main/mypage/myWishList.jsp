@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/myWishList.css" />
-<link rel="stylesheet" href="../../css/movie/movieFinder.css" />
+<link rel="stylesheet" href="/MyCGV/css/movie/movieFinder.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
    $(function() {
 /*         $('#go_edit_profile').on('click', function () {
@@ -18,9 +18,9 @@
         
         var originImgAddr = $("#origin_img_addr").val();
         if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
-        	$(".wish_profileImg > img").attr("src", "../image/profile/none.png");
+        	$(".wish_profileImg > img").attr("src", "/MyCGV/image/profile/none.png");
         } else {
-        	$(".wish_profileImg > img").attr("src", "../image/profile/"+originImgAddr);
+        	$(".wish_profileImg > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
     });
    
@@ -33,7 +33,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="../main/main/header.jsp"></jsp:include>
+<jsp:include page="../main/header.jsp"></jsp:include>
 <div class="myWishList_top_div">
 	<div class="left_right_tong">
 		<div class="wish_left_div">
@@ -87,7 +87,7 @@
 					 		<c:forEach var ="photo" items="${photo_map }">	
 								<c:if test="${ photo.key == movie.movie_code }">
 									<div id = "entity-poster">
-											<img src = "../image/storage/moviephoto/${photo.value }">
+											<img src = "/MyCGV/image/storage/moviephoto/${photo.value }">
 						 			</div>
 				 				</c:if>
 							</c:forEach>
@@ -126,6 +126,6 @@
 			</div>
 		</div>
 	</div>
-<jsp:include page="../main/main/footer.jsp"></jsp:include>
+<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>

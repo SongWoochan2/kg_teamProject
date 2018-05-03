@@ -6,19 +6,11 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<c:if test="${result < 0}">
-<script type="text/javascript">
-$(function(){
-	alert("이미 취소되었거나 존재하지 않는 예매번호입니다.\n확인 후 다시 진행해주세요.");
-	history.back();
-});	
-</script>
-</c:if>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <c:if test="${result == 0}">
 <script type="text/javascript">
 $(function(){
-	alert("예매 취소를 실패했습니다.");
+	alert("등록 실패");
 	history.back();
 });	
 </script>
@@ -26,13 +18,12 @@ $(function(){
 <c:if test="${result > 0}">
 <script type="text/javascript">
 $(function(){
-	alert("선택한 예매번호를 취소했습니다.");
-	location.href="/MyCGV/mypage/myReserveList.do?p=1"
+	alert("등록 성공");
+	location.href="/MyCGV/main/mypage/myProfileForm.do"
 });	
 </script>
 </c:if>
 </head>
 <body>
-
 </body>
 </html>

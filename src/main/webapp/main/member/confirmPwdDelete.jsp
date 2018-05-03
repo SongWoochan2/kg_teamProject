@@ -4,23 +4,23 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 확인 - 회원정보 수정</title>
+<title>비밀번호 확인 - 회원탈퇴</title>
 
-<link rel="stylesheet" media="all" type="text/css" href="../css/memberConfirm/confirm.css">
+<link rel="stylesheet" media="all" type="text/css" href="/MyCGV/css/memberConfirm/confirm.css">
 
-<script type="text/javascript" src="../script/memberScript.js?v=1"></script>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/MyCGV/script/memberScript.js?v=1"></script>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
-</script>
 
+</script>
 </head>
 <body>
 <jsp:include page="/main/main/header.jsp"/>
 
-<form name="confirmMemberPwd" method="post" action="memberView.do">
+<form name="confirmMemberPwd" method="post" action="memberDeleteForm.do">
 
-<div class="info_box">
+<div class="info_box"> 
 	<div class="info">
 		<div class="info_table">
 		<font size="7"> 비밀번호 확인  </font>
@@ -40,8 +40,10 @@ pageEncoding="UTF-8"%>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input class="confirm_btn" type="button" value="      확인      " onclick="javascript:checkMemberPwd()">
+					<div class="button_box">
+					<input class="confirm_btn" type="button" value="      확인      " onclick="javascript:checkMemberPwd()">   
 					<input class="main_btn" type="button" value="MovieT Main" onclick="javascript:location.href='index.do'">
+					</div>
 		 		</td>
 			</tr>
 		</table>

@@ -6,10 +6,10 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/mypage/mypage.css" />
-<link rel="stylesheet" type="text/css" href="../css/mypage/myContentAside.css" />
-<link rel="stylesheet" type="text/css" href="../css/mypage/mypageHome.css" />
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypage.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/myContentAside.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/mypage/mypageHome.css" />
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 (function ($) {
 	$(function() {	
@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-	<jsp:include page="../main/main/header.jsp"></jsp:include>
+	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="mypageBody">
 	<jsp:include page="./myInfoWrap.jsp"></jsp:include>
 		<div id="my-content-wrap">
@@ -80,7 +80,7 @@ pageEncoding="UTF-8"%>
 				        	<div class="box-image">
 				        		<a href="../main/movie/movieDetailView.do?photo_pg=1&movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
 				            		<span class="thumb-image"> 
-				                        <img src="../image/storage/moviephoto/${memberReserveListDTO.movie_photo_addr}" 
+				                        <img src="/MyCGV/image/storage/moviephoto/${memberReserveListDTO.movie_photo_addr}" 
 				                        alt="${memberReserveListDTO.movie_name} 포스터" onerror="errorImage(this)"
 				                        width="100px" height="150px"><br>
 				                        <span class="ico-grade">
@@ -303,7 +303,7 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 
-	<jsp:include page="../main/main/footer.jsp"></jsp:include>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 
 <div id="resultAlert"></div>
 </body>
