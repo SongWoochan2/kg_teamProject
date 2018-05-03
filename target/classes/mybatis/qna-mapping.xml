@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="qnaView" parameterType="int" resultType="qnaDTO">
-		select * from qna where qna_code=#{qna_code}
+		select qna_code, qna_type, qna_title, qna_content, to_char(qna_date, 'YYYY.MM.DD') as qna_date from qna where qna_code=#{qna_code}
 	</select>
 	
 	<select id="totalA" resultType="int">
