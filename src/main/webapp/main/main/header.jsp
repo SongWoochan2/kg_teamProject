@@ -54,7 +54,7 @@
 						<a href="/MyCGV/member/memberLogout.do"><strong>로그아웃 | </strong></a>
 						<a href="/MyCGV/mypage/mypageHome.do"><strong>My MoveIt | </strong></a> 
 					</c:if>
-					<a href="#"><strong>고객센터</strong></a> 
+					<a href="/MyCGV/main/inquiry/inquiryWriteForm.do"><strong>고객센터</strong></a> 
 					<a href="#"><strong>ENGLISH TICKETING</strong></a>
 				</p>
 			</div>

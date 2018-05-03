@@ -4,15 +4,15 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>목록 보기</title>
-	<style type="text/css">
-		#subjextA:link { color:black; text-decoration: none;}
-		#subjextA:visited { color:black; text-decoration: none;}
-		#subjextA:hover { color:green; text-decoration: underline;}
-		#subjextA:achive { color:black; text-decoration: none;}
-		#currentPaging { color:red; text-decoration: underline;}
-		#paging { color: blue; text-decoration: none;}
+<meta charset="UTF-8">
+<title>목록 보기</title>
+<style type="text/css">
+	#subjextA:link { color:black; text-decoration: none;}
+	#subjextA:visited { color:black; text-decoration: none;}
+	#subjextA:hover { color:green; text-decoration: underline;}
+	#subjextA:achive { color:black; text-decoration: none;}
+	#currentPaging { color:red; text-decoration: underline;}
+	#paging { color: blue; text-decoration: none;}
 	#ul{
 		padding: 0; margin: 0; width:670; list-style: none;
 	}
@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
 		margin:auto;
 		width: 50%;
 	}
-	</style>
+</style>
 </head>
 <body>
 	<div id="tab">
