@@ -43,5 +43,9 @@ public class MemberDAO {
 	public int memberDelete(String member_id) {
 		return sqlSession.delete("mybatis.memberMapper.memberDelete", member_id);
 	}
+	public int movieGoodCount(String member_id) {
+		return sqlSession.selectOne("mybatis.memberMapper.movieGoodCount", member_id);
+	}
+	
 	
 }

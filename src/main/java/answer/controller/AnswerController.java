@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class AnswerController {
 	private JavaMailSenderImpl mailSender;
 	
 	@RequestMapping(value="/admin/answer/inquiryAnswer.do")
-	public ModelAndView inquiryAnswer(HttpServletRequest request,HttpSession session) throws UnsupportedEncodingException{ 
+	public ModelAndView superinquiryAnswer(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException{ 
 		ModelAndView modelAndView = new ModelAndView();
 		AnswerDTO answerDTO = new AnswerDTO();
 		request.setCharacterEncoding("utf-8");
@@ -68,7 +69,6 @@ public class AnswerController {
 		    } catch(Exception e){
 		      System.out.println(e);
 		    }
-		System.out.println(1);
 		inquiryService.inquiryStatus(inquiry_code);
 		 
 			modelAndView.addObject("su", su);
@@ -81,19 +81,19 @@ public class AnswerController {
 	}
 	
 	@RequestMapping(value="/admin/answer/inquiryListAdmin.do")
-	public ModelAndView inquiryListAdmin(HttpServletRequest request, HttpSession session) {
+	public ModelAndView superinquiryListAdmin(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		String admin_id = (String) session.getAttribute("admin_id");
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		if(!admin_id.equals(null)) {
-			int endNum = pg*5;
-			int startNum = endNum-4;
+			int endNum = pg*10;
+			int startNum = endNum-9;
 			List<InquiryDTO> list = inquiryService.inquiryListAdmin(startNum, endNum);
 			
 			int totalA = inquiryService.getTotalA();
-			int totalP = (totalA + 4)/5;
+			int totalP = (totalA + 9)/10;
 			int startPage = (pg - 1)/3*3 +1;
 			int endPage = startPage + 3 - 1;
 			if(totalP < endPage) endPage = totalP;
@@ -108,21 +108,6 @@ public class AnswerController {
 		
 		return modelAndView;
 	}
-	/*
-	@RequestMapping(value="/admin/answer/answerDelete.do")
-	public ModelAndView answerDelete(HttpServletRequest request) { 
-		int answer_code = Integer.parseInt(request.getParameter("answer_code"));
-	
-		int su = answerService.answerDelete(answer_code);
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("su", su);
-		
-		modelAndView.setViewName("answerDelete.jsp");
-		
-		return modelAndView;
-	}*/
-	
 	
 }
 

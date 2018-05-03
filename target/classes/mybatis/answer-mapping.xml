@@ -13,12 +13,4 @@
 		select * from answer where inquiry_code=#{inquiry_code}
 	</select>
 	
-	
-
-	
-	<!-- 
-	<delete id="answerDelete" parameterType="int">
-		delete answer where answer_code=#{answer_code}
-	</delete> -->
-
 </mapper>

@@ -4,7 +4,9 @@ package qna.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,30 +22,27 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@RequestMapping(value="/admin/qna/qnaWriteForm.do")
-	public String qnaWriteForm() { 
+	public String superqnaWriteForm(HttpServletResponse response, HttpServletRequest request) { 
+		
 		return "qnaWriteForm.jsp";
 	}
 	
 	@RequestMapping(value="/admin/qna/qnaWrite.do")
-	public ModelAndView qnaWrite(HttpServletRequest request) throws UnsupportedEncodingException { 
-		// 데이터
+	public ModelAndView superqnaWrite(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException { 
+		
 		request.setCharacterEncoding("utf-8");
 		String qna_type = request.getParameter("qna_type");
 		String qna_title = request.getParameter("qna_title");
 		String qna_content = request.getParameter("qna_content");
 		
-		// 데이터 지정
 		QnaDTO qnaDTO = new QnaDTO();
 		qnaDTO.setQna_type(qna_type);
 		qnaDTO.setQna_title(qna_title);
 		qnaDTO.setQna_content(qna_content);
 		
-		//DB
-		int su = qnaService.qnaWrite(qnaDTO);
+		qnaService.qnaWrite(qnaDTO);
 		
 		ModelAndView modelAndView = new ModelAndView();
-		
-		modelAndView.addObject("su", su);
 		
 		modelAndView.setViewName("qnaWrite.jsp");
 		
@@ -51,15 +50,16 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="/admin/qna/qnaList.do")
-	public ModelAndView qnaList(HttpServletRequest request) {
-
+	public ModelAndView superqnaList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String admin_id = (String)session.getAttribute("admin_id");
+		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		
-		int endNum = pg*5;
-		int startNum = endNum-4;
+		int endNum = pg*10;
+		int startNum = endNum-9;
 		List<QnaDTO> list = qnaService.qnaList(startNum, endNum);
 		int totalA = qnaService.getTotalA();
-		int totalP = (totalA + 4)/5;
+		int totalP = (totalA + 9)/10;
 		int startPage = (pg - 1)/3*3 +1;
 		int endPage = startPage + 3 - 1;
 		if(totalP < endPage) endPage = totalP;
@@ -69,29 +69,41 @@ public class QnaController {
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("list", list);
-		modelAndView.setViewName("qnaList.jsp");
+		
+		if(admin_id!=null) {
+			modelAndView.setViewName("qnaListAdmin.jsp");
+		}else if(member_id!=null) {
+			modelAndView.setViewName("qnaListMember.jsp");
+		}
 		
 		return modelAndView;
 	}
 	
 	
 	@RequestMapping(value="/admin/qna/qnaView.do")
-	public ModelAndView qnaView(HttpServletRequest request) {
+	public ModelAndView superqnaView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String admin_id = (String)session.getAttribute("admin_id");
+		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		
 		QnaDTO qnaDTO = qnaService.qnaView(qna_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
+		
 		modelAndView.addObject("qnaDTO", qnaDTO);
 		
-		modelAndView.setViewName("qnaView.jsp");
+		if(admin_id!=null) {
+			modelAndView.setViewName("qnaViewAdmin.jsp");
+		}else if(member_id!=null) {
+			modelAndView.setViewName("qnaViewMember.jsp");
+		}
 		
 		return modelAndView;
 	}
 
 	@RequestMapping(value="/admin/qna/qnaModifyForm.do")
-	public ModelAndView qnaModifyForm(HttpServletRequest request) {
+	public ModelAndView superqnaModifyForm(HttpServletRequest request, HttpServletResponse response) {
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		
 		QnaDTO qnaDTO = qnaService.qnaView(qna_code);
@@ -106,21 +118,20 @@ public class QnaController {
 	
 
 	@RequestMapping(value="/admin/qna/qnaModify.do")
-	public ModelAndView qnaModify(HttpServletRequest request) throws UnsupportedEncodingException {
-		// 데이터
+	public ModelAndView superqnaModify(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		
 		request.setCharacterEncoding("utf-8");
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		String qna_type = request.getParameter("qna_type");
 		String qna_title = request.getParameter("qna_title");
 		String qna_content = request.getParameter("qna_content");
 	
-		// 데이터 지정
 		QnaDTO qnaDTO = new QnaDTO();
 		qnaDTO.setQna_code(qna_code);
 		qnaDTO.setQna_type(qna_type);
 		qnaDTO.setQna_title(qna_title);
 		qnaDTO.setQna_content(qna_content);
-		//DB
+	
 		int su = qnaService.qnaModify(qnaDTO);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
@@ -129,7 +140,7 @@ public class QnaController {
 	}
 
 	@RequestMapping(value="/admin/qna/qnaDelete.do")
-	public ModelAndView qnaDelete(HttpServletRequest request) { 
+	public ModelAndView superqnaDelete(HttpServletRequest request, HttpServletResponse response) { 
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		int su = qnaService.qnaDelete(qna_code);
 		ModelAndView modelAndView = new ModelAndView();

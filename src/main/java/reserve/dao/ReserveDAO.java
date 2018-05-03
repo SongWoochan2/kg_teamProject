@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import movie.bean.MovieDTO;
-import reserve.bean.ReserveDTO;
+import reserve.bean.MemberReserveVO;
+import reserve.bean.ReservedSeatVO;
+import reserve.bean.SeatNumVO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
 
@@ -21,26 +23,6 @@ public class ReserveDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<ReserveDTO> reserveList(String show_date, int theater_code) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		if(show_date != null) {
-			map.put("show_date", show_date);	
-		}
-		if(theater_code != 0) {
-			map.put("theater_code", theater_code);			
-		}
-		return sqlSession.selectList("mybatis.reserveMapper.reserveList", map);
-	}
-	
-	public int getTotalA() {
-		return sqlSession.selectOne("mybatis.reserveMapper.getTotalA");
-	}
-	
-	public ReserveDTO reserveView(int show_present_code) {
-		return sqlSession.selectOne("mybatis.reserveMapper.reserveView", show_present_code);
-	}
-	
 	
 	
 	
@@ -88,6 +70,53 @@ public class ReserveDAO {
 		return sqlSession.selectList("mybatis.reserveMapper.showList", map);
 	}
 	
+
+	public List<ReservedSeatVO> getreservedSeats_list() {
+		return sqlSession.selectList("mybatis.reserveMapper.getreservedSeats_list");
+	}
+
+
+	public List<ReservedSeatVO> getreservedSeats(int show_present_code) {
+		return sqlSession.selectList("mybatis.reserveMapper.getreservedSeats", show_present_code);
+	}
+
+
+	public List<SeatNumVO> getReservedSeatOfShow(int movie_code, int theater_code, String show_date) {
+		Map<String, Object> map = new HashMap<>();
+		if(movie_code != 0) {
+			map.put("movie_code", movie_code);
+		}
+		if(theater_code != 0) {
+			map.put("theater_code", theater_code);
+		}
+		map.put("show_date", show_date);
+		return sqlSession.selectList("mybatis.reserveMapper.getReservedSeatOfShow", map);
+	}
+
+
+	public List<SeatNumVO> getTotalSeatOfShow(int movie_code, int theater_code, String show_date) {
+		Map<String, Object> map = new HashMap<>();
+		if(movie_code != 0) {
+			map.put("movie_code", movie_code);
+		}
+		if(theater_code != 0) {
+			map.put("theater_code", theater_code);
+		}
+		map.put("show_date", show_date);
+		return sqlSession.selectList("mybatis.reserveMapper.getTotalSeatOfShow", map);
+	}
 	
+	
+	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
+		return sqlSession.insert("mybatis.reserveMapper.insertMemberReserve", memberReserveVO);
+	}
+	
+	public Integer movieReserveCheck(String member_id, int movie_code) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("movie_code", movie_code);
+
+		return sqlSession.selectOne("mybatis.reserveMapper.movieReserveCheck", map);
+	}
 	
 }

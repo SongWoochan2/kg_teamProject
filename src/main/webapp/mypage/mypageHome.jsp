@@ -37,8 +37,6 @@ pageEncoding="UTF-8"%>
 		});
 	});
 })(jQuery);
-
-
 </script>
 </head>
 <body>

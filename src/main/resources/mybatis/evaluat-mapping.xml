@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="evaluatMapper">
+
+	<insert id="insertEvaluat" parameterType="evaluatDTO">
+		insert into evaluat values(EVALUAT_SEQ.nextval,#{movie_code},#{evaluat_id},#{evaluat_score},'${evaluat_content}',0,sysdate) 
+	</insert>
+	
+	<insert id="insertEvaluatLike" parameterType="evaluatLikeDTO">
+		insert into evaluat_like values(evaluat_like_seq.nextval,#{evaluat_code},#{like_id})
+	</insert>
+	
+	<delete id="deleteEvaluat" parameterType="int">
+		delete from evaluat where evaluat_code = #{evaluat_code} 
+	</delete>
+	
+	<delete id="deleteEvaluatLike" parameterType="int">
+		delete from evaluat_like where evaluat_code = #{evaluat_code} 
+	</delete>
+	
+	<update id="updateLikeNum" parameterType="java.util.Map">
+		update evaluat set evaluat_like_num=#{evaluat_like_num} where evaluat_code=#{evaluat_code} 
+	</update>
+	
+	<select id="EvaluatList" parameterType="java.util.Map" resultType="evaluatDTO">
+		<![CDATA[select evaluat_code, evaluat_id, evaluat_score, evaluat_content, evaluat_like_num, movie_code, 
+				to_char(evaluat_date, 'YYYY.MM.DD') as evaluat_date from 
+				(select rownum rn, tt.* from 
+				(select * from evaluat where movie_code=#{movie_code} order by evaluat_code desc) tt ) 
+				 where rn>=#{e_startNum} and rn<=#{e_endNum}]]>
+	</select>
+	
+	<select id="movieScoreTotal" parameterType="int" resultType="Integer">
+		select sum(evaluat_score) from evaluat where movie_code=#{movie_code} 
+	</select>
+	
+	<select id="getTotal" parameterType="int" resultType="Integer">
+		select count(*) from evaluat where movie_code=#{movie_code} 
+	</select>
+	
+	<select id="evaluatView" parameterType="int" resultType="evaluatDTO">
+		select * from evaluat where evaluat_code=#{evaluat_code}
+	</select>
+	
+	<select id="evaluatMemberCheck" parameterType="java.util.Map" resultType="int">
+		select count(*) from evaluat where evaluat_id=#{evaluat_id} and movie_code=#{movie_code}
+	</select>
+	
+	<select id="likeMemberCheck" parameterType="java.util.Map" resultType="int">
+		select count(*) from evaluat_like where like_id=#{like_id} and evaluat_code=#{evaluat_code}
+	</select>
+
+	<select id="evaluatLikeCount" parameterType="int" resultType="int">
+		select count(*) from evaluat_like where evaluat_code=#{evaluat_code}
+	</select>
+</mapper>

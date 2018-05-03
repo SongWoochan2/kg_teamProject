@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
+		<typeAlias type="evaluat.bean.EvaluatDTO" alias="evaluatDTO"></typeAlias>
+		<typeAlias type="evaluat.bean.EvaluatLikeDTO" alias="evaluatLikeDTO"></typeAlias>
 		<!-- 진환 -->
 		<typeAlias type="answer.bean.AnswerDTO" alias="answerDTO"></typeAlias>
 		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
@@ -29,11 +32,14 @@
  		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
  		<typeAlias type="memberReserve.bean.MemberReserveDTO" alias="memberReserveDTO"></typeAlias>
  		<typeAlias type="memberReserve.bean.MemberReserveListDTO" alias="memberReserveListDTO"></typeAlias>
-
+		<typeAlias type="wishlist.bean.WishListDTO" alias="WishListDTO"></typeAlias>
+		
 <!-- 		<typeAlias type="seattype.bean.SeattypeDTO" alias="seattypeDTO"></typeAlias> -->
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="mybatis/savingList-mapping.xml"/>
+		<mapper resource="mybatis/evaluat-mapping.xml"/>
 		<!-- 진환 -->
 		<mapper resource="mybatis/answer-mapping.xml"/>
 		<mapper resource="mybatis/inquiry-mapping.xml"/>
@@ -56,6 +62,7 @@
 		<mapper resource="mybatis/savingList-mapping.xml"/>
 		<mapper resource="mybatis/memberReserve-mapping.xml"/>
 		<mapper resource="mybatis/select-mapping.xml" />
+		<mapper resource="mybatis/wishlist-mapping.xml" />
 
 <!-- 		<mapper resource="mybatis/seattype-mapping.xml"/> -->
 

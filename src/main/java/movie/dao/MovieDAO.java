@@ -41,7 +41,12 @@ public class MovieDAO {
 	public int movieModify(MovieDTO movieDTO) {
 		return sqlSession.update("movieMapper.movieModify", movieDTO);
 	}
-	
+	public int updateEvaluatScore(int movie_code, int acc_evaluat_score) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("movie_code", movie_code);
+		map.put("acc_evaluat_score", acc_evaluat_score);
+		return sqlSession.update("movieMapper.updateEvaluatScore",map);
+	}
 	public List<MovieDTO> movieSearchByName(String movie_name) {
 		return sqlSession.selectList("movieMapper.searchByName", movie_name);
 	}
@@ -66,5 +71,20 @@ public class MovieDAO {
 		map.put("m_startNum", m_startNum);
 		map.put("m_endNum", m_endNum);
 		return sqlSession.selectList("movieMapper.presentMovieList", map);
+	}
+	public List<MovieDTO> movieNonOpenRank() {
+		return sqlSession.selectList("movieMapper.movieNonOpenRank");
+	}
+	public List<MovieDTO> movieScoreRank(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		return sqlSession.selectList("movieMapper.movieScoreRank",map);
+	}
+	public int updateEvaluatNum(int movie_code, int movie_evaluat_num) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("movie_code", movie_code);
+		map.put("movie_evaluat_num", movie_evaluat_num);
+		return sqlSession.update("movieMapper.updateEvaluatNum", map);
 	}
 }

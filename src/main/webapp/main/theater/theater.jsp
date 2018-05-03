@@ -62,7 +62,6 @@ $(function(){
 			dataType : "text",
 			timeout : 30000, // 30초 (단위는 ms)
 			cache : false,
-			
 			// 파일 읽기에 성공한 경우
 			success : function(data){
 				// dataType값이 text일 경우에는 단순히 내용에 대한 문자열이므로,

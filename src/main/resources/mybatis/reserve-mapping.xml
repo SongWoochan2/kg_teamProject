@@ -71,122 +71,158 @@
 	<!-- 영화나 극장를 눌렀을때 날짜및 상영현황이 변경  -->
 	<select id="showList" parameterType="java.util.Map" resultType="showPresentAllVO">
 		select * from show_present, show_place, movie
-		<where>
-			show_present.show_place_code = show_place.show_place_code
+		WHERE show_present.show_place_code = show_place.show_place_code
 			AND show_present.movie_code = movie.movie_code
 			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
 			AND show_place.theater_code = #{theater_code}
 			AND movie.movie_code = #{movie_code}
- 		</where>
  		ORDER BY show_present.show_date asc, show_place.theater_code asc, show_present.show_place_code asc,  show_present.show_time asc
+	</select>
+	
+	
+	<!-- 상영현황별 예매 총수 -->
+	<select id="getReservedSeatOfShow" parameterType="java.util.Map" resultType="reserve.bean.SeatNumVO">
+		SELECT show_present_code, reserve_num as seatNum From reserved_seat
+		WHERE show_present_code IN (
+			SELECT show_present_code FROM show_fully
+			WHERE theater_code = #{theater_code}
+			AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+			AND movie_code = #{movie_code}
+		)
+	</select>
+	
+	
+	<!-- 상영현황별 총 좌석수 -->
+	<select id="getTotalSeatOfShow" parameterType="java.util.Map" resultType="reserve.bean.SeatNumVO">
+		SELECT * FROM   (
+	    		SELECT show_place_code, show_present_code FROM show_fully
+				WHERE theater_code = #{theater_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					AND movie_code = #{movie_code})
+				JOIN
+					(SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place 
+					WHERE seat.y_index != '!'
+					AND seat.show_place_code = show_place.show_place_code
+		     		GROUP BY seat.show_place_code) 
+		     	USING(show_place_code)
+	</select>
+	
+	
+	<!-- 상영현황별 예매 총수 -->
+	<select id="getListWithReserve" parameterType="java.util.Map" resultType="showPresentAllVO">
+		SELECT show_present_code, reserve_num from reserved_serat
+		ORDER BY show_present_code desc
+	
+		SELECT show_present_code, sum(reserve_num) AS reserve_num 
+		FROM 	(SELECT show_present_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserve_num 
+				FROM nonmember_reserve 
+				WHERE nonmember_reserve_cancel_able != 'Y'
+				AND show_present_code IN ( 
+					SELECT show_present_code FROM show_present 
+					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
+					AND movie_code = #{movie_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					)
+				UNION ALL
+				SELECT show_present_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserve_num 
+				FROM member_reserve 
+				WHERE reserve_cancel_able != 'Y'
+				AND show_present_code IN ( 
+					SELECT show_present_code FROM show_present 
+					WHERE show_place_code IN (SELECT show_place_code FROM show_place WHERE theater_code = #{theater_code})
+					AND movie_code = #{movie_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					)
+				) reserve
+		GROUP BY show_present_code
+		ORDER BY show_present_code
 	</select>
 	
 	<!-- 영화별 좌석 예매수 -->
 	<select id="reserveRate">
-	select movie_code, count(*) as reserve_num 
-	from 	(select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
-			from nonmember_reserve rr, show_present ss
-			where rr.show_present_code = ss.show_present_code
-			AND ss.show_date >= sysdate-7
-
+		select movie_code, sum(reserve_num) as reserve_num 
+		from 	(select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
+				from nonmember_reserve rr, show_present ss
+				where rr.show_present_code = ss.show_present_code
+				AND ss.show_date >= sysdate-7
+	
+				UNION ALL
+				
+				select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
+				from member_reserve rr, show_present ss
+				where rr.show_present_code = ss.show_present_code
+				AND ss.show_date >= sysdate-7
+	
+				) reserve
+		group by movie_code
+	</select>
+	
+	<!-- 예약된 좌석들 보기  -->
+	<select id="getreservedSeats_list" resultType="reserve.bean.ReservedSeatVO">
+		SELECT * FROM ( 
+			SELECT show_present_code, nonmember_seat1 seat1, nonmember_seat2 seat2, nonmember_seat3 seat3, nonmember_seat4 seat4, nonmember_seat5 seat5, nonmember_seat6 seat6, nonmember_seat7 seat7, nonmember_seat8 seat8
+			FROM nonmember_reserve
+			WHERE nonmember_reserve_cancel_able != 'Y'
 			UNION ALL
-			
-			select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
-			from member_reserve rr, show_present ss
-			where rr.show_present_code = ss.show_present_code
-			AND ss.show_date >= sysdate-7
-
-			) as reserve
-	group by movie_code
+			SELECT show_present_code, member_seat1 seat1, member_seat2 seat2, member_seat3 seat3, member_seat4 seat4, member_seat5 seat5, member_seat6 seat6, member_seat7 seat7, member_seat8 seat8
+			FROM member_reserve 
+			WHERE reserve_cancel_able != 'Y') reserve
+		ORDER BY show_present_code
+	</select>
+	
+	<!-- 특정 상영현환의 예약된 좌석들 보기 -->
+	<select id="getreservedSeats" resultType="reserve.bean.ReservedSeatVO">
+		SELECT * FROM ( 
+			SELECT show_present_code, nonmember_seat1 seat1, nonmember_seat2 seat2, nonmember_seat3 seat3, nonmember_seat4 seat4, nonmember_seat5 seat5, nonmember_seat6 seat6, nonmember_seat7 seat7, nonmember_seat8 seat8
+			FROM nonmember_reserve
+			WHERE show_present_code = #{show_present_code}
+			AND nonmember_reserve_cancel_able != 'Y'
+			UNION ALL
+			SELECT show_present_code, member_seat1 seat1, member_seat2 seat2, member_seat3 seat3, member_seat4 seat4, member_seat5 seat5, member_seat6 seat6, member_seat7 seat7, member_seat8 seat8
+			FROM member_reserve
+			WHERE show_present_code = #{show_present_code} 
+			AND reserve_cancel_able != 'Y') reserve
+		ORDER BY show_present_code
 	</select>
 	
 	
-	
-	<!-- 
-		필요한 것 : 영화이름
-		조건 : 
-		1. 영화의 영화코드는 상영현황의 영화코드 일치
-		2. 오늘을 포함한 이후의 날짜가 상영날짜인가
-		3. 극장의 극장코드와 요구하는 극장의 극장코드와 일치
-	 -->
-	
-	<!-- 영화나 날짜를 눌렀을때 극장이 변경 -->
-	<!--
-	<select id="reserveList" parameterType="java.util.Map" resultType="reserveDTO">
-		select theater_name FROM theater 
-			where theater_code in(select theater_code from show_place
-			where show_place_code in(select show_place_code from show_present
-			where movie_code in(select movie_code from movie where movie_code = #{movie_code})
-			and to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')
-			<if test="show_date != null">
-				AND to_char(show_date, 'YYYYMMDD') = '20180426'
-	    	</if>
-		))
-	</select>
-	 -->
-	<!-- 
-	극장 이름을 가져오는 조건
-	1. 극장의 코드와 상영관의 극장코드가 일치
-	2. 상영관과 상영현황의 상영관코드가 일치
-	3. 상영현황의 영화코드와 영화의 영화코드가 일치
-	4. 오늘을 포함한 이후의 날짜가 상영날짜인가
-	5. 특정 영화를 선택
-	ex)
-	select theater_name FROM theater 
-	where theater_code in(select theater_code from show_place
-	where show_place_code in(select show_place_code from show_present
-	where movie_code in(select movie_code from movie where movie_code = 1)
-	and to_char(show_date, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD')	
-	AND to_char(show_date, 'YYYYMMDD') = '20180426'));
-	
-	조인 사용방법
-	ex) 6상영관이 있는 극장의 이름이 궁금할때
-	select t.theater_name FROM theater t, show_place s
-	where s.theater_code = t.theater_code and s.show_place_name='6상영관';
-	-->
-	
-	<select id="getTotalA" resultType="int">
-		select count(*) from show_present
-	</select>
-	
-	<select id="reserveView" parameterType="int" resultType="reserveDTO">
-		select * from show_present where show_present_code=#{show_present_code}
-	</select>
-	
-	<!-- <select id="getSomething" parameterType="int" resultType="#package.#modelname">
-		SELECT
-		columnname1,
-		columnname2,
-		columnname3
-		FROM tablename1
-		WHERE columnname1 = #{value}
-	</select>
-
-	<resultMap type="#modelname" id="YourResultSet">
-		<id property="param1" column="columnname1" />
-		<result property="param2" column="columnname2" />
-		<result property="param3" column="columnname3" />
-	</resultMap>
-
-	<select id="getAll" resultMap="YourResultSet">
-		SELECT * FROM tablename1
-	</select>
-
-	<insert id="insertSomething" parameterType="#modelname">
-		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
-		VALUES(#{value1},#{value2},#{value3})
+	<insert id="insertMemberReserve" parameterType="reserve.bean.MemberReserveVO">
+		insert into member_reserve values(
+			member_reserve_seq.nextval, #{reserve_id}, #{show_present_code}, #{member_seat1}, #{member_seat2}, #{member_seat3}, #{member_seat4}, #{member_seat5}, #{member_seat6}, #{member_seat7}, #{member_seat8}, #{reserve_cost}, sysdate, 'n'
+		)
 	</insert>
-
-	<update id="updateSomething" parameterType="#modelname">
-		UPDATE tablename1
-		SET
-		columnname1=#{param1}
-		WHERE
-		columnname2 = #{param2}
-	</update>
-
-	<delete id="deleteSomething" parameterType="int">
-		DELETE FROM tablename1 WHERE
-		columnname1 = #{param1}
-	</delete> -->
+	
+	<select id ="movieReserveCheck" parameterType="java.util.Map" resultType="Integer">
+		select count(*) from member_reserve where reserve_id =#{member_id} and show_present_code 
+ 			in(select show_present_code from show_present where movie_code=#{movie_code}) 
+	</select>
+	
+	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

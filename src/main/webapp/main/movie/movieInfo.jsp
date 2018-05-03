@@ -21,6 +21,14 @@
 			// 링크의 페이지 이동 중단.
 			return false;
 		});
+		
+		$("a#unlike").click(function() {
+			if(${sessionScope.memId == null} == true){
+				alert("먼저 로그인 해주세요.");				
+				return false;
+			}
+		});
+		
 		$("#glayLayer,#overLayer").click(function(){
 			// 배경 레이어의 숨김
 			$("#glayLayer").fadeOut(300);
@@ -48,18 +56,25 @@
 					<img src="../../image/storage/moviephoto/${poster_addr.movie_photo_addr }">
 				</div>
 				<div id=movieinfo>
-					<div id="movietitle"> <div id = "title-font">${movieDTO.movie_name }</div></div>
+					<div id="movietitle"> <div id = "title-font">${movieDTO.movie_name }(평점 : 
+					<c:if test="${requestScope.movie_average == 'NaN' }">
+						평가사항 없음
+					</c:if>
+					<c:if test="${requestScope.movie_average != 'NaN' }">
+						${requestScope.movie_average }점
+					</c:if>
+					)</div></div>
 					<div id="moviescore"><font color="gray"><b>예매율 : </b></font>8%(실 관람객 : ${movieDTO.acc_audience_num } 명)</div>
 					<div id="spec">감독 : ${movieDTO.movie_director }&nbsp;/ 배우 : ${movieDTO.appear_actor } <br>
 					장르 : ${movieDTO.movie_type1 } ${movieDTO.movie_type2 } ${movieDTO.movie_type3 }&nbsp;/ 연령제한 : ${movieDTO.movie_show_grade_name } /&nbsp;상영 시간 : ${movieDTO.movie_recycle_time }분 /&nbsp;제작국가 : ${movieDTO.make_nation }<br>
 					개봉 : ${movieDTO.movie_open_date }</div>
 					<div id="like">
 						<c:if test="${requestScope.like_able == 0 }">
-						<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=1" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=1" id="unlike" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-down"></span> unLike </a> 
 						</c:if>
 						<c:if test="${requestScope.like_able == 1 }">
-						<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-up"></span> Like </a> 
 						</c:if>
        					<b>${movieDTO.good_num }</b> 명 &nbsp;&nbsp;&nbsp;
@@ -134,10 +149,8 @@
 			<div id = "review-content">
 				<!-- 반복문 구간 -->
 				<div id = "review-info">
-					
 				</div>
 				<div id = "review-info">
-					
 				</div>
 				<div id = "review-info">
 				</div>

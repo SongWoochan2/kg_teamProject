@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+@font-face {
+	font-family:'NanumBarunGothic'; font-style:normal; font-weight:400;
+	src:url('../fonts/NanumBarunGothic.eot'); /* IE 4-8 */
+	src:local('NanumBarunGothic'),
+		url('../fonts/NanumBarunGothic.eot?#iefix') format('embedded-opentype'), /* IE 9 */
+		url('../fonts/NanumBarunGothic.woff') format('woff'); /* IE 9, Firefox 3.6+, Chrome 6+ */
+}
+@font-face {
+	font-family:'NanumBarunGothicBold'; font-style:normal; font-weight:700;
+	src:url('../fonts/NanumBarunGothicBold.eot');
+	src:local('NanumBarunGothicBold'),
+		url('../fonts/NanumBarunGothicBold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NanumBarunGothicBold.woff') format('woff');
+}
+/*
+@import url('http://fonts.googleapis.com/earlyaccess/NanumBarunGothic.css');
+*/
+html,body, #contaniner, #footer {background-color:#fdfcf0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td {font-size:100%; margin:0; padding:0; border:0; vertical-align:baseline; word-break:break-all;}
+body {line-height:1; color:black; }
+ol, ul {list-style:none;}
+h1, h2, h3, h4, h5, h6{ font-family:'NanumBarunGothicBold', sans-serif; font-weight:normal}
+table {width:100%; border-collapse:separate; border-spacing:0;}
+caption, th, td {font-weight:normal; line-height:1.5em; text-align:left; vertical-align:middle;}
+blockquote:before, blockquote:after, q:before, q:after {content:'';}
+blockquote, q {quotes:'' '';}
+button,
+input {overflow:visible;}
+button::-moz-focus-inner {border:0; padding:0;}
+input, select, img {vertical-align:middle;}
+textarea {overflow:auto; overflow-x:hidden; vertical-align:top;}
+em {font-style:normal;}
+strong{font-family:'NanumBarunGothicBold', sans-serif; font-weight:normal;}
+i{font-style:normal;}
+html,
+body {height:100%;}
+html {overflow-y:scroll;}
+
+body,
+input,
+textarea,
+button,
+table {font-size:12px; line-height:1.2; color:#666; font-family:'NanumBarunGothic', '맑은 고딕', '돋움', Dotum, sans-serif;}
+table thead th {font-family:'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;}
+legend {font:0/0 a; position:absolute; right:-999em; top:-999em; zoom:1;}
+
+a {color:inherit; text-decoration:none;}
+*+ html a {color:#666;}
+a:focus,
+a:hover {text-decoration:none;}
+a:active {background-color:transparent;}
+
+
+textarea:focus,
+select:focus,
+button:focus,
+[type='checkbox']:focus,
+[type='radio']:focus,
+[tabindex]:focus,
+[href]:focus {outline:3px solid #ead3d7;}
+
+hr {display:none;}
+
+table caption {font:0/0 a; zoom:1;}
+
+input::-webkit-input-placeholder {color:#666;}
+input:focus::-webkit-input-placeholder {color:#dcdcdc;}
+input::-moz-placeholder {color:#666; opacity:1;}
+input:focus::-moz-placeholder {color:#dcdcdc;}
+
+
+button,
+input[type='submit'],
+input[type='reset'] { padding:0;border:0 none; background-color:transparent; vertical-align:middle;}
+button,
+input[type='submit'],
+input[type='button'] {cursor:pointer; margin:0; padding:0;}
+input[type='text'],input[type='password'] {display:inline-block; height:25px; line-height:22px; padding-left:10px; border:1px solid #b5b5b5;}
+
+input[type='password'][readonly],
+input[type='text'][readonly],
+input[type='password'][disabled],
+input[type='text'][disabled] {background-color:#e8e8dd;}
+button:active {}
+textarea {resize:none;}
+select {font-size:12px; font-family:Verdana; line-height:27px; height:29px; padding:3px 5px; border:1px solid #b4b3aa;}
+select option {font-size:12px; font-family:Verdana; line-height:20px; height:20px; padding:0 5px;}
+textarea {border:1px solid #ddd; line-height:1.7; padding:10px;}
+
+/* * {zoom:1;} */
+.skipnaiv a {position:absolute; top:-1000em; left:10px; z-index:1000; padding:10px; background-color:#fff;}
+.lte-ie7 .skipnaiv a {
+	zoom:expression(
+		this.runtimeStyle['zoom'] = '1',
+		this.onfocus = function() { this.style['top'] = '10px'; },
+		this.onblur = function() { this.style['top'] = '-9999px'; }
+	);
+}
+.skipnaiv a:focus {top:10px;}
+
+.lte-ie7 dl, .lte-ie7 ul, .lte-ie7 ol{ zoom:1;}
+dl:after, ul:after, ol:after{ content:''; clear:both; display:block;}
+.clear{ zoom:1;}
+.clear:after{ content:''; display:block; clear:both;}
+.hide-alt {overflow:hidden; text-indent:100%; white-space:nowrap;}
+.hidden {font:0/0 a; height: 0; overflow: hidden; position: absolute; visibility: hidden; width: 0; zoom:1;}
+.editer-content img {font-size:0; line-height:0;}
+

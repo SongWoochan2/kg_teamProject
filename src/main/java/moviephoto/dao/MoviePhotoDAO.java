@@ -44,4 +44,7 @@ public class MoviePhotoDAO {
 	public MoviePhotoDTO moviePosterView(int movie_code) {
 		return sqlSession.selectOne("moviephotoMapper.moviePosterView",movie_code);
 	}
+	
+	
+	
 }

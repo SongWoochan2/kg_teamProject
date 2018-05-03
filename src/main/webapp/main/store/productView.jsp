@@ -54,7 +54,7 @@
        				 <h3>상품정보</h3>
    				</div>
 
-    			<div class="sect-cultureshopdetail">z
+    			<div class="sect-cultureshopdetail">
         <div class="box-image">
 	        <img src="../../image/productStorage/${productboardDTO.product_photo_addr}">
              <p class="txt_caution">  </p>  

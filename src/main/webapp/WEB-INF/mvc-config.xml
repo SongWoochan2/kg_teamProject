@@ -28,13 +28,15 @@
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
 	<context:component-scan base-package="select"/>
-	
+	<context:component-scan base-package="evaluat"/>
+	   
 	<!-- 우찬 -->
 	<context:component-scan base-package="seattype"/>
 	<context:component-scan base-package="timetype"/>
 	<context:component-scan base-package="theater"/>
 	<context:component-scan base-package="showPlace.controller"/>
 	<context:component-scan base-package="showPresent.controller"/>
+    <context:component-scan base-package="reserve" />
 	
 	<!-- 빛나 -->
 	<context:component-scan base-package="member"/>
@@ -47,7 +49,6 @@
     <context:component-scan base-package="noticeItem"/>
     <context:component-scan base-package="inquiry"/>
     <context:component-scan base-package="answer" />
-    <context:component-scan base-package="reserve" />
     
     <!-- 재민 -->
     <context:component-scan base-package="productboard.controller"/>

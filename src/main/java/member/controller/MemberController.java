@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
 
+
 @Controller
 public class MemberController {
 	@Autowired
