@@ -36,7 +36,7 @@ public class EvaluatDAO {
 		return sqlSession.selectList("evaluatMapper.EvaluatList", map);
 	}
 	
-	public int getTotal(int movie_code) {
+	public Integer getTotal(int movie_code) {
 		return sqlSession.selectOne("evaluatMapper.getTotal", movie_code);
 	}
 	

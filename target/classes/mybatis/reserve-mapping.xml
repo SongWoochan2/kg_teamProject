@@ -135,7 +135,10 @@
 		)
 	</insert>
 	
-	
+	<select id ="movieReserveCheck" parameterType="java.util.Map" resultType="Integer">
+		select count(*) from member_reserve where reserve_id =#{member_id} and show_present_code 
+ 			in(select show_present_code from show_present where movie_code=#{movie_code}) 
+	</select>
 	
 	
 </mapper>

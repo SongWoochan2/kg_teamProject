@@ -72,4 +72,19 @@ public class MovieDAO {
 		map.put("m_endNum", m_endNum);
 		return sqlSession.selectList("movieMapper.presentMovieList", map);
 	}
+	public List<MovieDTO> movieNonOpenRank() {
+		return sqlSession.selectList("movieMapper.movieNonOpenRank");
+	}
+	public List<MovieDTO> movieScoreRank(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		return sqlSession.selectList("movieMapper.movieScoreRank",map);
+	}
+	public int updateEvaluatNum(int movie_code, int movie_evaluat_num) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("movie_code", movie_code);
+		map.put("movie_evaluat_num", movie_evaluat_num);
+		return sqlSession.update("movieMapper.updateEvaluatNum", map);
+	}
 }

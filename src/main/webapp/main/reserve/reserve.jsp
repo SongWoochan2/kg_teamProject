@@ -867,34 +867,34 @@
 		</div>
 	</div>
 
-	<div class="div_bottom">
-		<div id="bottom_photo_title">
-			<div id = "movie-poster">
+<!-- 	<div class="div_bottom"> -->
+<!-- 		<div id="bottom_photo_title"> -->
+<!-- 			<div id = "movie-poster"> -->
 				
-			</div>
-			<div id = "movie-info">
+<!-- 			</div> -->
+<!-- 			<div id = "movie-info"> -->
 				
-			<br>
-			</div>
-		</div>
-		<div id="bottom_pack">
-		<div id="show-title">
-			<div id = "title">극장명 :</div>
-			<div id = "title">상영날짜 : </div>
-			<div id = "title">상영시간 : </div>
-			<div id = "title">상영관 : </div>
-		</div>
-		<div id="show-info">
-			<div id = "theater-name"></div>
-			<div id = "show-date"></div>
-			<div id = "show-time"></div>
-			<div id = "show-place"></div>
-		</div>
-		</div>
-		<div id="bottom_seat">좌석선택-></div>
-		<div id="bottom_pay">결제-></div>
-		<div id="bottom_seat_choice"><button>좌석선택▶</button></div>
-	</div>
+<!-- 			<br> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div id="bottom_pack"> -->
+<!-- 		<div id="show-title"> -->
+<!-- 			<div id = "title">극장명 :</div> -->
+<!-- 			<div id = "title">상영날짜 : </div> -->
+<!-- 			<div id = "title">상영시간 : </div> -->
+<!-- 			<div id = "title">상영관 : </div> -->
+<!-- 		</div> -->
+<!-- 		<div id="show-info"> -->
+<!-- 			<div id = "theater-name"></div> -->
+<!-- 			<div id = "show-date"></div> -->
+<!-- 			<div id = "show-time"></div> -->
+<!-- 			<div id = "show-place"></div> -->
+<!-- 		</div> -->
+<!-- 		</div> -->
+<!-- 		<div id="bottom_seat">좌석선택-></div> -->
+<!-- 		<div id="bottom_pay">결제-></div> -->
+<!-- 		<div id="bottom_seat_choice"><button>좌석선택▶</button></div> -->
+<!-- 	</div> -->
 	
 	<div id="my_popup_div">
 		<div id="popup_title">

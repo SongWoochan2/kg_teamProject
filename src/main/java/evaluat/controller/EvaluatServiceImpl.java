@@ -33,7 +33,7 @@ public class EvaluatServiceImpl implements EvaluatService{
 	}
 
 	@Override
-	public int getTotal(int movie_code) {
+	public Integer getTotal(int movie_code) {
 		return evaluatDAO.getTotal(movie_code);
 	}
 

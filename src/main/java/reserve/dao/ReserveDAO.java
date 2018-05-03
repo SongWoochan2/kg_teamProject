@@ -84,4 +84,12 @@ public class ReserveDAO {
 		return sqlSession.insert("mybatis.reserveMapper.insertMemberReserve", memberReserveVO);
 	}
 	
+	public Integer movieReserveCheck(String member_id, int movie_code) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("movie_code", movie_code);
+
+		return sqlSession.selectOne("mybatis.reserveMapper.movieReserveCheck", map);
+	}
+	
 }
