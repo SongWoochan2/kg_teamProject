@@ -7,14 +7,11 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,9 +40,13 @@ public class InquiryController {
 	private AnswerService answerService;
 	
 	@RequestMapping(value="/main/inquiry/inquiryWriteForm.do")
-	public ModelAndView inquiryWriteForm(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+	public ModelAndView inquiryWriteForm(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 		ModelAndView modelAndView = new ModelAndView();
+		String inquiry_id=(String) session.getAttribute("memId");
+		MemberDTO memberDTO = memberService.memberView(inquiry_id);
+		
+		modelAndView.addObject("memberDTO", memberDTO);
 		
 		modelAndView.setViewName("inquiryWriteForm.jsp");
 

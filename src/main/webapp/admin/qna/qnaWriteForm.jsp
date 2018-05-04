@@ -55,8 +55,8 @@ pageEncoding="UTF-8"%>
 						<textarea name="qna_content" rows="15" cols="82" id="qna_content" placeholder="내용"></textarea>
 					</div>
 					<div>
-							<input type="submit" value="글 등록">
-							<input type="reset" value="다시 작성">
+						<input type="submit" value="글 등록">
+						<input type="reset" value="다시 작성">
 					</div>
 				
 			</form>

@@ -49,6 +49,12 @@ drop sequence show_present_seq;
 drop table seat purge;
 
 
+--대답 시퀀스 삭제
+drop sequence answer_code_seq;
+
+--대답 테이블 삭제
+drop table answer purge;
+
 -------------------------------------------------------------  (2)
 
 -- 영화 사진 
@@ -74,6 +80,18 @@ drop sequence evaluat_seq;
 -- 찜하기 테이블
 drop table select_do;
 drop sequence select_do_seq;
+
+--inquiry 시퀀스 삭제
+drop sequence inquiry_code_seq;
+
+--inquiry 테이블 삭제
+drop table inquiry purge;
+
+--noticeitem 시퀀스 삭제
+drop sequence notice_item_code_seq;
+
+--noticeitem 테이블 삭제
+drop table notice_item purge;
 
 -------------------------------------------------------------  (1)
 
@@ -110,6 +128,12 @@ drop sequence nonmember_seq;
 -- 상품
 drop table product purge;
 drop sequence product_seq;
+
+--qna시퀀스 삭제
+drop sequence qna_code_seq;
+
+--qna테이블 삭제
+drop table qna purge;
 
 
 
