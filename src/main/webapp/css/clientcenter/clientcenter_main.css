@@ -1,3 +1,4 @@
+
 .clientmain_fullscreen{
 	width: 1000px;
 	height: 900px;
@@ -19,7 +20,7 @@
 	float: left;
 }
 .center_box_top{
-	padding-top:30px;
+	padding-top:5px;
 	width: 100%;
 	height: 34%;
 	float: left;

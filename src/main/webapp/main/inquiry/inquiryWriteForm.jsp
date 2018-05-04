@@ -5,6 +5,9 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/clientcenter/clientcenterMenu.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/clientcenter/clientCenterMeneAdd.css" />
+
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -20,19 +23,15 @@ pageEncoding="UTF-8"%>
 				return false;
 			}
 		});
+	
+		$(".clientcenter_menu li").click(function(){
+			$(this).addClass("selected");
+			$(".clientcenter_menu li").not(this).removeClass("selected");
+		});
 	});
+
 </script>
 <style type="text/css">
-
-	div{
-	}
-	#cont{
-		border: 1px solid red;
-		width: 800px;
-		margin: 0 auto;
-		padding: 15px;
-		margin-bottom: 200px;
-	}
 	#star{
 		color: red;
 	}
@@ -41,32 +40,39 @@ pageEncoding="UTF-8"%>
 		font-size: 23;
 		font-weight: 900;
 	}
-	#inq_table th,td{
-		border-bottom: 1px solid black;
-	}
-	
 	#can_btn,#in_btn{
 		float: left;
 		width: 50%;
 		margin-top: 10px;
 	}
-	#inq_table{
+	#inq_table {
 		border-top: 1px solid black;
 	}
-	
-	#productRealBody #cont #inq_bottum table th{
+	#inq_table th,td{
 		height : 50px;
 		width: 500px;
+		border-bottom: 1px solid black;
 	}
-	#inq_table #modi_btn{
+	#modi_btn {
 		width: 50px;
 	}
+	
 </style>
 </head>
 <body>
 	<jsp:include page="/main/main/header.jsp"/>
-	<div id="productRealBody">
-		<div id="cont">
+	<div id="cont">
+		<div id="cont_left">
+			<div class="left_menubar">
+				<ul class="clientcenter_menu">
+					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong> </a></li>
+					<li  id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
+					<li class="selected"  id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
+				</ul>
+			</div>
+		</div>
+		<div id="cont_right">
 			<div id="inq_top">
 				<div id="inq_top_title">
 					이메일 문의
@@ -80,7 +86,7 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div id="inq_bottum">
 				<form id="form" name="inquiryWriteForm" method="post" action="inquiryWrite.do" enctype="multipart/form-data">
-					<table  cellspacing="0" cellpadding="0"> <!-- width="100%" -->
+					<table id="inq_table"  cellspacing="0" cellpadding="0"> <!-- width="100%" -->
 						<tr>
 							<td colspan="2" align="right" bgcolor="#c9c9c9">
 								체크(<span id="star">*</span>)된 항목은 필수 입력 사항입니다.
@@ -98,10 +104,10 @@ pageEncoding="UTF-8"%>
 							<th>이메일</th>
 							<td><label>${memberDTO.member_email }</label></td>
 						</tr>
-						<tr id="check_info">
-							<td colspan="2">
+						<tr>
+							<td colspan="2" >
 								<strong>※&nbsp;&nbsp;문의에 대한 빠른 답변을 위해&nbsp;회원 가입 시 입력하신 연락처를 확인해주세요.</strong>
-								 <button onclick="" id="modi_btn">수정</button>
+								 <input id="modi_btn" type="button" value="수정" onclick="">
 							 </td>
 						</tr>
 						<tr>

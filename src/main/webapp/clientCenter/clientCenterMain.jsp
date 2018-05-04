@@ -18,21 +18,21 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-<jsp:include page="/main/main/header.jsp"></jsp:include>
+<jsp:include page="/main/main/header.jsp"/>
 	<div class="clientmain_fullscreen">
 		<div class="clientmain_left">
 			<div class="left_menubar">
 				<ul class="clientcenter_menu">
-					<li  class="selected" id=""><a href="#" ><strong>고객센터 메인</strong></a></li>
-					<li  id=""><a href="#"><strong>자주찾는 질문</strong> </a></li>
-					<li  id=""><a href="#"><strong>공지/뉴스</strong></a></li>
-					<li  id=""><a href="#"><strong>이메일 문의</strong></a></li>				
+					<li  class="selected" id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong></a></li>
+					<li  id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
+					<li  id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
 				</ul>
 			</div>
 		</div>
 		<div class="clientmain_rigth">
 			<div class="center_box_top">
-				<a href="#">
+				<a href="/MyCGV/admin/qna/qnaList.do?pg=1">
 					<div id="main_questions_div">
 						<img alt="" src="/MyCGV/image/clientCenter/search.png">
 						<h2 class="clientmain_rigth_h2_1">자주찾는 질문</h2><br>
@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
 						<div class="center_box_top_div1"><p id="center_box_top_div1_p">자주찾는 질문</p></div>
 					</div>
 				</a>
-				<a href="#">
+				<a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1">
 					<div id="main_email_div">
 						<img id="main_email_div_img" alt="" src="/MyCGV/image/clientCenter/email_img.png">
 						<h2 class="clientmain_rigth_h2_2">이메일 문의</h2><br>
@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
 						<div class="center_box_top_div2"><p id="center_box_top_div2_p">문의하기</p></div>
 					</div>
 				</a>
-				<a href="#">
+				<a href="/MyCGV/main/inquiry/inquiryListMember.do?pg=1">
 					<div id="main_breakdown_div">
 						<img id="main_breakdown_div_img" alt="" src="/MyCGV/image/clientCenter/breakdown.png">
 						<h2 class="clientmain_rigth_h2_2">내 상담 내역 확인</h2><br>
@@ -145,6 +145,6 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div>
 	</div>
-<jsp:include page="/main/main/footer.jsp"></jsp:include>
+<jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>

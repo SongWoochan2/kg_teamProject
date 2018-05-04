@@ -6,6 +6,8 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/clientcenter/clientcenterMenu.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/clientcenter/clientCenterMeneAdd.css" />
 <style type="text/css">
 	#subjextA:link { color:black; text-decoration: none;}
 	#subjextA:visited { color:black; text-decoration: none;}
@@ -20,12 +22,6 @@ pageEncoding="UTF-8"%>
 	#li{
 		float: left;
 	}
-	#cont{
-		width: 800px;
-		margin: 0 auto;
-		padding: 15px;
-		margin-bottom: 200px;
-	}
 	#noti_top_title{
 		font-size: 23;
 		font-weight: 900;
@@ -37,8 +33,18 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <jsp:include page="/main/main/header.jsp"/>
-	<div id="productRealBody">
 		<div id="cont">
+		<div id="cont_left">
+			<div class="left_menubar">
+				<ul class="clientcenter_menu">
+					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong> </a></li>
+					<li class="selected" id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
+					<li   id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
+				</ul>
+			</div>
+		</div>
+	<div id="cont_right">
 			<div id="noti_top">
 				<div id="noti_top_title">
 					공지/뉴스

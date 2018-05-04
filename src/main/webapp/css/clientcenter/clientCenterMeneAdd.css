@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+	#cont{
+		width: 1000px;
+		height: 900px;
+		margin: 20px auto;
+		padding: 10px;
+	}
+	#cont_right {
+		width: 800px;
+		margin: 0 auto;
+		padding: 15px;
+		padding-top: 0px;
+		margin-bottom: 200px;
+	}
+	#cont_left,#cont_right{
+		float: left;
+	}
