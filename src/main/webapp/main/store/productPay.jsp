@@ -217,10 +217,10 @@
 		<div class="line_sp_contact"></div>		
 		<!-- 결제 금액 -->
 		<div class="sum">
-			<p>
-				<span id="dc">총 결제 금액
+			<p><br>
+				<%-- <span id="dc">총 결제 금액
 					 <b>${productboardDTO.product_cost }</b>
-				</span>
+				</span> --%>
 			</p>
          <span id="ctl00_bodyPlaceHolder_UpdatePanel1">
 			<a onclick="checkProductPay()" id="ctl00_bodyPlaceHolder_lnkResult" href="#">
