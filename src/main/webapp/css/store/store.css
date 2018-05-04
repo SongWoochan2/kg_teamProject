@@ -3,7 +3,7 @@
 #list_p{
 	align:center;
 }
-
+ 
 #list{
 	width:25%;
 	float:left;
@@ -21,8 +21,8 @@ p.img{
 }
 
 button{
-  background:#1AAB8A;
-  color:#fff;
+  background:black;
+  color:#FDFCF0;
   border:none;
   position:relative;
   height:30px;
@@ -33,8 +33,8 @@ button{
   outline:none;
 }
 button:hover{
-  background:#fff;
-  color:#1AAB8A;
+  background:#FDFCF0;
+  color:black;
 }
 button:before,button:after{
   content:'';
@@ -43,7 +43,7 @@ button:before,button:after{
   right:0;
   height:2px;
   width:0;
-  background: #1AAB8A;
+  background: black; 
   transition:400ms ease all;
 }
 button:after{
