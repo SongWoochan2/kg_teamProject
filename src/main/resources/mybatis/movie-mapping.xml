@@ -172,22 +172,84 @@
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
 	</select>
 	
-<!-- 	<select id="reserveRank"> -->
-<!-- 		select  -->
-<!-- 	</select> -->
-<!-- 	<select id="audienceRank"> -->
-<!-- 		select * from movie -->
-<!-- 	</select> -->
-
-	<select id="movieScoreRank" resultType="movieDTO">
+	<select id="allReserveCount" resultType="Integer">
+		select sum(reserve_num) from (
+			select movie_code, sum(reserve_num) as reserve_num 
+					from (select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
+							from nonmember_reserve rr, show_present ss
+							where rr.show_present_code = ss.show_present_code
+							AND ss.show_date >= sysdate-7
+							UNION ALL
+							select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
+							from member_reserve rr, show_present ss
+							where rr.show_present_code = ss.show_present_code
+							AND ss.show_date >= sysdate-7
+							) reserve
+					group by movie_code
+		)
+	</select>
+	
+	<select id="movieReserveRank" parameterType="java.util.Map" resultType="reserveRank">
+		<![CDATA[select movie_code, reserve_num
+ 		from (select rownum rn, tt.*  
+ 				from ( select movie_code, reserve_num from (
+				select movie_code, sum(reserve_num) as reserve_num 
+					from (select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
+							from nonmember_reserve rr, show_present ss
+							where rr.show_present_code = ss.show_present_code
+							AND ss.show_date >= sysdate-7
+							UNION ALL
+							select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
+							from member_reserve rr, show_present ss
+							where rr.show_present_code = ss.show_present_code
+							AND ss.show_date >= sysdate-7
+							) reserve
+					group by movie_code
+		) order by reserve_num desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="movieReserveNum" parameterType="int" resultType="Integer">
+			select sum(reserve_num) as reserve_num 
+					from (select rr.show_present_code, ss.movie_code, ( NVL2(rr.nonmember_seat1, 1, 0) + NVL2(rr.nonmember_seat2, 1, 0) + NVL2(rr.nonmember_seat3, 1, 0) + NVL2(rr.nonmember_seat4, 1, 0) + NVL2(rr.nonmember_seat5, 1, 0) + NVL2(rr.nonmember_seat6, 1, 0) + NVL2(rr.nonmember_seat7, 1, 0) + NVL2(rr.nonmember_seat8, 1, 0) ) as reserve_num 
+							from nonmember_reserve rr, show_present ss
+							where rr.show_present_code = ss.show_present_code
+							AND ss.show_date >= sysdate-7
+							UNION ALL
+							select rr.show_present_code, ss.movie_code, ( NVL2(rr.member_seat1, 1, 0) + NVL2(rr.member_seat2, 1, 0) + NVL2(rr.member_seat3, 1, 0) + NVL2(rr.member_seat4, 1, 0) + NVL2(rr.member_seat5, 1, 0) + NVL2(rr.member_seat6, 1, 0) + NVL2(rr.member_seat7, 1, 0) + NVL2(rr.member_seat8, 1, 0) ) as reserve_num 
+							from member_reserve rr, show_present ss
+							where rr.show_present_code = ss.show_present_code
+							AND ss.show_date >= sysdate-7
+							) reserve where movie_code=#{movie_code}
+			group by movie_code
+	</select>
+	
+	<select id="movieAudienceRank" parameterType="java.util.Map" resultType="movieDTO">
 		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, acc_evaluat_score, movie_evaluat_num, 
  			to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
  				from (select rownum rn, tt.*  
- 					from (select * from movie order by (ACC_EVALUAT_SCORE/MOVIE_EVALUAT_NUM) desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+ 					from (select * from movie 
+ 					order by acc_audience_num desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+
+	<select id="movieScoreRank" parameterType="java.util.Map" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, acc_evaluat_score, movie_evaluat_num, 
+ 			to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 				from (select rownum rn, tt.*  
+ 					from (select * from movie 
+ 					order by (NVL(ACC_EVALUAT_SCORE / DECODE(MOVIE_EVALUAT_NUM, 0, null, MOVIE_EVALUAT_NUM), 0)) desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
-	<select id="movieNonOpenRank" resultType="movieDTO">
-		select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
- 		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date from movie where movie_open_date > sysdate order by good_num desc
+	<select id="movieNonOpenRank" parameterType="java.util.Map" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, acc_evaluat_score, movie_evaluat_num, 
+ 			to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 				from (select rownum rn, tt.*  
+ 					from (select * from movie 
+ 					where movie_open_date > sysdate order by good_num desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
+	
+	<select id="movieNonOpenTotal" resultType="int">
+		select count(*) from movie 
+ 					where movie_open_date > sysdate order by good_num desc
+	</select>
+	
 </mapper>

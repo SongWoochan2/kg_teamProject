@@ -31,25 +31,40 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div>
 		<div class="clientmain_rigth">
-		<div class="center_box_div">
-			<div id="main_questions_div">
-				<strong>자주찾는 질문</strong><br>
+			<div class="center_box_top">
+				<div id="main_questions_div">
+					<strong>자주찾는 질문</strong><br>
+				</div>
+				<div id="main_email_div">
+					<strong>이메일 문의</strong><br>
+						24시간 365일 언제든지 문의해주세요.<br>
+					<a id="" href=""><span style="padding:0 20px;">문의하기</span></a>
+				</div>
+				<div id="main_breakdown_div">
+						<strong>내 상담 내역 확인</strong><br>
+						<span>문의하신 내용을 확인하실 수 있습니다.</span><br>
+						<a href="" target="_blank" title="새창열기"><span style="padding:0 20px;">
+						문의내역 조회</span></a>
+		        </div>
 			</div>
-			<div id="main_email_div">
-				<strong>이메일 문의</strong><br>
-					24시간 365일 언제든지 문의해주세요.<br>
-				<a id="" href=""><span style="padding:0 20px;">문의하기</span></a>
+			<div class="clientmain_rigth_mid">
+				<div id="rigth_mid_leftdiv">
+						<div><strong>자주찾는 서비스<br><br></strong></div>
+						<div id="leftdiv_id_pw">아이디/<br>비밀번호 찾기</div>
+						<div id="leftdiv_reservation">예매/<br>취소내역 확인</div>
+						<div id="leftdiv_cancellation">비회원<br>예매/취소</div>
+						<div id="leftdiv_point">멤버십포인트<br>사용안내</div>
+				</div>
+				<div id="rigth_mid_rigthdiv">
+					
+				</div>
 			</div>
-			<div id="main_breakdown_div">
-					<strong>내 상담 내역 확인</strong><br>
-					<span>문의하신 내용을 확인하실 수 있습니다.</span><br>
-					<a href="" target="_blank" title="새창열기"><span style="padding:0 20px;">
-					문의내역 조회</span></a>
-	            </div>
-			</div>
+			<div class="clientmain_rigth_bottom">
+				<img alt="" src="../image/clientCenter/clientmain_rigth_bottom_img.png">
 			</div>
 		</div>
-		<jsp:include page="/main/main/footer.jsp"></jsp:include>
+	</div>
+<jsp:include page="/main/main/footer.jsp"></jsp:include>
 				<!-- 
 				
 			</div>

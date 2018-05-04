@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="movie.bean.ReserveRank" alias="reserveRank"></typeAlias>
 		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
 		<typeAlias type="evaluat.bean.EvaluatDTO" alias="evaluatDTO"></typeAlias>
 		<typeAlias type="evaluat.bean.EvaluatLikeDTO" alias="evaluatLikeDTO"></typeAlias>

@@ -31,7 +31,7 @@
 			}
 		});
 		
-		$("#score").text(10);
+		$("#insert-score").text(10);
 		
 		$("#1").click(function(){
 			var n = 1; score(n);
@@ -59,8 +59,8 @@
 			}else if($("#"+n).val() == '☆'){
 				for(var i = 1; i<=n; i++){$("#"+i).val('★');}}
 			for(var i = 1; i<=5; i++){
-				if($("#"+i).val() == '★'){$("#score").text(i*2);$("#evaluat_score").val(i*2);}
-				else if($("#1").val() == '☆'){$("#score").text(1);$("#evaluat_score").val(1);
+				if($("#"+i).val() == '★'){$("#insert-score").text(i*2);$("#evaluat_score").val(i*2);}
+				else if($("#1").val() == '☆'){$("#insert-score").text(1);$("#evaluat_score").val(1);
 				}
 			}
 		};
@@ -105,7 +105,12 @@
 							</a>
 						</div>
 						<div id = "select-reserve">
-							<font>예매율</font> 0.0%
+							<font>예매율</font> 
+							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
+								<c:if test="${movie_list.movie_code == reserve_rate_map.key }">
+										${reserve_rate_map.value} %
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "select-opendate">
 							${movie_list.movie_open_date }
@@ -132,7 +137,7 @@
 								</c:forEach>
 						</div>
 						<div id = "select-request">
-							<button>예매</button>
+							<a href="../../reserve.do?movie_code?${movie_list.movie_code }">예매</a>
 						</div>
 					</c:if>
 					<c:if test="${movie_list.movie_code != requestScope.movie_code }">
@@ -147,7 +152,12 @@
 							<a href = "movieReview.do?movie_pg=${m_moviePage.pg }&movie_code=${movie_list.movie_code}">${movie_list.movie_name }</a>
 						</div>
 						<div id = "entity-reserve">
-							<font>예매율</font> 0.0%
+							<font>예매율</font> 
+							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
+								<c:if test="${movie_list.movie_code == reserve_rate_map.key }">
+										${reserve_rate_map.value} %
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "entity-opendate">
 							${movie_list.movie_open_date }
@@ -174,7 +184,7 @@
 							</c:forEach>
 						</div>
 						<div id = "entity-request">
-							<button>예매</button>
+							<a href="../../reserve.do?movie_code?${movie_list.movie_code }">예매</a>
 						</div>
 					</c:if>
 				</div>
@@ -195,13 +205,13 @@
 						<input type = "button" class="btn btn-info btn-lg" id = "3" value = "★">
 						<input type = "button" class="btn btn-info btn-lg" id = "4" value = "★">
 						<input type = "button" class="btn btn-info btn-lg" id = "5" value = "★">
-						&emsp;<font><label id = "score"></label>점</font>
+						&emsp;<font><label id = "insert-score"></label>점</font>
 						&emsp;&nbsp;<button type = "submit" class="btn btn-info btn-lg">리뷰 등록</button>
 						<input type="hidden" name = "evaluat_score" id ="evaluat_score" value="10">
 						<input type="hidden" name = "movie_code" id ="movie_code" value="${requestScope.movie_code }">
 						<input type="hidden" name = "movie_pg" id ="movie_pg" value="${m_moviePage.pg }">
 					</div>
-					<div id="review-content">
+					<div id="review_content">
 						<label for="comment">Comment:</label>
   						<textarea class="form-control" rows="5" id="comment" name="evaluat_content" style="resize: none;" maxlength="500" required="required"></textarea>
 					</div>
