@@ -570,7 +570,7 @@ button:active {}
                     <form id="form2_capcha" name="memberLoginForm" method="post" action="memberLogin.do" novalidate="novalidate" style="display:block;">
                  		<fieldset>
                 			<div class="txt_wrap">
-                            	<img height="200px" width="200px" src="../image/loginForm/loginMain.png">
+                            	<img height="200px" width="200px" src="/MyCGV/image/loginForm/loginMain.png">
                             </div>
                            	<div class="login">
                                 <input type="text" title="아이디" id="member_id" name="member_id" data-title="아이디를 " data-message="입력하세요." required="required">
@@ -599,7 +599,7 @@ button:active {}
         </div>
        	<div class="sect-loginad" style="background:#d2cbbe">
             <div>
-            	<img src="../image/loginForm/cinema.jpg" width="350" height="250" frameborder="0"/>
+            	<img src="/MyCGV/image/loginForm/cinema.jpg" width="350" height="250" frameborder="0"/>
         	</div>
     	</div>
 	</div>
