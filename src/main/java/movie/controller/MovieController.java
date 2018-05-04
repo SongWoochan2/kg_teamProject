@@ -224,11 +224,15 @@ public class MovieController {
 		String member_id = (String) session.getAttribute("memId");
 		int photo_pg = 1;
 		int trailer_pg = 1;
+		int review_pg = 1;
 		if(request.getParameter("photo_pg") != null) {
 			photo_pg = Integer.parseInt(request.getParameter("photo_pg"));				
 		}
 		if(request.getParameter("trailer_pg") != null) {
 			trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));					
+		}
+		if(request.getParameter("review_pg") != null) {
+			review_pg = Integer.parseInt(request.getParameter("review_pg"));				
 		}
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		
@@ -243,9 +247,27 @@ public class MovieController {
 		int p_startNum = p_endNum;	
 		int t_endNum = trailer_pg*3;
 		int t_startNum = t_endNum-2;	
+		int e_endNum = review_pg*4;
+		int e_startNum = e_endNum-3;
 		
 		// 영화 예매율 구하기
 		double reserve_rate = reserveRate(movie_code);
+		
+		
+		// review_page 정보
+		int e_totalA = evaluatService.getTotal(movie_code);
+		int e_totalPage = (e_totalA+3) / 4;
+		int e_startPage = (review_pg-1)/3*3 + 1;
+		int e_endPage = e_startPage + 2;
+		if(e_totalPage < e_endPage) e_endPage = e_totalPage;
+		
+		MoviePage e_moviePage = new MoviePage();
+		e_moviePage.setStartPage(e_startPage);
+		e_moviePage.setEndPage(e_endPage);
+		e_moviePage.setTotalA(e_totalA);
+		e_moviePage.setTotalPage(e_totalPage);
+		e_moviePage.setPg(review_pg);
+		
 		
 		// photo_page 정보
 		int p_totalA = moviePhotoService.getTotalA(movie_code);
@@ -273,11 +295,15 @@ public class MovieController {
 		MoviePhotoDTO poster_addr = moviePhotoService.moviePosterView(movie_code);
 		ArrayList<MovieTrailerDTO> trailer_list = movieTrailerService.movieTrailerList(t_startNum, t_endNum, movie_code);
 		ArrayList<MoviePhotoDTO> photo_list = moviePhotoService.moviePhotoList(p_startNum, p_endNum, movie_code);
+		ArrayList<EvaluatDTO> evaluat_list = evaluatService.EvaluatList(movie_code, e_startNum, e_endNum);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("movie_average", movie_average);
 		modelAndView.addObject("like_able", like_able);
 		modelAndView.addObject("movieDTO", movieDTO);
 		modelAndView.addObject("poster_addr", poster_addr);
+		modelAndView.addObject("evaluat_list", evaluat_list);
+		modelAndView.addObject("e_moviePage", e_moviePage);
 		modelAndView.addObject("photo_list", photo_list);
 		modelAndView.addObject("p_moviePage", p_moviePage);
 		modelAndView.addObject("trailer_list", trailer_list);
@@ -387,13 +413,13 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value="/main/movie/movieChart.do")
-	public ModelAndView movieChart(HttpServletRequest request) {
+	public ModelAndView movieChart(HttpServletRequest request, HttpSession session) {
+		String member_id = (String) session.getAttribute("memId");
 		int pg = 1;
-		
-		
-		
+		int like_able = 0;
 		
 		String chartType = "";
+		
 		if(request.getParameter("chartType") != null) {
 			chartType = request.getParameter("chartType");
 		}else {
@@ -426,10 +452,10 @@ public class MovieController {
 		Map<Integer, String> poster_map = new HashMap<>();
 		Map<Integer, Double> average_map = new HashMap<>();
 		Map<Integer, Double> reserve_rate_map = new HashMap<>();
+		Map<Integer, Object> like_map = new HashMap<>();
 		int reserve_count = 0;
 		
 		if(chartType.equals("movieReserveRank")) {
-			
 			
 			reserve_list = movieService.movieReserveRank(1, 7);
 
@@ -471,6 +497,13 @@ public class MovieController {
 				// 영화 예매율 구하기
 				double reserve_rate = reserveRate(movieDTO.getMovie_code());
 				reserve_rate_map.put(movieDTO.getMovie_code(), reserve_rate);
+				
+				if(member_id != null) {
+					like_able = selectService.selectMovieList(member_id, movieDTO.getMovie_code());							
+					like_map.put(movieDTO.getMovie_code(), like_able);
+				}else {
+					like_map.put(movieDTO.getMovie_code(), like_able);
+				}
 			}
 		}
 		
@@ -485,6 +518,13 @@ public class MovieController {
 				// 영화 예매율 구하기
 				double reserve_rate = reserveRate(movieDTO.getMovie_code());
 				reserve_rate_map.put(movieDTO.getMovie_code(), reserve_rate);
+				
+				if(member_id != null) {
+					like_able = selectService.selectMovieList(member_id, movieDTO.getMovie_code());							
+					like_map.put(movieDTO.getMovie_code(), like_able);
+				}else {
+					like_map.put(movieDTO.getMovie_code(), like_able);
+				}
 			}			
 		}
 		
@@ -498,6 +538,7 @@ public class MovieController {
 		modelAndView.addObject("chartType", chartType);
 		modelAndView.addObject("poster_map", poster_map);
 		modelAndView.addObject("average_map", average_map);
+		modelAndView.addObject("like_map", like_map);
 		if(top_movie_list != null) {
 			modelAndView.addObject("top_movie_list", top_movie_list);			
 		}
@@ -550,7 +591,7 @@ public class MovieController {
 			average_map.put(movie_result.getMovie_code(), movie_average);	
 			
 			if(member_id != null) {
-				like_able = selectService.selectMovieList(member_id, movie_code);							
+				like_able = selectService.selectMovieList(member_id, movie_result.getMovie_code());							
 				like_map.put(movie_result.getMovie_code(), like_able);
 			}else {
 				like_map.put(movie_result.getMovie_code(), like_able);
@@ -613,8 +654,47 @@ public class MovieController {
 	}
 
 	@RequestMapping(value="/main/main/movieMain.do")
-	public ModelAndView movieMain(HttpServletRequest request) {
+	public ModelAndView movieMain(HttpServletRequest request, HttpSession session) {
+		String member_id = (String) session.getAttribute("memId");
+		int like_able = 0;
+		
+		ArrayList<ReserveRank> reserve_list = null;
+		ArrayList<MovieDTO> movie_list = new ArrayList<>();
+		Map<Integer, String> poster_map = new HashMap<>();
+		Map<Integer, Double> average_map = new HashMap<>();
+		Map<Integer, Double> reserve_rate_map = new HashMap<>();
+		Map<Integer, Object> like_map = new HashMap<>();
+		reserve_list = movieService.movieReserveRank(1, 3);
+		
+		for(ReserveRank rank : reserve_list) {
+			MovieDTO movieDTO = movieService.movieView(rank.getMovie_code());
+			
+			movie_list.add(movieDTO);
+			
+			// 영화 예매율 구하기
+			double reserve_rate = reserveRate(rank.getMovie_code());
+			reserve_rate_map.put(rank.getMovie_code(), reserve_rate);
+			
+			MoviePhotoDTO moviePhotoDTO = moviePhotoService.moviePosterView(movieDTO.getMovie_code());
+			poster_map.put(movieDTO.getMovie_code(), moviePhotoDTO.getMovie_photo_addr());
+			
+			double movie_average = movieAverage(movieDTO.getMovie_code());
+			average_map.put(movieDTO.getMovie_code(), movie_average);	
+			
+			if(member_id != null) {
+				like_able = selectService.selectMovieList(member_id, movieDTO.getMovie_code());							
+				like_map.put(movieDTO.getMovie_code(), like_able);
+			}else {
+				like_map.put(movieDTO.getMovie_code(), like_able);
+			}
+		}
+		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("movie_list", movie_list);
+		modelAndView.addObject("reserve_rate_map", reserve_rate_map);
+		modelAndView.addObject("poster_map", poster_map);
+		modelAndView.addObject("average_map", average_map);
+		modelAndView.addObject("like_map", like_map);
 		modelAndView.setViewName("index.jsp");
 		return modelAndView;
 	}

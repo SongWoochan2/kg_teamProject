@@ -26,9 +26,17 @@
 	</script>
 </c:if>
 <c:if test="${requestScope.delete_Result > 0 && requestScope.update_Num > 0 && requestScope.update_Score > 0}">
+	<c:if test="${requestScope.pagetype == 'moviereview' }">
 		<script type="text/javascript">
 			alert("리뷰가 삭제되었습니다.");
 			location.href = "movieReview.do?movie_pg=${requestScope.movie_pg}&review_pg=${requestScope.review_pg}&movie_code=${requestScope.movie_code}";
 		</script>
+	</c:if>
+	<c:if test="${requestScope.pagetype == 'movieinfo' }">
+		<script type="text/javascript">
+			alert("리뷰가 삭제되었습니다.");
+			location.href = "movieDetailView.do?trailer_pg=${requestScope.trailer_pg}&photo_pg=${requestScope.photo_pg}&review_pg=${requestScope.review_pg}&movie_code=${requestScope.movie_code}";
+		</script>
+	</c:if>
 </c:if>
 </html>

@@ -280,7 +280,127 @@ nocache
 nomaxvalue;
 
 -- 상품 등록
-insert into product values (product_seq.nextval,'팝콘',5000,1,'mungmong.jpg');
+insert into product values (
+	product_seq.nextval,'CGV콤보',10000,'set','CGV콤보.jpg'
+);
+insert into product values (
+	product_seq.nextval,'GOURMET더블콤보',12000,'set','GOURMET더블콤보.jpg'
+);
+insert into product values (
+	product_seq.nextval,'GOURMET콤보',11000,'set','GOURMET콤보.jpg'
+);
+insert into product values (
+	product_seq.nextval,'더블콤보',11500,'set','더블콤보.png'
+);
+insert into product values (
+	product_seq.nextval,'라지콤보',14000,'set','라지콤보.png'
+);
+
+insert into product values (
+	product_seq.nextval,'더블치즈팝콘(L)',7000,'popcorn','더블치즈팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'바질어니언팝콘(L)',7000,'popcorn','바질어니언팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'고소팝콘(L)',7000,'popcorn','고소팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'고소팝콘(M)',5000,'popcorn','고소팝콘(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'달콤팝콘(L)',7000,'popcorn','달콤팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'달콤팝콘(M)',5000,'popcorn','달콤팝콘(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'더블초콜렛 팝콘(L)',6000,'popcorn','더블초콜렛 팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'더블초콜렛 팝콘(M)',4500,'popcorn','더블초콜렛 팝콘(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'리얼치즈 팝콘(L)',6000,'popcorn','리얼치즈 팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'리얼치즈 팝콘(M)',4500,'popcorn','리얼치즈 팝콘(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'스위트랜치(L)',6000,'popcorn','스위트랜치(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'스위트랜치(M)',4500,'popcorn','스위트랜치(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'카라멜&치즈팝콘(L)',6000,'popcorn','카라멜&치즈팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'카라멜&치즈팝콘(M)',4500,'popcorn','카라멜&치즈팝콘(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'크리미카라멜팝콘(L)',6000,'popcorn','크리미카라멜팝콘(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'크리미카라멜팝콘(M)',4500,'popcorn','크리미카라멜팝콘(M).jpg'
+);
+
+insert into product values (
+	product_seq.nextval,'콜라(L)',3500,'beverage','콜라(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'콜라(M)',2000,'beverage','콜라(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'콜라제로(L)',3500,'beverage','콜라제로(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'콜라제로(M)',2000,'beverage','콜라제로(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'스프라이트(L)',3500,'beverage','스프라이트(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'스프라이트(M)',2000,'beverage','스프라이트(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'오렌지환타(L)',3500,'beverage','오렌지환타(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'오렌지환타(M)',2000,'beverage','오렌지환타(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'포도환타(L)',3500,'beverage','포도환타(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'포도환타(M)',2000,'beverage','포도환타(M).jpg'
+);
+insert into product values (
+	product_seq.nextval,'블루베리에이드(L)',4500,'beverage','블루베리에이드(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'블루베리에이드(L)',4500,'beverage','오렌지에이드(L).jpg'
+);
+insert into product values (
+	product_seq.nextval,'블루베리에이드(L)',4500,'beverage','자몽에이드(L).jpg'
+);
+
+insert into product values (
+	product_seq.nextval,'맛밤',3000,'snack','맛밤.jpg'
+);
+insert into product values (
+	product_seq.nextval,'오징어(완제품)',3500,'snack','오징어(완제품).jpg'
+);
+insert into product values (
+	product_seq.nextval,'즉석구이오징어(몸통)',4500,'snack','즉석구이오징어(몸통).jpg'
+);
+insert into product values (
+	product_seq.nextval,'칠리치즈나쵸',4000,'snack','칠리치즈나쵸.jpg'
+);
+insert into product values (
+	product_seq.nextval,'크리미갈릭핫도그',4500,'snack','크리미갈릭핫도그.jpg'
+);
+
 
 
 -----------------------------------------------
@@ -475,8 +595,29 @@ insert into movie_photo values ( movie_photo_seq.nextval, 13, '영화 포스터'
 
 ---------------------------------------------
 
+-- store 상품구매 테이블
+create table product_pay(
+	product_pay_code int not null,			--상품결제코드
+	pay_id varchar(30) not null,		    --결제ID (fk)
+	product_code int not null,			    --상품코드 (fk)
+	buy_phone varchar2(11) not null,	 	--구매자 연락처
+	gift_phone1	varchar2(11) not null,		--선물 연착처1
+	gift_phone2	varchar2(11),			    --선물 연착처2
+	gift_phone3	varchar2(11),		       	--선물 연착처3
+	pay_type varchar2(15) not null,		 	--결제분류
+	pay_time  date,						    --결제날자
+	pay_cancle_able char(1) not null,	  	--결제취소여부
+	order_num1 number not null,			    --주문수량1
+  order_num2 number,		          	  	--주문수량2
+  order_num3 number			              	--주문수량3
+);
 
+create sequence pay_seq nocache nocycle;	--(상품결제코드)시퀸스
 
+alter table product_pay add foreign key(pay_id) references member(member_id);			    --결제ID (fk)
+alter table product_pay add foreign key(product_code) references product(product_code);		--상품코드 (fk)
+
+---------------------------------------------
 
 -------------------------------------------------------------  (3)
 
