@@ -1,6 +1,9 @@
 package member.controller;
 
+
+
 import member.bean.MemberDTO;
+
 
 public interface MemberService {
 	// 회원 가입
@@ -15,5 +18,6 @@ public interface MemberService {
 	public int memberModify(MemberDTO memberDTO);
 	// 회원 탈퇴
 	public int memberDelete(String member_id);
+
 
 }

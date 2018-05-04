@@ -6,7 +6,7 @@
 			text-align:center;
 			width: 800px;
 			height: 600px;
-			margin: 0 auto;
+			margin: 50px auto;
 			display: block;
 		}
 		#top_movie{
@@ -183,21 +183,24 @@
 					border-top : 1px solid black;
 					width: 60%;
 					height: 40px;
+					float: left;
 					text-align: left;
 					font-weight: bold;
 					font-size: 20px;
 					line-height: 40px;
 				}
 				#top_time_div2 .place_totalSeat{
+					border-top : 1px solid black;
 					width: 40%;
 					height: 40px;
+					float: left;
 					color: gray;
 					text-align: left;
 					font-size: 15px;
 					line-height: 40px;
 				}
 				#top_time_div2 .show_item{
-					width: 30%;
+					width: 48%;
 					height: 40px;
 					float: left;
 				}
@@ -211,8 +214,12 @@
 					height: 100%;
 				}
 				#top_time_div2 .show_item .show_present_code input{
-					width: 60%;
-					height: 100%;
+					width: 70px;
+					height: 30px;
+					background: orange;
+					border: 1px solid orange;
+					border-radius: 5px;
+					margin-right: 5px; 
 				}
 		.div_bottom{
 			background-color:#242424;

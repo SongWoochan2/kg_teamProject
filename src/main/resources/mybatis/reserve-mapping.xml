@@ -109,6 +109,19 @@
 	
 	
 	
+<!-- 		SELECT * FROM   ( -->
+<!-- 	    		SELECT show_place_code, show_present_code FROM show_fully -->
+<!-- 				WHERE theater_code = #{theater_code} -->
+<!-- 					AND to_char(show_date, 'YYYYMMDD') = #{show_date} -->
+<!-- 					AND movie_code = #{movie_code}) -->
+<!-- 				JOIN -->
+<!-- 					(SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place  -->
+<!-- 					WHERE seat.y_index != '!' -->
+<!-- 					AND seat.show_place_code = show_place.show_place_code -->
+<!-- 		     		GROUP BY seat.show_place_code)  -->
+<!-- 		     	USING(show_place_code) -->
+<!-- 	</select> -->
+	
 	
 	<!-- 영화별 좌석 예매수 -->
 	<select id="reserveRate">
@@ -169,6 +182,15 @@
  			in(select show_present_code from show_present where movie_code=#{movie_code}) 
 	</select>
 	
+	
+	<select id="getSeatType"  resultType="reserve.bean.SeatTypeVO">
+		select * from seat_type
+	</select>
+	
+	
+	<select id="getTimeType"  resultType="reserve.bean.TimeTypeVO">
+		select * from time_type
+	</select>
 	
 </mapper>
 

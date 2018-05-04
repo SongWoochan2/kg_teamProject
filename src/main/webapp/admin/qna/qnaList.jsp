@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
 	#subjextA:achive { color:black; text-decoration: none;}
 	#currentPaging { color:red; text-decoration: underline;}
 	#paging { color: blue; text-decoration: none;}
+	
 	#ul{
 		padding: 0; margin: 0; width:670; list-style: none;
 	}

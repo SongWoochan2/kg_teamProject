@@ -1,0 +1,102 @@
+.clientmain_fullscreen{
+	width: 1000px;
+	height: 900px;
+	margin: 20px auto;
+	padding: 10;
+}
+.clientmain_left{
+	width: 15%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+.clientmain_rigth{
+	margin:0;
+	padding:0;
+	width: 85%;
+	height: 100%;
+	float: left;
+}
+.center_box_top{
+	padding-top:30px;
+	border: 1px solid green;
+	width: 100%;
+	height: 34%;
+	float: left;
+}
+#main_questions_div{
+	margin-left:10px;
+	border: 1px solid red;
+	width: 268px;
+	height: 260px;
+	text-align: center;
+	float: left;	
+}
+#main_email_div{
+	border: 1px solid red;
+	width: 268px;
+	height: 260px;
+	text-align: center;
+	float: left;	
+}
+#main_breakdown_div{
+	border: 1px solid red;
+	width: 268px;
+	height: 260px;
+	text-align: center;
+	float: left;	
+}
+.clientmain_rigth_mid{
+	border: 1px solid red;
+	width: 100%;
+	height: 34%;
+	float: left;
+}
+#rigth_mid_leftdiv{
+	padding:10px;
+	width: 35%;
+	height: 100%;
+	float: left;
+}
+#leftdiv_id_pw{
+	margin:1px;
+	border: 1px solid blue;
+	width: 49%;
+	height: 38%;
+	float: left;
+}
+#leftdiv_reservation{
+	margin:1px;
+	border: 1px solid blue;
+	width: 49%;
+	height: 38%;
+	float: left;
+}
+#leftdiv_cancellation{
+	margin:1px;
+	border: 1px solid blue;
+	width: 49%;
+	height: 38%;
+	float: left;
+}
+#leftdiv_point{
+	margin:1px;
+	border: 1px solid blue;
+	width: 49%;
+	height: 38%;
+	float: left;
+}
+
+#rigth_mid_rigthdiv{
+	border: 1px solid gray;
+	width: 65%;
+	height: 100%;
+	float: left;
+}
+.clientmain_rigth_bottom{
+	padding-left:12px;
+	width: 100%;
+	height: 32%;
+	float: left;
+}

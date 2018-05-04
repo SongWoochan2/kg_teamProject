@@ -7,7 +7,6 @@ pageEncoding="UTF-8"%>
 	<meta charset="UTF-8">
 	<title>글보기</title>
 	<link rel="stylesheet" type="text/css" href="/MyCGV/css/showPlace/seatView.css" />
-<link href="../css/bootstrap.css" rel = "stylesheet">
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -51,6 +50,11 @@ pageEncoding="UTF-8"%>
 									"seat_type": seat_type_code	}
 							).val(col_number).html(col_number));
 			}
+			for(var y = 1; y <= y_size; y++){
+				var row_number = String.fromCharCode(64 + y);
+				var seat_div = $("<div>").addClass("row_label").html(row_number);
+				var row_label = $("div[name='row'][row_number='"+row_number+"']").append(seat_div);
+			}
 			for(var i = 0; i < seat_list.length; i++){
 				var row_number = seat_list[i].y_index;
 				var col_number = seat_list[i].x_index;
@@ -64,9 +68,9 @@ pageEncoding="UTF-8"%>
 		});
 	</script>
 	<style type="text/css">
-		
-		#wrapper{
+		 #wrapper{
 			width: 1000px;
+			overflow: auto;
 			margin: 0 auto;
 			text-align: center;
 			align-items: center;
@@ -78,13 +82,17 @@ pageEncoding="UTF-8"%>
 			margin : 0 auto;
 			background-color: white;
 		}
+		.leftSide {
+			background: orange;
+			width: 100px;
+		} 
 	</style>
 </head>
 <body>
 <jsp:include page="../adminMain/adminTemplate.jsp"/>
-<div id = "content" align="center">
+<div id = "content1" align="center">
 	<div id="wrapper">
-		<table border="1" cellspacing="0" cellpadding="5">
+		<table border="1">
 			<tr>
 				<td colspan="4">
 					<font size="5">상영관명 : ${showPlaceVO.show_place_name }</font>
@@ -101,10 +109,13 @@ pageEncoding="UTF-8"%>
 				</td>
 			</tr>
 		</table>
-		<div class="screen">스크린</div>
-		<div id="seatView">
 		
-		</div>
+			<div id="setting_zone_center">
+				<div class="screen">스크린</div>
+				<div id="seatView"></div>
+ 			</div>
+		
+		
 		
 		<input type="button" value="뒤로" onclick="history.back(); return false;">
 		<c:if test="${admin_id != null }">

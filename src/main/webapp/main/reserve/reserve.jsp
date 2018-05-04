@@ -8,107 +8,6 @@
 	<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/MyCGV/plugins/tmpl/jquery.tmpl.min.js"></script>
 	<script type="text/javascript">
-	
-		function showClick(){
-			$.ajax({
-				url : "/MyCGV/showChoice_forReserve.do", // 나중에 사이트 url로 바뀜
-				type : "post", // 최종적으로 서버에 요청함
-				dataType : "json",
-				data : {
-					"show_date" : show_date,
-					"movie_code" : movie_code,
-					"theater_code" : theater_code
-				},
-				timeout : 30000, // 30초 (단위는 ms)
-				cache : false,
-				// 파일 읽기에 성공한 경우
-				success : function(json){
-						alert(JSON.stringify(json));
-				
-				},
-				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
-				}
-			});
-		}
-	
-		function dateClick(){
-			$.ajax({
-				url : "/MyCGV/dateChoice_forReserve.do", // 나중에 사이트 url로 바뀜
-				type : "post", // 최종적으로 서버에 요청함
-				dataType : "json",
-				data : {
-					"show_date" : show_date,
-					"movie_code" : movie_code,
-					"theater_code" : theater_code
-				},
-				timeout : 30000, // 30초 (단위는 ms)
-				cache : false,
-				// 파일 읽기에 성공한 경우
-				success : function(json){
-// 					alert(JSON.stringify(json));
-					var tmdpl = $("#dateChoiceTT").tmpl(json.date);
-					$("#show-date").empty().append(tmdpl); 
-				},
-				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
-				}
-			});
-		}
-	
-		function movieClick(){
-			$.ajax({
-				url : "/MyCGV/movieChoice_forReserve.do", // 나중에 사이트 url로 바뀜
-				type : "post", // 최종적으로 서버에 요청함
-				dataType : "json",
-				data : {
-					"show_date" : show_date,
-					"movie_code" : movie_code,
-					"theater_code" : theater_code
-				},
-				timeout : 30000, // 30초 (단위는 ms)
-				cache : false,
-				// 파일 읽기에 성공한 경우
-				success : function(json){
-// 					alert(JSON.stringify(json));
-	
-					var tmdpl = $("#moviePosterTT").tmpl(json.poster);
-					$("#movie-poster").empty().append(tmdpl); 
-					tmdpl = $("#movieNameTT").tmpl(json.movie);
-					$("#movie-info").empty().append(tmdpl); 
-				},
-				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
-				}
-			});
-		}
-		
-		function theaterClick(){
-			$.ajax({
-				url : "/MyCGV/theaterChoice_forReserve.do", // 나중에 사이트 url로 바뀜
-				type : "post", // 최종적으로 서버에 요청함
-				dataType : "json",
-				data : {
-					"show_date" : show_date,
-					"movie_code" : movie_code,
-					"theater_code" : theater_code
-				},
-				timeout : 30000, // 30초 (단위는 ms)
-				cache : false,
-				// 파일 읽기에 성공한 경우
-				success : function(json){
-// 					alert(JSON.stringify(json));
-	
-					var tmdpl = $("#theaterChoiceTT").tmpl(json.theater);
-					$("#theater-name").empty().append(tmdpl); 
-					
-				},
-				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
-				}
-			});
-		}
-		
 		
 		function getMovie(){				
 			$.ajax({
@@ -253,7 +152,7 @@
 							if(place_count != show_place_code){
 								place_count = show_place_code;
 								$("<div>").addClass("place_label").html(show.show_place_name).appendTo($("#top_time_div2"));
-								//$("<div>").addClass("place_totalSeat").html(show.totalSeat).appendTo($("#top_time_div2"));
+								$("<div>").addClass("place_totalSeat").html(" 총 " +show.totalSeat + "석").appendTo($("#top_time_div2"));
 							}
 							var tmpl = $("#showTT").tmpl(show);
 							$("#top_time_div2").append(tmpl);
@@ -285,6 +184,22 @@
 				}
 			});
 		}
+		function getTotalCost(){
+			var box = $("#frame_bottom .inner_middle").empty();
+			box.append("<strong></strong><br>");
+			var totalCost = 0;
+			
+			for(var i = 1; i <= 8; i++){
+				var seatOne = $("#reservingForm > input[name='seat"+i+"']");
+				if(seatOne.attr("cost")){
+					var seatCost = Number(seatOne.attr("cost"))
+					box.append(" + " +seatOne.val() + " 좌석 가격 : " + seatCost + "<br>");
+					totalCost += seatCost;
+				}
+			}
+			
+			box.find("strong").append("<strong>총 가격 : " + totalCost + "</strong>");
+		}
 	</script>
 	<script type="text/javascript">
 		var choose_count = 0;
@@ -296,26 +211,22 @@
 			$(document).on("click", "input.movie_choice", function(){
 				movie_code = $(this).val();
 				getTheater();
-				movieClick();
 				getDateList();
 				getShowList();
 			});
 			$(document).on("click", "input.theater_choice", function(){
 				theater_code = $(this).val();
 				getMovie();
-				theaterClick();
 				getDateList();
 				getShowList();
 			}); 
 			$(document).on("click", "input.date_choice", function(){
 				show_date = $(this).val();	
 				getMovie();
-				dateClick();
 				getTheater();
 				getShowList();
 			}); 
 			$(document).on("click", "input.show_choice", function(){
-				showClick();
 				getMovie();
 				getTheater();
 				getDateList();
@@ -324,9 +235,6 @@
 			getMovie();
 			getTheater();
 			getDateList();
-			
-			
-			//getSeatSelector(1);
 			
 			$("input.reset_choice").click(function(){
 				var choice = $(this).parent().parent().find("input[type='radio']:checked");
@@ -379,7 +287,7 @@
 			
 
 			// 좌석을 눌렀을떄 처리
-			$(document).on("click","div[name='seat']", function(){
+			$(document).on("click","#seatView div[name='seat']", function(){
 
 				if($(this).attr("class") == "reserved" || $(this).attr("class") == "empty"){
 					return;
@@ -388,10 +296,14 @@
 				var x_index= $(this).attr("col_number");
 				var y_index= $(this).attr("row_number");
 				
-				//alert($(this).attr("choose"));
+				//alert($(this).attr("choose"));    //seat_select_frame
 				if($(this).attr("choose") == "y"){
 					
-					$("input[name='seat"+chooseCount()+"']").attr("x_index", "").attr("y_index", "").val("");
+					$("input[name='seat"+chooseCount()+"']").attr({
+						"x_index": "",
+						"y_index": "",
+						"cost": ""
+					}).val("");
 					$(this).attr("choose", "n");
 				} else {
 					var full_count = $("input[name='total_seat_num']:checked").val();
@@ -399,25 +311,22 @@
 						alert("인원 수를 초과하였습니다.");
 						return;
 					}
+					var cost = Number($("#seat_select_frame input[name='time_add_cost']").val()) +  Number($(this).attr("add_cost"));
+					
 					$(this).attr("choose", "y");
-					$("input[name='seat"+(chooseCount()+1)+"']").attr("x_index", x_index).attr("y_index", y_index).val(y_index + "-" + x_index);
+					$("input[name='seat"+(chooseCount()+1)+"']").attr({
+						"x_index": x_index,
+						"y_index": y_index,
+						"cost": cost
+					}).val(y_index + "-" + x_index);
 				}
+				
+				getTotalCost();
+				
 				return;
 				
 			});
 		});
-	</script>
-	<script type="text/x-jquery-tmpl" id="moviePosterTT">
-		<img src="../../image/storage/moviephoto/\${poster_addr}">
-	</script>
-	<script type="text/x-jquery-tmpl" id="movieNameTT">
-		<a href="../movie/movieDetailView.do?photo_pg=1&trailer_pg=1&movie_code=\${movie_code}">\${movie_name }</a>
-	</script>
-	<script type="text/x-jquery-tmpl" id="theaterChoiceTT">
-		\${theater_name}
-	</script>
-	<script type="text/x-jquery-tmpl" id="dateChoiceTT">
-		\${show_date}
 	</script>
 	<script type="text/x-jquery-tmpl" id="movieTT">
 		<div class="movie_item">
@@ -443,7 +352,7 @@
 	<script type="text/x-jquery-tmpl" id="showTT">
 		<div class="show_item">
 			<div class="show_present_code" data="\${show_present_code }">
-				<label><input type="button" class="show_choice" name="show_present_code" value="\${show_time }:\${show_minute }">\${remainSeat }석</label>
+				<label><input type="button" class="show_choice" name="show_present_code" value="\${show_time }시 \${show_minute }분">\${remainSeat }석</label>
 			</div>
 		</div>
 	</script>
@@ -452,78 +361,49 @@
 	<jsp:include page="/main/main/header.jsp"></jsp:include>
 
 	<div class="div_top">
-		<div id="top_movie">
-			<div id="top_movie_div1">
-				<strong>영화</strong>
+			<div id="top_movie">
+				<div id="top_movie_div1">
+					<strong>영화</strong>
+				</div>
+				<div id="top_movie_reset">
+					<input type="button" class="reset_choice" value="선택 해제">
+				</div>
+				<div id="top_movie_div2">
+	
+				</div>
 			</div>
-			<div id="top_movie_reset">
-				<input type="button" class="reset_choice" value="선택 해제">
+			<div id="top_theater">
+				<div id="top_theater_div1">
+					<strong>극장</strong>
+				</div>
+				<div id="top_theater_reset">
+					<input type="button" class="reset_choice" value="선택 해제">
+				</div>
+				<div id="top_theater_div2">
+				
+				</div>
 			</div>
-			<div id="top_movie_div2">
-
+			<div id="top_date">
+				<div id="top_date_div1">
+					<strong>날짜</strong>
+				</div>
+				<div id="top_date_reset">
+					<input type="button" class="reset_choice" value="선택 해제">
+				</div>
+				<div id="top_date_div2">
+				
+				</div>
 			</div>
-		</div>
-		<div id="top_theater">
-			<div id="top_theater_div1">
-				<strong>극장</strong>
+			<div id="top_time">
+				<div id="top_time_div1">
+					<strong>시간</strong>
+				</div>
+				<div id="top_time_div2">
+				
+				</div>
 			</div>
-			<div id="top_theater_reset">
-				<input type="button" class="reset_choice" value="선택 해제">
-			</div>
-			<div id="top_theater_div2">
-			
-			</div>
-		</div>
-		<div id="top_date">
-			<div id="top_date_div1">
-				<strong>날짜</strong>
-			</div>
-			<div id="top_date_reset">
-				<input type="button" class="reset_choice" value="선택 해제">
-			</div>
-			<div id="top_date_div2">
-			
-			</div>
-		</div>
-		<div id="top_time">
-			<div id="top_time_div1">
-				<strong>시간</strong>
-			</div>
-			<div id="top_time_div2">
-			
-			</div>
-		</div>
 	</div>
 
-<!-- 	<div class="div_bottom"> -->
-<!-- 		<div id="bottom_photo_title"> -->
-<!-- 			<div id = "movie-poster"> -->
-				
-<!-- 			</div> -->
-<!-- 			<div id = "movie-info"> -->
-				
-<!-- 			<br> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<div id="bottom_pack"> -->
-<!-- 		<div id="show-title"> -->
-<!-- 			<div id = "title">극장명 :</div> -->
-<!-- 			<div id = "title">상영날짜 : </div> -->
-<!-- 			<div id = "title">상영시간 : </div> -->
-<!-- 			<div id = "title">상영관 : </div> -->
-<!-- 		</div> -->
-<!-- 		<div id="show-info"> -->
-<!-- 			<div id = "theater-name"></div> -->
-<!-- 			<div id = "show-date"></div> -->
-<!-- 			<div id = "show-time"></div> -->
-<!-- 			<div id = "show-place"></div> -->
-<!-- 		</div> -->
-<!-- 		</div> -->
-<!-- 		<div id="bottom_seat">좌석선택-></div> -->
-<!-- 		<div id="bottom_pay">결제-></div> -->
-<!-- 		<div id="bottom_seat_choice"><button>좌석선택▶</button></div> -->
-<!-- 	</div> -->
-	
 	<div id="my_popup_div">
 		<div id="popup_title">
 			<input type="button" id="renew_my_popup">

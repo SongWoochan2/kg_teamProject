@@ -14,7 +14,8 @@ public class MemberReserveListDTO {
 	private String member_seat7;
 	private String member_seat8;
 	private int count_seats;
-	private int pay_cost;
+	
+	private int reserve_cost;
 	private String reserve_date;
 	private char reserve_cancle_able;
 
@@ -106,11 +107,11 @@ public class MemberReserveListDTO {
 	public void setCount_seats(int count_seats) {
 		this.count_seats = count_seats;
 	}
-	public int getPay_cost() {
-		return pay_cost;
+	public int getReserve_cost() {
+		return reserve_cost;
 	}
-	public void setPay_cost(int pay_cost) {
-		this.pay_cost = pay_cost;
+	public void setReserve_cost(int reserve_cost) {
+		this.reserve_cost = reserve_cost;
 	}
 	public String getReserve_date() {
 		return reserve_date;

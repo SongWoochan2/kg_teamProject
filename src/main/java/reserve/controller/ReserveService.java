@@ -1,11 +1,14 @@
 package reserve.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import movie.bean.MovieDTO;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import reserve.bean.SeatNumVO;
+import reserve.bean.SeatTypeVO;
+import reserve.bean.TimeTypeVO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
 
@@ -40,4 +43,11 @@ public interface ReserveService {
 	// 재환
 	
 	public Integer movieReserveCheck(String member_id, int movie_code);
+	
+
+	public Map<Integer, SeatTypeVO> getSeatType();
+	
+	public Map<Integer, TimeTypeVO> getTimeType();
+	
+	
 }
