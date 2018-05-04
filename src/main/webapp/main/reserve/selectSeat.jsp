@@ -242,25 +242,52 @@
 			//$("div[name='seat']").off("click");
 			
 			
-			$("#reserve_submit").off("click");
-			$("#reserve_submit").submit(function(){
+			$("#reservingForm").off("click");
+			$("#reservingForm").submit(function(){
 				if(chooseCount() < $("input[name='total_seat_num']:checked").val()){
 					alert("인원 수와 좌석 수가 맞지 않습니다.");
+					return false;
+				}
+				
+				var result = confirm("결제하시겠습니까?");
+				if(result){
+					reservingFormSubmit();
 					return false;
 				}
 			});
 			
 		});
 		
-		function chooseCount(){
-			var count = 0;
-			for(var i = 1; i <= 8; i++){
-				if($("input[name='seat" + i + "']").val()){
-					count++;
-				}
-			}
-			return count;
-		}
+
+	    function reservingFormSubmit(){
+	        var formData = $("#reservingForm").serialize();
+	        $.ajax({
+	            cache : false,
+	            url : "${pageContext.request.contextPath}/reserving.do", // 요기에
+	            type : 'POST', 
+	            dataType : "json",
+	            data : formData, 
+	            async : false,
+	            success : function(json) {
+	                alert(JSON.stringify(json));
+	                if(json.su == 0){
+	                	alert("이미 예약된 좌석입니다.");
+	    				getSeatSelector(last_select);
+	    				$("#my_popup_shadow").show(0);
+	    				$("#my_popup_div").show(0);
+	                }else if(json.su == 1){
+	                	alert("예매 성공!");
+	                	$("#my_popup_shadow").hide(0);
+	    				$("#my_popup_div #popup_main").empty();
+	    				$("#my_popup_div").hide(0);
+	    				getShowList();
+	                }
+	            }, // success 
+	            error : function(xhr, status) {
+	                alert(xhr + " : " + status);
+	            }
+	        }); // $.ajax */
+	    }
 	</script>
 </head>
 <body>
@@ -327,7 +354,7 @@
 					<strong>총 가격 : </strong>
 				</div>
 				<div class="inner_bottom">
-					<form id="reservingForm" name="reservingForm" method="post" action="/MyCGV/reserving.do">
+					<form id="reservingForm" name="reservingForm" method="post" action="#">
 						<input type="hidden" name="time_add_cost" value="${time_add_cost + showInfo.default_cost }">
 						<input type="hidden" name="show_present_code" value="${showInfo.show_present_code }">
 						<input type="hidden" name="show_place_code" value="${showInfo.show_place_code }">

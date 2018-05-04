@@ -58,7 +58,7 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value="/reserving.do")
-	public ModelAndView hyperreserving(HttpServletRequest request, HttpServletResponse response) {
+	public void hyperreserving(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("memId");
@@ -88,9 +88,15 @@ public class ReserveController {
 		
 		
 		if(isAlreadyReseved(reservedSeatVOs, seatVOs)) {
-			modelAndView.addObject("su", 0);
-			modelAndView.setViewName("/main/reserve/reserving.jsp");
-			return modelAndView;
+//			modelAndView.addObject("su", 0);
+//			modelAndView.setViewName("/main/reserve/reserving.jsp");
+
+			try {
+				response.getWriter().println("{ \"su\" : \"-1\"}");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return;
 		} 
 		
 		MemberReserveVO memberReserveVO = new MemberReserveVO();
@@ -110,11 +116,17 @@ public class ReserveController {
 		
 		int su = reserveService.insertMemberReserve(memberReserveVO);
 
-		
+		try {
+			response.getWriter().println("{ \"su\" : \""+ su + "\"}");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return;
+		/*
 		modelAndView.setViewName("/main/reserve/reserving.jsp");
 		modelAndView.addObject("su", su);
 		
-		return modelAndView;
+		return modelAndView;*/
 	}
 	
 	

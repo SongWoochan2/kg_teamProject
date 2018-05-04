@@ -773,7 +773,6 @@ create view show_fully as
       SELECT * FROM theater join (
           SELECT * FROM show_all join movie_poster USING (movie_code)
           ) tt USING (theater_code);
-      select * from show_fully;
 
 
 -- 예약 좌석 뷰
