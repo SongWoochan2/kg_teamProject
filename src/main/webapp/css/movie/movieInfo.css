@@ -204,7 +204,6 @@
 	}
 	#moviepage #moviereview #review-content #review-info *{
 		padding-top : 3px;
-		border : 1px solid darkgray;
 	}
 	#moviepage #moviereview #review-content #review-info #evaluate_score{
 		color: red;
