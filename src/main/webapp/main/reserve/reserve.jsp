@@ -33,7 +33,7 @@
 					
 				},
 				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
 				}
 			});
 		}
@@ -61,7 +61,7 @@
 					
 				},
 				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
 				}
 			});
 		}
@@ -122,7 +122,7 @@
 					
 				},
 				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
 				}
 			});
 		} 
@@ -159,7 +159,7 @@
 						} 
 					},
 					error : function(xhr, textStatus, errorThrown){
-						$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+						alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
 					}
 				});
 			}
@@ -180,9 +180,18 @@
 					
 				},
 				error : function(xhr, textStatus, errorThrown){
-					$("div").html("<div>" + textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown + ")</div>");
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
 				}
 			});
+		}
+		function chooseCount(){
+			var count = 0;
+			for(var i = 1; i <= 8; i++){
+				if($("input[name='seat" + i + "']").val()){
+					count++;
+				}
+			}
+			return count;
 		}
 		function getTotalCost(){
 			var box = $("#frame_bottom .inner_middle").empty();
@@ -265,11 +274,10 @@
 			var last_select;
 			
 			$(document).on("click", ".show_item input[name='show_present_code']", function(){
-				last_select = $(this).parent().parent().attr("data")
+				last_select = $(this).parent().parent().attr("data");
 				getSeatSelector(last_select);
 				$("#my_popup_shadow").show(0);
 				$("#my_popup_div").show(0);
-				
 			});
 
 			$("#renew_my_popup").click(function(){
@@ -279,7 +287,6 @@
 			});
 
 			$("#close_my_popup, #my_popup_shadow").click(function(){
-				getSeatSelector(last_select);
 				$("#my_popup_shadow").hide(0);
 				$("#my_popup_div #popup_main").empty();
 				$("#my_popup_div").hide(0);
@@ -298,8 +305,7 @@
 				
 				//alert($(this).attr("choose"));    //seat_select_frame
 				if($(this).attr("choose") == "y"){
-					
-					$("input[name='seat"+chooseCount()+"']").attr({
+					$("#reservingForm input[x_index='"+x_index+"'][y_index='"+y_index+"']").attr({
 						"x_index": "",
 						"y_index": "",
 						"cost": ""
@@ -314,12 +320,14 @@
 					var cost = Number($("#seat_select_frame input[name='time_add_cost']").val()) +  Number($(this).attr("add_cost"));
 					
 					$(this).attr("choose", "y");
-					$("input[name='seat"+(chooseCount()+1)+"']").attr({
+					$("#reservingForm input[x_index=''][y_index='']:eq(0)").attr({
 						"x_index": x_index,
 						"y_index": y_index,
 						"cost": cost
 					}).val(y_index + "-" + x_index);
 				}
+				
+				console.log("count : " + chooseCount());
 				
 				getTotalCost();
 				

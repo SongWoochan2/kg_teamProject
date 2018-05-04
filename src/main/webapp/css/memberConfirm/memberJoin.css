@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+html,form, fieldset, legend, ol, li {
+	margin: 0;
+	padding: 0;
+	}
+ 
+body {
+	background: #FDFCF0;
+	color: #111111;
+	padding: 20px;	
+}
+
+div{
+	box-sizing: border-box;
+}
+
+.big_form{
+	margin:100px 0; 
+	width:100%;
+} 
+
+.big_form .join_img{
+	display: block;
+	width:35%;
+	align:center;
+	margin:0 auto;
+} 
+
+.big_form .join_info{
+	display: block;
+	width:80%;
+	align:center;
+	margin:20px auto;
+}
+ 
+form {
+	margin:auto; 
+    background: powderblue;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+	counter-reset: fieldsets;
+	padding: 20px;
+	width: 780px;	 
+}
+
+		
+form fieldset {
+	margin-bottom: 10px;
+	border:none; 
+}
+		
+form fieldset:last-of-type {
+	margin-bottom: 0;
+}
+			
+form legend {
+	color: #384313;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	text-shadow: 0 1px 1px #c0d576;
+}
+				
+form > fieldset > legend:before {
+	counter-increment: fieldsets;
+}
+				
+form fieldset fieldset legend {
+	color: #111111;
+	font-size: 13px;
+	font-weight: normal;
+	padding-bottom: 0;
+}
+			
+form ol li {
+	background: #b9cf6a;
+	background: rgba(255,255,255,.3);
+	border-color: #e3ebc3;
+	border-color: rgba(255,255,255,.6);
+	border-style: solid;
+	border-width: 2px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+	line-height: 30px;
+	list-style: none;
+	padding: 5px 10px;
+	margin-bottom: 2px;
+}
+							
+form ol ol li {
+	background: none;
+	border: none;
+	float: left;
+}
+			
+form label {
+	float: left;
+	font-size: 13px;
+	width: 110px;
+}
+				
+form fieldset fieldset label {
+	background:none no-repeat left 50%;
+	line-height: 20px;
+	padding: 0 0 0 30px;
+	width: auto;
+}
+					
+					
+form fieldset fieldset label:hover {
+	cursor: pointer;
+}
+				
+form .in:not([type=radio]) {
+	background: #ffffff;
+	border: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
+	font: 13px;
+	outline: none;
+	padding: 5px;
+	width: 200px;
+	margin:2px;
+}			
+				
+form .btn {
+	background: pink;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	color: #ffffff; 
+	font: 16px;
+	text-shadow: 0 1px 1px #000000;
+}
+
+form .Btn .btn{
+	margin: auto;
+	float:left;
+	padding: 2px;
+}
+					
+form .btn:hover {
+	background: #F5A9F2;
+	cursor: pointer;
+}

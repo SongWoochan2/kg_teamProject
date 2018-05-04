@@ -1,7 +1,7 @@
 @charset "UTF-8";
-/* Nanum Gothic --------------------------------------------------------------*/
+
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-/* -------------------------------------------------------------------- RESET */
+
 body{
 	background-color:#FDFCF0;
 }
@@ -61,7 +61,7 @@ button,label{
 	width: 978px;
 	height: 185px;
 	margin: 10px 0;
-	border:1px solid blue; 
+	border:1px solid black;
 }
 
 .order_detail dl {
@@ -99,6 +99,14 @@ button,label{
 .order_detail .price_same {
 	width: 193px;
 	text-decoration: none;
+}
+
+
+.giftshop_wrap .title{
+	width: 980px;
+	height: 40px;
+	background: #222;
+	margin : 20px 0;
 }
 
 .giftshop_wrap .title img {
@@ -387,4 +395,3 @@ button,label{
 .gs2_ls_none {
 	list-style: none !important;
 }
-

@@ -32,31 +32,112 @@ pageEncoding="UTF-8"%>
 		</div>
 		<div class="clientmain_rigth">
 			<div class="center_box_top">
-				<div id="main_questions_div">
-					<strong>자주찾는 질문</strong><br>
-				</div>
-				<div id="main_email_div">
-					<strong>이메일 문의</strong><br>
-						24시간 365일 언제든지 문의해주세요.<br>
-					<a id="" href=""><span style="padding:0 20px;">문의하기</span></a>
-				</div>
-				<div id="main_breakdown_div">
-						<strong>내 상담 내역 확인</strong><br>
-						<span>문의하신 내용을 확인하실 수 있습니다.</span><br>
-						<a href="" target="_blank" title="새창열기"><span style="padding:0 20px;">
-						문의내역 조회</span></a>
-		        </div>
+				<a href="#">
+					<div id="main_questions_div">
+						<img alt="" src="/MyCGV/image/clientCenter/search.png">
+						<h2 class="clientmain_rigth_h2_1">자주찾는 질문</h2><br>
+						<p id="clientmain_rigth_p1">무엇이 궁금하신가요?</p><br>
+						<div class="center_box_top_div1"><p id="center_box_top_div1_p">자주찾는 질문</p></div>
+					</div>
+				</a>
+				<a href="#">
+					<div id="main_email_div">
+						<img id="main_email_div_img" alt="" src="/MyCGV/image/clientCenter/email_img.png">
+						<h2 class="clientmain_rigth_h2_2">이메일 문의</h2><br>
+							<p class="clientmain_rigth_p2">24시간 365일 언제든지 문의해주세요.</p><br>
+						<div class="center_box_top_div2"><p id="center_box_top_div2_p">문의하기</p></div>
+					</div>
+				</a>
+				<a href="#">
+					<div id="main_breakdown_div">
+						<img id="main_breakdown_div_img" alt="" src="/MyCGV/image/clientCenter/breakdown.png">
+						<h2 class="clientmain_rigth_h2_2">내 상담 내역 확인</h2><br>
+						<p class="clientmain_rigth_p2">문의하신 내용을 확인하실 수 있습니다.</p><br>
+						<div class="center_box_top_div3"><p id="center_box_top_div3_p">문의내역 조회</div>
+			        </div>
+			    </a>
 			</div>
 			<div class="clientmain_rigth_mid">
 				<div id="rigth_mid_leftdiv">
-						<div><strong>자주찾는 서비스<br><br></strong></div>
-						<div id="leftdiv_id_pw">아이디/<br>비밀번호 찾기</div>
-						<div id="leftdiv_reservation">예매/<br>취소내역 확인</div>
-						<div id="leftdiv_cancellation">비회원<br>예매/취소</div>
-						<div id="leftdiv_point">멤버십포인트<br>사용안내</div>
+					<div>
+						<strong>자주찾는 서비스<br><br></strong>
+					</div>
+					<div class="rigth_mid_leftdiv_tong">
+						<a href="#">
+							<div id="leftdiv_id_pw">
+								<strong>아이디/<br>비밀번호 찾기</strong>
+							</div>
+						</a>
+						<a href="#">
+							<div id="leftdiv_reservation">
+								<strong>예매/<br>취소내역 확인</strong>
+							</div>
+						</a>
+						<a href="#">
+							<div id="leftdiv_cancellation">
+								<strong>비회원<br>예매/취소</strong>
+							</div>
+						</a>
+						<a href="#">
+							<div id="leftdiv_point">
+								<strong>멤버십포인트<br>사용안내</strong>
+							</div>
+						</a>
+					</div>
 				</div>
-				<div id="rigth_mid_rigthdiv">
-					
+				<div class="rigth_mid_rigthdiv">
+					<div id="rigth_mid_rigthdiv_top">
+						<strong id="rigth_mid_rigthdiv_top_strong">공지/뉴스</strong>
+						<a href="#"><img id="rigth_mid_rigthdiv_top_img" src="/MyCGV/image/clientCenter/+_img.png"></a>
+						<div class="rigth_mid_rigthdiv_top_ul">
+							<ul>
+								<li>
+									<div class="rigth_mid_rigthdiv_top_ul_text">
+										<!-- 밑에 텍스트들은 DB쪽에서 데이터 꺼내와야함 임시로 텍스트넣은거임  -->
+										<a href="#">[기타] 영화 관람가격 변경 안내드립니다.</a>
+									</div>
+									<div class="rigth_mid_rigthdiv_top_ul_date">
+										2018.04.06
+									</div>
+								</li>
+								<li>
+									<div class="rigth_mid_rigthdiv_top_ul_text">
+										<a href="#">[시스템점검] 4월 정기 시스템 안내</a>
+									</div>
+									<div class="rigth_mid_rigthdiv_top_ul_date">
+										2018.04.03
+									</div>
+								</li>
+								<li>
+									<div class="rigth_mid_rigthdiv_top_ul_text">
+										<a href="#">[기타] OK캐시백 적립율 변경 안내 (4/1, 00:00 ~)</a>
+									</div>
+									<div class="rigth_mid_rigthdiv_top_ul_date">
+										2018.02.28
+									</div>
+								</li>
+								<li>
+									<div class="rigth_mid_rigthdiv_top_ul_text">
+										<a href="#">[기타] CGV 개인정보처리방침 개정 공지</a>
+									</div>
+									<div class="rigth_mid_rigthdiv_top_ul_date">
+										2018.01.24
+									</div>
+								</li>
+								<li>
+									<div class="rigth_mid_rigthdiv_top_ul_text">
+										<a href="#">[기타] CGV 이용약관 개정안내</a>
+									</div>
+									<div class="rigth_mid_rigthdiv_top_ul_date">
+										2018.01.16
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="rigth_mid_rigthdiv_bottom">
+						<img src="/MyCGV/image/clientCenter/bottom_img.png">
+					</div>
 				</div>
 			</div>
 			<div class="clientmain_rigth_bottom">
@@ -65,42 +146,5 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 <jsp:include page="/main/main/footer.jsp"></jsp:include>
-				<!-- 
-				
-			</div>
-			<div id="center_bot">
-				<div id = "service">
-					<span>자주찾는 서비스</span>
-					<ul id="list">
-	                       로그아웃일 경우에만 링크 
-	                       <li id=""><a>아이디/<br>비밀번호 찾기&gt;</a></li>
-	                       로그아웃일 경우에만 링크 
-							<li><a href="">예매/<br>취소내역 확인</a></li>
-	                       로그아웃일 경우에만 링크  
-	                       <li id=""><a>비회원<br>예매/취소</a></li>
-	                       로그아웃일 경우에만 링크 
-						<li><a href="">멤버십포인트<br>사용안내</a></li>
-					</ul>
-				</div>
-				<div id="noti">
-	                   <a href="">
-					    <span>공지/뉴스</span>
-	                   </a>
-					<ul id="txt">
-		                <li><a href="">[기타] 영화 관람가격 변경 안내드립니다.</a><span id="day">2018.04.06</span></li>
-		                <li><a href="">[시스템점검] 4월 정기 시스템 안내</a><span id="day">2018.04.03</span></li>
-		                <li><a href="">[기타] OK캐시백 적립율 변경 안내 (4/1, 00:00 ~)</a><span id="day">2018.02.28</span></li>
-		                <li><a href="">[기타] CGV 개인정보처리방침 개정 공지</a><span id="day">2018.01.24</span></li>
-		                <li><a href="">[기타] CGV 이용약관 개정안내</a><span id="day">2018.01.16</span></li>
-					</ul>
-					<a href="">공지/뉴스 더보기</a>
-				</div>
-				<div id="event">
-					<a href="#">CGV PREVIEW 시사회/무대인사</a><br>(준비중)</br>
-					<a href="#">DISCOUNT INFO 할인카드 및 혜택 안내</a><br>(준비중)</br>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </body>
 </html>

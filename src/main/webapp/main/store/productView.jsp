@@ -6,10 +6,8 @@
 <meta charset="UTF-8">
 <title>productView</title>
     
-<link rel="stylesheet" media="all" type="text/css" href="../../css/store/reset.css">
-<link rel="stylesheet" media="all" type="text/css" href="../../css/store/layout.css">
-<link rel="stylesheet" media="all" type="text/css" href="../../css/store/module.css">   
-    
+<link rel="stylesheet" media="all" type="text/css" href="../../css/store/productView.css">
+
 </head>
 
 <body class="" style="">
