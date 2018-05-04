@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import movie.bean.MovieDTO;
+import movie.bean.ReserveRank;
 import movie.dao.MovieDAO;
 
 @Service
@@ -77,8 +78,8 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public ArrayList<MovieDTO> movieNonOpenRank() {
-		return (ArrayList<MovieDTO>) movieDAO.movieNonOpenRank();
+	public ArrayList<MovieDTO> movieNonOpenRank(int startNum, int endNum) {
+		return (ArrayList<MovieDTO>) movieDAO.movieNonOpenRank(startNum, endNum);
 	}
 
 	@Override
@@ -89,6 +90,31 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public int updateEvaluatNum(int movie_code, int movie_evaluat_num) {
 		return movieDAO.updateEvaluatNum(movie_code, movie_evaluat_num);
+	}
+
+	@Override
+	public ArrayList<MovieDTO> movieAudienceRank(int startNum, int endNum) {
+		return (ArrayList<MovieDTO>) movieDAO.movieAudienceRank(startNum, endNum);
+	}
+
+	@Override
+	public Integer allReserveCount() {
+		return movieDAO.allReserveCount();
+	}
+
+	@Override
+	public ArrayList<ReserveRank> movieReserveRank(int startNum, int endNum) {
+		return (ArrayList<ReserveRank>) movieDAO.movieReserveRank(startNum, endNum);
+	}
+
+	@Override
+	public Integer movieReserveNum(int movie_code) {
+		return movieDAO.movieReserveNum(movie_code);
+	}
+
+	@Override
+	public int movieNonOpenTotal() {
+		return movieDAO.movieNonOpenTotal();
 	}
 	
 }

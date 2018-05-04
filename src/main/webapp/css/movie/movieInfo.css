@@ -161,11 +161,11 @@
 	}
 	#moviepage #moviereview{
 		width: 100%;
-		height: 23%;
+		height: 24%;
 	}
 	#moviepage #moviereview #review-title{
 		width: 100%;
-		height: 7%;
+		height: 6%;
 	}
 	#moviepage #moviereview #review-title *{
 		height: 100%;
@@ -190,14 +190,63 @@
 		color : white;
 	}
 	#moviepage #moviereview #review-content{
-		height: 93%;
+		overflow : auto;
+		height: 89%;
 		width: 100%;
 	}
 	#moviepage #moviereview #review-content #review-info{
+		border : 1px solid white;
+		background-color : #cccccc;
 		text-align :inherit;
 		height: 50%;
 		width: 50%;
 		float: left;
+	}
+	#moviepage #moviereview #review-content #review-info *{
+		padding-top : 3px;
+		border : 1px solid darkgray;
+	}
+	#moviepage #moviereview #review-content #review-info #evaluate_score{
+		color: red;
+		float: left;
+		text-align: center;
+		font-size : 18px;
+		height : 15%;
+		width: 60%;
+	}
+	#moviepage #moviereview #review-content #review-info #evaluate_id{
+		text-align : center;
+		font-weight : bold;
+		float: left;
+		font-size : 16px;
+		height : 15%;
+		width: 40%;
+	}
+	#moviepage #moviereview #review-content #review-info #evaluate_content{
+		height : 70%;
+		width: 100%;
+		overflow: auto;
+		font-family: "Times New Roman", Times, serif;
+	}
+	#moviepage #moviereview #review-content #review-info #evaluate_date{
+		text-align : center;
+		height : 15%;
+		width: 60%;
+		float: left;
+		font-weight: bold;
+	}
+	#moviepage #moviereview #review-content #review-info #evaluate_like{
+		text-align : center;
+		height : 15%;
+		width: 40%;
+		float: left;
+		
+	}
+	#moviepage #moviereview #review-page{
+		width : 100%;
+		height : 5%;
+		text-align: center;
+		background-color: gray;
 	}
 	/** 배경 레이어의 위치, 크기, 투명도 지정 > 기본적으로 표시되지 않도록 설정 */
 	div#glayLayer {
