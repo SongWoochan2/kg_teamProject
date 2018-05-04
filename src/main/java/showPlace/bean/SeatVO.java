@@ -31,6 +31,11 @@ public class SeatVO {
 	public void setY_index(String y_index) {
 		this.y_index = y_index;
 	}
+	@Override
+	public String toString() {
+		return "SeatVO [show_place_code=" + show_place_code + ", seat_type_code=" + seat_type_code + ", x_index="
+				+ x_index + ", y_index=" + y_index + "]";
+	}
 
 
 }
