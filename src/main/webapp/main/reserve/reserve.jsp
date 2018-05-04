@@ -245,7 +245,7 @@
 			getTheater();
 			getDateList();
 			
-			$("input.reset_choice").click(function(){
+			$(".b05_3d_roll").click(function(){
 				var choice = $(this).parent().parent().find("input[type='radio']:checked");
 				choice.prop("checked", false);
 				
@@ -371,10 +371,13 @@
 	<div class="div_top">
 			<div id="top_movie">
 				<div id="top_movie_div1">
-					<strong>영화</strong>
+					<p class="top_movie_div1_title"><strong>영화</strong></p>
 				</div>
 				<div id="top_movie_reset">
-					<input type="button" class="reset_choice" value="선택 해제">
+					<div class="button_base b05_3d_roll">
+     					<div>선택해제</div>
+        				<div>선택해제</div>
+    				</div>
 				</div>
 				<div id="top_movie_div2">
 	
@@ -382,10 +385,13 @@
 			</div>
 			<div id="top_theater">
 				<div id="top_theater_div1">
-					<strong>극장</strong>
+					<p class="top_movie_div1_title"><strong>극장</strong></p>
 				</div>
 				<div id="top_theater_reset">
-					<input type="button" class="reset_choice" value="선택 해제">
+					<div class="button_base b05_3d_roll">
+     					<div>선택해제</div>
+        				<div>선택해제</div>
+    				</div>
 				</div>
 				<div id="top_theater_div2">
 				
@@ -393,18 +399,21 @@
 			</div>
 			<div id="top_date">
 				<div id="top_date_div1">
-					<strong>날짜</strong>
+					<p class="top_movie_div1_title"><strong>날짜</strong></p>
 				</div>
 				<div id="top_date_reset">
-					<input type="button" class="reset_choice" value="선택 해제">
+					<div class="button_base b05_3d_roll">
+     					<div>선택해제</div>
+        				<div>선택해제</div>
+    				</div>
 				</div>
 				<div id="top_date_div2">
-				
+					
 				</div>
 			</div>
 			<div id="top_time">
 				<div id="top_time_div1">
-					<strong>시간</strong>
+					<p class="top_movie_div1_title"><strong>시간</strong></p>
 				</div>
 				<div id="top_time_div2">
 				
