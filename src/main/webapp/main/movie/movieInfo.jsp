@@ -87,6 +87,15 @@
 		
 	});
 </script>
+<style type="text/css">
+	#currentPaging{
+		color : red;
+		font-weight: bold;
+	}
+	#paging{
+		color : white;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -119,11 +128,11 @@
 					개봉 : ${movieDTO.movie_open_date }</div>
 					<div id="like">
 						<c:if test="${requestScope.like_able == 0 }">
-						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=1" id="movie_like" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg}&good=1" id="movie_like" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-down"></span> unLike </a> 
 						</c:if>
 						<c:if test="${requestScope.like_able == 1 }">
-						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&good=-1" id="movie_like" class="btn btn-info btn-lg">
+						<a href="selectLike.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg}&good=-1" id="movie_like" class="btn btn-info btn-lg">
           				<span class="glyphicon glyphicon-thumbs-up"></span> Like </a> 
 						</c:if>
        					<b>${movieDTO.good_num }</b> 명 &nbsp;&nbsp;&nbsp;
@@ -139,13 +148,13 @@
 		<div id="movietrailer">
 			<div id = "trailer-title">
 			<c:if test="${t_moviePage.pg>1 }">
-					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg-1}" class="btn btn-info btn-lg">
+					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg-1}&review_pg=${e_moviePage.pg}" class="btn btn-info btn-lg">
 		         		 <span class="glyphicon glyphicon-menu-left"></span>
 		        	</a>
 			</c:if>
 			&emsp;<b>트레일러</b>&emsp;
 			<c:if test="${t_moviePage.pg<t_moviePage.totalPage}">
-					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg+1}" class="btn btn-info btn-lg">
+					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg+1}&review_pg=${e_moviePage.pg}" class="btn btn-info btn-lg">
 		         		 <span class="glyphicon glyphicon-menu-right"></span>
 		        	</a>
 			</c:if>
@@ -169,13 +178,13 @@
 		<div id="moviesteelcut">
 			<div id = "steelcut-title">
 				<c:if test="${p_moviePage.pg>1 }">
-					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg-1}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}" class="btn btn-info btn-lg">
+					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg-1}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg}" class="btn btn-info btn-lg">
 		         		 <span class="glyphicon glyphicon-menu-left"></span>
 		        	</a>
 				</c:if>
 			&emsp;<b>스틸컷</b>&emsp;
 				<c:if test="${p_moviePage.pg<p_moviePage.totalPage}">
-					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg+1}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}" class="btn btn-info btn-lg">
+					<a href="movieDetailView.do?photo_pg=${p_moviePage.pg+1}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg}" class="btn btn-info btn-lg">
 		         		 <span class="glyphicon glyphicon-menu-right"></span>
 		        	</a>
 				</c:if>
@@ -208,9 +217,11 @@
 							&emsp;<font><label id = "insert-score"></label>점</font>
 							&emsp;&nbsp;<button type = "submit" class="btn btn-info btn-lg">리뷰 등록</button>
 							<input type="hidden" name = "evaluat_score" id ="evaluat_score" value="10">
-							<input type="hidden" name = "movie_code" id ="movie_code" value="${requestScope.movie_code }">
-							<input type="hidden" name = "movie_pg" id ="movie_pg" value="${m_moviePage.pg }">
+							<input type="hidden" name = "movie_code" id ="movie_code" value="${movieDTO.movie_code }">
+							<input type="hidden" name = "photo_pg" id ="photo_pg" value="${p_moviePage.pg }">
+							<input type="hidden" name = "trailer_pg" id ="trailer_pg" value="${t_moviePage.pg }">
 						</div>
+
 						<div id="review_content">
 							<label for="comment">Comment:</label>
 	  						<textarea class="form-control" rows="5" id="comment" name="evaluat_content" style="resize: none;" maxlength="500" required="required"></textarea>
@@ -218,8 +229,9 @@
 					</form>
 				</div>
 				<!-- 반복문 구간 -->
+				<c:forEach var="evaluat_list" items="${requestScope.evaluat_list }">
 				<div id = "review-info">
-					<div id = "evaluate_score">★★★★★
+					<div id = "evaluate_score">
 						<c:if test="${evaluat_list.evaluat_score == '10' }">★★★★★</c:if>
 						<c:if test="${evaluat_list.evaluat_score == '8' }">★★★★☆</c:if>
 						<c:if test="${evaluat_list.evaluat_score == '6' }">★★★☆☆</c:if>
@@ -228,29 +240,40 @@
 						<c:if test="${evaluat_list.evaluat_score == '1' }">☆☆☆☆☆</c:if>
 					</div>
 					<div id = "evaluate_id">
-						으아아아아아
+						${evaluat_list.evaluat_id }
+						<c:if test="${evaluat_list.evaluat_id == sessionScope.memId}">
+							<a href = "reviewDelete.do?movie_code=${evaluat_list.movie_code }&evaluat_code=${evaluat_list.evaluat_code }&photo_pg=${p_moviePage.pg}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg}">[삭제]</a>
+						</c:if>
 					</div>
 					<div id = "evaluate_content">
-						dasdsa
+						${evaluat_list.evaluat_content }
 					</div>
 					<div id = "evaluate_date">
-						2018.12.25
+						${evaluat_list.evaluat_date }
 					</div>
 					<div id = "evaluate_like">
-						<a href="reviewLike.do?movie_code=${evaluat_list.movie_code }&evaluat_code=${evaluat_list.evaluat_code }&movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg }" id = "like_check">
+						<a href="reviewLike.do?movie_code=${evaluat_list.movie_code }&evaluat_code=${evaluat_list.evaluat_code }&photo_pg=${p_moviePage.pg}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg}" id = "like_check">
       					   <span class="glyphicon glyphicon-thumbs-up"></span>
-        				</a> 0
+        				</a> ${evaluat_list.evaluat_like_num }
 					</div>
 				</div>
-				<div id = "review-info">
-				</div>
-				<div id = "review-info">
-				</div>
-				<div id = "review-info">
-				</div>
+				</c:forEach>
 			</div>
 			<div id = "review-page">
-				
+				<c:if test="${e_moviePage.startPage>1 }">
+				[<a id="paging" href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg-1}">이전</a>]
+				</c:if> 
+				<c:forEach var="i" begin="${e_moviePage.startPage}" end="${e_moviePage.endPage}" step="1">
+					<c:if test="${e_moviePage.startPage==i }">
+						[<a id="currentPaging" href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${i}">${i }</a>]
+					</c:if>
+					<c:if test="${e_moviePage.startPage!=i }">
+						[<a id="paging" href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${i}">${i }</a>]
+					</c:if>	<!-- el표현식에는 자바코드가 들어갈수없음 -->
+				</c:forEach> 
+				<c:if test="${e_moviePage.endPage<e_moviePage.totalPage}">
+					[<a id="paging" href="movieDetailView.do?photo_pg=${p_moviePage.pg}&movie_code=${movieDTO.movie_code}&trailer_pg=${t_moviePage.pg}&review_pg=${e_moviePage.pg+1}">다음</a>]
+				</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 -->
 			</div>
 		</div>
 	</div>

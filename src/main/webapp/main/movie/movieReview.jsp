@@ -122,7 +122,7 @@
 										</c:if>
 										<c:if test="${average_map.value != 'NaN'}">
 											평점 : ${average_map.value } 점
-										</c:if>)&emsp;&emsp;
+										</c:if>)&emsp;
 									</c:if>
 								</c:forEach>
 								<c:forEach var ="like_map" items="${requestScope.like_map }" >
@@ -169,22 +169,22 @@
 									</c:if>
 									<c:if test="${average_map.value != 'NaN'}">
 										평점 : ${average_map.value } 점
-									</c:if>)&emsp;&emsp;
+									</c:if>)&emsp;
 								</c:if>
 							</c:forEach>
 							<c:forEach var ="like_map" items="${requestScope.like_map }" >
 								<c:if test="${like_map.key == movie_list.movie_code }">
 									<c:if test="${like_map.value == 1}">
-										<a class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+										<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
 									</c:if>
 									<c:if test="${like_map.value == 0}">
-										<a class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+										<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
 									</c:if>
 								</c:if>
 							</c:forEach>
 						</div>
 						<div id = "entity-request">
-							<a href="../../reserve.do?movie_code?${movie_list.movie_code }">예매</a>
+							<a href="../../reserve.do?movie_code=${movie_list.movie_code }">예매</a>
 						</div>
 					</c:if>
 				</div>
@@ -250,18 +250,18 @@
 			</div>
 			<div id="review-paging">
 				<c:if test="${e_moviePage.startPage>1 }">
-				[<a id="paging" href="movieReview.do?review_pg=${e_moviePage.startPage-1}&movie_code=${requestScope.movie_code}">이전</a>]
+				[<a id="paging" href="movieReview.do?review_pg=${e_moviePage.startPage-1}&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">이전</a>]
 				</c:if> 
 				<c:forEach var="i" begin="${e_moviePage.startPage}" end="${e_moviePage.endPage}" step="1">
 					<c:if test="${e_moviePage.startPage==i }">
-						[<a id="currentPaging" href="movieReview.do?review_pg=${i }&movie_code=${requestScope.movie_code}">${i }</a>]
+						[<a id="currentPaging" href="movieReview.do?review_pg=${i }&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">${i }</a>]
 					</c:if>
 					<c:if test="${e_moviePage.startPage!=i }">
-						[<a id="paging" href="movieReview.do?review_pg=${i }&movie_code=${requestScope.movie_code}">${i }</a>]
+						[<a id="paging" href="movieReview.do?review_pg=${i }&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">${i }</a>]
 					</c:if>	<!-- el표현식에는 자바코드가 들어갈수없음 -->
 				</c:forEach> 
 				<c:if test="${e_moviePage.endPage<e_moviePage.totalPage}">
-					[<a id="paging" href="movieReview.do?review_pg=${e_moviePage.endPage+1}&movie_code=${requestScope.movie_code}">다음</a>]
+					[<a id="paging" href="movieReview.do?review_pg=${e_moviePage.endPage+1}&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">다음</a>]
 				</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 -->
 			</div>
 		</div>

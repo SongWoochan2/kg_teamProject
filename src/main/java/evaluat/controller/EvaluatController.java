@@ -26,13 +26,26 @@ public class EvaluatController {
 	public ModelAndView reviewDelete(HttpServletRequest request) {
 		int review_pg = 1;
 		int movie_pg = 1;
+		int photo_pg = 1;
+		int trailer_pg = 1;
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
+		// 공통사항
 		if(request.getParameter("review_pg") != null) {
 			review_pg = Integer.parseInt(request.getParameter("review_pg"));			
 		}
+		// 리뷰 페이지
 		if(request.getParameter("movie_pg") != null) {
 			movie_pg = Integer.parseInt(request.getParameter("movie_pg"));
 		}
+		// 영화 상세 페이지
+		if(request.getParameter("photo_pg") != null) {
+			photo_pg = Integer.parseInt(request.getParameter("photo_pg"));			
+		}
+		if(request.getParameter("trailer_pg") != null) {
+			trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));			
+		}
+		
+		
 		System.out.println("evaluat_code : " + Integer.parseInt(request.getParameter("evaluat_code")));
 		
 		int like_delete_result = evaluatService.deleteEvaluatLike(Integer.parseInt(request.getParameter("evaluat_code")));
@@ -61,7 +74,15 @@ public class EvaluatController {
 			modelAndView.addObject("review_pg", review_pg);
 		}
 		if(request.getParameter("movie_pg") != null) {
+			modelAndView.addObject("pagetype", "moviereview");
 			modelAndView.addObject("movie_pg", movie_pg);
+		}
+		if(request.getParameter("photo_pg") != null) {
+			modelAndView.addObject("photo_pg", photo_pg);
+		}
+		if(request.getParameter("trailer_pg") != null) {
+			modelAndView.addObject("pagetype", "movieinfo");
+			modelAndView.addObject("trailer_pg", trailer_pg);
 		}
 		modelAndView.addObject("delete_Result", delete_Result);
 		modelAndView.addObject("update_Score", update_Score);
@@ -73,6 +94,8 @@ public class EvaluatController {
 	@RequestMapping(value="/main/movie/reviewInsert.do")
 	public ModelAndView reviewInsert(HttpServletRequest request, HttpSession session) {
 		int movie_pg = 1;
+		int photo_pg = 1;
+		int trailer_pg = 1;
 		int movie_code = Integer.parseInt(request.getParameter("movie_code"));
 		ModelAndView modelAndView = new ModelAndView();
 		if(session.getAttribute("memId") == null) {
@@ -87,9 +110,16 @@ public class EvaluatController {
 			}else if(check_result > 0) {
 				modelAndView.setViewName("evaluatMemberCheck.jsp");
 			}else {
-				
+				// 리뷰 페이지
 				if(request.getParameter("movie_pg") != null) {
 					movie_pg = Integer.parseInt(request.getParameter("movie_pg"));
+				}
+				// 영화 상세 페이지
+				if(request.getParameter("photo_pg") != null) {
+					photo_pg = Integer.parseInt(request.getParameter("photo_pg"));			
+				}
+				if(request.getParameter("trailer_pg") != null) {
+					trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));			
 				}
 				int evaluat_score = Integer.parseInt(request.getParameter("evaluat_score"));
 				
@@ -111,7 +141,15 @@ public class EvaluatController {
 				modelAndView.addObject("movie_code", movie_code);
 				modelAndView.addObject("insert_Result", insert_Result);
 				if(request.getParameter("movie_pg") != null) {
+					modelAndView.addObject("pagetype", "moviereview");
 					modelAndView.addObject("movie_pg", movie_pg);
+				}
+				if(request.getParameter("photo_pg") != null) {
+					modelAndView.addObject("photo_pg", photo_pg);
+				}
+				if(request.getParameter("trailer_pg") != null) {
+					modelAndView.addObject("pagetype", "movieinfo");
+					modelAndView.addObject("trailer_pg", trailer_pg);
 				}
 				System.out.println("insert_Result : " + insert_Result);
 				modelAndView.setViewName("movieReviewInsert.jsp");
@@ -126,12 +164,22 @@ public class EvaluatController {
 		String member_id = "";
 		int review_pg = 1;
 		int movie_pg = 1;
-		
+		int photo_pg = 1;
+		int trailer_pg = 1;
+		// 공통 사항
 		if(request.getParameter("review_pg") != null) {
 			review_pg = Integer.parseInt(request.getParameter("review_pg"));			
 		}
+		// 리뷰 페이지
 		if(request.getParameter("movie_pg") != null) {
 			movie_pg = Integer.parseInt(request.getParameter("movie_pg"));
+		}
+		// 영화 상세 페이지
+		if(request.getParameter("photo_pg") != null) {
+			photo_pg = Integer.parseInt(request.getParameter("photo_pg"));			
+		}
+		if(request.getParameter("trailer_pg") != null) {
+			trailer_pg = Integer.parseInt(request.getParameter("trailer_pg"));			
 		}
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -161,7 +209,15 @@ public class EvaluatController {
 							modelAndView.addObject("review_pg", review_pg);
 						}
 						if(request.getParameter("movie_pg") != null) {
+							modelAndView.addObject("pagetype", "moviereview");
 							modelAndView.addObject("movie_pg", movie_pg);
+						}
+						if(request.getParameter("photo_pg") != null) {
+							modelAndView.addObject("photo_pg", photo_pg);	
+						}
+						if(request.getParameter("trailer_pg") != null) {
+							modelAndView.addObject("pagetype", "movieinfo");
+							modelAndView.addObject("trailer_pg", trailer_pg);			
 						}
 						modelAndView.addObject("movie_code", request.getParameter("movie_code"));
 						modelAndView.setViewName("reviewLikeSuccess.jsp");						

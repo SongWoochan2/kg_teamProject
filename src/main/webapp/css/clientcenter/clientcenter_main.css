@@ -1,8 +1,9 @@
+
 .clientmain_fullscreen{
 	width: 1000px;
 	height: 900px;
 	margin: 20px auto;
-	padding: 10;
+	padding: 10px;
 }
 .clientmain_left{
 	width: 15%;
@@ -19,36 +20,97 @@
 	float: left;
 }
 .center_box_top{
-	padding-top:30px;
-	border: 1px solid green;
+	padding-top:5px;
 	width: 100%;
 	height: 34%;
 	float: left;
 }
 #main_questions_div{
+	background-color:e61b10;
+	padding-top:60px;
+	color: white;
 	margin-left:10px;
-	border: 1px solid red;
 	width: 268px;
 	height: 260px;
 	text-align: center;
-	float: left;	
+	float: left;
+}
+.center_box_top_div1{
+	padding-top:4px;
+	font-size:14px;
+	text-align:center;
+	border: 2px solid white;
+	width: 150px;
+	height: 30px;
+	margin: auto;
+	border-radius: 5px;
+	color:white;
+}
+.clientmain_rigth_h2_1{
+	color: white;
+}
+#clientmain_rigth_p1{
+	margin-top:-1px;
+	color: white;
+	font-size: 13px;
 }
 #main_email_div{
-	border: 1px solid red;
+	background-color:ebe7dd;
+	padding-top:60px;
 	width: 268px;
 	height: 260px;
 	text-align: center;
 	float: left;	
+}
+#main_email_div_img{
+	margin-top:2px;
+}
+.clientmain_rigth_h2_2{
+	color: 333333;
+}
+.clientmain_rigth_p2{
+	color:gray;
+	font-size: 13px;
+}
+.center_box_top_div2{
+	padding-top:4px;
+	font-size:14px;
+	text-align:center;
+	border: 2px solid red;
+	width: 100px;
+	height: 30px;
+	margin: auto;
+	border-radius: 5px;
+	color:red;
+}
+#center_box_top_div2_p{
+	color: red;
 }
 #main_breakdown_div{
-	border: 1px solid red;
+	background-color:ecf0e9;
+	padding-top:55px;
 	width: 268px;
 	height: 260px;
 	text-align: center;
 	float: left;	
 }
+#main_breakdown_div_img{
+	margin-top: 3px;
+}
+.center_box_top_div3{
+	padding-top:4px;
+	font-size:14px;
+	text-align:center;
+	border: 2px solid gray;
+	width: 150px;
+	height: 30px;
+	margin: auto;
+	border-radius: 5px;
+}
+#center_box_top_div3_p{
+	color: gray;
+}
 .clientmain_rigth_mid{
-	border: 1px solid red;
 	width: 100%;
 	height: 34%;
 	float: left;
@@ -59,40 +121,101 @@
 	height: 100%;
 	float: left;
 }
+.rigth_mid_leftdiv_tong a{
+	color: black;
+}
+.rigth_mid_leftdiv_tong a:hover{
+	color: red;
+}
 #leftdiv_id_pw{
+	padding-top:25px;
 	margin:1px;
-	border: 1px solid blue;
+	border: 2px solid #c4c4bb;
 	width: 49%;
 	height: 38%;
 	float: left;
-}
-#leftdiv_reservation{
-	margin:1px;
-	border: 1px solid blue;
-	width: 49%;
-	height: 38%;
-	float: left;
-}
-#leftdiv_cancellation{
-	margin:1px;
-	border: 1px solid blue;
-	width: 49%;
-	height: 38%;
-	float: left;
-}
-#leftdiv_point{
-	margin:1px;
-	border: 1px solid blue;
-	width: 49%;
-	height: 38%;
-	float: left;
+	border-radius: 5px;
+	text-align: center;
+	background-color: #f7f7eb;
 }
 
-#rigth_mid_rigthdiv{
-	border: 1px solid gray;
+#leftdiv_reservation{
+	padding-top:25px;
+	margin:1px;
+	border: 2px solid #c4c4bb;
+	width: 49%;
+	height: 38%;
+	float: left;
+	border-radius: 5px;	
+	text-align: center;
+	background-color: #f7f7eb;
+}
+#leftdiv_cancellation{
+	padding-top:25px;
+	margin:1px;
+	border: 2px solid #c4c4bb;
+	width: 49%;
+	height: 38%;
+	float: left;
+	border-radius: 5px;
+	text-align: center;
+	background-color: #f7f7eb;
+}
+#leftdiv_point{
+	padding-top:25px;
+	margin:1px;
+	border: 2px solid #c4c4bb;
+	width: 49%;
+	height: 38%;
+	float: left;
+	border-radius: 5px;
+	text-align: center;
+	background-color: #f7f7eb;
+}
+
+.rigth_mid_rigthdiv{
 	width: 65%;
 	height: 100%;
 	float: left;
+}
+#rigth_mid_rigthdiv_top{
+	width: 100%;
+	height: 52%;
+	padding: 10px;
+}
+#rigth_mid_rigthdiv_top_strong{
+	float: left;
+}
+#rigth_mid_rigthdiv_top_img{
+	margin-top:-2px;
+}
+.rigth_mid_rigthdiv_top_ul{
+	font-size:13px;
+	padding: 10px;
+}
+.rigth_mid_rigthdiv_top_ul_text{
+	margin:3px;
+	float: left;
+	width: 70%;
+}
+.rigth_mid_rigthdiv_top_ul_date{
+	text-align:right;
+	float: right;
+	width: 20%;
+}
+.rigth_mid_rigthdiv_top_ul a{
+	text-decoration: none;
+	color: black;
+}
+.rigth_mid_rigthdiv_top_ul a:hover{
+	text-decoration: none;
+	color: black;
+	font-weight: bold; 
+}
+#rigth_mid_rigthdiv_bottom{
+	width: 100%;
+	height: 48%;
+	padding-left: 10px;
 }
 .clientmain_rigth_bottom{
 	padding-left:12px;

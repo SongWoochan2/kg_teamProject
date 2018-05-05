@@ -1,9 +1,112 @@
 
+
+.button_base {
+    margin: 0;
+    border: 0;
+    font-size: 12px;
+    position: relative;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -40px;
+    padding-top:7px;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.button_base:hover {
+    cursor: pointer;
+}
+.b05_3d_roll {
+	perspective: 500px;
+    -webkit-perspective: 500px;
+    -moz-perspective: 500px;
+}
+
+.b05_3d_roll div {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 25px;
+    padding: 2px;
+    border: #000000 solid 1px;
+    pointer-events: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    
+}
+
+.b05_3d_roll div:nth-child(1) {
+    color: #000000;
+    background-color: #000000;
+    transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform-origin: 35% 35% 0px;
+    -webkit-transform-origin: 35% 35% 0px;
+    -moz-transform-origin: 35% 35% 0px;
+}
+
+.b05_3d_roll div:nth-child(2) {
+    color: #000000;
+    background-color: #ffffff;
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform-origin: 35% 35% 0px;
+    -webkit-transform-origin: 35% 35% 0px;
+    -moz-transform-origin: 35% 35% 0px;
+}
+
+.b05_3d_roll:hover div:nth-child(1) {
+    color: #ffffff;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+}
+
+.b05_3d_roll:hover div:nth-child(2) {
+    background-color: #000000;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 		div{
 			box-sizing: border-box;
 		}
 		.div_top{
-			text-align:center;
 			width: 800px;
 			height: 600px;
 			margin: 50px auto;
@@ -23,12 +126,21 @@
 				width: 100%;
 				height: 5%;
 			}
+			.top_movie_div1_title{
+				text-align: center;
+			}
 			#top_movie_reset{
+				text-align:center;
 				background-color:#FFFFF6;
 				border : 1px solid #D5D5D5;
 				float: left;
 				width: 100%;
 				height: 5%;
+			}
+			.reset_choice{
+				outline: 0;
+				border:0;
+				
 			}
 			#top_movie_div2{
 				background-color:#FFFFF6;
@@ -39,7 +151,7 @@
 				overflow-y: auto;
 			}
 				#top_movie_div2 .movie_item{
-					border : 1px solid black;
+					margin:1px;
 					width: 100%;
 					height: 40px;
 				}
@@ -48,7 +160,7 @@
 					height: 100%;
 				}
 				#top_movie_div2 .movie_item .movie_code label{
-					text-align: center;
+					text-align: left;
 					width: 100%;
 					height: 100%;
 					font-weight: bold;
@@ -71,6 +183,7 @@
 				height: 5%;
 			}
 			#top_theater_reset{
+				text-align:center;
 				background-color:#FFFFF6;
 				border : 1px solid #D5D5D5;
 				float: left;
@@ -104,6 +217,7 @@
 				}
 				
 		#top_date{
+			text-align:center;
 			margin:1px;
 			width: 12%;
 			height: 100%;
@@ -125,6 +239,7 @@
 				height: 5%;
 			}
 			#top_date_div2{
+			text-align:center;
 				background-color:#FFFFF6;
 				border : 1px solid #D5D5D5;
 				float: left;
@@ -136,7 +251,7 @@
 					border-top : 1px solid black;
 					width: 100%;
 					height: 40px;
-					text-align: left;
+					text-align: center;
 					font-weight: bold;
 					font-size: 20px;
 					line-height: 40px;
@@ -299,7 +414,7 @@
 		
 		.div_bottom #bottom_seat_choice button{
 			height : 50px;
-			border : 1px solid #d14010;
+			outline:0;
 			font-size : 14px;
 			color : white;
 			text-decoration : none;
