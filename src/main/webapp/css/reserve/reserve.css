@@ -509,10 +509,10 @@
 			
 			
 #result_popup_div{
+	display: none; 
 	background: white;
 	border: 2px solid #c0c0c0;
 	border-radius: 10px;
-	/* display: none; */
 	position: fixed; 
 	top: 250px;
 	left: 45%; 
@@ -570,10 +570,8 @@
 			margin: 0 10px;
 		}
 		
-		
-		
 #result_popup_shadow{
-/* 	display: none; */
+ 	display: none; 
 	position: fixed; left: 0; top: 0;
 	height: 100%; width: 100%; background: black;
 	filter: alpha(opacity=60); opacity: 0.60;

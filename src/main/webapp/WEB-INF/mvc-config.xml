@@ -22,37 +22,40 @@
 	<mvc:resources location="/image/" mapping="/image/**"/>
 	
 
-	<!-- 재환 -->
+	<!-- 어노테이션 연결 -->
 	<context:component-scan base-package="admin"/>
+    <context:component-scan base-package="answer" />
+    
+	<context:component-scan base-package="evaluat"/>
+	
+    <context:component-scan base-package="inquiry"/>
+    
+	<context:component-scan base-package="member"/>
+	<context:component-scan base-package="memberReserve"/>
 	<context:component-scan base-package="movie"/>
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
-	<context:component-scan base-package="select"/>
-	<context:component-scan base-package="evaluat"/>
-	   
-	<!-- 우찬 -->
-	<context:component-scan base-package="seattype"/>
-	<context:component-scan base-package="timetype"/>
-	<context:component-scan base-package="theater"/>
-	<context:component-scan base-package="showPlace.controller"/>
-	<context:component-scan base-package="showPresent.controller"/>
-    <context:component-scan base-package="reserve" />
-	
-	<!-- 빛나 -->
-	<context:component-scan base-package="member"/>
 	<context:component-scan base-package="mypage"/>
-	<context:component-scan base-package="savingList"/>
-	<context:component-scan base-package="memberReserve"/>
 	
-	<!-- 진환 -->
-    <context:component-scan base-package="qna"/>
     <context:component-scan base-package="noticeItem"/>
-    <context:component-scan base-package="inquiry"/>
-    <context:component-scan base-package="answer" />
     
-    <!-- 재민 -->
     <context:component-scan base-package="productboard.controller"/>
     <context:component-scan base-package="productpay.controller"/>
+    
+    <context:component-scan base-package="qna"/>
+    
+    <context:component-scan base-package="reserve" />
+    
+	<context:component-scan base-package="savingList"/>
+	<context:component-scan base-package="seattype"/>
+	<context:component-scan base-package="select"/>
+	<context:component-scan base-package="showPlace.controller"/>
+	<context:component-scan base-package="showPresent.controller"/>
+	   
+	<context:component-scan base-package="theater"/>
+	<context:component-scan base-package="timetype"/>
+	
+    
     
 	<!-- advice : 횡단(공통)관심사항  -->
 	<bean id="loginCheckAdvice" class="advice.log.Logging"/>

@@ -14,6 +14,7 @@ import reserve.bean.SeatNumVO;
 import reserve.bean.SeatTypeVO;
 import reserve.bean.TimeTypeVO;
 import reserve.dao.ReserveDAO;
+import savingList.bean.SavingListDTO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
 
@@ -29,26 +30,23 @@ public class ReserveServiceImpl implements ReserveService{
 	///////////// 우찬
 
 	@Override
-	public List<MovieDTO> getMovieList(String show_date, int theater_code) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("show_date", show_date);
-		map.put("theater_code", theater_code);
-		return reserveDAO.getMovieList(show_date, theater_code);
+	public List<MovieDTO> getMovieList(String show_date, int theater_code, int show_time) {
+		return reserveDAO.getMovieList(show_date, theater_code, show_time);
 	}
 
 	@Override
-	public List<TheaterDTO> getTheaterList(String show_date, int movie_code) {
-		return reserveDAO.getTheaterList(show_date, movie_code);
+	public List<TheaterDTO> getTheaterList(String show_date, int movie_code, int show_time) {
+		return reserveDAO.getTheaterList(show_date, movie_code, show_time);
 	}
 
 	@Override
-	public List<ShowPresentAllVO> getDateList(int movie_code, int theater_code) {
-		return reserveDAO.getDateList(movie_code, theater_code);
+	public List<ShowPresentAllVO> getDateList(int movie_code, int theater_code, int show_time) {
+		return reserveDAO.getDateList(movie_code, theater_code, show_time);
 	}
 
 	@Override
-	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code, String show_date) {
-		return reserveDAO.getShowList(movie_code, theater_code, show_date);
+	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code, String show_date, int show_time) {
+		return reserveDAO.getShowList(movie_code, theater_code, show_date, show_time);
 	}
 
 	@Override
@@ -82,7 +80,16 @@ public class ReserveServiceImpl implements ReserveService{
 	public int updateMemberReserve(MemberReserveVO memberReserveVO) {
 		return reserveDAO.updateMemberReserve(memberReserveVO);
 	}
-	
+
+	@Override
+	public int insertSavingList(SavingListDTO savingListDTO) {
+		return reserveDAO.insertSavingList(savingListDTO);
+	}
+
+	@Override
+	public MemberReserveVO selectMemberReserve(MemberReserveVO memberReserveVO) {
+		return reserveDAO.selectMemberReserve(memberReserveVO);
+	}
 	
 	@Override
 	public int insertMemberReserve(MemberReserveVO memberReserveVO) {

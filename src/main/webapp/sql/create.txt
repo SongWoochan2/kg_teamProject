@@ -820,7 +820,7 @@ nocache
 nomaxvalue;
 
 insert into show_present values(
-  show_present_seq.nextval, 6, 1, SYSDATE , 50,70
+  show_present_seq.nextval, 6, 1, SYSDATE , 5, 7
 );
 
 

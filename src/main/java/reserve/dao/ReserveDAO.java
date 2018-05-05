@@ -16,6 +16,7 @@ import reserve.bean.ReservedSeatVO;
 import reserve.bean.SeatNumVO;
 import reserve.bean.SeatTypeVO;
 import reserve.bean.TimeTypeVO;
+import savingList.bean.SavingListDTO;
 import showPresent.bean.ShowPresentAllVO;
 import theater.bean.TheaterDTO;
 
@@ -30,25 +31,27 @@ public class ReserveDAO {
 	
 	///////////// 우찬
 
-	public List<MovieDTO> getMovieList(String show_date, int theater_code) {
+	public List<MovieDTO> getMovieList(String show_date, int theater_code, int show_time) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("show_date", show_date);
 		if(theater_code != 0) {
 			map.put("theater_code", theater_code);			
 		}
+		map.put("show_time", show_time);
 		return sqlSession.selectList("mybatis.reserveMapper.movieList", map);
 	}
 
-	public List<TheaterDTO> getTheaterList(String show_date, int movie_code) {
+	public List<TheaterDTO> getTheaterList(String show_date, int movie_code, int show_time) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("show_date", show_date);
 		if(movie_code != 0) {
 			map.put("movie_code", movie_code);
 		}
+		map.put("show_time", show_time);
 		return sqlSession.selectList("mybatis.reserveMapper.theaterList", map);
 	}
 
-	public List<ShowPresentAllVO> getDateList(int movie_code, int theater_code) {
+	public List<ShowPresentAllVO> getDateList(int movie_code, int theater_code, int show_time) {
 		Map<String, Integer> map = new HashMap<>();
 		if(movie_code != 0) {
 			map.put("movie_code", movie_code);
@@ -56,17 +59,21 @@ public class ReserveDAO {
 		if(theater_code != 0) {
 			map.put("theater_code", theater_code);
 		}
+		map.put("show_time", show_time);
 		return sqlSession.selectList("mybatis.reserveMapper.dateList", map);
 	}
 	
 
-	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code, String show_date) {
+	public List<ShowPresentAllVO> getShowList(int movie_code, int theater_code, String show_date, int show_time) {
 		Map<String, Object> map = new HashMap<>();
 		if(movie_code != 0) {
 			map.put("movie_code", movie_code);
 		}
 		if(theater_code != 0) {
 			map.put("theater_code", theater_code);
+		}
+		if(show_time != -1) {
+			map.put("show_time", show_time);
 		}
 		map.put("show_date", show_date);
 		return sqlSession.selectList("mybatis.reserveMapper.showList", map);
@@ -109,14 +116,21 @@ public class ReserveDAO {
 	}
 
 	public int deleteMemberReserve(MemberReserveVO memberReserveVO) {
-		return sqlSession.update("mybatis.reserveMapper.deleteMemberReserve", memberReserveVO);
+		return sqlSession.delete("mybatis.reserveMapper.deleteMemberReserve", memberReserveVO);
 	}
 	
 
 	public int updateMemberReserve(MemberReserveVO memberReserveVO) {
 		return sqlSession.update("mybatis.reserveMapper.updateMemberReserve", memberReserveVO);
 	}
-	
+
+	public int insertSavingList(SavingListDTO savingListDTO) {
+		return sqlSession.insert("mybatis.reserveMapper.insertSavingList", savingListDTO);
+	}
+
+	public MemberReserveVO selectMemberReserve(MemberReserveVO memberReserveVO) {
+		return sqlSession.selectOne("mybatis.reserveMapper.selectMemberReserve", memberReserveVO);
+	}
 	
 	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
 		return sqlSession.insert("mybatis.reserveMapper.insertMemberReserve", memberReserveVO);
