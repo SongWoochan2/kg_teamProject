@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
 				<div id="noti_top_ment">
 					<br>
 					CGV의 주요한 이슈 및 여러가지 소식들을 확인하실 수 있습니다.
-					<br><br>
+					<br><br><br>
 				</div>
 			</div>
 			<div id="tab">
@@ -126,5 +126,6 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div>	
 	</div>
+	<jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>
