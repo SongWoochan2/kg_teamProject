@@ -13,40 +13,53 @@
             base-package="org.springframework.samples.service"/>  -->
             
      <!-- 진환 -->
-    <context:component-scan base-package="evaluat"/>        
-	<context:component-scan base-package="answer"/>
-	<context:component-scan base-package="inquiry"/>
-   	<context:component-scan base-package="qna"/>
-   	<context:component-scan base-package="noticeItem"/>
-   	
 	<context:component-scan base-package="admin"/>
+	<context:component-scan base-package="advice"/>
+	<context:component-scan base-package="answer"/>
+	
+    <context:component-scan base-package="evaluat"/>     
+       
+	<context:component-scan base-package="inquiry"/>
+   	
+	<context:component-scan base-package="member"/>
+	<context:component-scan base-package="memberReserve"/>
 	<context:component-scan base-package="movie"/>
 	<context:component-scan base-package="moviephoto"/>
 	<context:component-scan base-package="movietrailer"/>
+	<context:component-scan base-package="mypage"/>
+	
+   	<context:component-scan base-package="noticeItem"/>
+   	
+	<context:component-scan base-package="productboard"/>
+	<context:component-scan base-package="productpay"/>
+	
+	<context:component-scan base-package="reserve" />
+	
+	<context:component-scan base-package="savingList"/>
 	<context:component-scan base-package="seat"/>
 	<context:component-scan base-package="seattype"/>
-	<context:component-scan base-package="timetype"/>
-	<context:component-scan base-package="theater"/>
+	<context:component-scan base-package="select"/>
 	<context:component-scan base-package="showPlace" />
 	<context:component-scan base-package="showPresent" />
-	<context:component-scan base-package="member"/>
-	<context:component-scan base-package="mypage"/>
-	<context:component-scan base-package="advice"/>
-	<context:component-scan base-package="reserve" />
-	<context:component-scan base-package="select"/>
-	<context:component-scan base-package="savingList"/>
-	<context:component-scan base-package="productboard"/>
-	<context:component-scan base-package="memberReserve"/>
-	<context:component-scan base-package="productpay"/>
+	
+	<context:component-scan base-package="theater"/>
+	<context:component-scan base-package="timetype"/>
+	
+   	<context:component-scan base-package="qna"/>
 
 	<context:property-placeholder location="classpath:spring/db.properties, 
 											classpath:spring/resource.properties"/>
+					
+											
 	<bean id="dataSource"
-				class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+				class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
 		<property name="url" value="${jdbc.url}"/>
 		<property name="username" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
+		<property name="maxActive" value="${jdbc.maxActive}"></property>
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+		<property name="initialSize" value="${jdbc.initialSize}"></property>
 	</bean>
 	<bean id = "sessionFactory" class = "org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>

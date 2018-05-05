@@ -35,6 +35,10 @@ public interface ReserveService {
 
 	public List<SeatNumVO> getReservedSeatOfShow(int movie_code, int theater_code, String show_date);
 
+	public int deleteMemberReserve(MemberReserveVO memberReserveVO);
+	
+	public int updateMemberReserve(MemberReserveVO memberReserveVO);
+	
 
 	public List<SeatNumVO> getTotalSeatOfShow(int movie_code, int theater_code, String show_date);
 	

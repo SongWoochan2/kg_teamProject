@@ -51,6 +51,53 @@ public class ReserveController {
 	@Autowired
 	private MovieService movieService;
 	
+
+	@RequestMapping(value="/reserveComplete.do")
+	public ModelAndView hyperreserveComplete(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		
+		String member_id = (String) session.getAttribute("memId");
+		int reserve_code = (Integer) session.getAttribute("reserve_code");
+		
+		MemberReserveVO memberReserveVO = new MemberReserveVO();
+		memberReserveVO.setReserve_id(member_id);
+		memberReserveVO.setReserve_code(reserve_code);
+		
+		int result =  reserveService.updateMemberReserve(memberReserveVO);
+		
+		///    포인트 적립하기 추가
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/main/reserve/reserveComplete.jsp");
+		
+		return modelAndView;
+	}
+	
+
+	@RequestMapping(value="/reserveCancel.do")
+	public ModelAndView hyperreserveCancel(HttpServletRequest request, HttpServletResponse response) {
+
+		HttpSession session = request.getSession();
+		
+		String member_id = (String) session.getAttribute("memId");
+		int reserve_code = (Integer) session.getAttribute("reserve_code");
+		
+		MemberReserveVO memberReserveVO = new MemberReserveVO();
+		memberReserveVO.setReserve_id(member_id);
+		memberReserveVO.setReserve_code(reserve_code);
+		
+		int result =  reserveService.deleteMemberReserve(memberReserveVO);
+		
+				
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/main/reserve/reserveCancel.jsp");
+		
+		return modelAndView;
+	}
+	
 	
 	@RequestMapping(value="/reserve.do")
 	public String hyperreserve(HttpServletRequest request, HttpServletResponse response) {
@@ -64,18 +111,17 @@ public class ReserveController {
 		String member_id = (String) session.getAttribute("memId");
 		
 		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
-		int show_place_code = Integer.parseInt(request.getParameter("show_place_code"));
+		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
 
 		List<SeatVO> seatVOs = new ArrayList<>();
 		for(int i = 1; i <= 8; i++) {
 			SeatVO seatVO = new SeatVO();
 			String seat = request.getParameter("seat" + i);
 			if(seat != null && !seat.equals("")) {
-				System.out.println("["+seat+"]");//////////////////////////////
 				String[] index = seat.split("-");
 				seatVO.setY_index(index[0]);
 				seatVO.setX_index(Integer.parseInt(index[1]));
-				seatVO.setShow_place_code(show_place_code);
+				seatVO.setShow_place_code(showPresentSuperVO.getShow_place_code());
 				
 				seatVOs.add(seatVO);
 			}
@@ -84,20 +130,50 @@ public class ReserveController {
 		List<ReservedSeatVO> reservedSeatVOs = reserveService.getreservedSeats(show_present_code);
 		
 		
-		ModelAndView modelAndView = new ModelAndView();
-		
-		
 		if(isAlreadyReseved(reservedSeatVOs, seatVOs)) {
-//			modelAndView.addObject("su", 0);
-//			modelAndView.setViewName("/main/reserve/reserving.jsp");
-
 			try {
-				response.getWriter().println("{ \"su\" : \"-1\"}");
+				response.getWriter().println("{ \"result\" : \"-1\"}");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			return;
 		} 
+
+		// 요금 계산에 필요한 시간분류, 좌석분류 테이블 가져와서 MAP에 저장
+		Map<Integer, SeatTypeVO> seatTypeMap = reserveService.getSeatType();
+		Map<Integer, TimeTypeVO> timeTypeMap = reserveService.getTimeType();
+		
+		
+		int timeAddCost = timeTypeMap.get(showPresentSuperVO.getShow_time()).getAdd_cost();
+		int defaultCost = showPresentSuperVO.getDefault_cost();
+		int totalCost = 0;
+		
+		List<SeatVO> totalSeatVOs = showPlaceService.seatList(showPresentSuperVO.getShow_place_code());
+		for(SeatVO tmp1 : seatVOs ) {
+			// 좌석이 존재하는 지 체크
+			boolean checkSeat = false;
+			
+			System.out.println("전체 --------------------------------");
+			for(SeatVO tmp2 : totalSeatVOs) {
+				System.out.print(tmp2.getY_index() + "-" + tmp2.getX_index() + "/");
+				if(tmp1.getX_index() == tmp2.getX_index() && tmp1.getY_index().equals(tmp2.getY_index())) {
+					checkSeat = true;
+					totalCost += defaultCost + timeAddCost + seatTypeMap.get(tmp2.getSeat_type_code()).getAdd_cost();
+					break;
+				}
+			}
+			
+			System.out.println("예매 ---------------------------------");
+			System.out.println(tmp1.getY_index() + "-" + tmp1.getX_index());
+			if(!checkSeat) {
+				try {
+					response.getWriter().println("{ \"result\" : \"-2\"}");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return;
+			}
+		}
 		
 		MemberReserveVO memberReserveVO = new MemberReserveVO();
 		
@@ -111,22 +187,28 @@ public class ReserveController {
 		memberReserveVO.setMember_seat6(request.getParameter("seat6"));
 		memberReserveVO.setMember_seat7(request.getParameter("seat7"));
 		memberReserveVO.setMember_seat8(request.getParameter("seat8"));
-		memberReserveVO.setReserve_cost(10000);
 		
 		
-		int su = reserveService.insertMemberReserve(memberReserveVO);
+		memberReserveVO.setReserve_cost(totalCost);
+		
+		
+		int result = reserveService.insertMemberReserve(memberReserveVO);
 
 		try {
-			response.getWriter().println("{ \"su\" : \""+ su + "\"}");
+			response.getWriter().println("{ \"result\" : \""+ result + "\", \"totalCost\" : \""+ totalCost + "\" }");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return;
-		/*
-		modelAndView.setViewName("/main/reserve/reserving.jsp");
-		modelAndView.addObject("su", su);
+		session.setAttribute("reserve_code", memberReserveVO.getReserve_code());
 		
-		return modelAndView;*/
+		// result
+		// 1 : 성공
+		// 0 : 실패
+		// -1 : 이미 예약된 좌석
+		// -2 : 잘못된 좌석
+		
+		
+		return;
 	}
 	
 	
@@ -272,7 +354,7 @@ public class ReserveController {
 		if(show_date.equals("")) {
 			show_date = null;
 		}
-
+		
 	    List<TheaterDTO> list = reserveService.getTheaterList(show_date, movie_code);
 	   
 	    JSONArray theater_list = new JSONArray();

@@ -72,6 +72,16 @@ public class ReserveServiceImpl implements ReserveService{
 	public List<SeatNumVO> getTotalSeatOfShow(int movie_code, int theater_code, String show_date){
 		return reserveDAO.getTotalSeatOfShow(movie_code, theater_code, show_date);
 	}
+
+	@Override
+	public int deleteMemberReserve(MemberReserveVO memberReserveVO) {
+		return reserveDAO.deleteMemberReserve(memberReserveVO);
+	}
+	
+	@Override
+	public int updateMemberReserve(MemberReserveVO memberReserveVO) {
+		return reserveDAO.updateMemberReserve(memberReserveVO);
+	}
 	
 	
 	@Override

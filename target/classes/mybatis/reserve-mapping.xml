@@ -4,6 +4,11 @@
 
 <mapper namespace="mybatis.reserveMapper">
 
+	
+		
+
+
+
 	<!-- 극장이나 날짜를 눌렀을때 영화가 변경  -->
 	<select id="movieList" parameterType="java.util.Map" resultType="movieDTO">
 		SELECT * FROM movie 
@@ -93,8 +98,21 @@
 	
 	
 	<!-- 상영현황별 총 좌석수 -->
-	<select id="getTotalSeatOfShow" parameterType="java.util.Map" resultType="reserve.bean.SeatNumVO">
- 		SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place 
+	<select id="getTotalSeatOfShow" parameterType="java.util.Map" resultType="reserve.bean.SeatNumVO">	
+ 		SELECT * FROM   ( 
+	    		SELECT show_place_code, show_present_code FROM show_fully
+				WHERE theater_code = #{theater_code}
+					AND to_char(show_date, 'YYYYMMDD') = #{show_date}
+					AND movie_code = #{movie_code})
+				JOIN
+					(SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place 
+					WHERE seat.y_index != '!'
+					AND seat.show_place_code = show_place.show_place_code
+		     		GROUP BY seat.show_place_code) 
+		     	USING(show_place_code)
+	</select>
+	
+	<!--  		SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place 
 		WHERE seat.y_index != '!'
 		AND seat.show_place_code = show_place.show_place_code
 		AND show_place.show_place_code IN(
@@ -107,20 +125,7 @@
 		ORDER BY seat.show_place_code ASC
 	</select>
 	
-	
-	
-<!-- 		SELECT * FROM   ( -->
-<!-- 	    		SELECT show_place_code, show_present_code FROM show_fully -->
-<!-- 				WHERE theater_code = #{theater_code} -->
-<!-- 					AND to_char(show_date, 'YYYYMMDD') = #{show_date} -->
-<!-- 					AND movie_code = #{movie_code}) -->
-<!-- 				JOIN -->
-<!-- 					(SELECT seat.show_place_code, count(*) AS seatNum FROM seat, show_place  -->
-<!-- 					WHERE seat.y_index != '!' -->
-<!-- 					AND seat.show_place_code = show_place.show_place_code -->
-<!-- 		     		GROUP BY seat.show_place_code)  -->
-<!-- 		     	USING(show_place_code) -->
-<!-- 	</select> -->
+	 -->
 	
 	
 	<!-- 영화별 좌석 예매수 -->
@@ -171,10 +176,25 @@
 	</select>
 	
 	
+	<!-- 회원 예매 결제  취소 -->
+	<delete id="deleteMemberReserve" parameterType="reserve.bean.MemberReserveVO">
+		delete member_reserve WHERE reserve_id = #{reserve_id} AND reserve_code = #{reserve_code}
+	</delete>
+	
+	<!-- 회원 예매 결제 완료 업데이트 -->
+	<update id="updateMemberReserve" parameterType="reserve.bean.MemberReserveVO">
+		update member_reserve set reserve_cancel_able ='N' WHERE reserve_id = #{reserve_id} AND reserve_code = #{reserve_code}
+	</update>
+	
+	
+	<!-- 회원 예매 미리 넣기 -->
 	<insert id="insertMemberReserve" parameterType="reserve.bean.MemberReserveVO">
 		insert into member_reserve values(
 			member_reserve_seq.nextval, #{reserve_id}, #{show_present_code}, #{member_seat1}, #{member_seat2}, #{member_seat3}, #{member_seat4}, #{member_seat5}, #{member_seat6}, #{member_seat7}, #{member_seat8}, #{reserve_cost}, sysdate, 'n'
 		)
+		<selectKey keyProperty="reserve_code" resultType="int" order="AFTER">
+	        SELECT member_reserve_seq.CURRVAL FROM DUAL
+	    </selectKey>
 	</insert>
 	
 	<select id ="movieReserveCheck" parameterType="java.util.Map" resultType="Integer">

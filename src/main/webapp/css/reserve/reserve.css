@@ -341,10 +341,10 @@
 			filter: alpha(opacity=60); opacity: 0.60;
 			z-index: 10;
 		}
-		#popup_title input:focus{
+		#my_popup_div #popup_title input:focus{
 			border: 0;
 		}
-		#renew_my_popup:hover{
+		#my_popup_div #renew_my_popup:hover{
 			background: url(/MyCGV/image/logo/reButton2.png);
 			border: 0;
 			padding: 0;
@@ -374,7 +374,7 @@
 			text-decoration:none;
 		}
 		#close_my_popup, #close_my_popup:active{
-			background: url(/MyCGV/image/logo/xButton1.png) ;
+			background: url(/MyCGV/image/logo/xButton1.png);
 			border: 0;
 			padding: 0;
 			width: 30px;
@@ -390,3 +390,77 @@
 			text-decoration:none;
 			cursor: pointer;
 		}
+		
+			
+			
+#result_popup_div{
+	background: white;
+	border: 2px solid #c0c0c0;
+	border-radius: 10px;
+	/* display: none; */
+	position: fixed; 
+	top: 250px;
+	left: 45%; 
+	width: 200px;
+	height: 150px;
+	z-index: 120;
+}
+	#result_popup_div #result_popup_title{
+		color: black;
+		font-weight: bold;
+		text-align: right;
+		width: 100%;
+		height: 20%;
+	}
+		#close_result_popup:hover{
+			background: url(/MyCGV/image/logo/xButton2.png);
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+			text-decoration:none;
+		}
+		#close_result_popup, #close_result_popup:active{
+			background: url(/MyCGV/image/logo/xButton1.png);
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;    
+			text-decoration:none;
+			cursor: pointer;
+		}
+		#close_result_popup:focus{
+			border: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;    
+			text-decoration:none;
+			cursor: pointer;
+		}
+	#result_popup_div #result_popup_main{
+		padding: 5px;
+		font-size: 13px;
+		border-top: 1px solid #e1e1e1;
+		border-bottom: 1px solid #e1e1e1;
+		width: 100%;
+		height: 60%;
+	}
+	#result_popup_div #result_popup_bottom{
+			text-align: center;
+		width: 100%;
+		height: 20%;
+	}
+		#result_popup_bottom input{
+			width: 60px;
+			margin: 0 10px;
+		}
+		
+		
+		
+#result_popup_shadow{
+/* 	display: none; */
+	position: fixed; left: 0; top: 0;
+	height: 100%; width: 100%; background: black;
+	filter: alpha(opacity=60); opacity: 0.60;
+	z-index: 110;
+}

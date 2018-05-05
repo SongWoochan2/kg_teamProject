@@ -107,6 +107,15 @@ public class ReserveDAO {
 		map.put("show_date", show_date);
 		return sqlSession.selectList("mybatis.reserveMapper.getTotalSeatOfShow", map);
 	}
+
+	public int deleteMemberReserve(MemberReserveVO memberReserveVO) {
+		return sqlSession.update("mybatis.reserveMapper.deleteMemberReserve", memberReserveVO);
+	}
+	
+
+	public int updateMemberReserve(MemberReserveVO memberReserveVO) {
+		return sqlSession.update("mybatis.reserveMapper.updateMemberReserve", memberReserveVO);
+	}
 	
 	
 	public int insertMemberReserve(MemberReserveVO memberReserveVO) {
