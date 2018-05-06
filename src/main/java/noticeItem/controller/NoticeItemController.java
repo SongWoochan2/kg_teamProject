@@ -57,7 +57,6 @@ public class NoticeItemController {
 	@RequestMapping(value="/admin/noticeItem/noticeItemList.do")
 	public ModelAndView noticeItemList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
-		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		
 		int endNum = pg*10;
@@ -77,7 +76,8 @@ public class NoticeItemController {
 		
 		if(admin_id!=null) {
 			modelAndView.setViewName("noticeItemListAdmin.jsp");
-		}else if(member_id!=null) {
+			
+		}else {
 			modelAndView.setViewName("noticeItemListMember.jsp");
 		}
 		
@@ -88,7 +88,6 @@ public class NoticeItemController {
 	@RequestMapping(value="/admin/noticeItem/noticeItemView.do")
 	public ModelAndView noticeItemView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
-		String member_id = (String)session.getAttribute("memId");
 		int notice_item_code = Integer.parseInt(request.getParameter("notice_item_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		NoticeItemDTO noticeItemDTO = noticeItemService.noticeItemView(notice_item_code);
@@ -96,7 +95,7 @@ public class NoticeItemController {
 		modelAndView.addObject("noticeItemDTO", noticeItemDTO);
 		if(admin_id!=null) {
 			modelAndView.setViewName("noticeItemViewAdmin.jsp");
-		}else if(member_id!=null) {
+		}else{
 			modelAndView.setViewName("noticeItemViewMember.jsp");
 		}
 		

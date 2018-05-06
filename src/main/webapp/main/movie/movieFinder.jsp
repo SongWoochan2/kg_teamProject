@@ -170,9 +170,9 @@
 				<c:forEach var ="find_list" items="${requestScope.find_list }">
 					<div id = "findentity">
 						<div id = "entity-poster">
-						<c:forEach var ="photo_map" items="${requestScope.photo_map }" >
-							<c:if test="${photo_map.key == find_list.movie_code }">
-								<img src = "../../image/storage/moviephoto/${photo_map.value }">
+						<c:forEach var ="poster_map" items="${requestScope.poster_map }" >
+							<c:if test="${poster_map.key == find_list.movie_code }">
+								<img src = "../../image/storage/moviephoto/${poster_map.value }">
 							</c:if>
 						</c:forEach>
 						</div>

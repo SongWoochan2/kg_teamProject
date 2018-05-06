@@ -20,6 +20,14 @@
 			$('#chartType option').eq(2).prop('selected', true); 
 		}
 	});
+	$(function(){
+		$("a#movie_like").click(function() {
+			if(${sessionScope.memId == null} == true){
+				alert("먼저 로그인 해주세요.");				
+				return false;
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -82,7 +90,7 @@
 									</c:if>
 								</c:forEach>
 							</div>
-							<div id = "entity-name">${top_movie_list.movie_name }</div>
+							<div id = "entity-name"><a href = "movieDetailView.do?movie_code=${top_movie_list.movie_code }">${top_movie_list.movie_name }</a></div>
 							<div id = "entity-reserve"><font>예매율</font>
 								<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
 									<c:if test="${top_movie_list.movie_code == reserve_rate_map.key }">
@@ -104,7 +112,16 @@
 								</c:forEach>)
 							</div>
 							<div id = "entity-like">
-								<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+								<c:forEach var ="like_map" items="${requestScope.like_map }" >
+									<c:if test="${like_map.key == top_movie_list.movie_code }">
+										<c:if test="${like_map.value == 1}">
+											<a href = "selectLike.do?movie_code=${top_movie_list.movie_code }&pagetype=${requestScope.chartType}&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+										</c:if>
+										<c:if test="${like_map.value == 0}">
+											<a href = "selectLike.do?movie_code=${top_movie_list.movie_code }&pagetype=${requestScope.chartType}&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+										</c:if>
+									</c:if>
+								</c:forEach>
 								<b>${top_movie_list.good_num } 명 </b>
 									<a href="../../reserve.do?movie_code=${top_movie_list.movie_code }" id = "reserve-btn" class="btn btn-info btn-lg">
 		          						<span class="glyphicon glyphicon-film"> 예매</span>
@@ -133,7 +150,7 @@
 									</c:if>
 								</c:forEach>
 							</div>
-							<div id = "entity-name">${bottom_movie_list.movie_name }</div>
+							<div id = "entity-name"><a href = "movieDetailView.do?movie_code=${bottom_movie_list.movie_code }">${bottom_movie_list.movie_name }</a></div>
 							<div id = "entity-reserve"><font>예매율</font> 
 								<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
 									<c:if test="${bottom_movie_list.movie_code == reserve_rate_map.key }">
@@ -155,7 +172,16 @@
 								</c:forEach>)
 							</div>
 							<div id = "entity-like">
-								<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+								<c:forEach var ="like_map" items="${requestScope.like_map }" >
+									<c:if test="${like_map.key == bottom_movie_list.movie_code }">
+										<c:if test="${like_map.value == 1}">
+											<a href = "selectLike.do?movie_code=${bottom_movie_list.movie_code }&pagetype=${requestScope.chartType}&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+										</c:if>
+										<c:if test="${like_map.value == 0}">
+											<a href = "selectLike.do?movie_code=${bottom_movie_list.movie_code }&pagetype=${requestScope.chartType}&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+										</c:if>
+									</c:if>
+								</c:forEach>
 								<b>${bottom_movie_list.good_num } 명 </b>
 									<a href="../../reserve.do?movie_code=${bottom_movie_list.movie_code }" id = "reserve-btn" class="btn btn-info btn-lg">
 		          						<span class="glyphicon glyphicon-film"> 예매</span>
@@ -176,7 +202,7 @@
 							</c:forEach>
 						</div>
 						<div id = "movie-name">
-							<a href="#">${top_movie_list.movie_name }</a>
+							<a href = "movieDetailView.do?movie_code=${top_movie_list.movie_code }">${top_movie_list.movie_name }</a>
 						</div>
 						<div id = "movie-info">
 							${top_movie_list.movie_open_date } 개봉 
@@ -194,7 +220,16 @@
 							)
 						</div>
 						<div id = "movie-reserve">
-							<a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-heart-empty"></span></a>
+							<c:forEach var ="like_map" items="${requestScope.like_map }" >
+								<c:if test="${like_map.key == top_movie_list.movie_code }">
+									<c:if test="${like_map.value == 1}">
+										<a href = "selectLike.do?movie_code=${top_movie_list.movie_code }&pagetype=${requestScope.chartType}&chart_pg=${moviePage.pg}&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+									</c:if>
+									<c:if test="${like_map.value == 0}">
+										<a href = "selectLike.do?movie_code=${top_movie_list.movie_code }&pagetype=${requestScope.chartType}&chart_pg=${moviePage.pg}&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+									</c:if>
+								</c:if>
+							</c:forEach>
 							&emsp;<b>${top_movie_list.good_num } 명 </b>
 						</div>
 					</div>

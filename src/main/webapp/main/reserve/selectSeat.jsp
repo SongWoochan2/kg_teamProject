@@ -258,9 +258,42 @@
 			
 		});
 		
+		// 예매 실패시 실행
+		function reserveFail(msg){
+        	$("#result_popup_main").html(msg);
+        	
+        	$("#result_popup_main #resultOK, #result_popup_main #resultCancel, #close_result_popup").off("click");
+        	
+        	$("#result_popup_main #resultOK, #result_popup_main #resultCancel, #close_result_popup").click(function(){
+				$("#result_popup_shadow").hide(0);
+				$("#result_popup_main").empty();
+				$("#result_popup_div").hide(0);
+			});
+
+		}
+		
+		// 예매 성공시 실행
+		function reserveSuccess(json){
+			$("#result_popup_main").html(json.totalCost +"원을 결제하시겠습니까?");
+			
+
+        	$("#result_popup_main #resultOK, #result_popup_main #resultCancel, #close_result_popup").off("click");
+        	
+        	$("#result_popup_main #resultOK").click(function(){
+        		location.href='/MyCGV/reserveComplete.do';
+			});
+        	$("#result_popup_main #resultCancel, #close_result_popup").click(function(){
+        		location.href='/MyCGV/reserveCancel.do';
+			});
+		}
+		
 
 	    function reservingFormSubmit(){
+			$("#result_popup_shadow").show(0);
+			$("#result_popup_div").show(0);
 	        var formData = $("#reservingForm").serialize();
+	        
+	        
 	        $.ajax({
 	            cache : false,
 	            url : "${pageContext.request.contextPath}/reserving.do", // 요기에
@@ -269,24 +302,19 @@
 	            data : formData, 
 	            async : false,
 	            success : function(json) {
-	                alert(JSON.stringify(json));
-	                if(json.su == 0){
-	                	alert("이미 예약된 좌석입니다.");
-	    				getSeatSelector(last_select);
-	    				$("#my_popup_shadow").show(0);
-	    				$("#my_popup_div").show(0);
-	                }else if(json.su == 1){
-	                	alert("예매 성공!");
-	                	$("#my_popup_shadow").hide(0);
-	    				$("#my_popup_div #popup_main").empty();
-	    				$("#my_popup_div").hide(0);
-	    				getShowList();
+	                //alert(JSON.stringify(json));
+	                if(json.result == 1){
+	                	reserveSuccess(json);
+	                }else if(json.result == -1){
+	                	reserveFail("이미 예약된 좌석입니다.");
+	                } else if(json.result == -2){
+	                	reserveFail("잘못된 좌석 정보가 입력되었습니다.");
 	                }
-	            }, // success 
+	            },
 	            error : function(xhr, status) {
 	                alert(xhr + " : " + status);
 	            }
-	        }); // $.ajax */
+	        });
 	    }
 	</script>
 </head>

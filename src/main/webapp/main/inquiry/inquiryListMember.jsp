@@ -11,7 +11,6 @@ pageEncoding="UTF-8"%>
 		#subjextA:visited { color:black; text-decoration: none;}
 		#subjextA:hover { color:green; text-decoration: underline;}
 		#subjextA:achive { color:black; text-decoration: none;}
-		
 		#currentPaging { color:red; text-decoration: underline;}
 		#paging { color: blue; text-decoration: none;}
 	</style>

@@ -14,60 +14,74 @@ pageEncoding="UTF-8"%>
 		
 		#currentPaging { color:red; text-decoration: underline;}
 		#paging { color: blue; text-decoration: none;}
+		div{
+			border: 1px solid red;
+		}
+		#tb_div{
+			margin: auto;
+			width: 800px;
+			height: 1000px;
+		}
+		#inq_table{
+			border-bottom: 1px;
+		}
 	</style>
 </head>
 <body>
-	<table border="1" cellspacing="0" cellpadding="5">
-		<tr bgcolor="ffff00">
-			<th width="50">번호</th>
-			<th width="50">구분</th>
-			<th width="500">제목</th>
-			<th width="50">상태</th>
-			<th width="50">등록일</th>
-		</tr>
-		<c:forEach var="inquiryDTO" items="${list}">
-			<tr bgcolor="ffffcc">
-				<td align="center">${inquiryDTO.inquiry_code}</td>
-				<td align="center">${inquiryDTO.inquiry_type }</td>
-					<td>
-						<a id="titleA" href="../../main/inquiry/inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
-							${inquiryDTO.inquiry_title}
-						</a>
-					</td>
-				<c:if test="${inquiryDTO.inquiry_status == 0}">
-					<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
-				</c:if>
-				
-				<c:if test="${inquiryDTO.inquiry_status > 0}">
-					<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
-				</c:if>
-				<td align="center">${inquiryDTO.inquiry_date}</td>
-			</tr>
-		</c:forEach>
-		
-		<tr>
-			<td colspan="5" align="center">
-				<c:if test="${startPage > 3 }">
-					[<a id="paging" href="inquiryListAdmin.do?pg=${startPage-1}">이전</a>]
-				</c:if>
-				
-				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<c:if test="${i == param.pg }">
-						[<a id="currentPaging" href="inquiryListAdmin.do?pg=${i }">${i }</a>]
-					</c:if>
-					<c:if test="${i != param.pg }">
-						[<a id="paging" href="inquiryListAdmin.do?pg=${i }">${i }</a>]
-					</c:if>
+	<jsp:include page="../adminMain/adminTemplate.jsp"/>
+	<div id = "content" align="center">
+		<div id="tb_div" align="center">
+			<table id= "inq_table"  cellspacing="0" cellpadding="5" >
+				<tr bgcolor="#c9c9c9">
+					<th width="50">번호</th>
+					<th width="50">구분</th>
+					<th width="500">제목</th>
+					<th width="50">상태</th>
+					<th width="50">등록일</th>
+				</tr>
+				<c:forEach var="inquiryDTO" items="${list}">
+					<tr bgcolor="white">
+						<td align="center">${inquiryDTO.inquiry_code}</td>
+						<td align="center">${inquiryDTO.inquiry_type }</td>
+							<td>
+								<a id="titleA" href="../../main/inquiry/inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
+									${inquiryDTO.inquiry_title}
+								</a>
+							</td>
+						<c:if test="${inquiryDTO.inquiry_status == 0}">
+							<td align="center"><span style="color: #2f538e;">[답변 미완료]</span></td>
+						</c:if>
+						
+						<c:if test="${inquiryDTO.inquiry_status > 0}">
+							<td align="center"><span style="color: #9d40b7;">[답변 완료]</span></td>
+						</c:if>
+						<td align="center">${inquiryDTO.inquiry_date}</td>
+					</tr>
 				</c:forEach>
 				
-				<c:if test="${endPage < totalP }">
-					[<a id="paging" href="inquiryListAdmin.do?pg=${endPage+1}">다음</a>]
-				</c:if>
-			</td>
-		</tr>
-	</table>
-	<input type="button" value="메인으로" onclick="location.href='/MyCGV/admin/clientCenter/clientCenterMain.jsp'">
-	<input type="button" value="뒤로" onclick="history.back(); return false;">
+				<tr>
+					<td colspan="5" align="center">
+						<c:if test="${startPage > 3 }">
+							[<a id="paging" href="inquiryListAdmin.do?pg=${startPage-1}">이전</a>]
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+							<c:if test="${i == param.pg }">
+								[<a id="currentPaging" href="inquiryListAdmin.do?pg=${i }">${i }</a>]
+							</c:if>
+							<c:if test="${i != param.pg }">
+								[<a id="paging" href="inquiryListAdmin.do?pg=${i }">${i }</a>]
+							</c:if>
+						</c:forEach>
+						
+						<c:if test="${endPage < totalP }">
+							[<a id="paging" href="inquiryListAdmin.do?pg=${endPage+1}">다음</a>]
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
 

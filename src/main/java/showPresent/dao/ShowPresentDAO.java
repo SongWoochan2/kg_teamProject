@@ -42,7 +42,7 @@ public class ShowPresentDAO {
 		return sqlSession.selectOne("showPresent.getOne", show_present_code);
 	}
 	
-	public List<String> getUniqueMovieCode(){
+	public List<Integer> getUniqueMovieCode(){
 		return sqlSession.selectList("showPresent.getUniqueMovieCode");
 	}
 	
