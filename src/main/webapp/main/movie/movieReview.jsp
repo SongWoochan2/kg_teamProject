@@ -112,14 +112,16 @@
 							<c:if test="${movie_list.movie_evaluat_num != 0}">
 								평점 : ${ movie_list.acc_evaluat_score / movie_list.movie_evaluat_num } 점
 							</c:if>)&emsp;
-							<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
-								<c:if test="${like_map[movie_list.movie_code] != null}">
+							<c:if test="${like_map[movie_list.movie_code] != null}">
+								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
 									<span class="glyphicon glyphicon-heart"></span>
-								</c:if>
-								<c:if test="${like_map[movie_list.movie_code] == null}">
+								</a> 
+							</c:if>
+							<c:if test="${like_map[movie_list.movie_code] == null}">
+								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like">
 									<span class="glyphicon glyphicon-heart-empty"></span>
-								</c:if>
-							</a> 
+								</a> 
+							</c:if>
 						</div>
 						<div id = "select-request">
 							<a href="../../reserve.do?movie_code?${movie_list.movie_code }">예매</a>
@@ -144,14 +146,16 @@
 							<c:if test="${movie_list.movie_evaluat_num != 0}">
 								평점 : ${ movie_list.acc_evaluat_score / movie_list.movie_evaluat_num } 점
 							</c:if>)&emsp;
-							<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
-								<c:if test="${like_map[movie_list.movie_code] != null}">
+							<c:if test="${like_map[movie_list.movie_code] != null}">
+								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
 									<span class="glyphicon glyphicon-heart"></span>
-								</c:if>
-								<c:if test="${like_map[movie_list.movie_code] == null}">
+								</a> 
+							</c:if>
+							<c:if test="${like_map[movie_list.movie_code] == null}">
+								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like">
 									<span class="glyphicon glyphicon-heart-empty"></span>
-								</c:if>
-							</a> 
+								</a> 
+							</c:if>
 						</div>
 						<div id = "entity-request">
 							<a href="../../reserve.do?movie_code=${movie_list.movie_code }">예매</a>
