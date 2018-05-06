@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,7 +124,7 @@
         		memberPwdObj.focus();
         		return false;
         	}  else {
-        		$.ajax({
+        		/* $.ajax({
             		url: "./memberLogin.do",
             		type: "post",
             		dataType: "html",
@@ -136,7 +137,7 @@
             		error: function(xhr, textStatus, errorThrown) {
     					
   					}
-            	});
+            	}); */
         	}
         });
 	});
@@ -152,8 +153,17 @@
         	<div class="sect-login">
           		<div class="box-login login_1408">
                 <h3 class="hidden">회원 로그인</h3>
-                    <form id="form2_capcha" name="memberLoginForm" method="post" action="memberLogin.do" novalidate="novalidate" style="display:block;">
+                    <form id="form2_capcha" name="memberLoginForm" method="post" action="/MyCGV/main/member/memberLogin.do" novalidate="novalidate" style="display:block;">
                  		<fieldset>
+                 		
+                 			<!-- 페이지 이동시 파라미터  저장 -->
+                			<input type="hidden" name="origin_uri" value="${origin_uri }">
+                			<c:forEach var="pre_param" items="${param_map }">
+		               			<c:forEach var="pre_value" items="${pre_param.value }">
+		               				<input type="hidden" name="pre_${pre_param.key }" value="${pre_value }">
+		               			</c:forEach>
+                			</c:forEach>
+                			
                 			<div class="txt_wrap">
                             	<img height="200px" width="200px" src="/MyCGV/image/loginForm/loginMain.png">
                             </div>
@@ -179,7 +189,7 @@
         	<div class="box-useguide">
             	<strong>movieT 회원이 아니신가요?</strong>
               	<span>회원가입하시고 다양한 서비스를 즐기세요!</span>
-              	<button class="join_btn" onclick="location.href='memberWriteForm.do'" id="submit">MovieT 회원가입하기</button>
+              	<button class="join_btn" onclick="location.href='/MyCGV/main/member/memberWriteForm.do'" id="submit">MovieT 회원가입하기</button>
             </div>
         </div>
        	<div class="sect-loginad" style="background:#d2cbbe">
