@@ -66,10 +66,8 @@ public class MovieDAO {
 		map.put("good", good);
 		return sqlSession.update("movieMapper.goodUpdate", map);
 	}
-	public List<MovieDTO> presentMovieList(ArrayList<Integer> code_list, int m_startNum, int m_endNum){
+	public List<MovieDTO> presentMovieList(int m_startNum, int m_endNum){
 		Map<String, Object> map = new HashMap<>();
-		if(code_list.size() == 0) code_list = null;			// 우찬 임시 수정
-		map.put("code_list", code_list);
 		map.put("m_startNum", m_startNum);
 		map.put("m_endNum", m_endNum);
 		return sqlSession.selectList("movieMapper.presentMovieList", map);
@@ -115,5 +113,11 @@ public class MovieDAO {
 	
 	public int movieNonOpenTotal() {
 		return sqlSession.selectOne("movieMapper.movieNonOpenTotal");
+	}
+	
+	
+	/// woochan
+	public Map<Integer, ReserveRank> getMapOfReserveNum() {
+		return sqlSession.selectMap("movieMapper.getMapOfReserveNum", "movie_code");
 	}
 }

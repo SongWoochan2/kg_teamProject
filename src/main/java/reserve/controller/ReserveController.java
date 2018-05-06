@@ -447,7 +447,7 @@ public class ReserveController {
 		
 	    List<ShowPresentAllVO> list = reserveService.getDateList(movie_code, theater_code, show_time);
 //	    showPresentService.
-	    
+
 		JSONArray show_list = new JSONArray();
 		for(ShowPresentAllVO tmp : list) {
 			JSONObject show = new JSONObject();

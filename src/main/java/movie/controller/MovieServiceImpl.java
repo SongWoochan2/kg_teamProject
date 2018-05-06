@@ -1,6 +1,7 @@
 package movie.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,9 +68,8 @@ public class MovieServiceImpl implements MovieService{
 		return movieDAO.goodUpdate(movie_code, good);
 	}
 
-	@Override
-	public ArrayList<MovieDTO> presentMovieList(ArrayList<Integer> code_list, int m_startNum, int m_endNum) {
-		return (ArrayList<MovieDTO>) movieDAO.presentMovieList(code_list,m_startNum,m_endNum);
+	public ArrayList<MovieDTO> presentMovieList(int m_startNum, int m_endNum) {
+		return (ArrayList<MovieDTO>) movieDAO.presentMovieList(m_startNum,m_endNum);
 	}
 
 	@Override
@@ -117,4 +117,12 @@ public class MovieServiceImpl implements MovieService{
 		return movieDAO.movieNonOpenTotal();
 	}
 	
+	
+	// woochan
+
+	@Override
+	public Map<Integer, ReserveRank> getMapOfReserveNum() {
+		return movieDAO.getMapOfReserveNum();
+	}
+
 }

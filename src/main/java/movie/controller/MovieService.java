@@ -19,7 +19,7 @@ public interface MovieService {
 	Integer movieReserveNum(int movie_code);
 	int goodUpdate(int movie_code, int good);
 	ArrayList<MovieDTO> movieList(int startNum, int endNum);
-	ArrayList<MovieDTO> presentMovieList(ArrayList<Integer> code_list, int m_startNum, int m_endNum);
+	ArrayList<MovieDTO> presentMovieList(int m_startNum, int m_endNum);
 	MovieDTO movieView(int movie_code);
 	ArrayList<MovieDTO> movieFinder(Map<String, Object> map);
 	public List<MovieDTO> movieSearchByName(String movie_name);
@@ -28,4 +28,7 @@ public interface MovieService {
 	ArrayList<MovieDTO> movieScoreRank(int startNum, int endNum);
 	ArrayList<MovieDTO> movieAudienceRank(int startNum, int endNum);
 	ArrayList<ReserveRank> movieReserveRank(int startNum, int endNum);
+	
+
+	public Map<Integer, ReserveRank> getMapOfReserveNum();
 }
