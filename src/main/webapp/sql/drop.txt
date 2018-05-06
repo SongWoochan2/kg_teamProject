@@ -93,6 +93,10 @@ drop sequence notice_item_code_seq;
 --noticeitem 테이블 삭제
 drop table notice_item purge;
 
+--product_pay 테이블 삭제
+drop table product_pay purge;
+drop sequence pay_seq;
+
 -------------------------------------------------------------  (1)
 
 

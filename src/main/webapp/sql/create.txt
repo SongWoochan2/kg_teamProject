@@ -1,4 +1,8 @@
 
+insert into movie values(
+  movie_seq.nextval, '제목', '줄거리', '한국', 개봉일, 영화시간, '청소이용불가', '장르', '장르', '장르', '영화감독',
+  0, 0, '등장인물', 0, 0);
+
 
 -------------------------------------------------------------  (1)
 --질문,답 테이블 생성
@@ -281,7 +285,7 @@ nomaxvalue;
 
 -- 상품 등록
 insert into product values (
-	product_seq.nextval,'CGV콤보',10000,'set','CGV콤보.jpg'
+	product_seq.nextval,'MovieT콤보',10000,'set','MovieT콤보.jpg'
 );
 insert into product values (
 	product_seq.nextval,'GOURMET더블콤보',12000,'set','GOURMET더블콤보.jpg'
