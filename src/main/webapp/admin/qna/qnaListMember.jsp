@@ -6,6 +6,16 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>사용자 qna 목록 보기</title>
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/clientcenter/clientcenterMenu.css" />
+<link rel="stylesheet" type="text/css" href="/MyCGV/css/clientcenter/clientCenterMeneAdd.css" />
+<script>
+	$(function(){
+		$(".clientcenter_menu li").click(function(){
+			$(this).addClass("selected");
+			$(".clientcenter_menu li").not(this).removeClass("selected");
+		});
+	});
+</script>
 <style type="text/css">
 	#subjextA:link { color:black; text-decoration: none;}
 	#subjextA:visited { color:black; text-decoration: none;}
@@ -19,12 +29,6 @@ pageEncoding="UTF-8"%>
 	#qna_li{
 		float: left;
 	}
-	#cont{
-		width: 800px;
-		margin: 0 auto;
-		padding: 15px;
-		margin-bottom: 200px;
-	}
 	#qna_top_title{
 		font-size: 23;
 		font-weight: 900;
@@ -32,13 +36,22 @@ pageEncoding="UTF-8"%>
 	#qna_table td{
 		padding: 7px;
 	}
-	
 </style>
 </head>
 <body>
 	<jsp:include page="/main/main/header.jsp"/>
-	<div id="productRealBody">
-		<div id="cont">
+	<div id="cont">
+		<div id="cont_left">
+			<div class="left_menubar">
+				<ul class="clientcenter_menu">
+					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li class="selected" id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong> </a></li>
+					<li  id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
+					<li   id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
+				</ul>
+			</div>
+		</div>
+		<div id="cont_right">
 			<div id="qna_top">
 				<div id="qna_top_title">
 					자주 찾는 질문
@@ -129,7 +142,7 @@ pageEncoding="UTF-8"%>
 					<input type="button" value="새 글 등록" onclick="location.href='qnaWriteForm.do'">
 				</c:if>
 			</div>
-		</div>	
+		</div>
 	</div>
 	<jsp:include page="/main/main/footer.jsp"/>
 </body>

@@ -21,6 +21,9 @@
 		}.show_place_schedule h2 input {
 			font-size: 20px;
 		}
+		
+		
+		
 		.show_place_schedule table {
 			display: block;
 			width: 100%;

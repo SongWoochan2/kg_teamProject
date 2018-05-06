@@ -52,7 +52,6 @@ public class QnaController {
 	@RequestMapping(value="/admin/qna/qnaList.do")
 	public ModelAndView qnaList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
-		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt( request.getParameter("pg") );
 		System.out.println("admin_id:"+admin_id);
 		int endNum = pg*10;
@@ -72,7 +71,7 @@ public class QnaController {
 		
 		if(admin_id!=null) {
 			modelAndView.setViewName("qnaListAdmin.jsp");
-		}else if(member_id!=null) {
+		}else{
 			modelAndView.setViewName("qnaListMember.jsp");
 		}
 		
@@ -83,7 +82,6 @@ public class QnaController {
 	@RequestMapping(value="/admin/qna/qnaView.do")
 	public ModelAndView qnaView(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
-		String member_id = (String)session.getAttribute("memId");
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		int qna_code = Integer.parseInt(request.getParameter("qna_code"));
 		
@@ -95,7 +93,7 @@ public class QnaController {
 		
 		if(admin_id!=null) {
 			modelAndView.setViewName("qnaViewAdmin.jsp");
-		}else if(member_id!=null) {
+		}else{
 			modelAndView.setViewName("qnaViewMember.jsp");
 		}
 		

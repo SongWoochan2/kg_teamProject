@@ -69,7 +69,7 @@ pageEncoding="UTF-8"%>
 					</tr>
 					<tr>
 						<th>답변 제목</th>
-						<td colspan="3"><input type="text" id="answer_title" value="CGV의 고객 ${memberDTO.member_name }님께" name="answer_title">
+						<td colspan="3"><input type="text" id="answer_title" value="movieT의 고객 ${memberDTO.member_name }님께" name="answer_title">
 						</td>
 					</tr>
 					<tr>
@@ -92,9 +92,6 @@ pageEncoding="UTF-8"%>
 					<input type="submit" value="답변">
 				</c:if>
 		</c:if>
-		<br><br>
-		<input type="button" value="메인으로" onclick="location.href='/MyCGV/admin/clientCenter/clientCenterMain.jsp'">
-		<input type="button" value="뒤로" onclick="history.back(); return false;">
 	</form>
 </body>
 </html>
