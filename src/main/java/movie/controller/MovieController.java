@@ -28,6 +28,7 @@ import moviephoto.bean.MoviePosterDTO;
 import moviephoto.controller.MoviePhotoService;
 import movietrailer.bean.MovieTrailerDTO;
 import movietrailer.controller.MovieTrailerService;
+import select.bean.SelectDTO;
 import select.controller.SelectService;
 import showPresent.controller.ShowPresentService;
 
@@ -622,52 +623,26 @@ public class MovieController {
 		int e_endNum = review_pg*6;
 		int e_startNum = e_endNum-5;	
 		
-		
-		ArrayList<Integer> code_list = showPresentService.getUniqueMovieCode();
-		for(Integer tmp : code_list) {movie_count++;}
 
-		ArrayList<MovieDTO> movie_list =  movieService.presentMovieList(code_list,m_startNum,m_endNum);
-		Map<Integer, String> poster_map = new HashMap<>();
-		Map<Integer, Double> average_map = new HashMap<>();
-		Map<Integer, Object> like_map = new HashMap<>();
+		
+		ArrayList<MovieDTO> movie_list =  movieService.presentMovieList(m_startNum,m_endNum);
+		Map<Integer, MoviePhotoDTO> poster_map = moviePhotoService.getMapOfShowMoviePoster();
+		Map<Integer, SelectDTO> like_map = selectService.getSelectOfMember(member_id);
+		Map<Integer, ReserveRank> reserve_rate_map_pre = movieService.getMapOfReserveNum();
+		int totalReserveNum = 0;
+		for(ReserveRank tmp : reserve_rate_map_pre.values()) {
+			totalReserveNum += tmp.getReserve_num();
+		}
 		Map<Integer, Double> reserve_rate_map = new HashMap<>();
 		
-		ArrayList<MoviePosterDTO> poster_list = moviePhotoService.moviePosterList(code_list, m_startNum, m_endNum);
-		for(MoviePosterDTO poster_result : poster_list) {
-			poster_map.put(poster_result.getMovie_code(), poster_result.getMovie_photo_addr());
+		for(ReserveRank tmp : reserve_rate_map_pre.values()) {
+			reserve_rate_map.put(
+					tmp.getMovie_code(), 
+					Double.parseDouble(String.format("%.3f",(double)tmp.getReserve_num()/totalReserveNum))*100);
 		}
 		
-		Integer all_reserve_num =null;
-		if(movieService.allReserveCount() == null) {
-			all_reserve_num = 0;
-		}else {
-			all_reserve_num = movieService.allReserveCount();				
-		}
+		movie_count = movie_list.size();
 		
-		for(MovieDTO movie_result : movie_list) {
-//			if(moviePhotoService.moviePosterView(movie_result.getMovie_code()) != null) {
-//				MoviePhotoDTO photo_addr = moviePhotoService.moviePosterView(movie_result.getMovie_code());
-//				poster_map.put(movie_result.getMovie_code(), photo_addr.getMovie_photo_addr());					
-//			}
-			
-			double movie_average = movieAverage(movie_result.getMovie_code());
-			
-			average_map.put(movie_result.getMovie_code(), movie_average);	
-			
-			if(member_id != null) {
-				like_able = selectService.selectMovieList(member_id, movie_result.getMovie_code());							
-				like_map.put(movie_result.getMovie_code(), like_able);
-			}else {
-				like_map.put(movie_result.getMovie_code(), like_able);
-			}
-			
-			// 영화 예매율 구하기
-			double movieReserveNum = movieReserveNum(movie_result.getMovie_code());
-			double reserve_rate = Double.parseDouble(String.format("%.3f",(double)movieReserveNum/all_reserve_num))*100;
-			reserve_rate_map.put(movie_result.getMovie_code(), reserve_rate);
-		}
-		
-//		System.out.println("리스트 첫번쨰 영화코드 : "+movie_list.get(0).getMovie_code());
 		int m_totalA = movie_count;
 		int m_totalPage = ((m_totalA+3) / 4);		
 		if(m_totalPage < movie_pg) movie_pg = m_totalPage;
@@ -698,15 +673,18 @@ public class MovieController {
 		e_moviePage.setTotalPage(e_totalPage);
 		e_moviePage.setPg(review_pg);
 		
-		if(evaluatService.EvaluatList(movie_code, e_startNum, e_endNum) != null) {
-			evaluat_list = evaluatService.EvaluatList(movie_code, e_startNum, e_endNum);			
-		}
+		evaluat_list = evaluatService.EvaluatList(movie_code, e_startNum, e_endNum);
+		
+//		if(evaluatService.EvaluatList(movie_code, e_startNum, e_endNum) != null) {
+//			evaluat_list = evaluatService.EvaluatList(movie_code, e_startNum, e_endNum);			
+//		}
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("movie_code", movie_code);
 		modelAndView.addObject("reserve_rate_map", reserve_rate_map);
+		modelAndView.addObject("totalReserveNum", totalReserveNum);
 		modelAndView.addObject("like_map", like_map);
-		modelAndView.addObject("average_map", average_map);
+		//modelAndView.addObject("average_map", average_map);
 		modelAndView.addObject("poster_map", poster_map);
 		modelAndView.addObject("m_moviePage", m_moviePage);
 		modelAndView.addObject("e_moviePage", e_moviePage);

@@ -84,44 +84,57 @@
 			평점
 		</div>
 		<div id="review-all">
-				<div id="review-movie">
-				<c:if test="${m_moviePage.pg>1 }">
-					<a href = "movieReview.do?movie_pg=${m_moviePage.pg-1 }" class="btn btn-default btn-sm"  id = "leftbtn">
-	         				<span class="glyphicon glyphicon-triangle-left"></span>
-	       			</a>
-	       		</c:if>
+			<div id="review-movie">
+			<c:if test="${m_moviePage.pg>1 }">
+				<a href = "movieReview.do?movie_pg=${m_moviePage.pg-1 }" class="btn btn-default btn-sm"  id = "leftbtn">
+         				<span class="glyphicon glyphicon-triangle-left"></span>
+       			</a>
+       		</c:if>
        			<c:forEach var ="movie_list" items="${requestScope.movie_list }">
 				<div id = "entity">
 					<c:if test="${movie_list.movie_code == requestScope.movie_code }">
 						<div id = "select-poster">
-							<img src = "../../image/storage/moviephoto/${poster_map[movie_list.movie_code].movie_photo_addr }">
+						<c:forEach var ="poster_map" items="${requestScope.poster_map }" >
+								<c:if test="${poster_map.key == movie_list.movie_code }">
+									<img src = "../../image/storage/moviephoto/${poster_map.value }">
+								</c:if>
+						</c:forEach>
 						</div>
 						<div id = "select-name">
 							<a href = "#">${movie_list.movie_name }
 							</a>
 						</div>
 						<div id = "select-reserve">
-							<font>예매율</font> ${reserve_rate_map[movie_list.movie_code]} %
+							<font>예매율</font> 
+							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
+								<c:if test="${movie_list.movie_code == reserve_rate_map.key }">
+										${reserve_rate_map.value} %
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "select-opendate">
 							${movie_list.movie_open_date }
-							( 
-							<c:if test="${movie_list.movie_evaluat_num == 0}">
-								평점 없음
-							</c:if>
-							<c:if test="${movie_list.movie_evaluat_num != 0}">
-								평점 : ${ movie_list.acc_evaluat_score / movie_list.movie_evaluat_num } 점
-							</c:if>)&emsp;
-							<c:if test="${like_map[movie_list.movie_code] != null}">
-								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
-									<span class="glyphicon glyphicon-heart"></span>
-								</a> 
-							</c:if>
-							<c:if test="${like_map[movie_list.movie_code] == null}">
-								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like">
-									<span class="glyphicon glyphicon-heart-empty"></span>
-								</a> 
-							</c:if>
+								<c:forEach var ="average_map" items="${requestScope.average_map }" >
+									<c:if test="${average_map.key == movie_list.movie_code }">
+										( 
+										<c:if test="${average_map.value == 'NaN'}">
+											평점 없음
+										</c:if>
+										<c:if test="${average_map.value != 'NaN'}">
+											평점 : ${average_map.value } 점
+										</c:if>)&emsp;
+									</c:if>
+								</c:forEach>
+								<c:forEach var ="like_map" items="${requestScope.like_map }" >
+									<c:if test="${like_map.key == movie_list.movie_code }">
+										<c:if test="${like_map.value == 1}">
+											<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+										</c:if>
+										<c:if test="${like_map.value == 0}">
+											<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+										</c:if>
+									</c:if>
+								</c:forEach>
 						</div>
 						<div id = "select-request">
 							<a href="../../reserve.do?movie_code?${movie_list.movie_code }">예매</a>
@@ -129,33 +142,46 @@
 					</c:if>
 					<c:if test="${movie_list.movie_code != requestScope.movie_code }">
 						<div id = "entity-poster">
-							<img src = "../../image/storage/moviephoto/${poster_map[movie_list.movie_code].movie_photo_addr }">
+						<c:forEach var ="poster_map" items="${requestScope.poster_map }" >
+								<c:if test="${poster_map.key == movie_list.movie_code }">
+									<img src = "../../image/storage/moviephoto/${poster_map.value }">
+								</c:if>
+						</c:forEach>
 						</div>
 						<div id = "entity-name">
 							<a href = "movieReview.do?movie_pg=${m_moviePage.pg }&movie_code=${movie_list.movie_code}">${movie_list.movie_name }</a>
 						</div>
 						<div id = "entity-reserve">
-							<font>예매율</font> ${reserve_rate_map[movie_list.movie_code]} %
+							<font>예매율</font> 
+							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
+								<c:if test="${movie_list.movie_code == reserve_rate_map.key }">
+										${reserve_rate_map.value} %
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "entity-opendate">
 							${movie_list.movie_open_date }
-							( 
-							<c:if test="${movie_list.movie_evaluat_num == 0}">
-								평점 없음
-							</c:if>
-							<c:if test="${movie_list.movie_evaluat_num != 0}">
-								평점 : ${ movie_list.acc_evaluat_score / movie_list.movie_evaluat_num } 점
-							</c:if>)&emsp;
-							<c:if test="${like_map[movie_list.movie_code] != null}">
-								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
-									<span class="glyphicon glyphicon-heart"></span>
-								</a> 
-							</c:if>
-							<c:if test="${like_map[movie_list.movie_code] == null}">
-								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like">
-									<span class="glyphicon glyphicon-heart-empty"></span>
-								</a> 
-							</c:if>
+							<c:forEach var ="average_map" items="${requestScope.average_map }" >
+								<c:if test="${average_map.key == movie_list.movie_code }">
+									( 
+									<c:if test="${average_map.value == 'NaN'}">
+										평점 없음
+									</c:if>
+									<c:if test="${average_map.value != 'NaN'}">
+										평점 : ${average_map.value } 점
+									</c:if>)&emsp;
+								</c:if>
+							</c:forEach>
+							<c:forEach var ="like_map" items="${requestScope.like_map }" >
+								<c:if test="${like_map.key == movie_list.movie_code }">
+									<c:if test="${like_map.value == 1}">
+										<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart"></span></a> 
+									</c:if>
+									<c:if test="${like_map.value == 0}">
+										<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=1" class="btn btn-info btn-lg" id="movie_like"> <span class="glyphicon glyphicon-heart-empty"></span></a> 
+									</c:if>
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "entity-request">
 							<a href="../../reserve.do?movie_code=${movie_list.movie_code }">예매</a>

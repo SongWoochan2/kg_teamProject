@@ -58,4 +58,19 @@
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
 		
 	</select>
+	
+	<!-- 우찬 -->
+	<select id = "getMapOfShowMoviePoster" parameterType= "java.util.Map" resultType="moviePhotoDTO">
+		<![CDATA[SELECT * FROM movie_photo 
+		WHERE movie_photo_code IN (
+		      	SELECT max(movie_photo_code) movie_photo_code FROM movie_photo 
+		      	where movie_photo_addr like 'poster_' || '%' GROUP BY movie_code
+		      	)
+		AND movie_code IN ( 
+				SELECT movie_code FROM show_present 
+				WHERE trunc(sysdate) <= show_date 
+				)
+		ORDER BY movie_code]]>
+	</select>
+	
 </mapper>
