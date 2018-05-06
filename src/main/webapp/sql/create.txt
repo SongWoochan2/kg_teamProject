@@ -281,7 +281,7 @@ nomaxvalue;
 
 -- 상품 등록
 insert into product values (
-	product_seq.nextval,'CGV콤보',10000,'set','CGV콤보.jpg'
+	product_seq.nextval,'MovieT콤보',10000,'set','MovieT콤보.jpg'
 );
 insert into product values (
 	product_seq.nextval,'GOURMET더블콤보',12000,'set','GOURMET더블콤보.jpg'
