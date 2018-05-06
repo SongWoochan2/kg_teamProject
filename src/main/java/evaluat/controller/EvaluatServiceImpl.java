@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import evaluat.bean.EvaluatDTO;
 import evaluat.bean.EvaluatLikeDTO;
 import evaluat.dao.EvaluatDAO;
+import movie.bean.MovieResultDTO;
 
 @Service
 public class EvaluatServiceImpl implements EvaluatService{
@@ -78,6 +79,16 @@ public class EvaluatServiceImpl implements EvaluatService{
 	@Override
 	public int evaluatLikeCount(int evaluat_code) {
 		return evaluatDAO.evaluatLikeCount(evaluat_code);
+	}
+
+	@Override
+	public ArrayList<MovieResultDTO> getTotalList(ArrayList<Integer> code_list, int e_startNum, int e_endNum) {
+		return (ArrayList<MovieResultDTO>) evaluatDAO.getTotalList(code_list, e_startNum, e_endNum);
+	}
+
+	@Override
+	public ArrayList<MovieResultDTO> movieScoreTotalList(ArrayList<Integer> code_list, int e_startNum, int e_endNum) {
+		return (ArrayList<MovieResultDTO>) evaluatDAO.movieScoreTotalList(code_list, e_startNum, e_endNum);
 	}
 	
 }

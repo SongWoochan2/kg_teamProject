@@ -2,8 +2,11 @@ package reserve.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import movie.bean.MovieDTO;
 import movie.controller.MovieService;
-import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
 import reserve.bean.MemberReserveVO;
 import reserve.bean.ReservedSeatVO;
 import reserve.bean.SeatNumVO;
+import reserve.bean.SeatTypeVO;
+import reserve.bean.TimeTypeVO;
+import savingList.bean.SavingListDTO;
 import showPlace.bean.SeatVO;
 import showPlace.controller.ShowPlaceService;
 import showPresent.bean.ShowPresentAllVO;
@@ -48,101 +53,79 @@ public class ReserveController {
 	@Autowired
 	private MovieService movieService;
 	
-	@RequestMapping(value="/showChoice_forReserve.do")
-	public void showChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
-		
-		
-		JSONObject json = new JSONObject();
-		
-		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return;
-	}
 
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/dateChoice_forReserve.do")
-	public void dateChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="/reserveComplete.do")
+	public ModelAndView hyperreserveComplete(HttpServletRequest request, HttpServletResponse response) {
 		
-		String show_date = request.getParameter("show_date");
-		if(show_date.equals("")) {
-			show_date = null;
-		}
+		HttpSession session = request.getSession();
 		
-	    JSONObject date = new JSONObject();
-	    date.put("show_date", show_date);
-	    
-		JSONObject json = new JSONObject();
-		json.put("date", date);
+		String member_id = (String) session.getAttribute("memId");
+		int reserve_code = (Integer) session.getAttribute("reserve_code");
 		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		MemberReserveVO memberReserveVO = new MemberReserveVO();
+		memberReserveVO.setReserve_id(member_id);
+		memberReserveVO.setReserve_code(reserve_code);
 		
-		return;
-	}
+		int result =  reserveService.updateMemberReserve(memberReserveVO);
+		memberReserveVO = reserveService.selectMemberReserve(memberReserveVO);
+		SavingListDTO savingListDTO = new SavingListDTO();
+		String saving_name = "영화 예매 ";
+		
+		//	적립명 길게 하려면...
+//		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(memberReserveVO.getShow_present_code());
+//
+//		String saving_name = "영화 예매  [" + showPresentSuperVO.getMovie_name() + "]" + " - " + showPresentSuperVO.getTheater_name()
+//							+ " > " + showPresentSuperVO.getShow_place_name() + " : ";
+//		if(memberReserveVO.getMember_seat1() != null)	saving_name += memberReserveVO.getMember_seat1();
+//		if(memberReserveVO.getMember_seat2() != null)	saving_name += ", " + memberReserveVO.getMember_seat2();
+//		if(memberReserveVO.getMember_seat3() != null)	saving_name += ", " + memberReserveVO.getMember_seat3();
+//		if(memberReserveVO.getMember_seat4() != null)	saving_name += ", " + memberReserveVO.getMember_seat4();
+//		if(memberReserveVO.getMember_seat5() != null)	saving_name += ", " + memberReserveVO.getMember_seat5();
+//		if(memberReserveVO.getMember_seat6() != null)	saving_name += ", " + memberReserveVO.getMember_seat6();
+//		if(memberReserveVO.getMember_seat7() != null)	saving_name += ", " + memberReserveVO.getMember_seat7();
+//		if(memberReserveVO.getMember_seat8() != null)	saving_name += ", " + memberReserveVO.getMember_seat8();
+		
+		savingListDTO.setSaving_id(member_id);
+		savingListDTO.setSaving_name(saving_name);
+		savingListDTO.setPay_cost(memberReserveVO.getReserve_cost());
+		savingListDTO.setSaving_cost(memberReserveVO.getReserve_cost()/100);
+		
+		reserveService.insertSavingList(savingListDTO);
+		///    포인트 적립하기 추가
 
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/theaterChoice_forReserve.do")
-	public void theaterChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+		session.removeAttribute("reserve_code");
 		
-		int theater_code = 0;
-		if(request.getParameter("theater_code") != null) {
-			theater_code = Integer.parseInt(request.getParameter("theater_code"));
-		}
-		System.out.println(theater_code);
-		TheaterDTO theaterDTO = theaterService.theaterView(theater_code);
-			
-	    JSONObject theater = new JSONObject();
-	    theater.put("theater_name", theaterDTO.getTheater_name());
-	    
-		JSONObject json = new JSONObject();
-		json.put("theater", theater);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/main/reserve/reserveComplete.jsp");
 		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return;
+		return modelAndView;
 	}
+	
 
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/movieChoice_forReserve.do")
-	public void movieChoice_forReserve(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="/reserveCancel.do")
+	public ModelAndView hyperreserveCancel(HttpServletRequest request, HttpServletResponse response) {
+
+		HttpSession session = request.getSession();
 		
-		int movie_code = 0;
-		if(request.getParameter("movie_code") != null) {
-			movie_code = Integer.parseInt(request.getParameter("movie_code"));
-		}
-		MovieDTO movieDTO = movieService.movieView(movie_code);
-		MoviePhotoDTO moviePhotoDTO = moviePhotoService.moviePosterView(movie_code);
-			
-	    JSONObject movie = new JSONObject();
-	    movie.put("movie_code", movieDTO.getMovie_code());
-	    movie.put("movie_name", movieDTO.getMovie_name());
-	    JSONObject poster = new JSONObject();
-	    poster.put("poster_addr", moviePhotoDTO.getMovie_photo_addr());
-	    
-		JSONObject json = new JSONObject();
-		json.put("movie", movie);
-		json.put("poster", poster);
+		String member_id = (String) session.getAttribute("memId");
+		int reserve_code = (Integer) session.getAttribute("reserve_code");
 		
-		try {
-			response.getWriter().println(json.toJSONString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		MemberReserveVO memberReserveVO = new MemberReserveVO();
+		memberReserveVO.setReserve_id(member_id);
+		memberReserveVO.setReserve_code(reserve_code);
 		
-		return;
+		int result =  reserveService.deleteMemberReserve(memberReserveVO);
+		
+		session.removeAttribute("reserve_code");
+				
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/main/reserve/reserveCancel.jsp");
+		
+		return modelAndView;
 	}
+	
 	
 	@RequestMapping(value="/reserve.do")
 	public String hyperreserve(HttpServletRequest request, HttpServletResponse response) {
@@ -150,24 +133,23 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value="/reserving.do")
-	public ModelAndView hyperreserving(HttpServletRequest request, HttpServletResponse response) {
+	public void hyperreserving(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("memId");
 		
 		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
-		int show_place_code = Integer.parseInt(request.getParameter("show_place_code"));
+		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
 
 		List<SeatVO> seatVOs = new ArrayList<>();
 		for(int i = 1; i <= 8; i++) {
 			SeatVO seatVO = new SeatVO();
 			String seat = request.getParameter("seat" + i);
 			if(seat != null && !seat.equals("")) {
-				System.out.println("["+seat+"]");//////////////////////////////
 				String[] index = seat.split("-");
 				seatVO.setY_index(index[0]);
 				seatVO.setX_index(Integer.parseInt(index[1]));
-				seatVO.setShow_place_code(show_place_code);
+				seatVO.setShow_place_code(showPresentSuperVO.getShow_place_code());
 				
 				seatVOs.add(seatVO);
 			}
@@ -176,14 +158,50 @@ public class ReserveController {
 		List<ReservedSeatVO> reservedSeatVOs = reserveService.getreservedSeats(show_present_code);
 		
 		
-		ModelAndView modelAndView = new ModelAndView();
-		
-		
 		if(isAlreadyReseved(reservedSeatVOs, seatVOs)) {
-			modelAndView.addObject("su", 0);
-			modelAndView.setViewName("/main/reserve/reserving.jsp");
-			return modelAndView;
+			try {
+				response.getWriter().println("{ \"result\" : \"-1\"}");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return;
 		} 
+
+		// 요금 계산에 필요한 시간분류, 좌석분류 테이블 가져와서 MAP에 저장
+		Map<Integer, SeatTypeVO> seatTypeMap = reserveService.getSeatType();
+		Map<Integer, TimeTypeVO> timeTypeMap = reserveService.getTimeType();
+		
+		
+		int timeAddCost = timeTypeMap.get(showPresentSuperVO.getShow_time()).getAdd_cost();
+		int defaultCost = showPresentSuperVO.getDefault_cost();
+		int totalCost = 0;
+		
+		List<SeatVO> totalSeatVOs = showPlaceService.seatList(showPresentSuperVO.getShow_place_code());
+		for(SeatVO tmp1 : seatVOs ) {
+			// 좌석이 존재하는 지 체크
+			boolean checkSeat = false;
+			
+			System.out.println("전체 --------------------------------");
+			for(SeatVO tmp2 : totalSeatVOs) {
+				System.out.print(tmp2.getY_index() + "-" + tmp2.getX_index() + "/");
+				if(tmp1.getX_index() == tmp2.getX_index() && tmp1.getY_index().equals(tmp2.getY_index())) {
+					checkSeat = true;
+					totalCost += defaultCost + timeAddCost + seatTypeMap.get(tmp2.getSeat_type_code()).getAdd_cost();
+					break;
+				}
+			}
+			
+			System.out.println("예매 ---------------------------------");
+			System.out.println(tmp1.getY_index() + "-" + tmp1.getX_index());
+			if(!checkSeat) {
+				try {
+					response.getWriter().println("{ \"result\" : \"-2\"}");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return;
+			}
+		}
 		
 		MemberReserveVO memberReserveVO = new MemberReserveVO();
 		
@@ -197,29 +215,45 @@ public class ReserveController {
 		memberReserveVO.setMember_seat6(request.getParameter("seat6"));
 		memberReserveVO.setMember_seat7(request.getParameter("seat7"));
 		memberReserveVO.setMember_seat8(request.getParameter("seat8"));
-		memberReserveVO.setReserve_cost(10000);
 		
 		
-		int su = reserveService.insertMemberReserve(memberReserveVO);
+		memberReserveVO.setReserve_cost(totalCost);
+		
+		
+		int result = reserveService.insertMemberReserve(memberReserveVO);
 
+		try {
+			response.getWriter().println("{ \"result\" : \""+ result + "\", \"totalCost\" : \""+ totalCost + "\" }");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		session.setAttribute("reserve_code", memberReserveVO.getReserve_code());
 		
-		modelAndView.setViewName("/main/reserve/reserving.jsp");
-		modelAndView.addObject("su", su);
+		// result
+		// 1 : 성공
+		// 0 : 실패
+		// -1 : 이미 예약된 좌석
+		// -2 : 잘못된 좌석
 		
-		return modelAndView;
+		
+		return;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/SeatView_ForReserve.do")
 	public ModelAndView hyperSeatView_ForReserve(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(request.getParameter("show_present_code"));
 		int show_present_code = Integer.parseInt(request.getParameter("show_present_code"));
 		
-		
 		ShowPresentSuperVO showPresentSuperVO = showPresentService.getShowPresentOneFully(show_present_code);
+		
+		// 상영날짜 의 시간 string 없애기
 		String show_date = showPresentSuperVO.getShow_date();
 		showPresentSuperVO.setShow_date(show_date.substring(0, 11));
+		
+		// 요금 계산에 필요한 시간분류, 좌석분류 테이블 가져와서 MAP에 저장
+		Map<Integer, SeatTypeVO> seatTypeMap = reserveService.getSeatType();
+		Map<Integer, TimeTypeVO> timeTypeMap = reserveService.getTimeType();
 		
 		int show_place_code = showPresentSuperVO.getShow_place_code();
 		
@@ -244,8 +278,11 @@ public class ReserveController {
 			seat_json.put("x_index", x_index);
 			seat_json.put("y_index", y_index);
 			seat_json.put("seat_type_code", seat_type_code);
+			seat_json.put("add_cost", seatTypeMap.get(seat_type_code).getAdd_cost());
 			list.add(seat_json);
 		}
+		
+		
 		if(y_set.contains("!")) y_set.remove("!");
 		json.put("seat", list);
 		json.put("x_size", x_set.size());
@@ -286,6 +323,7 @@ public class ReserveController {
 		json.put("reserved", reserved_seats);
 		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("time_add_cost", timeTypeMap.get(showPresentSuperVO.getShow_time()).getAdd_cost());
 		modelAndView.addObject("showInfo", showPresentSuperVO);
 		modelAndView.addObject("json", json.toJSONString());
 		
@@ -310,7 +348,15 @@ public class ReserveController {
 			show_date = null;
 		}
 
-	    List<MovieDTO> list = reserveService.getMovieList(show_date, theater_code);
+		Calendar cal = Calendar.getInstance();
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		if(hour < 5) {
+			hour += 24;
+		}
+		int minute = cal.get(Calendar.MINUTE);
+		int show_time = hour*100 + minute;		
+
+	    List<MovieDTO> list = reserveService.getMovieList(show_date, theater_code, show_time);
 
 	    JSONArray movie_list = new JSONArray();
 		for(MovieDTO tmp : list) {
@@ -344,8 +390,19 @@ public class ReserveController {
 		if(show_date.equals("")) {
 			show_date = null;
 		}
+		
 
-	    List<TheaterDTO> list = reserveService.getTheaterList(show_date, movie_code);
+//		System.out.println("1. : " + show_date.substring(4, 6).equals( (cal.get(Calendar.MONDAY)+1)+"") );
+//		System.out.println("2. : " + show_date.substring(6, 8).equals(cal.get(Calendar.DATE)+"") );
+		Calendar cal = Calendar.getInstance();
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		if(hour < 5) {
+			hour += 24;
+		}
+		int minute = cal.get(Calendar.MINUTE);
+		int show_time = hour*100 + minute;				
+		
+	    List<TheaterDTO> list = reserveService.getTheaterList(show_date, movie_code, show_time);
 	   
 	    JSONArray theater_list = new JSONArray();
 		for(TheaterDTO tmp : list) {
@@ -378,10 +435,19 @@ public class ReserveController {
 		if(request.getParameter("theater_code") != null) {
 			theater_code = Integer.parseInt(request.getParameter("theater_code"));
 		}
+
 		
-	    List<ShowPresentAllVO> list = reserveService.getDateList(movie_code, theater_code);
+		Calendar cal = Calendar.getInstance();
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		if(hour < 5) {
+			hour += 24;
+		}
+		int minute = cal.get(Calendar.MINUTE);
+		int show_time = hour*100 + minute;			
+		
+	    List<ShowPresentAllVO> list = reserveService.getDateList(movie_code, theater_code, show_time);
 //	    showPresentService.
-	    
+
 		JSONArray show_list = new JSONArray();
 		for(ShowPresentAllVO tmp : list) {
 			JSONObject show = new JSONObject();
@@ -424,7 +490,22 @@ public class ReserveController {
 		if(show_date.equals("")) {
 			show_date = null;
 		}
-	    List<ShowPresentAllVO> list = reserveService.getShowList(movie_code, theater_code, show_date);
+
+		int show_time = -1;
+		if(show_date != null) {
+			Calendar cal = Calendar.getInstance();
+			if(	show_date.substring(4, 6).equals( (cal.get(Calendar.MONDAY)+1)+"") 
+					&& show_date.substring(6, 8).equals(cal.get(Calendar.DATE)+"")	) {
+				int hour = cal.get(Calendar.HOUR_OF_DAY);
+				if(hour < 5) {
+					hour += 24;
+				}
+				int minute = cal.get(Calendar.MINUTE);
+				show_time = hour*100 + minute;				
+			}
+		}
+
+	    List<ShowPresentAllVO> list = reserveService.getShowList(movie_code, theater_code, show_date, show_time);
 	    List<SeatNumVO> reservedSeatNumlist = reserveService.getReservedSeatOfShow(movie_code, theater_code, show_date);
 	    List<SeatNumVO> totalSeatNumlist = reserveService.getTotalSeatOfShow(movie_code, theater_code, show_date);
 

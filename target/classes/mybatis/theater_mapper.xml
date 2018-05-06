@@ -28,7 +28,7 @@
 		where theater_code=#{theater_code}
 	</update>
 	
-<select id="theaterList" parameterType="java.util.Map" resultType="theaterDTO">
+	<select id="theaterList" parameterType="java.util.Map" resultType="theaterDTO">
 		<![CDATA[select *
 		from (select rownum rn, tt.* 
 		from (select * from theater order by theater_code desc) tt)

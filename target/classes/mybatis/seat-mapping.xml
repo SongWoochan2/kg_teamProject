@@ -10,6 +10,19 @@
 		FROM seat
 		WHERE show_place_code = #{show_place_code} and seat_type_code != 0 and y_index != '!'
 	</select>
+	
+	
+ 	<insert id="insertSeatList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index"  open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+	        INTO seat(
+	         	show_place_code, seat_type_code,  x_index, y_index)
+	        VALUES
+	            (#{item.show_place_code}, #{item.seat_type_code}, #{item.x_index}, #{item.y_index})
+        </foreach>
+    </insert>
+
+
+
 
 	<insert id="insertSeat" parameterType="seatVO">
 		INSERT INTO seat 

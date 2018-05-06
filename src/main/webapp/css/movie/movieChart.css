@@ -83,41 +83,45 @@
 		border-radius : 10px;
 		width: 100px;
 	}
-	#moviechart #chart-select #select2 input[type='button']{
+	#moviechart #chart-select #select2 input[type='submit']{
 		background-color : white;
 		border-radius : 10px;
 		border: 3px solid #cccccc;
 	}
 	#moviechart #movierank{
 		width: 100%;
-		height: 90%;
+		height: 95%;
 	}
-	#moviechart #movierank #movie_top_entity,#movie_bottom_entity, #promotion{
+	#moviechart #movierank #movie_list{
+		width: 100%;
+		height: 96%;
+	}
+	#moviechart #movierank #movie_list #movie_top_entity,#movie_bottom_entity, #promotion{
 		float : left;
 		width: 25%;
 		height: 43%;
 		padding: 10px 20px;
 	}
 	
-	#moviechart #movierank #promotion img{
+	#moviechart #movierank #movie_list #promotion img{
 		padding : 30px 10px;
 		background-color : black;
 		width: 100%;
 		height: 100%;
 	}
 
-	#moviechart #movierank #movie_top_entity #movie-rank{
+	#moviechart #movierank #movie_list #movie_top_entity #movie-rank{
 		background-color : red;	
 	}
 
-	#moviechart #movierank #movie_bottom_entity #movie-rank{
+	#moviechart #movierank #movie_list #movie_bottom_entity #movie-rank{
 		background-color : black;	
 	}
-	#moviechart #movierank *{
+	#moviechart #movierank #movie_list *{
 		text-align: center;
 	}
 	
-	#moviechart #movierank #movie-rank{
+	#moviechart #movierank #movie_list #movie-rank{
 		height: 8%;
 		border : 4px double white;
 		text-align: center;
@@ -125,48 +129,95 @@
 		font-size: 20px;
 		color: white;
 	}
-	#moviechart #movierank #movie-poster{
+	#moviechart #movierank #movie_list #movie-poster{
 		height: 60%;
 	}
-	#moviechart #movierank #movie-poster img{
+	#moviechart #movierank #movie_list #movie-poster img{
 		width: 100%;
 		height: 100%;
 	}
-	#moviechart #movierank #entity-name{
+	#moviechart #movierank #movie_list #entity-name{
 		font-size : 18px;
 		font-weight : bold;	
 		height: 6%;
 	}
-	#moviechart #movierank #entity-name a{
+	#moviechart #movierank #movie_list #entity-name a{
 		color: black;
 		text-decoration: none;
 	}
-	#moviechart #movierank #entity-reserve{
+	#moviechart #movierank #movie_list #entity-reserve{
 		font-size : 14px;
 		height: 5%;
 	}
-	#moviechart #movierank #entity-reserve font{
+	#moviechart #movierank #movie_list #entity-reserve font{
 		font-size : 15px;
 		font-weight : bold;	
 		color : darkgray;
 	}
-	#moviechart #movierank #entity-opendate{
+	#moviechart #movierank #movie_list #entity-opendate{
 		font-weight : bold;
 		font-size : 13px;
 		height: 4%;
 	}
-	#moviechart #movierank #entity-like{
+	#moviechart #movierank #movie_list #entity-like{
 		padding-top : 5px;
 		font-weight : 200;
 		height: 17%;
 	}
-	#moviechart #movierank #entity-like a{
+	#moviechart #movierank #movie_list #entity-like a{
 		color : white;
 	}
-	#moviechart #movierank #entity-like #reserve-btn{
+	#moviechart #movierank #movie_list #entity-like #reserve-btn{
 		width: 40%;
 		background-color: #e02c14;
 	}
-	#moviechart #movierank #entity-like #reserve-btn:hover{
+	#moviechart #movierank #movie_list #entity-like #reserve-btn:hover{
 		background-color : red;
+	}
+	
+	#moviechart #movierank #movie_list #movie_entity *{
+		color : white;
+	}
+	#moviechart #movierank #movie_list #movie_entity{
+		padding : 0px 15px;
+		background-color : black;
+		float: left;
+		width: 24.5%;
+		height: 32%;
+	}
+	#moviechart #movierank #movie_list #movie_entity #movie-poster{
+		font-weight : bold;
+		padding : 5px 10px;
+		height: 70%;
+	}
+	
+	#moviechart #movierank #movie_list #movie_entity #movie-name{
+		height: 8%;
+	}
+	#moviechart #movierank #movie_list #movie_entity #movie-name a{
+		font-size : 18px;
+	}
+	#moviechart #movierank #movie_list #movie_entity #movie-name a:hover{
+		font-size : 20px;
+		font-weight : bold;
+		text-decoration: none;
+	}
+	#moviechart #movierank #movie_list #movie_entity #movie-info{
+		height: 7%;
+	}
+	#moviechart #movierank #movie_list #movie_entity #movie-reserve{
+		height: 15%;
+	}
+	#moviechart #movierank #movie_page{
+		text-align : center;
+		background-color: gray;
+		width: 100%;
+		height: 4%;
+	}
+	#moviechart #movierank #movie_page a{
+		color : white;
+	}
+	
+	#moviechart #movierank #movie_page #currentPaging{
+		color: red;
 	}

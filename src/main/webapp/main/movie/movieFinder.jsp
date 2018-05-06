@@ -170,9 +170,9 @@
 				<c:forEach var ="find_list" items="${requestScope.find_list }">
 					<div id = "findentity">
 						<div id = "entity-poster">
-						<c:forEach var ="photo_map" items="${requestScope.photo_map }" >
-							<c:if test="${photo_map.key == find_list.movie_code }">
-								<img src = "../../image/storage/moviephoto/${photo_map.value }">
+						<c:forEach var ="poster_map" items="${requestScope.poster_map }" >
+							<c:if test="${poster_map.key == find_list.movie_code }">
+								<img src = "../../image/storage/moviephoto/${poster_map.value }">
 							</c:if>
 						</c:forEach>
 						</div>
@@ -182,13 +182,18 @@
 							</a>
 						</div>
 						<div id = "entity-reserverate">
-							예매율&emsp; 0.0% 
+							예매율&emsp; 
+							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
+								<c:if test="${find_list.movie_code == reserve_rate_map.key }">
+										${reserve_rate_map.value} %
+								</c:if>
+							</c:forEach>
 						</div>
 						<div id = "entity-opendate">
 							${find_list.movie_open_date }
 						</div>
 						<div id = "entity-reserve">
-							<a href="#" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${find_list.movie_code }">
+							<a href="../../reserve.do?movie_code=${find_list.movie_code }" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${find_list.movie_code }">
           						<span class="glyphicon glyphicon-film"> 예매</span>
         					</a>
 						</div>

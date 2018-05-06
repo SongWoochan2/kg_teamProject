@@ -1,92 +1,145 @@
-#wrapper{
-	width: 700px;
+#wrapper {
+	width: 1000px;
 	margin: 0 auto;
 	text-align: center;
 	align-items: center;
+	background-color: #ffe9ce;
+	border: 3px solid black;
+	padding: 50px;
+	overflow: auto;
 }
-table{
+
+div {
+	box-sizing: border-box;
+}
+table {
 	margin: auto;
 }
+
 .leftSide {
 	background: orange;
 	width: 100px;
 }
-div{
-	margin: auto;	
-	align-self: center;
-	box-sizing: border-box;
+#setting_zone{
+	border: 3px solid #ffffff;
+	padding: 15px;
+	width: 100%;
+	overflow: auto;
 }
+
+
+#setting_zone radio{
+	cursor: pointer;
+}
+#setting_zone #setting_zone_left{
+	width: 15%;
+	height: 100%;
+	float: left;
+}
+	#seat_type_field .seatTypeInfo {
+		width: 100%;
+		height: 100%;
+	}
+	
+	#seat_type_field .seatTypeInfo .info_box {
+		width: 100%;
+	}
+	#setting_zone_left radio{
+		width: 100%;
+		height: 100%;
+		float: left;
+	}
+	
+#setting_zone #setting_zone_center{
+	margin: 0 auto;
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+#setting_zone #setting_zone_right{
+	width: 15%;
+	height: 100%;
+	float: left;
+}
+
+.screen {
+	margin: 0 auto;
+	background: black;
+	color: white;
+	width: 300px;
+	height: 50px;
+	line-height: 50px;
+	border: 2px solid black;
+	text-align: center;
+}
+
 #seatView {
+	margin: 0 auto;
+	padding: 20px 0px;
+	width: 95%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	margin: 50px;
+	align-items: center; 
+	overflow-x: auto;
 }
-#seatView > div{
+
+#seatView > div {
 	height: 18px;
 	font-size: 15px;
 	line-height: 18px;
+	white-space:nowrap;
+	margin: 0 auto;
 }
-div[name='seat']{
-	float: left;
+div[name='seat'], div.row_label{
+	display: inline-block;
 	width: 15px;
 	height: 15px;
-	font-size : 13px;
+	font-size: 10px;
 	line-height: 13px;
-	border: 1px dotted gray;
+	text-align: center;
 	margin: 1px;
-}
-div[name='seat']:hover, .row_label{
 	cursor: pointer;
 }
-.empty{
-	background-color: white;
+div[name='seat'].empty {
+	border: 1px solid gray;
 	color: black;
 }
-.easy{
-	background-color: blue;
+div[name='seat'].easy {
+	background-color: #400000;
+	border: 2px solid #ffff00;
 	color: white;
 }
-.basic{
-	background-color: green;
+div[name='seat'].basic {
+	background-color: #400000;
+	border: 2px solid #008000;
 	color: white;
 }
-.good{
-	background-color: red;
+
+div[name='seat'].good {
+	background-color: #400000;
+	border: 2px solid #ff0000;
 	color: white;
 }
-.couple{
-	background-color: pink;
-	color: black;
+
+div[name='seat'].couple {
+	background-color: #400000;
+	border: 2px solid #ff00ff;
+	color: white;
 }
-.reserved{
-	background-color: black !important;
+
+div[name='seat'].reserved {
+	background-color: #c0c0c0 !important;
+	border: 2px solid #808080;
 	color: black;
 	cursor: default !important;
 }
-div[name='seat'][choose='y']{
-	border : 2px solid #00ff00!important;
+
+div[name='seat'][choose='y'] {
+	border: 2px solid #00ff00;
 	font-weight: bold;
 }
-.screen{
-	width: 300px;
-	height: 50px;
-	line-height :50px;
-	border : 2px solid black;
-	text-align: center;
+
+#seatView div[name='seat']:hover {
+	border: 2px solid #00ff00;
 }
-.row_label{
-	float: left;
-	width: 15px;
-	height: 15px;
-	font-size : 13px;
-	line-height: 13px;
-	margin: 1px;
-}
-
-
-
-
-
-

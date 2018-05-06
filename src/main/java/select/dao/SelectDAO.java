@@ -43,4 +43,11 @@ public class SelectDAO {
 	public int movieGoodCount(int movie_code) {
 		return sqlSession.selectOne("selectMapper.movieGoodCount", movie_code);
 	}
+	
+
+	// woochan
+	public Map<Integer, SelectDTO> getSelectOfMember(String member_id) {
+		return sqlSession.selectMap("selectMapper.getSelectOfMember",member_id, "movie_code");
+	}
+	
 }

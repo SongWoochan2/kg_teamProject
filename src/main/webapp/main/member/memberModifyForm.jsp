@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원정보 수정</title>
+<title>Insert title here</title>
+
+<link rel="stylesheet" media="all" type="text/css" href="/MyCGV/css/memberConfirm/memberJoin.css">
+
 <script type="text/javascript" src="/MyCGV/script/memberScript.js?v=1"></script>
 <script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <!-- 유효성 검사 (영문,숫자 포함 입력,공백없게) / 모든 필드 글자수 제한 걸기 -->
@@ -90,85 +92,85 @@ pageEncoding="UTF-8"%>
 </script>
 </head>
 <body>
-	<form name="memberModifyForm" method="post" action="memberModify.do">
-		<table>
-			<tr>
-				<th>아이디</th>
-				<td>${memberDTO.member_id }</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>${memberDTO.member_name }</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="member_pwd"></td>
-			</tr>
-			<tr>
-				<th>비밀번호 확인</th>
-				<td><input type="password" name="member_repwd"></td>
-			</tr>
-			<tr>
-				<!-- <th>법정생년월일(6자리)</th> -->
-				<th>법정생년월일</th>
-				<td>
-					<input type="hidden" id="birthView" value="${memberDTO.member_birth}">
-					<input type="text" name="yy" maxlength="4" value="" placeholder="년(4자)"> 
-					<select name="mm">
-					<option value="">월</option>
-						<option value="01">1</option>
-						<option value="02">2</option>
-						<option value="03">3</option>
-						<option value="04">4</option>
-						<option value="05">5</option>
-						<option value="06">6</option>
-						<option value="07">7</option>
-						<option value="08">8</option>
-						<option value="09">9</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option>
-					</select>
-					<input type="text" name="dd" maxlength="2" value="" placeholder="일"> 			
-				</td>
-			</tr>
-			<tr>
-				<th>성별</th>
-				<td>
-					<input type="hidden" id="genderView" value="${memberDTO.member_gender}">
-					<input type="radio" name="member_gender" id="gender_m" value="남자">남자
-					<input type="radio" name="member_gender" id="gender_f" value="여자">여자
-				</td>
-			</tr>
-			<tr>
-				<th>휴대전화</th>
-				<td>
-					<input type="hidden" id="agencyView" value="${memberDTO.member_agency}">
-					<input type="radio" name="member_agency" id="agc_s" value="SKT">SKT
-					<input type="radio" name="member_agency" id="agc_k" value="KT">KT
-					<input type="radio" name="member_agency" id="agc_l" value="LGU+">LGU+
-					<input type="radio" name="member_agency" id="agc_a" value="알뜰폰">알뜰폰<br>
+<jsp:include page="/main/main/header.jsp"/>
+<div class="big_form">
+	<div class="join_img">
+		<img src="../../image/memberModify/join.jpg">
+	</div>
+	<div class="join_info">
+		<form name="memberModifyForm" method="post" action="memberModify.do">
+			<fieldset>
+				<legend>회원정보 수정</legend>
+				<ol>
+				  <li>
+				    <label>아이디</label>
+				    <label>${memberDTO.member_id }</label>
+				  </li>
+				  <li>
+				    <label>이름</label>
+				    <label>${memberDTO.member_name }</label>
+				  </li>
+				  <li>
+				    <label>비밀번호</label>
+				    <input class="in" name="member_pwd" type="password">
+				  </li>
+				  <li>
+				    <label>비밀번호 확인</label>
+				    <input class="in" name="member_repwd" type="password">
+				  </li>
+				  <li>
+				  	<label>법정생년월일</label>
+				  	<input type="hidden" id="birthView" value="${memberDTO.member_birth}">
+				    <input class="in" type="text" name="yy" maxlength="4" value="" placeholder="년(4자)"> 
+						<select class="in" name="mm">
+							<option value="">월</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					<input class="in" type="text" name="dd" maxlength="2" value="" placeholder="일"> 
+				  </li>
+				  <li>
+				  	<label>성별</label>
+				  	<input type="hidden" id="genderView" value="${memberDTO.member_gender}">
+				  	<input class="in" type="radio" name="member_gender" value="남자">남자
+					<input class="in" type="radio" name="member_gender" value="여자">여자
+				  </li>
+				  <li>
+				  	<label>휴대전화</label>
+				  	<input type="hidden" id="agencyView" value="${memberDTO.member_agency}">
+				  	<input class="in" type="radio" name="member_agency" value="SKT">SKT
+					<input class="in" type="radio" name="member_agency" value="KT">KT
+					<input class="in" type="radio" name="member_agency" value="LGU+">LGU+
+					<input class="in" type="radio" name="member_agency" value="알뜰폰">알뜰폰<br>
 					
 					<input type="hidden" id="phoneView" value="${memberDTO.member_phone}">
-					<select name="phone1" style="width:70px;">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-						<option value="017">017</option>
-						<option value="018">018</option>
-						<option value="019">019</option>
-					</select>-
-					<input type="text" name="phone2" maxlength="4" size="10">-
-					<input type="text" name="phone3" maxlength="4" size="10">
-				</td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td>
-					<input type="hidden" id="emailView" value="${memberDTO.member_email}">
-					<input type="text" name="email1">@
-					<input type="text" id="email2" name="email2">
-					<select id="email3" name="email3" style="width:100px;">
+						<select name="phone1" style="width:70px;">
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="018">018</option>
+							<option value="019">019</option>
+						</select>-
+					<input class="in" type="text" name="phone2" maxlength="4" size="10">-
+					<input class="in" type="text" name="phone3" maxlength="4" size="10">
+				  </li>
+				  <li>
+				  	<label>이메일</label>
+				  	<input type="hidden" id="emailView" value="${memberDTO.member_email}">
+				  	<input class="in" type="text" name="email1">@
+					<input class="in" type="text" id="email2" name="email2">
+					<select class="in" id="email3" name="email3" style="width:100px;">
 						<option value="0">선택</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
@@ -177,19 +179,23 @@ pageEncoding="UTF-8"%>
 						<option value="nate.com">nate.com</option>
 						<option value="1">직접입력</option>
 					</select>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="button" value="취소" id="cancle_btn">
-					<input type="button" value="수정" onclick="javascript:checkModify()">
-				</td>
-			</tr>
-		</table>
+				  </li>
+				</ol>
+			</fieldset>
+			<fieldset>
+				<div class="Btn">
+					<input class="btn" type="button" value="취소" id="cancle_btn">
+					<input class="btn" type="button" value="수정" onclick="javascript:checkModify()">
+				</div>
+			</fieldset>
+			<fieldset>
+				<input class="btn" type="button" value="  MovieT Main  " onclick="location.href='index.do'">
+			</fieldset>
+		</form>
+	</div>
+</div>
 
-		<input type="button" value="MoveIt 첫화면으로" onclick="location.href='index.do'">
-	</form>
+<jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>
-
 

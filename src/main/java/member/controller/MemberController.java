@@ -1,14 +1,17 @@
 package member.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import member.bean.MemberDTO;
 
@@ -21,19 +24,20 @@ public class MemberController {
 	@RequestMapping(value="/main/member/index.do")
 	public ModelAndView toMainPage(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:../main/index.jsp");
+		modelAndView.setViewName("redirect:/main/main/movieMain.do");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/main/member/memberLoginForm.do")
-	public ModelAndView memberLoginForm(HttpServletRequest request) {
+	public ModelAndView memberLoginForm(HttpServletRequest request, Model model) {
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("memberLoginForm.jsp");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/main/member/memberLogin.do")
-	public ModelAndView memberLogin(HttpServletRequest request) {
+	public ModelAndView memberLogin(HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		System.out.println("로그인 처리");
 
 		String member_id = request.getParameter("member_id");
@@ -49,10 +53,35 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("memName", member_name);
 			session.setAttribute("memId", member_id);
-			modelAndView.setViewName("redirect:../main/index.jsp");
+			
+			
+			//////  페이지 이동 제어 및 파라미터 제어  //////
+			Map<String, String[]> param_map = request.getParameterMap();
+			for(String param_name : param_map.keySet()) {
+				if( param_name.startsWith("pre_")) {
+					for(String value : param_map.get(param_name)) {
+						redirectAttributes.addAttribute( param_name.replaceFirst("pre_", ""), value);
+					}
+				}
+			}
+			if(request.getParameter("origin_uri") != null) {
+				//System.out.println("target uri : " + ((String)request.getParameter("origin_uri")).replaceFirst("/MyCGV", ""));
+				modelAndView.setViewName("redirect:" + ((String)request.getParameter("origin_uri")).replaceFirst("/MyCGV", "") );
+				return modelAndView;
+			}
+			/////////////////////////////////
+			
+			
+			modelAndView.setViewName("redirect:/main/main/movieMain.do");
 		}
 		return modelAndView;
 	}
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/main/member/memberLogout.do")
 	public ModelAndView memberLogout(HttpServletRequest request) {
@@ -63,7 +92,7 @@ public class MemberController {
 		session.invalidate(); // 무효화 : 모두 지우기
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:../main/index.jsp");
+		modelAndView.setViewName("redirect:/main/main/movieMain.do");
 		return modelAndView;
 	}
 	
@@ -219,7 +248,7 @@ public class MemberController {
 		session.invalidate(); // 무효화 : 모두 지우기
 		ModelAndView modelAndView = new ModelAndView();
 		//modelAndView.addObject("result", result);
-		modelAndView.setViewName("redirect:../main/index.jsp");
+		modelAndView.setViewName("redirect:/main/main/movieMain.do");
 		return modelAndView;
 	}
 	

@@ -11,14 +11,15 @@ import org.springframework.stereotype.Repository;
 
 import movie.bean.MovieDTO;
 import moviephoto.bean.MoviePhotoDTO;
+import moviephoto.bean.MoviePosterDTO;
 
 @Repository
 public class MoviePhotoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+
 	
 	public List<MoviePhotoDTO> moviePhotoList(int startNum, int endNum,int movie_code){
-		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
@@ -44,7 +45,19 @@ public class MoviePhotoDAO {
 	public MoviePhotoDTO moviePosterView(int movie_code) {
 		return sqlSession.selectOne("moviephotoMapper.moviePosterView",movie_code);
 	}
+	public List<MoviePosterDTO> moviePosterList(ArrayList<Integer> code_list, int m_startNum, int m_endNum) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("code_list", code_list);
+		map.put("m_startNum", m_startNum);
+		map.put("m_endNum", m_endNum);
+		return sqlSession.selectList("moviephotoMapper.moviePosterList", map);
+	}
 	
+	// woochan
+	
+	public Map<Integer, MoviePhotoDTO> getMapOfShowMoviePoster(){
+		return sqlSession.selectMap("moviephotoMapper.getMapOfShowMoviePoster", "movie_code");
+	}
 	
 	
 }

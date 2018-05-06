@@ -1,12 +1,14 @@
 package moviephoto.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import movie.bean.MovieDTO;
 import moviephoto.bean.MoviePhotoDTO;
+import moviephoto.bean.MoviePosterDTO;
 import moviephoto.dao.MoviePhotoDAO;
 
 
@@ -45,5 +47,16 @@ public class MoviePhotoServiceImpl implements MoviePhotoService{
 		return (MoviePhotoDTO) moviePhotoDAO.moviePosterView(movie_code);
 	}
 
+	@Override
+	public ArrayList<MoviePosterDTO> moviePosterList(ArrayList<Integer> code_list, int m_startNum, int m_endNum) {
+		return (ArrayList<MoviePosterDTO>) moviePhotoDAO.moviePosterList(code_list, m_startNum, m_endNum);
+	}
+
+	
+	// woochan
+
+	public Map<Integer, MoviePhotoDTO> getMapOfShowMoviePoster(){
+		return moviePhotoDAO.getMapOfShowMoviePoster();
+	}
 	
 }

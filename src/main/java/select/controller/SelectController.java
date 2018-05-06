@@ -24,6 +24,7 @@ public class SelectController {
 		int trailer_pg = 1;
 		int review_pg = 1;
 		int movie_pg = 1;
+		int chart_pg = 1;
 		String pagetype = null;
 		// 영화 상세 정보
 		if(request.getParameter("photo_pg") != null) {
@@ -39,9 +40,13 @@ public class SelectController {
 		if(request.getParameter("movie_pg") != null) {
 			movie_pg = Integer.parseInt(request.getParameter("movie_pg"));					
 		}
-		// 위시 리스트
+		// 위시 리스트, 영화 차트
 		if(request.getParameter("pagetype")!=null) {
 			pagetype = request.getParameter("pagetype");
+		}
+		// 영화 차트
+		if(request.getParameter("chart_pg") != null) {
+			movie_pg = Integer.parseInt(request.getParameter("chart_pg"));					
 		}
 		
 		
@@ -78,16 +83,22 @@ public class SelectController {
 		}
 		
 		if(member_id != null) {
-				like_able = selectService.selectMovieList(member_id, movie_code);							
+			like_able = selectService.selectMovieList(member_id, movie_code);							
 		}
 		
 		ModelAndView modelAndView = new ModelAndView();
 		if(request.getParameter("pagetype")!=null) {
 			modelAndView.addObject("pagetype", pagetype);	
 		}
+		// 공통 사항
 		if(request.getParameter("movie_code") != null) {
 			modelAndView.addObject("movie_code", movie_code);
 		}
+		// 리뷰 페이지, 영화 상세 페이지
+		if(request.getParameter("review_pg") != null) {
+			modelAndView.addObject("review_pg", review_pg);			
+		}
+		// 영화 상세 페이지
 		if(request.getParameter("photo_pg") != null) {
 			modelAndView.addObject("pagetype", "movieinfo");	
 			modelAndView.addObject("photo_pg", photo_pg);			
@@ -95,12 +106,14 @@ public class SelectController {
 		if(request.getParameter("trailer_pg") != null) {
 			modelAndView.addObject("trailer_pg", trailer_pg);			
 		}
-		if(request.getParameter("review_pg") != null) {
-			modelAndView.addObject("pagetype", "moviereview");	
-			modelAndView.addObject("review_pg", review_pg);			
-		}
+		// 리뷰 페이지
 		if(request.getParameter("movie_pg") != null) {
+			modelAndView.addObject("pagetype", "moviereview");	
 			modelAndView.addObject("movie_pg", movie_pg);			
+		}
+		// 상영 예정 차트 페이지
+		if(request.getParameter("chart_pg") != null) {
+			modelAndView.addObject("chart_pg", chart_pg);				
 		}
 		modelAndView.setViewName("movieLikeTmp.jsp");
 		return modelAndView;

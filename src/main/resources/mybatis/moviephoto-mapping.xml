@@ -41,4 +41,37 @@
 		AND movie_code = #{movie_code}
 		ORDER BY movie_code
 	</select>
+	
+	<select id = "moviePosterList" parameterType= "java.util.Map" resultType="moviePosterDTO">
+		<![CDATA[select movie_code, movie_photo_addr
+ 		from (select rownum rn, tt.*  
+ 				from (SELECT * FROM movie_poster ]]>
+					<if test="code_list != null">
+						where movie_photo_addr like 'poster_' || '%' 
+						 	and movie_code IN ( 0
+							<foreach item="item" index="index" collection="code_list"
+			     				 open="," separator="," close="">
+			       				#{item} 
+			  				</foreach>
+			  				)
+						ORDER BY movie_code desc) tt) 
+		  			</if>
+		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
+		
+	</select>
+	
+	<!-- 우찬 -->
+	<select id = "getMapOfShowMoviePoster" parameterType= "java.util.Map" resultType="moviePhotoDTO">
+		<![CDATA[SELECT * FROM movie_photo 
+		WHERE movie_photo_code IN (
+		      	SELECT max(movie_photo_code) movie_photo_code FROM movie_photo 
+		      	where movie_photo_addr like 'poster_' || '%' GROUP BY movie_code
+		      	)
+		AND movie_code IN ( 
+				SELECT movie_code FROM show_present 
+				WHERE trunc(sysdate) <= show_date 
+				)
+		ORDER BY movie_code]]>
+	</select>
+	
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import movie.bean.MovieDTO;
+import movie.bean.ReserveRank;
 
 @Repository
 public class MovieDAO {
@@ -65,15 +66,17 @@ public class MovieDAO {
 		map.put("good", good);
 		return sqlSession.update("movieMapper.goodUpdate", map);
 	}
-	public List<MovieDTO> presentMovieList(ArrayList<String> code_list, int m_startNum, int m_endNum){
+	public List<MovieDTO> presentMovieList(int m_startNum, int m_endNum){
 		Map<String, Object> map = new HashMap<>();
-		map.put("code_list", code_list);
 		map.put("m_startNum", m_startNum);
 		map.put("m_endNum", m_endNum);
 		return sqlSession.selectList("movieMapper.presentMovieList", map);
 	}
-	public List<MovieDTO> movieNonOpenRank() {
-		return sqlSession.selectList("movieMapper.movieNonOpenRank");
+	public List<MovieDTO> movieNonOpenRank(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		return sqlSession.selectList("movieMapper.movieNonOpenRank", map);
 	}
 	public List<MovieDTO> movieScoreRank(int startNum, int endNum) {
 		Map<String, Integer> map = new HashMap<>();
@@ -81,10 +84,40 @@ public class MovieDAO {
 		map.put("endNum", endNum);
 		return sqlSession.selectList("movieMapper.movieScoreRank",map);
 	}
+	public List<MovieDTO> movieAudienceRank(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		return sqlSession.selectList("movieMapper.movieAudienceRank",map);
+	}
 	public int updateEvaluatNum(int movie_code, int movie_evaluat_num) {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("movie_code", movie_code);
 		map.put("movie_evaluat_num", movie_evaluat_num);
 		return sqlSession.update("movieMapper.updateEvaluatNum", map);
+	}
+	public Integer allReserveCount() {
+		return sqlSession.selectOne("movieMapper.allReserveCount");
+	}
+	
+	public List<ReserveRank> movieReserveRank(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		return sqlSession.selectList("movieMapper.movieReserveRank", map);
+	}
+	
+	public Integer movieReserveNum(int movie_code) {
+		return sqlSession.selectOne("movieMapper.movieReserveNum",movie_code);
+	}
+	
+	public int movieNonOpenTotal() {
+		return sqlSession.selectOne("movieMapper.movieNonOpenTotal");
+	}
+	
+	
+	/// woochan
+	public Map<Integer, ReserveRank> getMapOfReserveNum() {
+		return sqlSession.selectMap("movieMapper.getMapOfReserveNum", "movie_code");
 	}
 }

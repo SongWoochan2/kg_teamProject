@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -143,6 +144,7 @@ public class ShowPlaceController {
 			
 			JSONArray list = (JSONArray) json.get("seat");
 			
+			List<SeatVO> seatVOs = new ArrayList<>();
 			for(Object tmp : list) {
 				JSONObject seat = (JSONObject) tmp;
 				SeatVO seatVO = new SeatVO();
@@ -150,12 +152,15 @@ public class ShowPlaceController {
 				seatVO.setY_index((String)seat.get("y_index"));
 				seatVO.setX_index(Integer.parseInt((String)seat.get("x_index")));
 				seatVO.setSeat_type_code(Integer.parseInt((String)seat.get("seat_type_code")));
-				showPlaceService.insertSeat(seatVO);
+				seatVOs.add(seatVO);
+				System.out.println(seatVO);
 			}
-			
+			int result = showPlaceService.insertSeatList(seatVOs);
+			System.out.println("Seats inserting result : " + result);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);

@@ -1,9 +1,7 @@
 .menu_tong_div{
-	border: 1px solid red;
 	width: 160px;
 }
 .left_menubar{
-	border: 1px solid black;
 	text-align: left;
 }
 .left_menubar ul,li{

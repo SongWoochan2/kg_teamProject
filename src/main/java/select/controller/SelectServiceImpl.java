@@ -1,6 +1,7 @@
 package select.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,13 @@ public class SelectServiceImpl implements SelectService{
 	@Override
 	public int movieGoodCount(int movie_code) {
 		return selectDAO.movieGoodCount(movie_code);
+	}
+	
+	
+	//woochan
+	
+	public Map<Integer, SelectDTO> getSelectOfMember(String member_id) {
+		return selectDAO.getSelectOfMember(member_id);
 	}
 	
 	

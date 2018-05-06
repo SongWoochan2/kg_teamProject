@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import evaluat.bean.EvaluatDTO;
 import evaluat.bean.EvaluatLikeDTO;
+import movie.bean.MovieResultDTO;
 
 @Repository
 public class EvaluatDAO {
@@ -81,5 +82,22 @@ public class EvaluatDAO {
 	
 	public int evaluatLikeCount(int evaluat_code) {
 		return sqlSession.selectOne("evaluatMapper.evaluatLikeCount", evaluat_code);
+	}
+	
+	public List<MovieResultDTO> getTotalList(ArrayList<Integer> code_list, int e_startNum, int e_endNum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code_list", code_list);
+		map.put("e_startNum", e_startNum);
+		map.put("e_endNum", e_endNum);
+		return sqlSession.selectList("evaluatMapper.getTotalList", map);
+	}
+	
+	public List<MovieResultDTO> movieScoreTotalList(ArrayList<Integer> code_list, int e_startNum, int e_endNum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code_list", code_list);
+		map.put("e_startNum", e_startNum);
+		map.put("e_endNum", e_endNum);
+		return sqlSession.selectList("evaluatMapper.movieScoreTotalList", map);
+		
 	}
 }

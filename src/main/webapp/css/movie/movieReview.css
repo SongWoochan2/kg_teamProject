@@ -91,16 +91,16 @@
 		text-align : center;
 		height: 7%;
 	}
-	#movieReview #review-all #review-movie #entity #select-request button{
+	#movieReview #review-all #review-movie #entity #select-request a{
+		padding : 10px;
 		border : 1px solid #69aef4;
 		font-size : 14px;
 		color : white;
 		text-decoration : none;
-		width : 80px;
 		border-radius: 10px;
  		background-color: #61a4e8;
 	}
-	#movieReview #review-all #review-movie #entity #select-request button:hover{
+	#movieReview #review-all #review-movie #entity #select-request a:hover{
 		background-color: #69aef4;
 	}
 	
@@ -142,16 +142,16 @@
 		text-align : center;
 		height: 7%;
 	}
-	#movieReview #review-all #review-movie #entity #entity-request button{
+	#movieReview #review-all #review-movie #entity #entity-request a{
 		border : 1px solid #d14010;
+		padding : 10px;
 		font-size : 14px;
 		color : white;
 		text-decoration : none;
-		width : 80px;
 		border-radius: 10px;
  		background-color: #e24d1b;
 	}
-	#movieReview #review-all #review-movie #entity #entity-request button:hover{
+	#movieReview #review-all #review-movie #entity #entity-request a:hover{
 		background-color: #ef4f1a;
 	}
 	#movieReview #review-all #review{
@@ -263,12 +263,14 @@
 		height: 6%;
 		width: 100%;
 	}
-	#movieReview #review-all #review-paging a{
+	#movieReview #review-all #review-paging *{
 		font-size : 18px;
-		text-decoration: none;
 		font-weight: bold;
-		color : black;
 	}
-	#movieReview #review-all #review-paging a:hover {
-		color : blue;
+	#movieReview #review-all #review-paging #paging {
+		text-decoration: none;
+		color: blue;
+	}
+	#movieReview #review-all #review-paging #currentPaging {
+		color: red;
 	}

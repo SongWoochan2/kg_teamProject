@@ -3,15 +3,17 @@
 <html>
 <title>Pay</title>
 
-<link rel="stylesheet" href="../../css/pay/giftcon_1509.css">
+<link rel="stylesheet" href="../../css/store/productPay.css">
 
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
 <script src="http://img.cgv.co.kr/common/js/jquery.cycle2.js"></script>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript" src="../../script/productpayScript.js"></script>
-<form action="productPayComplete.do?product_code=${param.product_code }" method="post" name="productPay">
+
+<body>
 <jsp:include page="/main/main/header.jsp"/>
+<form action="productPayComplete.do?product_code=${param.product_code }" method="post" name="productPay">
 	
     <!--원가 -->
 <input type="hidden" name="ctl00$bodyPlaceHolder$hidPrice" id="ctl00_bodyPlaceHolder_hidPrice" value="${productboardDTO.product_cost }">
@@ -19,7 +21,7 @@
 
 <div class="giftshop_wrap">
 	<div class="order_section">
-		<img src="http://img.cgv.co.kr/images/gift/1404_new/title_order.png" alt="주문 정보 입력" width="104" height="18">
+		<img src="../../image/storeStorage/title_order.png" alt="주문 정보 입력" width="104" height="18">
 		
 		<!-- 상품 정보 -->
 		<div class="order_detail cf">
@@ -42,14 +44,14 @@
 		
 		<!-- 보내는 이 입력-->
 		<div class="sender">
-			<img src="http://img.cgv.co.kr/images/gift/1404_new/title_02_01.png" alt="선물 하는 분" width="68" height="13">
+			<img src="../../image/storeStorage/title_02_01.png" alt="선물 하는 분" width="68" height="13">
 			<dl class="sender_row">
 				<dt class="col_label name">
-					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_name.png" width="22" height="13" alt="이름">
+					<img src="../../image/storeStorage/label_name.png" width="22" height="13" alt="이름">
 				</dt>
 				<dd class="col_sender_name">${member_id } 님</dd>
 				<dt class="col_label phone">
-					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_phone.png" width="60" height="13" alt="휴대폰 번호">
+					<img src="../../image/storeStorage/label_phone.png" width="60" height="13" alt="휴대폰 번호">
 				</dt>
 				<dd class="col_phone1"> 
 					<div class="select_phone1_wrap">
@@ -79,13 +81,13 @@
 		
 		<div class="line_sp_contact"></div>
 		<div class="receiver">
-			<img src="http://img.cgv.co.kr/images/gift/1404_new/title_02_02.png" alt="선물 받는 분" width="68" height="13">
+			<img src="../../image/storeStorage/title_02_02.png" alt="선물 받는 분" width="68" height="13">
 			<!-- 받는분 리스트 요소 -->
 			<dl class="receiver_row">
 				<dt></dt>
 				<dd class="col_receiver_num">1</dd>
 				<dt class="col_label phone">
-					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_phone.png" width="60" height="13" alt="휴대폰 번호">
+					<img src="../../image/storeStorage/label_phone.png" width="60" height="13" alt="휴대폰 번호">
 				</dt>
 				<dd class="col_phone1"> 
 					<div class="select_phone1_wrap">
@@ -128,7 +130,7 @@
 				<dt></dt>
 				<dd class="col_receiver_num">2</dd>
 				<dt class="col_label phone">
-					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_phone.png" width="60" height="13" alt="휴대폰 번호">
+					<img src="../../image/storeStorage/label_phone.png" width="60" height="13" alt="휴대폰 번호">
 				</dt>
 				<dd class="col_phone1"> 
 					<div class="select_phone1_wrap">
@@ -172,7 +174,7 @@
 				<dt></dt>
 				<dd class="col_receiver_num">3</dd>
 				<dt class="col_label phone">
-					<img src="http://img.cgv.co.kr/images/gift/1404_new/label_phone.png" width="60" height="13" alt="휴대폰 번호">
+					<img src="../../image/storeStorage/label_phone.png" width="60" height="13" alt="휴대폰 번호">
 				</dt>
 				<dd class="col_phone1"> 
 					<div class="select_phone1_wrap">
@@ -217,10 +219,10 @@
 		<div class="line_sp_contact"></div>		
 		<!-- 결제 금액 -->
 		<div class="sum">
-			<p>
-				<span id="dc">총 결제 금액
+			<p><br>
+				<%-- <span id="dc">총 결제 금액
 					 <b>${productboardDTO.product_cost }</b>
-				</span>
+				</span> --%>
 			</p>
          <span id="ctl00_bodyPlaceHolder_UpdatePanel1">
 			<a onclick="checkProductPay()" id="ctl00_bodyPlaceHolder_lnkResult" href="#">
@@ -241,7 +243,7 @@
 				<li id="ctl00_bodyPlaceHolder_theaterInfo2">기프트콘 상품은 다른 극장에서 사용이 불가능합니다. </li>
 				
 				<li id="ctl00_bodyPlaceHolder_theaterInfo3" class="gs2_ls_none"></li>
-	            <li>결제 확인 및 취소는 MY CGV &gt; 팝콘 스토어에서 가능합니다.</li>
+	            <li>결제 확인 및 취소는 MY 구매내역에서 가능합니다.</li>
 			</ul>	
 		</div>
 	</div>

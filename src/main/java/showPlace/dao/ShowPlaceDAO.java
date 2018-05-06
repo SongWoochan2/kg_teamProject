@@ -42,6 +42,10 @@ public class ShowPlaceDAO {
 
 
 	///////////  seat
+	public int insertSeatList(List<SeatVO> seatVOs) {
+		return sqlSession.insert("seatMapper.insertSeatList", seatVOs);
+	}
+
 	public int insertSeat(SeatVO seatVO) {
 		return sqlSession.insert("seatMapper.insertSeat", seatVO);
 	}

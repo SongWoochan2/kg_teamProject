@@ -44,7 +44,7 @@
 				}
 			});
 			
-			 $(document).on("click", "div[name='seat']", function() {
+			 $(document).on("click", "#seatView div[name='seat']", function() {
 				var seat_type = $("input[name='seat_type']:checked:eq(0)").val();
 				if(seat_type == "0"){
 					$(this).removeClass();
@@ -117,6 +117,7 @@
 					for(var x = 1; x <= x_size; x++){
 						$(this).append($("<div>").addClass("empty").attr({"row_number": row_number,"name" : "seat", "col_number": x, "seat_type": 0}).val(x).html(x));
 					}
+					$(this).append($("<div>").addClass("row_label").html(row_number));
 				});
 			});
 			
@@ -126,6 +127,7 @@
 	 			var seat_json = {};
 		 		var list = [];
 	 			
+		 		
 				var i = 0;
 				$("div[name='row']").each(function(){
 					var row_number = $(this).attr("row_number");
@@ -148,12 +150,18 @@
 			 			list[i++] = seat;
 					}
 				});
-				
+
+				if(list.length == 0){
+					alert("좌석 배치를 만들어 주세요.");
+					return false;
+				}
 				
 				seat_json={"seat": list }
 				$("input[name='seat_code']").val(JSON.stringify(seat_json));
 				
-				alert($("input[name='seat_code']").val());
+				//alert($("input[name='seat_code']").val());
+				
+				
 			});
 			
 		});
@@ -189,18 +197,18 @@
 				<tr>
 					<td class="leftSide">상영관명</td>
 					<td>
-						<input type="text" name="show_place_name">
+						<input type="text" name="show_place_name" required="required">
 					</td>
 				</tr>
 				<tr>
 					<td class="leftSide">기본가격</td>
 					<td>
-						<input type="text" name="default_cost">
+						<input type="text" name="default_cost" required="required">
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" >
-						<input type="file" name="img">
+						<input type="file" name="img" required="required">
 					</td>
 				</tr>
 				<tr>
@@ -213,19 +221,44 @@
 					</td>
 				</tr>
 			</table>
-			<div class="screen">스크린</div>
-			<div id="seatView"></div>
-			<fieldset id="seat_type_field">
-                <legend>좌석종류</legend>
-				<label><input type="radio" name="seat_type" value="0" checked="checked">빈좌석</label>
-				<label><input type="radio" name="seat_type" value="1">장애인석</label>
-				<label><input type="radio" name="seat_type" value="2">일반석</label>
-				<label><input type="radio" name="seat_type" value="3">우등석</label>
-				<label><input type="radio" name="seat_type" value="4">커플석</label>
-            </fieldset>
-			<fieldset id="passage_field">
-                <legend>통로</legend>
-            </fieldset>
+			<div id="setting_zone">
+				<div id="setting_zone_left">
+					<fieldset id="seat_type_field">
+		                <legend>좌석종류</legend>
+						<div class="seatTypeInfo">
+							<div class="info_box">
+								<div name="seat" class="empty"></div>
+								<label>빈좌석<input type="radio" name="seat_type" value="0" checked="checked"></label>
+							</div>
+							<div class="info_box">
+								<div name="seat" class="easy"></div>
+								<label>장애인석<input type="radio" name="seat_type" value="1"></label>
+							</div>
+							<div class="info_box">
+								<div name="seat" class="basic"></div>
+								<label>일반석<input type="radio" name="seat_type" value="2"></label>
+							</div>
+							<div class="info_box">
+								<div name="seat" class="good"></div>
+								<label>우등석<input type="radio" name="seat_type" value="3"></label>
+							</div>
+							<div class="info_box">
+								<div name="seat" class="couple"></div>
+								<label>커플석<input type="radio" name="seat_type" value="4"></label>
+							</div>
+						</div>
+		            </fieldset>
+				</div>
+				<div id="setting_zone_center">
+					<div class="screen">스크린</div>
+					<div id="seatView"></div>
+				</div>
+				<div id="setting_zone_right">
+					<fieldset id="passage_field">
+		                <legend>통로</legend>
+	            	</fieldset>
+				</div>
+			</div>
 			<input type="submit" value="등록">
 			<input type="reset" value="다시 작성">
 		</form>
@@ -233,3 +266,9 @@
 </div>
 </body>
 </html>
+
+
+
+
+
+

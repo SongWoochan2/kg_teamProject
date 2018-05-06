@@ -25,4 +25,8 @@
 	</select>
 	
 	
+	<select id="getSelectOfMember" parameterType="java.lang.String" resultType="selectDTO">
+		select * from select_do where member_id=#{member_id}
+	</select>
+	
 </mapper>
