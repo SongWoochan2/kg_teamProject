@@ -17,9 +17,9 @@ import moviephoto.bean.MoviePosterDTO;
 public class MoviePhotoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+
 	
 	public List<MoviePhotoDTO> moviePhotoList(int startNum, int endNum,int movie_code){
-		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
@@ -51,6 +51,12 @@ public class MoviePhotoDAO {
 		map.put("m_startNum", m_startNum);
 		map.put("m_endNum", m_endNum);
 		return sqlSession.selectList("moviephotoMapper.moviePosterList", map);
+	}
+	
+	// woochan
+	
+	public Map<Integer, MoviePhotoDTO> getMapOfShowMoviePoster(){
+		return sqlSession.selectMap("moviephotoMapper.getMapOfShowMoviePoster", "movie_code");
 	}
 	
 	

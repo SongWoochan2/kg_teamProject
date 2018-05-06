@@ -158,6 +158,21 @@
 	<select id="presentMovieList" parameterType="java.util.Map" resultType="movieDTO">
 		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
  		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
+ 		from ( select rownum rn, tt.* from ( 
+ 						select * from movie
+						where movie_code IN ( 
+								SELECT movie_code FROM show_present 
+								WHERE trunc(sysdate) <= show_date 
+								)
+						order by movie_code desc 
+						) tt
+				) 
+		where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
+	</select>
+	<!-- 
+	<select id="presentMovieList" parameterType="java.util.Map" resultType="movieDTO">
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+ 		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
  		from (select rownum rn, tt.*  
  				from (select * from movie ]]> 
 					<if test="code_list != null">
@@ -171,7 +186,7 @@
 		  			</if>
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
 	</select>
-	
+	 -->
 	<select id="allReserveCount" resultType="Integer">
 		select sum(reserve_num) from (
 			select movie_code, sum(reserve_num) as reserve_num 
@@ -251,5 +266,27 @@
 		select count(*) from movie 
  					where movie_open_date > sysdate order by good_num desc
 	</select>
+	
+	
+	
+	<!-- woochan -->
+	
+	<select id="getMapOfReserveNum" parameterType="java.util.Map" resultType="reserveRank">
+		select movie_code, sum(reserve_num) as reserve_num 
+		from (
+		--      select show_present_code, movie_code, ( NVL2(nonmember_seat1, 1, 0) + NVL2(nonmember_seat2, 1, 0) + NVL2(nonmember_seat3, 1, 0) + NVL2(nonmember_seat4, 1, 0) + NVL2(nonmember_seat5, 1, 0) + NVL2(nonmember_seat6, 1, 0) + NVL2(nonmember_seat7, 1, 0) + NVL2(nonmember_seat8, 1, 0) ) as reserve_num 
+		--      from nonmember_reserve
+		--      JOIN show_present USING (show_present_code) 
+		--      WHERE show_date >= sysdate-7
+		--      UNION ALL
+		      select show_present_code, movie_code, ( NVL2(member_seat1, 1, 0) + NVL2(member_seat2, 1, 0) + NVL2(member_seat3, 1, 0) + NVL2(member_seat4, 1, 0) + NVL2(member_seat5, 1, 0) + NVL2(member_seat6, 1, 0) + NVL2(member_seat7, 1, 0) + NVL2(member_seat8, 1, 0) ) as reserve_num 
+		      from member_reserve
+		      JOIN show_present USING (show_present_code) 
+		      WHERE show_date >= sysdate-7
+		      ) reserve
+		group by movie_code
+	</select>
+	
+	
 	
 </mapper>

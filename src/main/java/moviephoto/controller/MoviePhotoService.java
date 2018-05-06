@@ -1,6 +1,7 @@
 package moviephoto.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import movie.bean.MovieDTO;
 import moviephoto.bean.MoviePhotoDTO;
@@ -14,4 +15,7 @@ public interface MoviePhotoService {
 	int getTotalA(int movie_code);
 	int moviePhotoDelete(int movie_photo_code);
 	MoviePhotoDTO moviePosterView(int movie_code);
+	
+
+	public Map<Integer, MoviePhotoDTO> getMapOfShowMoviePoster();
 }
