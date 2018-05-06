@@ -8,7 +8,7 @@ import moviephoto.bean.MoviePosterDTO;
 
 public interface MoviePhotoService {
 	ArrayList<MoviePhotoDTO> moviePhotoList(int startNum, int endNum, int movie_code);
-	ArrayList<MoviePosterDTO> moviePosterList(ArrayList<String> code_list, int m_startNum, int m_endNum);
+	ArrayList<MoviePosterDTO> moviePosterList(ArrayList<Integer> code_list, int m_startNum, int m_endNum);
 	int moviePhotoInsert(MoviePhotoDTO moviePhotoDTO);
 	int moviePhotoModify(MoviePhotoDTO moviePhotoDTO);
 	int getTotalA(int movie_code);

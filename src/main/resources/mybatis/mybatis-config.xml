@@ -14,7 +14,7 @@
 		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
 		<typeAlias type="inquiry.bean.InquiryDTO" alias="inquiryDTO"></typeAlias>
 		<typeAlias type="noticeItem.bean.NoticeItemDTO" alias="noticeItemDTO"></typeAlias>
-		
+		<typeAlias type="movie.bean.MovieResultDTO" alias="movieResultDTO"></typeAlias>
 		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
 		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
 		<typeAlias type="admin.bean.AdminRequestDTO" alias="adminRequestDTO"></typeAlias>

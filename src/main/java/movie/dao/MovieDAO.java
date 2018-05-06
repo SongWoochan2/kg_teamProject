@@ -66,7 +66,7 @@ public class MovieDAO {
 		map.put("good", good);
 		return sqlSession.update("movieMapper.goodUpdate", map);
 	}
-	public List<MovieDTO> presentMovieList(ArrayList<String> code_list, int m_startNum, int m_endNum){
+	public List<MovieDTO> presentMovieList(ArrayList<Integer> code_list, int m_startNum, int m_endNum){
 		Map<String, Object> map = new HashMap<>();
 		if(code_list.size() == 0) code_list = null;			// 우찬 임시 수정
 		map.put("code_list", code_list);

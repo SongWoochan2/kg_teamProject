@@ -64,7 +64,7 @@
 			AND show_present.show_place_code = show_place.show_place_code
 	</select>
 	
-	<select id="getUniqueMovieCode" resultType="String">
+	<select id="getUniqueMovieCode" resultType="Integer">
 		select distinct movie_code from show_present where show_date >= sysdate
 	</select>
 	

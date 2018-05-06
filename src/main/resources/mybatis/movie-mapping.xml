@@ -160,15 +160,15 @@
  		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
  		from (select rownum rn, tt.*  
  				from (select * from movie ]]> 
+					<if test="code_list != null">
 					<where>
-						<if test="code_list != null">
 						 	movie_code IN 
 							<foreach item="item" index="index" collection="code_list"
 			     				 open="(" separator="," close=")">
 			       				#{item} 
 			  				</foreach>
-			  			</if>
 					</where> order by movie_code desc) tt) 
+		  			</if>
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
 	</select>
 	

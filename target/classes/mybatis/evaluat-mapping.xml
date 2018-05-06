@@ -36,8 +36,41 @@
 		select sum(evaluat_score) from evaluat where movie_code=#{movie_code} 
 	</select>
 	
+	<select id="movieScoreTotalList" parameterType="java.util.Map" resultType="movieResultDTO">
+	<![CDATA[select movie_code, movie_result
+ 		from (select rownum rn, tt.*  
+ 				from (select movie_code ,sum(evaluat_score) as movie_result from evaluat ]]>
+		<where>
+			<if test="code_list != null">
+			 	movie_code IN 
+				<foreach item="item" index="index" collection="code_list"
+     				 open="(" separator="," close=")">
+       				#{item} 
+  				</foreach>
+  			</if>
+		</where> 
+			group by movie_code ORDER BY movie_code desc) tt) 
+	<![CDATA[where rn>=#{e_startNum} and rn<=#{e_endNum}]]>		
+	</select>
+	
 	<select id="getTotal" parameterType="int" resultType="Integer">
 		select count(*) from evaluat where movie_code=#{movie_code} 
+	</select>
+	
+	<select id="getTotalList" parameterType="java.util.Map" resultType="movieResultDTO">
+	<![CDATA[select movie_code, movie_result
+ 		from (select rownum rn, tt.*  
+ 				from (select movie_code, count(movie_code) as movie_result from evaluat ]]>
+		<where>
+			<if test="code_list != null">
+			 	movie_code IN 
+				<foreach item="item" index="index" collection="code_list"
+     				 open="(" separator="," close=")">
+       				#{item} 
+  				</foreach>
+  			</if>
+		</where> group by movie_code ORDER BY movie_code desc) tt) 
+	<![CDATA[where rn>=#{e_startNum} and rn<=#{e_endNum}]]>		
 	</select>
 	
 	<select id="evaluatView" parameterType="int" resultType="evaluatDTO">

@@ -21,6 +21,7 @@ import evaluat.bean.EvaluatDTO;
 import evaluat.controller.EvaluatService;
 import movie.bean.MovieDTO;
 import movie.bean.MoviePage;
+import movie.bean.MovieResultDTO;
 import movie.bean.ReserveRank;
 import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.bean.MoviePosterDTO;
@@ -370,7 +371,7 @@ public class MovieController {
 			map.put("movie_keyword", movie_keyword);
 			map.put("endNum", endNum);
 			map.put("startNum", startNum);
-			ArrayList<String> code_list = new ArrayList<>();
+			ArrayList<Integer> code_list = new ArrayList<>();
 			ArrayList<MovieDTO> find_list = movieService.movieFinder(map);
 			Map<Integer, String> poster_map = new HashMap<>();
 			Map<Integer, Double> reserve_rate_map = new HashMap<>();
@@ -382,7 +383,7 @@ public class MovieController {
 				all_reserve_num = movieService.allReserveCount();				
 			}
 			for(MovieDTO finder_result : find_list) {
-				code_list.add(finder_result.getMovie_code()+"");			
+				code_list.add(finder_result.getMovie_code());			
 				
 				// 영화 예매율 구하기
 				double movieReserveNum = movieReserveNum(finder_result.getMovie_code());
@@ -393,6 +394,22 @@ public class MovieController {
 			for(MoviePosterDTO poster_result : poster_list) {
 				poster_map.put(poster_result.getMovie_code(), poster_result.getMovie_photo_addr());
 			}
+			
+//			ArrayList<MovieResultDTO> evaluat_total = evaluatService.getTotalList(code_list, 1, 3);
+//			ArrayList<MovieResultDTO> score_total = evaluatService.movieScoreTotalList(code_list, 1, 3);
+//			for(MovieResultDTO evaluat_result : evaluat_total) {
+//				for(MovieResultDTO score_result : score_total) {
+//					if(score_result.getMovie_code() == evaluat_result.getMovie_code()) {
+//						Integer sum = score_result.getMovie_result();
+//						if(sum == null) {sum = 0;}
+//						double count = (double) evaluat_result.getMovie_result();
+//						double movie_average = Double.parseDouble(String.format("%.2f",sum/count));
+//						average_map.put(score_result.getMovie_code(), movie_average);
+//					}
+//				}
+//			}
+			
+			
 //			페이징 영역
 			
 			int totalA = movieService.FinderTotalA(map);
@@ -462,7 +479,7 @@ public class MovieController {
 		moviePage.setStartPage(startPage);
 		moviePage.setTotalPage(totalPage);
 		moviePage.setPg(pg);
-		ArrayList<String> code_list = new ArrayList<>();
+		ArrayList<Integer> code_list = new ArrayList<>();
 		ArrayList<ReserveRank> reserve_list = null;
 		ArrayList<MovieDTO> top_movie_list = null;
 		ArrayList<MovieDTO> bottom_movie_list = null;
@@ -511,7 +528,7 @@ public class MovieController {
 			code_list.clear();
 			for(MovieDTO movieDTO : top_movie_list) {
 				top_count++;
-				code_list.add(movieDTO.getMovie_code() +"");
+				code_list.add(movieDTO.getMovie_code());
 				
 				double movie_average = movieAverage(movieDTO.getMovie_code());
 				average_map.put(movieDTO.getMovie_code(), movie_average);		
@@ -539,7 +556,7 @@ public class MovieController {
 			code_list.clear();
 			for(MovieDTO movieDTO : bottom_movie_list) {
 				bottom_count++;
-				code_list.add(movieDTO.getMovie_code() +"");
+				code_list.add(movieDTO.getMovie_code());
 				
 				double movie_average = movieAverage(movieDTO.getMovie_code());
 				average_map.put(movieDTO.getMovie_code(), movie_average);	
@@ -606,8 +623,8 @@ public class MovieController {
 		int e_startNum = e_endNum-5;	
 		
 		
-		ArrayList<String> code_list = showPresentService.getUniqueMovieCode();
-		for(String tmp : code_list) {movie_count++;}
+		ArrayList<Integer> code_list = showPresentService.getUniqueMovieCode();
+		for(Integer tmp : code_list) {movie_count++;}
 
 		ArrayList<MovieDTO> movie_list =  movieService.presentMovieList(code_list,m_startNum,m_endNum);
 		Map<Integer, String> poster_map = new HashMap<>();
@@ -706,7 +723,7 @@ public class MovieController {
 
 		String member_id = (String) session.getAttribute("memId");
 		int like_able = 0;
-		ArrayList<String> code_list = new ArrayList<>();
+		ArrayList<Integer> code_list = new ArrayList<>();
 		ArrayList<ReserveRank> reserve_list = null;
 		ArrayList<MovieDTO> movie_list = new ArrayList<>();
 		Map<Integer, String> poster_map = new HashMap<>();
@@ -724,7 +741,7 @@ public class MovieController {
 		}
 		
 		for(ReserveRank rank : reserve_list) {
-			code_list.add(rank.getMovie_code()+"");
+			code_list.add(rank.getMovie_code());
 			MovieDTO movieDTO = movieService.movieView(rank.getMovie_code());
 			
 			movie_list.add(movieDTO);
@@ -744,6 +761,8 @@ public class MovieController {
 				like_map.put(movieDTO.getMovie_code(), like_able);
 			}
 		}
+		
+
 		
 		ArrayList<MoviePosterDTO> poster_list = moviePhotoService.moviePosterList(code_list, 1, 3);
 		for(MoviePosterDTO poster_result : poster_list) {

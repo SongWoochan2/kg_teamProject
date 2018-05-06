@@ -45,7 +45,7 @@ public class MoviePhotoDAO {
 	public MoviePhotoDTO moviePosterView(int movie_code) {
 		return sqlSession.selectOne("moviephotoMapper.moviePosterView",movie_code);
 	}
-	public List<MoviePosterDTO> moviePosterList(ArrayList<String> code_list, int m_startNum, int m_endNum) {
+	public List<MoviePosterDTO> moviePosterList(ArrayList<Integer> code_list, int m_startNum, int m_endNum) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("code_list", code_list);
 		map.put("m_startNum", m_startNum);
