@@ -20,6 +20,14 @@
 			$('#chartType option').eq(2).prop('selected', true); 
 		}
 	});
+	$(function(){
+		$("a#movie_like").click(function() {
+			if(${sessionScope.memId == null} == true){
+				alert("먼저 로그인 해주세요.");				
+				return false;
+			}
+		});
+	});
 </script>
 </head>
 <body>

@@ -69,7 +69,7 @@
 	#mainpage #mainbottomback #mainbottom #entity #entity-like{
 		height : 10%;
 		font-size : 15px;
-		text-align: center;
+		margin-left: -100px;
 	}
 	#mainpage #mainbottomback #mainbottom #entity #entity-like a{
 		color : white;

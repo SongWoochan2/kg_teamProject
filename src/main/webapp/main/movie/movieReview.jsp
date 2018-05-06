@@ -67,15 +67,6 @@
 		
 	});
 </script>
-<style>
-#paging {
-	color: blue;
-}
-
-#currentPaging {
-	color: red;
-}
-</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -253,10 +244,10 @@
 				[<a id="paging" href="movieReview.do?review_pg=${e_moviePage.startPage-1}&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">이전</a>]
 				</c:if> 
 				<c:forEach var="i" begin="${e_moviePage.startPage}" end="${e_moviePage.endPage}" step="1">
-					<c:if test="${e_moviePage.startPage==i }">
+					<c:if test="${e_moviePage.pg==i }">
 						[<a id="currentPaging" href="movieReview.do?review_pg=${i }&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">${i }</a>]
 					</c:if>
-					<c:if test="${e_moviePage.startPage!=i }">
+					<c:if test="${e_moviePage.pg!=i }">
 						[<a id="paging" href="movieReview.do?review_pg=${i }&movie_code=${requestScope.movie_code}&movie_pg=${m_moviePage.pg }">${i }</a>]
 					</c:if>	<!-- el표현식에는 자바코드가 들어갈수없음 -->
 				</c:forEach> 

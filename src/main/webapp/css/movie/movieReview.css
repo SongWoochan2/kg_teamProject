@@ -263,12 +263,14 @@
 		height: 6%;
 		width: 100%;
 	}
-	#movieReview #review-all #review-paging a{
+	#movieReview #review-all #review-paging *{
 		font-size : 18px;
-		text-decoration: none;
 		font-weight: bold;
-		color : black;
 	}
-	#movieReview #review-all #review-paging a:hover {
-		color : blue;
+	#movieReview #review-all #review-paging #paging {
+		text-decoration: none;
+		color: blue;
+	}
+	#movieReview #review-all #review-paging #currentPaging {
+		color: red;
 	}

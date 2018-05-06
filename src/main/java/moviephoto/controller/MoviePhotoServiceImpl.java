@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import movie.bean.MovieDTO;
 import moviephoto.bean.MoviePhotoDTO;
+import moviephoto.bean.MoviePosterDTO;
 import moviephoto.dao.MoviePhotoDAO;
 
 
@@ -43,6 +44,11 @@ public class MoviePhotoServiceImpl implements MoviePhotoService{
 	@Override
 	public MoviePhotoDTO moviePosterView(int movie_code) {
 		return (MoviePhotoDTO) moviePhotoDAO.moviePosterView(movie_code);
+	}
+
+	@Override
+	public ArrayList<MoviePosterDTO> moviePosterList(ArrayList<String> code_list, int m_startNum, int m_endNum) {
+		return (ArrayList<MoviePosterDTO>) moviePhotoDAO.moviePosterList(code_list, m_startNum, m_endNum);
 	}
 
 	
