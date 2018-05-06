@@ -1,8 +1,10 @@
 package productpay.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import productpay.bean.ProductPayDTO;
+import productpay.bean.ProductPayListDTO;
 
 public interface ProductPayService {
 	
@@ -17,4 +19,10 @@ public interface ProductPayService {
 	int getTotal_A();
 	// 결제 취소
 	/*int productpayCancle(ProductPayDTO productpayDTO);*/
+		
+	public List<ProductPayListDTO> getPayList(String pay_id);
+	public int getTotalVal(String pay_id);
+	public List<ProductPayListDTO> getAllPayList(String pay_id, int startNum, int endNum);
+	public int productPayCancle(int product_pay_code);
+	public int getTotalUsable(String pay_id) ;
 }

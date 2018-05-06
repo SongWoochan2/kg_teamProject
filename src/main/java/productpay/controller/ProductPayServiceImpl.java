@@ -1,11 +1,13 @@
 package productpay.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import productpay.bean.ProductPayDTO;
+import productpay.bean.ProductPayListDTO;
 import productpay.dao.ProductPayDAO;
 
 @Service //controller어노테이션
@@ -28,10 +30,29 @@ public class ProductPayServiceImpl implements ProductPayService{
 		return productpayDAO.getTotal_A();
 	}
 
-/*	@Override
-	public int productpayCancle(ProductPayDTO productpayDTO) {
-		return productpayDAO.productpayCancle(productpayDTO);
-	}*/
+	@Override
+	public List<ProductPayListDTO> getPayList(String pay_id) {
+		return productpayDAO.getPayList(pay_id);
+	}
 
+	@Override
+	public int getTotalUsable(String pay_id) {
+		return productpayDAO.getTotalUsable(pay_id);
+	}
 
+	@Override
+	public int getTotalVal(String pay_id) {
+		return productpayDAO.getTotalVal(pay_id);
+	}
+
+	@Override
+	public List<ProductPayListDTO> getAllPayList(String pay_id, int startNum, int endNum) {
+		return productpayDAO.getAllPayList(pay_id, startNum, endNum);
+	}
+
+	@Override
+	public int productPayCancle(int product_pay_code) {
+		return productpayDAO.productPayCancle(product_pay_code);
+	}
+	
 }

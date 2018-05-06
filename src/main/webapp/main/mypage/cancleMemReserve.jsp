@@ -23,11 +23,19 @@ $(function(){
 });	
 </script>
 </c:if>
-<c:if test="${result > 0}">
+<c:if test="${result > 0 && p==1}">
 <script type="text/javascript">
 $(function(){
 	alert("선택한 예매번호를 취소했습니다.");
-	location.href="/MyCGV/main/mypage/myReserveList.do?p=1"
+	location.href="/MyCGV/main/mypage/myReserveList.do?p=1";
+});	
+</script>
+</c:if>
+<c:if test="${result > 0 && p==0}">
+<script type="text/javascript">
+$(function(){
+	alert("선택한 예매번호를 취소했습니다.");
+	location.href="/MyCGV/main/mypage/mypageHome.do";
 });	
 </script>
 </c:if>

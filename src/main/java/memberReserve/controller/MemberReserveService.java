@@ -15,7 +15,6 @@ public class MemberReserveService {
 	MemberReserveDAO memberReserveDAO;
 	
 	public ArrayList<Integer> getReserveCodes(String reserve_id, int startNum, int endNum) {
-		System.out.println(reserve_id+startNum);
 		return (ArrayList<Integer>)memberReserveDAO.getReserveCodes(reserve_id, startNum, endNum);
 	}
 

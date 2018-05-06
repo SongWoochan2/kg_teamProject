@@ -40,6 +40,10 @@ public class MemberDAO {
 		return sqlSession.update("mybatis.memberMapper.memberModify", memberDTO);
 	}
 	
+	public int profileModify(MemberDTO memberDTO) {
+		return sqlSession.update("mybatis.memberMapper.profileModify", memberDTO);
+	}
+	
 	public int memberDelete(String member_id) {
 		return sqlSession.delete("mybatis.memberMapper.memberDelete", member_id);
 	}

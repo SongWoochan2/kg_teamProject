@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 <c:if test="${result == 0}">
 <script type="text/javascript">
 $(function(){
-	alert("프로필 정보 등록을 실패했습니다.");
+	alert("이미 취소되었거나 존재하지 않는 쿠폰번호입니다.\n확인 후 다시 진행해주세요.");
 	history.back();
 });	
 </script>
@@ -18,20 +18,13 @@ $(function(){
 <c:if test="${result > 0}">
 <script type="text/javascript">
 $(function(){
-	alert("정상적으로 정보가 등록 되었습니다.");
-	location.href="/MyCGV/main/mypage/myProfileForm.do"
+	alert("쿠폰이 취소되었습니다.");
+	location.href="/MyCGV/main/mypage/myStoreList.do?p=1";
 });	
 </script>
 </c:if>
-<%-- <c:if test="${resultDel == -1 || resultDel == 0}">
-<script type="text/javascript">
-$(function(){
-	alert("삭제할 파일이 존재하지 않거나 삭제를 실패했습니다.");
-	history.back();
-});
-</script>
-</c:if> --%>
 </head>
 <body>
+
 </body>
 </html>

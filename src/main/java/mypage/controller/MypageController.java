@@ -1,21 +1,25 @@
 package mypage.controller;
 
+import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +34,8 @@ import movie.bean.MovieDTO;
 import movie.controller.MovieService;
 import moviephoto.bean.MoviePhotoDTO;
 import moviephoto.controller.MoviePhotoService;
+import productpay.bean.ProductPayListDTO;
+import productpay.controller.ProductPayService;
 import resource.provider.ResourceProvider;
 import savingList.bean.SavingListDTO;
 import savingList.controller.SavingListService;
@@ -51,8 +57,91 @@ public class MypageController {
 	@Autowired
 	private MemberReserveService memberReserveService;
 	@Autowired
+	private ProductPayService productpayService;
+	@Autowired
 	private ResourceProvider resourceProvider;
 
+	
+	@RequestMapping(value="/main/mypage/myStoreList.do")
+	public ModelAndView myStoreList(HttpServletRequest request) {	
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int endNum = pg*5;			
+		int startNum = endNum-4;	
+		
+		HttpSession session = request.getSession();
+		String pay_id = (String)session.getAttribute("memId");
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(pay_id);
+
+		// 구매내역 : 사용가능한 구매
+		List<ProductPayListDTO> payList = productpayService.getPayList(pay_id);
+		
+		// 구매내역 & 구매취소내역 & 미사용내역 전부다
+		List<ProductPayListDTO> allPayList = productpayService.getAllPayList(pay_id,startNum,endNum);
+		
+		Date today = new Date();
+    	for(ProductPayListDTO tmp : allPayList) {   			
+			DateFormat df = new SimpleDateFormat("yyyy.MM.dd", Locale.ENGLISH); // 데이터 포맷 설정
+			Date validDate = new Date();
+			try {
+				validDate = df.parse(tmp.getPay_time());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			// 날짜 더하기
+			Calendar calVal = Calendar.getInstance();
+			calVal.setTime(validDate);
+			calVal.add(Calendar.MONTH, 6);
+			tmp.setValidDate(df.format(calVal.getTime()));
+			
+			String valid_date = df.format(calVal.getTime());
+			try {
+				validDate = df.parse(valid_date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			if(today.getTime() <= validDate.getTime()) {
+				tmp.setValid("Y");
+			} else {
+				tmp.setValid("N");
+			}
+			
+    	}
+		
+		int totalVal = 	productpayService.getTotalVal(pay_id);// 총 구매내역수
+		int totalPVal = (totalVal+4)/5;			// 총페이지수
+		//================================
+		int startPageVal = (pg-1)/5*5+1;		// (2-1)/3*3+1=1
+		int endPageVal = startPageVal + 4;		// endPage = startPage + 3 - 1;
+		if(totalPVal < endPageVal) endPageVal = totalPVal;
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.addObject("payList", payList);
+		modelAndView.addObject("allPayList", allPayList);
+		modelAndView.addObject("totalVal", totalVal);
+		modelAndView.addObject("startPageVal", startPageVal);
+		modelAndView.addObject("endPageVal", endPageVal);
+		modelAndView.addObject("totalPVal", totalPVal);
+		modelAndView.addObject("p", pg);
+		modelAndView.setViewName("myStoreList.jsp?p="+pg);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/mypage/productPayCancle.do")
+	public ModelAndView cancleProductPay(HttpServletRequest request) {			
+		int product_pay_code = Integer.parseInt(request.getParameter("product_pay_code"));
+		int result = productpayService.productPayCancle(product_pay_code);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("cancleProductPay.jsp");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="/main/mypage/myReserveList.do")
 	public ModelAndView myReserveList(HttpServletRequest request) {
 		int pg = Integer.parseInt(request.getParameter("p"));
@@ -83,8 +172,8 @@ public class MypageController {
 		int totalVal = 	memberReserveService.getTotalVal(reserve_id);// 예매내역 총글수
 		int totalPVal = (totalVal+4)/5;			// 총페이지수
 		//================================
-		int startPageVal = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
-		int endPageVal = startPageVal + 2;		// endPage = startPage + 3 - 1;
+		int startPageVal = (pg-1)/5*5+1;		// (2-1)/3*3+1=1
+		int endPageVal = startPageVal + 4;		// endPage = startPage + 3 - 1;
 		if(totalPVal < endPageVal) endPageVal = totalPVal;
 		
 		//System.out.println(savingList.isEmpty());
@@ -126,12 +215,17 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/main/mypage/memReserveCancle.do")
-	public ModelAndView cancleMemReserve(HttpServletRequest request) {	
+	public ModelAndView cancleMemReserve(HttpServletRequest request) {			
+		int pg = 0;
+		if(request.getParameter("p")!=null) {
+			pg = Integer.parseInt(request.getParameter("p"));			
+		}
 		int reserve_code = Integer.parseInt(request.getParameter("reserve_code"));
 		int result = memberReserveService.memReserveCancle(reserve_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
+		modelAndView.addObject("p", pg);
 		modelAndView.setViewName("cancleMemReserve.jsp");
 		return modelAndView;
 	}
@@ -195,10 +289,14 @@ public class MypageController {
 		
 		int totalVal = 	memberReserveService.getTotalVal(member_id);// 예매내역 총글수
 		
+		// 사용가능 쿠폰 수
+		int usableCnt = productpayService.getTotalUsable(member_id);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.addObject("reserveList", reserveList);
 		modelAndView.addObject("totalVal", totalVal);
+		modelAndView.addObject("usableCnt", usableCnt);
 		modelAndView.setViewName("mypageHome.jsp");
 		return modelAndView;
 	}
@@ -241,13 +339,38 @@ public class MypageController {
 	@RequestMapping(value="/main/mypage/myProfile.do", method=RequestMethod.POST)
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
-		String fileName = "none.png";
-		if (!profile_upload_file.isEmpty()) {
+		String fileName = "";
+		
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("memId");
+		String nick_name = request.getParameter("nick_name");
+		String img_addr = request.getParameter("img_addr");
+		
+		MemberDTO memberDTO = new MemberDTO();	
+		memberDTO = memberService.memberView(member_id);
+		memberDTO.setNick_name(nick_name);
+		
+		String origin_img_addr = memberDTO.getProfile_img_addr();
+		
+		int resultDel = 1;
+		if (!profile_upload_file.isEmpty()) { // 원래 origin_img_addr 있는데 수정/삭제한 경우	
+			if((origin_img_addr!="none" && origin_img_addr.equals(img_addr))
+					|| (origin_img_addr!="none" && img_addr=="none")) {
+				File file = new File(filePath, origin_img_addr);
+				resultDel = -1; // 오류 발생
+				if (file.exists()) {
+					if (file.delete()) {
+						resultDel = 1; // 파일 삭제 성공
+						System.out.println("파일삭제성공 : 새파일 넣었을 때");	
+					} else {
+						resultDel = 0; // 파일 삭제 실패
+					}
+				}
+			}
 			String originFileName = profile_upload_file.getOriginalFilename();
-			String img_addr = request.getParameter("img_addr");
 			System.out.println(originFileName);
 			System.out.println(img_addr);
-			if (!originFileName.contains("none.") || !img_addr.contains("none.")) {
+			if (originFileName!=null) {
 				String extension = originFileName.split("\\.")[1];
 				System.out.println(extension);
 				Date date = new Date();
@@ -255,7 +378,8 @@ public class MypageController {
 				System.out.println(fileName);
 			} 
 			File file = new File(filePath, fileName);
-
+			memberDTO.setProfile_img_addr(fileName);
+			
 			// 파일을 storage 폴더에 복사
 			try {
 				// getInputStream() : 업로드한 파일 데이터를 읽어오는 InputStream을 구한다.
@@ -265,48 +389,31 @@ public class MypageController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} 
-
-		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("memId");
-		String nick_name = request.getParameter("nick_name");
-
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setMember_id(member_id);
-		memberDTO.setNick_name(nick_name);
-		memberDTO.setProfile_img_addr(fileName);
-
-		int result = memberService.memberModify(memberDTO);
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.setViewName("myProfile.jsp");
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="/main/mypage/deleteProfileImg.do", method=RequestMethod.POST)
-	public ModelAndView deleteProfileImg(HttpServletRequest request) {
-		String filePath = resourceProvider.getPath("image/profile");
-		
-		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("memId");
-		
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO = memberService.memberView(member_id);
-		String fileName = memberDTO.getProfile_img_addr();
-		File file = new File(filePath, fileName);
-
-		int result = -1; // 오류 발생
-		if (file.exists()) {
-			if (file.delete()) {
-				result = 1; // 파일 삭제 성공
-			} else {
-				result = 0; // 파일 삭제 실패
+		} else { // 원래 origin_img_addr 삭제
+			System.out.println(origin_img_addr+"$$$$$$$");
+			System.out.println(img_addr+"$$$$$img_addr");
+			if((!origin_img_addr.contains("none")) && img_addr=="none") {
+				System.out.println("ㅗ됴ㅣ더ㅚㅏㅗㄴㄳ");
+				File file = new File(filePath, origin_img_addr);
+				resultDel = -1; // 오류 발생
+				if (file.exists()) {
+					if (file.delete()) {
+						resultDel = 1; // 파일 삭제 성공
+						System.out.println("파일삭제성공 : 새파일 안 넣었을 때");
+						memberDTO.setProfile_img_addr("none");	
+					} else {
+						resultDel = 0; // 파일 삭제 실패
+					}
+				}	
 			}
-		}	
+		}
+
+		int result = memberService.profileModify(memberDTO);
+
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
-		modelAndView.setViewName("deleteImgFile.jsp");
+		modelAndView.addObject("resultDel", resultDel);
+		modelAndView.setViewName("myProfile.jsp");
 		return modelAndView;
 	}
 	

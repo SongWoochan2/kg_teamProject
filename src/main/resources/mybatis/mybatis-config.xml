@@ -27,6 +27,7 @@
 		<typeAlias type="showPresent.bean.ShowPresentAllVO" alias="showPresentAllVO"></typeAlias>
 		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
 		<typeAlias type="productpay.bean.ProductPayDTO" alias="productPayDTO"></typeAlias>
+		<typeAlias type="productpay.bean.ProductPayListDTO" alias="productPayListDTO"></typeAlias>
 		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
  		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
  		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
