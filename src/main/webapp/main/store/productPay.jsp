@@ -243,7 +243,7 @@
 				<li id="ctl00_bodyPlaceHolder_theaterInfo2">기프트콘 상품은 다른 극장에서 사용이 불가능합니다. </li>
 				
 				<li id="ctl00_bodyPlaceHolder_theaterInfo3" class="gs2_ls_none"></li>
-	            <li>결제 확인 및 취소는 MY CGV &gt; 팝콘 스토어에서 가능합니다.</li>
+	            <li>결제 확인 및 취소는 MY 구매내역에서 가능합니다.</li>
 			</ul>	
 		</div>
 	</div>
