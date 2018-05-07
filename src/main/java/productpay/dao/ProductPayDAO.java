@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import productpay.bean.ProductPayDTO;
+import productpay.bean.ProductPayListDTO;
 
 @Repository
 public class ProductPayDAO {
@@ -34,10 +35,34 @@ public class ProductPayDAO {
 		return sqlSession.selectOne("mybatis.boardMapper.getTotal_A");
 	}
 	
-	// 결제 취소
-/*	public int productpayCancle(ProductPayDTO productpayDTO) {
-		return sqlSession.update("mybatis.boardMapper.productpayCancle", productpayDTO);
-	}*/
+
+
+	
+
+	
+	public List<ProductPayListDTO> getPayList(String pay_id) {
+		return sqlSession.selectList("mybatis.boardMapper.getPayList", pay_id);
+	}
+	
+	public int getTotalUsable(String pay_id) {
+		return sqlSession.selectOne("mybatis.boardMapper.getTotalUsable", pay_id);
+	}
+	
+	public int getTotalVal(String pay_id) {
+		return sqlSession.selectOne("mybatis.boardMapper.getTotalVal", pay_id);
+	}
+	
+	public List<ProductPayListDTO> getAllPayList(String pay_id, int startNum, int endNum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("pay_id", pay_id);
+		return sqlSession.selectList("mybatis.boardMapper.getAllPayList", map);
+	}
+	
+	public int productPayCancle(int product_pay_code) {
+		return sqlSession.update("mybatis.boardMapper.productPayCancle", product_pay_code);
+	}
 }
 
 

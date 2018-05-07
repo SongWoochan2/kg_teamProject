@@ -15,8 +15,8 @@ a {
 	border:1px solid green;
 	width: 70%;
 	height: 500px;
-	background: url("/MyCGV/image/mypage/filmImage.jpg");
-	background-size: 100%;
+	background: url("/MyCGV/image/mypage/myInfoImg.png");
+	background-size: contain;
 	margin: auto;
 }
 
@@ -46,35 +46,45 @@ a {
 #mypageBody #my-info-wrap .profile {
 	width: 100%;
 	height: 50%;
-	margin-top: 35px;
-	margin-left: 25px;
+	padding-top: 35px;
+	padding-left: 25px;
 }
 
 #mypageBody #my-info-wrap .benefit {
 	width: 100%;
 	height: 50%;
-	margin-top: 30px;
-	margin-left: 25px;
+	padding: 30px;
 }
 
-.benefit>.point,.col-favorite-theater {
+.benefit>.point {
 	float: left;
-	width: 48%;
+	width: 58%;
+	height: 100%;
+	position: relative;
+	text-align: center;
+	padding-top: 20px;
+	padding-left: 80px;
+}
+
+.benefit>.point>div {
+	height: 30%;
+	padding-left: 110px;
+	margin-bottom: 15px;
+}
+
+.benefit>.col-favorite-theater {
+	float: left;
+	width: 38%;
 	height: 100%;
 	position: relative;
 	text-align: center;
 }
 
-.point {
-	top: 30px;
-	left: 150px;
-	text-align: center;
-}
-
-.col-favorite-theater>.sect-favorite {
-	margin-top: 10px;
-	width: 95%;
-	height: 95%;
+.col-favorite-theater .sect-favorite {
+	padding-top: 15px;
+	padding-right: 40px;
+	width: 100%;
+	height: 80%;
 	text-align: right;
 }
 .sect-favorite>ul,li {
@@ -97,7 +107,7 @@ div#my-info-wrap>.profile>.profileInfo>.personInfo>span {
 div#my-info-wrap>.profile>.profileInfo>.personInfo>a {
 	color: white;
 }
-div#my-info-wrap>.benefit>.point>strong {
+div#my-info-wrap>.benefit>.point strong {
 	color: white;
 } 
 div#my-info-wrap>.benefit>.point>a {
@@ -112,11 +122,6 @@ div#my-info-wrap .benefit .sect-favorite a {
 	color: white;
 }
 
-
-div#mypageBody #my-info-wrap .profile {
-	padding-top: 40px;
-}
-
 #mypageBody #my-info-wrap .profileImg {
 	position: relative;
 	top: 56px;
@@ -124,6 +129,7 @@ div#mypageBody #my-info-wrap .profile {
 }
 
 #mypageBody #my-info-wrap #profile_img {
+	color: white;
 	width: 140px;
 	height: 140px;
 	border: 2px solid white;
@@ -136,7 +142,7 @@ div#mypageBody #my-info-wrap .profile {
 	top: 56px;
 }
 
-#mypageBody #my-info-wrap #p_tag1 {
+#mypageBody #my-info-wrap .gradeInfo p {
 	position: relative;
 	top: 20px;
 	left: 10px;
@@ -147,21 +153,22 @@ div#mypageBody #my-info-wrap .profile {
 	line-height: 20px;
 }
 
-
-
 .paging {
 	width: 100%;
 	height: 30px;
-	padding-top: 10px;
+	margin-top: 10px;
 	text-align: center;
 }
 .paging a {
 	color: black;
 	font-size: 20px;
-	font-weight: bold;
 }
 .paging a:hover {
 	color: gray;
+}
+
+#currentPaging {
+	font-weight: bold;
 }
 
 .tbl-form .sect-profile-img {margin:10px;padding:15px;border-top: 1px dashed #d6d4ca;}
@@ -172,7 +179,7 @@ div#mypageBody #my-info-wrap .profile {
 
 .tbl-data table{border-top:1px; solid: #b8b6aa;}
 .tbl-data table{width: 100%;}
-.tbl-data thead th{height:50px;padding-left:12px;background-color:#e2e2e0;font-size:15px;line-height:34px}
+.tbl-data thead th{height:40px;background-color:#e2e2e0;font-size:15px;line-height:34px;text-align: center;}
 .tbl-data tbody td,.tbl-data tbody th{padding:14px 0 14px 12px;border-top:1px solid #d6d4ca}
 .tbl-data tbody td{overflow:hidden;word-break:break-word}
 .tbl-data tbody th strong{line-height:150%}
@@ -183,7 +190,7 @@ div#mypageBody #my-info-wrap .profile {
 .tbl-data tfoot td{padding:14px 0 14px 12px}
 .tbl-data td.nodata{padding:45px 0;text-align:center}
 .tbl-data td.nodata>p{margin-top:15px}
-
+.tbl-data tbody tr:last-child td {border-bottom:1px solid #b8b6aa;}
 
 
 
@@ -221,5 +228,14 @@ div#mypageBody #my-info-wrap .profile {
 	margin-right: 10px;
 	background-color: #e71a0f;
 	color: #fdfcf0;
+	font-weight: bold;
+}
+
+
+.sect-register-gift .round_red {
+	border: 2px solid #e71a0f;
+	color: #e71a0f;
+	padding: 10px;
+	border-radius: 5px;
 	font-weight: bold;
 }

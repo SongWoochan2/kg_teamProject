@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
 		<ul>
 			<li><a href="mypageHome.do">My MovieT Home</a></li>
 			<li><a href="myReserveList.do?p=1">나의 예매내역</a></li>
-			<li><a href="myStoreList.do">나의 스토어</a></li>
+			<li><a href="myStoreList.do?p=1">나의 스토어</a></li>
 			<li><a href="myPointList.do?p=1">나의 포인트</a></li>
 			<li><a href="myProfileForm.do">나의 프로필</a></li>
 			<li><a href="../inquiry/inquiryListMember.do">나의 문의내역</a></li>

@@ -1,5 +1,6 @@
 
 
+
 -------------------------------------------------------------  (1)
 --질문,답 테이블 생성
 create table qna(
@@ -119,7 +120,7 @@ insert into seat_type values(
 -- 영화 테이블
 create table movie(
   movie_code int,
-  movie_name varchar(30) not null,
+  movie_name varchar(60) not null,
   movie_content varchar(2048) not null,
   make_nation varchar(15) not null,
   movie_open_date date not null,
@@ -143,45 +144,89 @@ increment by 1
 nocache
 nomaxvalue;
 
+
+
+
+--------------------------------------------------------------------------------
+----------------------------------------------------------------   우찬       -------
+--------------------------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '송우찬',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '가을의 전설', '원스텝(고든 투투시스)이란 인디언이 평생 동안 그가 지켜보았던 루드로우 일가의 일대기를 회상하는 형식으로 이야기는 시작된다. 미합중국 정부의 인디언 정책에 불만을 갖고 있던 윌리엄 러드로우 대령(안소니 홉킨스)은 퇴역 후 몬타나에 정착하여 외딴 곳에 목장을 짓고 세아들을 키우며 산다. 장남 알프레드(에이단 퀸)와 막내 새뮤얼(헨리 토마스), 그리고 거칠은 둘째 트리스탄(브래드 피트)이 이들이다. 다들 강하게 자라났지만, 그중 특히 늦가을에 태어난 트리스탠은 강인한 성격과 약간 반항적인 기질에도 불구하고 모든 이의 사랑을 받으며 커간다. 전쟁을 겪어봤기 때문에 전쟁을 혐오하는 대령 밑에서 세 형제는 각기 잘 자라주지만, 미국 서부 산악 지대 몬태나의 추운 겨울을 끔찍이 싫어하던 어머니 이사벨(크리스티나 피클스)은 멀리 떠나가 버리고, 결국 부자(父子)들만 남아 원스텝을 포함한 원주민 인디언 몇몇과
+....', '미국', '1994-05-06', 133, '청소년 관람불가', '드라마', '로맨스', '멜로', '에드워드 즈윅',
+  0, 0, '브래드 피트,줄리아 오몬드,안소니 홉킨스,에이단 퀸,카리나 룸바드', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '씨름', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '액션', '', '', '김진환',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '갱스 오브 뉴욕', '1840년대 초반, 뉴욕 최고의 슬럼가이자 위험한 거리 ''파이브 포인츠''. 월 스트리트 비즈니스 지구와 뉴욕 항구, 브로드웨이의 접경지대에 위치한 이 곳은 도시의 복잡한 성격만큼이나 다양한 인종, 여러 갱단들이 생활하는 곳이다. 사기, 도박, 살인, 매춘 등 범죄가 들끓는 거리, 그러나 이 곳은 아메리칸 드림을 꿈꾸는 아일랜드 이주민들이 매일 수 천명씩 모여드는 꿈의 도시이기도 하다. 파이브 포인츠에 사는 원주민들은 아일랜드 이주민들이 자신들의 부와 권력을 빼앗아갈 ''침입자''라 여기며 이들을 멸시하고 내쫓으려 한다. 계속되는 갈등으로 두 집단은 결국 피할 수 없는 전쟁을 치르게 된다. 
+아일랜드 이주민의 존경을 받던 ''데드 레빗파''의 우두머리 프리스트 발론(리암 니슨)은 이 전쟁에서 ''원주민파'' 빌 더 부처(다니엘 데
+....', '미국', '2003-02-28', 164, '청소년 관람불가', '범죄', '드라마', '', '마틴 스콜세지',
+  0, 0, '레오나르도 디카프리오,다니엘 데이 루이스,카메론 디아즈,짐 브로드벤트', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '장농', '줄거리', '한국', sysdate, 186, '12세 이용가', '액션', '', '', '성웅',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '건축학개론', '어쩌면…사랑할 수 있을까? 건축학개론 수업에서 그녀를 처음 만났다.
+생기 넘치지만 숫기 없던 스무 살, 건축학과 승민은 ''건축학개론'' 수업에서 처음 만난 음대생 서연에게 반한다. 함께 숙제를 하게 되면서 차츰 마음을 열고 친해지지만, 자신의 마음을 표현하는 데 서툰 순진한 승민은 입 밖에 낼 수 없었던 고백을 마음 속에 품은 채 작은 오해로 인해 서연과 멀어지게 된다. 
+ 어쩌면 다시…사랑할 수 있을까? 15년 만에 그녀를 다시 만났다
+ 서른 다섯의 건축가가 된 승민 앞에 15년 만에 불쑥 나타난 서연. 당황스러움을 감추지 못하는 승민에게 서연은 자신을 위한 집을 설계해달라고 한다. 자신의 이름을 건 첫 작품으로 서연의 집을 짓게 된 승민, 함께 집을 완성해 가는 동안 어쩌면 사랑이었을지 모를 그때의 기억이 되살아나 두 사람 사이에 새로운 감정이 쌓이기 시작하는데…', '한국', '2012-03-22', 118, '12세 관람가', '멜로', '로맨스', '', '이용주',
+  0, 0, '엄태웅,한가인,이제훈,수지,조정석', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '12세 이용가', '코미디', '', '', '송우찬',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '겨울왕국', '얼어붙은 세상을 녹일 자매가 온다!
+서로가 최고의 친구였던 자매 ''엘사''와 ''안나''. 하지만 언니 ''엘사''에게는 하나뿐인 동생에게조차 말 못할 비밀이 있다. 모든 것을 얼려버리는 신비로운 힘이 바로 그것. ''엘사''는 통제할 수 없는 자신의 힘이 두려워 왕국을 떠나고, 얼어버린 왕국의 저주를 풀기 위해 ''안나''는 언니를 찾아 환상적인 여정을 떠나는데……', '미국', '2014-01-16', 108, '전체 관람가', '애니메이션', '판타지', '뮤지컬', '크리스 벅',
+  0, 0, '크리스틴 벨,이디나 멘젤,조시 게드,조나단 그로프,산티노 폰타나', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '팔씨름', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '빛나',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '그래비티', '외계인도 우주전쟁도 없다! 
+이것이, 누구도 경험하지 못한 진짜 재난이다!
+지구로부터 600km, 소리도 산소도 없다. 우주에서의 생존은 불가능하다. 
+ 허블 우주망원경을 수리하기 위해 우주를 탐사하던 스톤 박사는 폭파된 인공위성의 잔해와 부딪히면서 그곳에 홀로 남겨지는데…', '미국', '2013-10-17', 90, '12세 관람가', 'SF', '드라마', '스릴러', '알폰소 쿠아론',
+  0, 0, '산드라 블록,조지 클루니,에드 해리스,에릭 미쉘즈,바셔 세비지', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '마우스', '줄거리', '한국', sysdate, 186, '15세 이용가', 'SF', '', '', '송우찬',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '나는 전설이다', '인류 최후의 생존자, 하지만... 다른 무언가가 있다!
+2012년, 인류의 멸망. 2012년, 전 인류가 멸망한 가운데 과학자 로버트 네빌(윌 스미스)만이 살아남는다. 지난 3년간 그는 매일같이 또 다른 생존자를 찾기 위해 절박한 심정으로 방송을 송신한다.
+  지구에 살아남은 것은 그만이 아니었다! 그리고 마침내 무엇인가를 찾아낸 그. 그러나 그가 그토록 애타게 찾았던 생존자들은 더 이상 인간의 모습이 아니었다. 그들은 이상 바이러스에 감염되어 ‘변종 인류’로 변해 버렸다.
+  인류 최후의 생존자 vs. 변종 인류. 이제 그는 전설이 된다! 인류의 운명을 짊어진 네빌. 면역체를 가진 자신의 피를 이용해 백신을 만들어낼 방법을 알아내야만 한다. 어딘가 살아있을지 모를 인간들을 위해, 그리고 지구를 위해 그는 이제, 인류 최후의 전쟁을 시작한다!', '미국', '2007-12-12', 97, '12세 관람가', 'SF', '드라마', '스릴러', '프란시스 로렌스',
+  0, 0, '윌 스미스,앨리스 브라가,찰리 타핸,샐리 리차드슨,윌로우 스미스', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '기계식키보드', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '재환',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '내부자들', '“복수극으로 가자고, 화끈하게”
+ 유력한 대통령 후보와 재벌 회장, 그들을 돕는 정치깡패 안상구(이병헌).
+ 뒷거래의 판을 짠 이는 대한민국 여론을 움직이는 유명 논설주간 이강희(백윤식)다.
+ 더 큰 성공을 원한 안상구는 이들의 비자금 파일로 거래를 준비하다 발각되고,
+ 이 일로 폐인이 되어 버려진다.', '한국', '2015-11-19', 130, '청소년 관람불가', '범죄', '드라마', '', '우민호',
+  0, 0, '이병헌,조승우,백윤식,이경영,김홍파', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '모니터', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '송우찬',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '노트북', '17살, ''노아''는 밝고 순수한 ''앨리''를 보고 첫눈에 반한다. 
+ 빠른 속도로 서로에게 빠져드는 둘. 
+ 그러나 이들 앞에 놓인 장벽에 막혀 이별하게 된다. 
+ 24살, ''앨리''는 우연히 신문에서 ''노아''의 소식을 접하고 
+ 잊을 수 없는 첫사랑 앞에서 
+ 다시 한 번 선택의 기로에 서게 되는데… 
+ 열일곱의 설렘, 스물넷의 아픈 기억, 그리고 마지막까지… 
+ 한 사람을 지극히 사랑했으니 내 인생은 성공한 인생입니다', '미국', '2004-11-26', 123, '15세 관람가', '멜로', '로맨스', '드라마', '닉 카사베츠',
+  0, 0, '라이언 고슬링,레이첼 맥아담스,제나 로우랜즈,제임스 가너', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '노트북', '줄거리', '한국', sysdate, 186, '15세 이용가', '코미디', '', '', '진환',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '노킹 온 헤븐스 도어', '뇌종양 진단을 받은 마틴과 골수암 말기의 루디는 같은 병실에 입원한다. 시한부 판결을 받아 삶이 얼마 남지 않았다는 공통점 외에는 전혀 다른 성격의 두 남자. 단 한번도 바다를 보지 못한 루디를 위해 마틴은 그와 함께 바다로 향하는 생애 마지막 여행을 시작한다. 하지만, 여행을 위해 그들이 훔친 차는 100만 마르크가 들어있는 악당들의 스포츠카였던 것. 뜻밖의 돈을 얻게 된 이들은 천국의 문턱에서 그들이 평소 하고 싶었던 소원을 이야기한다. 하지만 행복도 잠시, 악당과 경찰의 추격 속에 그들의 여행은 위태롭게 흘러 가는데… 
+ 15년 만에 스크린에 재현된 90년대 최고의 명작과 20세기 최고의 음악! 
+ 생의 마지막 순간, 천국을 향한 두 남자의 뜨거운 여행!', '독일', '1998-02-28', 89, '15세 관람가', '액션', '범죄', '드라마', '토머스 얀',
+  0, 0, '틸 슈바이거,잔 조세프 리퍼스,티에리 반 베어 베테,모리츠 블라이브트로이', 0, 0);
+--------------------------------------------------------------
 insert into movie values(
-  movie_seq.nextval, '큐엘이디 모니터', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '코미디', '', '', '빛나',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
-insert into movie values(
-  movie_seq.nextval, '나혼자 한다', '줄거리', '한국', sysdate, 186, '12세 이용가', '판타지', '', '', '재민',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
-insert into movie values(
-  movie_seq.nextval, '너와내가 연결고리', '줄거리', '한국', sysdate, 186, '12세 이용가', 'SF', '', '', '빛나',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
-insert into movie values(
-  movie_seq.nextval, '도랏맨', '줄거리', '한국', sysdate, 186, '청소년 이용불가', '액션', '', '', '송우찬',
-  10, 13, '진환,빛나,성웅,재민,빛나,재환', 5, 700000);
+  movie_seq.nextval, '내 이름은 칸', '천재 자폐증 남자 칸의 기적 같은 여정이 시작된다!
+자폐증을 가지고 있지만 천재적인 지적 능력과 어머니로부터 얻게 된, 세상을 바라보는 순수한 눈을 가진 ''칸''. 그는 어머니의 죽음 이후 동생이 있는 미국으로 향한다.
+칸은 우연히 만난 아름다운 싱글맘 ''만디라''와 운명적인 사랑에 빠져 결혼을 하게 된다.
+하지만, 9.11테러 이후 한 순간 행복은 깨지게 된다. 오해가 낳은 끔찍한 사건으로 모든 것을 잃은 만디라는 모든 원망을 칸에게 돌리게 되고 칸은 그녀와의 약속을 지키기 위해 대통령을 만나기 위한 여정을 시작한다. 
+ 과연 그는 대통령을 만날 수 있을까? 그리고 그가 전하려는 말은 무엇일까?', '인도', '2011-03-24', 127, '12세 관람가', '드라마', '', '', '카란 조하르',
+  0, 0, '샤룩 칸,까졸,쉐인 하퍼,크리스토퍼 B. 던칸', 0, 0);
+--------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+----------------------------------------------------------------   진환       -------
+--------------------------------------------------------------------------------
+
+
+
 
 
 ------------------------------------------------
@@ -281,7 +326,7 @@ nomaxvalue;
 
 -- 상품 등록
 insert into product values (
-	product_seq.nextval,'CGV콤보',10000,'set','CGV콤보.jpg'
+	product_seq.nextval,'MovieT콤보',10000,'set','MovieT콤보.jpg'
 );
 insert into product values (
 	product_seq.nextval,'GOURMET더블콤보',12000,'set','GOURMET더블콤보.jpg'
@@ -559,6 +604,65 @@ increment by 1
 nocache
 nomaxvalue;
 
+
+--------------------------------------------------------------------------------
+----------------------------------------------------------------   우찬       -------
+--------------------------------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 1, '트레일러1','https://www.youtube.com/watch?v=jaxZeisCHv8', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 1, '트레일러2','https://www.youtube.com/watch?v=974DwhlUP-8', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 2, '트레일러1','https://www.youtube.com/watch?v=fB8xou7TGTg', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 2, '트레일러2','https://www.youtube.com/watch?v=qHVUPri5tjA', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 3, '트레일러1','https://www.youtube.com/watch?v=mUpJ18MRe8s', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 3, '트레일러2','https://www.youtube.com/watch?v=H3wOVFFBrlc', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 4, '트레일러1','https://www.youtube.com/watch?v=NHvn6Ifrvtg', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 4, '트레일러2','https://www.youtube.com/watch?v=qeHE6DLxydU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 5, '트레일러1','https://www.youtube.com/watch?v=zo-3miFE75Q', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 5, '트레일러2','https://www.youtube.com/watch?v=fez_ZtMCH4s', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 6, '트레일러1','https://www.youtube.com/watch?v=ewpYq9rgg3w', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 6, '트레일러2','https://www.youtube.com/watch?v=dtKMEAXyPkg', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 7, '트레일러1','https://www.youtube.com/watch?v=UP38GHwWg8I', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 7, '트레일러2','https://www.youtube.com/watch?v=BKO8Zl5DR5Q', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 8, '트레일러1','https://www.youtube.com/watch?v=AF4IzD6aVU4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 8, '트레일러2','https://www.youtube.com/watch?v=BEuScUagIpc', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 9, '트레일러1','https://www.youtube.com/watch?v=YW1NuAuifIQ', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 9, '트레일러2','https://www.youtube.com/watch?v=yGozGGbYd74', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 10, '트레일러1','https://www.youtube.com/watch?v=82MwB4vRWK4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 10, '트레일러2','https://www.youtube.com/watch?v=JEpqz33vKus', sysdate );
+
+----------------------------------------------------------
+
+
+
+
 ----------------------------------------------
 
 -- 영화 사진
@@ -579,19 +683,72 @@ nocache
 nomaxvalue;
 
 
-insert into movie_photo values ( movie_photo_seq.nextval, 1, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 2, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 3, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 4, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 5, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 6, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 7, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 8, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 9, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 10, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 11, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 12, '영화 포스터', 'poster_movie_1.jpg', sysdate );
-insert into movie_photo values ( movie_photo_seq.nextval, 13, '영화 포스터', 'poster_movie_1.jpg', sysdate );
+--------------------------------------------------------------------------------
+----------------------------------------------------------------   우찬       -------
+--------------------------------------------------------------------------------
+
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '포스터', 'poster_LegendsOfTheFall.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '스틸컷1', 'LegendsOfTheFall1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '스틸컷2', 'LegendsOfTheFall2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '스틸컷3', 'LegendsOfTheFall3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 1, '스틸컷4', 'LegendsOfTheFall4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '포스터', 'poster_GangsOfNewYork.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '스틸컷1', 'GangsOfNewYork1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '스틸컷2', 'GangsOfNewYork2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '스틸컷3', 'GangsOfNewYork3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 2, '스틸컷4', 'GangsOfNewYork4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '포스터', 'poster_GeonChukHak.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '스틸컷1', 'GeonChukHak1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '스틸컷2', 'GeonChukHak2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '스틸컷3', 'GeonChukHak3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 3, '스틸컷4', 'GeonChukHak4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '포스터', 'poster_Frozen.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '스틸컷1', 'Frozen1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '스틸컷2', 'Frozen2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '스틸컷3', 'Frozen3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 4, '스틸컷4', 'Frozen4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '포스터', 'poster_Gravity.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '스틸컷1', 'Gravity1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '스틸컷2', 'Gravity2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '스틸컷3', 'Gravity3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 5, '스틸컷4', 'Gravity4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '포스터', 'poster_IAmLegend.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '스틸컷1', 'IAmLegend1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '스틸컷2', 'IAmLegend2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '스틸컷3', 'IAmLegend3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 6, '스틸컷4', 'IAmLegend4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '포스터', 'poster_InsideMen.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '스틸컷1', 'InsideMen1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '스틸컷2', 'InsideMen2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '스틸컷3', 'InsideMen3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 7, '스틸컷4', 'InsideMen4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '포스터', 'poster_NoteBook.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '스틸컷1', 'NoteBook1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '스틸컷2', 'NoteBook2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '스틸컷3', 'NoteBook3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 8, '스틸컷4', 'NoteBook4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '포스터', 'poster_Knockin.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '스틸컷1', 'Knockin1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '스틸컷2', 'Knockin2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '스틸컷3', 'Knockin3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 9, '스틸컷4', 'Knockin4.jpg', sysdate );
+---------------------------------------------------------------------------
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '포스터', 'poster_MyNameIsKhan.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '스틸컷1', 'MyNameIsKhan1.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '스틸컷2', 'MyNameIsKhan2.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '스틸컷3', 'MyNameIsKhan3.jpg', sysdate );
+insert into movie_photo values ( movie_photo_seq.nextval, 10, '스틸컷4', 'MyNameIsKhan4.jpg', sysdate );
+---------------------------------------------------------------------------
+
+
 
 ---------------------------------------------
 

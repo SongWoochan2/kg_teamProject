@@ -1,5 +1,8 @@
 package client.log;
 
+import java.util.Map;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,11 +38,23 @@ public class Client_logging {
         Object retVal = null;
         if(request != null) {
         	HttpSession session = request.getSession();
-        	
+			
         	String member_id = (String) session.getAttribute("memId");
         	if(response != null) {
         		if(member_id == null || member_id.equals("")) {
-        			response.sendRedirect("/MyCGV/main/member/memberLoginForm.do");
+        			////  페이지 이동 및 파라미터 제어 //////
+        			String origin_uri = request.getRequestURI();
+        			System.out.println("origin_uri is" + origin_uri);
+        			if(!origin_uri.equals("/MyCGV/main/member/memberLoginForm.do")) {
+        				request.setAttribute("origin_uri", origin_uri);
+        				request.setAttribute("param_map", request.getParameterMap());        				
+        			}
+        			
+        			RequestDispatcher dispatcher = request.getRequestDispatcher("/main/member/memberLoginForm.do");
+        			dispatcher.forward(request, response);
+        			//////////////////////////////
+        			
+        			//response.sendRedirect("/MyCGV/main/member/memberLoginForm.do");
         		} else {
         	        retVal = proceedingJoinPoint.proceed();
         		}
