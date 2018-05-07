@@ -12,7 +12,7 @@
    $(function() {
         $("div#myWatchedMovie").attr("class", "on");	
         var originImgAddr = $("#origin_img_addr").val();
-        if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
+        if(originImgAddr == "none" || originImgAddr.includes("none")) {
         	$(".profile > img").attr("src", "/MyCGV/image/profile/none.png");
         } else {
         	$(".profile > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
@@ -90,7 +90,7 @@
 		    	<ul id="watched_list_container">
 		    	<c:if test="${empty watchedList}">
 					<li class="movie_info_nodata">
-		    			<strong>MovieT에서 관람하신 영화가 없습니다. 오늘 영화 한 편 어떠세요?</strong>
+		    			<strong style="font-size: 20px;">MovieT에서 관람하신 영화가 없습니다. 오늘 영화 한 편 어떠세요?</strong>
 		    		</li>
 		    	</c:if>
 		    	<!-- foreach 시작 -->

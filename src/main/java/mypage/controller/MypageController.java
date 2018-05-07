@@ -131,14 +131,14 @@ public class MypageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/main/mypage/productPayCancle.do")
-	public ModelAndView cancleProductPay(HttpServletRequest request) {			
+	@RequestMapping(value="/main/mypage/productPayCancel.do")
+	public ModelAndView cancelProductPay(HttpServletRequest request) {			
 		int product_pay_code = Integer.parseInt(request.getParameter("product_pay_code"));
-		int result = productpayService.productPayCancle(product_pay_code);
+		int result = productpayService.productPayCancel(product_pay_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
-		modelAndView.setViewName("cancleProductPay.jsp");
+		modelAndView.setViewName("cancelProductPay.jsp");
 		return modelAndView;
 	}
 	
@@ -179,25 +179,25 @@ public class MypageController {
 		//System.out.println(savingList.isEmpty());
 		
 		// 취소내역
-		ArrayList<Integer> cancleCodes
-		= memberReserveService.getCancleCodes(reserve_id,startNum,endNum);
+		ArrayList<Integer> cancelCodes
+		= memberReserveService.getCancelCodes(reserve_id,startNum,endNum);
 		
-		List<MemberReserveListDTO> cancleList = new ArrayList<>();
-		for(int i=0,n=cancleCodes.size();i<n;i++) {
-			int cancle_code = cancleCodes.get(i);
-			System.out.println("취소코드:"+cancle_code);
-			MemberReserveListDTO memberCancleListDTO = new MemberReserveListDTO();
-			memberCancleListDTO = memberReserveService.getAllReserveList(cancle_code);
-			System.out.println(memberCancleListDTO.getReserve_code());
-			cancleList.add(i,memberCancleListDTO);
+		List<MemberReserveListDTO> cancelList = new ArrayList<>();
+		for(int i=0,n=cancelCodes.size();i<n;i++) {
+			int cancel_code = cancelCodes.get(i);
+			System.out.println("취소코드:"+cancel_code);
+			MemberReserveListDTO memberCancelListDTO = new MemberReserveListDTO();
+			memberCancelListDTO = memberReserveService.getAllReserveList(cancel_code);
+			System.out.println(memberCancelListDTO.getReserve_code());
+			cancelList.add(i,memberCancelListDTO);
 		}
 		
-/*		int totalCancle = memberReserveService.getTotalCancle(reserve_id);// 취소내역 총글수
-		int totalPCancle = (totalCancle+4)/5;			// 총페이지수
+/*		int totalcancel = memberReserveService.getTotalcancel(reserve_id);// 취소내역 총글수
+		int totalPcancel = (totalcancel+4)/5;			// 총페이지수
 		//================================
-		int startPageCancle = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
-		int endPageCancle = startPageCancle + 2;		// endPage = startPage + 3 - 1;
-		if(totalPCancle < endPageCancle) endPageCancle = totalPCancle;*/
+		int startPagecancel = (pg-1)/3*3+1;		// (2-1)/3*3+1=1
+		int endPagecancel = startPagecancel + 2;		// endPage = startPage + 3 - 1;
+		if(totalPcancel < endPagecancel) endPagecancel = totalPcancel;*/
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
@@ -206,27 +206,27 @@ public class MypageController {
 		modelAndView.addObject("endPageVal", endPageVal);
 		modelAndView.addObject("totalPVal", totalPVal);
 		modelAndView.addObject("p", pg);
-		modelAndView.addObject("cancleList", cancleList);
-/*		modelAndView.addObject("startPageCancle", startPageCancle);
-		modelAndView.addObject("endPageCancle", endPageCancle);
-		modelAndView.addObject("totalPCancle", totalPCancle);*/
+		modelAndView.addObject("cancelList", cancelList);
+/*		modelAndView.addObject("startPagecancel", startPagecancel);
+		modelAndView.addObject("endPagecancel", endPagecancel);
+		modelAndView.addObject("totalPcancel", totalPcancel);*/
 		modelAndView.setViewName("myReserveList.jsp?p="+pg);
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/main/mypage/memReserveCancle.do")
-	public ModelAndView cancleMemReserve(HttpServletRequest request) {			
+	@RequestMapping(value="/main/mypage/memReserveCancel.do")
+	public ModelAndView cancelMemReserve(HttpServletRequest request) {			
 		int pg = 0;
 		if(request.getParameter("p")!=null) {
 			pg = Integer.parseInt(request.getParameter("p"));			
 		}
 		int reserve_code = Integer.parseInt(request.getParameter("reserve_code"));
-		int result = memberReserveService.memReserveCancle(reserve_code);
+		int result = memberReserveService.memReserveCancel(reserve_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
 		modelAndView.addObject("p", pg);
-		modelAndView.setViewName("cancleMemReserve.jsp");
+		modelAndView.setViewName("cancelMemReserve.jsp");
 		return modelAndView;
 	}
 		

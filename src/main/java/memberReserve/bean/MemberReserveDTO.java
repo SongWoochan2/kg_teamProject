@@ -14,7 +14,7 @@ public class MemberReserveDTO {
 	private String member_seat8;
 	private int pay_cost;
 	private String reserve_date;
-	private char reserve_cancle_able;
+	private char reserve_cancel_able;
 	
 	public int getReserve_code() {
 		return reserve_code;
@@ -94,11 +94,11 @@ public class MemberReserveDTO {
 	public void setReserve_date(String reserve_date) {
 		this.reserve_date = reserve_date;
 	}
-	public char getReserve_cancle_able() {
-		return reserve_cancle_able;
+	public char getReserve_cancel_able() {
+		return reserve_cancel_able;
 	}
-	public void setReserve_cancle_able(char reserve_cancle_able) {
-		this.reserve_cancle_able = reserve_cancle_able;
+	public void setReserve_cancel_able(char reserve_cancel_able) {
+		this.reserve_cancel_able = reserve_cancel_able;
 	}
 	 
 }

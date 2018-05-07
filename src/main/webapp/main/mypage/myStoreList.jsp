@@ -15,13 +15,13 @@ pageEncoding="UTF-8"%>
         $(function () {
         	$("#content-aside > ul > li:eq(2)").attr("class", "on");
         	
-			$(".pay-cancle-btn").click(function(){
+			$(".pay-cancel-btn").click(function(){
     			var result = confirm('선택하신 내역을 구매 취소하시겠습니까?'); 
     			if(result) { //yes 
         			var product_pay_code = $("#product_pay_code").val();
         			      			
                 	$.ajax({
-                		url: "./productPayCancle.do?product_pay_code="+product_pay_code,
+                		url: "./productPayCancel.do?product_pay_code="+product_pay_code,
                 		type: "get",
                 		dataType: "html",
                 		cache: false,
@@ -79,7 +79,7 @@ pageEncoding="UTF-8"%>
 						    <strong style="font-size: 25px;">${memberDTO.member_name} 고객님의 최근 매점상품 구매내역이 없습니다.</strong>
 						    <br><span>영화와 함께 즐길수 있는 매점상품 기프트콘을 이용해 보세요.</span>
 						</p>
-						<a href="" class="round_red">
+						<a href="/MyCGV/main/store/store.do?type=set" class="round_red">
 						<span>매점상품 기프트콘 구매하러가기 &gt;</span></a>
 					</div>
 				</c:if>
@@ -143,7 +143,7 @@ pageEncoding="UTF-8"%>
 								</td>
 								<td style="text-align: center;padding:0;">
 									<input type="hidden" id="product_pay_code" value="${productPayListDTO.product_pay_code}">
-									<button type="button" class="pay-cancle-btn" data-status="1" class="round black cancel"><span>취소</span></button>
+									<button type="button" class="pay-cancel-btn" data-status="1" class="round black cancel"><span>취소</span></button>
 								</td>	
 							</tr>
 						</c:forEach>
@@ -241,13 +241,13 @@ pageEncoding="UTF-8"%>
 			                			+productPayListDTO.order_num3)}"></c:out></strong>원
 								</td>
 								<td style="text-align: center;padding:0;">
-									<c:if test="${productPayListDTO.pay_cancle_able=='N' && productPayListDTO.valid=='Y'}">
+									<c:if test="${productPayListDTO.pay_cancel_able=='N' && productPayListDTO.valid=='Y'}">
     									<strong style="color:red;">미사용</strong>
     								</c:if>
-									<c:if test="${productPayListDTO.pay_cancle_able=='N' && productPayListDTO.valid=='N'}">
+									<c:if test="${productPayListDTO.pay_cancel_able=='N' && productPayListDTO.valid=='N'}">
 										<strong style="color:gray;">유효기한 초과</strong>
 									</c:if>
-									<c:if test="${productPayListDTO.pay_cancle_able=='Y'}">
+									<c:if test="${productPayListDTO.pay_cancel_able=='Y'}">
 										<strong style="color:gray">구매취소</strong>
 									</c:if>
 								</td>

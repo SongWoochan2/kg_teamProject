@@ -60,8 +60,8 @@ public class ProductPayDAO {
 		return sqlSession.selectList("mybatis.boardMapper.getAllPayList", map);
 	}
 	
-	public int productPayCancle(int product_pay_code) {
-		return sqlSession.update("mybatis.boardMapper.productPayCancle", product_pay_code);
+	public int productPayCancel(int product_pay_code) {
+		return sqlSession.update("mybatis.boardMapper.productPayCancel", product_pay_code);
 	}
 }
 

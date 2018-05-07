@@ -18,11 +18,11 @@ public interface ProductPayService {
 	// 결제 리스트 갯수
 	int getTotal_A();
 	// 결제 취소
-	/*int productpayCancle(ProductPayDTO productpayDTO);*/
+	/*int productpayCancel(ProductPayDTO productpayDTO);*/
 		
 	public List<ProductPayListDTO> getPayList(String pay_id);
 	public int getTotalVal(String pay_id);
 	public List<ProductPayListDTO> getAllPayList(String pay_id, int startNum, int endNum);
-	public int productPayCancle(int product_pay_code);
+	public int productPayCancel(int product_pay_code);
 	public int getTotalUsable(String pay_id) ;
 }

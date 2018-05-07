@@ -40,7 +40,6 @@ pageEncoding="UTF-8"%>
         });
 
         $('#check_duplication').on('click', function () {
-            var _this = $(this);
             var nickNameObj = $('#nick_name');
             var newNick = nickNameObj.val();
             

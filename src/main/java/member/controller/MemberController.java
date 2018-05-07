@@ -252,18 +252,62 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/main/member/confirmPwdModify.do")
-	public ModelAndView confirmPwdModify(HttpServletRequest request) {
+	@RequestMapping(value="/main/member/confirmPwdModifyForm.do")
+	public ModelAndView confirmPwdModifyForm(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("memId");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(member_id);
+		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("confirmPwdModify.jsp");
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/main/member/confirmPwdDelete.do")
-	public ModelAndView confirmPwdDelete(HttpServletRequest request) {
+	@RequestMapping(value="/main/member/confirmPwdDeleteForm.do")
+	public ModelAndView confirmPwdDeleteForm(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("memId");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(member_id);
+		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("confirmPwdDelete.jsp");
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="/main/member/confirmPwdModify.do")
+	public ModelAndView confirmPwdModify(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("memId");
+		System.out.println(member_id);
+		String member_pwd = request.getParameter("member_pwd");
+		System.out.println(member_pwd);
+		String member_name = memberService.memberLogin(member_id, member_pwd);	
+		System.out.println(member_name);
+		ModelAndView modelAndView = new ModelAndView();
+		if(member_name==null){		
+			modelAndView.setViewName("confirmPwdFail.jsp");
+		} else {
+			modelAndView.setViewName("memberView.do");
+		}
+		return modelAndView;
+	}	
+	@RequestMapping(value="/main/member/confirmPwdDelete.do")
+	public ModelAndView confirmPwdDelete(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("memId");
+		String member_pwd = request.getParameter("member_pwd");
+		String member_name = memberService.memberLogin(member_id, member_pwd);	
+
+		ModelAndView modelAndView = new ModelAndView();
+		if(member_name==null){		
+			modelAndView.setViewName("confirmPwdFail.jsp");
+		} else {
+			modelAndView.setViewName("memberDeleteForm.do");
+		}
+		return modelAndView;
+	}	
 }

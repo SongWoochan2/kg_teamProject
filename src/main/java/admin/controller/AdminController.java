@@ -72,7 +72,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminEnrollForm.do")
-	public ModelAndView superadminEnrollForm(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminEnrollForm(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		String admin_name = request.getParameter("admin_name");
 		String id_check = request.getParameter("id_check");
@@ -85,7 +85,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminEnrollRequest.do")
-	public ModelAndView superadminEnrollRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminEnrollRequest(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		String admin_name = request.getParameter("admin_name");
 		String admin_pwd = request.getParameter("admin_pwd");
@@ -168,7 +168,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminIdCheck.do")
-	public ModelAndView superadminIdCheck(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminIdCheck(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		AdminDTO adminDTO = new AdminDTO();
 		adminDTO.setAdmin_id(admin_id);

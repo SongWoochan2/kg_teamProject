@@ -116,7 +116,7 @@ public class InquiryController {
 			modelAndView.addObject("endPage", endPage);
 			modelAndView.addObject("totalP", totalP);
 			modelAndView.addObject("list", list);
-			
+			modelAndView.addObject("totalA", totalA);
 			modelAndView.setViewName("inquiryListMember.jsp");
 		
 		}

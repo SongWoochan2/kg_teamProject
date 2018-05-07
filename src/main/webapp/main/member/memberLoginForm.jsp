@@ -81,31 +81,6 @@
 			}else{ // 체크 해제시는 공백
 				saveLogin("");
 			}
-/*             // 아이디 유효성 검사 (영문 대/소문자,숫자만 허용)
-            for (i = 0; i < memberIdObj.val().length; i++) {
-                ch = memberIdObj.val().charAt(i);
-                if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
-                    alert("아이디는 영문 대/소문자, 숫자만 입력가능합니다.")
-                    memberIdObj.focus();
-            		return false;
-                }
-            }
-            if (memberIdObj.val().includes(" ")) {
-        		//아이디에 공백 사용하지 않기
-                alert("아이디에 공백을 사용할 수 없습니다.");
-                memberIdObj.focus();
-        		return false;
-            } 
-            
-            
-            //아이디 길이 체크 (4~12자)
-            if (memberIdObj.val().length<8 || document.f.my_id.value.length>12) {
-                alert("아이디를 8 ~ 12자까지 입력해주세요.")
-                document.f.my_id.focus()
-                document.f.my_id.select()
-                return false;
-            } */
-           
             
         	if(memberIdObj.val()==""){ 
         		alert("아이디를 입력하세요.");
@@ -124,7 +99,7 @@
         		memberPwdObj.focus();
         		return false;
         	}  else {
-        		/* $.ajax({
+/*         		$.ajax({
             		url: "./memberLogin.do",
             		type: "post",
             		dataType: "html",
@@ -138,6 +113,7 @@
     					
   					}
             	}); */
+            	$("#form2_capcha").submit();
         	}
         });
 	});
@@ -153,11 +129,14 @@
         	<div class="sect-login">
           		<div class="box-login login_1408">
                 <h3 class="hidden">회원 로그인</h3>
-                    <form id="form2_capcha" name="memberLoginForm" method="post" action="/MyCGV/main/member/memberLogin.do" novalidate="novalidate" style="display:block;">
+                    <form id="form2_capcha" name="memberLoginForm" method="post" 
+                    action="memberLogin.do" novalidate="novalidate" style="display:block;">
                  		<fieldset>
                  		
                  			<!-- 페이지 이동시 파라미터  저장 -->
-                			<input type="hidden" name="origin_uri" value="${origin_uri }">
+                			<c:if test="${origin_uri != null}">
+                				<input type="hidden" name="origin_uri" value="${origin_uri }">
+                			</c:if>
                 			<c:forEach var="pre_param" items="${param_map }">
 		               			<c:forEach var="pre_value" items="${pre_param.value }">
 		               				<input type="hidden" name="pre_${pre_param.key }" value="${pre_value }">
