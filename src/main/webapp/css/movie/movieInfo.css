@@ -154,10 +154,13 @@
 	#moviepage #moviesteelcut #steelcut-content #steelcut-entity{
 		height: 100%;
 		width: 100%;
+		text-align: center;
 	}
 	#moviepage #moviesteelcut #steelcut-content #steelcut-entity img{
-		height: 100%;
-		width: 100%;
+		/* height: 100%;
+		width: 100%; */
+		max-height: 100%;
+		width: auto;
 	}
 	#moviepage #moviereview{
 		width: 100%;
