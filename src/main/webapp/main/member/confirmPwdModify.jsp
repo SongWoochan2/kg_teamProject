@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
 		</table>
 		</div>
 		<div class="info_img">
-			<img class="modify_img" src="../image/memberModify/infoConfirm.jpg"/>
+			<img class="modify_img" src="/MyCGV/image/memberModify/infoConfirm.jpg"/>
 		</div>
 	</div>
 </div>

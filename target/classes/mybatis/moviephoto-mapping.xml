@@ -46,15 +46,16 @@
 		<![CDATA[select movie_code, movie_photo_addr
  		from (select rownum rn, tt.*  
  				from (SELECT * FROM movie_poster ]]>
-					where movie_photo_addr like 'poster_' || '%' 
-						<if test="code_list != null">
-						 	and movie_code IN 
+					<if test="code_list != null">
+						where movie_photo_addr like 'poster_' || '%' 
+						 	and movie_code IN ( 0
 							<foreach item="item" index="index" collection="code_list"
-			     				 open="(" separator="," close=")">
+			     				 open="," separator="," close="">
 			       				#{item} 
 			  				</foreach>
-			  			</if>
-					ORDER BY movie_code desc) tt) 
+			  				)
+		  			</if>
+						ORDER BY movie_code desc) tt) 
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
 		
 	</select>

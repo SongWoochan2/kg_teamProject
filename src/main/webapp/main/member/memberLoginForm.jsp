@@ -124,6 +124,22 @@
         		memberPwdObj.focus();
         		return false;
         	}  else {
+
+//         		$.ajax({
+//             		url: "./memberLogin.do",
+//             		type: "post",
+//             		dataType: "html",
+//             		cache: false,
+//             		async: false,
+//             		timeout: 30000,
+//             		success: function(data) {
+//             			$("#resultAlert").html(data);
+//             		},
+//             		error: function(xhr, textStatus, errorThrown) {
+    					
+//   					}
+//             	});
+
         		/* $.ajax({
             		url: "./memberLogin.do",
             		type: "post",
@@ -157,7 +173,9 @@
                  		<fieldset>
                  		
                  			<!-- 페이지 이동시 파라미터  저장 -->
-                			<input type="hidden" name="origin_uri" value="${origin_uri }">
+                 			<c:if test="${origin_uri != null }">
+	                			<input type="hidden" name="origin_uri" value="${origin_uri }">
+                 			</c:if>
                 			<c:forEach var="pre_param" items="${param_map }">
 		               			<c:forEach var="pre_value" items="${pre_param.value }">
 		               				<input type="hidden" name="pre_${pre_param.key }" value="${pre_value }">

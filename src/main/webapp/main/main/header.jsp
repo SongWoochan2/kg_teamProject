@@ -48,11 +48,11 @@
 					<c:if test="${ sessionScope.memId == null }">
 						<a href="/MyCGV/main/member/memberLoginForm.do"><strong>로그인 | </strong></a> 
 						<a href="/MyCGV/main/member/memberWriteForm.do"><strong>회원가입 | </strong></a>
-						<a href="/MyCGV/main/member/memberLoginForm.do"><strong>My MoveIt | </strong></a>  
+						<a href="/MyCGV/main/member/memberLoginForm.do"><strong>My MovieT | </strong></a>  
 					</c:if>
 					<c:if test="${ sessionScope.memId != null }">
 						<a href="/MyCGV/main/member/memberLogout.do"><strong>로그아웃 | </strong></a>
-						<a href="/MyCGV/main/mypage/mypageHome.do"><strong>My MoveIt | </strong></a> 
+						<a href="/MyCGV/main/mypage/mypageHome.do"><strong>My MovieT | </strong></a> 
 					</c:if>
 					<a href="/MyCGV/clientCenter/clientCenterMain.jsp"><strong>고객센터</strong></a> 
 					<a href="#"><strong>ENGLISH TICKETING</strong></a>

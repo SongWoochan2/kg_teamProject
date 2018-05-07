@@ -30,7 +30,11 @@ public class MemberServiceImpl implements MemberService{
 	public int memberModify(MemberDTO memberDTO) {
 		return memberDAO.memberModify(memberDTO);
 	}
-
+	
+	public int profileModify(MemberDTO memberDTO) {
+		return memberDAO.profileModify(memberDTO);
+	}
+	
 	public int memberDelete(String member_id) {
 		return memberDAO.memberDelete(member_id);
 	}

@@ -42,9 +42,8 @@ pageEncoding="UTF-8"%>
 				</div>
 				<div id="notice_item_type">
 					공지 종류:
-					<input type="radio" name="notice_item_type" value="[시스템 점검]" checked="checked" ><label>[시스템 점검]</label>
-					<input type="radio" name="notice_item_type" value="[극장]"><label>[극장]</label>
-					<input type="radio" name="notice_item_type" value="[기타]"><label>[기타]</label>
+					<input type="radio" name="notice_item_type" value="시스템점검" checked="checked" ><label>[시스템 점검]</label>
+					<input type="radio" name="notice_item_type" value="극장"><label>[극장]</label>
 				</div>
 				<div>
 					<input type="text" name="notice_item_title" size="80" id="notice_item_title" placeholder="제목">

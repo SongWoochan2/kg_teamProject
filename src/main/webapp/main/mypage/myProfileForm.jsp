@@ -20,8 +20,8 @@ pageEncoding="UTF-8"%>
 		}
 		
 		var img_addr = $("#img_addr").val();
-		if(img_addr==null || img_addr=='none.png' || img_addr.includes("none.")) {
-			$("#img_memprofileimage").attr("src", "/MyCGV/image/profile/none.png");	
+		if(img_addr=="" || img_addr=="none") {
+			$("#img_memprofileimage").attr("src", "/MyCGV/image/profile/none/none.png");	
 		} else {
 			$("#img_memprofileimage").attr("src", "/MyCGV/image/profile/"+img_addr);
 			var button = $("<button type='button'>프로필이미지 삭제</button>"); 
@@ -32,25 +32,11 @@ pageEncoding="UTF-8"%>
         $('#delete_image').click(function () {
             if (!confirm('설정된 프로필 이미지를 삭제 하시겠습니까?'))
                 return;
-
-            $.ajax({
-            	url: "./deleteProfileImg.do",
-        		type: "post",
-        		dataType: "html",
-        		cache: false,
-        		timeout: 30000,
-        		success: function(data) {
-                    $('#img_memprofileimage').attr('src', '/MyCGV/image/profile/none.png');
-                    /* $('#user_small_image').val(''); */
-                   	$("#img_addr").val("none.png");
-                    $('#delete_image').remove();
-                    $("#resultAlert").html(data);
-        		},
-        		error: function(xhr, textStatus, errorThrown) {
-					$("div.tbl-form").html("<div>" + textStatus 
-							  + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
-				}
-            });
+			$('#img_memprofileimage').attr('src', '/MyCGV/image/profile/none/none.png');
+            $("#img_addr").val("none");
+            $('#delete_image').remove();
+            $("#resultAlert").html(data);      		
+           
         });
 
         $('#check_duplication').on('click', function () {

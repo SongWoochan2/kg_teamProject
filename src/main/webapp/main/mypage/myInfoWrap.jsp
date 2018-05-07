@@ -16,8 +16,8 @@ pageEncoding="UTF-8"%>
         }); */
         
         var originImgAddr = $("#origin_img_addr").val();
-        if(originImgAddr == null || originImgAddr == "none.png" || originImgAddr.includes("none.")) {
-        	$(".profileImg > img").attr("src", "/MyCGV/image/profile/none.png");
+        if(originImgAddr == "" || originImgAddr == "none") {
+        	$(".profileImg > img").attr("src", "/MyCGV/image/profile/none/none.png");
         } else {
         	$(".profileImg > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
 						<a href="myProfileForm.do"><strong>나의 프로필 수정</strong></a>
 					</div>
 					<div class="gradeInfo">
-						<p id="p_tag1">                     
+						<p>                     
 	                         	고객님은 <strong class="txt-purple">${memberDTO.member_grade}</strong>등급 입니다.             
 	                    </p>
                     </div>
@@ -49,12 +49,13 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="benefit">
 				<div class="point">
+					<div>
 					<strong style="float: left;font-size: 35px;">MovieT POINT</strong>
-			        <a class="a_tag1" href="myPointList.do?p=1" title="MovieT POINT 더보기">
+			        <a href="myPointList.do?p=1" title="MovieT POINT 더보기">
 			        <img alt="MovieT POINT 더보기" src="/MyCGV/image/mypage/1+.PNG"
-			        		style="float:left;margin-top: 5px;margin-left: 5px;">
+			        		style="float:left;margin: 5px;margin-left: 5px;">
 			        </a>
-			        <br><br><br>
+			        </div>
 					<strong style="font-size: 20px;">사용가능 MovieT 포인트
 					&nbsp;&nbsp;${memberDTO.saving_point}점</strong>
         		</div>	        

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,7 +102,14 @@
 							</a>
 						</div>
 						<div id = "select-reserve">
-							<font>예매율</font> ${reserve_rate_map[movie_list.movie_code]} %
+							<font>예매율</font> 
+							<c:if test="${reserve_rate_map[movie_list.movie_code] == null}">
+								0
+							</c:if>
+							<c:if test="${reserve_rate_map[movie_list.movie_code] != null}">
+								${fn:substring( ''+(reserve_rate_map[movie_list.movie_code]),0,4) }
+							</c:if>
+							 %
 						</div>
 						<div id = "select-opendate">
 							${movie_list.movie_open_date }
@@ -110,7 +118,7 @@
 								평점 없음
 							</c:if>
 							<c:if test="${movie_list.movie_evaluat_num != 0}">
-								평점 : ${ movie_list.acc_evaluat_score / movie_list.movie_evaluat_num } 점
+								평점 : ${fn:substring( ''+(movie_list.acc_evaluat_score / movie_list.movie_evaluat_num),0,4) } 점
 							</c:if>)&emsp;
 							<c:if test="${like_map[movie_list.movie_code] != null}">
 								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 
@@ -135,7 +143,14 @@
 							<a href = "movieReview.do?movie_pg=${m_moviePage.pg }&movie_code=${movie_list.movie_code}">${movie_list.movie_name }</a>
 						</div>
 						<div id = "entity-reserve">
-							<font>예매율</font> ${reserve_rate_map[movie_list.movie_code]} %
+							<font>예매율</font> 
+							<c:if test="${reserve_rate_map[movie_list.movie_code] == null}">
+								0
+							</c:if>
+							<c:if test="${reserve_rate_map[movie_list.movie_code] != null}">
+								${fn:substring( ''+(reserve_rate_map[movie_list.movie_code]),0,4) }
+							</c:if>
+							 %
 						</div>
 						<div id = "entity-opendate">
 							${movie_list.movie_open_date }
@@ -144,7 +159,7 @@
 								평점 없음
 							</c:if>
 							<c:if test="${movie_list.movie_evaluat_num != 0}">
-								평점 : ${ movie_list.acc_evaluat_score / movie_list.movie_evaluat_num } 점
+								평점 : ${fn:substring( ''+(movie_list.acc_evaluat_score / movie_list.movie_evaluat_num),0,4) } 점
 							</c:if>)&emsp;
 							<c:if test="${like_map[movie_list.movie_code] != null}">
 								<a href = "selectLike.do?movie_pg=${m_moviePage.pg }&review_pg=${e_moviePage.pg}&movie_code=${movie_list.movie_code }&good=-1" class="btn btn-info btn-lg" id="movie_like"> 

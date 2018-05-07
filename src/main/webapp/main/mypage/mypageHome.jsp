@@ -50,14 +50,23 @@ pageEncoding="UTF-8"%>
 					<div class="box-inner">
 						<div class="box-inner-wishlist">
 							<a href="#" title="위시리스트">
-								<img alt="위시리스트" src="/MyCGV/image/mypage/wishlist.png">
+								
 							</a>
 						</div>
 						<div class="box-inner-watched">
 							<a href="myWatchedMovie.do?p=1" title="내가 본 영화">
-								<img alt="내가 본 영화" src="/MyCGV/image/mypage/watched_movie.png">
+							
 							</a>
 						</div>
+						<div class="box-inner-mystore">
+							<a href="myStoreList.do?p=1" title="MY 스토어">
+							<img alt="MY 스토어 더보기" src="/MyCGV/image/mypage/storeIcon.png"
+							 style="width:'100px'; height:'100px'; margin-top: 10px;">
+							</a>
+							<br><strong style="font-size:22px;font-weight: bold;">매점상품 기프트콘</strong>
+            				<br>
+							<strong style="font-size:22px;font-weight: bold;">${usableCnt}건</strong>
+        				</div>
 						<!-- <div class="box-inner mvdiary">
             				<a href="" title="무비다이어리">
                 				<span id="home_span3">관람 후 내 감상평을 적어 <br>추억하고 싶다면?</span>
@@ -69,7 +78,7 @@ pageEncoding="UTF-8"%>
 				<div class="sect-content-reserve">
 					<div class="title-mypage">
 						<h3>MY 예매내역</h3><h4>${totalVal}건</h4>
-						&nbsp;&nbsp;<a href="myReserveList.do?p=1">
+						&nbsp;&nbsp;<a href="myReserveList.do?p=1" title="MY 예매내역 더보기">
 						<img alt="MY 예매내역 더보기" src="/MyCGV/image/mypage/1+.PNG" style="display:inline;float:left;"></a>
 						<p style="float:right;">예매번호로만 티켓을 찾을 수 있으니 반드시 확인 부탁드립니다.</p>
 					</div>
@@ -88,9 +97,9 @@ pageEncoding="UTF-8"%>
 		            		    (${memberReserveListDTO.show_date})
 		            	    </div>
 			                <div class="box-image">
-			            	    <a href="../main/movie/movieDetailView.do?movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
+			            	    <a href="/MyCGV/main/movie/movieDetailView.do?movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
 				            	    <span class="thumb-image"> 
-				                        <img src="../image/storage/moviephoto/${memberReserveListDTO.movie_photo_addr}" 
+				                        <img src="/MyCGV/image/storage/moviephoto/${memberReserveListDTO.movie_photo_addr}" 
 				                        alt="${memberReserveListDTO.movie_name} 포스터" onerror="errorImage(this)"
 				                        width="90px" height="130px">
 				                    </span>        
@@ -99,7 +108,7 @@ pageEncoding="UTF-8"%>
 			                <div class="box-contents">
 			            	    <dl>
 			            		    <dt>
-	                                    <a href="../main/movie/movieDetailView.do?movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
+	                                    <a href="/MyCGV/main/movie/movieDetailView.do?movie_code=${memberReserveListDTO.movie_code}&photo_pg=1&trailer_pg=1">
 	                                    	${memberReserveListDTO.movie_name}</a>                                                                       
 	                                </dt>	                            
 				        		    <dd>
@@ -138,14 +147,14 @@ pageEncoding="UTF-8"%>
 		            <!-- foreach문 끝 -->
               	</div>
 			</div>
-				<div class="sect-content-buying">
+<!-- 				<div class="sect-content-buying">
 					<div class="title-mypage">
 						<h3>MY 구매정보</h3>
 						<p>현재 사용하실 수 있는 쿠폰정보입니다. 상품명을 클릭하시면 내역조회페이지로 이동합니다.</p>
 					</div>
 				
 					<div class="box-inner"></div>
-				</div>
+				</div> -->
 
 					
 			

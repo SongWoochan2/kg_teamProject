@@ -21,6 +21,7 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	
 	@RequestMapping(value="/admin/qna/qnaWriteForm.do")
 	public String superqnaWriteForm(HttpServletResponse response, HttpServletRequest request) { 
 		
@@ -52,22 +53,36 @@ public class QnaController {
 	@RequestMapping(value="/admin/qna/qnaList.do")
 	public ModelAndView qnaList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
-		int pg = Integer.parseInt( request.getParameter("pg") );
+		String type = null;
+		int pg = 1;
+		if(request.getParameter("type") != null) {
+			type = request.getParameter("type");
+		}
+		if(request.getParameter("pg") != null) {
+			pg = Integer.parseInt( request.getParameter("pg") );
+		}
+		
 		System.out.println("admin_id:"+admin_id);
 		int endNum = pg*10;
 		int startNum = endNum-9;
-		List<QnaDTO> list = qnaService.qnaList(startNum, endNum);
-		int totalA = qnaService.getTotalA();
+		int totalA = qnaService.getTotalA(type);
+		System.out.println("totalA : " + totalA);
 		int totalP = (totalA + 9)/10;
 		int startPage = (pg - 1)/3*3 +1;
 		int endPage = startPage + 3 - 1;
 		if(totalP < endPage) endPage = totalP;
 		
+		List<QnaDTO> qna_list = null;
+		
+		qna_list = qnaService.qnaList(type ,startNum, endNum);
+			
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("startPage", startPage);
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
-		modelAndView.addObject("list", list);
+		modelAndView.addObject("totalA", totalA);
+		modelAndView.addObject("list", qna_list);
+		modelAndView.addObject("type", type);
 		
 		if(admin_id!=null) {
 			modelAndView.setViewName("qnaListAdmin.jsp");

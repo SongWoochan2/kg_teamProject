@@ -38,8 +38,8 @@ public class ShowPresentService {
 		return showPresentDAO.getShowPresentOne(show_present_code);
 	}
 	
-	public ArrayList<Integer> getUniqueMovieCode(){
-		return (ArrayList<Integer>) showPresentDAO.getUniqueMovieCode();
+	public Integer getUniqueMovieCodeCount(){
+		return showPresentDAO.getUniqueMovieCodeCount();
 	}
 	
 }

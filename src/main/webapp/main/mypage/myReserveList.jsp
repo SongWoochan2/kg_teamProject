@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
 			var result = confirm('예매를 정말 취소하시겠습니까?'); 
 			if(result) { //yes 
             	$.ajax({
-            		url: "./memReserveCancle.do?reserve_code="+$("#reserveCode").val(),
+            		url: "./memReserveCancle.do?p=1&reserve_code="+$("#reserveCode").val(),
             		type: "get",
             		dataType: "html",
             		cache: false,
@@ -228,9 +228,9 @@ pageEncoding="UTF-8"%>
 				<div class="sect-box-descri">
 					<h4>MovieT 예매 관련 정책 안내</h4>
 					<div class="box-polaroid">
-						<div class="box-inner">
+						<div class="box-inner" style="margin: 0;padding: 0">
 							<ul>
-								<li>
+								<li style="padding-top:30px; height: 80px;border-bottom:1px dashed #cfcbc2;">
 									<dl>
 										<dt>이용안내</dt>
 										<dd>
@@ -242,7 +242,7 @@ pageEncoding="UTF-8"%>
 										</dd>
 									</dl>
 								</li>
-								<li>
+								<li style="padding-top:15px;padding-bottom:15px; height: 160px;border-bottom:1px dashed #cfcbc2;">
 									<dl>
 										<dt>티켓 교환방법</dt>
 										<dd>
@@ -266,7 +266,7 @@ pageEncoding="UTF-8"%>
 									</dl>
 								</li>
 		
-								<li>
+								<li style="padding-top:15px;padding-bottom:30px;height: 160px;">
 									<dl>
 										<dt>환불 규정 안내</dt>
 										<dd>
