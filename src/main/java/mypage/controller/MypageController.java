@@ -17,6 +17,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -336,6 +337,12 @@ public class MypageController {
 		return modelAndView;
 	}
 	
+//	@RequestMapping(value="/main/mypage/myProfile.do", method=RequestMethod.POST)
+//	public void profileUpdate(HttpServletRequest request, HttpServletResponse response) {
+//		
+//		
+//	}
+	
 	@RequestMapping(value="/main/mypage/myProfile.do", method=RequestMethod.POST)
 	public ModelAndView profileUpdate(HttpServletRequest request, MultipartFile profile_upload_file) {
 		String filePath = resourceProvider.getPath("image/profile");
@@ -354,8 +361,7 @@ public class MypageController {
 		
 		int resultDel = 1;
 		if (!profile_upload_file.isEmpty()) { // 원래 origin_img_addr 있는데 수정/삭제한 경우	
-			if((origin_img_addr!="none" && origin_img_addr.equals(img_addr))
-					|| (origin_img_addr!="none" && img_addr=="none")) {
+			if(origin_img_addr!="none") {
 				File file = new File(filePath, origin_img_addr);
 				resultDel = -1; // 오류 발생
 				if (file.exists()) {
@@ -368,8 +374,6 @@ public class MypageController {
 				}
 			}
 			String originFileName = profile_upload_file.getOriginalFilename();
-			System.out.println(originFileName);
-			System.out.println(img_addr);
 			if (originFileName!=null) {
 				String extension = originFileName.split("\\.")[1];
 				System.out.println(extension);
@@ -390,17 +394,14 @@ public class MypageController {
 				e.printStackTrace();
 			}
 		} else { // 원래 origin_img_addr 삭제
-			System.out.println(origin_img_addr+"$$$$$$$");
-			System.out.println(img_addr+"$$$$$img_addr");
-			if((!origin_img_addr.contains("none")) && img_addr=="none") {
-				System.out.println("ㅗ됴ㅣ더ㅚㅏㅗㄴㄳ");
+			if((!origin_img_addr.equals("none")) && img_addr.equals("none") ) {
 				File file = new File(filePath, origin_img_addr);
 				resultDel = -1; // 오류 발생
 				if (file.exists()) {
 					if (file.delete()) {
 						resultDel = 1; // 파일 삭제 성공
 						System.out.println("파일삭제성공 : 새파일 안 넣었을 때");
-						memberDTO.setProfile_img_addr("none");	
+						memberDTO.setProfile_img_addr("none");
 					} else {
 						resultDel = 0; // 파일 삭제 실패
 					}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,22 +95,18 @@
 							<div id = "entity-reserve"><font>예매율</font>
 								<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
 									<c:if test="${top_movie_list.movie_code == reserve_rate_map.key }">
-											${reserve_rate_map.value} %
+											${fn:substring( ''+(reserve_rate_map.value),0,4) } %
 									</c:if>
 								</c:forEach>
 							 </div>
 							<div id = "entity-opendate">${top_movie_list.movie_open_date } 개봉
-							(평점 : 
-								<c:forEach var="average_map" items="${requestScope.average_map }">
-									<c:if test="${top_movie_list.movie_code == average_map.key }">
-										<c:if test="${average_map.value == 'NaN' }">
-											평점 없음
-										</c:if>
-										<c:if test="${average_map.value != 'NaN' }">
-											${average_map.value } 점
-										</c:if>
-									</c:if>
-								</c:forEach>)
+							( 
+							<c:if test="${top_movie_list.movie_evaluat_num == 0}">
+								평점 없음
+							</c:if>
+							<c:if test="${top_movie_list.movie_evaluat_num != 0}">
+								평점 : ${fn:substring( ''+(top_movie_list.acc_evaluat_score / top_movie_list.movie_evaluat_num),0,4) } 점
+							</c:if>)
 							</div>
 							<div id = "entity-like">
 								<c:forEach var ="like_map" items="${requestScope.like_map }" >
@@ -154,22 +151,18 @@
 							<div id = "entity-reserve"><font>예매율</font> 
 								<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
 									<c:if test="${bottom_movie_list.movie_code == reserve_rate_map.key }">
-											${reserve_rate_map.value} %
+											${fn:substring( ''+(reserve_rate_map.value),0,4) } %
 									</c:if>
 								</c:forEach>
 							</div>
 							<div id = "entity-opendate">${bottom_movie_list.movie_open_date } 개봉 
-							(평점 : 
-								<c:forEach var="average_map" items="${requestScope.average_map }">
-									<c:if test="${bottom_movie_list.movie_code == average_map.key }">
-										<c:if test="${average_map.value == 'NaN' }">
-											평점 없음
-										</c:if>
-										<c:if test="${average_map.value != 'NaN' }">
-											${average_map.value } 점
-										</c:if>
-									</c:if>
-								</c:forEach>)
+							( 
+							<c:if test="${bottom_movie_list.movie_evaluat_num == 0}">
+								평점 없음
+							</c:if>
+							<c:if test="${bottom_movie_list.movie_evaluat_num != 0}">
+								평점 : ${fn:substring( ''+(bottom_movie_list.acc_evaluat_score / bottom_movie_list.movie_evaluat_num),0,4) } 점
+							</c:if>)
 							</div>
 							<div id = "entity-like">
 								<c:forEach var ="like_map" items="${requestScope.like_map }" >
@@ -206,18 +199,6 @@
 						</div>
 						<div id = "movie-info">
 							${top_movie_list.movie_open_date } 개봉 
-							(평점 : 
-								<c:forEach var="average_map" items="${requestScope.average_map }">
-									<c:if test="${top_movie_list.movie_code == average_map.key }">
-										<c:if test="${average_map.value == 'NaN' }">
-											평점 없음
-										</c:if>
-										<c:if test="${average_map.value != 'NaN' }">
-											${average_map.value } 점
-										</c:if>
-									</c:if>
-								</c:forEach>
-							)
 						</div>
 						<div id = "movie-reserve">
 							<c:forEach var ="like_map" items="${requestScope.like_map }" >

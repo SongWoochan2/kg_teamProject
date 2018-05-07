@@ -100,5 +100,6 @@ public class MemberReserveDTO {
 	public void setReserve_cancel_able(char reserve_cancel_able) {
 		this.reserve_cancel_able = reserve_cancel_able;
 	}
+	
 	 
 }

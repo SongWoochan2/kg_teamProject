@@ -43,10 +43,9 @@ pageEncoding="UTF-8"%>
 				</div>
 					<div id="qna_type">
 						질문 종류 :
-						<input type="radio" name="qna_type" value="[예매/관람권]" checked="checked" ><label>[예매/관람권]</label>
-						<input type="radio" name="qna_type" value="[영화관이용]"><label>[영화관이용]</label>
-						<input type="radio" name="qna_type" value="[홈페이지]"><label>[홈페이지]</label>
-						<input type="radio" name="qna_type" value="[기타]"><label>[기타]</label>
+						<input type="radio" name="qna_type" value="예매관람권" checked="checked" ><label>[예매/관람권]</label>
+						<input type="radio" name="qna_type" value="영화관이용"><label>[영화관이용]</label>
+						<input type="radio" name="qna_type" value="홈페이지"><label>[홈페이지]</label>
 					</div>
 					<div >
 						<input type="text" name="qna_title" size="80" id="qna_title" placeholder="제목">

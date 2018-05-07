@@ -103,7 +103,7 @@
 	</select>
 	
 	<select id = "movieFinder" parameterType="java.util.Map" resultType="movieDTO">
-		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, movie_evaluat_num, Acc_evaluat_score,
  		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
  		from (select rownum rn, tt.*  
  				from (select * from movie ]]> 
@@ -156,7 +156,7 @@
 	</select>
 	
 	<select id="presentMovieList" parameterType="java.util.Map" resultType="movieDTO">
-		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, 
+		<![CDATA[select movie_code, movie_name, GOOD_NUM, ACC_AUDIENCE_NUM, movie_evaluat_num, Acc_evaluat_score,
  		to_char(movie_open_date, 'YYYY.MM.DD') as movie_open_date  
  		from ( select rownum rn, tt.* from ( 
  						select * from movie

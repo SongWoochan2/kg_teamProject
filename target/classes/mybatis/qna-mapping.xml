@@ -17,8 +17,14 @@
 		<![CDATA[
 		select qna_code, qna_type, qna_title, qna_content, to_char(qna_date, 'YYYY.MM.DD') as qna_date 
 		from (select rownum rn, tt.* 
-		from (select * from qna order by qna_code desc) tt)
-		where rn >= #{startNum} and rn <= #{endNum}
+		from (select * from qna ]]>
+		<if test="type != null">
+			<where>
+				qna_type=#{type}
+			</where>
+		</if>
+		<![CDATA[ order by qna_code desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}
 		]]>
 	</select>
 	
@@ -26,8 +32,13 @@
 		select qna_code, qna_type, qna_title, qna_content, to_char(qna_date, 'YYYY.MM.DD') as qna_date from qna where qna_code=#{qna_code}
 	</select>
 	
-	<select id="totalA" resultType="int">
+	<select id="getTotalA" parameterType="java.lang.String" resultType="int">
 		select count(*) from qna
+		<if test="value != null">
+			<where>
+				qna_type= #{value}
+			</where>
+		</if>
 	</select>
 	
 	<delete id="qnaDelete" parameterType="int">

@@ -18,7 +18,13 @@
 		<![CDATA[
 		select notice_item_code, admin_id, notice_item_type, notice_item_title, notice_item_content, to_char(notice_item_date, 'YYYY.MM.DD') as notice_item_date 
 		from (select rownum rn, tt.* 
-		from (select * from notice_item order by notice_item_code desc) tt) 
+		from (select * from notice_item ]]>
+		<if test="type != null">
+			<where>
+				notice_item_type=#{type}
+			</where>
+		</if>	
+		<![CDATA[ order by notice_item_code desc) tt) 
 		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
 	</select>
@@ -28,8 +34,13 @@
 		from notice_item where notice_item_code=#{notice_item_code}
 	</select>
 	
-	<select id="totalA" resultType="int">
+	<select id="getTotalA" resultType="int">
 		select count(*) from notice_item
+		<if test="value != null">
+			<where>
+				notice_item_type=#{value}
+			</where>
+		</if>	
 	</select>
 	
 	<delete id="noticeItemDelete" parameterType="int">

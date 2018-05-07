@@ -28,6 +28,9 @@ pageEncoding="UTF-8"%>
 		width: 1000px;
 		margin: auto;
 	}
+	#gettotal{
+		color:white;
+	}
 </style>
 </head>
 <body>
@@ -37,28 +40,43 @@ pageEncoding="UTF-8"%>
 				<div id="tab">
 					<ul id="ul">
 						<li id="li">
-							<a href="#">
-								<img src="../../image/type/전체-red.png" width="100px" height="50px" alt="전체"/>
+							<a href="/MyCGV/admin/qna/qnaList.do?pg=1">
+								<c:if test="${requestScope.type==null }">
+									<img src="../../image/type/전체-red.png" width="100px" height="50px" alt="전체"/>
+								</c:if>
+								<c:if test="${requestScope.type!=null }">
+									<img src="../../image/type/전체-gray.png" width="100px" height="50px" alt="전체"/>
+								</c:if>
 							</a>
 						</li>
 						<li id="li">
-							<a href="#">
-								<img src="../../image/type/예매관람권-gray.png"width="100px" height="50px" alt="예매관람권"/>
+							<a href="/MyCGV/admin/qna/qnaList.do?pg=1&type=예매관람권">
+								<c:if test="${requestScope.type=='예매관람권' }">
+									<img src="../../image/type/예매관람권-red.png" width="100px" height="50px" alt="예매관람권"/>
+								</c:if>
+								<c:if test="${requestScope.type!='예매관람권' }">
+									<img src="../../image/type/예매관람권-gray.png" width="100px" height="50px" alt="예매관람권"/>
+								</c:if>
 							</a>
 						</li>
 						<li id="li">
-							<a href="#">
-								<img src="../../image/type/영화관이용-gray.png"width="100px" height="50px" alt="영화관이용"/>
+							<a href="/MyCGV/admin/qna/qnaList.do?pg=1&type=영화관이용">
+								<c:if test="${requestScope.type=='영화관이용' }">
+									<img src="../../image/type/영화관이용-red.png" width="100px" height="50px" alt="영화관이용"/>
+								</c:if>
+								<c:if test="${requestScope.type!='영화관이용' }">
+									<img src="../../image/type/영화관이용-gray.png" width="100px" height="50px" alt="영화관이용"/>
+								</c:if>
 							</a>
 						</li>
 						<li id="li">
-							<a href="#">
-								<img src="../../image/type/홈페이지-gray.png"width="100px" height="50px" alt="홈페이지"/>
-							</a>
-						</li>
-						<li id="li">
-							<a href="#">
-								<img src="../../image/type/기타-gray.png"width="100px" height="50px" alt="기타"/>
+							<a href="/MyCGV/admin/qna/qnaList.do?pg=1&type=홈페이지">
+								<c:if test="${requestScope.type=='홈페이지' }">
+									<img src="../../image/type/홈페이지-red.png"width="100px" height="50px" alt="홈페이지"/>
+								</c:if>
+								<c:if test="${requestScope.type!='홈페이지' }">
+									<img src="../../image/type/홈페이지-gray.png"width="100px" height="50px" alt="홈페이지"/>
+								</c:if>
 							</a>
 						</li>
 					</ul>
@@ -67,7 +85,7 @@ pageEncoding="UTF-8"%>
 				<div id="table">
 					<table cellspacing="0" cellpadding="5" align="center">
 						<tr>
-							<td colspan="2">총  ${qna_type_count}건이 검색 되었습니다.</td>
+							<td colspan="2"><font id="gettotal">총  ${requestScope.totalA}건이 검색 되었습니다.</font></td>
 						</tr>
 						<tr bgcolor="#c9c9c9">
 							<th width="100">번호</th>
@@ -90,19 +108,19 @@ pageEncoding="UTF-8"%>
 						<tr>
 							<td colspan="5" align="center">
 								<c:if test="${startPage > 3 }">
-									[<a id="paging" href="qnaList.do?pg=${startPage-1}">이전</a>]
+									[<a id="paging" href="qnaList.do?pg=${startPage-1}&type=${requestScope.type}">이전</a>]
 								</c:if>
 								<c:forEach var="i" begin="${startPage }" end="${endPage }">
 									<c:if test="${i == param.pg }">
-										[<a id="currentPaging" href="qnaList.do?pg=${i }">${i }</a>]
+										[<a id="currentPaging" href="qnaList.do?pg=${i }&type=${requestScope.type}">${i }</a>]
 									</c:if>
 									<c:if test="${i != param.pg }">
-										[<a id="paging" href="qnaList.do?pg=${i }">${i }</a>]
+										[<a id="paging" href="qnaList.do?pg=${i }&type=${requestScope.type}">${i }</a>]
 									</c:if>
 								</c:forEach>
 								
 								<c:if test="${endPage < totalP }">
-									[<a id="paging" href="qnaList.do?pg=${endPage+1}">다음</a>]
+									[<a id="paging" href="qnaList.do?pg=${endPage+1}&type=${requestScope.type}">다음</a>]
 								</c:if>
 							</td>
 						</tr>

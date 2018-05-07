@@ -82,10 +82,12 @@ pageEncoding="UTF-8"%>
 			</tr>
 		</table>
 		</div>
-<!-- 		<div class="info_img">
-			<img class="modify_img" src="../image/memberModify/infoConfirm.jpg"/>
-		</div> -->
-</div>
+
+		<div class="info_img">
+			<img class="modify_img" src="/MyCGV/image/memberModify/infoConfirm.jpg"/>
+		</div>
+	</div>
+
 
 </form>
 </div>

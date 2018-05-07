@@ -99,20 +99,7 @@
         		memberPwdObj.focus();
         		return false;
         	}  else {
-/*         		$.ajax({
-            		url: "./memberLogin.do",
-            		type: "post",
-            		dataType: "html",
-            		cache: false,
-            		async: false,
-            		timeout: 30000,
-            		success: function(data) {
-            			$("#resultAlert").html(data);
-            		},
-            		error: function(xhr, textStatus, errorThrown) {
-    					
-  					}
-            	}); */
+
             	$("#form2_capcha").submit();
         	}
         });

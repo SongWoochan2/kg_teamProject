@@ -40,6 +40,7 @@ pageEncoding="UTF-8"%>
             /* $('#user_small_image').val(''); */
             $('#img_addr').attr('value', '');
             $('#delete_image').remove();
+            
         });
 		
         $('#check_duplication').on('click', function () {
