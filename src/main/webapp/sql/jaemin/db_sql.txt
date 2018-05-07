@@ -31,7 +31,7 @@ create table product_pay(
 	gift_phone3	varchar2(11),			--선물 연착처3
 	pay_type varchar2(15) not null,		--결제분류
 	pay_time  date,						--결제날자
-	pay_cancle_able char(1) not null,	--결제취소여부
+	pay_cancel_able char(1) not null,	--결제취소여부
 	order_num number not null			--주문수량
 );
 

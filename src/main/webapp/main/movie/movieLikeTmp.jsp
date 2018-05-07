@@ -24,7 +24,7 @@
 </c:if>
 <c:if test="${requestScope.pagetype == 'wishlist' }">
 	<script type="text/javascript">
-		location.href = "../../mypage/myWishList.do?movie_code=${requestScope.movie_code}";
+		location.href = "../mypage/myWishList.do?movie_code=${requestScope.movie_code}";
 	</script>
 </c:if>
 <c:if test="${requestScope.pagetype == 'movieNonOpenRank' }">

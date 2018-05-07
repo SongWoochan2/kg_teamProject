@@ -34,16 +34,16 @@ public class MemberReserveService {
 		return memberReserveDAO.getSeats(reserve_code);
 	}
 	
-	public int memReserveCancle(int reserve_code) {
-		return memberReserveDAO.memReserveCancle(reserve_code);
+	public int memReserveCancel(int reserve_code) {
+		return memberReserveDAO.memReserveCancel(reserve_code);
 	}
 	
-	public ArrayList<Integer> getCancleCodes(String reserve_id, int startNum, int endNum) {
-		return (ArrayList<Integer>)memberReserveDAO.getCancleCodes(reserve_id, startNum, endNum);
+	public ArrayList<Integer> getCancelCodes(String reserve_id, int startNum, int endNum) {
+		return (ArrayList<Integer>)memberReserveDAO.getCancelCodes(reserve_id, startNum, endNum);
 	}
 	
-	public int getTotalCancle(String reserve_id) {
-		return memberReserveDAO.getTotalCancle(reserve_id);
+	public int getTotalCancel(String reserve_id) {
+		return memberReserveDAO.getTotalCancel(reserve_id);
 	}
 	
 	

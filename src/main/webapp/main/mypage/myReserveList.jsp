@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
 			var result = confirm('예매를 정말 취소하시겠습니까?'); 
 			if(result) { //yes 
             	$.ajax({
-            		url: "./memReserveCancle.do?p=1&reserve_code="+$("#reserveCode").val(),
+            		url: "./memReserveCancel.do?p=1&reserve_code="+$("#reserveCode").val(),
             		type: "get",
             		dataType: "html",
             		cache: false,
@@ -187,7 +187,7 @@ pageEncoding="UTF-8"%>
 					</div>
 				</div>
 		    	
-				<div class="sect-mypage-reserve-cancle">
+				<div class="sect-mypage-reserve-cancel">
 					<div class="tit-mypage">
 						<h3 style="float: left;">MY 취소내역</h3>
 						<p style="text-align: right;">상영일 기준 지난 7일 동안의 취소내역입니다.</p>
@@ -204,20 +204,20 @@ pageEncoding="UTF-8"%>
 								</tr>
 							</thead>
 							<tbody>
-							<c:if test="${empty cancleList}">
+							<c:if test="${empty cancelList}">
 								<tr>
 									<td colspan="5" class="nodata">고객님의 최근 취소내역이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
-							<c:if test="${not empty cancleList}">
-								<c:forEach var="memberCancleListDTO" items="${cancleList}">
+							<c:if test="${not empty cancelList}">
+								<c:forEach var="memberCancelListDTO" items="${cancelList}">
 								<tr>
-									<td>${memberCancleListDTO.movie_name}</td>
-									<td>${memberCancleListDTO.theater_name}</td>
-									<td>${memberCancleListDTO.show_date}&nbsp;
-									${memberCancleListDTO.show_time}:${memberCancleListDTO.show_minute}</td>
-									<td>${memberCancleListDTO.reserve_date}</td>
-									<td><strong>${memberCancleListDTO.reserve_cost}</strong> 원 </td>
+									<td>${memberCancelListDTO.movie_name}</td>
+									<td>${memberCancelListDTO.theater_name}</td>
+									<td>${memberCancelListDTO.show_date}&nbsp;
+									${memberCancelListDTO.show_time}:${memberCancelListDTO.show_minute}</td>
+									<td>${memberCancelListDTO.reserve_date}</td>
+									<td><strong>${memberCancelListDTO.reserve_cost}</strong> 원 </td>
 								</tr>
 								</c:forEach>
 							</c:if>

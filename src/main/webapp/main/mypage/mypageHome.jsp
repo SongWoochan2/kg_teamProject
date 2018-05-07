@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
 			var result = confirm('예매를 정말 취소하시겠습니까?'); 
 			if(result) { //yes 
             	$.ajax({
-            		url: "./memReserveCancle.do?reserve_code="+$("#reserveCode").val(),
+            		url: "./memReserveCancel.do?reserve_code="+$("#reserveCode").val(),
             		type: "get",
             		dataType: "html",
             		cache: false,
@@ -49,23 +49,25 @@ pageEncoding="UTF-8"%>
 				<div class="sect-content-movie">
 					<div class="box-inner">
 						<div class="box-inner-wishlist">
-							<a href="#" title="위시리스트">
+							<a href="myWishList.do" title="위시리스트">
 								
 							</a>
 						</div>
 						<div class="box-inner-watched">
 							<a href="myWatchedMovie.do?p=1" title="내가 본 영화">
-							
+								<strong> </strong>
+								
+								
 							</a>
 						</div>
 						<div class="box-inner-mystore">
 							<a href="myStoreList.do?p=1" title="MY 스토어">
 							<img alt="MY 스토어 더보기" src="/MyCGV/image/mypage/storeIcon.png"
 							 style="width:'100px'; height:'100px'; margin-top: 10px;">
-							</a>
 							<br><strong style="font-size:22px;font-weight: bold;">매점상품 기프트콘</strong>
             				<br>
 							<strong style="font-size:22px;font-weight: bold;">${usableCnt}건</strong>
+							</a>
         				</div>
 						<!-- <div class="box-inner mvdiary">
             				<a href="" title="무비다이어리">
@@ -165,7 +167,49 @@ pageEncoding="UTF-8"%>
 					</div>
 					<div class="box-inner"></div>
 				</div>
-
+<div class="box-inner">
+            <div class="tit-mycgv">
+				<h3>MY Q&amp;A</h3>
+				<p><em>3건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY Q&amp;A 더보기</a></p>
+			</div>
+			<div class="col-myqna">
+                
+				<ul>
+                    
+                        <li>
+					        <em>문의</em>
+					            <a href="/user/mycgv/inquiry/qna/detail-view.aspx?idx=1042978">
+                                <strong>인피니트워가</strong>
+                            </a>
+					        <span class="txt-brown">
+                                답변완료
+                            </span>
+					    </li>
+                        
+                        <li>
+					        <em>칭찬</em>
+					            <a href="/user/mycgv/inquiry/qna/detail-view.aspx?idx=1039184">
+                                <strong>cgv&nbsp;최고</strong>
+                            </a>
+					        <span class="txt-brown">
+                                답변완료
+                            </span>
+					    </li>
+                        
+                        <li>
+					        <em>제안</em>
+					            <a href="/user/mycgv/inquiry/qna/detail-view.aspx?idx=1038588">
+                                <strong>새로운</strong>
+                            </a>
+					        <span class="txt-brown">
+                                답변완료
+                            </span>
+					    </li>
+                        
+				</ul>
+                
+			</div>
+        </div>
 			</div> 
 		</div>
 	</div>

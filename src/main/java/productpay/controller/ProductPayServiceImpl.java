@@ -51,8 +51,8 @@ public class ProductPayServiceImpl implements ProductPayService{
 	}
 
 	@Override
-	public int productPayCancle(int product_pay_code) {
-		return productpayDAO.productPayCancle(product_pay_code);
+	public int productPayCancel(int product_pay_code) {
+		return productpayDAO.productPayCancel(product_pay_code);
 	}
 	
 }

@@ -47,9 +47,9 @@
 <!-- Pay -->
 	<insert id="productpayComplete" parameterType="productPayDTO">
 		INSERT INTO product_pay (
-		product_pay_code, pay_id, product_code, buy_phone, gift_phone1, gift_phone2, gift_phone3, pay_type, pay_time, pay_cancle_able, order_num1, order_num2, order_num3
+		product_pay_code, pay_id, product_code, buy_phone, gift_phone1, gift_phone2, gift_phone3, pay_type, pay_time, pay_cancel_able, order_num1, order_num2, order_num3
 		)
-		VALUES(pay_seq.nextval, #{pay_id},#{product_code},#{buy_phone},#{gift_phone1},#{gift_phone2},#{gift_phone3},#{pay_type}, sysdate,#{pay_cancle_able},#{order_num1},#{order_num2},#{order_num3})
+		VALUES(pay_seq.nextval, #{pay_id},#{product_code},#{buy_phone},#{gift_phone1},#{gift_phone2},#{gift_phone3},#{pay_type}, sysdate,#{pay_cancel_able},#{order_num1},#{order_num2},#{order_num3})
 	</insert>
 	
 <!-- PayList -->
@@ -67,16 +67,16 @@
 	<select id="getPayList" parameterType="String" resultType="productPayListDTO">
 		<![CDATA[SELECT product_pay_code,pay_id,buy_phone,gift_phone1,gift_phone2,gift_phone3,
 			order_num1,order_num2,order_num3,pay_type,
-			to_char(pay_time,'YYYY.MM.DD') as pay_time,pay_cancle_able,
+			to_char(pay_time,'YYYY.MM.DD') as pay_time,pay_cancel_able,
 			pd.product_code,pd.product_name,pd.product_cost,pd.product_photo_addr
     	FROM product_pay pp,product pd
-		WHERE pay_id=#{pay_id} and pay_cancle_able='N' and sysdate <= pay_time+180
+		WHERE pay_id=#{pay_id} and pay_cancel_able='N' and sysdate <= pay_time+180
 			AND pp.product_code=pd.product_code order by pp.product_pay_code desc]]>
 	</select>
 	
 	<select id="getTotalUsable" parameterType="String" resultType="int">
 		<![CDATA[select count(*) from product_pay 
-		where pay_id=#{pay_id} and pay_cancle_able='N' and sysdate <= pay_time+180]]>
+		where pay_id=#{pay_id} and pay_cancel_able='N' and sysdate <= pay_time+180]]>
 	</select>
 	
 	<select id="getTotalVal" parameterType="String" resultType="int">
@@ -88,7 +88,7 @@
 			(select rownum rn,tt.* from
 			(SELECT product_pay_code,pay_id,buy_phone,gift_phone1,gift_phone2,gift_phone3,
 			order_num1,order_num2,order_num3,
-			pay_type,to_char(pay_time,'YYYY.MM.DD') as pay_time,pay_cancle_able,
+			pay_type,to_char(pay_time,'YYYY.MM.DD') as pay_time,pay_cancel_able,
 			pd.product_code,product_name,product_cost,product_photo_addr
 			FROM product_pay pp,product pd
 			WHERE pay_id=#{pay_id}
@@ -96,8 +96,8 @@
 			where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
-	<update id="productPayCancle" parameterType="int">
-		update product_pay set pay_cancle_able='Y' where product_pay_code=#{product_pay_code}
+	<update id="productPayCancel" parameterType="int">
+		update product_pay set pay_cancel_able='Y' where product_pay_code=#{product_pay_code}
 	</update>
 	
 </mapper>

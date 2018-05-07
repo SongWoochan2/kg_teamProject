@@ -6,16 +6,24 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <c:if test="${result == 0}">
-회원 가입에 실패했습니다.
+<script type="text/javascript">
+$(function(){
+	alert("회원가입에 실패했습니다.");
+	history.back();
+});
+</script>
 </c:if>
 <c:if test="${result > 0 }">
-~~~ 회원이 되신 걸 축하합니다~
-~초뒤 메인화면 이동하게 만들기
+<script type="text/javascript">
+$(function(){
+	alert("회원가입에 성공했습니다.");
+	location.href = "index.do";
+});
+</script>
 </c:if>
-<br>
-<input type="button" value="MoveIt 첫화면으로" onclick="location.href='index.do'">
+</head>
+<body>
 </body>
 </html>

@@ -6,16 +6,26 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
-</head>
-<body>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
 <c:if test="${result == 0}">
-회원정보 수정에 실패했습니다.
+<script type="text/javascript">
+$(function(){
+	alert("회원정보 수정에 실패했습니다.");
+	history.back();
+});
+</script>
 </c:if>
 <c:if test="${result > 0 }">
-회원정보 수정 성공
+<script type="text/javascript">
+$(function(){
+	alert("회원정보 수정에 성공했습니다.");
+	location.href = "index.do";
+});
+</script>
 </c:if>
-<br>
-<input type="button" value="MoveIt 첫화면으로" onclick="location.href='index.do'">
+</head>
+<body>
+
 </body>
 </html>
 

@@ -43,21 +43,21 @@ public class MemberReserveDAO {
 	}
 	
 	// 예매취소
-	public int memReserveCancle(int reserve_code) {
-		return sqlSession.update("memberReserve.memReserveCancle", reserve_code);
+	public int memReserveCancel(int reserve_code) {
+		return sqlSession.update("memberReserve.memReserveCancel", reserve_code);
 	}
 	
 	// 취소내역
-	public ArrayList<Integer> getCancleCodes(String reserve_id, int startNum, int endNum) {
+	public ArrayList<Integer> getCancelCodes(String reserve_id, int startNum, int endNum) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		map.put("reserve_id", reserve_id);
-		return (ArrayList)sqlSession.selectList("memberReserve.getCancleCodes", map);
+		return (ArrayList)sqlSession.selectList("memberReserve.getCancelCodes", map);
 	}
 	
-	public int getTotalCancle(String reserve_id) {
-		return sqlSession.selectOne("memberReserve.getTotalCancle", reserve_id);
+	public int getTotalCancel(String reserve_id) {
+		return sqlSession.selectOne("memberReserve.getTotalCancel", reserve_id);
 	}
 	
 	
