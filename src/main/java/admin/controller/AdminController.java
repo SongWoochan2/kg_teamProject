@@ -103,7 +103,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminRequestList.do")
-	public ModelAndView superadminRequestList(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminRequestList(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		
 		int endNum = page*20;
@@ -128,7 +128,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminAllowable.do")
-	public ModelAndView superadminAllowable(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminAllowable(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int admin_request_code = Integer.parseInt(request.getParameter("admin_request_code"));
 		int allowable = Integer.parseInt(request.getParameter("allowable"));

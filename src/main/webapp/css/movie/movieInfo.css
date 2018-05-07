@@ -73,6 +73,9 @@
 		width: 100%;
 		height: 15%;
 	}
+	#moviepage #middle #movieContent #movieinfo #moviescore pre{
+		
+	}
 	#moviepage #middle #movieContent #movieinfo #spec{
 		font-size : 13px;
 		font-weight : bold;
@@ -193,9 +196,9 @@
 		color : white;
 	}
 	#moviepage #moviereview #review-content{
-		overflow : auto;
 		height: 89%;
 		width: 100%;
+		overflow-x : auto;
 	}
 	#moviepage #moviereview #review-content #review-info{
 		border : 1px solid white;

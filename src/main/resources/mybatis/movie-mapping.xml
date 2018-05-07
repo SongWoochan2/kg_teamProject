@@ -28,6 +28,11 @@
 		update movie set movie_evaluat_num=#{movie_evaluat_num} where movie_code=#{movie_code}
 	</update>
 	
+	<update id="updateAudienceNum" parameterType="java.util.Map">
+		update movie set acc_audience_num=acc_audience_num+#{acc_audience_num} 
+		where movie_code=(select movie_code from show_present where show_present_code=#{show_present_code}) 
+	</update>
+	
 	<delete id="movieDelete" parameterType="movieDTO">
 		delete from movie where movie_code = #{movie_code}
 	</delete>

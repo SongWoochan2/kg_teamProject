@@ -115,7 +115,12 @@ public class MovieDAO {
 		return sqlSession.selectOne("movieMapper.movieNonOpenTotal");
 	}
 	
-	
+	public int updateAudienceNum(int show_present_code, int acc_audience_num) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("show_present_code", show_present_code);
+		map.put("acc_audience_num", acc_audience_num);
+		return sqlSession.update("movieMapper.updateAudienceNum", map);
+	}
 	/// woochan
 	public Map<Integer, ReserveRank> getMapOfReserveNum() {
 		return sqlSession.selectMap("movieMapper.getMapOfReserveNum", "movie_code");

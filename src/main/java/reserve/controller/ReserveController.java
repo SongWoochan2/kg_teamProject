@@ -56,7 +56,7 @@ public class ReserveController {
 
 	@RequestMapping(value="/reserveComplete.do")
 	public ModelAndView hyperreserveComplete(HttpServletRequest request, HttpServletResponse response) {
-		
+		int acc_audience_num = 0;
 		HttpSession session = request.getSession();
 		
 		String member_id = (String) session.getAttribute("memId");
@@ -68,6 +68,22 @@ public class ReserveController {
 		
 		int result =  reserveService.updateMemberReserve(memberReserveVO);
 		memberReserveVO = reserveService.selectMemberReserve(memberReserveVO);
+		if(memberReserveVO.getMember_seat8() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat7() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat6() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat5() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat4() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat3() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat2() != null) {acc_audience_num++;}
+		if(memberReserveVO.getMember_seat1() != null) {acc_audience_num++;}
+		System.out.println("acc_audience_num : " + acc_audience_num);
+		System.out.println("memberReserveVO.getShow_present_code() : " + memberReserveVO.getShow_present_code());
+		int update_audience = movieService.updateAudienceNum(memberReserveVO.getShow_present_code(),acc_audience_num);
+		if(update_audience == 1) {
+			System.out.println("관객 추가 성공");
+		}else {
+			System.out.println("관객 추가 실패");
+		}
 		SavingListDTO savingListDTO = new SavingListDTO();
 		String saving_name = "영화 예매 ";
 		
@@ -89,17 +105,25 @@ public class ReserveController {
 		savingListDTO.setSaving_name(saving_name);
 		savingListDTO.setPay_cost(memberReserveVO.getReserve_cost());
 		savingListDTO.setSaving_cost(memberReserveVO.getReserve_cost()/100);
-		
+
 		reserveService.insertSavingList(savingListDTO);
 		///    포인트 적립하기 추가
 
 		session.removeAttribute("reserve_code");
+//		
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("result", result);
+//		modelAndView.setViewName("/main/reserve/reserveComplete.jsp");
+//		
+//		return modelAndView;
 		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.setViewName("/main/reserve/reserveComplete.jsp");
+		try {
+			response.getWriter().println("{\"result\":" + result+"}");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 		
-		return modelAndView;
 	}
 	
 
@@ -119,11 +143,19 @@ public class ReserveController {
 		
 		session.removeAttribute("reserve_code");
 				
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.setViewName("/main/reserve/reserveCancel.jsp");
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("result", result);
+//		modelAndView.setViewName("/main/reserve/reserveCancel.jsp");
+//		
+//		return modelAndView;
 		
-		return modelAndView;
+
+		try {
+			response.getWriter().println("{\"result\":" + result+"}");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	
