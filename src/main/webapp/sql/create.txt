@@ -4855,19 +4855,19 @@ insert into movie_photo values (
 
 -- store 상품구매 테이블
 create table product_pay(
-	product_pay_code int not null,			--상품결제코드
-	pay_id varchar(30) not null,		    --결제ID (fk)
-	product_code int not null,			    --상품코드 (fk)
-	buy_phone varchar2(11) not null,	 	--구매자 연락처
-	gift_phone1	varchar2(11) not null,		--선물 연착처1
-	gift_phone2	varchar2(11),			    --선물 연착처2
-	gift_phone3	varchar2(11),		       	--선물 연착처3
-	pay_type varchar2(15) not null,		 	--결제분류
-	pay_time  date,						    --결제날자
-	pay_cancel_able char(1) not null,	  	--결제취소여부
-	order_num1 number not null,			    --주문수량1
-  	order_num2 number,		          	  	--주문수량2
-  	order_num3 number,			              	--주문수량3
+	product_pay_code int not null,	
+	pay_id varchar(30) not null,	
+	product_code int not null,	
+	buy_phone varchar2(11) not null,	 
+	gift_phone1 varchar2(11) not null,	
+	gift_phone2 varchar2(11),			
+	gift_phone3 varchar2(11),		   
+	pay_type varchar2(15) not null,		
+	pay_time  date,						
+	pay_cancel_able char(1) not null,	
+	order_num1 number not null,			
+  	order_num2 number,		          	 
+  	order_num3 number,			            
   	foreign key(pay_id) references member(member_id),
   	foreign key(product_code) references product(product_code)
 );

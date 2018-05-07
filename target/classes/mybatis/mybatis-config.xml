@@ -5,44 +5,46 @@
 <configuration>
 	<typeAliases>
 
-		<typeAlias type="movie.bean.ReserveRank" alias="reserveRank"></typeAlias>
-		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
-		<typeAlias type="evaluat.bean.EvaluatDTO" alias="evaluatDTO"></typeAlias>
-		<typeAlias type="evaluat.bean.EvaluatLikeDTO" alias="evaluatLikeDTO"></typeAlias>
-		<!-- 진환 -->
-		<typeAlias type="answer.bean.AnswerDTO" alias="answerDTO"></typeAlias>
-		<typeAlias type="qna.bean.QnaDTO" alias="qnaDTO"></typeAlias>
-		<typeAlias type="inquiry.bean.InquiryDTO" alias="inquiryDTO"></typeAlias>
-		<typeAlias type="noticeItem.bean.NoticeItemDTO" alias="noticeItemDTO"></typeAlias>
-		<typeAlias type="movie.bean.MovieResultDTO" alias="movieResultDTO"></typeAlias>
-		<typeAlias type="select.bean.SelectDTO" alias="selectDTO"></typeAlias>
-		<typeAlias type="admin.bean.AdminDTO" alias="adminDTO"></typeAlias>
-		<typeAlias type="admin.bean.AdminRequestDTO" alias="adminRequestDTO"></typeAlias>
-		<typeAlias type="movie.bean.MovieDTO" alias="movieDTO"></typeAlias>
-		<typeAlias type="moviephoto.bean.MoviePosterDTO" alias="moviePosterDTO"></typeAlias>
-		<typeAlias type="moviephoto.bean.MoviePhotoDTO" alias="moviePhotoDTO"></typeAlias>
-		<typeAlias type="movietrailer.bean.MovieTrailerDTO" alias="movieTrailerDTO"></typeAlias>
-		<typeAlias type="theater.bean.TheaterDTO" alias="theaterDTO"></typeAlias>
-		<typeAlias type="timetype.bean.TimetypeDTO" alias="timetypeDTO"></typeAlias>
-		<typeAlias type="showPlace.bean.ShowPlaceVO" alias="showPlaceVO"></typeAlias>
-		<typeAlias type="showPlace.bean.SeatVO" alias="seatVO"></typeAlias>
-		<typeAlias type="showPresent.bean.ShowPresentVO" alias="showPresentVO"></typeAlias>
-		<typeAlias type="showPresent.bean.ShowPresentAllVO" alias="showPresentAllVO"></typeAlias>
-		<typeAlias type="productboard.bean.ProductBoardDTO" alias="productboardDTO"></typeAlias>
-		<typeAlias type="productpay.bean.ProductPayDTO" alias="productPayDTO"></typeAlias>
-		<typeAlias type="productpay.bean.ProductPayListDTO" alias="productPayListDTO"></typeAlias>
-		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"></typeAlias>
- 		<typeAlias type="reserve.bean.ReserveDTO" alias="reserveDTO"></typeAlias>
- 		<typeAlias type="savingList.bean.SavingListDTO" alias="savingListDTO"></typeAlias>
- 		<typeAlias type="memberReserve.bean.MemberReserveDTO" alias="memberReserveDTO"></typeAlias>
+		<typeAlias type="admin.bean.AdminDTO" 					alias="adminDTO"></typeAlias>
+		<typeAlias type="admin.bean.AdminRequestDTO"	 		alias="adminRequestDTO"></typeAlias>
+		<typeAlias type="answer.bean.AnswerDTO" 				alias="answerDTO"></typeAlias>
 		
+		<typeAlias type="evaluat.bean.EvaluatDTO" 				alias="evaluatDTO"></typeAlias>
+		<typeAlias type="evaluat.bean.EvaluatLikeDTO"	 		alias="evaluatLikeDTO"></typeAlias>
+		
+		<typeAlias type="inquiry.bean.InquiryDTO" 				alias="inquiryDTO"></typeAlias>
+		
+		<typeAlias type="member.bean.MemberDTO" 				alias="memberDTO"></typeAlias>
+ 		<typeAlias type="memberReserve.bean.MemberReserveDTO"	alias="memberReserveDTO"></typeAlias>
  		<typeAlias type="memberReserve.bean.MemberReserveListDTO" alias="memberReserveListDTO"></typeAlias>
-		
+		<typeAlias type="movie.bean.MovieDTO" 					alias="movieDTO"></typeAlias>
+		<typeAlias type="moviephoto.bean.MoviePhotoDTO" 		alias="moviePhotoDTO"></typeAlias>
+		<typeAlias type="moviephoto.bean.MoviePosterDTO" 		alias="moviePosterDTO"></typeAlias>
+		<typeAlias type="movie.bean.MovieResultDTO" 			alias="movieResultDTO"></typeAlias>
+		<typeAlias type="movietrailer.bean.MovieTrailerDTO" 	alias="movieTrailerDTO"></typeAlias>
 		
 		<typeAlias type="noticeItem.bean.NoticeItemDTO" 		alias="noticeItemDTO"></typeAlias>
-
-
-
+		<typeAlias type="noticeItem.bean.NoticeItemDTO" 		alias="noticeItemDTO"></typeAlias>
+		
+		<typeAlias type="productboard.bean.ProductBoardDTO" 	alias="productboardDTO"></typeAlias>
+		<typeAlias type="productpay.bean.ProductPayDTO" 		alias="productPayDTO"></typeAlias>
+		<typeAlias type="productpay.bean.ProductPayListDTO" 	alias="productPayListDTO"></typeAlias>
+		
+		<typeAlias type="qna.bean.QnaDTO" 						alias="qnaDTO"></typeAlias>
+		
+ 		<typeAlias type="reserve.bean.ReserveDTO" 				alias="reserveDTO"></typeAlias>
+		<typeAlias type="movie.bean.ReserveRank" 				alias="reserveRank"></typeAlias>
+		
+ 		<typeAlias type="savingList.bean.SavingListDTO" 		alias="savingListDTO"></typeAlias>
+		<typeAlias type="showPlace.bean.SeatVO" 				alias="seatVO"></typeAlias>
+		<typeAlias type="select.bean.SelectDTO" 				alias="selectDTO"></typeAlias>
+		<typeAlias type="showPlace.bean.ShowPlaceVO" 			alias="showPlaceVO"></typeAlias>
+		<typeAlias type="showPresent.bean.ShowPresentVO" 		alias="showPresentVO"></typeAlias>
+		<typeAlias type="showPresent.bean.ShowPresentAllVO" 	alias="showPresentAllVO"></typeAlias>
+		
+		<typeAlias type="theater.bean.TheaterDTO" 				alias="theaterDTO"></typeAlias>
+		<typeAlias type="timetype.bean.TimetypeDTO" 			alias="timetypeDTO"></typeAlias>
+		
 		<typeAlias type="wishlist.bean.WishListDTO" 			alias="WishListDTO"></typeAlias>
 		
 	</typeAliases>
