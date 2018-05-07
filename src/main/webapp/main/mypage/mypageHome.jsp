@@ -49,13 +49,15 @@ pageEncoding="UTF-8"%>
 				<div class="sect-content-movie">
 					<div class="box-inner">
 						<div class="box-inner-wishlist">
-							<a href="#" title="위시리스트">
+							<a href="myWishList.do" title="위시리스트">
 								
 							</a>
 						</div>
 						<div class="box-inner-watched">
 							<a href="myWatchedMovie.do?p=1" title="내가 본 영화">
-							
+								<strong> </strong>
+								
+								
 							</a>
 						</div>
 						<div class="box-inner-mystore">
