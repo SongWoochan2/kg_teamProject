@@ -57,12 +57,20 @@ public class NoticeItemController {
 	@RequestMapping(value="/admin/noticeItem/noticeItemList.do")
 	public ModelAndView noticeItemList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String admin_id = (String)session.getAttribute("admin_id");
-		int pg = Integer.parseInt( request.getParameter("pg") );
+		int pg = 1;
+		String type = null;
+		if(request.getParameter("pg") != null) {
+			pg = Integer.parseInt( request.getParameter("pg") );			
+		}
+		if(request.getParameter("type") != null) {
+			type = request.getParameter("type");
+		}
 		
 		int endNum = pg*10;
 		int startNum = endNum-9;
-		List<NoticeItemDTO> list = noticeItemService.noticeItemList(startNum, endNum);
-		int totalA = noticeItemService.getTotalA();
+		System.out.println("type : " + type);
+		List<NoticeItemDTO> list = noticeItemService.noticeItemList(type, startNum, endNum);
+		int totalA = noticeItemService.getTotalA(type);
 		int totalP = (totalA + 9)/10;
 		int startPage = (pg - 1)/3*3 +1;
 		int endPage = startPage + 3 - 1;
@@ -72,6 +80,7 @@ public class NoticeItemController {
 		modelAndView.addObject("startPage", startPage);
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("totalA", totalA);
 		modelAndView.addObject("list", list);
 		
 		if(admin_id!=null) {

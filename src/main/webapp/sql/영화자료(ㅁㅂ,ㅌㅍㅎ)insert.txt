@@ -1,0 +1,1711 @@
+
+ 
+--21
+insert into movie values(
+	movie_seq.nextval,
+	'마음이',
+	'11살 나이답지 않게 듬직한 소년 찬이, 그리고 찬이의 6살 배기 떼쟁이 여동생 소이. 이렇게 두 오누이는 집을 나간 엄마가 돌아오길 기다리며 살고 있다. 어느날 찬이는 강아지를 갖고 싶어 떼 부리는 소이를 위해 생일 선물로 갓 태어난 강아지를 한 마리를 훔쳐온다. 소이는 엄마가 자기 마음을 알고 보내준 것 같다며 강아지 이름을 마음이라 짓는다. 그렇게 세 식구가 된 찬이, 소이, 마음이는 그 어느 때 보다 행복한 한때를 보내게 된다.' || char(10) || '어느덧 1년이 지나고 이제 마음이는 찬이가 없을 때 소이를 친구처럼, 오빠처럼 돌볼 만큼 큰 늠름한 개가 된다. 그 해 겨울, 꽁꽁 언 강변에서 추위와 배고픔을 잊은 채 신나게 썰매를 타던 세 남매에게 예기치 못한 불행이 찾아온다. 살얼음이 깨지면서 소이가 물에 빠지게 된 것이다. 그렇게 소이를 잃게된 찬이는 그 모든 것이 마음이 때문이라 생각하고 무섭게 마음의 문을 닫아버린다. 엄마도 떠나고 소이도 떠난 그 집이 싫어진 찬이. 소이의 유품인 분홍색 책가방을 챙겨 메고 찬이도 어디론가 떠난다. 홀로 남겨진 마음이는 찬이를 찾아 나서는데. 과연 마음이는 찬이를 찾을 수 있을까? 그리고 찬이는 마음이의 진심을 알게 될까?',
+	'한국',
+	'2006-10-26',
+	97,
+	'전체이용가',
+	'가족',
+	'드라마',
+	'',
+	'박은형,오달균',
+	0,
+	0,
+	'유승호, 달이, 김향기,안길강',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'포스터',
+	'마음이_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷1',
+	'마음이1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷2',
+	'마음이2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷3',
+	'마음이3.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--22
+insert into movie values(
+	movie_seq.nextval,
+	'마이너리티 리포트',
+	'2054년 워싱턴, 범죄가 일어나기 전 범죄를 예측해 범죄자를 단죄하는 최첨단 치안 시스템 프리크라임은 시민들의 안전을 지켜주는 든든한 존재이다. 프리크라임 시스템은 범죄가 일어날 시간과 장소, 범행을 저지를 사람까지 미리 예측해내고, 이를 바탕으로 프리크라임 특수경찰이 미래의 범죄자들을 체포한다. 프리크라임 팀장인 존 앤더튼(톰 크루즈)은 천부적인 감각으로 미래의 범죄자를 추적해내는 능력을 인정받고 있다. 그가 프리크라임에 최대한의 열정을 기울이는 것은, 6년전 자신의 아들을 잃은 아픈 기억을 다른 사람에게만은 되풀이하고 싶지 않기 때문이다.' || char(10) || '한편, 앤더튼은 프리크라임 감사를 위해 연방정보국에서 파견된 대니 워트워(콜린 파렐)와 사사건건 대치하는 가운데 프리크라임 시스템은 믿을 수 없는 살인을 예견한다. 그것은 바로 앤더튼 자신이 누군가를 살해하는 범행 장면. 이제 프리크라임의 모든 시스템이 앤더튼을 추격한다. 앤더튼은 음모를 파헤치기 위해, 미래를 바꾸기 위해 직접 미래의 피살자를 찾아나선다. 자신이 저지를 범죄 현장에 한 발짝씩 다가갈수록 앤더튼 앞에는 믿을 수 없는 사실들이 드러나고, 앤더튼의 의지와는 상관없이 예견된 희생자가 나오는데. 이제 그의 미래는 돌이킬 수 없는 것이 되고 마는가...',
+	'미국',
+	'2002-07-26',
+	145,
+	'15세 이용가',
+	'SF',
+	'미스터리',
+	'액션',
+	'스티븐 스필버그',
+	0,
+	0,
+	'톰 크루즈, 콜린 파렐, 사만다 모튼, 막스 폰 시도우',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'포스터',
+	'마이너리티_리포트_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'스틸컷1',
+	'마이너리티_리포트1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'스틸컷2',
+	'마이너리티_리포트2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'스틸컷3',
+	'마이너리티_리포트3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--23
+insert into movie values(
+	movie_seq.nextval,
+	'말할 수 없는 비밀',
+	'나는 너를 사랑해!너도 나를 사랑하니?' || char(10) || '예술학교로 전학 온 상륜(주걸륜)은 아버지의 영향을 받아 피아노에 천부적인 소질을 보인다. 학교를 둘러보던 중, 신비스러운 피아노 연주가 흘러나오는 옛 음악실을 발견하게 되고, 그곳에서 샤오위(계륜미)를 만난다. 그들은 아름다운 피아노 선율처럼 즐거운 시간을 보내고, 둘 사이에는 애틋한 마음이 싹튼다. 그러나 상륜이 샤오위를 더 알고 싶어할 때마다 그녀는 비밀이라고 일관하며 의미심장한 미소만 짓는다. 그러던 어느 날, 샤오위는 상륜이 같은 반 여학생 칭요와 뽀뽀하는 모습을 보게 되고, 그의 곁에서 사라지는데…',
+	'대만',
+	'2008-01-10',
+	101,
+	'12세 이용가',
+	'로맨스',
+	'판타지',
+	'드라마',
+	'주걸륜',
+	0,
+	0,
+	'주걸륜, 계륜미, 황추생, 증개현, 소명명',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'포스터',
+	'말할_수_없는_비밀_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'스틸컷1',
+	'말할_수_없는_비밀1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'스틸컷2',
+	'말할_수_없는_비밀2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'스틸컷3',
+	'말할_수_없는_비밀3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--24
+insert into movie values(
+	movie_seq.nextval,
+	'매트릭스',
+	'인간의 기억마저 AI에 의해 입력되고 삭제 되는 세상.진짜보다 더 진짜 같은 가상 현실 ''매트릭스'' ' || char(10) || '그 속에서 진정한 현실을 인식할 수 없게 재배되는 인간들. ' || char(10) || ' 그 ''매트릭스''를 빠져 나오면서 AI에게 가장 위험한 인물이 된' || char(10) || ' ''모피어스''는 자신과 함께 인류를 구할 마지막 영웅 ''그''를 찾아 헤맨다. ' || char(10) || ' 마침내 ''모피어스''는 낮에는 평범한 회사원으로, 밤에는 해커로 활동하는 청년 ''네오''를 ''그''로 지목하는데… ',
+	'미국'
+	'2016-09-22',
+	136,
+	'12세 이용가',
+	'SF',
+	'액션',
+	'',
+	'릴리 워쇼스키, 라나 워쇼스키',
+	0,
+	0,
+	'키아누 리브스, 로렌스 피시번, 캐리 앤 모스, 휴고 위빙',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'포스터',
+	'매트릭스_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷1',
+	'매트릭스1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷2',
+	'매트릭스2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷3',
+	'매트릭스3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--25
+insert into movie values(
+	movie_seq.nextval,
+	'모던타임즈',
+	'공장에서 하루 종일 나사못 조이는 일을 하는 찰리. ' || char(10) || ' 눈에 보이는 모든 것을 조여버리는 강박 관념에 빠지고만 그는 급기야 정신 병원에 가게 되고, 거리를 방황하다 시위 군중에 휩쓸려 감옥살이까지 하게 된다. ' || char(10) || ' 몇 년 후 감옥에서 풀려난 찰리는 부모를 잃고 고아가 된 한 아름다운 소녀를 도와주게 되고, ' || char(10) || ' 그녀의 도움으로 카페에서 일하게 되지만 우여곡절 끝에 다시 거리로 내몰리고 만다. ' || char(10) || ' 절망 속에서 피어나는 함박웃음! 찰리와 소녀의 행복을 찾아가는 아름다운 여정!',
+	'미국'
+	'1989-12-09',
+	87,
+	'전체이용가',
+	'코미디',
+	'',
+	'',
+	'찰리 채플린',
+	0,
+	0,
+	'찰리 채플린, 파울레트 고다드, 헨리 버그맨, 타이니 샌포드, 행크 만',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'포스터',
+	'모던타임즈_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷1',
+	'모던타임즈1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷2',
+	'모던타임즈2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷3',
+	'모던타임즈3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--26
+insert into movie values(
+	movie_seq.nextval,
+	'바람',
+	'엄한 가정에서 자랐지만 형과 누나와는 다르게 간지나는 학창시절을 보내고 싶었던 짱구는 집안에서 유일하게 명문고에 진학하지 못해 골치덩이가 된다. 광춘상고는 교사들의 폭력과 학생들간 세력 다툼으로 부산일대에서 알아주는 악명 높은 학교. 광춘의 조회시간은 학교의 명성을 증명이라도 하듯 쓸만한 후배 물색으로 시작된다. 짱구는 입학 첫 날 ''불법써클''몬스터의 카리스마에 압도 당하고… ' || char(10) || ' 학교 안에서 벌어지는 약육강식의 세계를 알아갈 무렵, 학교폭력 가담을 이유로 짱구 일행은 유치장 신세를 지게 된다. 짱구는 가까스로 정학만은 면하지만 다시 돌아온 학교에서 교내 불법 서클 ''몬스터''의 유혹이 기다리고 있었는데… 그렇게 몬스터의 후광을 업고 예쁜 여자 친구도 얻게 된 짱구, 쪽 팔리지 않고 싶었던 열여덟 짱구는 바람대로 폼 나는 학창시절을 보낼 수 있을까?',
+	'한국',
+	'2009-11-26',
+	107,
+	'청소년 이용불가',
+	'드라마',
+	'액션',
+	'가족',
+	'이성한',
+	0,
+	0,
+	'정우, 황정음, 양기원, 손호준, 권재현',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'포스터',
+	'바람_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'스틸컷1',
+	'바람1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'스틸컷2',
+	'바람2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'스틸컷3',
+	'바람3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--27
+insert into movie values(
+	movie_seq.nextval,
+	'박하사탕',
+	'1999년 봄, 마흔 살 영호는 ''가리봉 봉우회'' 야유회에 허름한 행색으로 나타난다. ' || char(10) || ' 그곳은 20년 전 첫사랑 순임과 소풍을 왔던 곳. ' || char(10) || ' 직업도 가족도 모두 잃고, 삶의 막장에 다다른 영호는 철로 위에서 나 다시 돌아갈래! 라고 절규한다. ' || char(10) || ' 영호의 절규는 기차의 기적소리를 뚫고, 시간을 거슬러 올라간다. ' || char(10) || ' 사흘 전 봄, 94년 여름, 87년 봄, 84년 가을, 80년 5월 그리고 마지막 79년 가을. ' || char(10) || ' 마침내, 영호는 스무 살 첫사랑 순임을 만난다.',
+	'한국',
+	'2000-01-01',
+	130,
+	'청소년 이용불가',
+	'드라마',
+	'',
+	'',
+	'이창동',
+	0,
+	0,
+	'설경구, 문소리, 김여진, 박세범, 이대연',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'포스터',
+	'박하사탕_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'스틸컷1',
+	'박하사탕1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'스틸컷2',
+	'박하사탕2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'스틸컷3',
+	'박하사탕3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--28
+iinsert into movie values(
+	movie_seq.nextval,
+	'범죄도시',
+	'2004년 서울… ' || char(10) || ' 하얼빈에서 넘어와 단숨에 기존 조직들을 장악하고 ' || char(10) || ' 가장 강력한 세력인 춘식이파 보스 ''황사장''까지 위협하며 ' || char(10) || ' 도시 일대의 최강자로 급부상한 신흥범죄조직의 악랄한 보스 ''장첸''. ' || char(10) || ' 대한민국을 뒤흔든 ''장첸'' 일당을 잡기 위해 ' || char(10) || ' 오직 주먹 한방으로 도시의 평화를 유지해 온 괴물형사 ''마석도''와 ' || char(10) || ' 인간미 넘치는 든든한 리더 ''전일만'' 반장이 이끄는 강력반은 ' || char(10) || ' 나쁜 놈들을 한방에 쓸어버릴 끝.짱.나.는. 작전을 세우는데… ' || char(10) || ' 통쾌하고! 화끈하고! 살벌하게! ' || char(10) || ' 나쁜 놈들 때려잡는 강력반 형사들의 ''조폭소탕작전''이 시작된다!',
+	'한국',
+	'2017-10-03',
+	121,
+	'청소년 이용불가',
+	'액션',
+	'',
+	'',
+	'강윤성',
+	0,
+	0,
+	'마동석, 윤계상, 조재윤, 최귀화, 임형준, 진선규',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'포스터',
+	'범죄도시_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'스틸컷1',
+	'범죄도시1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'스틸컷2',
+	'범죄도시2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'스틸컷3',
+	'범죄도시3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--29
+insert into movie values(
+	movie_seq.nextval,
+	'변호인',
+	'1980년대 초 부산. 
+ 빽 없고, 돈 없고, 가방끈도 짧은 세무 변호사 송우석(송강호). 부동산 등기부터 세금 자문까지 남들이 뭐라든 탁월한 사업수완으로 승승장구하며 부산에서 제일 잘나가고 돈 잘 버는 변호사로 이름을 날린다. ' || char(10) || ' 대기업의 스카우트 제의까지 받으며 전국구 변호사 데뷔를 코 앞에 둔 송변. 하지만 우연히 7년 전 밥값 신세를 지며 정을 쌓은 국밥집 아들 진우(임시완)가 뜻하지 않은 사건에 휘말려 재판을 앞두고 있다는 소식을 듣는다. 국밥집 아줌마 순애(김영애)의 간절한 부탁을 외면할 수 없어 구치소 면회만이라도 도와주겠다고 나선 송변. ' || char(10) || ' 하지만 그곳에서 마주한 진우의 믿지 못할 모습에 충격을 받은 송변은 모두가 회피하기 바빴던 사건의 변호를 맡기로 결심하는데... ',
+	'한국',
+	'2013-12-18',
+	127,
+	'15세 이용가',
+	'드라마',
+	'',
+	'',
+	'양우석',
+	0,
+	0,
+	'송강호, 김영애, 오달수, 곽도원, 임시완, 송영창, 정원중, 조민기',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'포스터',
+	'변호인_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'스틸컷1',
+	'변호인1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'스틸컷2',
+	'변호인2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'스틸컷3',
+	'변호인3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--30
+insert into movie values(
+	movie_seq.nextval,
+	'블리딩스틸',
+	'거대 범죄 조직의 음모에 맞설 초특급 작전이 시작된다! ' || char(10) || ' 초대형 범죄 사건의 배후에 있던 누군가가 ' || char(10) || ' 생체병기 최고 권위자의 목숨을 노리기 시작한다. ' || char(10) || ' 그를 지키기 위해 막강한 실력을 가진 SWAT 요원들이 모인다! ' || char(10) || ' 작전이 끝나고 몇 년 후, ' || char(10) || ' 어느 유명 작가의 소설이 발간되며 조직이 노리는 실체가 표면 위로 드러나게 되는데...',
+	'중국',
+	'2018-04-19',
+	101,
+	'15세 이용가',
+	'액션',
+	'스릴러',
+	'',
+	'장립가',
+	0,
+	0,
+	'성룡, 칼란 멀베이, 테스 호브리치, 나지상, 오우양나나',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'포스터',
+	'블리딩스틸_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'스틸컷1',
+	'블리딩스틸1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'스틸컷2',
+	'블리딩스틸2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'스틸컷3',
+	'블리딩스틸3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--51(포스터&스틸컷 insert)
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'포스터',
+	'타짜-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷1',
+	'타짜-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷2',
+	'타짜-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷3',
+	'타짜-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷4',
+	'타짜-4.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--52
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'포스터',
+	'태극기-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷1',
+	'태극기-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷2',
+	'태극기-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷3',
+	'태극기-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷4',
+	'태극기-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--53
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'포스터',
+	'택시-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷1',
+	'택시-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷2',
+	'택시-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷3',
+	'택시-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷4',
+	'택시-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--54
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'포스터',
+	'터미네이터-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷1',
+	'터미네이터-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷2',
+	'터미네이터-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷3',
+	'터미네이터-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷4',
+	'터미네이터-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--55
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'포스터',
+	'토이스토리-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷1',
+	'토이스토리-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷2',
+	'토이스토리-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷3',
+	'토이스토리-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷4',
+	'토이스토리-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--56
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'포스터',
+	'트랜스포머-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷1',
+	'트랜스포머-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷2',
+	'트랜스포머-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷3',
+	'트랜스포머-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷4',
+	'트랜스포머-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--57
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'포스터',
+	'트루먼쇼-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷1',
+	'트루먼쇼-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷2',
+	'트루먼쇼-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷3',
+	'트루먼쇼-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷4',
+	'트루먼쇼-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--58
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'포스터',
+	'트리플-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷1',
+	'트리플-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷2',
+	'트리플-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷3',
+	'트리플-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷4',
+	'트리플-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--59
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'포스터',
+	'트와일라잇-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷1',
+	'트와일라잇-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷2',
+	'트와일라잇-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷3',
+	'트와일라잇-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷4',
+	'트와일라잇-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--60
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'포스터',
+	'특종-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷1',
+	'특종-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷2',
+	'특종-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷3',
+	'특종-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷4',
+	'특종-4.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--61
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'포스터',
+	'파이트클럽-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷1',
+	'파이트클럽-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷2',
+	'파이트클럽-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷3',
+	'파이트클럽-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷4',
+	'파이트클럽-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--62
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'포스터',
+	'판도라-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷1',
+	'판도라-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷2',
+	'판도라-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷3',
+	'판도라-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷4',
+	'판도라-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--63
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'포스터',
+	'퍼스트어벤저-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷1',
+	'퍼스트어벤저-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷2',
+	'퍼스트어벤저-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷3',
+	'퍼스트어벤저-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷4',
+	'퍼스트어벤저-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--64
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'포스터',
+	'퍼시픽림-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷1',
+	'퍼시픽림-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷2',
+	'퍼시픽림-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷3',
+	'퍼시픽림-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷4',
+	'퍼시픽림-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--65
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'포스터',
+	'퍼펙트-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷1',
+	'퍼펙트-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷2',
+	'퍼펙트-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷3',
+	'퍼펙트-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷4',
+	'퍼펙트-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--66
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'포스터',
+	'페이스메이커-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷1',
+	'페이스메이커-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷2',
+	'페이스메이커-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷3',
+	'페이스메이커-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷4',
+	'페이스메이커-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--67
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'포스터',
+	'평양성-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷1',
+	'평양성-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷2',
+	'평양성-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷3',
+	'평양성-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷4',
+	'평양성-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--68
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'포스터',
+	'품행제로-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷1',
+	'품행제로-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷2',
+	'품행제로-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷3',
+	'품행제로-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷4',
+	'품행제로-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--69
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'포스터',
+	'프레스티지-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷1',
+	'프레스티지-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷2',
+	'프레스티지-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷3',
+	'프레스티지-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷4',
+	'프레스티지-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--70
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'포스터',
+	'피아니스트-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷1',
+	'피아니스트-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷2',
+	'피아니스트-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷3',
+	'피아니스트-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷4',
+	'피아니스트-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--71
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'포스터',
+	'하모니-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷1',
+	'하모니-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷2',
+	'하모니-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷3',
+	'하모니-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷4',
+	'하모니-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--72
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'포스터',
+	'하울의 움직이는 성-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷1',
+	'하울의 움직이는 성-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷2',
+	'하울의 움직이는 성-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷3',
+	'하울의 움직이는 성-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷4',
+	'하울의 움직이는 성-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--73
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'포스터',
+	'해리포터-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷1',
+	'해리포터-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷2',
+	'해리포터-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷3',
+	'해리포터-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷4',
+	'해리포터-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--74
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'포스터',
+	'해무-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷1',
+	'해무-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷2',
+	'해무-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷3',
+	'해무-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷4',
+	'해무-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--75
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'포스터',
+	'해운대-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷1',
+	'해운대-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷2',
+	'해운대-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷3',
+	'해운대-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷4',
+	'해운대-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--76
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'포스터',
+	'허삼관-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷1',
+	'허삼관-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷2',
+	'허삼관-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷3',
+	'허삼관-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷4',
+	'허삼관-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--77
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'포스터',
+	'혹성탈출-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷1',
+	'혹성탈출-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷2',
+	'혹성탈출-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷3',
+	'혹성탈출-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷4',
+	'혹성탈출-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--78
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'포스터',
+	'황제를 위하여-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷1',
+	'황제를 위하여-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷2',
+	'황제를 위하여-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷3',
+	'황제를 위하여-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷4',
+	'황제를 위하여-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--79
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'포스터',
+	'황해-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷1',
+	'황해-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷2',
+	'황해-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷3',
+	'황해-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷4',
+	'황해-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--80
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'포스터',
+	'히말라야-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷1',
+	'히말라야-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷2',
+	'히말라야-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷3',
+	'히말라야-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷4',
+	'히말라야-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+
+
+	'스틸컷4',
+
+	'LightOut.jpg',
+
+	sysdate );

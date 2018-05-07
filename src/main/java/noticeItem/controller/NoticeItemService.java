@@ -21,8 +21,8 @@ public class NoticeItemService {
 		return noticeItemDAO.noticeItemModify(noticeItemDTO);
 	}
 	
-	public List<NoticeItemDTO> noticeItemList(int startNum, int endNum){
-		return noticeItemDAO.noticeItemList(startNum, endNum);
+	public List<NoticeItemDTO> noticeItemList(String type, int startNum, int endNum){
+		return noticeItemDAO.noticeItemList(type, startNum, endNum);
 	}
 	
 	public NoticeItemDTO noticeItemView(int notice_item_code) {
@@ -30,8 +30,8 @@ public class NoticeItemService {
 	}
 	
 	
-	public int getTotalA() {
-		return noticeItemDAO.getTotalA();
+	public int getTotalA(String type) {
+		return noticeItemDAO.getTotalA(type);
 	}
 	
 	public int noticeItemDelete(int notice_item_code) {

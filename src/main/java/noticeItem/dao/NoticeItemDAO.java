@@ -23,8 +23,9 @@ public class NoticeItemDAO {
 		return sqlSession.update("mybatis.noticeItem.noticeItemModify", noticeItemDTO);
 	}
 	
-	public List<NoticeItemDTO> noticeItemList(int startNum, int endNum){
-		Map<String, Integer> map = new HashMap<>();
+	public List<NoticeItemDTO> noticeItemList(String type, int startNum, int endNum){
+		Map<String, Object> map = new HashMap<>();
+		map.put("type", type);
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		return sqlSession.selectList("mybatis.noticeItem.noticeItemList", map);
@@ -38,8 +39,8 @@ public class NoticeItemDAO {
 		return sqlSession.update("mybatis.noticeItem.noticeItemList", notice_item_code);
 	}
 	
-	public int getTotalA() {
-		return sqlSession.selectOne("mybatis.noticeItem.totalA");
+	public int getTotalA(String type) {
+		return sqlSession.selectOne("mybatis.noticeItem.getTotalA", type);
 	}
 	
 	public int noticeItemDelete(int notice_item_code) {

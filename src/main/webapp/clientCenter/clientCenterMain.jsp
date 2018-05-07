@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script>
 	$(function(){
+		
 		$(".clientcenter_menu li").click(function(){
 			$(this).addClass("selected");
 			$(".clientcenter_menu li").not(this).removeClass("selected");
