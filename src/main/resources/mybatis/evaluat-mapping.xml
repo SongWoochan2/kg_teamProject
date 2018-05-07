@@ -40,15 +40,15 @@
 	<![CDATA[select movie_code, movie_result
  		from (select rownum rn, tt.*  
  				from (select movie_code ,sum(evaluat_score) as movie_result from evaluat ]]>
-		<where>
-			<if test="code_list != null">
+		<if test="code_list != null">
+			<where>
 			 	movie_code IN 
 				<foreach item="item" index="index" collection="code_list"
      				 open="(" separator="," close=")">
        				#{item} 
   				</foreach>
-  			</if>
-		</where> 
+			</where> 
+		</if>
 			group by movie_code ORDER BY movie_code desc) tt) 
 	<![CDATA[where rn>=#{e_startNum} and rn<=#{e_endNum}]]>		
 	</select>
@@ -61,15 +61,16 @@
 	<![CDATA[select movie_code, movie_result
  		from (select rownum rn, tt.*  
  				from (select movie_code, count(movie_code) as movie_result from evaluat ]]>
-		<where>
-			<if test="code_list != null">
+		<if test="code_list != null">
+			<where>
 			 	movie_code IN 
 				<foreach item="item" index="index" collection="code_list"
      				 open="(" separator="," close=")">
        				#{item} 
   				</foreach>
-  			</if>
-		</where> group by movie_code ORDER BY movie_code desc) tt) 
+			</where> 
+		</if>
+		group by movie_code ORDER BY movie_code desc) tt) 
 	<![CDATA[where rn>=#{e_startNum} and rn<=#{e_endNum}]]>		
 	</select>
 	
