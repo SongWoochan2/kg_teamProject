@@ -21,7 +21,7 @@ pageEncoding="UTF-8"%>
 		
 		var img_addr = $("#img_addr").val();
 		if(img_addr=="" || img_addr=="none") {
-			$("#img_memprofileimage").attr("src", "/MyCGV/image/profile/none.png");	
+			$("#img_memprofileimage").attr("src", "/MyCGV/image/profile/none/none.png");	
 		} else {
 			$("#img_memprofileimage").attr("src", "/MyCGV/image/profile/"+img_addr);
 			var button = $("<button type='button'>프로필이미지 삭제</button>"); 
@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
         $('#delete_image').click(function () {
             if (!confirm('설정된 프로필 이미지를 삭제 하시겠습니까?'))
                 return;
-			$('#img_memprofileimage').attr('src', '/MyCGV/image/profile/none.png');
+			$('#img_memprofileimage').attr('src', '/MyCGV/image/profile/none/none.png');
             $("#img_addr").val("none");
             $('#delete_image').remove();
             $("#resultAlert").html(data);      		

@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
         
         var originImgAddr = $("#origin_img_addr").val();
         if(originImgAddr == "" || originImgAddr == "none") {
-        	$(".profileImg > img").attr("src", "/MyCGV/image/profile/none.png");
+        	$(".profileImg > img").attr("src", "/MyCGV/image/profile/none/none.png");
         } else {
         	$(".profileImg > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
