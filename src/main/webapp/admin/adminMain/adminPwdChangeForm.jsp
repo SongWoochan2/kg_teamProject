@@ -29,7 +29,9 @@
 		$("#change_submit").click(function(){
 			if ($("#passwordmessage").text() != "비밀번호가 일치합니다.") {
 				alert("비밀번호가 불일치합니다.");
-			}else{
+			}else if ($("#new_admin_pwd").val().length > 13 || $("#new_admin_pwd").val().length < 6) {
+				alert("비밀번호는 6~12자로 입력해주세요.");
+			} else{
 				
 				document.adminPwdChange.submit();
 			}

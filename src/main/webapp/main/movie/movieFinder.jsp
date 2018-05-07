@@ -19,24 +19,51 @@
 		$("#grade_check").prop("checked",true);
 		$(".movie_show_grade").prop("checked",true);
 		
-// 		 $("input[name=movie_type]").each(function(idx){   
-	         
-// 		        // 해당 체크박스의 Value 가져오기
-// 		        var value = $(this).val();
-		 
-// 		        var eqValue = $("input[name=movie_type]:eq(" + idx + ")").val() ;
-		         
-// 		        console.log(value + ":" + eqValue) ;
-		         
-// 		});
-
+		
+		
+		function movie_type_f(){
+			typecnt = 0;
+			$(".movie_type").each(function(){
+				if($(this).is(":checked")){
+					idxVal = $(this).attr("value");
+					typecnt++;
+					movie_type.push(idxVal);
+				}
+			});
+		}
+		function make_nation_f(){
+			typecnt = 0;
+			$(".make_nation").each(function(){
+				if($(this).is(":checked")){
+					idxVal = $(this).attr("value");
+					typecnt++;
+					make_nation.push(idxVal);
+				}
+			});
+		}
+		function movie_show_grade_f(){
+			typecnt = 0;
+			$(".movie_show_grade").each(function(){
+				if($(this).is(":checked")){
+					idxVal = $(this).attr("value");
+					typecnt++;
+					movie_show_grade.push(idxVal);
+				}
+			});
+		}
+		
 		var movie_search = $("#movie_search").val();
 		var movie_keyword = $("#movie_keyword").val();
-// 		var movie_type = $(".movie_type").val();
-// 		var make_nation = $(".make_nation").val();
-// 		var movie_show_grade = $(".movie_show_grade").val();
+		var idxVal = "";
+		var typecnt = 0;
+		var movie_show_grade = [];
+		var movie_type = [];
+		var make_nation = [];
 		var pg = ${moviePage.pg};
-		alert(pg);
+		movie_type_f();
+		make_nation_f();
+		movie_show_grade_f();
+		
 		
 		$("#type_check").change(function(){
 			var is_check = $(this).is(":checked");	
@@ -63,47 +90,90 @@
 			$("#grade_check").prop("checked",false);
 		});
 		
-// 		$("#previousbtn").click(function(){
+		$(".previousbtn").click(function(){
+			var params = $('#movieFinder').serialize();
+			$.ajax({
+				url : "/MyCGV/main/movie/movieFinder_result.do", // 나중에 사이트 url로 바뀜
+				type : "post", // 최종적으로 서버에 요청함
+				dataType : "html",
+				timeout : 30000, // 30초 (단위는 ms)
+				data : params,
+				cache : false,
+				// 파일 읽기에 성공한 경우
+				success : function(html){
+					$("#find_result_wrap").empty().append(html);
+				
+				},
+				error : function(xhr, textStatus, errorThrown){
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
+				}
+	 		});
+		});
+		$(document).on("click", ".movebtn", function(){
 			
-// 		});
-		
-		$(".movebtn").click(function(){
-			alert($(".movebtn").val());
+			var params = $('#movieFinder').serialize();
+			$.ajax({
+				url : "/MyCGV/main/movie/movieFinder_result.do", // 나중에 사이트 url로 바뀜
+				type : "post", // 최종적으로 서버에 요청함
+				dataType : "html",
+				timeout : 30000, // 30초 (단위는 ms)
+				data : params,
+				cache : false,
+				// 파일 읽기에 성공한 경우
+				success : function(html){
+					$("#find_result_wrap").empty().append(html);
+				
+				},
+				error : function(xhr, textStatus, errorThrown){
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
+				}
+	 		});
 		});
 		
-// 		$("#nextbtn").click(function(){
-// 			$.ajax({
-// 				url : "/MyCGV/main/movie/movieFinder.do", // 나중에 사이트 url로 바뀜
-// 				type : "post", // 최종적으로 서버에 요청함
-// 				dataType : "json",
-// 				timeout : 30000, // 30초 (단위는 ms)
-// 				data : {
-// 					"movie_search" : movie_search,
-// 					"movie_keyword" : movie_keyword,
-// 					"movie_type" : movie_type,
-// 					"movie_type" : movie_type,
-// 					"movie_type" : movie_type,
-// 					"movie_type" : movie_type,
-// 					"movie_type" : movie_type,
-// 					"movie_type" : movie_type,
-// 					"make_nation" : make_nation,
-// 					"movie_show_grade" : movie_show_grade,
-// 					"pg" : 
-					
-// 				},
-// 				cache : false,
-// 				// 파일 읽기에 성공한 경우
-// 				success : function(json){
-					
-					
-// 				},
-// 				error : function(xhr, textStatus, errorThrown){
-// 					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
-// 				}
-// 	 		});
+		$(".nextbtn").click(function(){
+			alert(movie_show_grade);
+			var params = $('#movieFinder').serialize();
+			$.ajax({
+				url : "/MyCGV/main/movie/movieFinder_result.do", // 나중에 사이트 url로 바뀜
+				type : "post", // 최종적으로 서버에 요청함
+				dataType : "html",
+				timeout : 30000, // 30초 (단위는 ms)
+				data : params,
+				cache : false,
+				// 파일 읽기에 성공한 경우
+				success : function(html){
+					$("#find_result_wrap").empty().append(html);
+				
+				},
+				error : function(xhr, textStatus, errorThrown){
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
+				}
+	 		});
 			
-// 		});
+		});
 		
+		
+		
+		$("#movieFinder").submit(function(){
+			var params = $('#movieFinder').serialize();
+
+			$.ajax({
+				url : "/MyCGV/main/movie/movieFinder_result.do", // 나중에 사이트 url로 바뀜
+				type : "post", // 최종적으로 서버에 요청함
+				dataType : "html",
+				timeout : 30000, // 30초 (단위는 ms)
+				data : params,
+				cache : false,
+				// 파일 읽기에 성공한 경우
+				success : function(html){
+					$("#find_result_wrap").empty().append(html);
+				},
+				error : function(xhr, textStatus, errorThrown){
+					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
+				}
+	 		});
+			return false;
+		});
 	});
 </script>
 
@@ -111,12 +181,12 @@
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="moviefind">
-		<div id="pagenevi">
+	<div id="pagenevi">
 			<span class="glyphicon glyphicon-home"></span>
 			<a href = "../main/movieMain.do">홈</a> > 영화 > <b>무비파인더</b>
 		</div>
 		<div id="moviefinder">
-			<form action = "movieFinder.do?pg=1" method="post" name ="movieFinder">
+			<form action = "movieFinder.do?pg=1" method="post" name ="movieFinder" id="movieFinder">
 			<table>
 				<tr>
 					<th colspan="2"><div id = "finder-title">영화가 궁금하다면 영화를 검색해봐라</div>
@@ -195,137 +265,11 @@
 			</table>
 			</form>
 		</div>
-
-		<div id = "findresult">
-			<div id = "result-title">
-			<hr class = "hr-title">
-			아래의 선택조건에 해당하는 영화가 <font>총 ${moviePage.totalA }건</font> 검색되었습니다.
-			</div>
-			<div id = "findinfoform">
-				<div id = "findinfo">
-				<table>
-					<tr>
-						<td>
-							<ul id = "title">
-								<li>키워드 : </li>
-								<li>장르 : </li>
-								<li>제작국가 : </li>
-								<li>관람등급 : </li>
-							</ul>
-						</td>
-						<td>
-							<ul id = "content">
-								<li>
-									<c:if test="${requestScope.movie_keyword == null}">
-										전체
-									</c:if>
-									<c:if test="${requestScope.movie_keyword != null}">
-										<c:forEach var = "movie_type" items="${requestScope.movie_keyword }">
-											${movie_keyword }
-										</c:forEach>
-									</c:if>
-								</li>
-								<li>
-									<c:if test="${requestScope.movie_type == null}">
-										전체
-									</c:if>
-									<c:if test="${requestScope.movie_type != null}">
-										<c:forEach var = "movie_type" items="${requestScope.movie_type }">
-											${movie_type }
-										</c:forEach>
-									</c:if>
-								</li>
-								<li>
-									<c:if test="${requestScope.make_nation == null}">
-										전체
-									</c:if>
-									<c:if test="${requestScope.make_nation != null}">
-										<c:forEach var = "make_nation" items="${requestScope.make_nation }">
-											${make_nation }
-										</c:forEach>
-									</c:if>
-								</li>
-								<li>
-									<c:if test="${requestScope.movie_show_grade == null}">
-										전체
-									</c:if>
-									<c:if test="${requestScope.movie_show_grade != null}">
-										<c:forEach var = "movie_show_grade" items="${requestScope.movie_show_grade }">
-											${movie_show_grade }
-										</c:forEach>
-									</c:if>
-								</li>
-							</ul>
-						</td>
-					</tr>						
-				</table>
-				
-				</div>
-			</div>
-			<div id = "findcontentform">
-				<div id = "findcontent">
-				<c:forEach var ="find_list" items="${requestScope.find_list }">
-					<div id = "findentity">
-						<div id = "entity-poster">
-						<c:forEach var ="poster_map" items="${requestScope.poster_map }" >
-							<c:if test="${poster_map.key == find_list.movie_code }">
-								<img src = "../../image/storage/moviephoto/${poster_map.value }">
-							</c:if>
-						</c:forEach>
-						</div>
-						<div id = "entity-title">
-							<a href = "movieDetailView.do?movie_code=${find_list.movie_code }&photo_pg=1&trailer_pg=1">
-							${find_list.movie_name }
-							( 
-							<c:if test="${find_list.movie_evaluat_num == 0}">
-								평점 없음
-							</c:if>
-							<c:if test="${find_list.movie_evaluat_num != 0}">
-								평점 : ${fn:substring( ''+(find_list.acc_evaluat_score / find_list.movie_evaluat_num),0,4) } 점
-							</c:if>)
-							</a>
-						</div>
-						<div id = "entity-reserverate">
-							예매율&emsp; 
-							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
-								<c:if test="${find_list.movie_code == reserve_rate_map.key }">
-								${fn:substring( ''+(reserve_rate_map.value),0,4) } %
-								</c:if>
-							</c:forEach>
-						</div>
-						<div id = "entity-opendate">
-							${find_list.movie_open_date }
-						</div>
-						<div id = "entity-reserve">
-							<a href="../../reserve.do?movie_code=${find_list.movie_code }" id = "reserve-btn" class="btn btn-info btn-lg" href = "movieDetailView.do?movie_code=${find_list.movie_code }">
-          						<span class="glyphicon glyphicon-film"> 예매</span>
-        					</a>
-						</div>
-					</div>
-				</c:forEach>
-				</div>
-			</div>
-			<div id = "findpagingform">
-				<div id ="findpaging">
-					<c:if test="${moviePage.startPage>1 }">
-						[<a id="paging" id="previousbtn">이전</a>]
-					</c:if> 
-					<c:forEach var="i" begin="${moviePage.startPage}" end="${moviePage.endPage}" step="1">
-					<c:if test="${moviePage.startPage==i }">
-						[<a id="currentPaging" class="movebtn">${i }</a>]
-					</c:if>
-					<c:if test="${moviePage.startPage!=i }">
-						[<a id="paging" class="movebtn">${i }</a>]
-					</c:if>
-					<!-- el표현식에는 자바코드가 들어갈수없음 -->
-					</c:forEach>
-					<c:if test="${moviePage.endPage<moviePage.totalPage}">
-						[<a id="paging" class="nextbtn">다음</a>]
-					</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 -->
-				</div>
-			</div>
+		<div id="find_result_wrap">
+			<jsp:include page="../movie/Finder_nevi.jsp"/>
 		</div>
-	</div>
+
+		</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

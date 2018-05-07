@@ -72,7 +72,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminEnrollForm.do")
-	public ModelAndView superadminEnrollForm(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminEnrollForm(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		String admin_name = request.getParameter("admin_name");
 		String id_check = request.getParameter("id_check");
@@ -85,7 +85,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminEnrollRequest.do")
-	public ModelAndView superadminEnrollRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminEnrollRequest(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		String admin_name = request.getParameter("admin_name");
 		String admin_pwd = request.getParameter("admin_pwd");
@@ -103,7 +103,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminRequestList.do")
-	public ModelAndView superadminRequestList(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminRequestList(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		
 		int endNum = page*20;
@@ -128,7 +128,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminAllowable.do")
-	public ModelAndView superadminAllowable(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminAllowable(HttpServletRequest request, HttpServletResponse response) {
 		int page = Integer.parseInt(request.getParameter("pg"));
 		int admin_request_code = Integer.parseInt(request.getParameter("admin_request_code"));
 		int allowable = Integer.parseInt(request.getParameter("allowable"));
@@ -168,7 +168,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/adminMain/adminIdCheck.do")
-	public ModelAndView superadminIdCheck(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView adminIdCheck(HttpServletRequest request, HttpServletResponse response) {
 		String admin_id = request.getParameter("admin_id");
 		AdminDTO adminDTO = new AdminDTO();
 		adminDTO.setAdmin_id(admin_id);

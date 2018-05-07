@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 <link href="../css/bootstrap.css" rel = "stylesheet">
-	<c:if test="${su > 0 }">
+	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			window.onload = function(){
 				alert("삭제 성공");
@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 			}
 		</script>
 	</c:if>
-	<c:if test="${su <= 0 }">
+	<c:if test="${result <= 0 }">
 		<script type="text/javascript">
 			window.onload = function(){
 				alert("삭제 실패");

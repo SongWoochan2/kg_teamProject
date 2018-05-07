@@ -8,15 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../css/movie/movieReview.css" />
 <script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
+<script type="text/javascript" src="../../script/movieScript.js?v=1"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function(){
-		$("#review-insert").fadeOut(0);
-		$("#reviewInsert").click(function(){
-			// 배경 레이어를 화면에 표시한다.
-			$("#review-insert").toggle(300);
-		});
 		
 		$("a#like_check").click(function() {
 			if(${sessionScope.memId == null} == true){
@@ -32,39 +28,7 @@
 			}
 		});
 		
-		$("#insert-score").text(10);
 		
-		$("#1").click(function(){
-			var n = 1; score(n);
-		});
-
-		$("#2").click(function(){
-			var n = 2; score(n);
-		});
-
-		$("#3").click(function(){
-			var n = 3; score(n);
-		});
-
-		$("#4").click(function(){
-			var n = 4; score(n);
-		});
-
-		$("#5").click(function(){
-			var n = 5; score(n);
-		});
-		
-		var score = function(n){
-			if($("#"+n).val() == '★'){
-				for(var i = n; i<=5; i++){$("#"+i).val('☆');}
-			}else if($("#"+n).val() == '☆'){
-				for(var i = 1; i<=n; i++){$("#"+i).val('★');}}
-			for(var i = 1; i<=5; i++){
-				if($("#"+i).val() == '★'){$("#insert-score").text(i*2);$("#evaluat_score").val(i*2);}
-				else if($("#1").val() == '☆'){$("#insert-score").text(1);$("#evaluat_score").val(1);
-				}
-			}
-		};
 		
 	});
 </script>
