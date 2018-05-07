@@ -29,9 +29,6 @@ pageEncoding="UTF-8"%>
 	#noti_table td{
 		padding: 7px;
 	}
-	#gettotal{
-		color:white;
-	}
 </style>
 </head>
 <body>
@@ -40,7 +37,7 @@ pageEncoding="UTF-8"%>
 		<div id="cont_left">
 			<div class="left_menubar">
 				<ul class="clientcenter_menu">
-					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.do?pg=1" ><strong>고객센터 메인</strong></a></li>
 					<li  id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong> </a></li>
 					<li class="selected" id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
 					<li   id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
@@ -72,22 +69,22 @@ pageEncoding="UTF-8"%>
 					</li>
 					<li id="li">
 						<a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1&type=시스템점검">
-						<c:if test="${requestScope.type!='시스템점검' }">
-							<img src="../../image/type/시스템점검-gray.png" width="100px" height="50px" alt="시스템점검"/>
-						</c:if>
 						<c:if test="${requestScope.type=='시스템점검' }">
 							<img src="../../image/type/시스템점검-red.png" width="100px" height="50px" alt="시스템점검"/>
+						</c:if>
+						<c:if test="${requestScope.type!='시스템점검' }">
+							<img src="../../image/type/시스템점검-gray.png" width="100px" height="50px" alt="시스템점검"/>
 						</c:if>
 							
 						</a>
 					</li>
 					<li id="li">
 						<a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1&type=극장">
-						<c:if test="${requestScope.type!='극장' }">
-							<img src="../../image/type/극장-gray.png" width="100px" height="50px" alt="극장"/>
-						</c:if>
 						<c:if test="${requestScope.type=='극장' }">
 							<img src="../../image/type/극장-red.png" width="100px" height="50px" alt="극장"/>
+						</c:if>
+						<c:if test="${requestScope.type!='극장' }">
+							<img src="../../image/type/극장-gray.png" width="100px" height="50px" alt="극장"/>
 						</c:if>
 						</a>
 					</li>
@@ -109,7 +106,7 @@ pageEncoding="UTF-8"%>
 					<c:forEach var="noticeItemDTO" items="${list}">
 						<tr bgcolor="white">
 							<td align="center">${noticeItemDTO.notice_item_code}</td>
-							<td align="center">${noticeItemDTO.notice_item_type }</td>
+							<td align="center">[${noticeItemDTO.notice_item_type }]</td>
 							<td>
 								<a id="titleA" href="noticeItemView.do?notice_item_code=${noticeItemDTO.notice_item_code}&pg=${param.pg}" >
 									${noticeItemDTO.notice_item_title}
