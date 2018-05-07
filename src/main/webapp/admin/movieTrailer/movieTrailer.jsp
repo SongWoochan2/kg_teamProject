@@ -84,10 +84,10 @@
 				[<a id="paging" href="movieTrailer.do?pg=${moviePage.startPage-1}&movie_code=${requestScope.movie_code}">이전</a>]
 				</c:if> <c:forEach var="i" begin="${moviePage.startPage}"
 								end="${moviePage.endPage}" step="1">
-								<c:if test="${moviePage.startPage==i }">
+								<c:if test="${moviePage.pg==i }">
 				[<a id="currentPaging" href="movieTrailer.do?pg=${i }&movie_code=${requestScope.movie_code}">${i }</a>]
 				</c:if>
-								<c:if test="${moviePage.startPage!=i }">
+								<c:if test="${moviePage.pg!=i }">
 				[<a id="paging" href="movieTrailer.do?pg=${i }&movie_code=${requestScope.movie_code}">${i }</a>]
 				</c:if>
 								<!-- el표현식에는 자바코드가 들어갈수없음 -->

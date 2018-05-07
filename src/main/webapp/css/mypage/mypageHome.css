@@ -35,7 +35,6 @@
 	font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;
 	font-size:11px;
 }
-
 .sect-content-movie>.box-inner>.box-inner-wishlist {
 	float: left;
 	width: 33.3%;
@@ -47,6 +46,13 @@
 	text-align: center;
 	border-right: 2px white;
 	border-right-style: dotted;
+}
+
+.sect-content-movie>.box-inner>.box-inner-wishlist a{
+
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 .sect-content-movie>.box-inner>.box-inner-watched {
@@ -61,7 +67,11 @@
 	border-right: 2px white;
 	border-right-style: dotted;
 }
-
+.sect-content-movie>.box-inner>.box-inner-watched>a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
 .sect-content-movie>.box-inner>.box-inner-mystore {
 	float: left;
 	width: 33.3%;
@@ -69,7 +79,14 @@
 	background-color: #f2f1e4;
 	text-align: center;
 }
-
+.sect-content-movie>.box-inner>.box-inner-mystore>a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.sect-content-movie>.box-inner>.box-inner-mystore>a>strong{
+	color: black;
+}
 /* .sect-content-movie>.box-inner img {
 	width: 100%;
 	height: 100%;
@@ -175,17 +192,17 @@
 	width: 100%;
 	height: auto;
 }
-#mypageBody #my-content-wrap #content-detail .sect-mypage-reserve-cancle {
+#mypageBody #my-content-wrap #content-detail .sect-mypage-reserve-cancel {
 	width: 100%;
 	min-height: 200px;
 	height: auto;
 	margin-top: 30px;
 }
-.sect-mypage-reserve-cancle .tit-mypage {
+.sect-mypage-reserve-cancel .tit-mypage {
 	width: 100%;
 	height: 30px;
 }
-.sect-mypage-reserve-cancle .tbl-data {
+.sect-mypage-reserve-cancel .tbl-data {
 	width: 100%;
 	height: auto;
 }

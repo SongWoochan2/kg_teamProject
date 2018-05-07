@@ -17,7 +17,7 @@ public class MemberReserveListDTO {
 	
 	private int reserve_cost;
 	private String reserve_date;
-	private char reserve_cancle_able;
+	private char reserve_cancel_able;
 
 	private int show_place_code;
 	private int movie_code;
@@ -119,12 +119,6 @@ public class MemberReserveListDTO {
 	public void setReserve_date(String reserve_date) {
 		this.reserve_date = reserve_date;
 	}
-	public char getReserve_cancle_able() {
-		return reserve_cancle_able;
-	}
-	public void setReserve_cancle_able(char reserve_cancle_able) {
-		this.reserve_cancle_able = reserve_cancle_able;
-	}
 	public int getShow_place_code() {
 		return show_place_code;
 	}
@@ -196,6 +190,12 @@ public class MemberReserveListDTO {
 	}
 	public void setTheater_name(String theater_name) {
 		this.theater_name = theater_name;
+	}
+	public char getReserve_cancel_able() {
+		return reserve_cancel_able;
+	}
+	public void setReserve_cancel_able(char reserve_cancel_able) {
+		this.reserve_cancel_able = reserve_cancel_able;
 	}
 	 
 }

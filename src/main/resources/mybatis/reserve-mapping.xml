@@ -199,7 +199,7 @@
 	</insert>
 	
 	<!-- 회원 예매  하나 가져오기 -->
-	<select id="selectMemberReserve" parameterType="int" resultType="reserve.bean.MemberReserveVO">
+	<select id="selectMemberReserve" parameterType="reserve.bean.MemberReserveVO" resultType="reserve.bean.MemberReserveVO">
 		select * from member_reserve where reserve_code = #{reserve_code} AND reserve_id = #{reserve_id}
 	</select>
 	

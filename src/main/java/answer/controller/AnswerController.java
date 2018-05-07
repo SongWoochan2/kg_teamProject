@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import answer.bean.AnswerDTO;
 import inquiry.bean.InquiryDTO;
 import inquiry.controller.InquiryService;
+import member.bean.MemberDTO;
+import member.controller.MemberServiceImpl;
 
 @Controller
 public class AnswerController {
@@ -29,6 +31,9 @@ public class AnswerController {
 	
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	
+	@Autowired
+	private MemberServiceImpl memberService;
 	
 	@RequestMapping(value="/admin/answer/inquiryAnswer.do")
 	public ModelAndView superinquiryAnswer(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException{ 
@@ -106,6 +111,23 @@ public class AnswerController {
 			modelAndView.setViewName("inquiryListAdmin.jsp");
 		}
 		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/admin/answer/inquiryViewAdmin.do")
+	public ModelAndView inquiryView(HttpServletRequest request, HttpServletResponse response) {
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		InquiryDTO inquiryDTO = inquiryService.inquiryView(inquiry_code);
+		MemberDTO memberDTO = memberService.memberView(inquiryDTO.getInquiry_id());
+		AnswerDTO answerDTO = answerService.answerView(inquiry_code);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("answerDTO", answerDTO);
+		modelAndView.addObject("inquiryDTO", inquiryDTO);
+		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.setViewName("inquiryViewAdmin.jsp");
 		return modelAndView;
 	}
 	

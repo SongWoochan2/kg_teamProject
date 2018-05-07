@@ -46,12 +46,12 @@
 	</select>
 	
 	<!-- 예매 취소 -->
-	<update id="memReserveCancle" parameterType="int">
+	<update id="memReserveCancel" parameterType="int">
 		update member_reserve set reserve_cancel_able='Y',reserve_date=sysdate where reserve_code=#{reserve_code}
 	</update>
 	
 	<!-- 취소내역 -->
-	<select id="getCancleCodes" parameterType="java.util.Map" resultType="int">
+	<select id="getCancelCodes" parameterType="java.util.Map" resultType="int">
 		<![CDATA[select reserve_code from 
 			(select rownum rn,tt.* from 
 			(select reserve_code from member_reserve
@@ -60,7 +60,7 @@
 			order by reserve_code desc) tt) where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
-	<select id="getTotalCancle" parameterType="String" resultType="int">
+	<select id="getTotalCancel" parameterType="String" resultType="int">
 		<![CDATA[select count(*) from member_reserve
 			where reserve_id=#{reserve_id} and reserve_cancel_able='Y' 
 			and show_present_code IN (SELECT show_present_code FROM show_present WHERE sysdate <= show_date+7)]]>

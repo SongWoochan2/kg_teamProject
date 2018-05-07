@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 	<title>글보기</title>
 </head>
 <body>
-	<form id="form" name="inquiryView" method="post" action="../../admin/answer/inquiryAnswer.do
+	<form id="form" name="inquiryViewMember" method="post" action="../../admin/answer/inquiryAnswer.do
 	?pg=${param.pg}&inquiry_code=${inquiryDTO.inquiry_code}&member_id=${inquiryDTO.inquiry_id}">
 		<table border="1" cellspacing="0" cellpadding="5">
 			<tr>

@@ -606,17 +606,17 @@ nomaxvalue;
 
 
 --------------------------------------------------------------------------------
-----------------------------------------------------------------   우찬       -------
+----------------------------------------------------------------  트레일러 자료     -------
 --------------------------------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 1, '트레일러1','https://www.youtube.com/watch?v=jaxZeisCHv8', sysdate );
+movie_trailer_seq.nextval, 1, '트레일러1','https://www.youtube.com/embed/jaxZeisCHv8', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 1, '트레일러2','https://www.youtube.com/watch?v=974DwhlUP-8', sysdate );
+movie_trailer_seq.nextval, 1, '트레일러2','https://www.youtube.com/embed/974DwhlUP-8', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 2, '트레일러1','https://www.youtube.com/watch?v=fB8xou7TGTg', sysdate );
+movie_trailer_seq.nextval, 2, '트레일러1','https://www.youtube.com/embed/fB8xou7TGTg', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 2, '트레일러2','https://www.youtube.com/watch?v=qHVUPri5tjA', sysdate );
+movie_trailer_seq.nextval, 2, '트레일러2','https://www.youtube.com/embed/qHVUPri5tjA', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
 movie_trailer_seq.nextval, 3, '트레일러1','https://www.youtube.com/embed/mUpJ18MRe8s', sysdate );
@@ -659,7 +659,328 @@ insert into movie_trailer values (
 movie_trailer_seq.nextval, 10, '트레일러2','https://www.youtube.com/embed/JEpqz33vKus', sysdate );
 
 ----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 11, '트레일러1','https://www.youtube.com/embed/WKQSRFlfr50', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 11, '트레일러2','https://www.youtube.com/embed/FRbx5W72BNs', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 12, '트레일러1','https://www.youtube.com/embed/ty1XzpkAAQA', sysdate );
 
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 13, '트레일러1','https://www.youtube.com/embed/awyG1-xvqFY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 13, '트레일러2','https://www.youtube.com/embed/xNcJ0lIDPkE', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 14, '트레일러1','https://www.youtube.com/embed/CGJiUKw6jec', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 15, '트레일러1','https://www.youtube.com/embed/uc2ndOreVMM', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 15, '트레일러2','https://www.youtube.com/embed/hA_S-TFfqUk', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 16, '트레일러1','https://www.youtube.com/embed/A1Ae5DFkt8w', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 17, '트레일러1','https://www.youtube.com/embed/t2_BmIGC2Js', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 18, '트레일러1','https://www.youtube.com/embed/espe3Tz_CuI', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 18, '트레일러2','https://www.youtube.com/embed/vGPHzniAxtE', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 19, '트레일러1','https://www.youtube.com/embed/pHKjR6EMhi4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 19, '트레일러2','https://www.youtube.com/embed/4Dww00XSjys', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 20, '트레일러1','https://www.youtube.com/embed/aIXky2a5YhQ', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 20, '전작트레일러','https://www.youtube.com/embed/GnERUwEaWVc', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 21, '트레일러1','https://www.youtube.com/embed/DUSSsMw6628', sysdate );
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 23, '트레일러1','https://www.youtube.com/embed/Ceoe2wf-bbo', sysdate );
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 26, '트레일러1','https://www.youtube.com/embed/yWOBVfu1Tuw', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 27, '트레일러1','https://www.youtube.com/embed/61UrVOZyZQU', sysdate );
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 29, '트레일러1','https://www.youtube.com/embed/3UWwRykamZw', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 30, '트레일러1','https://www.youtube.com/embed/_AzEsgb3XZw', sysdate );
+
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 31, '트레일러1','https://www.youtube.com/embed/xVh3bh0N68Q', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 31, '트레일러2','https://www.youtube.com/embed/nhVFkAGzE8M', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 32, '트레일러1','https://www.youtube.com/embed/sbp85cz2ddc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 32, '트레일러2','https://www.youtube.com/embed/9vaZ3V8hQGY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 32, '트레일러3','https://www.youtube.com/embed/9n2Njh8abGU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 33, '트레일러1','https://www.youtube.com/embed/5O5PVvHTWRo', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 34, '트레일러1','https://www.youtube.com/embed/rvLMVcRkRfY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 34, '트레일러2','https://www.youtube.com/embed/g0fKcDVSIP4?list=PLxHyjlxPEgjWCNKzg6QXx6ZNULgdAbSUQ', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 35, '트레일러1','https://www.youtube.com/embed/l2zbiENbffM?list=PLLtDu4z6O2eyVJRO7RCNZGPBXJp5_CYC2', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 35, '트레일러2','https://www.youtube.com/embed/D4ttnbceO2w?list=PLLtDu4z6O2eyVJRO7RCNZGPBXJp5_CYC2', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 36, '트레일러1','https://www.youtube.com/embed/4FsR6x4D9eU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 36, '트레일러2','https://www.youtube.com/embed/BvHQOeqV63s', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 37, '트레일러1','https://www.youtube.com/embed/xUDhdCsLkjU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 37, '트레일러2','https://www.youtube.com/embed/-zabRKMQ88c?list=PL9ArOU7415dL5upreQmbIB2swVMRCx4hN', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 38, '트레일러1','https://www.youtube.com/embed/HWEW_qTLSEE', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 39, '트레일러1','https://www.youtube.com/embed/Md6Dvxdr0AQ', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 40, '트레일러1','https://www.youtube.com/embed/1HFv47QHWJU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 40, '트레일러2','https://www.youtube.com/embed/1t0A_tZGrYw', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 41, '트레일러1','https://www.youtube.com/embed/AF6F1f5Ypkg', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 42, '트레일러1','https://www.youtube.com/embed/LUlczH6yfM8', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 43, '트레일러1','https://www.youtube.com/embed/TK3u3QJOfXM', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 44, '트레일러1','https://www.youtube.com/embed/SoHKMqs2vKs', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 45, '트레일러1','https://www.youtube.com/embed/uRZFEJvNYAQ', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 46, '트레일러1','https://www.youtube.com/embed/KNXzmWNxlIU', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 47, '트레일러1','https://www.youtube.com/embed/D7FkWjczYl8', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 48, '트레일러1','https://www.youtube.com/embed/tK2AGc107kI', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 49, '트레일러1','https://www.youtube.com/embed/uflYEv_0JoY', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 50, '트레일러1','https://www.youtube.com/embed/P-2B04A_gO0', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 51, '트레일러1','https://www.youtube.com/embed/K0u6LwKYBhI', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 51, '트레일러2','https://www.youtube.com/embed/L9DGUxCvQrU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 52, '트레일러1','https://www.youtube.com/embed/0dd_NTbUV9g', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 52, '트레일러2','https://www.youtube.com/embed/_xwYUxVQfcs', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 53, '트레일러1','https://www.youtube.com/embed/nm2aZz45pGE', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 53, '트레일러2','https://www.youtube.com/embed/CjXJSwhKEPQ', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 54, '트레일러1','https://www.youtube.com/embed/VVZQ39i5G1s', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 54, '트레일러2','https://www.youtube.com/embed/jAAAXMuId8g?list=PLIiIsjUV7CSHhkHYaJLxxvqDir0mJ1GKj', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 55, '트레일러1','https://www.youtube.com/embed/_EAxUq_Ilf8', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 55, '트레일러2','https://www.youtube.com/embed/n33jXAYTJCk', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 56, '트레일러1','https://www.youtube.com/embed/c3gI9ms8Fdc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 56, '트레일러2','https://www.youtube.com/embed/T31SVOQUyoU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 57, '트레일러1','https://www.youtube.com/embed/pdOrKWXonfs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 57, '트레일러2','https://www.youtube.com/embed/f2qqD7ljYVY', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 58, '트레일러1','https://www.youtube.com/embed/tscrPAHwyIY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 58, '트레일러2','https://www.youtube.com/embed/F2_zgugXwqg', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 59, '트레일러1','https://www.youtube.com/embed/fAlpsMkxzg4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 59, '트레일러2','https://www.youtube.com/embed/l4q_ZK7i_nU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 60, '트레일러1','https://www.youtube.com/embed/kvgSjipdEs0', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 60, '트레일러2','https://www.youtube.com/embed/uSIC8oQJ9aM', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 61, '트레일러1','https://www.youtube.com/embed/TRH8N4FEXxg', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 61, '트레일러2','https://www.youtube.com/embed/QTGY4OO6Byw', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 62, '트레일러1','https://www.youtube.com/embed/c6u0_bYLfII', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 62, '트레일러2','https://www.youtube.com/embed/9z1ZbyszUW0', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 63, '트레일러1','https://www.youtube.com/embed/0IgrxiDr980', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 63, '트레일러2','https://www.youtube.com/embed/_1qO4EDcplY', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 64, '트레일러1','https://www.youtube.com/embed/mEAjmr0K7rA', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 64, '트레일러2','https://www.youtube.com/embed/nvtfCxSKQjk', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 65, '트레일러1','https://www.youtube.com/embed/yD_oH6gcVmc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 65, '트레일러2','https://www.youtube.com/embed/N0mOxThHWxM', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 66, '트레일러1','https://www.youtube.com/embed/XgTi-vKRGNs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 66, '트레일러2','https://www.youtube.com/embed/jfQ7XevD8Dc', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 67, '트레일러1','https://www.youtube.com/embed/3NHkhEHCYBs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 67, '트레일러2','https://www.youtube.com/embed/zfHmq6wlwws', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 68, '트레일러1','https://www.youtube.com/embed/Ngn2IftLNP0', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 68, '트레일러2','https://www.youtube.com/embed/D8K2KzK49XE', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 69, '트레일러1','https://www.youtube.com/embed/HvOR780IGgk', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 69, '트레일러2','https://www.youtube.com/embed/bmJ7d0I1Rvc', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 70, '트레일러1','https://www.youtube.com/embed/dEF4g7gf7C4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 70, '트레일러2','https://www.youtube.com/embed/L2p-_Q4Rf5o', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 71, '트레일러1','https://www.youtube.com/embed/OybUDmVgEac', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 71, '트레일러2','https://www.youtube.com/embed/KuFO5nCayj0', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 72, '트레일러1','https://www.youtube.com/embed/YpqMZt1gOXU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 72, '트레일러2','https://www.youtube.com/embed/mQl-lGF6XHM', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 73, '트레일러1','https://www.youtube.com/embed/qgOsPoXv2as', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 73, '트레일러2','https://www.youtube.com/embed/3L2-JAbXIAM', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 74, '트레일러1','https://www.youtube.com/embed/VVM3TsxoqIc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 74, '트레일러2','https://www.youtube.com/embed/lcU4C_caKV4', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 75, '트레일러1','https://www.youtube.com/embed/c7c4F-e_QBY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 75, '트레일러2','https://www.youtube.com/embed/B2r6b-gVG6M', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 76, '트레일러1','https://www.youtube.com/embed/SwgBX_qOtXs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 76, '트레일러2','https://www.youtube.com/embed/7yIFePr1_wU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 77, '트레일러1','https://www.youtube.com/embed/yHIZFeKWd1I', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 77, '트레일러2','https://www.youtube.com/embed/BKO8Zl5DR5Q', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 78, '트레일러1','https://www.youtube.com/embed/HIyn_eMs_A4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 78, '트레일러2','https://www.youtube.com/embed/sTrOvSMMn0I', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 79, '트레일러1','https://www.youtube.com/embed/wxYAg7to52A', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 79, '트레일러2','https://www.youtube.com/embed/-UOlOLpnwO4', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 80, '트레일러1','https://www.youtube.com/embed/9FS0YFIJU7Q', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 80, '트레일러2','https://www.youtube.com/embed/2DhBlbRc_d8', sysdate );
+
+----------------------------------------------------------
 
 
 
@@ -669,7 +990,7 @@ movie_trailer_seq.nextval, 10, '트레일러2','https://www.youtube.com/embed/JE
 create table movie_photo(
   movie_photo_code int,
   movie_code int,
-  movie_photo_name varchar(30) not null,
+  movie_photo_name varchar(100) not null,
   movie_photo_addr varchar(255) not null,
   upload_date date not null,
   constraint moviephoto_movie_code_fk foreign key(movie_code) references movie(movie_code),
@@ -750,25 +1071,4126 @@ insert into movie_photo values ( movie_photo_seq.nextval, 10, '스틸컷4', 'MyN
 
 
 
+-------------------------------------------------------------------------------------------------------- 영화 자료 입력  ㄷㄹ
+
+insert into movie values(
+	movie_seq.nextval,
+	'1987',
+'987년 1월, 경찰 조사를 받던 스물두 살 대학생이 사망한다.
+ 증거인멸을 위해 박처장(김윤석)의 주도 하에 경찰은 시신 화장을 요청하지만, 
+ 사망 당일 당직이었던 최검사(하정우)는 이를 거부하고 부검을 밀어붙인다.
+ 단순 쇼크사인 것처럼 거짓 발표를 이어가는 경찰. 
+ 그러나 현장에 남은 흔적들과 부검 소견은 고문에 의한 사망을 가리키고, 
+ 사건을 취재하던 윤기자(이희준)는 ‘물고문 도중 질식사’를 보도한다.
+ 이에 박처장은 조반장(박희순)등 형사 둘만 구속시키며 사건을 축소하려 한다.
+ 한편, 교도소에 수감된 조반장을 통해 사건의 진상을 알게 된 교도관 한병용(유해진)은 
+ 이 사실을 수배 중인 재야인사에게 전달하기 위해 조카인 연희(김태리)에게 위험한 부탁을 하게 되는데…
+ ' || chr(10) || '
+한 사람이 죽고, 모든 것이 변화하기 시작했다.
+모두가 뜨거웠던 1987년의 이야기.',
+	'한국',
+	'2017-12-27',
+	118,
+	'15세 관람가',
+	'드라마',
+	'',
+	'',
+	'장준환',
+	0,
+	0,
+	'장준환, 김윤석, 하정우, 유해진, 김태리',
+	0,
+	0);
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	11,
+	'포스터',
+	'poster_1987_image (0).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	11,
+	'스틸컷1',
+	'1987_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	11,
+	'스틸컷2',
+	'1987_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	11,
+	'스틸컷3',
+	'1987_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	11,
+	'스틸컷4',
+	'1987_image (4).jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'다크나이트',
+	'어둠의 기사 배트맨 VS 절대 악 조커
+운명을 건 최후의 결전이 시작된다!
+정의로운 지방 검사 ‘하비 덴트’, ‘짐 고든’ 반장과 함께 범죄 소탕 작전을 펼치며
+ 범죄와 부패로 들끓는 고담시를 지켜나가는 ‘배트맨’
+  ' || chr(10) || '
+ 그러던 어느 날, 살아남기 위해 발버둥치던 범죄 조직은 배트맨을 제거하기 위해
+ 광기어린 악당 ‘조커’를 끌어들이고
+ 정체를 알 수 없는 조커의 등장에 고담시 전체가 깊은 혼돈 속으로 빠져든다.
+  ' || chr(10) || '
+ 급기야 배트맨을 향한 강한 집착을 드러낸 조커는
+ 그가 시민들 앞에 정체를 밝힐 때까지 매일 새로운 사람들을 죽이겠다 선포하고
+ 배트맨은 사상 최악의 악당 조커를 막기 위해 자신의 모든 것을 내던진 마지막 대결을 준비한다.',
+	'미국',
+	'2017-07-12',
+	152,
+	'15세 관람가',
+	'액션',
+	'범죄',
+	'미스터리',
+	'크리스토퍼 놀란',
+	0,
+	0,
+	'크리스찬 베일, 히스 레저, 아론 에크하트, 마이클 케인, 매기 질렌한 ',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	12,
+	'포스터',
+	'poster_darkKnight_image.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	12,
+	'스틸컷1',
+	'darkKnight_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	12,
+	'스틸컷2',
+	'darkKnight_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	12,
+	'스틸컷3',
+	'darkKnight_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	12,
+	'스틸컷4',
+	'darkKnight_image (4).jpg',
+	sysdate );
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'닥터 스트레인지',
+	'마블 히어로의 새로운 시작!
+ 모든 것을 초월한, 역사상 가장 강력한 히어로가 온다!
+ 불의의 사고로 절망에 빠진 천재 외과의사 ‘닥터 스트레인지(베네딕트 컴버배치)’. 
+ 마지막 희망을 걸고 찾아 간 곳에서 ‘에인션트 원(틸다 스윈튼)’을 만나 세상을 구원할 강력한 능력을 얻게 되면서, 모든 것을 초월한 최강의 히어로로 거듭나는데...',
+	'미국',
+	'2017-07-27',
+	115,
+	'12세 관람가',
+	'액션',
+	'모험',
+	'판타지',
+	'스콧 데릭슨',
+	0,
+	0,
+	'베네딕트 컴버배치, 레이첼 맥아담스, 틸다 스윈튼, 매즈 미켈슨, 치웨텔 에지오포',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	13,
+	'포스터',
+	'poster_DrStrainge_image (5).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	13,
+	'스틸컷1',
+	'DrStrainge_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	13,
+	'스틸컷2',
+	'DrStrainge_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	13,
+	'스틸컷3',
+	'DrStrainge_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	13,
+	'스틸컷4',
+	'DrStrainge_image.jpg',
+	sysdate );
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'더 라이트 악마는 있다',
+	'충.격.실.화 성스러운 곳에서 벌어지는 비밀의식
+ 장의사인 아버지를 벗어나기 위해 신학생이 된 마이클은 자신의 믿음에 의심을 품은 채 바티칸으로 떠난다. 회의론으로 가득 찬 그는 신부들에게 악마를 찾을 게 아니라 정신의학 자료를 참고하라며 도 전한다. 그러나 이는 수천 번의 퇴마의식을 행한 전설적인 존재 루카스 신부(안소니 홉킨스)에게 퇴 마수업을 받으면서 흔들리게 된다. 루카스 신부의 능력으로도 감당하기 어려운 사건을 만나면서 마이 클은 과학으로는 설명이 안 되는 현상을 겪게 되고 끔찍하고 섬뜩한 악마의 존재는 마이클이 믿어온  모든 것들을 의심하게 하는데….',
+	'미국',
+	'2017-11-27',
+	115,
+	'15세 관람가',
+	'드라마',
+	'공포',
+	'스릴러',
+	'미카엘 하프스트롬',
+	0,
+	0,
+	'안소니 홉킨스, 콜린 오도노휴, 앨리스 브라가, 시아란 힌즈, 토비 존스',
+	0,
+	0);
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	14,
+	'포스터',
+	'poster_Thereisa devil_image (5).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	14,
+	'스틸컷1',
+	'Thereisa devil_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	14,
+	'스틸컷2',
+	'Thereisa devil_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	14,
+	'스틸컷3',
+	'Thereisa devil_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	14,
+	'스틸컷4',
+	'Thereisa devil_image.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'디아더스',
+	'빛을 보지 못하는 희귀병을 앓는 두 아이와
+ 그런 아이들을 홀로 지키며 어둠 속에서만 살아가는 여인.
+ 어느 날 3명의 새로운 하인이 그녀의 집에 찾아왔다.
+  ' || chr(10) || '
+ 잠이 들면 들려 오는 기괴한 속삭임.
+ 아무도 없는 방에서 흘러나오는 피아노 소리.
+ 위 층에서 들려오는 아이들의 발소리…
+  ' || chr(10) || '
+ 그들이 이 집에 들어온 뒤,
+ 기이한 일들이 일어나기 시작했다!',
+	'미국',
+	'2017-09-07',
+	104,
+	'12세 관람가',
+	'미스터리',
+	'공포',
+	'스릴러',
+	'알레한드로 아메나바',
+	0,
+	0,
+	'니콜 키드먼, 피오눌라 플라나건, 알라키나 맨, 제임스 벤틀리, 크리스토퍼 에클리스턴',
+	0,
+	0);
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	15,
+	'포스터',
+	'poster_TheArders_image (5).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	15,
+	'스틸컷1',
+	'TheArders_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	15,
+	'스틸컷2',
+	'TheArders_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	15,
+	'스틸컷3',
+	'TheArders_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	15,
+	'스틸컷4',
+	'TheArders_image.jpg',
+	sysdate );
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'디스트릭트9',
+	'빛을 보지 못하는 희귀병을 앓는 두 아이와
+ 그런 아이들을 홀로 지키며 어둠 속에서만 살아가는 여인.
+ 어느 날 3명의 새로운 하인이 그녀의 집에 찾아왔다.
+  ' || chr(10) || '
+ 잠이 들면 들려 오는 기괴한 속삭임.
+ 아무도 없는 방에서 흘러나오는 피아노 소리.
+ 위 층에서 들려오는 아이들의 발소리…
+  ' || chr(10) || '
+ 그들이 이 집에 들어온 뒤,
+ 기이한 일들이 일어나기 시작했다!',
+	'미국',
+	'2017-09-07',
+	104,
+	'12세 관람가',
+	'미스터리',
+	'공포',
+	'스릴러',
+	'알레한드로 아메나바',
+	0,
+	0,
+	'니콜 키드먼, 피오눌라 플라나건, 알라키나 맨, 제임스 벤틀리, 크리스토퍼 에클리스턴',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	16,
+	'포스터',
+	'poster_Districk9_image (4).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	16,
+	'스틸컷1',
+	'Districk9_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	16,
+	'스틸컷2',
+	'Districk9_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	16,
+	'스틸컷3',
+	'Districk9_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	16,
+	'스틸컷4',
+	'Districk9_image.jpg',
+	sysdate );
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'라이언일병구하기',
+	'1944년 6월 6일 노르망디 상륙 작전. 오마하 해변에 대기하고 있던 병사들은 한치 앞도 내다볼 수 없는 긴장된 상황과 두려움에 무기력함을 감출 수 없었다. 노르망디 해변을 응시하는 밀러 대위(Captain Miller: 톰 행크스 분) 그리고 전쟁 중 가장 어려운 임무를 수행해야할 두려움에 지친 그의 대원들. 지옥을 방불케하는 치열한 총격전이 벌어지고 수 많은 병사들이 총 한번 제대로 쏘지 못하고 쓰러져간다. 마침내 밀러 대위를 위시한 그들은 몇번의 죽을 고비를 넘기고 맡은 바 임무를 완수한다.
+ ' || chr(10) || '
+  같은 시각, 2차 대전이 종전으로 치닫는 치열한 전황 속에서 미 행정부는 전사자 통보 업무를 진행하던 중 충격적인 사실을 발견하게 된다. 4형제 모두 이 전쟁에 참전한 라이언 가에서 며칠간의 시차를 두고 3형제가 이미 전사하고 막내 제임스 라이언 일병(Private Ryan: 맷 데몬 분)만이 프랑스 전선에 생존해 있음을 알게 된 것이다. 네명의 아들 가운데 이미 셋을 잃은 라이언 부인을 위해 미 행정부는 막내 제임스를 구하기 위한 매우 특별한 작전을 지시한다. 결국 사령부에서 막내를 찾아 집으로 보낼 임무는 밀러에게 부여되고, 이것은 이제껏 수행했던 임무보다 훨씬 어렵고 힘든 것이었다.',
+	'미국',
+	'1998-09-12',
+	174,
+	'15세 관람가',
+	'전쟁',
+	'액션',
+	'드라마',
+	'스티븐 스필버그',
+	0,
+	0,
+	'톰 행크스, 애드워드 번즈, 톰 시즈모어, 제레미 데이비스, 빈 디젤',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	17,
+	'포스터',
+	'poster_PrivateRyan_image.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	17,
+	'스틸컷1',
+	'PrivateRyan_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	17,
+	'스틸컷2',
+	'PrivateRyan_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	17,
+	'스틸컷3',
+	'PrivateRyan_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	17,
+	'스틸컷4',
+	'PrivateRyan_image132.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'라이온킹',
+	'아프리카의 평화로운 왕국 프라이드랜드. 이곳을 다스리는 사자 무파사의 아들 심바가 태어난다. 심바는 친구 날라와 어울리며 하루 빨리 아버지 같은 왕이 되고 싶어 한다. 한편 왕의 동생 스카는 자신이 왕위를 차지하기 위해 하이에나들과 결탁하여 무파사를 죽이고 심바에게 죄를 뒤집어 씌워 멀리 내쫓는다. 간신히 목숨을 건진 심바는 유쾌한 미어캣 티몬과 멧돼지 품바와 함께 생활하며 어른이 된다. 그러던 어느 날 심바는 옛친구 날라를 만나 프라이드랜드가 파괴되고 있다는 소식을 듣게 된다. 하지만 자신이 저지른 실수 때문에 고향으로 돌아가기를 거부하는 심바. 결국 아버지의 가르침과 자신의 운명을 깨달은 심바는 스카와 하이에나들을 물리치고 평화를 되찾기 위해 왕국으로 돌아가는데...',
+	'미국',
+	'1994-07-02',
+	89,
+	'전체 관람가',
+	'애니메이션',
+	'모험',
+	'드라마',
+	'로저 알러스',
+	0,
+	0,
+	'조나단 테일러 토머스, 매튜 브로데릭, 제임스 얼 존스, 제레미 아이언스, 모이라 켈리',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	18,
+	'포스터',
+	'poster_TheLionKing_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	18,
+	'스틸컷1',
+	'LightOut(2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	18,
+	'스틸컷2',
+	'LightOut(3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	18,
+	'스틸컷3',
+	'LightOut(4).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	18,
+	'스틸컷4',
+	'LightOut.jpg',
+	sysdate );
+
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'라이트아웃',
+	'불이 꺼지면 나타나는 누군가를 목격한 남매 레베카와 마틴.  ' || chr(10) || '
+ 알고보니 어둠 속 그 여자는 빛이 닿으면 피부가 타들어가는 기이한 병을 앓고 있던 엄마의 어릴적 친구 ''다이애나'' 였고,  ' || chr(10) || '
+ 현재도 엄마 곁에서 함께 살고 있다는 걸 알게 되는데…',
+	'미국',
+	'2016-08-24',
+	81,
+	'15세 관람가',
+	'공포',
+	'',
+	'',
+	'데이비드F.샌드버그',
+	0,
+	0,
+	'테레사 팔머, 앨리시아 벨라 베일리, 가브리엘 베이트먼, 알렉사더 디퍼시아, 빌리버크',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	19,
+	'포스터',
+	'poster_LightOut_image.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	19,
+	'스틸컷1',
+	'TheLionKing_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	19,
+	'스틸컷2',
+	'TheLionKing_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	19,
+	'스틸컷3',
+	'TheLionKing_image (4).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	19,
+	'스틸컷4',
+	'TheLionKing_image.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'레이드',
+	'도시를 지배하는 거대 조직과의 전쟁을 시작하다! ' || chr(10) || '
+정부 고위층과 손잡고 마약 거래 등을 통해 권력을 키우며 자카르타를 접수한 두 개의 범죄 조직 ''반군''과 ''고토'' 세력, 그리고 이들에게 매수된 경찰들로 인해 범죄의 소굴로 변한 도시. 경찰국의 내사반 반장은 두 범죄 조직과 부패 경찰들을 척결하기 위해 신입 경찰 ''라마''를 잠입시킨다. 스스로 범죄자가 된 ''라마''는 ''반군'' 가문의 후계자 ''우초''가 복역 중인 감옥으로 들어가 그에게 접근한 뒤 출소 후 그의 조직에 들어가게 된다. 한편, ‘우초’는 새로운 범죄 조직인 ‘베조’ 일당과 함께 아버지를 배신하고 새로운 보스가 되려는 야심을 품는다. ‘우초’의 계획을 눈치챈 ‘라마’는 경찰들조차 적으로 돌아선 상황에서 홀로 범죄 조직 모두와 전쟁을 시작하게 되는데…',
+	'미국',
+	'2014-07-09',
+	150,
+	'청소년 관람불가',
+	'액션',
+	'범죄',
+	'스릴러',
+	'가렛 에반스',
+	0,
+	0,
+	'이코 우웨이스, 야얀 루히안, 줄리 에스텔, 베리 트리 율리스만, 아리핀 푸트라',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	20,
+	'포스터',
+	'poster_Raid_image (3).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	20,
+	'스틸컷1',
+	'Raid_image (1).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	20,
+	'스틸컷2',
+	'Raid_image (2).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	20,
+	'스틸컷3',
+	'Raid_image (4).jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	20,
+	'스틸컷4',
+	'Raid_image.jpg',
+	sysdate );
+	
+----------------------------------------------------------------------------------------------------------------------------ㅁㅂ
+
+
+--21
+insert into movie values(
+	movie_seq.nextval,
+	'마음이',
+	'11살 나이답지 않게 듬직한 소년 찬이, 그리고 찬이의 6살 배기 떼쟁이 여동생 소이. 이렇게 두 오누이는 집을 나간 엄마가 돌아오길 기다리며 살고 있다. 어느날 찬이는 강아지를 갖고 싶어 떼 부리는 소이를 위해 생일 선물로 갓 태어난 강아지를 한 마리를 훔쳐온다. 소이는 엄마가 자기 마음을 알고 보내준 것 같다며 강아지 이름을 마음이라 짓는다. 그렇게 세 식구가 된 찬이, 소이, 마음이는 그 어느 때 보다 행복한 한때를 보내게 된다.' || chr(10) || '어느덧 1년이 지나고 이제 마음이는 찬이가 없을 때 소이를 친구처럼, 오빠처럼 돌볼 만큼 큰 늠름한 개가 된다. 그 해 겨울, 꽁꽁 언 강변에서 추위와 배고픔을 잊은 채 신나게 썰매를 타던 세 남매에게 예기치 못한 불행이 찾아온다. 살얼음이 깨지면서 소이가 물에 빠지게 된 것이다. 그렇게 소이를 잃게된 찬이는 그 모든 것이 마음이 때문이라 생각하고 무섭게 마음의 문을 닫아버린다. 엄마도 떠나고 소이도 떠난 그 집이 싫어진 찬이. 소이의 유품인 분홍색 책가방을 챙겨 메고 찬이도 어디론가 떠난다. 홀로 남겨진 마음이는 찬이를 찾아 나서는데. 과연 마음이는 찬이를 찾을 수 있을까? 그리고 찬이는 마음이의 진심을 알게 될까?',
+	'한국',
+	'2006-10-26',
+	97,
+	'전체이용가',
+	'가족',
+	'드라마',
+	'',
+	'박은형,오달균',
+	0,
+	0,
+	'유승호, 달이, 김향기,안길강',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'포스터',
+	'마음이_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷1',
+	'마음이1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷2',
+	'마음이2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷3',
+	'마음이3.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--22
+insert into movie values(
+	movie_seq.nextval,
+	'마이너리티 리포트',
+	'2054년 워싱턴, 범죄가 일어나기 전 범죄를 예측해 범죄자를 단죄하는 최첨단 치안 시스템 프리크라임은 시민들의 안전을 지켜주는 든든한 존재이다. 프리크라임 시스템은 범죄가 일어날 시간과 장소, 범행을 저지를 사람까지 미리 예측해내고, 이를 바탕으로 프리크라임 특수경찰이 미래의 범죄자들을 체포한다. 프리크라임 팀장인 존 앤더튼(톰 크루즈)은 천부적인 감각으로 미래의 범죄자를 추적해내는 능력을 인정받고 있다. 그가 프리크라임에 최대한의 열정을 기울이는 것은, 6년전 자신의 아들을 잃은 아픈 기억을 다른 사람에게만은 되풀이하고 싶지 않기 때문이다.' || chr(10) || '한편, 앤더튼은 프리크라임 감사를 위해 연방정보국에서 파견된 대니 워트워(콜린 파렐)와 사사건건 대치하는 가운데 프리크라임 시스템은 믿을 수 없는 살인을 예견한다. 그것은 바로 앤더튼 자신이 누군가를 살해하는 범행 장면. 이제 프리크라임의 모든 시스템이 앤더튼을 추격한다. 앤더튼은 음모를 파헤치기 위해, 미래를 바꾸기 위해 직접 미래의 피살자를 찾아나선다. 자신이 저지를 범죄 현장에 한 발짝씩 다가갈수록 앤더튼 앞에는 믿을 수 없는 사실들이 드러나고, 앤더튼의 의지와는 상관없이 예견된 희생자가 나오는데. 이제 그의 미래는 돌이킬 수 없는 것이 되고 마는가...',
+	'미국',
+	'2002-07-26',
+	145,
+	'15세 이용가',
+	'SF',
+	'미스터리',
+	'액션',
+	'스티븐 스필버그',
+	0,
+	0,
+	'톰 크루즈, 콜린 파렐, 사만다 모튼, 막스 폰 시도우',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'포스터',
+	'마이너리티_리포트_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'스틸컷1',
+	'마이너리티_리포트1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'스틸컷2',
+	'마이너리티_리포트2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	22,
+	'스틸컷3',
+	'마이너리티_리포트3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--23
+insert into movie values(
+	movie_seq.nextval,
+	'말할 수 없는 비밀',
+	'나는 너를 사랑해!너도 나를 사랑하니?' || chr(10) || '예술학교로 전학 온 상륜(주걸륜)은 아버지의 영향을 받아 피아노에 천부적인 소질을 보인다. 학교를 둘러보던 중, 신비스러운 피아노 연주가 흘러나오는 옛 음악실을 발견하게 되고, 그곳에서 샤오위(계륜미)를 만난다. 그들은 아름다운 피아노 선율처럼 즐거운 시간을 보내고, 둘 사이에는 애틋한 마음이 싹튼다. 그러나 상륜이 샤오위를 더 알고 싶어할 때마다 그녀는 비밀이라고 일관하며 의미심장한 미소만 짓는다. 그러던 어느 날, 샤오위는 상륜이 같은 반 여학생 칭요와 뽀뽀하는 모습을 보게 되고, 그의 곁에서 사라지는데…',
+	'대만',
+	'2008-01-10',
+	101,
+	'12세 이용가',
+	'로맨스',
+	'판타지',
+	'드라마',
+	'주걸륜',
+	0,
+	0,
+	'주걸륜, 계륜미, 황추생, 증개현, 소명명',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'포스터',
+	'말할_수_없는_비밀_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'스틸컷1',
+	'말할_수_없는_비밀1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'스틸컷2',
+	'말할_수_없는_비밀2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	23,
+	'스틸컷3',
+	'말할_수_없는_비밀3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--24
+insert into movie values(
+	movie_seq.nextval,
+	'매트릭스',
+	'인간의 기억마저 AI에 의해 입력되고 삭제 되는 세상.진짜보다 더 진짜 같은 가상 현실 ''매트릭스'' ' || chr(10) || '그 속에서 진정한 현실을 인식할 수 없게 재배되는 인간들. ' || chr(10) || ' 그 ''매트릭스''를 빠져 나오면서 AI에게 가장 위험한 인물이 된' || chr(10) || ' ''모피어스''는 자신과 함께 인류를 구할 마지막 영웅 ''그''를 찾아 헤맨다. ' || chr(10) || ' 마침내 ''모피어스''는 낮에는 평범한 회사원으로, 밤에는 해커로 활동하는 청년 ''네오''를 ''그''로 지목하는데… ',
+	'미국',
+	'2016-09-22',
+	136,
+	'12세 이용가',
+	'SF',
+	'액션',
+	'',
+	'릴리 워쇼스키',
+	0,
+	0,
+	'키아누 리브스, 로렌스 피시번, 캐리 앤 모스, 휴고 위빙',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'포스터',
+	'매트릭스_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷1',
+	'매트릭스1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷2',
+	'매트릭스2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷3',
+	'매트릭스3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--25
+insert into movie values(
+	movie_seq.nextval,
+	'모던타임즈',
+	'공장에서 하루 종일 나사못 조이는 일을 하는 찰리. ' || chr(10) || ' 눈에 보이는 모든 것을 조여버리는 강박 관념에 빠지고만 그는 급기야 정신 병원에 가게 되고, 거리를 방황하다 시위 군중에 휩쓸려 감옥살이까지 하게 된다. ' || chr(10) || ' 몇 년 후 감옥에서 풀려난 찰리는 부모를 잃고 고아가 된 한 아름다운 소녀를 도와주게 되고, ' || chr(10) || ' 그녀의 도움으로 카페에서 일하게 되지만 우여곡절 끝에 다시 거리로 내몰리고 만다. ' || chr(10) || ' 절망 속에서 피어나는 함박웃음! 찰리와 소녀의 행복을 찾아가는 아름다운 여정!',
+	'미국',
+	'1989-12-09',
+	87,
+	'전체이용가',
+	'코미디',
+	'',
+	'',
+	'찰리 채플린',
+	0,
+	0,
+	'찰리 채플린, 파울레트 고다드, 헨리 버그맨, 타이니 샌포드, 행크 만',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'포스터',
+	'모던타임즈_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷1',
+	'모던타임즈1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷2',
+	'모던타임즈2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	21,
+	'스틸컷3',
+	'모던타임즈3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--26
+insert into movie values(
+	movie_seq.nextval,
+	'바람',
+	'엄한 가정에서 자랐지만 형과 누나와는 다르게 간지나는 학창시절을 보내고 싶었던 짱구는 집안에서 유일하게 명문고에 진학하지 못해 골치덩이가 된다. 광춘상고는 교사들의 폭력과 학생들간 세력 다툼으로 부산일대에서 알아주는 악명 높은 학교. 광춘의 조회시간은 학교의 명성을 증명이라도 하듯 쓸만한 후배 물색으로 시작된다. 짱구는 입학 첫 날 ''불법써클''몬스터의 카리스마에 압도 당하고… ' || chr(10) || ' 학교 안에서 벌어지는 약육강식의 세계를 알아갈 무렵, 학교폭력 가담을 이유로 짱구 일행은 유치장 신세를 지게 된다. 짱구는 가까스로 정학만은 면하지만 다시 돌아온 학교에서 교내 불법 서클 ''몬스터''의 유혹이 기다리고 있었는데… 그렇게 몬스터의 후광을 업고 예쁜 여자 친구도 얻게 된 짱구, 쪽 팔리지 않고 싶었던 열여덟 짱구는 바람대로 폼 나는 학창시절을 보낼 수 있을까?',
+	'한국',
+	'2009-11-26',
+	107,
+	'청소년 이용불가',
+	'드라마',
+	'액션',
+	'가족',
+	'이성한',
+	0,
+	0,
+	'정우, 황정음, 양기원, 손호준, 권재현',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'포스터',
+	'바람_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'스틸컷1',
+	'바람1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'스틸컷2',
+	'바람2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	26,
+	'스틸컷3',
+	'바람3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--27
+insert into movie values(
+	movie_seq.nextval,
+	'박하사탕',
+	'1999년 봄, 마흔 살 영호는 ''가리봉 봉우회'' 야유회에 허름한 행색으로 나타난다. ' || chr(10) || ' 그곳은 20년 전 첫사랑 순임과 소풍을 왔던 곳. ' || chr(10) || ' 직업도 가족도 모두 잃고, 삶의 막장에 다다른 영호는 철로 위에서 나 다시 돌아갈래! 라고 절규한다. ' || chr(10) || ' 영호의 절규는 기차의 기적소리를 뚫고, 시간을 거슬러 올라간다. ' || chr(10) || ' 사흘 전 봄, 94년 여름, 87년 봄, 84년 가을, 80년 5월 그리고 마지막 79년 가을. ' || chr(10) || ' 마침내, 영호는 스무 살 첫사랑 순임을 만난다.',
+	'한국',
+	'2000-01-01',
+	130,
+	'청소년 이용불가',
+	'드라마',
+	'',
+	'',
+	'이창동',
+	0,
+	0,
+	'설경구, 문소리, 김여진, 박세범, 이대연',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'포스터',
+	'박하사탕_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'스틸컷1',
+	'박하사탕1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'스틸컷2',
+	'박하사탕2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	27,
+	'스틸컷3',
+	'박하사탕3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--28
+insert into movie values(
+	movie_seq.nextval,
+	'범죄도시',
+	'2004년 서울… ' || chr(10) || ' 하얼빈에서 넘어와 단숨에 기존 조직들을 장악하고 ' || chr(10) || ' 가장 강력한 세력인 춘식이파 보스 ''황사장''까지 위협하며 ' || chr(10) || ' 도시 일대의 최강자로 급부상한 신흥범죄조직의 악랄한 보스 ''장첸''. ' || chr(10) || ' 대한민국을 뒤흔든 ''장첸'' 일당을 잡기 위해 ' || chr(10) || ' 오직 주먹 한방으로 도시의 평화를 유지해 온 괴물형사 ''마석도''와 ' || chr(10) || ' 인간미 넘치는 든든한 리더 ''전일만'' 반장이 이끄는 강력반은 ' || chr(10) || ' 나쁜 놈들을 한방에 쓸어버릴 끝.짱.나.는. 작전을 세우는데… ' || chr(10) || ' 통쾌하고! 화끈하고! 살벌하게! ' || chr(10) || ' 나쁜 놈들 때려잡는 강력반 형사들의 ''조폭소탕작전''이 시작된다!',
+	'한국',
+	'2017-10-03',
+	121,
+	'청소년 이용불가',
+	'액션',
+	'',
+	'',
+	'강윤성',
+	0,
+	0,
+	'마동석, 윤계상, 조재윤, 최귀화, 임형준, 진선규',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'포스터',
+	'범죄도시_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'스틸컷1',
+	'범죄도시1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'스틸컷2',
+	'범죄도시2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	28,
+	'스틸컷3',
+	'범죄도시3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--29
+insert into movie values(
+	movie_seq.nextval,
+	'변호인',
+	'1980년대 초 부산. 
+ 빽 없고, 돈 없고, 가방끈도 짧은 세무 변호사 송우석(송강호). 부동산 등기부터 세금 자문까지 남들이 뭐라든 탁월한 사업수완으로 승승장구하며 부산에서 제일 잘나가고 돈 잘 버는 변호사로 이름을 날린다. ' || chr(10) || ' 대기업의 스카우트 제의까지 받으며 전국구 변호사 데뷔를 코 앞에 둔 송변. 하지만 우연히 7년 전 밥값 신세를 지며 정을 쌓은 국밥집 아들 진우(임시완)가 뜻하지 않은 사건에 휘말려 재판을 앞두고 있다는 소식을 듣는다. 국밥집 아줌마 순애(김영애)의 간절한 부탁을 외면할 수 없어 구치소 면회만이라도 도와주겠다고 나선 송변. ' || chr(10) || ' 하지만 그곳에서 마주한 진우의 믿지 못할 모습에 충격을 받은 송변은 모두가 회피하기 바빴던 사건의 변호를 맡기로 결심하는데... ',
+	'한국',
+	'2013-12-18',
+	127,
+	'15세 이용가',
+	'드라마',
+	'',
+	'',
+	'양우석',
+	0,
+	0,
+	'송강호, 김영애, 오달수, 곽도원, 임시완, 송영창, 정원중, 조민기',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'포스터',
+	'변호인_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'스틸컷1',
+	'변호인1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'스틸컷2',
+	'변호인2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	29,
+	'스틸컷3',
+	'변호인3.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--30
+insert into movie values(
+	movie_seq.nextval,
+	'블리딩스틸',
+	'거대 범죄 조직의 음모에 맞설 초특급 작전이 시작된다! ' || chr(10) || ' 초대형 범죄 사건의 배후에 있던 누군가가 ' || chr(10) || ' 생체병기 최고 권위자의 목숨을 노리기 시작한다. ' || chr(10) || ' 그를 지키기 위해 막강한 실력을 가진 SWAT 요원들이 모인다! ' || chr(10) || ' 작전이 끝나고 몇 년 후, ' || chr(10) || ' 어느 유명 작가의 소설이 발간되며 조직이 노리는 실체가 표면 위로 드러나게 되는데...',
+	'중국',
+	'2018-04-19',
+	101,
+	'15세 이용가',
+	'액션',
+	'스릴러',
+	'',
+	'장립가',
+	0,
+	0,
+	'성룡, 칼란 멀베이, 테스 호브리치, 나지상, 오우양나나',
+	0,
+	0
+);
+
+--영화 포스터
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'포스터',
+	'블리딩스틸_포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'스틸컷1',
+	'블리딩스틸1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'스틸컷2',
+	'블리딩스틸2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	30,
+	'스틸컷3',
+	'블리딩스틸3.jpg',
+	sysdate
+);
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------ㅅㅇ
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'설국열차',
+	'기상 이변으로 모든 것이 꽁꽁 얼어붙은 지구. 살아남은 사람들을 태운 기차 한 대가 끝없이 궤도를 달리고 있다. 춥고 배고픈 사람들이 바글대는 빈민굴 같은 맨 뒤쪽의 꼬리칸, 그리고 선택된 사람들이 술과 마약까지 즐기며 호화로운 객실을 뒹굴고 있는 앞쪽칸. 열차 안의 세상은 결코 평등하지 않다.
+' || chr(10) || '
+기차가 달리기 시작한 17년 째, 꼬리칸의 젊은 지도자 커티스는 긴 세월 준비해 온 폭동을 일으킨다. 기차의 심장인 엔진을 장악, 꼬리칸을 해방시키고 마침내 기차 전체를 해방 시키기 위해 절대권력자 윌포드가 도사리고 있는 맨 앞쪽 엔진칸을 향해 질주하는 커티스와 꼬리칸 사람들. 그들 앞에 예기치 못한 상황들이 기다리고 있는데…',
+	'한국',
+	'2013-08-01',
+	126,
+	'15세 이용가',
+	'액션',
+	'SF',
+	'드라마',
+	'봉준호',
+	0,
+	0,
+	'크리스 에반스,  송강호,  에드 해리스,  존 허트,  틸다 스윈튼',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	31,
+	'포스터',
+	'Snowpiercer_poster1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	31,
+	'스틸컷1',
+	'Snowpiercer_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	31,
+	'스틸컷2',
+	'Snowpiercer_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	31,
+	'스틸컷3',
+	'Snowpiercer_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	31,
+	'스틸컷4',
+	'Snowpiercer_4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'셜록: 유령신부',
+	'전세계가 기다린 그들이 온다!
+' || chr(10) || '
+전세계적인 신드롬의 주인공 ‘셜록’, 시리즈 사상 최초로 극장에서 만나게 될 스페셜 에피소드.
+' || chr(10) || '
+19세기 빅토리아 시대의 런던에서 일어난 의문의 살인사건을 쫓는 셜록(베네딕트 컴버배치)과 왓슨(마틴 프리먼)의 스펙터클 추리극.',
+	'영국',
+	'2016-01-02',
+	115,
+	'12세 이용가',
+	'범죄',
+	'미스터리',
+	'',
+	'더글러스 맥키넌',
+	0,
+	0,
+	'베네딕트 컴버배치,  마틴 프리먼',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	32,
+	'포스터',
+	'SHERLOCK_poster.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	32,
+	'스틸컷1',
+	'SHERLOCK_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	32,
+	'스틸컷2',
+	'SHERLOCK_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	32,
+	'스틸컷3',
+	'SHERLOCK_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	32,
+	'스틸컷4',
+	'SHERLOCK_4.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'신과함께 죄와벌',
+	'저승 법에 의하면, 모든 인간은 사후 49일 동안 7번의 재판을 거쳐야만 한다.
+' || chr(10) || '
+살인, 나태, 거짓, 불의, 배신, 폭력, 천륜
+' || chr(10) || '
+7개의 지옥에서 7번의 재판을 무사히 통과한 망자만이 환생하여 새로운 삶을 시작할 수 있다.
+' || chr(10) || '
+“김자홍 씨께선, 오늘 예정 대로 무사히 사망하셨습니다”
+' || chr(10) || '
+화재 사고 현장에서 여자아이를 구하고 죽음을 맞이한 소방관 자홍, 그의 앞에 저승차사 해원맥과 덕춘이 나타난다. 자신의 죽음이 아직 믿기지도 않는데 덕춘은 정의로운 망자이자 귀인이라며 그를 치켜세운다. 저승으로 가는 입구, 초군문에서 그를 기다리는 또 한 명의 차사 강림, 그는 차사들의 리더이자 앞으로 자홍이 겪어야 할 7개의 재판에서 변호를 맡아줄 변호사이기도 하다. 염라대왕에게 천년 동안 49명의 망자를 환생시키면 자신들 역시 인간으로 환생시켜 주겠다는 약속을 받은 삼차사들, 그들은 자신들이 변호하고 호위해야 하는 48번째 망자이자 19년 만에 나타난 의로운 귀인 자홍의 환생을 확신하지만, 각 지옥에서 자홍의 과거가 하나 둘씩 드러나면서 예상치 못한 고난과 맞닥뜨리는데…',
+	'한국',
+	'2017-12-20',
+	139,
+	'12세 이용가',
+	'드라마',
+	'판타지',
+	'',
+	'김용화',
+	0,
+	0,
+	'하정우 ,  차태현 ,  주지훈 ,  김향기 ,  이정재',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	33,
+	'포스터',
+	'Along With the Gods_poster1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	33,
+	'스틸컷1',
+	'Along With the Gods_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	33,
+	'스틸컷2',
+	'Along With the Gods_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	33,
+	'스틸컷3',
+	'Along With the Gods_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	33,
+	'스틸컷4',
+	'Along With the Gods_4.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'신세계',
+	'너, 나하고 일 하나 같이 하자
+' || chr(10) || '
+경찰청 수사 기획과 강과장(최민식)은 국내 최대 범죄 조직인 "골드문"이 기업형 조직으로 그 세력이 점점 확장되자 신입경찰 이자성(이정재)에게 잠입 수사를 명한다. 그리고 8년, 자성은 골드문의 2인자이자 그룹 실세인 정청(황정민)의 오른팔이 되기에 이른다.
+' || chr(10) || '
+우리 브라더는 그냥 딱, 이 형님만 믿으면 돼야!
+' || chr(10) || '
+골드문 회장이 갑자기 사망하자, 강과장(최민식)은 후계자 결정에 직접 개입하는 "신세계" 작전을 설계한다. 피도 눈물도 없는 후계자 전쟁의 한 가운데, 정청(황정민)은 8년 전, 고향 여수에서 처음 만나 지금까지 친형제처럼 모든 순간을 함께 해 온 자성(이정재)에게 더욱 강한 신뢰를 보낸다.
+' || chr(10) || '
+약속 했잖습니까... 이번엔 진짜 끝이라고
+' || chr(10) || '
+한편, 작전의 성공만 생각하는 강과장(최민식)은 계속해서 자성(이정재)의 목을 조여만 간다. 시시각각 신분이 노출될 위기에 처한 자성(이정재)은 언제 자신을 배신할 지 모르는 경찰과, 형제의 의리로 대하는 정청(황정민) 사이에서 갈등하게 되는데…',
+	'한국',
+	'2013-02-21',
+	134,
+	'청소년 이용불가',
+	'범죄',
+	'드라마',
+	'',
+	'박훈정',
+	0,
+	0,
+	'이정재 ,  최민식 ,  황정민 ,  박성웅 ,  송지효',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	34,
+	'포스터',
+	'new_world_poster.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	34,
+	'스틸컷1',
+	'new_world_1.JPG',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	34,
+	'스틸컷2',
+	'new_world_2.JPG',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	34,
+	'스틸컷3',
+	'new_world_3.JPG',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	34,
+	'스틸컷4',
+	'new_world_4.JPG',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'암살',
+	'대한민국 임시정부는 일본 측에 노출되지 않은 세 명을 암살작전에 지목한다. 한국 독립군 저격수 안옥윤, 신흥무관학교 출신 속사포, 폭탄 전문가 황덕삼! 김구의 두터운 신임을 받는 임시정부 경무국 대장 염석진은 이들을 찾아 나서기 시작한다. 암살단의 타깃은 조선주둔군 사령관 카와구치 마모루와 친일파 강인국. 한편, 누군가에게 거액의 의뢰를 받은 청부살인업자 하와이 피스톨이 암살단의 뒤를 쫓는데...
+' || chr(10) || '
+친일파 암살작전을 둘러싼 이들의 예측할 수 없는 운명이 펼쳐진다!',
+	'한국',
+	'2015-07-22',
+	140,
+	'15세 이용가',
+	'액션',
+	'드라마',
+	'',
+	'최동훈 ',
+	0,
+	0,
+	'전지현,  이정재,  하정우,  오달수,  조진웅,  이경영,  최덕문,  ',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	35,
+	'포스터',
+	'Assassination_poster.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	35,
+	'스틸컷1',
+	'Assassination_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	35,
+	'스틸컷2',
+	'Assassination_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	35,
+	'스틸컷3',
+	'Assassination_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	35,
+	'스틸컷4',
+	'Assassination_4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'어느날',
+	'“누구세요?” 어느날, 나에게만 그녀가 보이기 시작했다
+' || chr(10) || '
+아내가 죽은 후 삶의 희망을 잃고 살아가던 보험회사 과장 ‘강수’. 회사로 복귀한 그는 교통사고로 혼수상태에 빠진 ‘미소’의 사건을 맡게 된다. "강수"는 사고 조사를 위해 병원을 찾아가고, 그 곳에서 스스로 "미소"라고 주장하는 한 여자를 만나게 된다. 자꾸만 자신에게만 보이는 ‘미소’를 수상하게 여긴 "강수"는 그녀가 다른 사람들 눈에 보이지 않는 영혼이라는 사실을 알게 되는데…
+' || chr(10) || '
+“제가 보여요?” 어느날, 새로운 세상이 보이기 시작했다
+' || chr(10) || '
+교통사고 후 의식을 잃었다가 병원에서 깨어난 "미소"는 병실에 누워있는 자신의 모습을 보고 스스로가 영혼이 되었다는 사실을 깨닫게 된다. 생전 처음 새로운 세상을 보기 시작한 ‘미소’는 유일하게 자신을 볼 수 있는 "강수"를 만나게 되고 그동안 간절히 이루고 싶었던 소원을 들어달라고 부탁하는데..',
+	'한국',
+	'2017-04-05',
+	114,
+	'15세 이용가',
+	'로맨스',
+	'',
+	'',
+	'이윤기 ',
+	0,
+	0,
+	'김남길, 천우희,  최덕문,  ',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	36,
+	'포스터',
+	'Oneday_poster.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	36,
+	'스틸컷1',
+	'Oneday_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	36,
+	'스틸컷2',
+	'Oneday_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	36,
+	'스틸컷3',
+	'Oneday_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	36,
+	'스틸컷4',
+	'Oneday_4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'어벤져스: 인피니티 워',
+	'새로운 조합을 이룬 어벤져스,
+역대 최강 빌런 타노스에 맞서
+세계의 운명이 걸린 인피니티 스톤을 향한
+무한 대결이 펼쳐진다!',
+	'미국',
+	'2018-04-25',
+	114,
+	'12세 이용가',
+	'액션',
+	'SF',
+	'',
+	'안소니 루소, 조 루소 ',
+	0,
+	0,
+	'로버트 다우니 주니어, 조슈 브롤린, 크리스 헴스워스, 베네딕트 컴 ',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	37,
+	'포스터',
+	'Avengers Infinity War_poster.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	37,
+	'스틸컷1',
+	'Avengers Infinity War_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	37,
+	'스틸컷2',
+	'Avengers Infinity War_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	37,
+	'스틸컷3',
+	'Avengers Infinity War_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	37,
+	'스틸컷4',
+	'Avengers Infinity War_4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'업',
+	'전직 풍선 장사인 78세의 고집불통 노인, 칼 프레드릭슨은 일생일대의 꿈인 남아메리카 야생 에서의 모험 여행을 계획한다.
+' || chr(10) || '
+그가 고안한 방법은 수천개의 풍선으로 집 전체를 들어올려 남아메리카까지 날아가는 것.
+' || chr(10) || '
+성공적으로 집이 공중으로 날아 오른 지 얼마 되지 않아, 칼은 하늘을 날으는 집에 자기 말고도 불청객이 있음을 발견한다.
+' || chr(10) || '
+그것은 바로 8세의 꼬마 러셀. 이제 70살이나 차이가 나는 칼과 러셀, 이 어색한 커플의 모험여행이 시작되는데…',
+	'미국',
+	'2007-07-29',
+	101,
+	'전체이용가',
+	'가족',
+	'애니메이션',
+	'',
+	'피트 닥터,  밥 피터슨',
+	0,
+	0,
+	'크리스토퍼 플러머,  에드워드 애스너,  조단 나가이,  밥 피터슨 ',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	38,
+	'포스터',
+	'up_poster.PNG',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	38,
+	'스틸컷1',
+	'up_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	38,
+	'스틸컷2',
+	'up_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	38,
+	'스틸컷3',
+	'up_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	38,
+	'스틸컷4',
+	'up_4.jpg',
+	sysdate );
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'월드워Z',
+	'전 세계 이상 기류… 거대한 습격이 시작된다!
+의문의 항공기 습격, 국가별 입국 전면 통제, 국경선을 둘러싼 높은 벽,
+세계 곳곳에서 원인을 알 수 없는 이변이 일어나기 시작한다.
+그리고 정체불명 존재들의 무차별적 공격으로 도시는 순식간에 아수라장으로 변한다.
+' || chr(10) || '
+인류의 대재난에 맞설 최후의 적임자, 제리
+군인 출신으로 전시 경험이 풍부하고 위기 대처 능력이 뛰어난 UN 소속 조사관 제리는
+위험한 상황에서 가까스로 가족들과 탈출하는데 성공하고
+이제껏 본적 없는 인류 최대의 위기 앞에 대재난에 맞설 최후의 적임자로 지목된다
+' || chr(10) || '
+생존률 제로, 최후의 카운트다운이 시작된다!
+마침내 제리는 전 세계를 위협하는 거대한 정체들과 직면하게 되고,
+그들의 끊임없는 공격에 맞서 필사의 사투를 벌이게 되는데…
+과연 누구도 살아남을 수 없는 인류 최후의 대재난을 막아낼 수 있을 것인가!',
+	'미국',
+	'2013-06-20',
+	115,
+	'15세 이용가',
+	'드라마',
+	'스릴러',
+	'액션',
+	'마크 포스터  ',
+	0,
+	0,
+	'브래드 피트,  미레일 에노스,  매튜 폭스,  브라이언 크랜스톤',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	39,
+	'포스터',
+	'World War Z_poster1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	39,
+	'스틸컷1',
+	'World War Z_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	39,
+	'스틸컷2',
+	'World War Z_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	39,
+	'스틸컷3',
+	'World War Z_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	39,
+	'스틸컷4',
+	'World War Z_4.jpg',
+	sysdate );
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'인사이드 아웃',
+	'“괜찮아, 다 잘 될 거야!
+우리가 행복하게 만들어 줄게”
+' || chr(10) || '
+모든 사람의 머릿속에 존재하는 감정 컨트롤 본부
+그곳에서 불철주야 열심히 일하는 기쁨, 슬픔, 버럭, 까칠, 소심 다섯 감정들.
+' || chr(10) || '
+이사 후 새로운 환경에 적응해야 하는 
+"라일리"를 위해
+그 어느 때 보다 바쁘게 감정의 신호를 보내지만
+우연한 실수로 "기쁨"과 "슬픔"이 본부를 이탈하게 되자
+"라일리"의 마음 속에 큰 변화가 찾아온다.
+' || chr(10) || '
+"라일리"가 예전의 모습을 되찾기 위해서는 "기쁨"과 "슬픔"이 본부로 돌아가야만 한다!
+그러나 엄청난 기억들이 저장되어 있는 머릿속 세계에서 본부까지 가는 길은 험난하기만 한데…
+과연, "라일리"는 다시 행복해질 수 있을까?
+' || chr(10) || '
+지금 당신의 머릿속에서 벌어지는 놀라운 일!
+하루에도 몇번씩 변하는 감정의 비밀이 밝혀진다!',
+	'미국',
+	'2015-07-09',
+	102,
+	'전체 이용가',
+	'애니메이션',
+	'코미디',
+	'',
+	'피트 닥터',
+	0,
+	0,
+	'다이안 레인,  에이미 포엘러,  카일 맥라클란,  민디 캘링,  빌 헤이더',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	40,
+	'포스터',
+	'Out_poster.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	40,
+	'스틸컷1',
+	'Inside Out_1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	40,
+	'스틸컷2',
+	'Inside Out_2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	40,
+	'스틸컷3',
+	'Inside Out_3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	40,
+	'스틸컷4',
+	'Inside Out_4.jpg',
+	sysdate );
+
+
+----------------------------------------------------------------------------------------------------------------------------ㅈㅊ
+insert into movie values(
+	movie_seq.nextval,
+	'장화 홍련',
+	'인적이 드문 시골, 이름 모를 들꽃들이 소담하게 피어 있는 신작로 끝에 일본식 목재 가옥이 홀로 서 있다. 낮이면 피아노 소리가 들려 올 듯 아름다운 그 집은 그러나,어둠이 내리면 귀기 서린 음산함을 뿜기 시작한다. 예사롭지 않은 기운이 서려 있는 이 집에서 어른도 아이도 아닌 아름다운 두자매. 수미.수연이, 아름답지만 신경이 예민한 새엄마와 함께 살게 된 그날. 그 가족의 괴담이 시작된다.
+ ' || chr(10) || '
+	수연.수미 자매가 서울에서 오랜 요양을 마치고 돌아 오던 날. 새엄마 은주는 눈에 띄게 아이들을 반기지만, 자매는 그녀를 꺼리는 기색이 역력하다. 함께 살게 된 첫날부터 집안에는 이상한 기운이 감돌고 가족들은 환영을 보거나 악몽에 시달린다. 수미는 죽은 엄마를 대신해 아버지 무현과 동생 수연을 손수 챙기려 들고, 생모를 똑 닮은 수연은 늘 겁에 질려 있다. 신경이 예민한 은주는 그런 두 자매와 번번히 다투게 되고, 아버지 무현은 그들의 불화를 그저 관망만 한다. 은주는 정서불안 증세를 보이며 집안을 공포 분위기로 몰아가고, 동생을 지키기 위해 안간힘을 쓰는 수미가 이에 맞서는 가운데, 집안 곳곳에서 괴이한 일들이 잇달아 벌어지기 시작하는 데.',
+	'한국',
+	'2003-06-13',
+	118,
+	'청소년 관람불가',
+	'스릴러',
+	'공포',
+	'',
+	'김지운',
+	0,
+	0,
+	'임수정, 염정아, 김갑수, 문근영, 박미현, 우기홍, 이승비',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	41,
+	'포스터',
+	'poster_ATaleofTwo Sisters.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	41,
+	'스틸컷1',
+	'ATaleofTwo Sisters.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	41,
+	'스틸컷2',
+	'ATaleofTwo Sisters1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	41,
+	'스틸컷3',
+	'ATaleofTwo Sisters2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	41,
+	'스틸컷4',
+	'ATaleofTwo Sisters3.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'좋은 놈, 나쁜 놈, 이상한 놈',
+	'딱 한 놈만 살아남는다! ' || chr(10) || ' ' || chr(10) || '
+ 1930년대, 다양한 인종이 뒤엉키고 총칼이 난무하는 무법천지 만주의 축소판 제국 열차에서 각자 다른 방식으로 격동기를 살아가는 조선의 풍운아, 세 명의 남자가 운명처럼 맞닥뜨린다. ' || chr(10) || '
+ 돈 되는 건 뭐든 사냥하는 현상금 사냥꾼 박도원(정우성), 최고가 아니면 참을 수 없는 마적단 두목 박창이(이병헌), 잡초 같은 생명력의 독고다이 열차털이범 윤태구(송강호). 이들은 서로의 정체를 모르는 채 태구가 열차를 털다 발견한 지도를 차지하기 위해 대륙을 누비는 추격전을 펼친다. ' || chr(10) || '
+ 정체 불명의 지도 한 장을 둘러 싼 엇갈리는 추측 속에 일본군, 마적단까지 이들의 레이스에 가담하게 되고… 결과를 알 수 없는 대 혼전 속. 과연 최후의 승자는 누가 될 것인가?',
+	'한국',
+	'2008-07-17',
+	139,
+	'15세 이상',
+	'액션',
+	'코미디',
+	'서부',
+	'김지운',
+	0,
+	0,
+	'송강호, 이병헌, 정우성, 윤제문, 류승수, 송영창, 손병호, 오달수',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	42,
+	'포스터',
+	'poster_Abaddevil.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	42,
+	'스틸컷1',
+	'Abaddevil.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	42,
+	'스틸컷2',
+	'Abaddevil2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	42,
+	'스틸컷3',
+	'Abaddevil3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	42,
+	'스틸컷4',
+	'Abaddevil4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'저스티스 리그',
+	'인류의 수호자인 슈퍼맨이 사라진 틈을 노리고 ‘마더박스’를 차지하기 위해 빌런 스테픈울프가 악마군단을 이끌고 지구에 온다.  ' || chr(10) || '
+ 마더박스는 시간과 공간, 에너지, 중력을 통제하는 범우주적인 능력으로 행성의 파괴마저도 초래하는 물체로  이 강력한 힘을 통제하기 위해 고대부터 총 3개로 분리되어 보관되고 있던 것. ' || chr(10) || ' 
+ 인류에 대한 믿음을 되찾고 슈퍼맨의 희생 정신에 마음이 움직인 브루스 웨인은 
+ 새로운 동료인 다이애나 프린스에게 도움을 청해 이 거대한 적에 맞서기로 한다.  ' || chr(10) || ' ' || chr(10) || '
+ 배트맨과 원더 우먼은 새로이 등장한 위협에 맞서기 위해 아쿠아맨, 사이보그, 플래시를 찾아 신속히 팀을 꾸린다. 
+ 이들 슈퍼히어로 완전체는 스테픈울프로부터 마더박스를 지키기 위해 지구의 운명을 건 전투를 벌인다!',
+	'미국',
+	'2017-11-15',
+	120,
+	'12세 관람가',
+	'액션',
+	'모험',
+	'판타지',
+	'잭 스나이더',
+	0,
+	0,
+	'벤 애플렉, 갤 가돗, 제이슨 모모아, 레이 피셔, 에즈라 밀러, 헨리 카빌, J.K.시몬스, 윌렘 대포',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	43,
+	'포스터',
+	'poster_JusticeLeague.jpg.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	43,
+	'스틸컷1',
+	'JusticeLeague.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	43,
+	'스틸컷2',
+	'JusticeLeague.jpg2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	43,
+	'스틸컷3',
+	'JusticeLeague.jpg3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	43,
+	'스틸컷4',
+	'JusticeLeague.jpg4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'지옥화',
+	'용서받길 원하는 남자, 지옥의 나락으로 향한다! ' || chr(10) || ' ' || chr(10) || '
+	스님 지월은 여신도와의 부적절한 관계를 맺다 발각되어 쫓겨나 생계를 위해 탁발을 하던 중 우연히 고깃집에서 혼자 술을 먹고 있는 연화를 발견하게 된다. ' || chr(10) || ' 그녀에게 이끌려 탐하려 하던 지월은 자신의 신분과 욕망에 대한 혼란이 깊어지며 헤어나올 수 없는 죄책감에 빠지게 되고, 지월은 자신의 죄를 용서받기 위해 자신의 곁을 영원히 떠나버린 연화의 가족들이 있는 필리핀으로 향하고 그곳에서 그는 연화를 닮은 동생 연서를 만나 또 다시 연정을 품게 되는데...
+	 ' || chr(10) || ' 
+	 결코 용서받을 수 없는 한 남자, 부디 용서하소서 !',
+	'한국',
+	'2014-07-02',
+	99,
+	'청소년 관람불가',
+	'스릴러',
+	'액션',
+	'',
+	'이상우',
+	0,
+	0,
+	'원태희, 차승민, 김헌, 송진열, 이용녀, 이광수, 차준, 김현욱',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	44,
+	'포스터',
+	'poster_Hell.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	44,
+	'스틸컷1',
+	'Hell1.png',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	44,
+	'스틸컷2',
+	'Hell2.png',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	44,
+	'스틸컷3',
+	'Hell3.png',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	44,
+	'스틸컷4',
+	'Hell4.png',
+	sysdate );
+
+
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'전설의 주먹',
+	'학창시절, 화려한 무용담들을 남기며 학교를 평정했던 파이터들 중 진짜 최강자는 누구였을까? ' || chr(10) || ' ' || chr(10) || ' ' || chr(10) || '
+ 한때 ‘전설’이라 불렸던 그들이 맞붙어 승부를 가리는 TV파이트 쇼 ‘전설의 주먹’.
+ 세월 속에 흩어진 전국 각지의 파이터들이 하나 둘씩 등장하고, 쇼는 이변을 속출하며 뜨겁게 ' || chr(10) || '
+ 달아오른다. 그리고 화제 속에 등장한 전설의 파이터 세 사람에 전국민의 시선이 집중된다. ' || chr(10) || '
+   ' || chr(10) || '
+ 복싱 챔피언의 꿈이 눈 앞에서 좌절된, ' || chr(10) || '
+ 지금은 혼자서 딸을 키우는 국수집 사장 임덕규(황정민) ' || chr(10) || '
+   ' || chr(10) || '
+ 카리스마 하나로 일대를 평정했던,
+ 지금은 출세를 위해 자존심까지 내팽개친 대기업 부장 이상훈(유준상) ' || chr(10) || '
+   ' || chr(10) || '
+ 남서울고 독종 미친개로 불렸던, ' || chr(10) || '
+ 지금도 일등을 꿈꾸지만 여전히 삼류 건달인 신재석(윤제문) ' || chr(10) || ' ' || chr(10) || '
+   ' || chr(10) || '
+ 말보다 주먹이 앞섰던 그 시절, 예기치 못한 사건으로 각자의 삶을 살던 세 친구들의 비하인드
+스토리까지 밝혀지면서 전국은 ‘전설의 주먹’ 열풍에 휩싸인다. 마침내 역대 최고의 파이터들이 8강
+토너먼트를 통해 우승상금 2억 원을 놓고 벌이는 최후의 파이트 쇼 ‘전설대전’의 막이 오르고…
+ 이제 자기 자신이 아닌 그 누군가를 위해 인생의 마지막 승부를 건 세 친구의 가슴 뜨거운 대결이 다시
+ 	시작된다.
+   ' || chr(10) || '
+ 	진짜 전설은 지금부터다.',
+	'한국',
+	'2013-04-10',
+	153,
+	'청소년 관람불가',
+	'액션',
+	'드라마',
+	'',
+	'강우석',
+	0,
+	0,
+	'황정민, 유준상, 이요원, 윤제문, 정웅인, 성지루, 강성진, 박정민',
+	0,
+	0);
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	45,
+	'포스터',
+	'poster_Legendaryfists.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	45,
+	'스틸컷1',
+	'Legendaryfists1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	45,
+	'스틸컷2',
+	'Legendaryfists2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	45,
+	'스틸컷3',
+	'Legendaryfists3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	45,
+	'스틸컷4',
+	'Legendaryfists4.jpg',
+	sysdate );
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'제5 원소',
+	'사라진 4개 원소를 되찾고 제 5원소의 비밀을 밝혀라!
+	1914년 이집트. 한 노학자가 피라미드의 벽에 새겨진 ''5개 원소''의 비밀을 밝혀낸다. 2259년 뉴욕.  ' || chr(10) || '지구에 거대한 행성이 다가와 대통령을 비롯한 전 군대는 비상상태에 빠진다. 지구를 구해줄 4개 원소를 가진 몬도샤인들은 지구로 오는 도중에 모두 죽게 되고 과학자들은 남은 팔로 유전자 합성을 통해 빨간 머리 소녀 리루를 만든다. ' || chr(10) || ' 리루는 과학자들에게서 도망치던 중 전직 연방 요원인 코벤을 만나게 되고, 두 사람은 4개 원소를 찾기 위해 피라미드의 예언을 알고 있는 코넬리우스 신부와 함께 파라다이스 행성으로 간다. ' || chr(10) || ' 한편 무기상인 조르그도 4개 원소를 손에 넣기 위해 그들을 뒤쫓는데…',
+	'프랑스',
+	'1997-07-17',
+	126,
+	'15세 관람가',
+	'액션',
+	'모험',
+	'SF',
+	'뤽 베송',
+	0,
+	0,
+	'브루스 윌리스, 밀라 요보비치, 게리 올드만, 이안 홈, 크리스 터커, 루크 페리, 브라이언 제임스, 토미 타이니 리스터',
+	0,
+	0);
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	46,
+	'포스터',
+	'poster_Thefifthelement.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	46,
+	'스틸컷1',
+	'Thefifthelement.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	46,
+	'스틸컷2',
+	'Thefifthelement2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	46,
+	'스틸컷3',
+	'Thefifthelement3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	46,
+	'스틸컷4',
+	'Thefifthelement4.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'찰리와 초콜릿 공장',
+	'팀 버튼과 조니 뎁이 초대하는 달콤한 환상의 세계! ' || chr(10) || '
+전 세계 누구에게나 사랑 받는 세계 최고의 초콜릿 공장인 ''윌리 웡카 초콜릿 공장''.  ' || chr(10) || '
+매일 엄청난 양의 초콜릿을 생산해 세계 각국으로 운반하고 있지만 그 누구도 공장을 드나 드는 
+사람을 본 적이 없는 비밀의 공간이다.  ' || chr(10) || '
+공장보다 더 신비로운 수수께끼는 초콜릿 공장의 공장장인 윌리 웡카(조니 뎁)라는 인물.  ' || chr(10) || '
+들리는 소문에 의하면 웡카는 몇 년 동안 공장 밖으로 나가본 적도 없다고 한다. 그가 어떤 사람이고, 왜 초콜릿 만드는 일에 모든 것을 걸고 있는지 모두들 궁금해 할 뿐이다. 어느 날, 
+윌리 웡카가 5개의 웡카 초콜릿에 감춰진 행운의 ''황금티켓''을 찾은 어린이 다섯 명에게 자신의 공장을 공개하고
+	 그 모든 제작과정의 비밀을 보여주겠다는 선언을 한다. 이제 전 세계 어린이들은 황금티켓을 찾기 위한
+	 노력을 시작한다.',
+	'미국',
+	'2005-09-16',
+	114,
+	'전체 관람가',
+	'판타지',
+	'모험',
+	'코미디',
+	'팀 버튼',
+	0,
+	0,
+	'조니 뎁, 프레디 하이모어, 데이빗 켈리, 헬레나 본햄 카터, 노아 테일러, 미시 파일, 제임스 폭스, 딥 로이',
+	0,
+	0);
+
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	47,
+	'포스터',
+	'poster_ChocolateFactory.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	47,
+	'스틸컷1',
+	'ChocolateFactory1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	47,
+	'스틸컷2',
+	'ChocolateFactory2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	47,
+	'스틸컷3',
+	'ChocolateFactory3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	47,
+	'스틸컷4',
+	'ChocolateFactory4.jpg',
+	sysdate );
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	47,
+	'스틸컷4',
+	'ChocolateFactory5.jpg',
+	sysdate );
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'천하장사 마돈나',
+	'女子가 되고 싶은 少年 | 뒤집기 한 판이면 여자가 된다 | 씨름은 남자만 하는 줄 알았다 - 경원고 씨름부 일동 - 	척 보기엔 뚱보 소년, 마음만은 마돈나. 우리의 오.동.구. 고등학교 1학년. 뚱보 소년 오동구. 육중한 몸매와 달리 자신이 여자라고 생각하고 있는 그의 장래희망은 ‘진짜’ 여자가 되는 것이다. 그것도 마돈나처럼 완벽한 여자가 되어 짝사랑하는 일어 선생님 앞에 당당히 서는 것! ' || chr(10) || ' ' || chr(10) || '
+ 뒤집기 한 판이면, 여자가 될 수 있다?! 여자가 되려면 수술비가 필요하고, 가진 거라곤 엄청나게 센 힘 하나뿐인 동구에겐 딱 500만원이 부족하다. 그런 어느 날 날아든 낭보! ‘인천시 배 고등부 씨름대회’ 우승자 장학금이 500만원. 뒤집기 한판이면 마침내 여자가 될 수 있다! 하지만 동구는 죽을 맛이다. 하필, 남학생들과 웃통 벗고 맨 살 부대껴야 하는 씨름이라니!, 마돈나가 되기 위해,천하장사부터 되어야 하는 뚱보 소년 오동구의 ‘여자가 되는 길’은 험하고 아찔하기만 한데...',
+	'한국',
+	'2006-08-31',
+	116,
+	'15세 관람가',
+	'코미디',
+	'드라마',
+	'',
+	'이해영, 이해준',
+	0,
+	0,
+	'류덕환, 김윤석, 문세윤, 이언, 박영서, 윤원석, 수파사이즈, 김원식',
+	0,
+	0);
+
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	48,
+	'포스터',
+	'poster_champion.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	48,
+	'스틸컷1',
+	'champion1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	48,
+	'스틸컷2',
+	'champion2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	48,
+	'스틸컷3',
+	'champion3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	48,
+	'스틸컷4',
+	'champion4.jpg',
+	sysdate );
+
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'청년경찰',
+	'의욕충만 경찰대생 기준(박서준) X 이론백단 경찰대생 희열(강하늘) ' || chr(10) || '
+ 둘도 없는 친구인 두 사람은 외출을 나왔다 우연히 납치 사건을 목격하게 된다. ' || chr(10) || '
+ 목격자는 오직 두 사람 뿐! 기준과 희열은 학교에서 배운 대로 지체 없이 경찰에 신고한다. ' || chr(10) || ' ' || chr(10) || '
+ 	' || chr(10) || '
+ 하지만 복잡한 절차와 부족한 증거로 수사는 전혀 진행될 기미가 보이지 않는 상황! ' || chr(10) || '
+ 1분 1초가 급박한 상황에서 아까운 시간만 흘러가자,  ' || chr(10) || '
+ 기준과 희열은 직접 발로 뛰는 수사에 나서기로 하고 ' || chr(10) || '
+ 예측 불가능한 상황을 마주하게 되는데… ' || chr(10) || '
+ ' || chr(10) || '
+ 전공지식 총동원! 파릇파릇한 놈들의 혈기왕성 실전수사가 시작된다!',
+	'한국',
+	'2017-08-09',
+	109,
+	'15세 관람가',
+	'액션',
+	'',
+	'',
+	'김주환',
+	0,
+	0,
+	'박서준, 강하늘, 성동일, 박하선, 고준, 이호정, 조준',
+	0,
+	0);
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	49,
+	'포스터',
+	'poster_Ayoungpoliceman.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	49,
+	'스틸컷1',
+	'Ayoungpoliceman1.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	49,
+	'스틸컷2',
+	'Ayoungpoliceman2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	49,
+	'스틸컷3',
+	'Ayoungpoliceman3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	49,
+	'스틸컷4',
+	'Ayoungpoliceman4.jpg',
+	sysdate );
+
+
+
+
+insert into movie values(
+	movie_seq.nextval,
+	'최악의 하루',
+	'늦여름 서촌의 어느 날, 배우 지망생 은희(한예리)는 연기 수업을 마치고 나오는 길에 
+ 길을 찾는 일본인 소설가 료헤이(이와세 료)를 만난다.  ' || chr(10) || '
+ 말은 잘 안 통하지만 이상하게 대화가 이어지는 료헤이와 헤어진 후  ' || chr(10) || '
+ 은희는 드라마에 출연 중인 남자친구 현오(권율)를 만나러 촬영지인 남산으로 향한다.  ' || chr(10) || '
+  ' || chr(10) || ' ' || chr(10) || '
+ 그리고 같은 시간, 한 때 은희와 잠깐 만났던 적이 있는 남자 운철(이희준)은 
+ 은희가 남산에서 올린 트위터 멘션을 보고 은희를 찾아 남산으로 온다.  ' || chr(10) || '
+ 오늘 처음 본 남자, 지금 만나는 남자 그리고 전에 만났던 남자까지 하루에 세 명의 남자를 만나게 된 은희.  ' || chr(10) || '
+ 과연 이 하루의 끝은 해피엔딩일 수 있을까?',
+	'한국',
+	'2016-08-25',
+	93,
+	'15세 관람가',
+	'멜로',
+	'로맨스',
+	'',
+	'김종관',
+	0,
+	0,
+	'한예리, 이와세료, 권율, 이승연, 최유화, 김준범',
+	0,
+	0);
+
+
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	50,
+	'포스터',
+	'poster_Theworstday.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	50,
+	'스틸컷1',
+	'Theworstday.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	50,
+	'스틸컷2',
+	'Theworstday2.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	50,
+	'스틸컷3',
+	'Theworstday3.jpg',
+	sysdate );
+
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	50,
+	'스틸컷4',
+	'Theworstday4.jpg',
+	sysdate );
+
+
+---------------------------------------------------------------------------------------------------------------------  ㅌㅍㅎ
+
+--ㅌ시작 영화 =================================================================================
+
+--https://youtu.be/K0u6LwKYBhI
+--https://youtu.be/L9DGUxCvQrU
+
+insert into movie values(
+  movie_seq.nextval, '타짜', '인생을 건 한판 승부 | 큰거 한판에 인생은 예술이 된다! | 목숨을 걸 수 없다면, 배팅하지 마라! | 꽃들의 전쟁
+'|| chr(10) || '
+가구공장에서 일하며 남루한 삶을 사는 고니는 대학보다 가난을 벗어나게 해줄 돈이 우선인 열혈 천방지축 청년! 어느 날 고니는, 
+가구공장 한 켠에서 박무석 일행이 벌이는 화투판에 끼게 된다. 스무장의 화투로 벌이는 섯다 한 판! 하지만 고니는 그 판에서 삼년 동안 모아두었던 돈 전부를 날리고 만다.
+그것이 전문도박꾼 타짜들이 짜고 친 판이었단 사실을 뒤늦게 안 고니는 박무석 일행을 찾아 나서고, 도박으로 시비가 붙은 한 창고에서 우연인 듯 필연처럼 전설의 타짜 평경장을 만난다. 
+그리고 잃었던 돈의 다섯 배를 따면 화투를 그만두겠단 약속을 하고, 그와 함께 본격적인 꽃싸움에 몸을 던지기 위한 동행길에 오른다.
+  드디어 타짜의 길로 들어선 고니! 평경장과 지방원정을 돌던 중 도박판의 꽃, 설계자 정마담을 소개 받고 둘은 서로에게서 범상치 않은 승부욕과 욕망의 기운을 느끼게 된다. 
+  고니는 정마담이 미리 설계해 둔 판에서 큰 돈을 따게 되고, 결국 커져 가는 욕망을 이기지 못한 채 평경장과의 약속을 어기고 만다. 정마담과의 화려한 도박인생, 
+  평경장과의 헤어짐을 택한 고니. ',
+  '한국', '2006-09-28', 139, '청소년 이용불가', '범죄', '드라마', '스릴러', '최동훈',
+  0, 0, '조승우, 김혜수, 배윤식, 유해진, 김윤석, 주진모', 0, 0);
+
+
+-----------------------------------------------------------------
+--https://youtu.be/0dd_NTbUV9g
+--https://youtu.be/_xwYUxVQfcs
+
+insert into movie values(
+  movie_seq.nextval, '택시 운전 기사', '1980년 5월, 서울 택시운전사. 
+광주? 돈 워리, 돈 워리! 아이 베스트 드라이버
+'|| chr(10) || '
+택시운전사 만섭(송강호)은 외국손님을 태우고 광주에 갔다 통금 전에 돌아오면 
+ 밀린 월세를 갚을 수 있는 거금 10만원을 준다는 말에 
+ 독일기자 피터(토마스 크레취만)를 태우고 영문도 모른 채 길을 나선다.
+ '|| chr(10) || '
+ 광주 그리고 사람들. 모르겄어라, 우덜도 우덜한테 와 그라는지…
+ 어떻게든 택시비를 받아야 하는 만섭의 기지로 검문을 뚫고 겨우 들어선 광주. 
+ 위험하니 서울로 돌아가자는 만섭의 만류에도 
+ 피터는 대학생 재식(류준열)과 황기사(유해진)의 도움 속에 촬영을 시작한다. 
+ 그러나 상황은 점점 심각해지고 만섭은 집에 혼자 있을 딸 걱정에 점점 초조해지는데…', 
+ '한국', '2017-08-02', 137, '15세 이용가', '드라마', '가족', '', '장훈',
+  0, 0, '송강호, 토마스 크레취만, 유해진, 류준열, 박혁권, 최귀화', 0, 0);
+
+
+-----------------------------------------------------------------
+--https://youtu.be/nm2aZz45pGE
+--https://youtu.be/CjXJSwhKEPQ
+
+insert into movie values(
+  movie_seq.nextval, '태극기 휘날리며', '1950년 6월.. 서울 종로거리에서 가족의 생계를 책임지기 위해 열심히 살아가는 진태(장동건)는 힘든 생활 속에도 약혼녀 영신(이은주)과의 결혼과, 
+  세상에서 가장 소중하게 생각하는 동생 진석(원빈)의 대학진학을 위해 언제나 활기차고 밝은 생활을 해 나간다.
+  6월의 어느 날, 한반도에 전쟁이 일어났다는 호회가 배포되면서 평화롭기만 하던 서울은 순식간에 싸이렌 소리와 폭발음, 그리고 사람들의 비명 소리로 가득해진다. 
+  이에 , 남쪽으로 피난을 결정한 진태는 영신과 가족들을 데리고 수많은 피난행렬에 동참하지만, 피난열차를 타기 위해 도착한 대구역사에서 거대한 운명의 소용돌이에 말려들고 만다.
+   만 18세로 징집 대상이었던 ‘진석’은 군인들에 의해 강제로 군용열차로 오르게 되고 진석을 되 찾아오기 위해 열차에 뛰어오른 ‘진태’ 또한 징집이 되어 군용열차에 몸을 싣게 된다.
+  평온한 일상에서 피 튀기는 전쟁터로 내 몰린 ‘진태’와 ‘진석’은 훈련받을 시간조차 없이 국군 최후의 보루인 낙동강 방어선으로 실전 투입이 되고 동생과 같은 소대에 배치된 ‘진태’는 동생의 징집해제를 위해 대대장을 만나게 된다. 
+  대대장과의 면담을 통해 동생의 제대를 위해 자신이 해야 할 최선의 것이 무엇인지를 느끼게 된 ‘진태’는 그 무엇보다 동생의 생존을 위해 총을 들며 영웅이 되기를 자처하는데.. ', 
+   '한국', '2004-02-05', 145, '15세 이용가', '전쟁', '드라마', '액션', '강제규',
+  0, 0, '장동건, 원빈, 이은주, 공형진', 0, 0);
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/VVZQ39i5G1s
+--https://youtu.be/jAAAXMuId8g?list=PLIiIsjUV7CSHhkHYaJLxxvqDir0mJ1GKj
+
+insert into movie values(
+  movie_seq.nextval, '터미네이터2', '인간과 기계의 대전쟁.. 그를 지키지 않으면 미래 또한 없다!
+'|| chr(10) || '
+미래, 인류와 기계의 전쟁은 계속 되는 가운데 스카이넷은 인류 저항군 사령관 존 코너를 없애기 위해 액체 금속형 로봇인 T-1000(로버트 패트릭)을 과거의 어린 존 코너에게로 보낸다. 
+형태의 변신과 자가 치유까지 가능한 T-1000에 대항하고 존 코너를 지키기 위해 인류 저항군은 T-101 (아놀드 슈왈제네거)을 과거로 급파한다. 미래의 인류 운명을 쥔 어린 존 코너, 
+그를 구해내지 않으면 인류의 미래는 없다. 반드시 제거해야 하는 스카이넷의 T-1000은 거침없이 존 코너 일행을 위협하며 숨가쁜 추격을 시작하는데...', 
+'미국', '1991-07-06', 137, '15세 이용가', 'SF', '액션', '스릴러', '제임스 카메론',
+  0, 0, '아놀드 슈왈제네거, 린다 해밀턴, 에드워드 펄롱, 로버트 패트릭', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/_EAxUq_Ilf8
+--https://youtu.be/n33jXAYTJCk
+
+insert into movie values(
+  movie_seq.nextval, '토이 스토리', '우디(톰 행크스 목소리 분)는 6살짜리 남자 아이 앤디가 가장 아끼는 카우보이 인형인데, 
+  어느날 접었다 폈다 하는 날개와 레이저 디지털 음성을 가진 최신 액션 인형 버즈(팀 알렌 목소리 연기)가 나타나자 그의 위치가 흔들리기 시작한다. 모든 장난감들의 최고의 공포는 새로운 장난감들에 의해 밀려나는 것이다. 
+  애타는 우디의 심정에도 불구하고 버즈는 앤디의 최고 인형으로 자리를 잡고, 장난감 세계 - 우디의 친구인 강아지 슬링키(짐 바니 목소리 분), 참을성 없는 Mr. 
+  포테토(돈 리클스 목소리 분), 마음 약한 공룡 렉스(월레스 숀 목소리 분), 돼지 저금통 햄(존 래츤버거 목소리 분), 아름다운 사기 램프 인형인 보 피프(애니 파츠 목소리 분) - 에서도 인기가 급상승한다. 
+  한편, 기세등등한 버즈가 자신이 장난감이 아닌, 외계에서 불시착한 우주 전사라고 믿는다. 우디는 버즈를 없앨 계획을 세우나, 우여곡적 끝에 둘은 바깥세상에서 서로의 힘을 합치지 않으면 살아남을 수 없는 상황에 이른다. 
+  한편 라이벌에서 동료사이로 변한 그들은 인형과 장난감을 못살게 하는 악명높은 무서운 아이 시드의 손아귀에 들어가게 된다. 시드와 그를 닮은 개 스커드에게서 벗어나기 위해서 그 둘은 더욱 가까워진다. 
+  버즈는 그가 진짜 우주전사가 아니라는걸 깨닫고 삶을 포기하기까지 이르나 우디의 도움으로 본인의 진짜 가치 - 장난감으로서 - 를 깨닫게 된다. 카우보이와 우주전사는 목숨을 건 모험을 통해 진정한 우정과 신뢰를 배우게 된다.', 
+  '미국', '2010-05-05', 77, '전체 이용가', '애니메이션', '코미디', '가족', '존 라세터',
+  0, 0, '톰 행크스, 팀 알렌 , 돈리클스, 짐 바니, 윌리스 쇼운', 0, 0);
+  
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/c3gI9ms8Fdc
+--https://youtu.be/T31SVOQUyoU
+
+  insert into movie values(
+  movie_seq.nextval, '트루먼 쇼
+ ', '트루먼 버뱅크(Truman Burbank: 짐 캐리 분)는 평범한 샐러리맨이다. 적어도 그가 아는 한은 그렇다. 그는 메릴(Meryl Burbank/Hannah Gill: 로라 린니 분)이란 여인과 결혼했고 보험회사에서 근무하며
+  어린 시절 아빠(Kirk Burbank: 브라이언 디레이트 분)가 익사하는 것을 보고 물에 대한 공포증이 있는 남자다. 
+  그런데 어느 날 그는 익사한 것으로 알던 아버지를 길에서 만나고 알 수 없는 사람에 의해 아빠가 끌려가는 것을 보면서 자신의 생활이 뭔가 평범치 못하다는 것을 확신하게 된다. 
+  그는 하루 24시간 생방송 되는 트루먼 쇼의 주인공이다. 전 세계의 시청자들이 그의 탄생부터 30이 가까운 지금까지 일거수 일투족을 TV를 통해 보고 있다. 그는 만인의 스타지만 정작 본인은 짐작도 못하고 있다. 
+  그의 주변 인물은 모두 배우이고 사는 곳 또한 스튜디오이지만 그는 실비아(Lauren Garland/Sylvia: 나타샤 맥엘혼 분)를 만날 때까지 전혀 알지 못한다. 
+  대학 때 이상형의 여인 실비아와 만난 트루먼은 그 여인으로부터 모든게 트루먼을 위해 만들어진 가짜란 얘기를 듣는데 그 여인이 피지섬으로 간다는 얘길 듣고 늦게나마 그 여인을 찾아 떠나기로 결심한다. 
+  아내와 함께 떠나려는 시도를 하지만 번번히 실패하면서 가족, 친구 조차 믿을 수 없다는 것을 깨닫게 되고 혼자서 고향을 빠져나가려는 시도를 한다.', 
+ '미국 ', '1998-10-24', 103, '12세 이용가', '코미디', '드라마', 'SF ', '피터 위어',
+  0, 0, '짐 캐리, 에드 해리스 , 로라 리니 , 노아 엠머리히, 나타샤 멕켈혼', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/pdOrKWXonfs
+--https://youtu.be/f2qqD7ljYVY
+
+  insert into movie values(
+  movie_seq.nextval, '트랜스포머:최후의 기사', '두 세상의 충돌, 하나만 살아남는다!
+'|| chr(10) || '
+옵티머스 프라임은 더 이상 인간의 편이 아니다. 
+ 트랜스포머의 고향 사이버트론의 재건을 위해 지구에 있는 고대 유물을 찾아나선 옵티머스 프라임은 인류와 피할 수 없는 갈등을 빚고, 오랜 동료 범블비와도 치명적인 대결을 해야만 하는데… 
+  '|| chr(10) || '
+ 영원한 영웅은 없다! 
+ 하나의 세상이 존재하기 위해선 다른 세상이 멸망해야 한다!', 
+ '미국 ', '2017-06-21', 151, '12세 이용가', '액션', '모험,', 'SF ', '마이클 베이',
+  0, 0, '마크 월버그, 안소니 홉킨스, 로라 하드독, 조쉬 더하멜, 이사벨라 모너, 피터 쿨렌 , 프랭크 웰커 ', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/tscrPAHwyIY
+--https://youtu.be/F2_zgugXwqg
+
+  insert into movie values(
+  movie_seq.nextval, '트리플 엑스 리턴즈
+ ', '지상 최고의 스파이 군단이 온다!
+전세계 최강의 스파이 프로젝트 ''트리플 엑스'' 전격 가동!
+'|| chr(10) || '
+전설의 스파이 샌더 케이지(빈 디젤)는 자취를 감춘 채 살아가던 중, 
+ 기븐스 요원(사무엘 L. 잭슨)의 뒤를 이어 트리플 엑스 프로젝트 시작하라는 임무를 받게 된다. 
+ 흩어져 있던 남다른 개성을 지닌 최정예 스파이 요원들은 샌더 케이지를 중심으로 모이게 되고, 
+ 마침내 재결성된 최강의 스파이 군단 ‘트리플 엑스’는 전세계를 위협하는 판도라 박스를 되찾기 위한 사상 최악의 미션에 돌입하는데…
+', '미국 ', '2017-02-08', 106, '15세 이용가', '액션', '모험', '스릴러 ', 'D.J. 카루소
+',
+  0, 0, '빈 디젤, 사무엘 L. 잭슨, 루비 로즈, 니나 도브레브, 로리 맥칸, 견자단', 0, 0);
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/fAlpsMkxzg4
+--https://youtu.be/l4q_ZK7i_nU
+
+  insert into movie values(
+  movie_seq.nextval, '트와일라잇', '햇빛을 사랑하는 17세 소녀 벨라(이사벨라 스완)는 황량하고 비가 많이 오는 워싱턴 주 포크스에 있는 아빠의 집으로 이사를 온다. 전학 온 첫날, 벨라는 이유를 알 수 없는 적의로 가득한 에드워드 컬렌이라는 남학생과 마주친다. 냉담하고 스타일리시하며, 마음을 무방비하게 만들 정도로 잘생긴 에드워드와 피치 못하게 자꾸 접하면서 벨라의 인생은 전율과 두려움이 넘치는 전환을 맞이한다.
+  지금까지 에드워드와 그의 일족은 작은 소도시에서 뱀파이어라는 자신들의 정체를 비밀로 지켜 왔다. 그러나 연인이 되고만 이 참신한 커플은 라이벌 뱀파이어 일족에게 추격당하게 되고 벨라는 어느새 자의반 타의반으로 불사(不死)의 존재가 되고픈 바람을 지닌 채 예기치 못한 운명에 빠져든다. 에드워드가 가장 각별하게 여기는 벨라를 포함해 그 누구도 안전하지 않다. 어린 연인은 어느 새 욕망과 위험이라는 양면을 지닌 칼날 위에 위험천만하게 서 있게 된다.', 
+  '미국 ', '2009-02-26', 121, '12세 이용가', '판타지', '멜로', '스릴러 ', '캐서린 하드윅',
+  0, 0, '크리스틴 스튜어트, 로버트 패틴슨, 테일러 로트너, 마이클 웰치, 저스틴 진, 크리스티안 세라토스', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/kvgSjipdEs0
+--https://youtu.be/uSIC8oQJ9aM
+
+  insert into movie values(
+  movie_seq.nextval, '특종: 량첸살인기
+ ', '일생일대의 특종인.줄.알.았.다! 
+ 이혼, 해고의 위기에 몰린 열혈 기자 ‘허무혁’. 
+ 우연한 제보로 연쇄살인사건과 관련한 일생일대의 특종을 터트린다. 
+ 하지만 단독 입수한 연쇄살인범의 친필 메모가 소설 ‘량첸살인기’의 한 구절임을 알게 된 무혁은 
+ 세상을 떠들썩하게 만든 특종이 사상초유의 실수임을 깨닫게 된다. 
+   '|| chr(10) || '
+ 내가 보도하는 대로 사건이 벌어진다! 
+ 이를 알리 없는 보도국은 후속 보도를 기다리고 
+ 경찰은 사건의 취재 과정을 밝히라며 무혁을 압박해온다. 
+ 심지어 특종의 진실을 알고 있다는 목격자까지 나타나는 
+ 걷잡을 수 없는 상황 속, 
+ 무혁이 보도한 오보 그대로 실제 살인사건이 벌어지기 시작하는데…! 
+   '|| chr(10) || '
+ 사상초유의 실수! 
+ 사건은 걷잡을 수 없이 점점 커져간다!', 
+ '한국', '2015-10-22', 125, '15세 이용가', '스릴러 ', '', '', '노덕',
+  0, 0, '조정석, 이미숙, 이하나, 김의성 , 백성우, 김대명', 0, 0);
+  
+
+--ㅍ시작 영화 =================================================================================
+--https://youtu.be/TRH8N4FEXxg
+--https://youtu.be/QTGY4OO6Byw
+
+ insert into movie values(
+  movie_seq.nextval, '파이트 클럽', '당신이 알고 있는 모든 것은 허구다! 
+믿어왔던 상식과 규칙에 통렬한 카운터를 날리는 스타일리시 액션 무비!
+   '|| chr(10) || '
+비싼 가구들로 집 안을 채우지만 삶에 강한 공허함을 느끼는 자동차 리콜 심사관 ‘잭’. 거부할 수 없는 매력의 거친 남자 ‘테일러 더든’과의 우연한 만남으로 본능이 이끄는 대로 삶을 살기로 결심한다. 어느 날, “싸워봐야 네 자신을 알게 된다”라는 테일러 더든의 말에 통쾌한 한 방을 날리는 잭. 두 사람은 여태껏 경험해보지 못한 강렬한 카타르시스를 느끼며 ‘파이트 클럽’이라는 비밀 조직을 결성하고, 폭력으로 세상에 저항하는 거대한 집단이 형성된다. 하지만, 걷잡을 수 없이 커진 ‘파이트 클럽’은 시간이 지날수록 의미가 변질되고, 잭과 테일러 더든 사이의 갈등도 점차 깊어져 가는데…', 
+'한국', '1999-11-13', 139, '청소년 이용불가', '액션', '드라마 ', '', '데이빗 핀처',
+  0, 0, '브래드 피트, 에드워드 노튼 , 헬레나 본햄 카터, 미트 로프, 자레드 레토', 0, 0);
+----------------------------------------------------------------------------------------------------------------------------------
+  
+--https://youtu.be/c6u0_bYLfII
+--https://youtu.be/9z1ZbyszUW0
+
+  insert into movie values(
+  movie_seq.nextval, '판도라
+ ', '대한민국이 위험하다!
+  '|| chr(10) || '
+역대 최대 규모의 강진에 이어 원자력 폭발 사고까지
+ 예고 없이 찾아온 초유의 재난 앞에 한반도는 일대 혼란에 휩싸이고
+ 믿고 있던 컨트롤 타워마저 사정없이 흔들린다.
+ 방사능 유출의 공포는 점차 극에 달하고
+ 최악의 사태를 유발할 2차 폭발의 위험을 막기 위해
+ 발전소 직원인 ‘재혁’과 그의 동료들은
+ 목숨 건 사투를 시작하는데…!
+', '한국', '2016-12-07', 136, '12세 이용가', '드라마', '스릴러 ', '', '박정우',
+  0, 0, '김남길, 김주현, 정진영, 김영애, 문정희 ', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/0IgrxiDr980
+--https://youtu.be/_1qO4EDcplY
+
+
+  insert into movie values(
+  movie_seq.nextval, '퍼스트 어벤져', '포기를 모르는 자의 새로운 이름 ‘퍼스트 어벤져’
+ 세계 전쟁으로 암흑에 빠진 시기, 한 남자가 군 입대를 자원한다. 그의 이름은 ‘스티브 로저스’. 남들보다 왜소하고 마른 체격으로 인해 입대마저 번번히 거부당하던 그는 포기를 모르는 근성과 강한 희생 정신을 인정받아 최고의 전사를 양성하는 ‘슈퍼 솔져’ 프로젝트에 스카우트된다. 비밀리에 진행된 실험을 통해 가장 완벽한 육체와 인간의 한계를 초월한 신체 능력을 얻게 된 스티브. 그는 모두에게 ‘캡틴’으로 불리며, 시대의 영웅으로 새롭게 태어난다. 하지만 그의 등장에 맞서 거대한 ‘히드라’ 조직을 앞세운 적의 공격은 한층 막강해지고, 그 핵심에 선 ‘레드 스컬’은 인류를 위협하는 최후의 전투를 준비하는데...
+ 세계를 위협하는 전쟁, 그 한가운데로 향한 ‘캡틴’ 슈퍼히어로의 역사로 남을 그의 활약이 시작된다!', 
+ '미국 ', '2011-07-28', 123, '12세 이용가 ', '액션', '모험 ', '', '조 존스톤',
+  0, 0, '크리스 에반스, 토미 리 존스, 휴고 위빙, 헤일리 앳웰 , 스탠리 투치', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/mEAjmr0K7rA
+--https://youtu.be/nvtfCxSKQjk
+
+  insert into movie values(
+  movie_seq.nextval, '퍼시픽 림: 업라이징', '끝나지 않은 전쟁, 진화하는 적에 맞서라!
+ '|| chr(10) || '
+전 세계를 초토화시켰던 전쟁 이후, 지구 종말의 위기가 다시 찾아온다. 
+   '|| chr(10) || '
+ 더 강력하게 진화한 적들의 공격이 인류의 재앙을 불러오고 
+ 최정예 파일럿과 업그레이드 된 거대 로봇 ‘예거’ 군단은 사상 최대의 반격을 시작한다. 
+   '|| chr(10) || '
+ 하지만, 아무도 예상치 못했던 또 다른 적의 등장으로 
+ 인류는 전대미문의 위기에 봉착하게 되는데…', 
+ '미국 ', '2018-03-21', 111, '15세 이용가', '액션', '모험', 'SF ', '스티븐 S. 드나이트',
+  0, 0, '존 보예가, 스콧 이스트우드, 케일리 스패니, 아드리아 아르조나, 번 고먼', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/yD_oH6gcVmc
+--https://youtu.be/N0mOxThHWxM
+
+
+  insert into movie values(
+  movie_seq.nextval, '퍼펙트 게임', '대결을 원한 세상 속으로 꿈을 던진 두 남자, 최동원 선동열의 고독하고도 치열한 맞대결!!
+ 불안과 격동의 1980년대, 프로야구는 단순한 스포츠를 넘어 전국민을 사로잡고 있었다!
+ 노력과 끈기로 대한민국 최고의 투수로 자리잡은 롯데의 최동원! 그리고 최동원의 뒤를 이어 떠오르는 해태의 천재 투수 선동열! 세상은 우정을 나누던 선후배였던 두 사람을 라이벌로 몰아세우는데...
+ 전적 1승 1패, 그리고 1987년 5월 16일, 자신들의 꿈을 걸어야 했던 최동원과 선동열의 마지막 맞대결이 펼쳐진다! 선동열 앞에서만은 큰 산이고 싶었던 최동원. 그 산을 뛰어 넘고 싶었던 선동열', 
+ '한국', '2011-12-21', 127, '12세 이용가', '드라마', '', '', '박희곤',
+  0, 0, '조승우, 양동근, 최정원, 마동석, 조진웅, 현쥬니', 0, 0);
+  
+  
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/XgTi-vKRGNs
+--https://youtu.be/jfQ7XevD8Dc
+
+  insert into movie values(
+  movie_seq.nextval, '페이스 메이커', '나는 페이스 메이커다.
+마라톤은 42.195km,?
+하지만 나의 결승점은 언제나 30km까지다.
+ '|| chr(10) || '
+메달도, 영광도 바랄 수 없는 국가대표… 오직 누군가의 승리를 위해 30km까지만 선두로 달려주는 것! 그것이 내 목표이자 임무다. 그래도 언젠가 한번은… 오로지 나를 위해 달리고 싶다!”
+ ※ 페이스 메이커(pace maker)란?
+ 마라톤이나 수영 등 스포츠 경기에서 우승 후보의 기록을 단축하기 위해 전략적으로 투입된 선수! 이들은 오로지 남의 1등만을 위해 달려야 하는, 메달을 목에 걸 수 없는 국가대표다.', 
+ '한국', '2012-01-18', 124, '12세 이용가', '드라마 ', '', '', '김달중',
+  0, 0, '김명민, 안성기, 고아라, 최태준, 조희봉', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/3NHkhEHCYBs
+--https://youtu.be/zfHmq6wlwws
+
+
+  insert into movie values(
+  movie_seq.nextval, '평양성', '<황산벌> 찍고, 이번엔... (평양성) | 이번 한번만 손잡자 카이~
+ '|| chr(10) || '
+‘황산벌’전투를 기억하시는가? 그 후 8년, 백제를 손안에 넣은 신라가 이번엔 고구려 평양성을 타겟으로 콕~ 점 찍었다. 삼국을한꺼번에 꿀꺽~ 삼키기위해서는 절대 양보할 수 없는 마지막 보루- 그곳이 고구려 평양성 되시겠다.
+ “연개소문이 죽는 순간 고구려는 끝난기고, 이제부터는 신라와 당나라의 전쟁이 시작된기야!” 삼국통일의 노른자, 고구려의 평양성을 호시탐탐 노리는 능구렁이 야심가가 있었으니, 그가바로 신라 김유신이다. 한반도 전체를 삼키려는 당나라의 야욕을 알아차리고 조심스럽게 고구려와 연합 작전을 계획, 삼국통일을 준비하는 김유신. 하지만난데없이 당나라로 망명한 고구려의 정통 후계자 남생 때문에 다 된 밥에 코를 빠뜨리게 된다.
+ “아바지, 걱정 푸~욱 노시라요, 내래 다 쓸어버리가시여!” 이리저리 민폐만 끼치고 다니는 남생 때문에 속이 뒤집히는 이가 한 명 더 있으니, 남생의동생 남건이다. 아버지연개소문의 뜻을 받들어, 형 남생의 방해공작을 꿋꿋하게 버텨내는 남건. 신라의 멀티연합군에 맞서 고구려를 지키기 위해 기상천외한 신무기를 앞세워 평양성을 사수한다.', 
+ '한국', '2011-01-27', 117, '12세 이용가', '코미디', '전쟁 ', '', '이준익',
+  0, 0, '정진영, 이문식, 류승룡, 윤제문, 선우선', 0, 0);
+  
+  
+  
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/Ngn2IftLNP0
+--https://youtu.be/D8K2KzK49XE
+
+  insert into movie values(
+  movie_seq.nextval, '품행 제로', '모범시대 불량 영웅
+  '|| chr(10) || '
+모범시대, 불량영웅 중삘(feel)이가 왔다!. 은하 미용실의 외동아들이자 문덕고의 쌈장인 중필(류승범 분)의 하루 일과는 무척이나 고단하다. 물론, 일과 중 가장 중요한 것은 학교 가는 일. 일단 학교 조무래기들의 기대에 어느 정도 부응하기 위해선, 호시탐탐 그의 자리를 노리고 있을 무리들과 겨뤄 심심찮게 얘깃거리를 제공해야 하고, 비밀 아지트로 활용하고 있는 학교 옥상도 관리해야 한다. 그 뿐인가? 젊음과 문화의 상징인 로라장 관리며, 약간의 용돈벌이를 위한 춘화사업(?)까지... 그야말로 중필의 손길이 닿지 않는 곳이 없을 정도다. 덕분에 중필을 보좌하고 있는 수동(봉태규 분)과 넘버2의 자리를 고수하고 있는 단군파는 중필의 보호와 협박 속에서 평화롭게 공생관계를 유지하고 있다.
+  그러나 세상 거칠 것도 두려울 것도 없는 중필의 가슴에도 예기치 못한 큐피드의 화살이 날아와 박히고 말았으니... 이웃 여학교의 퀸카 민희(임은경 분)가 바로 그 주인공!! 하지만 그의 핑크빛 풋사랑이 제대로 피어날 겨를도 없이 안락했던 일상은 깨질 기미가 보이기 시작하는데... 어느 날 갑자기 태풍처럼 등장한 전학생 상만(김광일 분)이 그 일대를 초토화하며 주먹세계를 평정하려 한다는 소문이 그의 귀에도 들려온 것이다. 학교 아이들 뿐 만 아니라 그의 오른팔 수동마저도 또 하나의 전설이 될 중필과 상만의 격전을 내심 부추기고 기대하지만, 웬일인지 중필은 애써 상만과의 충돌을 피하려는 눈치다. 그러나 한 시대에 지존이 둘일 순 없는 법! 결전의 그 날은 다가오고...', '한국', '2002-12-27',  99, '15세 이용가', '코미디', '멜로', '', '조근식',
+  0, 0, '류승범, 임은경, 공효진, 김광일, 봉태규', 0, 0);
+  
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/HvOR780IGgk
+--https://youtu.be/bmJ7d0I1Rvc
+
+  insert into movie values(
+  movie_seq.nextval, '프레스티지', '진실마저 속이는 완벽한 마술 | 당신을 눈을 믿지마라, 보이는 것이 진실이 아니다
+ '|| chr(10) || '
+세기의 전환을 맞아 격동적인 변화가 일던 1900년대 말 런던은 최고 상류층에서 마술사가 태어났고 사회에 마술이 널리 퍼져있던 시대이다. 로버트 앤지어(휴 잭맨)는 상류층 집안에서 자란 쇼맨십이 강한 마술사. 반면 고아로 자라 거친 성격에 사람들과 잘 어울리지 못하는 알프레드 보든(크리스찬 베일)은 자신의 마술 아이디어를 남들에게 보여 줄 배짱은 없지만 누구보다도 뛰어난 재능을 가진 천재이다.
+  두 사람은 서로를 아끼는 친구이자 최고의 마술사가 되기 위해 노력하는 선의의 경쟁자. 그러나 그들이 최고라 자부했던 수중마술이 실패로 돌아가면서 로버트는 아내 마저 잃고 두 사람은 철천지원수로 돌변한다. 어느 날, 알프레드가 마술의 최고 단계인 순간이동 마술을 선보이고 질투심에 불탄 로버트 역시 순간이동 마술을 완성한다. 상대방 마술의 비밀을 캐내려 경쟁을 벌이면서 주변 사람들의 생명마저 위태롭게 만든다.
+  로버트는 알프레드의 비밀을 알아내기 위해 자신의 조수이자 사랑하는 여인 올리비아(스칼렛 요한슨)를 알프레드에게 접근하게 만든다. 올리비아는 로버트를 사랑하는 마음에 로버트의 라이벌인 알프레드와 생활하게 되고, 점점 그에게 빠져든다. 그들의 위험한 경쟁은 멈출 줄을 모르고 이제 서로를 죽이려고 까지 하는데... 그리고 점점 밝혀지는 진실! 그들의 마술, 그들의 관계, 그들의 인생에는 누구도 예상치 못한 놀라운 진실이 숨겨져 있었다!', 
+'영국', '2006-11-02', 130, '15세 이용가', '스릴러', '드라마', 'SF ', '크리스토퍼 놀란',
+  0, 0, '휴잭맨,  크리스찬 베일, 마이클 케인, 스칼렛 요한슨, 레베카 홀', 0, 0);
+  
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/dEF4g7gf7C4
+--https://youtu.be/L2p-_Q4Rf5o
+
+  insert into movie values(
+  movie_seq.nextval, '피아니스트', '영혼을 움직이는 선율! 전 세계를 울린 감동 실화극!
+ '|| chr(10) || '
+1939년 폴란드 바르샤바. 유명한 유대계 피아니스트 블라디슬로프 스필만은 한 인기 라디오 프로그램에서 쇼팽의 야상곡을 연주하다 폭격을 당한다. 이후 유태인인 스필만과 가족들은 게토에서 생활하지만, 결국 수용소로 향하는 기차에 몸을 싣게 된다. 가족들을 죽음으로 내보내고 간신히 목숨을 구한 스필만은 허기와 추위, 고독과 공포 속에서 마지막까지 생존을 지켜나간다. 나치의 세력이 확장될 수록 자신을 도와주던 몇몇의 사람마저 떠나자 완전히 혼자가 되어 자신만의 은신처에서 끈질기게 생존을 유지하는 스필만. 어둠과 추위로 가득한 폐건물 속에서 은신생활 중 스필만은 우연찮게 순찰을 돌던 독일 장교에게 발각되고 지상에서의 마지막 연주가 될 지도 모르는 순간, 온 영혼을 손끝에 실어 연주를 시작하는데….', 
+'프랑스', '2015-06-18', 148, '12세 이용가', '드라마', '전쟁', '', '로만 폴란스키',
+  0, 0, '애드리언 브로디, 토마스 크레취만, 크랭크 핀레이, 모린 립먼, 에밀리아 폭스', 0, 0);
+  
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/OybUDmVgEac
+--https://youtu.be/KuFO5nCayj0
+
+
+  insert into movie values(
+  movie_seq.nextval, '하모니', '단 하루의 만남을 위한 4년간의 노래 | 그녀들의 목소리가 담장을 넘어 세상을 울립니다.
+{형형법상 여성수용자가 교정시설에서 출산할 경우, 유아를 교정시설내에서 양육할 수 있는 기간은 생후 18개월까지로 제한한다.}
+ 18개월이 되면 아기를 입양 보내야 하는 정혜(김윤진), 가족마저도 등을 돌린 사형수 문옥(나문희), 저마다 아픈 사연을 가진 채 살아가는 여자교도소에 합창단이 결성되면서 사랑하는 이들을 위해 가슴 찡한 감동의 무대를 만들어가는 이야기.', 
+'한국', '2010-01-28', 115, '12세 이용가', '드라마', '', '', '강대규',
+  0, 0, '김윤진, 나문희, 강예원, 이다희, 장영남 ', 0, 0);
+  
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/YpqMZt1gOXU
+--https://youtu.be/mQl-lGF6XHM
+
+  insert into movie values(
+  movie_seq.nextval, '하울의 움직이는 성', '소녀가 마법에 걸린 순간, 꽃미남 마법사의 성문이 열렸다!
+어느 날, 영문도 모른 채 마녀의 저주로 인해 할머니가 된 소녀 소피
+ 절망 속에서 길을 걷다가 거대한 마법의 성에 들어가게 된다. 
+ 그곳에서 자신과 마법사 하울의 계약을 깨주면 저주를 풀어주겠다는 
+ 불꽃악마 캘시퍼의 제안을 받고 청소부가 되어 움직이는 성에 머물게 되는데…', 
+ '일본 ', '2004-12-23', 119, '전체 이용가', '애니메이션', '판타지 ', '', '미야자키 하야오',
+  0, 0, '바이쇼 치에코,기무라 타쿠야,가슈인 타츠야,카미키 류노스케,이사키 미츠노리', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/qgOsPoXv2as
+--https://youtu.be/3L2-JAbXIAM
+
+
+  insert into movie values(
+  movie_seq.nextval, '해리 포터', '해리 포터(다니엘 래드클리프 분)는 위압적인 버논 숙부(리챠드 그리피스 분)와 냉담한 이모 페투니아 (피오나 쇼 분), 
+  욕심 많고 버릇없는 사촌 더즐리(해리 멜링 분) 밑에서 갖은 구박을 견디며 계단 밑 벽장에서 생활한다. 이모네 식구들 역시 해리와의 동거가 불편하기는 마찬가지. 
+  이모 페투니아에겐 해리가 이상한(?) 언니 부부에 관한 기억을 떠올리게 만드는 달갑지 않은 존재다. 11살 생일이 며칠 앞으로 다가왔지만 한번도 생일파티를 치르거나 제대로 된 생일선물을 받아 본 적이 없는 해리로서는 특별히 신날 것도 기대 할 것도 없다. 
+  11살 생일을 며칠 앞둔 어느 날 해리에게 초록색 잉크로 쓰여진 한 통의 편지가 배달된다. 그 편지의 내용은 다름 아닌 해리의 11살 생일을 맞이하여 전설적인“호그와트 마법학교”에서 보낸 입학초대장이었다. ', 
+  '영국', '2001-12-14', 152, '전체 이용가', '판타지', '가족', '모험', '크리스 콜럼버스',
+  0, 0, '다니엘 래드클리프, 루퍼트 그린트, 엠마 왓슨, 존 클리즈 , 리처드 해리스', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/VVM3TsxoqIc
+--https://youtu.be/lcU4C_caKV4
+
+  insert into movie values(
+  movie_seq.nextval, '해무', '한치 앞도 보이지 않는 바다안개...
+‘해무’가 몰려오는 순간, 모든 것이 달라졌다!
+한 때 여수 바다를 주름잡던 ‘전진호’는 더 이상 만선의 수확을 거두지 못하고 감척 사업 대상이 된다. 배를 잃을 위기에 몰린 선장 ''철주''(김윤석)는 마지막 기회라고 생각하고 선원들과 함께 낡은 어선 ''전진호''에 몸을 싣는다. 
+ 선장을 필두로, 배에 숨어사는 인정 많고 사연 많은 기관장 ‘완호’(문성근), 선장의 명령을 묵묵히 따르는 행동파 갑판장 ‘호영’(김상호), 돈이 세상에서 최고인 거친 성격의 롤러수 ‘경구’(유승목), 언제 어디서든 욕구에 충실한 선원 ‘창욱’(이희준), 이제 갓 뱃일을 시작한 순박한 막내 선원 ‘동식’(박유천)까지 여섯 명의 선원은 만선의 꿈을 안고 출항을 시작한다.
+ 그러나 망망대해 위에서, 그들이 실어 나르게 된 것은 고기가 아닌 사람이었다! 
+ 선장 ‘철주’(김윤석)는 삶의 터전인 배를 지키기 위해 선원들에게 밀항을 돕는 일을 제안한다. 목숨을 걸고 바다를 건너 온 수많은 밀항자들, 그리고 운명의 한 배를 타게 된 여섯 명의 선원들. 그 가운데, 한치 앞을 알 수 없는 ‘해무’가 몰려오고 그들은 걷잡을 수 없는 사건에 휘말리게 되는데…', 
+'한국', '2014-08-13', 111, '청소년 이용불가', '드라마 ', '', '', '심성보',
+  0, 0, '김윤석,박유천,한예리,이희준,문성근', 0, 0);
+  
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/c7c4F-e_QBY
+--https://youtu.be/B2r6b-gVG6M
+
+  insert into movie values(
+  movie_seq.nextval, '해운대', '쓰나미도 휩쓸지 못한 그들의 이야기가 시작된다
+2004년 역사상 유례없는 최대의 사상자를 내며 전세계에 엄청난 충격을 안겨준 인도네시아 쓰나미. 당시 인도양에 원양어선을 타고 나갔던 해운대 토박이 만식은 예기치 못한 쓰나미에 휩쓸리게 되고, 단 한 순간의 실수로 그가 믿고 의지했던 연희 아버지를 잃고 만다. 이 사고 때문에 그는 연희를 좋아하면서도 자신의 마음을 숨길 수 밖에 없다. 그러던 어느 날, 만식은 오랫동안 가슴 속에 담아두었던 자신의 마음을 전하기로 결심하고 연희를 위해 멋진 프로포즈를 준비한다.
+  한편 국제해양연구소의 지질학자 김휘 박사는 대마도와 해운대를 둘러싼 동해의 상황이 5년전 발생했던 인도네시아 쓰나미와 흡사하다는 엄청난 사실을 발견하게 된다. 그는 대한민국도 쓰나미에 안전하지 않다고 수차례 강조하지만 그의 경고에도 불구하고 재난 방재청은 지질학적 통계적으로 쓰나미가 한반도를 덮칠 확률은 없다고 단언한다. 그 순간에도 바다의 상황은 시시각각 변해가고, 마침내 김휘 박사의 주장대로 일본 대마도가 내려 앉으면서 초대형 쓰나미가 생성된다. 한여름 더위를 식히고 있는 수백만의 휴가철 인파와 평화로운 일상을 보내고 있는 부산 시민들, 그리고 이제 막 서로의 마음을 확인한 만식과 연희를 향해 초대형 쓰나미가 시속 800km의 빠른 속도로 밀려오는데…
+  가장 행복한 순간 닥쳐온 엄청난 시련, 남은 시간은 단 10분! 그들은 가장 소중한 것을 지켜내야만 한다!', 
+'한국', '2009-07-22', 120, '12세 이용가', '모험', '드라마 ', '', '윤제균',
+  0, 0, '설경구,하지원,박중훈,엄정화,이민기,강예원', 0, 0);
+  
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/SwgBX_qOtXs
+--https://youtu.be/7yIFePr1_wU
+
+  insert into movie values(
+  movie_seq.nextval, '허삼관', '가진 건 없지만 가족들만 보면 행복한 남자 허삼관이,11년간 남의 자식을 키우고 있었다는 기막힌 사실을 알게 되면서 펼쳐지는 웃음과 감동의 코믹휴먼드라마', 
+  '한국', '2015-01-14', 124, '12세 이용가', '드라마 ', '', '', '하정우',
+  0, 0, '하정우,하지원,남다름 - 허일락 역,노강민 ,전혜진 ', 0, 0);
+  
+
+--ㅎ시작 영화 =================================================================================
+--https://youtu.be/yHIZFeKWd1I
+--https://youtu.be/w2EwkleWbl4
+
+
+  insert into movie values(
+  movie_seq.nextval, '혹성탈출: 종의 전쟁', '퇴화하는 인간 VS 진화하는 유인원 '|| chr(10) || '
+전 세계에 퍼진 치명적인 바이러스 ‘시미안 플루’로 인해 유인원들은 나날이 진화하는 반면,'|| chr(10) || '
+ 살아남은 인간들은 점차 지능을 잃고 퇴화해 간다. '|| chr(10) || '
+ 인간과 공존할 수 있다고 믿었던 진화한 유인원의 리더 시저(앤디 서키스)는  '|| chr(10) || '
+ 유인원들을 몰살하려는 인간군 대령(우디 해럴슨)에 의해 가족과 동료들을 무참히 잃고 분노한다. '|| chr(10) || '
+ 진화한 유인원이 언젠가 인간을 지배하게 될 지도 모른다는 두려움과 인류의 생존을 위해서 '|| chr(10) || '
+ 인간성마저도 버려야 한다는 대령과 '|| chr(10) || '
+ 더 이상의 자비와 공존은 없다며 가족과, 자유와, 터전을 위해 전쟁에 나서게 된 시저. '|| chr(10) || '
+ 종의 운명과 지구의 미래를 결정할 피할 수 없는 전쟁. '|| chr(10) || '
+ 과연, 최후는 어떻게 될 것인가!', 
+'미국 ', '2017-08-15', 140, '12세 이용가', '액션', '모험', 'SF ', '맷 리브스',
+  0, 0, '앤디 서키스, 우디 해럴슨, 스티브 잔, 아미아 밀러, 카린 코노발', 0, 0);
+  
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/HIyn_eMs_A4
+--https://youtu.be/sTrOvSMMn0I
+
+
+  insert into movie values(
+  movie_seq.nextval, '황제를 위하여', '비열함은 기술이 되고, 배신은 재능이 된다!
+촉망 받는 야구선수였지만 승부 조작에 연루된 후 모든 것을 잃게 된 ‘이환’(이민기). 
+ 빠져나갈 곳 없는 인생의 바닥에서 이환은 부산 최대 규모의 조직, 황제 캐피탈의 대표 ‘상하’(박성웅)를 만나게 된다. 
+ 돈 앞에선 냉정하지만 자신의 식구들은 의리와 신뢰로 이끄는 상하.
+ 이환의 잠재력을 본능적으로 알아 본 상하는 다른 조직원들의 반대에도 불구하고, 그를 자신의 세계로 끌어들인다.
+ 이긴 놈만 살아남는 도박판 같은 세상. 
+ 상하의 절대적인 신임 속에서 이환은 타고난 승부근성과 거침없는 행보로 점점 자신의 영역을 넓히고, 감춰두었던 야망을 키워가는데…!', 
+'한국', '2014-06-11', 104, '청소년 이용불가', '액션', '느와르 ', '', '박상준',
+  0, 0, '이민기,박성웅,이태임,김종구,정흥채', 0, 0);
+  
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/wxYAg7to52A
+--https://youtu.be/-UOlOLpnwO4
+
+
+  insert into movie values(
+  movie_seq.nextval, '황해', '황해를 건너 온 남자, 모두가 그를 쫒는다!
+연변에서 택시를 모는 구남은 빚더미에 쌓여 구질구질한 일상을 살아간다. 한국으로 돈 벌러 간 아내는 6개월째 소식이 없고, 돈을 불리기 위해 마작판에 드나들지만 항상 잃을 뿐이다. 그러던 어느 날, 살인청부업자 면가에게서 한국 가서 사람 한 명 죽이고 오라는 제안을 받는다. 절박한 현실에서 선택의 여지가 없는 구남은 빚을 갚기 위해, 그리고 아내를 만나기 위해 황해를 건넌다.
+ 매서운 바다를 건너 서울로 온 구남은 틈틈이 살인의 기회를 노리면서 동시에 아내의 행방을 수소문한다. 하지만, 자신의 눈 앞에서 목표물이 살해 당하는 것을 목격한 구남은 살인자 누명을 쓴 채 경찰의 추적을 피해 도망친다. 한편 청부살인을 의뢰한 태원은 모든 증거를 인멸하기 위해 구남을 처리하려 하고, 연변에 있던 면가 또한 황해를 건너와 구남을 쫓기 시작하는데…', 
+'한국', '2010-12-22', 156, '청소년 이용불가', '범죄', '스릴러', '', '나홍진',
+  0, 0, '하정우,김윤석,조성하,이철민,곽도원', 0, 0);
+  
+
+----------------------------------------------------------------------------------------------------------------------------------
+--https://youtu.be/9FS0YFIJU7Q
+--https://youtu.be/2DhBlbRc_d8
+
+insert into movie values(
+  movie_seq.nextval, '히말라야', '기다려... 우리가 꼭 데리러 갈게...
+해발 8,750 미터 히말라야 에베레스트 데스존
+ 인간의 접근을 허락하지 않은 신의 영역 
+ 그곳에 우리 동료가 묻혀있다.
+ 산 아래 하나였고, 또 다른 가족이었던 사람들
+ 생을 마감한 후배 대원의 시신을 찾기 위해
+ 기록도, 명예도, 보상도 없는 가슴 뜨거운 여정을 시작한다. 
+ 그 누구도 시도하지 않았던 위대한 도전
+ 엄홍길 대장과 휴먼원정대의 감동 실화가 공개된다!', 
+ '한국', '2015-05-16', 124, '12세 이용가', '드라마', '', '', '이석훈',
+  0, 0, '황정민,정우,조성하 ,김인권,라미란', 0, 0);
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+--51(포스터&스틸컷 insert)
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'포스터',
+	'poster_타짜-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷1',
+	'타짜-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷2',
+	'타짜-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷3',
+	'타짜-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	51,
+	'스틸컷4',
+	'타짜-4.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--52
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'포스터',
+	'poster_태극기-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷1',
+	'태극기-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷2',
+	'태극기-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷3',
+	'태극기-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	53,
+	'스틸컷4',
+	'태극기-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--53
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'포스터',
+	'poster_택시-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷1',
+	'택시-1.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷2',
+	'택시-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷3',
+	'택시-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	52,
+	'스틸컷4',
+	'택시-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--54
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'포스터',
+	'poster_터미네이터-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷1',
+	'터미네이터-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷2',
+	'터미네이터-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷3',
+	'터미네이터-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	54,
+	'스틸컷4',
+	'터미네이터-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--55
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'포스터',
+	'poster_토이스토리-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷1',
+	'토이스토리-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷2',
+	'토이스토리-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷3',
+	'토이스토리-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	55,
+	'스틸컷4',
+	'토이스토리-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--56
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'포스터',
+	'poster_트랜스포머-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷1',
+	'트랜스포머-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷2',
+	'트랜스포머-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷3',
+	'트랜스포머-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	57,
+	'스틸컷4',
+	'트랜스포머-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--57
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'포스터',
+	'poster_트루먼쇼-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷1',
+	'트루먼쇼-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷2',
+	'트루먼쇼-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷3',
+	'트루먼쇼-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	56,
+	'스틸컷4',
+	'트루먼쇼-4.png',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--58
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'포스터',
+	'poster_트리플-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷1',
+	'트리플-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷2',
+	'트리플-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷3',
+	'트리플-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	58,
+	'스틸컷4',
+	'트리플-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--59
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'포스터',
+	'poster_트와일라잇-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷1',
+	'트와일라잇-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷2',
+	'트와일라잇-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷3',
+	'트와일라잇-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	59,
+	'스틸컷4',
+	'트와일라잇-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--60
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'포스터',
+	'poster_특종-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷1',
+	'특종-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷2',
+	'특종-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷3',
+	'특종-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	60,
+	'스틸컷4',
+	'특종-4.jpg',
+	sysdate
+);
+
+
+------------------------------------------------------------------------------------------------
+
+--61
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'포스터',
+	'poster_파이트클럽-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷1',
+	'파이트클럽-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷2',
+	'파이트클럽-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷3',
+	'파이트클럽-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	61,
+	'스틸컷4',
+	'파이트클럽-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--62
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'포스터',
+	'poster_판도라-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷1',
+	'판도라-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷2',
+	'판도라-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷3',
+	'판도라-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	62,
+	'스틸컷4',
+	'판도라-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--63
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'포스터',
+	'poster_퍼스트어벤저-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷1',
+	'퍼스트어벤저-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷2',
+	'퍼스트어벤저-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷3',
+	'퍼스트어벤저-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	63,
+	'스틸컷4',
+	'퍼스트어벤저-4.png',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--64
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'포스터',
+	'poster_퍼시픽림-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷1',
+	'퍼시픽림-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷2',
+	'퍼시픽림-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷3',
+	'퍼시픽림-3.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	64,
+	'스틸컷4',
+	'퍼시픽림-4.png',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--65
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'포스터',
+	'poster_퍼펙트-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷1',
+	'퍼펙트-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷2',
+	'퍼펙트-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷3',
+	'퍼펙트-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	65,
+	'스틸컷4',
+	'퍼펙트-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--66
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'포스터',
+	'poster_페이스메이커-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷1',
+	'페이스메이커-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷2',
+	'페이스메이커-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷3',
+	'페이스메이커-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	66,
+	'스틸컷4',
+	'페이스메이커-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--67
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'포스터',
+	'poster_평양성-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷1',
+	'평양성-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷2',
+	'평양성-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷3',
+	'평양성-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	67,
+	'스틸컷4',
+	'평양성-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--68
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'포스터',
+	'poster_품행제로-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷1',
+	'품행제로-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷2',
+	'품행제로-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷3',
+	'품행제로-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	68,
+	'스틸컷4',
+	'품행제로-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--69
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'포스터',
+	'poster_프레스티지-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷1',
+	'프레스티지-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷2',
+	'프레스티지-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷3',
+	'프레스티지-3.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	69,
+	'스틸컷4',
+	'프레스티지-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--70
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'포스터',
+	'poster_피아니스트-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷1',
+	'피아니스트-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷2',
+	'피아니스트-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷3',
+	'피아니스트-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	70,
+	'스틸컷4',
+	'피아니스트-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--71
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'포스터',
+	'poster_하모니-포스터.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷1',
+	'하모니-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷2',
+	'하모니-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷3',
+	'하모니-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	71,
+	'스틸컷4',
+	'하모니-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--72
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'포스터',
+	'poster_하울의 움직이는 성-포스터.gif',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷1',
+	'하울의 움직이는 성-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷2',
+	'하울의 움직이는 성-2.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷3',
+	'하울의 움직이는 성-3.gif',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	72,
+	'스틸컷4',
+	'하울의 움직이는 성-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--73
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'포스터',
+	'poster_해리포터-포스터.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷1',
+	'해리포터-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷2',
+	'해리포터-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷3',
+	'해리포터-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	73,
+	'스틸컷4',
+	'해리포터-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--74
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'포스터',
+	'poster_해무-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷1',
+	'해무-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷2',
+	'해무-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷3',
+	'해무-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	74,
+	'스틸컷4',
+	'해무-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--75
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'포스터',
+	'poster_해운대-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷1',
+	'해운대-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷2',
+	'해운대-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷3',
+	'해운대-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	75,
+	'스틸컷4',
+	'해운대-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--76
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'포스터',
+	'poster_허삼관-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷1',
+	'허삼관-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷2',
+	'허삼관-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷3',
+	'허삼관-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	76,
+	'스틸컷4',
+	'허삼관-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--77
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'포스터',
+	'poster_혹성탈출-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷1',
+	'혹성탈출-1.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷2',
+	'혹성탈출-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷3',
+	'혹성탈출-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	77,
+	'스틸컷4',
+	'혹성탈출-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--78
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'포스터',
+	'poster_황제를 위하여-포스터.png',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷1',
+	'황제를 위하여-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷2',
+	'황제를 위하여-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷3',
+	'황제를 위하여-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	78,
+	'스틸컷4',
+	'황제를 위하여-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--79
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'포스터',
+	'poster_황해-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷1',
+	'황해-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷2',
+	'황해-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷3',
+	'황해-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	79,
+	'스틸컷4',
+	'황해-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------
+
+--80
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'포스터',
+	'poster_히말라야-포스터.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷1',
+	'히말라야-1.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷2',
+	'히말라야-2.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷3',
+	'히말라야-3.jpg',
+	sysdate
+);
+insert into movie_photo values (
+	movie_photo_seq.nextval,
+	80,
+	'스틸컷4',
+	'히말라야-4.jpg',
+	sysdate
+);
+
+------------------------------------------------------------------------------------------------   꿑!!!!
+
+
+
+
+
+
+
+
+
+
 ---------------------------------------------
 
 -- store 상품구매 테이블
 create table product_pay(
-	product_pay_code int not null,	
-	pay_id varchar(30) not null,		
-	product_code int not null,			 
-	buy_phone varchar2(11) not null,	 
-	gift_phone1	 varchar2(11) not null,		
-	gift_phone2	 varchar2(11),			 
-	gift_phone3	 varchar2(11),		   
-	pay_type  varchar2(15) not null,		 
-	pay_time  date,						 
-	pay_cancle_able char(1) not null,	  
-	order_num1 number not null,			
-  order_num2 number,		          
-  order_num3 number,
-  foreign key(pay_id) references member(member_id),
-  foreign key(product_code) references product(product_code)
+	product_pay_code int not null,			--상품결제코드
+	pay_id varchar(30) not null,		    --결제ID (fk)
+	product_code int not null,			    --상품코드 (fk)
+	buy_phone varchar2(11) not null,	 	--구매자 연락처
+	gift_phone1	varchar2(11) not null,		--선물 연착처1
+	gift_phone2	varchar2(11),			    --선물 연착처2
+	gift_phone3	varchar2(11),		       	--선물 연착처3
+	pay_type varchar2(15) not null,		 	--결제분류
+	pay_time  date,						    --결제날자
+	pay_cancel_able char(1) not null,	  	--결제취소여부
+	order_num1 number not null,			    --주문수량1
+  	order_num2 number,		          	  	--주문수량2
+  	order_num3 number,			              	--주문수량3
+  	foreign key(pay_id) references member(member_id),
+  	foreign key(product_code) references product(product_code)
 );
 
 create sequence pay_seq nocache nocycle;	--(상품결제코드)시퀸스

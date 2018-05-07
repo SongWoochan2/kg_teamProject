@@ -42,6 +42,7 @@
 	
 	<select id="totalA" resultType="int">
 		select count(*) from inquiry
+		
 	</select>
 	
 	<delete id="inquiryDelete" parameterType="int">
