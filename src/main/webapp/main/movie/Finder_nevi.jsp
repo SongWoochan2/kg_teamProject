@@ -89,13 +89,6 @@
 						<div id = "entity-title">
 							<a href = "movieDetailView.do?movie_code=${find_list.movie_code }&photo_pg=1&trailer_pg=1">
 							${find_list.movie_name }
-							( 
-							<c:if test="${find_list.movie_evaluat_num == 0}">
-								평점 없음
-							</c:if>
-							<c:if test="${find_list.movie_evaluat_num != 0}">
-								평점 : ${fn:substring( ''+(find_list.acc_evaluat_score / find_list.movie_evaluat_num),0,4) } 점
-							</c:if>)
 							</a>
 						</div>
 						<div id = "entity-reserverate">
@@ -103,6 +96,13 @@
 							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
 								<c:if test="${find_list.movie_code == reserve_rate_map.key }">
 								${fn:substring( ''+(reserve_rate_map.value),0,4) } %
+								( 
+								<c:if test="${find_list.movie_evaluat_num == 0}">
+									평점 없음
+								</c:if>
+								<c:if test="${find_list.movie_evaluat_num != 0}">
+									평점 : ${fn:substring( ''+(find_list.acc_evaluat_score / find_list.movie_evaluat_num),0,4) } 점
+								</c:if>)
 								</c:if>
 							</c:forEach>
 						</div>
@@ -120,21 +120,23 @@
 			</div>
 			<div id = "findpagingform">
 				<div id ="findpaging">
-					<c:if test="${moviePage.startPage>1 }">
-						[<a id="paging" class="previousbtn">이전</a>]
-					</c:if> 
-					<c:forEach var="i" begin="${moviePage.startPage}" end="${moviePage.endPage}" step="1">
-					<c:if test="${moviePage.startPage==i }">
-						[<a id="currentPaging" class="movebtn">${i }</a>]
-					</c:if>
-					<c:if test="${moviePage.startPage!=i }">
-						[<a id="paging" class="movebtn">${i }</a>]
-					</c:if>
-					<!-- el표현식에는 자바코드가 들어갈수없음 -->
-					</c:forEach>
-					<c:if test="${moviePage.endPage<moviePage.totalPage}">
-						[<a id="paging" class="nextbtn">다음</a>]
-					</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 -->
+<%-- 				<c:if test="${requestScope.movie_keyword == null || requestScope.movie_keyword == '' || requestScope.movie_type == null || requestScope.make_nation == null || requestScope.movie_show_grade == null}"> --%>
+<%-- 					<c:if test="${moviePage.startPage>1 }"> --%>
+<%-- 						[<a id="paging" href="movieFinder.do?pg=${moviePage.startPage-1 }" class="previousbtn">이전</a>] --%>
+<%-- 					</c:if>  --%>
+<%-- 					<c:forEach var="i" begin="${moviePage.startPage}" end="${moviePage.endPage}" step="1"> --%>
+<%-- 					<c:if test="${moviePage.pg==i }"> --%>
+<%-- 						[<a id="currentPaging" href="movieFinder.do?pg=${i }" class="movebtn">${i }</a>] --%>
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${moviePage.pg!=i }"> --%>
+<%-- 						[<a id="paging" href = "movieFinder.do?pg=${i }" class="movebtn">${i }</a>] --%>
+<%-- 					</c:if> --%>
+<!-- 					el표현식에는 자바코드가 들어갈수없음 -->
+<%-- 					</c:forEach> --%>
+<%-- 					<c:if test="${moviePage.endPage<moviePage.totalPage}"> --%>
+<%-- 						[<a id="paging" href="movieFinder.do?pg=${moviePage.endPage+1 }" class="nextbtn">다음</a>] --%>
+<%-- 					</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 --> --%>
+<%-- 				</c:if> --%>
 				</div>
 			</div>
 		</div>
