@@ -101,6 +101,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(html){
+					
 					$("#find_result_wrap").empty().append(html);
 				
 				},
@@ -121,6 +122,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(html){
+// 					alert(params);
 					$("#find_result_wrap").empty().append(html);
 				
 				},
@@ -131,7 +133,9 @@
 		});
 		
 		$(".nextbtn").click(function(){
-			alert(movie_show_grade);
+// 			var params = { pg: ${moviePage.pg+3}, movie_show_grade:movie_show_grade, movie_type:movie_type, make_nation:make_nation, movie_search:movie_search, movie_keyword:movie_keyword };
+// 			var str = jQuery.param(params);
+// 			alert(str);
 			var params = $('#movieFinder').serialize();
 			$.ajax({
 				url : "/MyCGV/main/movie/movieFinder_result.do", // 나중에 사이트 url로 바뀜
@@ -142,6 +146,7 @@
 				cache : false,
 				// 파일 읽기에 성공한 경우
 				success : function(html){
+				
 					$("#find_result_wrap").empty().append(html);
 				
 				},
@@ -156,7 +161,7 @@
 		
 		$("#movieFinder").submit(function(){
 			var params = $('#movieFinder').serialize();
-
+			
 			$.ajax({
 				url : "/MyCGV/main/movie/movieFinder_result.do", // 나중에 사이트 url로 바뀜
 				type : "post", // 최종적으로 서버에 요청함
@@ -201,12 +206,12 @@
 							<option value="movie_actor">주연배우
 							<option value="movie_director">감독
 						</select>
-						<input type = "text" placeholder="검색할 키워드를 입력해주세요." name = "movie_keyword" id="movie_keyword" >
+						<input type = "text" placeholder="검색할 키워드를 입력해주세요." maxlength="10" name="movie_keyword" id="movie_keyword" >
 					</td>
 				</tr>
 				<tr>
 					<th>장르</th>
-					<td>
+					<td><input type = "hidden" value = "${moviePage.pg}" name="pg">
 						<input type = "checkbox" value = "전체" id = "type_check"> 전체&emsp;
 						<input type = "checkbox" name = "movie_type" value = "SF" class = "movie_type"> SF&emsp;
 						<input type = "checkbox" name = "movie_type" value = "스릴러" class = "movie_type"> 스릴러&emsp;
@@ -222,7 +227,14 @@
 						<input type = "checkbox" name = "movie_type" value = "판타지" class = "movie_type"> 판타지&emsp;
 						<input type = "checkbox" name = "movie_type" value = "전쟁" class = "movie_type"> 전쟁&emsp;
 						<input type = "checkbox" name = "movie_type" value = "스포츠" class = "movie_type"> 스포츠&emsp;
-						<input type = "checkbox" name = "movie_type" value = "다큐" class = "movie_type"> 다큐&emsp;
+						<input type = "checkbox" name = "movie_type" value = "다큐" class = "movie_type"> 다큐&emsp;<br>
+						<input type = "checkbox" name = "movie_type" value = "미스터리" class = "movie_type"> 미스터리&emsp;
+						<input type = "checkbox" name = "movie_type" value = "로맨스" class = "movie_type"> 로맨스&emsp;
+						<input type = "checkbox" name = "movie_type" value = "애니메이션" class = "movie_type"> 애니메이션&emsp;
+						<input type = "checkbox" name = "movie_type" value = "공포" class = "movie_type"> 공포&emsp;
+						<input type = "checkbox" name = "movie_type" value = "뮤지컬" class = "movie_type"> 뮤지컬&emsp;
+						<input type = "checkbox" name = "movie_type" value = "모험" class = "movie_type"> 모험&emsp;
+						<input type = "checkbox" name = "movie_type" value = "서부" class = "movie_type"> 서부&emsp;
 					</td>
 				</tr>
 				<tr>

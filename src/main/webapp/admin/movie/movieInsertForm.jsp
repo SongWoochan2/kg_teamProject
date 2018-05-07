@@ -85,6 +85,13 @@ tbody {
 									<option value="전쟁">전쟁
 									<option value="스포츠">스포츠
 									<option value="다큐">다큐
+									<option value="미스터리">미스터리
+									<option value="로맨스">로맨스
+									<option value="애니메이션">애니메이션
+									<option value="공포">공포
+									<option value="뮤지컬">뮤지컬
+									<option value="모험">모험
+									<option value="서부">서부
 							</select></td>
 							<td><select name="movie_type2">
 									<option value="">--장르2--
@@ -103,6 +110,13 @@ tbody {
 									<option value="전쟁">전쟁
 									<option value="스포츠">스포츠
 									<option value="다큐">다큐
+									<option value="미스터리">미스터리
+									<option value="로맨스">로맨스
+									<option value="애니메이션">애니메이션
+									<option value="공포">공포
+									<option value="뮤지컬">뮤지컬
+									<option value="모험">모험
+									<option value="서부">서부
 							</select></td>
 							<td><select name="movie_type3">
 									<option value="">--장르3--
@@ -121,6 +135,13 @@ tbody {
 									<option value="전쟁">전쟁
 									<option value="스포츠">스포츠
 									<option value="다큐">다큐
+									<option value="미스터리">미스터리
+									<option value="로맨스">로맨스
+									<option value="애니메이션">애니메이션
+									<option value="공포">공포
+									<option value="뮤지컬">뮤지컬
+									<option value="모험">모험
+									<option value="서부">서부
 							</select></td>
 						</tr>
 						<tr>
