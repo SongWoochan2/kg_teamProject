@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,17 +12,96 @@
 <script type="text/javascript" src="../../js/jquery-3.3.1.min.js?v=1"></script>
 <script type="text/javascript">
 	$(function(){
+		$("#type_check").prop("checked",true);
+		$("#nation_check").prop("checked",true);
+		$(".movie_type").prop("checked",true);
+		$(".make_nation").prop("checked",true);
+		$("#grade_check").prop("checked",true);
+		$(".movie_show_grade").prop("checked",true);
+		
+// 		 $("input[name=movie_type]").each(function(idx){   
+	         
+// 		        // 해당 체크박스의 Value 가져오기
+// 		        var value = $(this).val();
+		 
+// 		        var eqValue = $("input[name=movie_type]:eq(" + idx + ")").val() ;
+		         
+// 		        console.log(value + ":" + eqValue) ;
+		         
+// 		});
+
+		var movie_search = $("#movie_search").val();
+		var movie_keyword = $("#movie_keyword").val();
+// 		var movie_type = $(".movie_type").val();
+// 		var make_nation = $(".make_nation").val();
+// 		var movie_show_grade = $(".movie_show_grade").val();
+		var pg = ${moviePage.pg};
+		alert(pg);
+		
 		$("#type_check").change(function(){
 			var is_check = $(this).is(":checked");	
 			$(".movie_type").prop("checked",is_check);
 		});
-		
+		$(".movie_type").change(function(){
+			var is_check = $(this).is(":checked");	
+			$("#type_check").prop("checked",false);
+		});
 		$("#nation_check").change(function(){
 			var is_check = $(this).is(":checked");	
 			$(".make_nation").prop("checked",is_check);
 		});
+		$(".make_nation").change(function(){
+			var is_check = $(this).is(":checked");	
+			$("#nation_check").prop("checked",false);
+		});
+		$("#grade_check").change(function(){
+			var is_check = $(this).is(":checked");	
+			$(".movie_show_grade").prop("checked",is_check);
+		});
+		$(".movie_show_grade").change(function(){
+			var is_check = $(this).is(":checked");	
+			$("#grade_check").prop("checked",false);
+		});
+		
+// 		$("#previousbtn").click(function(){
+			
+// 		});
+		
+		$("#moviebtn").click(function(){
+			alert($("#moviebtn").val());
+		});
+		
+// 		$("#nextbtn").click(function(){
+// 			$.ajax({
+// 				url : "/MyCGV/main/movie/movieFinder.do", // 나중에 사이트 url로 바뀜
+// 				type : "post", // 최종적으로 서버에 요청함
+// 				dataType : "json",
+// 				timeout : 30000, // 30초 (단위는 ms)
+// 				data : {
+// 					"movie_search" : movie_search,
+// 					"movie_keyword" : movie_keyword,
+// 					"movie_type" : movie_type,
+// 					"make_nation" : make_nation,
+// 					"movie_show_grade" : movie_show_grade,
+// 					"pg" : 
+					
+// 				},
+// 				cache : false,
+// 				// 파일 읽기에 성공한 경우
+// 				success : function(json){
+					
+					
+// 				},
+// 				error : function(xhr, textStatus, errorThrown){
+// 					alert(textStatus +"(HTTP-)" + xhr.status + " / " + errorThrown);
+// 				}
+// 	 		});
+			
+// 		});
+		
 	});
 </script>
+
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -89,12 +169,13 @@
 				<tr>
 					<th>관람등급</th>
 					<td>
-						<input type = "checkbox" name = "movie_show_grade" value="전체이용가"> 전체이용가&emsp;
-						<input type = "checkbox" name = "movie_show_grade" value="7세 시청가"> 7세 시청가&emsp;
-						<input type = "checkbox" name = "movie_show_grade" value="12세 이용가"> 12세 이용가&emsp;
-						<input type = "checkbox" name = "movie_show_grade" value="15세 이용가"> 15세 이용가&emsp;
-						<input type = "checkbox" name = "movie_show_grade" value="청소년 이용불가"> 청소년 이용불가&emsp;
-						<input type = "checkbox" name = "movie_show_grade" value="제한 상영가"> 제한 상영가&emsp;
+						<input type = "checkbox" id = "grade_check" value="전체"> 전체&emsp;
+						<input type = "checkbox" name = "movie_show_grade" class = "movie_show_grade" value="전체이용가"> 전체이용가&emsp;
+						<input type = "checkbox" name = "movie_show_grade" class = "movie_show_grade" value="7세 시청가"> 7세 시청가&emsp;
+						<input type = "checkbox" name = "movie_show_grade" class = "movie_show_grade" value="12세 이용가"> 12세 이용가&emsp;
+						<input type = "checkbox" name = "movie_show_grade" class = "movie_show_grade" value="15세 이용가"> 15세 이용가&emsp;
+						<input type = "checkbox" name = "movie_show_grade" class = "movie_show_grade" value="청소년 이용불가"> 청소년 이용불가&emsp;
+						<input type = "checkbox" name = "movie_show_grade" class = "movie_show_grade" value="제한 상영가"> 제한 상영가&emsp;
 					</td>
 				</tr>
 				<tr>
@@ -121,6 +202,7 @@
 					<tr>
 						<td>
 							<ul id = "title">
+								<li>키워드 : </li>
 								<li>장르 : </li>
 								<li>제작국가 : </li>
 								<li>관람등급 : </li>
@@ -128,6 +210,16 @@
 						</td>
 						<td>
 							<ul id = "content">
+								<li>
+									<c:if test="${requestScope.movie_keyword == null}">
+										전체
+									</c:if>
+									<c:if test="${requestScope.movie_keyword != null}">
+										<c:forEach var = "movie_type" items="${requestScope.movie_keyword }">
+											${movie_keyword }
+										</c:forEach>
+									</c:if>
+								</li>
 								<li>
 									<c:if test="${requestScope.movie_type == null}">
 										전체
@@ -179,13 +271,20 @@
 						<div id = "entity-title">
 							<a href = "movieDetailView.do?movie_code=${find_list.movie_code }&photo_pg=1&trailer_pg=1">
 							${find_list.movie_name }
+							( 
+							<c:if test="${find_list.movie_evaluat_num == 0}">
+								평점 없음
+							</c:if>
+							<c:if test="${find_list.movie_evaluat_num != 0}">
+								평점 : ${fn:substring( ''+(find_list.acc_evaluat_score / find_list.movie_evaluat_num),0,4) } 점
+							</c:if>)
 							</a>
 						</div>
 						<div id = "entity-reserverate">
 							예매율&emsp; 
 							<c:forEach var="reserve_rate_map" items="${requestScope.reserve_rate_map }">
 								<c:if test="${find_list.movie_code == reserve_rate_map.key }">
-										${reserve_rate_map.value} %
+								${fn:substring( ''+(reserve_rate_map.value),0,4) } %
 								</c:if>
 							</c:forEach>
 						</div>
@@ -204,19 +303,19 @@
 			<div id = "findpagingform">
 				<div id ="findpaging">
 					<c:if test="${moviePage.startPage>1 }">
-						[<a id="paging" href="movieFinder.do?pg=${moviePage.startPage-1}">이전</a>]
+						[<a id="paging" id="previousbtn">이전</a>]
 					</c:if> 
 					<c:forEach var="i" begin="${moviePage.startPage}" end="${moviePage.endPage}" step="1">
 					<c:if test="${moviePage.startPage==i }">
-						[<a id="currentPaging" href="movieFinder.do?pg=${i }">${i }</a>]
+						[<a id="currentPaging" id="movebtn">${i }</a>]
 					</c:if>
 					<c:if test="${moviePage.startPage!=i }">
-						[<a id="paging" href="movieFinder.do?pg=${i }">${i }</a>]
+						[<a id="paging" id="movebtn">${i }</a>]
 					</c:if>
 					<!-- el표현식에는 자바코드가 들어갈수없음 -->
 					</c:forEach>
 					<c:if test="${moviePage.endPage<moviePage.totalPage}">
-						[<a id="paging" href="movieFinder.do?pg=${moviePage.endPage+1}&movie_show_grade=${requestScope.movie_show_grade }&make_nation=${requestScope.make_nation }&movie_type=${requestScope.movie_type }&movie_search=${requestScope.movie_search }&movie_keyword=${requestScope.movie_keyword }">다음</a>]
+						[<a id="paging" id="nextbtn">다음</a>]
 					</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 -->
 				</div>
 			</div>
