@@ -89,7 +89,7 @@
 			</div>
 			<div id="moviestore">
 			<font>줄거리</font><p>
-				<pre>${movieDTO.movie_content }</pre>
+				<div id="store">${movieDTO.movie_content }</div>
 			</div>
 		</div>
 		<div id="movietrailer">

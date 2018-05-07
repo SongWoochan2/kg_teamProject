@@ -14,9 +14,6 @@ pageEncoding="UTF-8"%>
 		
 		#currentPaging { color:red; text-decoration: underline;}
 		#paging { color: blue; text-decoration: none;}
-		div{
-			border: 1px solid red;
-		}
 		#tb_div{
 			margin: auto;
 			width: 800px;
@@ -44,7 +41,7 @@ pageEncoding="UTF-8"%>
 						<td align="center">${inquiryDTO.inquiry_code}</td>
 						<td align="center">${inquiryDTO.inquiry_type }</td>
 							<td>
-								<a id="titleA" href="../../main/inquiry/inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
+								<a id="titleA" href="inquiryViewAdmin.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
 									${inquiryDTO.inquiry_title}
 								</a>
 							</td>

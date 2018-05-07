@@ -17,9 +17,11 @@ pageEncoding="UTF-8"%>
 	#noti_button{
 		margin-top: 5px;
 	}
-	#noti_td{
-		padding: 5px;
+	#noti_table td{
+		border-bottom: 1px solid black;
+		
 	}
+	
 </style>
 </head>
 <body>
@@ -46,18 +48,19 @@ pageEncoding="UTF-8"%>
 					<br><br>
 				</div>
 			</div>
-			<div id="noti_table" align="center">
-				<table cellspacing="0" cellpadding="5" style="border-bottom: 1px solid black;">
+			<div align="center">
+				<table id="noti_table" cellspacing="0" cellpadding="5" >
 					<tr bgcolor="#c9c9c9" >
-						<td id="noti_td" width="600px" align="left" style="font-weight: 700">
-							${noticeItemDTO.notice_item_type }  ${noticeItemDTO.notice_item_title }
+						<td class="noti_td" width="600px" align="left" style="font-weight: 700">
+							[${noticeItemDTO.notice_item_type }]     ${noticeItemDTO.notice_item_title }
 						</td>
-						<td width="200px" align="center">
+						<td class="noti_td" width="200px" align="center">
 							등록일  ${noticeItemDTO.notice_item_date }
 						</td>
 					</tr>
 					<tr bgcolor="white" >
-						<td colspan="3" height="200" valign="top">
+						<td class="noti_td" colspan="3" height="200" valign="top">
+							<br><br>
 							<pre>${noticeItemDTO.notice_item_content }</pre>
 						</td>
 					</tr>

@@ -606,60 +606,381 @@ nomaxvalue;
 
 
 --------------------------------------------------------------------------------
-----------------------------------------------------------------   우찬       -------
+----------------------------------------------------------------  트레일러 자료     -------
 --------------------------------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 1, '트레일러1','https://www.youtube.com/watch?v=jaxZeisCHv8', sysdate );
+movie_trailer_seq.nextval, 1, '트레일러1','https://www.youtube.com/embed/jaxZeisCHv8', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 1, '트레일러2','https://www.youtube.com/watch?v=974DwhlUP-8', sysdate );
+movie_trailer_seq.nextval, 1, '트레일러2','https://www.youtube.com/embed/974DwhlUP-8', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 2, '트레일러1','https://www.youtube.com/watch?v=fB8xou7TGTg', sysdate );
+movie_trailer_seq.nextval, 2, '트레일러1','https://www.youtube.com/embed/fB8xou7TGTg', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 2, '트레일러2','https://www.youtube.com/watch?v=qHVUPri5tjA', sysdate );
+movie_trailer_seq.nextval, 2, '트레일러2','https://www.youtube.com/embed/qHVUPri5tjA', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 3, '트레일러1','https://www.youtube.com/watch?v=mUpJ18MRe8s', sysdate );
+movie_trailer_seq.nextval, 3, '트레일러1','https://www.youtube.com/embed/mUpJ18MRe8s', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 3, '트레일러2','https://www.youtube.com/watch?v=H3wOVFFBrlc', sysdate );
+movie_trailer_seq.nextval, 3, '트레일러2','https://www.youtube.com/embed/H3wOVFFBrlc', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 4, '트레일러1','https://www.youtube.com/watch?v=NHvn6Ifrvtg', sysdate );
+movie_trailer_seq.nextval, 4, '트레일러1','https://www.youtube.com/embed/NHvn6Ifrvtg', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 4, '트레일러2','https://www.youtube.com/watch?v=qeHE6DLxydU', sysdate );
+movie_trailer_seq.nextval, 4, '트레일러2','https://www.youtube.com/embed/qeHE6DLxydU', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 5, '트레일러1','https://www.youtube.com/watch?v=zo-3miFE75Q', sysdate );
+movie_trailer_seq.nextval, 5, '트레일러1','https://www.youtube.com/embed/zo-3miFE75Q', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 5, '트레일러2','https://www.youtube.com/watch?v=fez_ZtMCH4s', sysdate );
+movie_trailer_seq.nextval, 5, '트레일러2','https://www.youtube.com/embed/fez_ZtMCH4s', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 6, '트레일러1','https://www.youtube.com/watch?v=ewpYq9rgg3w', sysdate );
+movie_trailer_seq.nextval, 6, '트레일러1','https://www.youtube.com/embed/ewpYq9rgg3w', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 6, '트레일러2','https://www.youtube.com/watch?v=dtKMEAXyPkg', sysdate );
+movie_trailer_seq.nextval, 6, '트레일러2','https://www.youtube.com/embed/dtKMEAXyPkg', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 7, '트레일러1','https://www.youtube.com/watch?v=UP38GHwWg8I', sysdate );
+movie_trailer_seq.nextval, 7, '트레일러1','https://www.youtube.com/embed/UP38GHwWg8I', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 7, '트레일러2','https://www.youtube.com/watch?v=BKO8Zl5DR5Q', sysdate );
+movie_trailer_seq.nextval, 7, '트레일러2','https://www.youtube.com/embed/BKO8Zl5DR5Q', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 8, '트레일러1','https://www.youtube.com/watch?v=AF4IzD6aVU4', sysdate );
+movie_trailer_seq.nextval, 8, '트레일러1','https://www.youtube.com/embed/AF4IzD6aVU4', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 8, '트레일러2','https://www.youtube.com/watch?v=BEuScUagIpc', sysdate );
+movie_trailer_seq.nextval, 8, '트레일러2','https://www.youtube.com/embed/BEuScUagIpc', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 9, '트레일러1','https://www.youtube.com/watch?v=YW1NuAuifIQ', sysdate );
+movie_trailer_seq.nextval, 9, '트레일러1','https://www.youtube.com/embed/YW1NuAuifIQ', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 9, '트레일러2','https://www.youtube.com/watch?v=yGozGGbYd74', sysdate );
+movie_trailer_seq.nextval, 9, '트레일러2','https://www.youtube.com/embed/yGozGGbYd74', sysdate );
 ----------------------------------------------------------
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 10, '트레일러1','https://www.youtube.com/watch?v=82MwB4vRWK4', sysdate );
+movie_trailer_seq.nextval, 10, '트레일러1','https://www.youtube.com/embed/82MwB4vRWK4', sysdate );
 insert into movie_trailer values (
-movie_trailer_seq.nextval, 10, '트레일러2','https://www.youtube.com/watch?v=JEpqz33vKus', sysdate );
+movie_trailer_seq.nextval, 10, '트레일러2','https://www.youtube.com/embed/JEpqz33vKus', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 11, '트레일러1','https://www.youtube.com/embed/WKQSRFlfr50', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 11, '트레일러2','https://www.youtube.com/embed/FRbx5W72BNs', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 12, '트레일러1','https://www.youtube.com/embed/ty1XzpkAAQA', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 13, '트레일러1','https://www.youtube.com/embed/awyG1-xvqFY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 13, '트레일러2','https://www.youtube.com/embed/xNcJ0lIDPkE', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 14, '트레일러1','https://www.youtube.com/embed/CGJiUKw6jec', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 15, '트레일러1','https://www.youtube.com/embed/uc2ndOreVMM', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 15, '트레일러2','https://www.youtube.com/embed/hA_S-TFfqUk', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 16, '트레일러1','https://www.youtube.com/embed/A1Ae5DFkt8w', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 17, '트레일러1','https://www.youtube.com/embed/t2_BmIGC2Js', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 18, '트레일러1','https://www.youtube.com/embed/espe3Tz_CuI', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 18, '트레일러2','https://www.youtube.com/embed/vGPHzniAxtE', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 19, '트레일러1','https://www.youtube.com/embed/pHKjR6EMhi4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 19, '트레일러2','https://www.youtube.com/embed/4Dww00XSjys', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 20, '트레일러1','https://www.youtube.com/embed/aIXky2a5YhQ', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 20, '전작트레일러','https://www.youtube.com/embed/GnERUwEaWVc', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 21, '트레일러1','https://www.youtube.com/embed/DUSSsMw6628', sysdate );
 
 ----------------------------------------------------------
 
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 23, '트레일러1','https://www.youtube.com/embed/Ceoe2wf-bbo', sysdate );
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 26, '트레일러1','https://www.youtube.com/embed/yWOBVfu1Tuw', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 27, '트레일러1','https://www.youtube.com/embed/61UrVOZyZQU', sysdate );
+
+----------------------------------------------------------
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 29, '트레일러1','https://www.youtube.com/embed/3UWwRykamZw', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 30, '트레일러1','https://www.youtube.com/embed/_AzEsgb3XZw', sysdate );
+
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 31, '트레일러1','https://www.youtube.com/embed/xVh3bh0N68Q', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 31, '트레일러2','https://www.youtube.com/embed/nhVFkAGzE8M', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 32, '트레일러1','https://www.youtube.com/embed/sbp85cz2ddc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 32, '트레일러2','https://www.youtube.com/embed/9vaZ3V8hQGY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 32, '트레일러3','https://www.youtube.com/embed/9n2Njh8abGU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 33, '트레일러1','https://www.youtube.com/embed/5O5PVvHTWRo', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 34, '트레일러1','https://www.youtube.com/embed/rvLMVcRkRfY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 34, '트레일러2','https://www.youtube.com/embed/g0fKcDVSIP4?list=PLxHyjlxPEgjWCNKzg6QXx6ZNULgdAbSUQ', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 35, '트레일러1','https://www.youtube.com/embed/l2zbiENbffM?list=PLLtDu4z6O2eyVJRO7RCNZGPBXJp5_CYC2', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 35, '트레일러2','https://www.youtube.com/embed/D4ttnbceO2w?list=PLLtDu4z6O2eyVJRO7RCNZGPBXJp5_CYC2', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 36, '트레일러1','https://www.youtube.com/embed/4FsR6x4D9eU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 36, '트레일러2','https://www.youtube.com/embed/BvHQOeqV63s', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 37, '트레일러1','https://www.youtube.com/embed/xUDhdCsLkjU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 37, '트레일러2','https://www.youtube.com/embed/-zabRKMQ88c?list=PL9ArOU7415dL5upreQmbIB2swVMRCx4hN', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 38, '트레일러1','https://www.youtube.com/embed/HWEW_qTLSEE', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 39, '트레일러1','https://www.youtube.com/embed/Md6Dvxdr0AQ', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 40, '트레일러1','https://www.youtube.com/embed/1HFv47QHWJU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 40, '트레일러2','https://www.youtube.com/embed/1t0A_tZGrYw', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 41, '트레일러1','https://www.youtube.com/embed/AF6F1f5Ypkg', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 42, '트레일러1','https://www.youtube.com/embed/LUlczH6yfM8', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 43, '트레일러1','https://www.youtube.com/embed/TK3u3QJOfXM', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 44, '트레일러1','https://www.youtube.com/embed/SoHKMqs2vKs', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 45, '트레일러1','https://www.youtube.com/embed/uRZFEJvNYAQ', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 46, '트레일러1','https://www.youtube.com/embed/KNXzmWNxlIU', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 47, '트레일러1','https://www.youtube.com/embed/D7FkWjczYl8', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 48, '트레일러1','https://www.youtube.com/embed/tK2AGc107kI', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 49, '트레일러1','https://www.youtube.com/embed/uflYEv_0JoY', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 50, '트레일러1','https://www.youtube.com/embed/P-2B04A_gO0', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 51, '트레일러1','https://www.youtube.com/embed/K0u6LwKYBhI', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 51, '트레일러2','https://www.youtube.com/embed/L9DGUxCvQrU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 52, '트레일러1','https://www.youtube.com/embed/0dd_NTbUV9g', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 52, '트레일러2','https://www.youtube.com/embed/_xwYUxVQfcs', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 53, '트레일러1','https://www.youtube.com/embed/nm2aZz45pGE', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 53, '트레일러2','https://www.youtube.com/embed/CjXJSwhKEPQ', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 54, '트레일러1','https://www.youtube.com/embed/VVZQ39i5G1s', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 54, '트레일러2','https://www.youtube.com/embed/jAAAXMuId8g?list=PLIiIsjUV7CSHhkHYaJLxxvqDir0mJ1GKj', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 55, '트레일러1','https://www.youtube.com/embed/_EAxUq_Ilf8', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 55, '트레일러2','https://www.youtube.com/embed/n33jXAYTJCk', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 56, '트레일러1','https://www.youtube.com/embed/c3gI9ms8Fdc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 56, '트레일러2','https://www.youtube.com/embed/T31SVOQUyoU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 57, '트레일러1','https://www.youtube.com/embed/pdOrKWXonfs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 57, '트레일러2','https://www.youtube.com/embed/f2qqD7ljYVY', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 58, '트레일러1','https://www.youtube.com/embed/tscrPAHwyIY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 58, '트레일러2','https://www.youtube.com/embed/F2_zgugXwqg', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 59, '트레일러1','https://www.youtube.com/embed/fAlpsMkxzg4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 59, '트레일러2','https://www.youtube.com/embed/l4q_ZK7i_nU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 60, '트레일러1','https://www.youtube.com/embed/kvgSjipdEs0', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 60, '트레일러2','https://www.youtube.com/embed/uSIC8oQJ9aM', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 61, '트레일러1','https://www.youtube.com/embed/TRH8N4FEXxg', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 61, '트레일러2','https://www.youtube.com/embed/QTGY4OO6Byw', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 62, '트레일러1','https://www.youtube.com/embed/c6u0_bYLfII', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 62, '트레일러2','https://www.youtube.com/embed/9z1ZbyszUW0', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 63, '트레일러1','https://www.youtube.com/embed/0IgrxiDr980', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 63, '트레일러2','https://www.youtube.com/embed/_1qO4EDcplY', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 64, '트레일러1','https://www.youtube.com/embed/mEAjmr0K7rA', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 64, '트레일러2','https://www.youtube.com/embed/nvtfCxSKQjk', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 65, '트레일러1','https://www.youtube.com/embed/yD_oH6gcVmc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 65, '트레일러2','https://www.youtube.com/embed/N0mOxThHWxM', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 66, '트레일러1','https://www.youtube.com/embed/XgTi-vKRGNs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 66, '트레일러2','https://www.youtube.com/embed/jfQ7XevD8Dc', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 67, '트레일러1','https://www.youtube.com/embed/3NHkhEHCYBs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 67, '트레일러2','https://www.youtube.com/embed/zfHmq6wlwws', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 68, '트레일러1','https://www.youtube.com/embed/Ngn2IftLNP0', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 68, '트레일러2','https://www.youtube.com/embed/D8K2KzK49XE', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 69, '트레일러1','https://www.youtube.com/embed/HvOR780IGgk', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 69, '트레일러2','https://www.youtube.com/embed/bmJ7d0I1Rvc', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 70, '트레일러1','https://www.youtube.com/embed/dEF4g7gf7C4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 70, '트레일러2','https://www.youtube.com/embed/L2p-_Q4Rf5o', sysdate );
+
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 71, '트레일러1','https://www.youtube.com/embed/OybUDmVgEac', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 71, '트레일러2','https://www.youtube.com/embed/KuFO5nCayj0', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 72, '트레일러1','https://www.youtube.com/embed/YpqMZt1gOXU', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 72, '트레일러2','https://www.youtube.com/embed/mQl-lGF6XHM', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 73, '트레일러1','https://www.youtube.com/embed/qgOsPoXv2as', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 73, '트레일러2','https://www.youtube.com/embed/3L2-JAbXIAM', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 74, '트레일러1','https://www.youtube.com/embed/VVM3TsxoqIc', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 74, '트레일러2','https://www.youtube.com/embed/lcU4C_caKV4', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 75, '트레일러1','https://www.youtube.com/embed/c7c4F-e_QBY', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 75, '트레일러2','https://www.youtube.com/embed/B2r6b-gVG6M', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 76, '트레일러1','https://www.youtube.com/embed/SwgBX_qOtXs', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 76, '트레일러2','https://www.youtube.com/embed/7yIFePr1_wU', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 77, '트레일러1','https://www.youtube.com/embed/yHIZFeKWd1I', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 77, '트레일러2','https://www.youtube.com/embed/BKO8Zl5DR5Q', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 78, '트레일러1','https://www.youtube.com/embed/HIyn_eMs_A4', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 78, '트레일러2','https://www.youtube.com/embed/sTrOvSMMn0I', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 79, '트레일러1','https://www.youtube.com/embed/wxYAg7to52A', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 79, '트레일러2','https://www.youtube.com/embed/-UOlOLpnwO4', sysdate );
+----------------------------------------------------------
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 80, '트레일러1','https://www.youtube.com/embed/9FS0YFIJU7Q', sysdate );
+insert into movie_trailer values (
+movie_trailer_seq.nextval, 80, '트레일러2','https://www.youtube.com/embed/2DhBlbRc_d8', sysdate );
+
+----------------------------------------------------------
 
 
 

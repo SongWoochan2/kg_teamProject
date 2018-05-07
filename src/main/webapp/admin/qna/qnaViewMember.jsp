@@ -17,8 +17,8 @@ pageEncoding="UTF-8"%>
 	#qna_button{
 		margin-top: 5px;
 	}
-	#qna_td{
-		padding: 5px;
+	#qna_table td{
+		border-bottom: 1px solid black;
 	}
 </style>
 </head>
@@ -48,8 +48,8 @@ pageEncoding="UTF-8"%>
 					<br><br>
 				</div>
 			</div>
-			<div id="qna_table" align="center">
-				<table cellspacing="0" cellpadding="5" style="border-bottom: 1px solid black;">
+			<div  align="center">
+				<table id="qna_table" cellspacing="0" cellpadding="5" style="border-bottom: 1px solid black;">
 					<tr bgcolor="#c9c9c9" >
 						<td id="qna_td" width="600px" align="left" style="font-weight: 700">
 							${qnaDTO.qna_type }  ${qnaDTO.qna_title }
@@ -60,6 +60,7 @@ pageEncoding="UTF-8"%>
 					</tr>
 					<tr bgcolor="white" >
 						<td colspan="3" height="200" valign="top">
+							<br><br>
 							<pre>${qnaDTO.qna_content }</pre>
 						</td>
 					</tr>

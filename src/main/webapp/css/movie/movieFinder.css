@@ -205,3 +205,5 @@
 		width: 100%;
 		height: 100%;
 	}
+	#moviefind #find_result_wrap #findresult #findpagingform #findpaging #currentPaging{color : red;}
+	#moviefind #find_result_wrap #findresult #findpagingform #findpaging #paging{color : blue;}

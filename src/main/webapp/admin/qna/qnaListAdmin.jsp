@@ -96,7 +96,7 @@ pageEncoding="UTF-8"%>
 						<c:forEach var="qnaDTO" items="${list}">
 							<tr bgcolor="white">
 								<td align="center">${qnaDTO.qna_code}</td>
-								<td align="center">${qnaDTO.qna_type }</td>
+								<td align="center">[${qnaDTO.qna_type }]</td>
 								<td>
 									<a id="titleA" href="qnaView.do?qna_code=${qnaDTO.qna_code}&pg=${param.pg}" >
 										${qnaDTO.qna_title}
