@@ -28,6 +28,9 @@ pageEncoding="UTF-8"%>
 		width: 1000px;
 		margin: auto;
 	}
+	#gettotal{
+		color:white;
+	}
 </style>
 </head>
 <body>
@@ -39,31 +42,43 @@ pageEncoding="UTF-8"%>
 			<div id="tab">
 				<ul id="ul">
 					<li id="li">
-						<a href="#">
+						<a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1">
+						<c:if test="${requestScope.type==null }">
 							<img src="../../image/type/전체-red.png" width="100px" height="50px" alt="전체"/>
+						</c:if>
+						<c:if test="${requestScope.type!=null }">
+							<img src="../../image/type/전체-gray.png" width="100px" height="50px" alt="전체"/>
+						</c:if>
 						</a>
 					</li>
 					<li id="li">
-						<a href="#">
-							<img src="../../image/type/시스템점검-gray.png"width="100px" height="50px" alt="시스템점검"/>
+						<a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1&type=시스템점검">
+						<c:if test="${requestScope.type!='시스템점검' }">
+							<img src="../../image/type/시스템점검-gray.png" width="100px" height="50px" alt="시스템점검"/>
+						</c:if>
+						<c:if test="${requestScope.type=='시스템점검' }">
+							<img src="../../image/type/시스템점검-red.png" width="100px" height="50px" alt="시스템점검"/>
+						</c:if>
+							
 						</a>
 					</li>
 					<li id="li">
-						<a href="#">
-							<img src="../../image/type/극장-gray.png"width="100px" height="50px" alt="극장"/>
+						<a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1&type=극장">
+						<c:if test="${requestScope.type!='극장' }">
+							<img src="../../image/type/극장-gray.png" width="100px" height="50px" alt="극장"/>
+						</c:if>
+						<c:if test="${requestScope.type=='극장' }">
+							<img src="../../image/type/극장-red.png" width="100px" height="50px" alt="극장"/>
+						</c:if>
 						</a>
 					</li>
-					<li id="li">
-						<a href="#">
-							<img src="../../image/type/기타-gray.png"width="100px" height="50px" alt="기타"/>
-						</a>
-					</li>
+
 				</ul>
 			</div>
 			<br><br><br><br>
 			<table cellspacing="0" cellpadding="5" align="center">
 				<tr>
-					<td colspan="2">총  ${noticeItem_type_count}건이 검색 되었습니다.</td>
+					<td colspan="2"><font id = "gettotal">총  ${requestScope.totalA}건이 검색 되었습니다.</font></td>
 				</tr>
 				<tr bgcolor="#c9c9c9">
 					<th width="100">번호</th>
@@ -87,20 +102,20 @@ pageEncoding="UTF-8"%>
 				<tr>
 					<td colspan="5" align="center">
 						<c:if test="${startPage > 3 }">
-							[<a id="paging" href="noticeItemList.do?pg=${startPage-1}">이전</a>]
+							[<a id="paging" href="noticeItemList.do?pg=${startPage-1}&type=${requestScope.type}">이전</a>]
 						</c:if>
 						
 						<c:forEach var="i" begin="${startPage }" end="${endPage }">
 							<c:if test="${i == param.pg }">
-								[<a id="currentPaging" href="noticeItemList.do?pg=${i }">${i }</a>]
+								[<a id="currentPaging" href="noticeItemList.do?pg=${i }&type=${requestScope.type}">${i }</a>]
 							</c:if>
 							<c:if test="${i != param.pg }">
-								[<a id="paging" href="noticeItemList.do?pg=${i }">${i }</a>]
+								[<a id="paging" href="noticeItemList.do?pg=${i }&type=${requestScope.type}">${i }</a>]
 							</c:if>
 						</c:forEach>
 						
 						<c:if test="${endPage < totalP }">
-							[<a id="paging" href="noticeItemList.do?pg=${endPage+1}">다음</a>]
+							[<a id="paging" href="noticeItemList.do?pg=${endPage+1}&type=${requestScope.type}">다음</a>]
 						</c:if>
 					</td>
 				</tr>

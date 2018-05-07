@@ -23,8 +23,9 @@ public class QnaDAO {
 		return sqlSession.update("mybatis.qna.qnaModify", qnaDTO);
 	}
 	
-	public List<QnaDTO> qnaList(int startNum, int endNum){
-		Map<String, Integer> map = new HashMap<>();
+	public List<QnaDTO> qnaList(String type, int startNum, int endNum){
+		Map<String, Object> map = new HashMap<>();
+		map.put("type", type);
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		return sqlSession.selectList("mybatis.qna.qnaList", map);
@@ -38,8 +39,9 @@ public class QnaDAO {
 		return sqlSession.update("mybatis.qna.qnaList", qna_code);
 	}
 	
-	public int getTotalA() {
-		return sqlSession.selectOne("mybatis.qna.totalA");
+	public int getTotalA(String type) {
+		System.out.println("type : " + type);
+		return sqlSession.selectOne("mybatis.qna.getTotalA",type);
 	}
 	
 	public int qnaDelete(int qna_code) {

@@ -54,8 +54,8 @@
 			       				#{item} 
 			  				</foreach>
 			  				)
-						ORDER BY movie_code desc) tt) 
 		  			</if>
+						ORDER BY movie_code desc) tt) 
 		<![CDATA[where rn>=#{m_startNum} and rn<=#{m_endNum}]]>
 		
 	</select>

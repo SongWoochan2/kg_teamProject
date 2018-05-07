@@ -21,8 +21,8 @@ public class QnaService {
 		return qnaDAO.qnaModify(qnaDTO);
 	}
 	
-	public List<QnaDTO> qnaList(int startNum, int endNum){
-		return qnaDAO.qnaList(startNum, endNum);
+	public List<QnaDTO> qnaList(String type, int startNum, int endNum){
+		return qnaDAO.qnaList(type, startNum, endNum);
 	}
 	
 	public QnaDTO qnaView(int qna_code) {
@@ -30,8 +30,8 @@ public class QnaService {
 	}
 	
 	
-	public int getTotalA() {
-		return qnaDAO.getTotalA();
+	public int getTotalA(String type) {
+		return qnaDAO.getTotalA(type);
 	}
 	
 	public int qnaDelete(int qna_code) {

@@ -40,7 +40,7 @@ public class InquiryController {
 	private AnswerService answerService;
 	
 	@RequestMapping(value="/main/inquiry/inquiryWriteForm.do")
-	public ModelAndView inquiryWriteForm(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException {
+	public ModelAndView hyperinquiryWriteForm(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 		ModelAndView modelAndView = new ModelAndView();
 		String inquiry_id=(String) session.getAttribute("memId");
@@ -95,7 +95,7 @@ public class InquiryController {
 	
 	
 	@RequestMapping(value="/main/inquiry/inquiryListMember.do")
-	public ModelAndView inquiryListMember(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public ModelAndView hyperinquiryListMember(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String inquiry_id=(String) session.getAttribute("memId");
 		ModelAndView modelAndView = new ModelAndView();
 		

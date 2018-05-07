@@ -67,8 +67,8 @@
 			
 // 		});
 		
-		$("#moviebtn").click(function(){
-			alert($("#moviebtn").val());
+		$(".movebtn").click(function(){
+			alert($(".movebtn").val());
 		});
 		
 // 		$("#nextbtn").click(function(){
@@ -80,6 +80,11 @@
 // 				data : {
 // 					"movie_search" : movie_search,
 // 					"movie_keyword" : movie_keyword,
+// 					"movie_type" : movie_type,
+// 					"movie_type" : movie_type,
+// 					"movie_type" : movie_type,
+// 					"movie_type" : movie_type,
+// 					"movie_type" : movie_type,
 // 					"movie_type" : movie_type,
 // 					"make_nation" : make_nation,
 // 					"movie_show_grade" : movie_show_grade,
@@ -307,15 +312,15 @@
 					</c:if> 
 					<c:forEach var="i" begin="${moviePage.startPage}" end="${moviePage.endPage}" step="1">
 					<c:if test="${moviePage.startPage==i }">
-						[<a id="currentPaging" id="movebtn">${i }</a>]
+						[<a id="currentPaging" class="movebtn">${i }</a>]
 					</c:if>
 					<c:if test="${moviePage.startPage!=i }">
-						[<a id="paging" id="movebtn">${i }</a>]
+						[<a id="paging" class="movebtn">${i }</a>]
 					</c:if>
 					<!-- el표현식에는 자바코드가 들어갈수없음 -->
 					</c:forEach>
 					<c:if test="${moviePage.endPage<moviePage.totalPage}">
-						[<a id="paging" id="nextbtn">다음</a>]
+						[<a id="paging" class="nextbtn">다음</a>]
 					</c:if> <!-- el표현식에는 자바코드가 들어갈수없음 -->
 				</div>
 			</div>
