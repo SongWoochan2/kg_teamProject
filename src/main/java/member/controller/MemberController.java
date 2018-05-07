@@ -53,7 +53,8 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("memName", member_name);
 			session.setAttribute("memId", member_id);
-			
+
+			System.out.println(1);
 			
 			//////  페이지 이동 제어 및 파라미터 제어  //////
 			Map<String, String[]> param_map = request.getParameterMap();
@@ -64,14 +65,16 @@ public class MemberController {
 					}
 				}
 			}
+			System.out.println(2);
 			if(request.getParameter("origin_uri") != null) {
+				System.out.println(request.getParameter("origin_uri"));
 				//System.out.println("target uri : " + ((String)request.getParameter("origin_uri")).replaceFirst("/MyCGV", ""));
 				modelAndView.setViewName("redirect:" + ((String)request.getParameter("origin_uri")).replaceFirst("/MyCGV", "") );
 				return modelAndView;
 			}
 			/////////////////////////////////
 			
-			
+			System.out.println(4);
 			modelAndView.setViewName("redirect:/main/main/movieMain.do");
 		}
 		return modelAndView;
