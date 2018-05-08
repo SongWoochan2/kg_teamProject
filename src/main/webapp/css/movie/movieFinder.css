@@ -77,13 +77,18 @@
 		color : white;
 	}
 	
-	#moviefind #findresult{
+	#moviefind #find_result_wrap{
 		
 		width: 100%;
 		height: 76%;
 	}
+	#moviefind #find_result_wrap #findresult{
+		
+		width: 100%;
+		height: 100%;
+	}
 	
-	#moviefind #findresult #result-title{
+	#moviefind #find_result_wrap #findresult #result-title{
 		padding-top : 55px;
 		height: 8%;
 		z-index : 1;
@@ -93,23 +98,23 @@
 		font-weight: bold;
 		background: #fff url('../../image/storage/h3_search_results.gif') no-repeat scroll center;
 	}
-	#moviefind #findresult #result-title .hr-title{
+	#moviefind #find_result_wrap #findresult #result-title .hr-title{
 		border: 5px double orange;
 /* 		display: none; */
 	}
-	#moviefind #findresult #result-title .hr-title:after{
+	#moviefind #find_result_wrap #findresult #result-title .hr-title:after{
 /* 		content: "www.formget.com"; */
 	}
 	
-	#moviefind #findresult #result-title font{
+	#moviefind #find_result_wrap #findresult #result-title font{
 		color: red;
 	}
-	#moviefind #findresult #findinfoform{
+	#moviefind #find_result_wrap #findresult #findinfoform{
 		padding : 20px 0px;
 		width: 100%;
 		height: 14%;
 	}
-	#moviefind #findresult #findinfoform #findinfo{
+	#moviefind #find_result_wrap #findresult #findinfoform #findinfo{
 		font-weight : bold;
 		padding-top : 10px;
 		padding-left : 30px;
@@ -117,86 +122,88 @@
 		height: 100%;
 		background-color: #cccccc;
 	}
-	#moviefind #findresult #findinfoform #findinfo table td{
+	#moviefind #find_result_wrap #findresult #findinfoform #findinfo table td{
 		
 		border-top : 0px;
 		color : black;
 		width: 200px;
 	}
-	#moviefind #findresult #findinfoform #findinfo li{
+	#moviefind #find_result_wrap #findresult #findinfoform #findinfo li{
 		margin-top: 10px;
 	}
-	#moviefind #findresult #findinfoform #findinfo #content li{
+	#moviefind #find_result_wrap #findresult #findinfoform #findinfo #content li{
 		width : 700px;
 		list-style: none;
 	}
 	
 	
-	#moviefind #findresult #findcontentform{
+	#moviefind #find_result_wrap #findresult #findcontentform{
 		padding : 10px auto;
 		width: 100%;
 		height: 75%;
 	}
-	#moviefind #findresult #findcontentform #findcontent{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent{
 		width: 1100px;
 		height: 100%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity{
 		float : left;
 		width: 25%;
 		height: 33.3%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity *{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity *{
 		width: 100%;	
 		padding-left : 5px;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-poster{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-poster{
 		padding : 3px 40px 3px 20px;
 		height : 65%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-poster img{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-poster img{
 		height: 100%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-title{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-title{
 		font-size: 17px;
 		font-weight: bold;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-title:hover{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-title:hover{
 		text-decoration: underline;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserverate{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-reserverate{
 		font-weight: bold;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-opendate{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-opendate{
 		font-size: 12px;
 		color : gray;	
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-reserve{
 		padding-left : 45px;
 		height : 15%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve a{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-reserve a{
 		color : white;
 		padding-left : 10px;
 		width: 25%;
 		height: 100%;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve #reserve-btn{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-reserve #reserve-btn{
 		width: 70%;
 		background-color: #e02c14;
 	}
-	#moviefind #findresult #findcontentform #findcontent #findentity #entity-reserve #reserve-btn:hover{
+	#moviefind #find_result_wrap #findresult #findcontentform #findcontent #findentity #entity-reserve #reserve-btn:hover{
 		background-color: red;
 	}
 	
-	#moviefind #findresult #findpagingform{
+	#moviefind #find_result_wrap #findresult #findpagingform{
 		padding : 0px 200px;
 		width: 100%;
 		height: 3%;
 	}
-	#moviefind #findresult #findpagingform #findpaging{
+	#moviefind #find_result_wrap #findresult #findpagingform #findpaging{
 		text-align : center;
 		background-color: #cccccc;
 		width: 100%;
 		height: 100%;
 	}
+	#moviefind #find_result_wrap #findresult #findpagingform #findpaging #currentPaging{color : red;}
+	#moviefind #find_result_wrap #findresult #findpagingform #findpaging #paging{color : blue;}

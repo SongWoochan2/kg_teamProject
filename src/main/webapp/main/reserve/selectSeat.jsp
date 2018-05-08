@@ -262,9 +262,9 @@
 		function reserveFail(msg){
         	$("#result_popup_main").html(msg);
         	
-        	$("#result_popup_main #resultOK, #result_popup_main #resultCancel, #close_result_popup").off("click");
+        	$("#result_popup_div #resultOK, #result_popup_div #resultCancel, #close_result_popup").off("click");
         	
-        	$("#result_popup_main #resultOK, #result_popup_main #resultCancel, #close_result_popup").click(function(){
+        	$("#result_popup_div #resultOK, #result_popup_div #resultCancel, #close_result_popup").click(function(){
 				$("#result_popup_shadow").hide(0);
 				$("#result_popup_main").empty();
 				$("#result_popup_div").hide(0);
@@ -277,17 +277,68 @@
 			$("#result_popup_main").html(json.totalCost +"원을 결제하시겠습니까?");
 			
 
-        	$("#result_popup_main #resultOK, #result_popup_main #resultCancel, #close_result_popup").off("click");
+        	$("#result_popup_div #resultOK, #result_popup_div #resultCancel, #close_result_popup").off("click");
         	
-        	$("#result_popup_main #resultOK").click(function(){
-        		location.href='/MyCGV/reserveComplete.do';
+        	$("#result_popup_div #resultOK").click(function(){
+        		//location.href='/MyCGV/reserveComplete.do';
+        		reserveComplete();
 			});
-        	$("#result_popup_main #resultCancel, #close_result_popup").click(function(){
-        		location.href='/MyCGV/reserveCancel.do';
+        	$("#result_popup_div #resultCancel, #close_result_popup").click(function(){
+        		//location.href='/MyCGV/reserveCancel.do';
+        		reserveCancel();
 			});
 		}
 		
 
+	    function reserveComplete(){
+	        var formData = $("#reservingForm").serialize();
+	        
+	        $.ajax({
+	            cache : false,
+	            url : "/MyCGV/reserveComplete.do", // 요기에
+	            type : 'POST', 
+	            dataType : "json",
+	            data : formData, 
+	            async : false,
+	            success : function(json) {
+	            	if(json.result>0){
+	            		alert("결제가 완료 되었습니다.");
+	            	} else {
+	            		alert("결제가 완료 실패...");
+	            	}
+	            	location.reload();
+	            },
+	            error : function(xhr, status) {
+	                alert(xhr + " : " + status);
+	            }
+	        });
+	    }
+
+	    function reserveCancel(){
+	        var formData = $("#reservingForm").serialize();
+	        
+	        $.ajax({
+	            cache : false,
+	            url : "/MyCGV/reserveCancel.do", // 요기에
+	            type : 'POST', 
+	            dataType : "json",
+	            data : formData, 
+	            async : false,
+	            success : function(json) {
+	            	if(json.result>0){
+	            		alert("결제가 취소 되었습니다.");
+	            	} else {
+	            		alert("결제가 취소 실패...");
+	            	}
+	            	location.reload();
+	            },
+	            error : function(xhr, status) {
+	                alert(xhr + " : " + status);
+	            }
+	        });
+	    }
+	    
+	    
 	    function reservingFormSubmit(){
 			$("#result_popup_shadow").show(0);
 			$("#result_popup_div").show(0);

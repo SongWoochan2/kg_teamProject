@@ -65,7 +65,7 @@ pageEncoding="UTF-8"%>
 		<div id="cont_left">
 			<div class="left_menubar">
 				<ul class="clientcenter_menu">
-					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.do?pg=1" ><strong>고객센터 메인</strong></a></li>
 					<li  id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong> </a></li>
 					<li  id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
 					<li class="selected"  id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
@@ -107,7 +107,7 @@ pageEncoding="UTF-8"%>
 						<tr>
 							<td colspan="2" >
 								<strong>※&nbsp;&nbsp;문의에 대한 빠른 답변을 위해&nbsp;회원 가입 시 입력하신 연락처를 확인해주세요.</strong>
-								 <input id="modi_btn" type="button" value="수정" onclick="">
+								 <input id="modi_btn" type="button" value="수정" onclick="location.href='/MyCGV/main/member/confirmPwdModifyForm.do'">
 							 </td>
 						</tr>
 						<tr>

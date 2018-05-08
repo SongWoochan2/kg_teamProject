@@ -126,6 +126,7 @@ pageEncoding="UTF-8"%>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>
 <div id="resultAlert"></div>	
+
 </body>
 </html>
 

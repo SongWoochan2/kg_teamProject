@@ -11,6 +11,7 @@ public interface MovieService {
 	int movieModify(MovieDTO movieDTO);
 	int updateEvaluatScore(int movie_code, int acc_evaluat_score);
 	int updateEvaluatNum(int movie_code, int movie_evaluat_num);
+	int updateAudienceNum(int show_present_code,int acc_audience_num);
 	int movieDelete(int movie_code);
 	int movieInsert(MovieDTO movieDTO);
 	int getTotalA();

@@ -117,6 +117,10 @@ public class MovieServiceImpl implements MovieService{
 		return movieDAO.movieNonOpenTotal();
 	}
 	
+	@Override
+	public int updateAudienceNum(int show_present_code, int acc_audience_num) {
+		return movieDAO.updateAudienceNum(show_present_code, acc_audience_num);
+	}
 	
 	// woochan
 
@@ -124,5 +128,6 @@ public class MovieServiceImpl implements MovieService{
 	public Map<Integer, ReserveRank> getMapOfReserveNum() {
 		return movieDAO.getMapOfReserveNum();
 	}
+
 
 }

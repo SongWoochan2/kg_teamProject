@@ -1,0 +1,25 @@
+insert into notice_item values(notice_item_code_seq.nextval, 'cgv1', '극장', 'movit가 오픈하였습니다.', '많은 방문 부탁 드립니다.', sysdate);
+
+insert into notice_item values(notice_item_code_seq.nextval, 'cgv1', '극장', '내일은 웃으리', '끝난줄 알았겠지만 이제 시작', sysdate);
+
+insert into notice_item values(notice_item_code_seq.nextval, 'cgv1', '시스템점검', '수고하셨습니다.', '모두 취업 성공합시다.', sysdate);
+
+insert into notice_item values(notice_item_code_seq.nextval, 'cgv1', '극장', '모두들 공부하느라', '열심히 합시다.', sysdate);
+
+insert into notice_item values(notice_item_code_seq.nextval, 'cgv1', '시스템점검', '지난 5개월간', '배운게 많습니다.', sysdate);
+
+
+
+insert into qna values(qna_code_seq.nextval, '예매관람권', '예매는 어떻게 하는건가요?', '보고싶은 영화를 선택후 날짜와 시간 영화관을 선택 후 예매 하시면 됩니다.', sysdate);
+
+insert into qna values(qna_code_seq.nextval, '영화관이용', '어떤 영화가 재미 있나요?', '순위 혹은 평점이 높은 영화가 재미 있을수 있습니다.', sysdate);
+
+insert into qna values(qna_code_seq.nextval, '예매관람권', '팝콘은 맛있나요?', '정성과 사랑으로 만들어 맛있을수 밖에 없습니다.', sysdate);
+
+insert into qna values(qna_code_seq.nextval, '홈페이지', '프로젝트는 잘 만들었나요?', '기가~~막힙니다.', sysdate);
+
+insert into qna values(qna_code_seq.nextval, '예매관람권', '영화관은 총 몇군데 있나요?', '네군데 있습니다.', sysdate);
+
+insert into qna values(qna_code_seq.nextval, '홈페이지', '할인은 있나요?', '조조할인과, 심야 할인이 가능합니다.', sysdate);
+
+

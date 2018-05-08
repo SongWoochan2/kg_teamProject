@@ -62,11 +62,10 @@ public class QnaController {
 			pg = Integer.parseInt( request.getParameter("pg") );
 		}
 		
-		System.out.println("admin_id:"+admin_id);
+		
 		int endNum = pg*10;
 		int startNum = endNum-9;
 		int totalA = qnaService.getTotalA(type);
-		System.out.println("totalA : " + totalA);
 		int totalP = (totalA + 9)/10;
 		int startPage = (pg - 1)/3*3 +1;
 		int endPage = startPage + 3 - 1;
