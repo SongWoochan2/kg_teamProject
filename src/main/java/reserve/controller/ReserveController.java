@@ -536,7 +536,7 @@ public class ReserveController {
 				show_time = hour*100 + minute;				
 			}
 		}
-
+		System.out.println(movie_code  + " / " + theater_code + " / " + show_date);
 	    List<ShowPresentAllVO> list = reserveService.getShowList(movie_code, theater_code, show_date, show_time);
 	    List<SeatNumVO> reservedSeatNumlist = reserveService.getReservedSeatOfShow(movie_code, theater_code, show_date);
 	    List<SeatNumVO> totalSeatNumlist = reserveService.getTotalSeatOfShow(movie_code, theater_code, show_date);
