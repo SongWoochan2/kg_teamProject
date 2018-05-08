@@ -32,6 +32,7 @@ pageEncoding="UTF-8"%>
 							  + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
 					}
         	});
+			return false;
         });
 	});
 })(jQuery);
