@@ -14,13 +14,18 @@ pageEncoding="UTF-8"%>
             var win = window.open("./editProfileForm.do", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
             win.focus();
         }); */
-        
+        var originNick = $("#origin_nick").val();
+        if(originNick == "" || originNick == null) {
+        	$("#nick").text('닉네임 : 닉네임을 설정해주세요.');
+        }
         var originImgAddr = $("#origin_img_addr").val();
         if(originImgAddr == "" || originImgAddr == "none") {
         	$(".profileImg > img").attr("src", "/MyCGV/image/profile/none/none.png");
         } else {
         	$(".profileImg > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
+        
+        
     });
 })(jQuery);
 </script>
@@ -30,6 +35,7 @@ pageEncoding="UTF-8"%>
 			<div class="profile">
 				<div class="profileImg">
 					<input type="hidden" id="origin_img_addr" value="${memberDTO.profile_img_addr}">
+					<input type="hidden" id="origin_nick" value="${memberDTO.nick_name}">
 					<img id="profile_img" src="" alt="${memberDTO.member_name}님 프로필 사진" 
 					onerror="errorImage(this, {'type':'profile'})" width="100px" height="100px">
 				</div>
@@ -37,8 +43,10 @@ pageEncoding="UTF-8"%>
 					<div class="personInfo">
 						<strong style="font-size: 40px;">${memberDTO.member_name}님</strong>&nbsp;
 						<em>${memberDTO.member_id}</em><br><br>
-						&nbsp;<span>닉네임 : ${memberDTO.nick_name}</span>&nbsp;
-						<a href="myProfileForm.do"><strong>나의 프로필 수정</strong></a>
+						&nbsp;<span id="nick">닉네임 : ${memberDTO.nick_name}</span>&nbsp;
+						<span>
+							<a href="myProfileForm.do" style="color:white;border:2px solid white;border-radius: 5px;padding:5px"><strong>나의 프로필 수정</strong></a>
+						</span>
 					</div>
 					<div class="gradeInfo">
 						<p>                     

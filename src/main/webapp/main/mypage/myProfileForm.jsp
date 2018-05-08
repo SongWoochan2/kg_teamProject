@@ -117,7 +117,9 @@ pageEncoding="UTF-8"%>
 				                    <p>한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p>
 				                    <input type="hidden" id="old_nick_name" name="old_nick_name" value="${memberDTO.nick_name}"> 
 				                    <input type="text" id="nick_name" name="nick_name" value="" required="required" maxlength="10"> 
-				                    <button id="check_duplication" type="button"><span>중복확인</span></button>
+				                    <button id="check_duplication" type="button" 
+				                    style="background-color: transparent;border:2px solid black;font-weight: bold;border-radius: 5px;
+				                    padding:5px"><span>중복확인</span></button>
 				                </td>
 				            </tr>
 				            
@@ -148,7 +150,9 @@ pageEncoding="UTF-8"%>
 				    </table>
 				</div>
 				<div class="set-btn aright" style="text-align: right;margin:10px;padding-right: 30px;">
-				<button type="submit" id="set_profile"><span>등록하기</span></button>
+				<button type="submit" id="set_profile"
+				style="background-color: black;border:2px solid black;font-weight: bold;border-radius: 5px;
+				                    padding:5px;color:white"><span>등록하기</span></button>
 				</div>
 				<div id="resultAlert"></div>
 

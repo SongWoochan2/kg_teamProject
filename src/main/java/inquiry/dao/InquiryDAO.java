@@ -48,12 +48,12 @@ public class InquiryDAO {
 		return sqlSession.selectOne("mybatis.inquiry.inquiryView", inquiry_code);
 	}
 	
-	public int inquiryAll(String inqruiry_id) {
-		return sqlSession.selectOne("mybatis.inquiry.inquiryAll", inqruiry_id);
+	public int inquiryAll(String inquiry_id) {
+		return sqlSession.selectOne("mybatis.inquiry.inquiryAll", inquiry_id);
 	}
 	
-	public int getTotalA() {
-		return sqlSession.selectOne("mybatis.inquiry.totalA");
+	public int getTotalA(String inquiry_id) {
+		return sqlSession.selectOne("mybatis.inquiry.totalA", inquiry_id);
 	}
 	
 	public int inquiryDelete(int inqruiry_code) {

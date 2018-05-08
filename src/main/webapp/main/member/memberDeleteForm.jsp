@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 
 <div class="big_form">
 	<div class="form_img">
-		<img class="logo_img" src="../image/memberModify/infoConfirm.jpg"/>
+		<img class="logo_img" src="/MyCGV/image/memberModify/infoConfirm.jpg"/>
 	</div>
 	<div class="form_text">
 		<h3>그동안 MovieT을 이용해주셔서 감사합니다.</h3><br>

@@ -58,7 +58,10 @@ pageEncoding="UTF-8"%>
 						<strong style="font-size: 20px">현장에서 발권하실 경우 꼭 <font color="red">예매번호</font>를 확인하세요.</strong> 
 						<br><span>티켓판매기에서 예매번호를 입력하면 티켓을 발급받을 수 있습니다.</span>
 						</p>
-						<p style="text-align: right;"><a href="myWatchedMovie.do?p=1"><span>내가 본 영화</span></a></p>
+						<p style="text-align: right;">
+						<a href="myWatchedMovie.do?p=1" 
+						style="background-color: black;border:2px solid black;font-weight: bold;border-radius: 5px;
+				                    padding:5px;color:white"><span>내가 본 영화</span></a></p>
 					</div>
 				</div>
 				<div class="lst-item-reserve">

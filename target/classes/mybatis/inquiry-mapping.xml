@@ -40,9 +40,13 @@
 		update inquiry set inquiry_status = inquiry_status + 1 where inquiry_code=#{inquiry_code}
 	</update>
 	
-	<select id="totalA" resultType="int">
-		select count(*) from inquiry
-		
+	<select id="totalA" parameterType="java.lang.String" resultType="int">
+		select count(*) from inquiry 
+		<if test="value != null">
+			<where>
+				inquiry_id=#{value}
+			</where>
+		</if>
 	</select>
 	
 	<delete id="inquiryDelete" parameterType="int">

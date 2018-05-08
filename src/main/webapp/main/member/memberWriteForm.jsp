@@ -72,7 +72,20 @@
                 memberIdObj.select();
                 return false;
             } else {
-				window.open("checkMemberId.do?member_id=" + memberId,"myId","width=350 height=100 left=500 top=200");
+            	$.ajax({
+            		url: "./checkMemberId.do?member_id=" + memberId,
+            		type: "get",
+            		dataType: "html",
+            		cache: false,
+            		timeout: 30000,
+            		success: function(data) {
+            			$("#resultAlert").html(data);
+            		},
+            		error: function(xhr, textStatus, errorThrown) {
+    					$("div.tbl-form").html("<div>" + textStatus 
+  							  + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
+  					}
+            	});
 			}
 
 		});
@@ -252,7 +265,7 @@
 				<ol>
 				  <li>
 				    <label>아이디</label>
-				    <input class="in" id="member_id" name="member_id" type="text" maxlength="12">
+				    <input class="in" id="member_id" name="member_id" type="text" maxlength="12" placeholder="8~12자 영문 대/소문자, 숫자">
 				    <input class="btn" id="checkId_dupl" type="button" value="  중복 확인  ">
 				  </li>
 				  <li>
@@ -261,7 +274,7 @@
 				  </li>
 				  <li>
 				    <label>비밀번호</label>
-				    <input class="in" id="member_pwd" name="member_pwd" type="password" maxlength="12">
+				    <input class="in" id="member_pwd" name="member_pwd" type="password" maxlength="12" placeholder="8~12자 영문 대/소문자, 숫자">
 				  </li>
 				  <li>
 				    <label>비밀번호 확인</label>
@@ -338,7 +351,7 @@
 		</form>
 	</div>
 </div>
-
+<div id="resultAlert"></div>
 <jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>

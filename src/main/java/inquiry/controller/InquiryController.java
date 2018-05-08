@@ -109,7 +109,7 @@ public class InquiryController {
 			
 			List<InquiryDTO> list = inquiryService.inquiryListMember(startNum, endNum, inquiry_id);
 	
-			int totalA = inquiryService.getTotalA();
+			int totalA = inquiryService.getTotalA(inquiry_id);
 			int totalP = (totalA + 9)/10;
 			int startPage = (pg - 1)/3*3 +1;
 			int endPage = startPage + 3 - 1;

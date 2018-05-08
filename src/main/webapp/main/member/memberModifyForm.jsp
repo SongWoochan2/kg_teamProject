@@ -253,16 +253,16 @@
 				  <li>
 				  	<label>성별</label>
 				  	<input type="hidden" id="genderView" value="${memberDTO.member_gender}">
-				  	<input class="in" type="radio" name="member_gender" value="남자">남자
-					<input class="in" type="radio" name="member_gender" value="여자">여자
+				  	<input class="in" type="radio" id="gender_m" name="member_gender" value="남자">남자
+					<input class="in" type="radio" id="gender_f" name="member_gender" value="여자">여자
 				  </li>
 				  <li>
 				  	<label>휴대전화</label>
 				  	<input type="hidden" id="agencyView" value="${memberDTO.member_agency}">
-				  	<input class="in" type="radio" name="member_agency" value="SKT">SKT
-					<input class="in" type="radio" name="member_agency" value="KT">KT
-					<input class="in" type="radio" name="member_agency" value="LGU+">LGU+
-					<input class="in" type="radio" name="member_agency" value="알뜰폰">알뜰폰<br>
+				  	<input class="in" type="radio" id="agc_s" name="member_agency" value="SKT">SKT
+					<input class="in" type="radio" id="agc_k" name="member_agency" value="KT">KT
+					<input class="in" type="radio" id="agc_l" name="member_agency" value="LGU+">LGU+
+					<input class="in" type="radio" id="agc_a" name="member_agency" value="알뜰폰">알뜰폰<br>
 					
 					<input type="hidden" id="phoneView" value="${memberDTO.member_phone}">
 						<select name="phone1" style="width:70px;">

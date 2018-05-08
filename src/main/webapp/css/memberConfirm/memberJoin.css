@@ -43,7 +43,7 @@ form {
 	border-radius: 5px;
 	counter-reset: fieldsets;
 	padding: 20px;
-	width: 780px;	 
+	width: 850px;	 
 }
 
 		
@@ -90,6 +90,7 @@ form ol li {
 	list-style: none;
 	padding: 5px 10px;
 	margin-bottom: 2px;
+	overflow: auto;
 }
 							
 form ol ol li {
