@@ -11,7 +11,7 @@ public class ProductPayListDTO {
 
 	private String pay_type;
 	private String pay_time;
-	private String pay_cancle_able;
+	private String pay_cancel_able;
 	private int order_num1;
 	private int order_num2;
 	private int order_num3;
@@ -24,6 +24,12 @@ public class ProductPayListDTO {
 	private String validDate;
 	private String valid; // 사용 가능 여부
 	
+	public String getPay_cancel_able() {
+		return pay_cancel_able;
+	}
+	public void setPay_cancel_able(String pay_cancel_able) {
+		this.pay_cancel_able = pay_cancel_able;
+	}
 	public String getValid() {
 		return valid;
 	}
@@ -83,12 +89,6 @@ public class ProductPayListDTO {
 	}
 	public void setPay_time(String pay_time) {
 		this.pay_time = pay_time;
-	}
-	public String getPay_cancle_able() {
-		return pay_cancle_able;
-	}
-	public void setPay_cancle_able(String pay_cancle_able) {
-		this.pay_cancle_able = pay_cancle_able;
 	}
 	public int getOrder_num1() {
 		return order_num1;

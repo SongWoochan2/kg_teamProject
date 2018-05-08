@@ -97,7 +97,7 @@ public class AnswerController {
 			int startNum = endNum-9;
 			List<InquiryDTO> list = inquiryService.inquiryListAdmin(startNum, endNum);
 			
-			int totalA = inquiryService.getTotalA();
+			int totalA = inquiryService.getTotalA(null);
 			int totalP = (totalA + 9)/10;
 			int startPage = (pg - 1)/3*3 +1;
 			int endPage = startPage + 3 - 1;
