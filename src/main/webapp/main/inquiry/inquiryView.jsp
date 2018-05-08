@@ -26,12 +26,14 @@ pageEncoding="UTF-8"%>
         		timeout: 30000,
         		success: function(data) {
         			$("#resultAlert").html(data);
+        			location.href='/MyCGV/main/inquiry/inquiryListMember.do?pg=1';
         		},
         		error: function(xhr, textStatus, errorThrown) {
 					$("div.tbl-form").html("<div>" + textStatus 
 							  + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
 					}
         	});
+			return false;
         });
 	});
 })(jQuery);

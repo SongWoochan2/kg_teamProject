@@ -45,7 +45,7 @@ tbody {
 						</tr>
 						<tr>
 							<td colspan="3"><textarea class="form-control"
-									placeholder="영화 줄거리" maxlength="1500"
+									placeholder="영화 줄거리" maxlength="650"
 									style="height: 300px; resize: none;" name="movie_content"
 									required="required"></textarea></td>
 						</tr>
@@ -146,7 +146,7 @@ tbody {
 						</tr>
 						<tr>
 							<td colspan="3"><textarea class="form-control"
-									placeholder="출연배우진" maxlength="1500"
+									placeholder="출연배우진" maxlength="650"
 									style="height: 300px; resize: none;" name="appear_actor"
 									required="required"></textarea></td>
 						</tr>

@@ -55,7 +55,7 @@ public class ProductPayController {
 			pay_type="gift";
 		}
 		
-		String pay_cancle_able = "N";
+		String pay_cancel_able = "N";
 
 		String order_num1_st = request.getParameter("ctl00$bodyPlaceHolder$qty1");
 		String order_num2_st = request.getParameter("ctl00$bodyPlaceHolder$qty2");
@@ -82,7 +82,7 @@ public class ProductPayController {
 		productpayDTO.setGift_phone2(gift_phone2);
 		productpayDTO.setGift_phone3(gift_phone3);
 		productpayDTO.setPay_type(pay_type); 
-		productpayDTO.setPay_cancle_able(pay_cancle_able);
+		productpayDTO.setPay_cancel_able(pay_cancel_able);
 		productpayDTO.setOrder_num1(order_num1);
 		productpayDTO.setOrder_num2(order_num2);
 		productpayDTO.setOrder_num3(order_num3);
@@ -119,7 +119,7 @@ public class ProductPayController {
 		
 		productpayDTO.setPay_id(pay_id);
 		
-		int su = productpayService.productpayCancle(productpayDTO);
+		int su = productpayService.productpayCancel(productpayDTO);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);

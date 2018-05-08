@@ -14,7 +14,6 @@
 		var check = function(){
 			if($("#admin_pwd").val()=="" &&  $("#admin_repwd").val()==""){
 				$("#passwordmessage").css("color","red");
-				$("#passwordmessage").text("");	
 			}else if($("#admin_pwd").val() == $("#admin_repwd").val()){
 				$("#passwordmessage").css("color","blue");
 				$("#passwordmessage").text("비밀번호가 일치합니다.");
@@ -32,7 +31,6 @@
 		}
 		
 		$("#admin_id_check").click(function(){
-			alert($("#admin_id").val());
 			var url = "adminIdCheck.do?admin_id="+$("#admin_id").val()
 					+"&admin_name="+$("#admin_name").val();
 			$(location).attr('href',url);

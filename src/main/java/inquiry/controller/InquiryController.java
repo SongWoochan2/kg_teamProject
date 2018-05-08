@@ -150,7 +150,7 @@ public class InquiryController {
 
 
 	@RequestMapping(value="/main/inquiry/inquiryDelete.do")
-	public ModelAndView superinquiryDelete(HttpServletRequest request, HttpServletResponse response) { 
+	public ModelAndView hyperinquiryDelete(HttpServletRequest request, HttpServletResponse response) { 
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		System.out.println(inquiry_code);
 		int su = inquiryService.inquiryDelete(inquiry_code);
@@ -163,6 +163,8 @@ public class InquiryController {
 		
 		return modelAndView;
 	}
+	
+	
 	
 }
 
