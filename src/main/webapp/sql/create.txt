@@ -5485,16 +5485,20 @@ create view movie_poster as
       
 -- 상영정보 뷰 : 상영현황 + 영화 + 상영관
 create view show_all as 
-    SELECT * FROM show_place join (
-        SELECT * FROM show_present join movie USING (movie_code)
-        ) tt USING (show_place_code);
+  select * from ( SELECT * FROM show_present 
+    		join show_place 
+			using(show_place_code))
+			join movie
+			using (movie_code);
+	
+			
           
           
 -- 상영상세정보 뷰 : 상영정보 + 영화관 이름 + 포스터
 create view show_fully as 
-      SELECT * FROM theater join (
+      SELECT * FROM  (
           SELECT * FROM show_all join movie_poster USING (movie_code)
-          ) tt USING (theater_code);
+          ) join theater USING (theater_code);
 
 
 -- 예약 좌석 뷰
