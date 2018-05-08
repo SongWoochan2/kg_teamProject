@@ -3,7 +3,6 @@ a {
 	text-decoration: none;
 }
 div#mypageBody {
-	border: 1px solid black;
 	width: 100%;
 	min-height: 2500px;
 	height: auto;
@@ -11,7 +10,6 @@ div#mypageBody {
 }
 
 div#mypageBody #myWatchedMovie-wrap {
-	border: 1px solid black;
 	width: 70%;
 	height: auto;
 	margin: 30px auto;
@@ -31,7 +29,6 @@ div#mypageBody #myWatchedMovie-wrap .movielog-detail-wrap {
 }
 
 div#mypageBody #myWatchedMovie-wrap .movielog-detail-wrap .sect-movielog-lst {
-	border: 1px solid black;
 	width: 100%;
 	min-height: 1000px;
 	height: auto;	

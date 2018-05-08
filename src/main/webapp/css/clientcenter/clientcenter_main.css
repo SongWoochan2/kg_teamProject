@@ -127,6 +127,10 @@
 .rigth_mid_leftdiv_tong a:hover{
 	color: red;
 }
+.rigth_mid_rigthdiv_top_ul a:hover{
+	font-weight: 700;
+	
+}
 #leftdiv_id_pw{
 	padding-top:25px;
 	margin:1px;
@@ -207,11 +211,7 @@
 	text-decoration: none;
 	color: black;
 }
-.rigth_mid_rigthdiv_top_ul a:hover{
-	text-decoration: none;
-	color: black;
-	font-weight: bold; 
-}
+
 #rigth_mid_rigthdiv_bottom{
 	width: 100%;
 	height: 48%;

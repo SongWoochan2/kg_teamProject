@@ -149,73 +149,83 @@ pageEncoding="UTF-8"%>
 		            <!-- foreach문 끝 -->
               	</div>
 			</div>
-<!-- 				<div class="sect-content-buying">
-					<div class="title-mypage">
-						<h3>MY 구매정보</h3>
-						<p>현재 사용하실 수 있는 쿠폰정보입니다. 상품명을 클릭하시면 내역조회페이지로 이동합니다.</p>
-					</div>
-				
-					<div class="box-inner"></div>
-				</div> -->
-
-					
-			
+	
 				<div class="sect-content-inquiry">
-					<div class="title-mypage">
-					<h3>MY Q&amp;A</h3>
-						건<a href=""><img id="title-mypage_em1_img2" src="/MyCGV/image/mypage/1+.PNG"></a>
+					<div class="title-mypage" style="height: 50px;line-height: 40px;padding-left: 10px;">
+					<h3 style="display: inline;float: left;line-height: 40px;">MY Q&amp;A</h3>
+						<h4>${totalA}건</h4>
+						<a href="/MyCGV/main/inquiry/inquiryListMember.do?pg=1"><img id="title-mypage_em1_img2" src="/MyCGV/image/mypage/1+.PNG"></a>
 					</div>
-					<div class="box-inner"></div>
-				</div>
-<div class="box-inner">
-            <div class="tit-mycgv">
-				<h3>MY Q&amp;A</h3>
-				<p><em>3건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY Q&amp;A 더보기</a></p>
+					<div class="box-inner">
+						    <div class="tbl-data">
+        <table>
+		    <colgroup>
+		        <col width="10%">
+		        <col width="15%">
+		        <col width="*">
+		        <col width="20%">
+		        <col width="15%">
+		    </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col"><!-- <input type="checkbox" id="chkAllItem" name="chkAllItem"> -->
+                    <label for="chkAllItem">번호</label></th>
+                    <th scope="col">유형</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">등록일</th>
+                    <th scope="col">상태</th>
+                </tr>
+            </thead>
+            <tbody id="items">  
+            	<c:if test="${empty list}">
+            		<tr>
+            			<td colspan="7" class="nodata">
+							 고객님의 상담 내역이 존재하지 않습니다.
+                    	</td>
+            		</tr>
+            	</c:if>
+            	<c:if test="${not empty list}">
+                <c:forEach var="inquiryDTO" items="${list}" varStatus="status">
+                        <tr>
+                            <td>
+                                <%-- <input type="checkbox" name="chkItem" value="${inquiryDTO.inquiry_code}" id="chkItem${inquiryDTO.inquiry_code}"> --%>
+                                <label for="chkItem${inquiryDTO.inquiry_code}"><em>${status.index+1}</em></label>
+                            </td>
+                            <td>${inquiryDTO.inquiry_type}</td>
+                            <td>
+                                <a id="titleA" href="inquiryView.do?inquiry_code=${inquiryDTO.inquiry_code}&pg=${param.pg}">
+									${inquiryDTO.inquiry_title}
+								</a>
+                            </td>
+                            <td><em>${inquiryDTO.inquiry_date}</em></td>
+                            <td>
+                            	<c:if test="${inquiryDTO.inquiry_status == 0}">
+	                            <span class="round gray" style="font-weight: bold;color:gray;">
+	                            	답변 미완료
+	                            </span>
+	                            </c:if>						
+								<c:if test="${inquiryDTO.inquiry_status > 0}">
+								<span class="round red on" style="font-weight: bold;color:red;">
+									답변 완료
+								</span>
+								</c:if>
+                            </td>   
+                        </tr>
+                </c:forEach>   
+
+                </c:if>             
+            </tbody>
+        </table>
+				
 			</div>
-			<div class="col-myqna">
-                
-				<ul>
-                    
-                        <li>
-					        <em>문의</em>
-					            <a href="/user/mycgv/inquiry/qna/detail-view.aspx?idx=1042978">
-                                <strong>인피니트워가</strong>
-                            </a>
-					        <span class="txt-brown">
-                                답변완료
-                            </span>
-					    </li>
-                        
-                        <li>
-					        <em>칭찬</em>
-					            <a href="/user/mycgv/inquiry/qna/detail-view.aspx?idx=1039184">
-                                <strong>cgv&nbsp;최고</strong>
-                            </a>
-					        <span class="txt-brown">
-                                답변완료
-                            </span>
-					    </li>
-                        
-                        <li>
-					        <em>제안</em>
-					            <a href="/user/mycgv/inquiry/qna/detail-view.aspx?idx=1038588">
-                                <strong>새로운</strong>
-                            </a>
-					        <span class="txt-brown">
-                                답변완료
-                            </span>
-					    </li>
-                        
-				</ul>
-                
 			</div>
+			</div>
+
+
+
         </div>
 			</div> 
 		</div>
-	</div>
-				
-
-
 
 	<div class="sect-base-booking">
 	    <div class="box-polaroid">

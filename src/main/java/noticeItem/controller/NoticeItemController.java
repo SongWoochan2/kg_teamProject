@@ -82,6 +82,7 @@ public class NoticeItemController {
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("totalA", totalA);
 		modelAndView.addObject("list", list);
+		modelAndView.addObject("type", type);
 		
 		if(admin_id!=null) {
 			modelAndView.setViewName("noticeItemListAdmin.jsp");
@@ -159,6 +160,32 @@ public class NoticeItemController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
 		modelAndView.setViewName("noticeItemDelete.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/clientCenter/clientCenterMain.do")
+	public ModelAndView clientCenterMain(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		String type = null;
+		
+		
+		int endNum = pg*4;
+		int startNum = endNum-3;
+		List<NoticeItemDTO> list = noticeItemService.noticeItemList(type, startNum, endNum);
+		int totalA = noticeItemService.getTotalA(type);
+		int totalP = (totalA + 3)/4;
+		int startPage = (pg - 1)/3*3 +1;
+		int endPage = startPage + 3 - 1;
+		if(totalP < endPage) endPage = totalP;
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("totalA", totalA);
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("type", type);
+		
+		modelAndView.setViewName("clientCenterMain.jsp");
+		
 		return modelAndView;
 	}
 }

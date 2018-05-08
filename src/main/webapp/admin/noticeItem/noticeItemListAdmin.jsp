@@ -89,7 +89,7 @@ pageEncoding="UTF-8"%>
 				<c:forEach var="noticeItemDTO" items="${list}">
 					<tr bgcolor="white">
 						<td align="center">${noticeItemDTO.notice_item_code}</td>
-						<td align="center">${noticeItemDTO.notice_item_type }</td>
+						<td align="center">[${noticeItemDTO.notice_item_type }]</td>
 						<td>
 							<a id="titleA" href="noticeItemView.do?notice_item_code=${noticeItemDTO.notice_item_code}&pg=${param.pg}" >
 								${noticeItemDTO.notice_item_title}

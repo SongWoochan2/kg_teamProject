@@ -13,19 +13,14 @@
 	height: auto;
 	margin-bottom: 30px;
 }
-#mypageBody #my-content-wrap #content-detail>.sect-content-buying {
-	float: left;
-	width: 98%;
-	height: auto;
-	border: 1px solid black;
-	margin-bottom: 30px;
-}
+
 #mypageBody #my-content-wrap #content-detail .sect-content-inquiry {
 	float: left;
 	width: 98%;
 	height: auto;
 	border: 1px solid black;
 	margin-bottom: 30px;
+	padding:10px;
 }
 
 .sect-content-movie>.box-inner{
@@ -49,7 +44,6 @@
 }
 
 .sect-content-movie>.box-inner>.box-inner-wishlist a{
-
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -111,7 +105,10 @@
 	float: left;
 	margin-right: 10px;
 }
-
+.sect-content-inquiry>.title-mypage>h3,h4 {
+	float: left;
+	margin-right: 10px;
+}
 .sect-content-reserve>.box-inner {
 	float: left;
 	width: 100%;
@@ -309,3 +306,50 @@
 	border-top: 1px solid gray;
 	border-bottom: 1px solid gray;
 }
+
+
+
+#mypageBody #my-content-wrap #content-detail .sect-my-reserve-qna {
+	width: 100%;
+	height: 150px;
+	border: 1px solid black;
+	margin-top: 100px;
+}
+#mypageBody #my-content-wrap #content-detail .sect-my-reserve-qna a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#mypageBody #my-content-wrap #content-detail .sect-my-reserve-qna .box-inner-qna {
+	width: 50%;
+	height: 100%;
+	background-image: url("/MyCGV/image/mypage/qnaImg.png");
+	background-size: contain;
+	float: left;
+}
+#mypageBody #my-content-wrap #content-detail .sect-my-reserve-qna .box-inner-words {
+	width: 50%;
+	height: 100%;
+	background-image: url("/MyCGV/image/mypage/inquiryImg.png");
+	background-size: contain;
+	float: left;
+	border-left: 2px dashed gray;
+}
+
+
+#content-detail .paging{
+	margin-top: 20px;
+}
+
+#content-detail .paging a {
+	text-decoration: none;
+}
+tbody#items a{
+	color: black;
+	font-weight: bold;
+}
+
+
+
+.box-polaroid .box-inner .col-myqna {margin-bottom:10px;}
+.box-polaroid .box-inner .col-myqna li a {width:645px;}

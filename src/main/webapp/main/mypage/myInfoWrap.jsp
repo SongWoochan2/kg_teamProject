@@ -64,10 +64,10 @@ pageEncoding="UTF-8"%>
 	        		<h2>자주가는 MovieT</h2>
 		    		<div class="sect-favorite">
 			            <ul>
-	                        <li><a href="#"><span>1</span>CGV남주안</a></li>
-	                        <li><a href="#"><span>2</span>CGV인천</a></li>
-	                        <li><a href="#"><span>3</span>CGV인천터미널</a></li>
-	                        <li><a href="#"><span>4</span>CGV피카디리1958</a></li>
+	                        <li><a href="#"><span>1</span>MovieT피카디리</a></li>
+	                        <li><a href="#"><span>2</span>MovieT종각</a></li>
+	                        <li><a href="#"><span>3</span>MovieT종로3가</a></li>
+	                        <li><a href="#"><span>4</span></a></li>
 	                        <li><a href="#"><span>5</span></a></li>                       
 			            </ul>       
 			        </div>

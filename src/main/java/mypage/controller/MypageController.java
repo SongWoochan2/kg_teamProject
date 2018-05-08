@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import inquiry.bean.InquiryDTO;
+import inquiry.controller.InquiryService;
 import member.bean.MemberDTO;
 import member.controller.MemberService;
 import memberReserve.bean.MemberReserveListDTO;
@@ -58,6 +60,8 @@ public class MypageController {
 	private MemberReserveService memberReserveService;
 	@Autowired
 	private ProductPayService productpayService;
+	@Autowired
+	private InquiryService inquiryService;
 	@Autowired
 	private ResourceProvider resourceProvider;
 
@@ -292,11 +296,18 @@ public class MypageController {
 		// 사용가능 쿠폰 수
 		int usableCnt = productpayService.getTotalUsable(member_id);
 		
+		// 문의 내역
+		List<InquiryDTO> list = inquiryService.inquiryListMember(1, 5, member_id);
+
+		int totalA = inquiryService.getTotalA();
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.addObject("reserveList", reserveList);
 		modelAndView.addObject("totalVal", totalVal);
 		modelAndView.addObject("usableCnt", usableCnt);
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("totalA", totalA);
 		modelAndView.setViewName("mypageHome.jsp");
 		return modelAndView;
 	}
@@ -504,6 +515,7 @@ public class MypageController {
 		= memberReserveService.getWatchedCodes(reserve_id,startNum,endNum);
 
 		List<MemberReserveListDTO> watchedList = new ArrayList<>();
+		System.out.println(watchedCodes.size());
 		for(int i=0,n=watchedCodes.size();i<n;i++) {
 			int watched_code = watchedCodes.get(i);
 			System.out.println("내가본영화코드:"+watched_code);

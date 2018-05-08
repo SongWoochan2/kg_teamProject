@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
 		<div class="clientmain_left">
 			<div class="left_menubar">
 				<ul class="clientcenter_menu">
-					<li  class="selected" id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  class="selected" id=""><a href="/MyCGV/clientCenter/clientCenterMain.do?pg=1" ><strong>고객센터 메인</strong></a></li>
 					<li  id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong></a></li>
 					<li  id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
 					<li  id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
@@ -90,51 +90,20 @@ pageEncoding="UTF-8"%>
 				<div class="rigth_mid_rigthdiv">
 					<div id="rigth_mid_rigthdiv_top">
 						<strong id="rigth_mid_rigthdiv_top_strong">공지/뉴스</strong>
-						<a href="#"><img id="rigth_mid_rigthdiv_top_img" src="/MyCGV/image/clientCenter/+_img.png"></a>
+						<a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><img id="rigth_mid_rigthdiv_top_img" src="/MyCGV/image/clientCenter/+_img.png"></a>
 						<div class="rigth_mid_rigthdiv_top_ul">
-							<ul>
-								<li>
-									<div class="rigth_mid_rigthdiv_top_ul_text">
-										<!-- 밑에 텍스트들은 DB쪽에서 데이터 꺼내와야함 임시로 텍스트넣은거임  -->
-										<a href="#">[기타] 영화 관람가격 변경 안내드립니다.</a>
-									</div>
-									<div class="rigth_mid_rigthdiv_top_ul_date">
-										2018.04.06
-									</div>
-								</li>
-								<li>
-									<div class="rigth_mid_rigthdiv_top_ul_text">
-										<a href="#">[시스템점검] 4월 정기 시스템 안내</a>
-									</div>
-									<div class="rigth_mid_rigthdiv_top_ul_date">
-										2018.04.03
-									</div>
-								</li>
-								<li>
-									<div class="rigth_mid_rigthdiv_top_ul_text">
-										<a href="#">[기타] OK캐시백 적립율 변경 안내 (4/1, 00:00 ~)</a>
-									</div>
-									<div class="rigth_mid_rigthdiv_top_ul_date">
-										2018.02.28
-									</div>
-								</li>
-								<li>
-									<div class="rigth_mid_rigthdiv_top_ul_text">
-										<a href="#">[기타] CGV 개인정보처리방침 개정 공지</a>
-									</div>
-									<div class="rigth_mid_rigthdiv_top_ul_date">
-										2018.01.24
-									</div>
-								</li>
-								<li>
-									<div class="rigth_mid_rigthdiv_top_ul_text">
-										<a href="#">[기타] CGV 이용약관 개정안내</a>
-									</div>
-									<div class="rigth_mid_rigthdiv_top_ul_date">
-										2018.01.16
-									</div>
-								</li>
-							</ul>
+							<table cellspacing="0" cellpadding="5" align="center" >
+								<c:forEach var="noticeItemDTO" items="${list}">
+									<tr bgcolor="white">
+										<td width="300px">
+											<a id="titleA" href="../admin/noticeItem/noticeItemView.do?notice_item_code=${noticeItemDTO.notice_item_code}&pg=${param.pg}" >
+												[${noticeItemDTO.notice_item_type }] ${noticeItemDTO.notice_item_title}
+											</a>
+										</td>
+										<td align="center" width="200px">${noticeItemDTO.notice_item_date}</td>
+									</tr>
+								</c:forEach>
+							</table>
 						</div>
 					</div>
 					<div id="rigth_mid_rigthdiv_bottom">

@@ -4,7 +4,6 @@ a {
 }
 
 #mypageBody {
-	border:1px solid black;
 	width: 100%;
 	min-height: 2500px;
 	height: auto;
@@ -13,7 +12,6 @@ a {
 }
 
 #mypageBody #my-info-wrap {
-	border:1px solid green;
 	width: 70%;
 	height: 500px;
 	background: url("/MyCGV/image/mypage/myInfoImg.png");
@@ -22,7 +20,6 @@ a {
 }
 
 #mypageBody #my-content-wrap {
-	border:1px solid red;
 	width: 70%;
 	min-height: 2000px;
 	height: auto;
@@ -36,7 +33,6 @@ a {
 	float: left;
 }
 #mypageBody #my-content-wrap #content-detail {
-	border:1px solid blue;
 	float: left;
 	width: 80%;
 	height: auto;
@@ -195,7 +191,77 @@ div#my-info-wrap .benefit .sect-favorite a {
 
 
 
+.tbl-viw{border-top:1px solid #b8b6aa;border-bottom:1px solid #b8b6aa}
+.tbl-viw thead th{padding:0 10px;background-color:#edebe1;line-height:40px;}
+.tbl-viw thead th>p>.round{line-height:40px}
+.tbl-viw thead th>p>.round>*{padding-left:7px}
+.tbl-viw thead th>p:first-child>strong{display:inline-block;overflow:hidden;width:40%;margin-left:15px;color:#222;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}
+.tbl-viw thead th>p:first-child{float:left}
+.tbl-viw thead th>p+p{float:right}
+.tbl-viw thead th>p>em{margin-left:10px;font-family:verdana,sans-serif}
+.tbl-viw tbody th{padding-left:10px;border-top:1px solid #d6d4ca}
+.tbl-viw tbody td{padding:25px 10px 23px;border-top:1px solid #d6d4ca}
+.tbl-viw tbody td.info{padding-bottom:5px}
+.tbl-viw tbody td>dl{overflow:hidden}
+.tbl-viw tbody td>dl>dd,.tbl-viw tbody td>dl>dt{float:left;height:50%;margin-bottom:10px}
+.tbl-viw tbody td>dl>dt{width:50%}
+.tbl-viw tbody td>dl>dd strong,.tbl-viw tbody td>dl>dd>a{display:inline-block}
+.tbl-viw tbody td>dl>dd>a>strong,.tbl-viw tbody td>dl>dd>strong{display:inline-block;overflow:hidden;color:#222;text-overflow:ellipsis;white-space:nowrap}
+.tbl-viw tbody td>dl.qna>dd{width:296px}
+.tbl-viw tbody td>dl.qna>dd>a>strong,.tbl-viw tbody td>dl.qna>dd>strong{max-width:260px}
+.tbl-viw tbody td>dl.lent>dd.hope,.tbl-viw tbody td>dl.lent>dd.inquire,.tbl-viw tbody td>dl.lent>dd.tel{margin-right:23px}
+.tbl-viw tbody td>dl.lent>dd.hope,.tbl-viw tbody td>dl.lent>dd.inquire{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tbl-viw tbody td>dl.lent>dd.inquire>.round{margin-right:5px;line-height:19px}
+.tbl-viw tbody td>dl.lent>dd.inquire>strong{max-width:245px;vertical-align:middle}
+.tbl-viw tbody td>dl.lent>dd.inquire,.tbl-viw tbody td>dl.lent>dd.tel{width:300px}
+.tbl-viw tbody td>dl.lent>dd.hope{width:188px}
+.tbl-viw tbody td>dl.lent>dd.tel{font-family:verdana,sans-serif;font-size:11px;font-weight:700;letter-spacing:-1px}
+.tbl-viw tbody td>dl.lent>dd.number{width:56px;font-family:verdana,sans-serif;font-weight:700}
+.tbl-viw tbody td>dl.lent>dd.email{width:325px}
+.tbl-viw tbody td>dl.lost>dd.color,.tbl-viw tbody td>dl.lost>dd.date,.tbl-viw tbody td>dl.lost>dd.tel{margin-right:22px}
+.tbl-viw tbody td>dl.lost>dd.inquire{overflow:hidden;width:715px;text-overflow:ellipsis;white-space:nowrap}
+.tbl-viw tbody td>dl.lost>dd.date{width:120px}
+.tbl-viw tbody td>dl.lost>dd.color{width:86px}
+.tbl-viw tbody td>dl.lost>dd.tel{width:99px}
+.tbl-viw tbody td>dl.lost>dd.email{overflow:hidden;width:152px;text-overflow:ellipsis;white-space:nowrap}
+.tbl-viw tbody td>.txt-conts{width:780px;margin-bottom:50px;line-height:1.6}
+.tbl-viw tbody td>.reply{overflow:hidden;margin:20px 0 5px}
+.tbl-viw tbody td>.reply:first-child{margin-top:0}
+.tbl-viw tbody td>.reply>strong{display:inline-block;float:left}
+.tbl-viw tbody td>.reply>span{display:inline-block;float:right}
+.tbl-viw tbody td>.reply>span>strong{margin-right:10px;color:#222}
+.tbl-viw tbody td>.reply>span>em{font-family:verdana,sans-serif}
+.tbl-viw tbody td>.box-polaroid>.box-inner{padding:20px;line-height:2}
+.tbl-viw tbody td>.box-polaroid>.box-inner>.file{margin-top:15px;padding-top:10px;border-top:1px solid #666;text-align:left}
+.tbl-viw tbody td>.box-polaroid>.box-inner>.file>strong{margin-right:10px}
+.tbl-viw tbody td>label{margin-left:2px;vertical-align:middle}
+.tbl-viw tbody td>input[type=radio]{margin:0 0 0 30px}
+.tbl-viw tbody td>input[type=radio]:first-child{margin-left:0}
+.tbl-viw tbody td>label+.round{margin-left:25px}
+.tbl-viw tbody td>label+.round>*{padding:0 10px}
+.tbl-viw+.set-btn{overflow:hidden}
+.tbl-viw+.set-btn>p:first-child{float:left}
+.tbl-viw+.set-btn>p+p{float:right}
+.tbl-viw+.set-btn>p>.round>*{padding:0 15px}
 
+.set-btn .round-inblack {
+	padding: 10px;
+	font-size: 15px;
+	color: white;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: black;
+	line-height: 30px;
+	text-decoration: none;
+}
+.set-btn .round-gray {
+	padding: 10px;
+	font-size: 15px;
+	color: gray;
+	border: 2px solid gray;
+	border-radius: 5px;
+	background-color: transparent;
+}
 
 #content-aside>ul {
 	padding-left: 0px;
@@ -238,5 +304,18 @@ div#my-info-wrap .benefit .sect-favorite a {
 	color: #e71a0f;
 	padding: 10px;
 	border-radius: 5px;
+	font-weight: bold;
+}
+
+.round-black {
+	width: 90px;
+	height: 30px;
+	background-color: transparent;
+	border: 2px solid black;
+	font-weight: bold;
+	border-radius: 5px;
+}
+strong.txt-red {
+	color: red;
 	font-weight: bold;
 }

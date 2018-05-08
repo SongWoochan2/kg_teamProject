@@ -37,9 +37,7 @@ pageEncoding="UTF-8"%>
 	#qna_table td{
 		padding: 7px;
 	}
-	#gettotal{
-		color:white;
-	}
+	
 </style>
 </head>
 <body>
@@ -48,7 +46,7 @@ pageEncoding="UTF-8"%>
 		<div id="cont_left">
 			<div class="left_menubar">
 				<ul class="clientcenter_menu">
-					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.jsp" ><strong>고객센터 메인</strong></a></li>
+					<li  id=""><a href="/MyCGV/clientCenter/clientCenterMain.do?pg=1" ><strong>고객센터 메인</strong></a></li>
 					<li class="selected" id=""><a href="/MyCGV/admin/qna/qnaList.do?pg=1"><strong>자주찾는 질문</strong> </a></li>
 					<li  id=""><a href="/MyCGV/admin/noticeItem/noticeItemList.do?pg=1"><strong>공지/뉴스</strong></a></li>
 					<li   id=""><a href="/MyCGV/main/inquiry/inquiryWriteForm.do?pg=1"><strong>이메일 문의</strong></a></li>				
@@ -127,7 +125,7 @@ pageEncoding="UTF-8"%>
 					<c:forEach var="qnaDTO" items="${list}">
 						<tr bgcolor="white">
 							<td align="center">${qnaDTO.qna_code}</td>
-							<td align="center">${qnaDTO.qna_type }</td>
+							<td align="center">[${qnaDTO.qna_type }]</td>
 							<td>
 								<a id="titleA" href="qnaView.do?qna_code=${qnaDTO.qna_code}&pg=${param.pg}" >
 									${qnaDTO.qna_title}
