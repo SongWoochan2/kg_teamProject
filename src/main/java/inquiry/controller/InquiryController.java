@@ -97,6 +97,9 @@ public class InquiryController {
 	@RequestMapping(value="/main/inquiry/inquiryListMember.do")
 	public ModelAndView hyperinquiryListMember(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String inquiry_id=(String) session.getAttribute("memId");
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberService.memberView(inquiry_id);
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		if(!inquiry_id.equals(null)) {
@@ -105,7 +108,7 @@ public class InquiryController {
 			int startNum = endNum-9;
 			
 			List<InquiryDTO> list = inquiryService.inquiryListMember(startNum, endNum, inquiry_id);
-			
+	
 			int totalA = inquiryService.getTotalA();
 			int totalP = (totalA + 9)/10;
 			int startPage = (pg - 1)/3*3 +1;
@@ -117,6 +120,7 @@ public class InquiryController {
 			modelAndView.addObject("totalP", totalP);
 			modelAndView.addObject("list", list);
 			modelAndView.addObject("totalA", totalA);
+			modelAndView.addObject("memberDTO", memberDTO);
 			modelAndView.setViewName("inquiryListMember.jsp");
 		
 		}
@@ -148,13 +152,13 @@ public class InquiryController {
 	@RequestMapping(value="/main/inquiry/inquiryDelete.do")
 	public ModelAndView superinquiryDelete(HttpServletRequest request, HttpServletResponse response) { 
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
-	
+		System.out.println(inquiry_code);
 		int su = inquiryService.inquiryDelete(inquiry_code);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("su", su);
-		
+		System.out.println(su);
 		modelAndView.setViewName("inquiryDelete.jsp");
 		
 		return modelAndView;

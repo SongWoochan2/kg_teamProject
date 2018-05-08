@@ -13,7 +13,7 @@
         $("div#myWatchedMovie").attr("class", "on");	
         var originImgAddr = $("#origin_img_addr").val();
         if(originImgAddr == "none" || originImgAddr.includes("none")) {
-        	$(".profile > img").attr("src", "/MyCGV/image/profile/none.png");
+        	$(".profile > img").attr("src", "/MyCGV/image/profile/none/none.png");
         } else {
         	$(".profile > img").attr("src", "/MyCGV/image/profile/"+originImgAddr);
         }
@@ -65,7 +65,7 @@
 	            <div class="tit-mypage">
 		            <h3>내가 본 영화</h3>
 		            <h4>${totalWatch}건</h4>
-		            <div class="set-combo">
+<%-- 		            <div class="set-combo">
 		            	<input type="hidden" id="show_date" value="${memberWatchedListDTO.show_date}">
 		                <select id="year" name="year">
 		                    <option value="" selected="selected">전체</option>
@@ -81,7 +81,7 @@
 		                </select>
 		                <button type="submit" class="round gray"><span>GO</span></button>
                         <!-- <a href="/movies/point/my-list.aspx" class="round red on"><span>내 평점 보기</span></a> -->
-		            </div>
+		            </div> --%>
 		        </div>
             </form>
             
