@@ -252,7 +252,7 @@
 				<ol>
 				  <li>
 				    <label>아이디</label>
-				    <input class="in" id="member_id" name="member_id" type="text" maxlength="12">
+				    <input class="in" id="member_id" name="member_id" type="text" maxlength="12" placeholder="8~12자 영문 대/소문자, 숫자">
 				    <input class="btn" id="checkId_dupl" type="button" value="  중복 확인  ">
 				  </li>
 				  <li>
@@ -261,7 +261,7 @@
 				  </li>
 				  <li>
 				    <label>비밀번호</label>
-				    <input class="in" id="member_pwd" name="member_pwd" type="password" maxlength="12">
+				    <input class="in" id="member_pwd" name="member_pwd" type="password" maxlength="12" placeholder="8~12자 영문 대/소문자, 숫자">
 				  </li>
 				  <li>
 				    <label>비밀번호 확인</label>
