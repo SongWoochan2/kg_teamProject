@@ -117,7 +117,7 @@
           		<div class="box-login login_1408">
                 <h3 class="hidden">회원 로그인</h3>
                     <form id="form2_capcha" name="memberLoginForm" method="post" 
-                    action="memberLogin.do" novalidate="novalidate" style="display:block;">
+                    action="/MyCGV/main/member/memberLogin.do" novalidate="novalidate" style="display:block;">
                  		<fieldset>
                  		
                  			<!-- 페이지 이동시 파라미터  저장 -->

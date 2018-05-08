@@ -165,7 +165,7 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value="/reserving.do")
-	public void hyperreserving(HttpServletRequest request, HttpServletResponse response) {
+	synchronized public void hyperreserving(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("memId");

@@ -25,6 +25,7 @@ pageEncoding="UTF-8"%>
             		timeout: 30000,
             		success: function(data) {
             			$("#resultAlert").html(data);
+            			location.reload();
             		},
             		error: function(xhr, textStatus, errorThrown) {
     					$("div.tbl-form").html("<div>" + textStatus 

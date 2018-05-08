@@ -244,6 +244,10 @@
 			
 			$("#reservingForm").off("click");
 			$("#reservingForm").submit(function(){
+				if(chooseCount() == 0){
+					alert("선택한 좌석이 없습니다...");
+					return false;
+				}
 				if(chooseCount() < $("input[name='total_seat_num']:checked").val()){
 					alert("인원 수와 좌석 수가 맞지 않습니다.");
 					return false;
