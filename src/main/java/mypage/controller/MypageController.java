@@ -299,7 +299,7 @@ public class MypageController {
 		// 문의 내역
 		List<InquiryDTO> list = inquiryService.inquiryListMember(1, 5, member_id);
 
-		int totalA = inquiryService.getTotalA();
+		int totalA = inquiryService.getTotalA(member_id);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("memberDTO", memberDTO);

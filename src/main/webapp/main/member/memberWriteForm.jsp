@@ -72,7 +72,20 @@
                 memberIdObj.select();
                 return false;
             } else {
-				window.open("checkMemberId.do?member_id=" + memberId,"myId","width=350 height=100 left=500 top=200");
+            	$.ajax({
+            		url: "./checkMemberId.do?member_id=" + memberId,
+            		type: "get",
+            		dataType: "html",
+            		cache: false,
+            		timeout: 30000,
+            		success: function(data) {
+            			$("#resultAlert").html(data);
+            		},
+            		error: function(xhr, textStatus, errorThrown) {
+    					$("div.tbl-form").html("<div>" + textStatus 
+  							  + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>");
+  					}
+            	});
 			}
 
 		});
@@ -338,7 +351,7 @@
 		</form>
 	</div>
 </div>
-
+<div id="resultAlert"></div>
 <jsp:include page="/main/main/footer.jsp"/>
 </body>
 </html>

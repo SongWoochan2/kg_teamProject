@@ -42,8 +42,8 @@ public class InquiryService {
 		return inquiryDAO.inquiryView(inquiry_code);
 	}
 	
-	public int getTotalA() {
-		return inquiryDAO.getTotalA();
+	public int getTotalA(String inquiry_id) {
+		return inquiryDAO.getTotalA(inquiry_id);
 	}
 	
 	public int inquiryDelete(int inquiry_code) {

@@ -6,25 +6,24 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/MyCGV/js/jquery-3.3.1.min.js"></script>
+<c:if test="${exist == 1}">
 <script type="text/javascript">
-	function checkIdClose(){
-		opener.memberWriteForm.member_id.value = '${member_id}';
-		window.close();
-		opener.memberWriteForm.member_name.focus();
-	}
+$(function(){
+	alert("이미 사용중인 아이디입니다.");
+	window.close();
+});
 </script>
-</head>
-<body>
-<form name="" method="post" action="checkMemberId.do">
-<c:if test="${exist > 0}">
-	${ member_id }는 사용 중입니다.<br><br>
-	아이디 <input type="text" name="member_id">
-		<input type="submit" value="중복 확인">
 </c:if>
 <c:if test="${exist == 0}">
-	${ member_id }는 사용 가능합니다.<br><br>
-	<input type="button" value="사용" onclick="checkIdClose()">
+<script type="text/javascript">
+$(function(){
+	alert("사용가능한 아이디 입니다.");
+	window.close();
+});
+</script>
 </c:if>
-</form>
+</head>
+<body>
 </body>
 </html>
